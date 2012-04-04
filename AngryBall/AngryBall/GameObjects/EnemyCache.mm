@@ -118,6 +118,7 @@
             break;
         case TargetSceneThrdScene:
             [self initThrdSceneEnemy:world];
+            break;
         default:
             NSAssert1(nil, @"unsupported TargetScene %i", order);
             break;
@@ -181,11 +182,99 @@
     EnemyEntity* enemy2 = [EnemyEntity enemyWithParam:secondEnemyParam World:world];
     [self addChild:enemy2 z:0 tag:12];
     [enemies addObject:enemy2];
+    
 }
 
 -(void)initThrdSceneEnemy:(b2World *)world
 {
-    return;
+    enemyNum = 5;
+    enemies = [[CCArray alloc] initWithCapacity:enemyNum];
+    
+    EnemyParam firstEnemyParam;
+    EnemyParam secondEnemyParam;
+    EnemyParam EnemyParam3;
+    EnemyParam EnemyParam4;
+    EnemyParam EnemyParam5;    
+	CGRect screenRect = [TableSetup screenRect];
+    
+    firstEnemyParam.initialHitPoints = 5;
+    //firstEnemyParam.radius = 1;
+    firstEnemyParam.startPos=CGPointMake(screenRect.size.width / 3, screenRect.size.height / 5*3);
+    firstEnemyParam.friction = 0.5f;
+    firstEnemyParam.restitution = 0.3f;
+    firstEnemyParam.restitution = 0.9f;
+    firstEnemyParam.density = 0.9f;
+    firstEnemyParam.isDynamicBody = YES;
+    firstEnemyParam.spriteFrameName = @"pic_3.png";
+    
+    EnemyEntity* enemy1 = [EnemyEntity enemyWithParam:firstEnemyParam World:world];
+    [self addChild:enemy1 z:0 tag:12];    
+    [enemies addObject:enemy1];
+    
+    //###############################################################
+    secondEnemyParam.initialHitPoints = 7;
+    //firstEnemyParam.radius = 1;
+    secondEnemyParam.startPos=CGPointMake(screenRect.size.width / 5, screenRect.size.height / 4 *2);
+    secondEnemyParam.friction = 0.8f;
+    secondEnemyParam.restitution = 0.9f;
+    secondEnemyParam.restitution = 0.9f;
+    secondEnemyParam.density = 0.7f;
+    secondEnemyParam.isDynamicBody = YES;
+    secondEnemyParam.spriteFrameName = @"pic_2.png";
+    
+    EnemyEntity* enemy2 = [EnemyEntity enemyWithParam:secondEnemyParam World:world];
+    [self addChild:enemy2 z:0 tag:12];    
+    [enemies addObject:enemy2];
+    
+    
+    //###############################################################    
+    EnemyParam3.initialHitPoints = 4;
+    //firstEnemyParam.radius = 1;
+    EnemyParam3.startPos=CGPointMake(screenRect.size.width / 5, screenRect.size.height / 7 * 3);
+    EnemyParam3.friction = 0.8f;
+    EnemyParam3.restitution = 0.9f;
+    EnemyParam3.restitution = 0.9f;
+    EnemyParam3.density = 0.7f;
+    EnemyParam3.isDynamicBody = YES;
+    EnemyParam3.spriteFrameName = @"pic_2.png";
+    
+    EnemyEntity* enemy3 = [EnemyEntity enemyWithParam:EnemyParam3 World:world];
+    [self addChild:enemy3 z:0 tag:12];    
+    [enemies addObject:enemy3];
+    
+    
+    //###############################################################   
+    EnemyParam4.initialHitPoints = 6;
+    //firstEnemyParam.radius = 1;
+    EnemyParam4.startPos=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 9 * 4);
+    EnemyParam4.friction = 0.8f;
+    EnemyParam4.restitution = 0.9f;
+    EnemyParam4.restitution = 0.9f;
+    EnemyParam4.density = 0.7f;
+    EnemyParam4.isDynamicBody = YES;
+    EnemyParam4.spriteFrameName = @"pic_4.png";    
+    
+    EnemyEntity* enemy4 = [EnemyEntity enemyWithParam:EnemyParam4 World:world];
+    [self addChild:enemy4 z:0 tag:12];    
+    [enemies addObject:enemy4];    
+    
+    //###############################################################  
+    
+    
+    EnemyParam5.initialHitPoints = 3;
+    //firstEnemyParam.radius = 1;
+    EnemyParam5.startPos=CGPointMake(screenRect.size.width / 4, screenRect.size.height / 9 * 7);
+    EnemyParam5.friction = 0.8f;
+    EnemyParam5.restitution = 0.9f;
+    EnemyParam5.restitution = 0.9f;
+    EnemyParam5.density = 0.7f;
+    EnemyParam5.isDynamicBody = YES;
+    EnemyParam5.spriteFrameName = @"pic_2.png";
+    
+    EnemyEntity* enemy5 = [EnemyEntity enemyWithParam:EnemyParam5 World:world];
+    [self addChild:enemy5 z:0 tag:12];    
+    [enemies addObject:enemy5];    
+    
 }
 
 -(void) dealloc

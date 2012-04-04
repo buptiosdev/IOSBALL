@@ -36,6 +36,7 @@
         //[label1 drawTextInRect:labelRect1];
         [self addChild:label1];
         
+        //###########################################
         label2 = [CCLabelTTF labelWithString:@"关卡：2" fontName:@"Marker Felt" fontSize:64];
         label2.position = CGPointMake(size.width / 2, size.height / 2);
         [self addChild:label2];
@@ -128,13 +129,16 @@
         else if (CGRectContainsPoint([label3 boundingBox], fingerLocation))
         {
             CCLOG(@"333333\n");
-            label2.color = ccWHITE;
+            label3.color = ccWHITE;
         
             //[[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneThrdScene]];
                 
-            CCTransitionSlideInB* transition = [CCTransitionSlideInB transitionWithDuration:3 
-                                            scene:[LoadingScene sceneWithTargetScene:TargetSceneThrdScene]];
-            [[CCDirector sharedDirector] replaceScene:transition];
+            //CCTransitionSlideInB* transition = [CCTransitionSlideInB transitionWithDuration:3 
+                                            //scene:[LoadingScene sceneWithTargetScene://TargetSceneThrdScene]];
+            //[[CCDirector sharedDirector] replaceScene:transition];
+            
+            [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneThrdScene]];            
+            
         }
         isTouch = NO;
         self.isTouchEnabled = NO;
