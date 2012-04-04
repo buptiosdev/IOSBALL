@@ -59,11 +59,38 @@ void ContactListener::EndContact(b2Contact* contact)
 	Entity* bodyEntityA = (Entity*)bodyA->GetUserData();
 	Entity* bodyEntityB = (Entity*)bodyB->GetUserData();
     
-    if (bodyEntityA != NULL && bodyEntityB != NULL) 
+    if (1 == bodyEntityA.hitPoints)
     {
-        bodyEntityA.sprite.color = ccWHITE; 
+        bodyEntityA.sprite.color = ccRED;
+    }
+    else if (2 == bodyEntityA.hitPoints)
+    {
+        bodyEntityA.sprite.color = ccORANGE;
+    }
+    else
+    {
+        bodyEntityA.sprite.color = ccWHITE;   
+    }
+    
+    if (1 == bodyEntityB.hitPoints)
+    {
+        bodyEntityB.sprite.color = ccRED;
+    }
+    else if (2 == bodyEntityB.hitPoints)
+    {
+        bodyEntityB.sprite.color = ccORANGE;
+    }
+    else
+    {
         bodyEntityB.sprite.color = ccWHITE;
     }
+    
+//    if (bodyEntityA != NULL && bodyEntityB != NULL) 
+//    {
+//        bodyEntityA.sprite.color = ccWHITE; 
+//        bodyEntityB.sprite.color = ccWHITE;
+//    }
+    
 }
 
 void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)

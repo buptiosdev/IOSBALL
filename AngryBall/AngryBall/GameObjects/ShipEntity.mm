@@ -92,7 +92,7 @@
 		
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef spriteFrameName:spriteFrameName];
 		
-        initialHitPoints = 4;
+        initialHitPoints = 5;
         hitPoints = initialHitPoints;
         
 		//sprite.color = ccRED;
@@ -275,7 +275,7 @@
 		[self applyForceTowardsFinger];
 	}
     
-    [self applyForceWichAccelar];
+    //[self applyForceWichAccelar];
     if (sprite.position.x <= leftBorderLimit || sprite.position.x >= rightBorderLimit)
 	{
 		// also set velocity to zero because the player is still accelerating towards the border
