@@ -131,7 +131,7 @@
     EnemyParam firstEnemyParam;
 	CGRect screenRect = [TableSetup screenRect];
     
-    firstEnemyParam.initialHitPoints = 3;
+    firstEnemyParam.initialHitPoints = 4;
     //firstEnemyParam.radius = 1;
     firstEnemyParam.startPos=CGPointMake(screenRect.size.width / 4, screenRect.size.height / 4);
     firstEnemyParam.friction = 0.5f;
@@ -153,7 +153,7 @@
     EnemyParam secondEnemyParam;
 	CGRect screenRect = [TableSetup screenRect];
     
-    firstEnemyParam.initialHitPoints = 8;
+    firstEnemyParam.initialHitPoints = 6;
     //firstEnemyParam.radius = 1;
     firstEnemyParam.startPos=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 4);
     firstEnemyParam.friction = 0.5f;
@@ -168,7 +168,7 @@
     [enemies addObject:enemy];
     
     
-    secondEnemyParam.initialHitPoints = 15;
+    secondEnemyParam.initialHitPoints = 10;
     //firstEnemyParam.radius = 1;
     secondEnemyParam.startPos=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 4 * 3);
     secondEnemyParam.friction = 0.8f;

@@ -29,8 +29,8 @@ void ContactListener::BeginContact(b2Contact* contact)
     {
         [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
 
-        //bodyEntityA.sprite.color = ccMAGENTA; 
-        //bodyEntityB.sprite.color = ccMAGENTA;
+        bodyEntityA.sprite.color = ccMAGENTA; 
+        bodyEntityB.sprite.color = ccMAGENTA;
         bodyEntityA.hitPoints--;
         bodyEntityB.hitPoints--;
         
@@ -67,6 +67,10 @@ void ContactListener::EndContact(b2Contact* contact)
     {
         bodyEntityA.sprite.color = ccORANGE;
     }
+    else
+    {
+        bodyEntityA.sprite.color = ccWHITE;   
+    }
     
     if (1 == bodyEntityB.hitPoints)
     {
@@ -75,6 +79,10 @@ void ContactListener::EndContact(b2Contact* contact)
     else if (2 == bodyEntityB.hitPoints)
     {
         bodyEntityB.sprite.color = ccORANGE;
+    }
+    else
+    {
+        bodyEntityB.sprite.color = ccWHITE;
     }
     
 //    if (bodyEntityA != NULL && bodyEntityB != NULL) 
