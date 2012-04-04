@@ -49,15 +49,15 @@ struct EnemyParam {
     int	initialHitPoints;
 };
 
-+(id) enemyWithType:(EnemyTypes)enemyType World:(b2World *)world;
+//+(id) enemyWithType:(EnemyTypes)enemyType World:(b2World *)world;
 +(id) enemyWithParam:(EnemyParam)firstEnemyParam World:(b2World *)world;
 
-+(int) getSpawnFrequencyForEnemyType:(EnemyTypes)enemyType;
-
--(void) spawn;
-
--(void) gotHit;
-
--(void) updateForCache;
+//+(int) getSpawnFrequencyForEnemyType:(EnemyTypes)enemyType;
+//
+//-(void) spawn;
+//
+//-(void) gotHit;
+//
+//-(void) updateForCache;
 
 @end

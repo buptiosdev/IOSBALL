@@ -252,28 +252,28 @@
     return self;
 }
 
--(void) updateForCache
-{
-	if (self.sprite.visible)
-	{
-        CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.3);					
-        
-		//NSAssert([self.parent isKindOfClass:[Entity class]], @"node is not a Entity");
-		
-		//Entity* entity = (Entity*)self.parent;
-		//if (sprite.position.x > [TableSetup screenRect].size.width * 0.5f)
-		{
-			//[sprite setPosition:ccpAdd(sprite.position, velocity)];
-		}
-        CGPoint positionNew = ccpAdd(sprite.position, velocity);
-        [self updateBadyPosition:positionNew];
-        
-        /*if (sprite.position.x < 0)   
-         {
-         sprite.visible = NO;
-         }*/
-	}
-}
+//-(void) updateForCache
+//{
+//	if (self.sprite.visible)
+//	{
+//        CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.3);					
+//        
+//		//NSAssert([self.parent isKindOfClass:[Entity class]], @"node is not a Entity");
+//		
+//		//Entity* entity = (Entity*)self.parent;
+//		//if (sprite.position.x > [TableSetup screenRect].size.width * 0.5f)
+//		{
+//			//[sprite setPosition:ccpAdd(sprite.position, velocity)];
+//		}
+//        CGPoint positionNew = ccpAdd(sprite.position, velocity);
+//        [self updateBadyPosition:positionNew];
+//        
+//        /*if (sprite.position.x < 0)   
+//         {
+//         sprite.visible = NO;
+//         }*/
+//	}
+//}
 
 
 

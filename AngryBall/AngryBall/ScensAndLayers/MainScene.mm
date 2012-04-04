@@ -240,6 +240,7 @@ static MainScene *instanceOfMainScene;
 	}
     if(deadenemycnt>=bodysize-2){
         sceneNum++;
+        sleep(2);
         [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)sceneNum]];
     }
 
