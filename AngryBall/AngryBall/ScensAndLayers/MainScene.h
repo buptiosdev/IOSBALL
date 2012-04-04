@@ -37,7 +37,7 @@ typedef enum
 {
     b2World* world;
     ContactListener* contactListener;
-    
+    int sceneNum;
 }
 +(id)createMainLayer:(int)order;
 +(MainScene*) sharedMainScene;

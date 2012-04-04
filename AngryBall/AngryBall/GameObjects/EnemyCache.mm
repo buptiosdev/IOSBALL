@@ -40,7 +40,7 @@
 		//[self addChild:batch];
 		
 		[self initEnemiesByOrder:world Order:order];
-		[self scheduleUpdate];
+		//[self scheduleUpdate];
 	}
 	
 	return self;    
@@ -131,7 +131,7 @@
     EnemyParam firstEnemyParam;
 	CGRect screenRect = [TableSetup screenRect];
     
-    firstEnemyParam.initialHitPoints = 13;
+    firstEnemyParam.initialHitPoints = 3;
     //firstEnemyParam.radius = 1;
     firstEnemyParam.startPos=CGPointMake(screenRect.size.width / 4, screenRect.size.height / 4);
     firstEnemyParam.friction = 0.5f;
@@ -141,6 +141,7 @@
     firstEnemyParam.spriteFrameName = @"pic_4.png";
     
     EnemyEntity* enemy = [EnemyEntity enemyWithParam:firstEnemyParam World:world];
+    [self addChild:enemy z:0 tag:12];
     [enemies addObject:enemy];
 }
 
@@ -163,6 +164,7 @@
     firstEnemyParam.spriteFrameName = @"pic_3.png";
     
     EnemyEntity* enemy = [EnemyEntity enemyWithParam:firstEnemyParam World:world];
+    [self addChild:enemy z:0 tag:12];
     [enemies addObject:enemy];
     
     
@@ -177,6 +179,7 @@
     secondEnemyParam.spriteFrameName = @"pic_2.png";
     
     EnemyEntity* enemy2 = [EnemyEntity enemyWithParam:secondEnemyParam World:world];
+    [self addChild:enemy2 z:0 tag:12];
     [enemies addObject:enemy2];
 }
 

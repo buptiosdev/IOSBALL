@@ -92,7 +92,7 @@
 		
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef spriteFrameName:spriteFrameName];
 		
-        initialHitPoints = 10;
+        initialHitPoints = 4;
         hitPoints = initialHitPoints;
         
 		//sprite.color = ccRED;

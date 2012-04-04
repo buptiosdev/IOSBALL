@@ -70,7 +70,7 @@ static MainScene *instanceOfMainScene;
         //self.isAccelerometerEnabled = YES;
         //初始化一开始，给半单例赋值
         instanceOfMainScene = self;
-        
+        sceneNum=order;
         //添加重力加速
         //self.isAccelerometerEnabled = YES;
         //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
@@ -199,12 +199,16 @@ static MainScene *instanceOfMainScene;
 	world->Step(timeStep, velocityIterations, positionIterations);
 	
 	// for each body, get its assigned BodyNode and update the sprite's position
+    int bodysize=0;
+    int deadenemycnt=0;
 	for (b2Body* body = world->GetBodyList(); body != nil; body = body->GetNext())
 	{
+        bodysize++;
 		Entity* bodyNode = (Entity *)body->GetUserData();
 		if (bodyNode != NULL && bodyNode.sprite != nil)
 		{
 			// update the sprite's position to where their physics bodies are
+            //bodysize++;
 			bodyNode.sprite.position = [Helper toPixels:body->GetPosition()];
 			float angle = body->GetAngle();
 			bodyNode.sprite.rotation = -(CC_RADIANS_TO_DEGREES(angle));
@@ -222,6 +226,9 @@ static MainScene *instanceOfMainScene;
                     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetNavigationScen]];
                     
                     return;
+                }else
+                {
+                    deadenemycnt++;
                 }
                 CGPoint positionNew = CGPointMake(-100, -100);
                 bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
@@ -231,6 +238,10 @@ static MainScene *instanceOfMainScene;
             } 
 		}
 	}
+    if(deadenemycnt>=bodysize-2){
+        sceneNum++;
+        [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)sceneNum]];
+    }
 
 }
 @end
