@@ -183,7 +183,7 @@
     CCLOG(@"hello\n");
     if (self.sprite.visible)
 	{
-        CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*1, CCRANDOM_MINUS1_1() * 1);					
+        CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);					
         
 		//NSAssert([self.parent isKindOfClass:[Entity class]], @"node is not a Entity");
 		
@@ -192,7 +192,7 @@
 		{
 			//[sprite setPosition:ccpAdd(sprite.position, velocity)];
 		}
-        CGPoint positionNew = ccpAdd(sprite.position, velocity);
+        CGPoint positionNew = ccpAdd(self.sprite.position, velocity);
         [self updateBadyPosition:positionNew];
         
         /*if (sprite.position.x < 0)   
@@ -224,6 +224,7 @@
         // Create a body definition, it's a static body (bumpers don't move)
         b2BodyDef bodyDef;
         bodyDef.position = [Helper toMeters:enemyParam.startPos];
+        
         if (enemyParam.isDynamicBody)
         {
             bodyDef.type = b2_dynamicBody;
@@ -246,6 +247,7 @@
                          bodyDef:&bodyDef 
                       fixtureDef:&fixtureDef 
                  spriteFrameName:enemyParam.spriteFrameName]; 
+        sprite.position = enemyParam.startPos;
         [self scheduleUpdate];
     }
     

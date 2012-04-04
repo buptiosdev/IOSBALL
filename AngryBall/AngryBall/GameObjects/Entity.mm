@@ -57,6 +57,8 @@
 	b2Vec2 fingerPos = [Helper toMeters:positionNew];
 	
 	b2Vec2 bodyToFinger = fingerPos - bodyPos;
+    //b2Vec2 bodyToFinger = fingerPos;
+
     
     // "Real" gravity falls off by the square over distance. Feel free to try it this way:
     //float distance = bodyToFinger.Normalize();
@@ -69,8 +71,8 @@
 	body->ApplyForce(force, body->GetWorldCenter());
     
     //sprite.position = [Helper toPixels:body->GetPosition()];
-    bodyPos = body->GetWorldCenter();
-    bodyPosition = [Helper toPixels:bodyPos];
+//    bodyPos = body->GetWorldCenter();
+//    bodyPosition = [Helper toPixels:bodyPos];
 }
 
 -(void) removeSprite
