@@ -142,7 +142,7 @@
     [self defineBall:world Type:BallTypeKillerBall Pos:startPos4 Dynamic:YES Tag:4];
     
     CGPoint startPos5=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4 * 3);
-    [self defineBall:world Type:BallTyBalloom Pos:startPos5 Dynamic:YES Tag:5];
+    [self defineBall:world Type:BallTypeBalloom Pos:startPos5 Dynamic:YES Tag:5];
     
     /*
     enemyNum = 5;

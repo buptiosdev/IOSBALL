@@ -152,7 +152,7 @@
         case BallTypeKillerBall:
             [self initkillerBall:param];
             break;
-        case BallTyBalloom:
+        case BallTypeBalloom:
             [self initBalloom:param];
             break;
         default:

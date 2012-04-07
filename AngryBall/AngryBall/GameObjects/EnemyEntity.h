@@ -12,7 +12,7 @@
 typedef enum
 {
 	BallTypeRandomBall = 0,
-	BallTyBalloom,
+	BallTypeBalloom,
 	BallTypeKillerBall,
 	BallType_MAX,
 } BallType;
