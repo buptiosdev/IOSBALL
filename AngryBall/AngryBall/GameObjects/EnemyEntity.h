@@ -11,19 +11,11 @@
 
 typedef enum
 {
-	EnemyTypeBreadman = 0,
-	EnemyTypeSnake,
-	EnemyTypeBoss,
-	
-	EnemyType_MAX,
-} EnemyTypes;
-
-
-@interface EnemyEntity : Entity
-{
-	EnemyTypes type;
-
-}
+	BallTypeRandomBall = 0,
+	BallTyBalloom,
+	BallTypeKillerBall,
+	BallType_MAX,
+} BallType;
 
 struct EnemyParam {
     
@@ -47,7 +39,18 @@ struct EnemyParam {
     NSString *spriteFrameName;
     
     int	initialHitPoints;
+    
+    int ballType;
+    
 };
+
+@interface EnemyEntity : Entity
+{
+    SEL ballMove;
+    EnemyParam enemyParamDef;
+
+}
+
 
 //+(id) enemyWithType:(EnemyTypes)enemyType World:(b2World *)world;
 +(id) enemyWithParam:(EnemyParam)firstEnemyParam World:(b2World *)world;
