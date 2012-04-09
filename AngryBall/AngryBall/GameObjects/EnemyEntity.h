@@ -42,6 +42,10 @@ struct EnemyParam {
     
     int ballType;
     
+    float32 linearDamping;
+    
+    float32 angularDamping;
+    
 };
 
 @interface EnemyEntity : Entity

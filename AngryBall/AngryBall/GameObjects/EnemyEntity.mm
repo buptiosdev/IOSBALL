@@ -43,7 +43,7 @@
 
 -(void)moveTheKillerBall:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
-    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);	
+    CGPoint velocity = CGPointMake(1.0f, CCRANDOM_MINUS1_1() * 0.1);
     CGPoint positionNew = ccpAdd(curPosition, velocity);
     
     b2Vec2 fingerPos = [Helper toMeters:positionNew];
@@ -59,6 +59,24 @@
 -(void)moveBalloom:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
     CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);	
+    if (curPosition.x < 50)
+    {
+        velocity.x = 10;
+    }
+    else if (curPosition.x > 430)
+    {
+        velocity.x = -10;
+    }
+    
+    if (curPosition.y < 50)
+    {
+        velocity.y = 10;
+    }
+    else if (curPosition.y > 270)
+    {
+        velocity.y = -10;
+    }
+    
     CGPoint positionNew = ccpAdd(curPosition, velocity);
     
     b2Vec2 fingerPos = [Helper toMeters:positionNew];
@@ -75,7 +93,7 @@
     CCLOG(@"hello\n");
     if (self.sprite.visible)
 	{
-        b2Vec2 bodyPos = body->GetWorldCenter();
+        b2Vec2 bodyPos = self.body->GetWorldCenter();
         CGPoint bodyPosition = [Helper toPixels:bodyPos];
         b2Vec2 force;
         //函数指针
@@ -88,7 +106,7 @@
         IMP getForchFunc = [self methodForSelector:ballMove];
         getForchFunc(self, ballMove, bodyPosition, &force); 
         
-        body->ApplyForce(force, body->GetWorldCenter());
+        self.body->ApplyForce(force, self.body->GetWorldCenter());
         
 	}    
 }
@@ -106,7 +124,9 @@
     enemyParamDef.ballType = param.ballType;
     enemyParamDef.spriteFrameName = @"pic_4.png";
     enemyParamDef.density = (0 == param.density) ? 0.5 : param.density;
-    enemyParamDef.restitution = (0 == param.restitution) ? 0.5 : param.restitution;
+    enemyParamDef.restitution = (0 == param.restitution) ? 1.5 : param.restitution;
+    enemyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
+    enemyParamDef.angularDamping = (0 == param.restitution) ? 0.1 : param.angularDamping;
     enemyParamDef.friction = (0 == param.friction) ? 0.5 : param.friction;
     enemyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
     enemyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 5 : param.initialHitPoints;
@@ -122,6 +142,8 @@
     enemyParamDef.spriteFrameName = @"pic_3.png";
     enemyParamDef.density = (0 == param.density) ? 0.8 : param.density;
     enemyParamDef.restitution = (0 == param.restitution) ? 0.8 : param.restitution;
+    enemyParamDef.linearDamping = (0 == param.restitution) ? 0.5 : param.linearDamping;
+    enemyParamDef.angularDamping = (0 == param.restitution) ? 0.5 : param.angularDamping;
     enemyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
     enemyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
     enemyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 8 : param.initialHitPoints;
@@ -137,6 +159,8 @@
     enemyParamDef.spriteFrameName = @"pic_2.png";
     enemyParamDef.density = (0 == param.density) ? 0.1 : param.density;
     enemyParamDef.restitution = (0 == param.restitution) ? 0.5 : param.restitution;
+    enemyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
+    enemyParamDef.angularDamping = (0 == param.restitution) ? 0.3 : param.angularDamping;
     enemyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
     enemyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
     enemyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 8 : param.initialHitPoints;
@@ -177,8 +201,9 @@
         {
             bodyDef.type = b2_dynamicBody;
         }
-        bodyDef.angularDamping = 0.5f;
-        
+        //阻力
+        bodyDef.angularDamping = enemyParamDef.angularDamping;
+        bodyDef.linearDamping = enemyParamDef.linearDamping;
         
         b2CircleShape circleShape;
         float radiusInMeters = (tempSprite.contentSize.width / PTM_RATIO) * 0.5f;
@@ -195,7 +220,7 @@
                          bodyDef:&bodyDef 
                       fixtureDef:&fixtureDef 
                  spriteFrameName:enemyParamDef.spriteFrameName]; 
-        sprite.position = enemyParamDef.startPos;
+        self.sprite.position = enemyParamDef.startPos;
         [self scheduleUpdate];
     }
     

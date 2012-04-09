@@ -67,10 +67,19 @@ void ContactListener::EndContact(b2Contact* contact)
     {
         bodyEntityA.sprite.color = ccORANGE;
     }
+    else if (3 == bodyEntityA.hitPoints)
+    {
+        bodyEntityA.sprite.color = ccYELLOW;
+    }
+    else if (4 == bodyEntityA.hitPoints)
+    {
+        bodyEntityA.sprite.color = ccGREEN;
+    }
     else
     {
         bodyEntityA.sprite.color = ccWHITE;   
     }
+    
     
     if (1 == bodyEntityB.hitPoints)
     {
@@ -80,9 +89,17 @@ void ContactListener::EndContact(b2Contact* contact)
     {
         bodyEntityB.sprite.color = ccORANGE;
     }
+    else if (3 == bodyEntityB.hitPoints)
+    {
+        bodyEntityB.sprite.color = ccYELLOW;
+    }
+    else if (4 == bodyEntityB.hitPoints)
+    {
+        bodyEntityB.sprite.color = ccGREEN;
+    }
     else
     {
-        bodyEntityB.sprite.color = ccWHITE;
+        bodyEntityB.sprite.color = ccWHITE;   
     }
     
 //    if (bodyEntityA != NULL && bodyEntityB != NULL) 

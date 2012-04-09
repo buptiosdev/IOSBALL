@@ -233,9 +233,9 @@
 }
 #endif
 */
--(void) dealloc
+/*-(void) dealloc
 {
 	[super dealloc];
-}
+}*/
 
 @end

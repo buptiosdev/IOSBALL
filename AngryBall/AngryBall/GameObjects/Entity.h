@@ -16,8 +16,6 @@
 
 @interface Entity : CCNode 
 {
-    b2Body* body;
-	CCSprite* sprite;
     int initialHitPoints;
 	int hitPoints;
 }

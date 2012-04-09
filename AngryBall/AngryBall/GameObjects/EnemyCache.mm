@@ -76,7 +76,7 @@
 {
     EnemyParam firstEnemyParam = {0};
     
-    firstEnemyParam.initialHitPoints = 4;
+    //firstEnemyParam.initialHitPoints = 4;
 
     firstEnemyParam.startPos=CGPoint(startPos);
 
@@ -85,7 +85,7 @@
     firstEnemyParam.ballType = ballType;
     
     EnemyEntity* enemy = [EnemyEntity enemyWithParam:firstEnemyParam World:world];
-    [self addChild:enemy z:0 tag:taget];
+    [self addChild:enemy z:1 tag:taget];
     [enemies addObject:enemy];
 }
 
@@ -130,7 +130,7 @@
 	CGRect screenRect = [TableSetup screenRect];
     
     CGPoint startPos1=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 2);
-    [self defineBall:world Type:BallTypeRandomBall Pos:startPos1 Dynamic:YES Tag:1];
+    [self defineBall:world Type:BallTypeBalloom Pos:startPos1 Dynamic:YES Tag:1];
     
     CGPoint startPos2=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4 * 3);
     [self defineBall:world Type:BallTypeKillerBall Pos:startPos2 Dynamic:YES Tag:2];

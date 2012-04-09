@@ -43,8 +43,6 @@ static CGRect screenRect;
 	if ((self = [super init]))
 	{
         instanceOfTable = self;
-        // weak reference to world for convenience
-        world_ = world;
 		
         screenSize = [[CCDirector sharedDirector] winSize];
         screenRect = CGRectMake(0, 0, screenSize.width, screenSize.height);
@@ -60,7 +58,6 @@ static CGRect screenRect;
         EnemyCache* enemyCache = [EnemyCache cache:world Order:order];
         [self addChild:enemyCache z:-1 tag:EnemyCacheTag];
         
-            
         // Add some bumpers 弹簧体
         //[self addBumperAt:CGPointMake(30, 30)];
         //[self addBumperAt:CGPointMake(30, screenSize.height - 30)];
@@ -68,10 +65,6 @@ static CGRect screenRect;
         //[self addBumperAt:CGPointMake(screenSize.width - 30, screenSize.height - 30)];
 
         //[self scheduleUpdate];	
-        
-        // world is no longer needed after init:
-        world_ = NULL;
-
 	}
 	
 	return self;
@@ -138,57 +131,6 @@ static CGRect screenRect;
 	b2Body* body = world_->CreateBody(&bodyDef);
 	body->CreateFixture(&fixtureDef);
 }
-//暂时没用到
--(void) createLanes
-{
-	// right lane
-	{
-		//row 1, col 1
-		int num = 5;
-		b2Vec2 vertices[] = {
-			b2Vec2(100.9f / PTM_RATIO, -143.9f / PTM_RATIO),
-			b2Vec2(91.4f / PTM_RATIO, -145.0f / PTM_RATIO),
-			b2Vec2(58.2f / PTM_RATIO, -164.4f / PTM_RATIO),
-			b2Vec2(76.3f / PTM_RATIO, -185.5f / PTM_RATIO),
-			b2Vec2(92.1f / PTM_RATIO, -176.1f / PTM_RATIO),
-		};
-		[self createStaticBodyWithVertices:vertices numVertices:num];
-	}
-	// left lane
-	{
-		//row 1, col 1
-		int num = 5;
-		b2Vec2 vertices[] = {
-			b2Vec2(-65.6f / PTM_RATIO, -165.1f / PTM_RATIO),
-			b2Vec2(-119.3f / PTM_RATIO, -125.2f / PTM_RATIO),
-			b2Vec2(-126.7f / PTM_RATIO, -128.3f / PTM_RATIO),
-			b2Vec2(-126.7f / PTM_RATIO, -136.1f / PTM_RATIO),
-			b2Vec2(-83.3f / PTM_RATIO, -175.6f / PTM_RATIO)
-		};
-		[self createStaticBodyWithVertices:vertices numVertices:num];
-	}
-}
-
--(void) update:(ccTime)delta
-{
-	CCSprite* sprite;
-	CCARRAY_FOREACH([batch children], sprite)
-	{
-       CGPoint pos = sprite.position;
-		pos.x -= 1.0f;
-		
-		// Reposition stripes when they're out of bounds
-		if (pos.x < -screenSize.width)
-		{
-			pos.x += (screenSize.width * 2) - 2;
-		}
-		
-		sprite.position = pos;
-	}
-}
-
-
-
 
 -(ShipEntity*) defaultShip
 {

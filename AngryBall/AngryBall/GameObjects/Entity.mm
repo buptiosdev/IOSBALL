@@ -10,19 +10,19 @@
 #import "MainScene.h"
 
 @implementation Entity
-@synthesize body;
-@synthesize sprite;
+@synthesize body = _body;
+@synthesize sprite = _sprite;
 @synthesize initialHitPoints;
 @synthesize hitPoints;
 
 -(CCSprite *)sprite
 {
-    if (!sprite) 
+    if (!_sprite) 
     {
-        sprite = [[CCSprite alloc] init];
+        _sprite = [[CCSprite alloc] init];
     }
     
-    return sprite;
+    return _sprite;
 }
 
 -(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef spriteFrameName:(NSString*)spriteFrameName
@@ -32,19 +32,19 @@
 	NSAssert(spriteFrameName != nil, @"spriteFrameName is nil!");
 	
     //可以先暂时去掉，看看什么效果，但是要考虑内存释放的问题
-	[self removeSprite];
-	[self removeBody];
+	//[self removeSprite];
+	//[self removeBody];
 	
 	CCSpriteBatchNode* batch = [[MainScene sharedMainScene] getSpriteBatch];
-	sprite = [CCSprite spriteWithSpriteFrameName:spriteFrameName];
-	[batch addChild:sprite];
+	_sprite = [CCSprite spriteWithSpriteFrameName:spriteFrameName];
+	[batch addChild:_sprite];
 	
-	body = world->CreateBody(bodyDef);
-	body->SetUserData(self);
+	_body = world->CreateBody(bodyDef);
+	_body->SetUserData(self);
 	
 	if (fixtureDef != NULL)
 	{
-		body->CreateFixture(fixtureDef);
+		_body->CreateFixture(fixtureDef);
 	}
 }
 
@@ -52,8 +52,8 @@
 /*通过这个函数改变精灵的位置*/
 -(void) updateBadyPosition:(CGPoint)positionNew
 {
-	b2Vec2 bodyPos = body->GetWorldCenter();
-    CGPoint bodyPosition = [Helper toPixels:bodyPos];
+	b2Vec2 bodyPos = _body->GetWorldCenter();
+    //CGPoint bodyPosition = [Helper toPixels:bodyPos];
 	b2Vec2 fingerPos = [Helper toMeters:positionNew];
 	
 	b2Vec2 bodyToFinger = fingerPos - bodyPos;
@@ -68,7 +68,7 @@
 	b2Vec2 force = 20.0f * bodyToFinger;
     //body->SetTransform([Helper toMeters:positionNew], 0);
     
-	body->ApplyForce(force, body->GetWorldCenter());
+	_body->ApplyForce(force, _body->GetWorldCenter());
     
     //sprite.position = [Helper toPixels:body->GetPosition()];
 //    bodyPos = body->GetWorldCenter();
@@ -78,19 +78,19 @@
 -(void) removeSprite
 {
 	CCSpriteBatchNode* batch = [[MainScene sharedMainScene] getSpriteBatch];
-	if (sprite != nil && [batch.children containsObject:sprite])
+	if (_sprite != nil && [batch.children containsObject:_sprite])
 	{
-		[batch.children removeObject:sprite];
-		sprite = nil;
+		[batch.children removeObject:_sprite];
+		_sprite = nil;
 	}
 }
 
 -(void) removeBody
 {
-	if (body != NULL)
+	if (_body != NULL)
 	{
-		body->GetWorld()->DestroyBody(body);
-		body = NULL;
+		_body->GetWorld()->DestroyBody(_body);
+		_body = NULL;
 	}
 }
 
@@ -99,7 +99,7 @@
     
 	[self removeSprite];
     //走进去会断错，暂去掉
-	//[self removeBody];
+	[self removeBody];
 	
 	[super dealloc];
 }

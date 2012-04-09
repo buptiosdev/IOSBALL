@@ -92,10 +92,8 @@
 		
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef spriteFrameName:spriteFrameName];
 		
-        initialHitPoints = 5;
+        initialHitPoints = 6;
         hitPoints = initialHitPoints;
-        
-		//sprite.color = ccRED;
         
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:NO];
 
@@ -194,7 +192,7 @@
 {
     b2Vec2 force = [Helper toMeters:playerVelocity];
     
-	body->ApplyForce(force, body->GetWorldCenter());
+	self.body->ApplyForce(force, self.body->GetWorldCenter());
     
 }
 -(void) applyForceTowardsFinger
@@ -212,14 +210,14 @@
 	
 	//b2Vec2 force = 2.0f * bodyToFinger;
     
-    CGPoint bodyPosition = [Helper toPixels:body->GetPosition()];
+    CGPoint bodyPosition = [Helper toPixels:self.body->GetPosition()];
     CGPoint acceleration = ccpSub(fingerLocation, bodyPosition);
     // 控制减速的速率(值越低=可以更快的改变方向) 
     float deceleration = 0.4f; 
     //加速计敏感度的值越大,主角精灵对加速计的输入就越敏感 
-    float sensitivity = 1.0f;
+    float sensitivity = 1.2f;
     // 最大速度值 
-    float maxVelocity = 20;
+    float maxVelocity = 40;
     // 基于当前加速计的加速度调整速度
     //CGPoint playerVelocity;
     BOOL yOverflow = NO;
@@ -256,15 +254,15 @@
 
     b2Vec2 force = [Helper toMeters:playerVelocity];
     
-	body->ApplyForce(force, body->GetWorldCenter());
+	self.body->ApplyForce(force, self.body->GetWorldCenter());
 }
 
 -(void) update:(ccTime)delta
 {
     // The Player should also be stopped from going outside the screen
 	CGSize screenSize = [[CCDirector sharedDirector] winSize];
-	float imageWidthHalved = [sprite texture].contentSize.width * 0.5f;
-    float imageHeightHalved = [sprite texture].contentSize.height * 0.5f;
+	float imageWidthHalved = [self.sprite texture].contentSize.width * 0.5f;
+    float imageHeightHalved = [self.sprite texture].contentSize.height * 0.5f;
 	float leftBorderLimit = imageWidthHalved;
 	float rightBorderLimit = screenSize.width - imageWidthHalved;
     float upBorderLimit = screenSize.height - imageHeightHalved;
@@ -276,13 +274,13 @@
 	}
     
     //[self applyForceWichAccelar];
-    if (sprite.position.x <= leftBorderLimit || sprite.position.x >= rightBorderLimit)
+    if (self.sprite.position.x <= leftBorderLimit || self.sprite.position.x >= rightBorderLimit)
 	{
 		// also set velocity to zero because the player is still accelerating towards the border
 		playerVelocity = CGPointMake(0.0f, playerVelocity.y);
 	}
     
-    if (sprite.position.y <= downBorderLimit || sprite.position.x >= upBorderLimit)
+    if (self.sprite.position.y <= downBorderLimit || self.sprite.position.x >= upBorderLimit)
 	{
 		// also set velocity to zero because the player is still accelerating towards the border
 		playerVelocity = CGPointMake(playerVelocity.x, 0.0f);

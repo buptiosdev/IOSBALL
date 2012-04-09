@@ -95,6 +95,8 @@ static MainScene *instanceOfMainScene;
         // IMPORTANT: filenames are case sensitive on iOS devices!
 		CCSprite* background = [CCSprite spriteWithSpriteFrameName:@"background.png"];
 		background.position = CGPointMake(screenSize.width / 2, screenSize.height / 2);
+        //设置透明度
+        //background.opacity = 127;
 		// scaling the image beyond recognition here
 		//background.scaleX = 30;
 		//background.scaleY = 3;
@@ -121,15 +123,12 @@ static MainScene *instanceOfMainScene;
 
 -(void) dealloc
 {
-
+	[super dealloc];
     delete world;
 	world = NULL;
     
     delete contactListener;
 	contactListener = NULL;
-   
-    
-	[super dealloc];
     instanceOfMainScene = nil; 
 }
 
@@ -212,6 +211,7 @@ static MainScene *instanceOfMainScene;
 			bodyNode.sprite.position = [Helper toPixels:body->GetPosition()];
 			float angle = body->GetAngle();
 			bodyNode.sprite.rotation = -(CC_RADIANS_TO_DEGREES(angle));
+       
             if (bodyNode.hitPoints <= 0)
             {
                 if([bodyNode isKindOfClass:[ShipEntity class]])
