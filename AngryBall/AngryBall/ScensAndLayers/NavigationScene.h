@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface NavigationScene : CCLayer <CCTargetedTouchDelegate>
+@interface NavigationScene : CCLayer
 {
     /*
     CGPoint fingerLocation;
