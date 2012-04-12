@@ -11,11 +11,13 @@
 
 @interface NavigationScene : CCLayer <CCTargetedTouchDelegate>
 {
+    /*
     CGPoint fingerLocation;
     CCLabelTTF *label1;
     CCLabelTTF *label2;
     CCLabelTTF *label3;
     BOOL isTouch;
+     */
     
 }
 +(id)sceneWithNavigationScene;
