@@ -10,6 +10,27 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 
+typedef enum
+{
+	ParticleTypeExplosion = 0,
+	ParticleTypeFire,
+	ParticleTypeFireworks,
+	ParticleTypeFlower,
+	ParticleTypeGalaxy,
+	ParticleTypeMeteor,
+	ParticleTypeRain,
+	ParticleTypeSmoke,
+	ParticleTypeSnow,
+	ParticleTypeSpiral,
+	ParticleTypeSun,
+	
+	ParticleTypes_MAX,
+} ParticleTypes;
+
+
+
+
+
 @interface EnemyCache : CCNode 
 {
 	CCSpriteBatchNode* batch;
