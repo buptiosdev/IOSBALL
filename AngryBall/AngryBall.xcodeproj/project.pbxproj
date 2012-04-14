@@ -1231,7 +1231,6 @@
 				7087A118152C28390015C574 /* hit.caf in Resources */,
 				7087A119152C28390015C574 /* magicball_default.plist in Resources */,
 				7087A11A152C28390015C574 /* magicball_default.png in Resources */,
-<<<<<<< HEAD
 				7098805A15372D7D0038BC9F /* menubackground.png in Resources */,
 				7098805B15372D7D0038BC9F /* normal_dis.png in Resources */,
 				7098805C15372D7D0038BC9F /* normal_dwn.png in Resources */,
@@ -1242,7 +1241,6 @@
 				7098806715372D900038BC9F /* extreme_dis.png in Resources */,
 				7098806815372D900038BC9F /* extreme_dwn.png in Resources */,
 				7098806915372D900038BC9F /* extreme.png in Resources */,
-=======
 				4A73C7EC1537278B002979FB /* easy_dis.png in Resources */,
 				4A73C7ED1537278B002979FB /* easy_dwn.png in Resources */,
 				4A73C7EE1537278B002979FB /* easy.png in Resources */,
@@ -1256,7 +1254,6 @@
 				C68875521539C6DE007A363C /* fire.png in Resources */,
 				C68875531539C6DE007A363C /* fx-explosion.plist in Resources */,
 				C68875541539C6DE007A363C /* fx-explosion2.plist in Resources */,
->>>>>>> a5b9353fdf8d53420ba3b37773e03fc0439eee2b
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
