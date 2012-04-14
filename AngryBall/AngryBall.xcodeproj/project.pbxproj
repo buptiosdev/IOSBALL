@@ -185,6 +185,9 @@
 		7087A118152C28390015C574 /* hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7087A114152C28390015C574 /* hit.caf */; };
 		7087A119152C28390015C574 /* magicball_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7087A115152C28390015C574 /* magicball_default.plist */; };
 		7087A11A152C28390015C574 /* magicball_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7087A116152C28390015C574 /* magicball_default.png */; };
+		C68875521539C6DE007A363C /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C688754F1539C6DE007A363C /* fire.png */; };
+		C68875531539C6DE007A363C /* fx-explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68875501539C6DE007A363C /* fx-explosion.plist */; };
+		C68875541539C6DE007A363C /* fx-explosion2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68875511539C6DE007A363C /* fx-explosion2.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -537,6 +540,9 @@
 		7087A114152C28390015C574 /* hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hit.caf; path = Resources/hit.caf; sourceTree = "<group>"; };
 		7087A115152C28390015C574 /* magicball_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = magicball_default.plist; path = Resources/magicball_default.plist; sourceTree = "<group>"; };
 		7087A116152C28390015C574 /* magicball_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = magicball_default.png; path = Resources/magicball_default.png; sourceTree = "<group>"; };
+		C688754F1539C6DE007A363C /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		C68875501539C6DE007A363C /* fx-explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "fx-explosion.plist"; sourceTree = "<group>"; };
+		C68875511539C6DE007A363C /* fx-explosion2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "fx-explosion2.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -615,6 +621,9 @@
 		70879EF1152C24B90015C574 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C688754F1539C6DE007A363C /* fire.png */,
+				C68875501539C6DE007A363C /* fx-explosion.plist */,
+				C68875511539C6DE007A363C /* fx-explosion2.plist */,
 				7087A113152C28390015C574 /* blues.mp3 */,
 				7087A114152C28390015C574 /* hit.caf */,
 				7087A115152C28390015C574 /* magicball_default.plist */,
@@ -1204,6 +1213,9 @@
 				4A73C7F31537278B002979FB /* normal_dis.png in Resources */,
 				4A73C7F41537278B002979FB /* normal_dwn.png in Resources */,
 				4A73C7F51537278B002979FB /* normal.png in Resources */,
+				C68875521539C6DE007A363C /* fire.png in Resources */,
+				C68875531539C6DE007A363C /* fx-explosion.plist in Resources */,
+				C68875541539C6DE007A363C /* fx-explosion2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

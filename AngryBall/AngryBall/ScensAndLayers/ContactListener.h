@@ -17,6 +17,6 @@ private:
     void EndContact(b2Contact* contact);
     void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
 	void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
-
+    void mybody(b2Body* mybodytype,int flag);
 
 };
