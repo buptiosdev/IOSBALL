@@ -59,6 +59,7 @@
 		self.isTouchEnabled = YES;
 		
 		CCSprite * background = [CCSprite spriteWithFile:@"menubackground.png"];
+        NSAssert( background != nil, @"background must be non-nil");
         CGSize size = [[CCDirector sharedDirector] winSize];
         
 		[background setPosition:ccp(size.width / 2, size.height/2)];
