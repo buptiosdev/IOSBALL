@@ -40,7 +40,7 @@ static GameMainScene *instanceOfMainScene;
 	GameMainScene *layer = [GameMainScene createMainLayer:order];
 	
 	// add layer as a child to scene
-	[scene addChild: layer];
+	[scene addChild: layer z:0];
     
     //加载手柄
     //SneakyButtonLayer *sneakyButtonLayer = [SneakyButtonLayer node]; 
