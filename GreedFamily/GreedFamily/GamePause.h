@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface GamePause : CCNode {
+@interface GamePause : CCNode <CCTargetedTouchDelegate>
+{
     
 }
-
+@property (readonly, nonatomic) CCSprite* spritein;
+@property (readonly, nonatomic) CCSprite* spriteout;
 @end

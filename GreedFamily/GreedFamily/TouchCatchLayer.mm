@@ -33,7 +33,7 @@
         [self addChild:gameSky z:-1 tag:GameSkyTag];
         
         GamePause *gamePause = [GamePause node];
-        [self addChild:gamePause z:-1 tag:GamePauseTag];
+        [self addChild:gamePause z:2 tag:GamePauseTag];
         
 
         

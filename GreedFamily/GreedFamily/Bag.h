@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface Bag : CCNode {
+@interface Bag : CCNode <CCTargetedTouchDelegate>
+{
     
 }
-
+@property (readonly, nonatomic) CCSprite* sprite;
 @end

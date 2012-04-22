@@ -79,7 +79,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	
 	// for the ground body we'll need these values
 	CGSize screenSize = [CCDirector sharedDirector].winSize;
-	float widthInMeters = screenSize.width / PTM_RATIO;
+	float widthInMeters = (screenSize.width - 60) / PTM_RATIO;
 	float heightInMeters = screenSize.height / PTM_RATIO;
 	b2Vec2 lowerLeftCorner = b2Vec2(0, 60/PTM_RATIO);
 	b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 60/PTM_RATIO);

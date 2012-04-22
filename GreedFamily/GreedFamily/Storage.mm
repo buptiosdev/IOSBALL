@@ -67,7 +67,7 @@
 
 -(void) dealloc
 {
-    //[[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
 	[super dealloc];
 }
 @end
