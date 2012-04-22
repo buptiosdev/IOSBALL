@@ -21,7 +21,7 @@
 {
     if ((self = [super init]))
     {
-        [self registerWithTouchDispatcher];
+        //[self registerWithTouchDispatcher];
         
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         _sprite = [CCSprite spriteWithSpriteFrameName:@"bag.png"];
@@ -65,9 +65,33 @@
 	_sprite.color = ccWHITE;
 }
 
+
+#pragma mark Layer - Callbacks
+-(void) onEnter
+{
+    [self registerWithTouchDispatcher];
+	// then iterate over all the children
+	[super onEnter];
+}
+
+// issue #624.
+// Can't register mouse, touches here because of #issue #1018, and #1021
+-(void) onEnterTransitionDidFinish
+{	
+	[super onEnterTransitionDidFinish];
+}
+
+-(void) onExit
+{
+    
+    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+	
+	[super onExit];
+}
+
 -(void) dealloc
 {
-    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+    //[[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
 	[super dealloc];
 }
 
