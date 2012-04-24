@@ -64,7 +64,8 @@
 		case TargetSceneFstScene:
 		case TargetSceneScdScene:
         case TargetSceneThrdScene:
-			[[CCDirector sharedDirector] replaceScene:[GameMainScene createMainLayer:targetScene_]];
+			//[[CCDirector sharedDirector] replaceScene:[GameMainScene createMainLayer:targetScene_]];
+            [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
 			break;
 
 			

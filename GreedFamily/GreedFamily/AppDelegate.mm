@@ -15,7 +15,7 @@
 
 @implementation AppDelegate
 
-@synthesize window;
+@synthesize window,paused;
 
 - (void) removeStartupFlicker
 {
@@ -114,6 +114,11 @@
 	[[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
 }
 
+//add by lyp just for pause
++(AppDelegate *) get {
+	
+	return (AppDelegate *) [[UIApplication sharedApplication] delegate];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 	[[CCDirector sharedDirector] pause];

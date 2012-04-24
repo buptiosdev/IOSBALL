@@ -33,7 +33,10 @@ typedef enum
 }
 +(id)createMainLayer:(int)order;
 +(GameMainScene*) sharedMainScene;
++(CCScene *) scene:(int)order;
 @property (nonatomic) int sceneNum;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) BOOL isGamePass;
+-(void)pauseGame;
+-(void)resume;
 @end

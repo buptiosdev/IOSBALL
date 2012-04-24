@@ -11,6 +11,8 @@
 #import "TouchCatchLayer.h"
 #import "GameBackgroundLayer.h"
 #import "ObjectsLayer.h"
+#import "PauseLayer.h"
+#import "AppDelegate.h"
 
 @interface GameMainScene (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
@@ -88,7 +90,38 @@ static GameMainScene *instanceOfMainScene;
     return self;
 }
 
+//add lyp test for pause
+- (void) onPauseExit
+{
+	if(![AppDelegate get].paused)
+	{
+		[AppDelegate get].paused = YES;
+		[super onExit];
+	}
+} 
 
+-(void)pauseGame
+{
+	ccColor4B c = {100,100,0,100};
+	//PauseLayer * p = [[[PauseLayer alloc]initWithColor:c]autorelease];
+	//PauseLayer * p = [[[PauseLayer alloc]initWithColor:c]autorelease];
+    PauseLayer * p = [PauseLayer createPauseLayer:c];
+    [self.parent addChild:p z:10];
+    //[[GameMainScene sharedMainScene] addChild:p z:10];
+	[self onPauseExit];
+}
+
+
+
+- (void) resume
+{
+	if(![AppDelegate get].paused)
+	{
+		return;
+	}
+	[AppDelegate get].paused =NO;
+	[self onEnter];
+}
 
 -(void) update:(ccTime)delta
 {

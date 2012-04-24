@@ -9,6 +9,7 @@
 #import "GamePause.h"
 #import "GameBackgroundLayer.h"
 #import "Helper.h"
+#import "GameMainScene.h"
 
 @implementation GamePause
 
@@ -60,6 +61,7 @@
     if (isTouchHandled)
     {
         _spritein.visible = YES;
+        [[GameMainScene sharedMainScene] pauseGame];
     }
     return isTouchHandled;
 }
