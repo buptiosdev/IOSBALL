@@ -120,7 +120,7 @@
     candyParamDef.startPos = param.startPos;
     candyParamDef.isDynamicBody = param.isDynamicBody;
     candyParamDef.ballType = param.ballType;
-    candyParamDef.spriteFrameName = @"pic_4.png";
+    candyParamDef.spriteFrameName = @"puding2.png";
     candyParamDef.density = (0 == param.density) ? 0.5 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 1.5 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
@@ -137,7 +137,7 @@
     candyParamDef.startPos = param.startPos;
     candyParamDef.isDynamicBody = param.isDynamicBody;
     candyParamDef.ballType = param.ballType;
-    candyParamDef.spriteFrameName = @"pic_3.png";
+    candyParamDef.spriteFrameName = @"chocolate.png";
     candyParamDef.density = (0 == param.density) ? 0.8 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.8 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.5 : param.linearDamping;
@@ -154,7 +154,7 @@
     candyParamDef.startPos = param.startPos;
     candyParamDef.isDynamicBody = param.isDynamicBody;
     candyParamDef.ballType = param.ballType;
-    candyParamDef.spriteFrameName = @"pic_2.png";
+    candyParamDef.spriteFrameName = @"cake3.png";
     candyParamDef.density = (0 == param.density) ? 0.1 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.5 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;

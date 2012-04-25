@@ -46,7 +46,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         
 
         // IMPORTANT: filenames are case sensitive on iOS devices!
-        CCSprite* background = [CCSprite spriteWithSpriteFrameName:@"background.png"];
+        CCSprite* background = [CCSprite spriteWithSpriteFrameName:@"bakepic.png"];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         background.position = CGPointMake(screenSize.width / 2, screenSize.height / 2);
         [self addChild:background z:-3];

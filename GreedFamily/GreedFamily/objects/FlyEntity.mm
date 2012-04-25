@@ -44,7 +44,7 @@
          [self.sprite runAction:repeat];
          */
         //先暂时随便用一个图片代替
-		NSString* spriteFrameName = @"pic_6.png";
+		NSString* spriteFrameName = @"bird.png";
 		CCSprite* tempSprite = [CCSprite spriteWithSpriteFrameName:spriteFrameName];
         
         CGPoint startPos = CGPointMake(([tempSprite contentSize].width) * 0.5f, 
