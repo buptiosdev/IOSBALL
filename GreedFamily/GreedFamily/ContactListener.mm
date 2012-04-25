@@ -40,23 +40,29 @@ void ContactListener::BeginContact(b2Contact* contact)
         
         bodyEntityA.sprite.color = ccMAGENTA; 
         bodyEntityB.sprite.color = ccMAGENTA;
-        bodyEntityA.hitPoints--;
-        bodyEntityB.hitPoints--;
+        if(bodyEntityA.hitPoints>0)
+        {
+            bodyEntityA.hitPoints--;
+        }
+        if(bodyEntityB.hitPoints>0)
+        {
+            bodyEntityB.hitPoints--;
+        }
+        
         
         if (0 >= bodyEntityA.hitPoints) {
-            bodyEntityB.hitPoints += bodyEntityA.initialHitPoints;
-            bodyEntityB.initialHitPoints += bodyEntityA.initialHitPoints;
-            //bodyEntityA.sprite.visible = NO;
-            //CGPoint positionNew = CGPointMake(-100, -100);
-            //bodyEntityA.body->SetTransform([Helper toMeters:positionNew], 0);
+            if(bodyEntityB.hitPoints>0)
+            {
+                bodyEntityB.hitPoints += bodyEntityA.initialHitPoints;
+                bodyEntityB.initialHitPoints += bodyEntityA.initialHitPoints;
+            }
         }
         if (0 >= bodyEntityB.hitPoints) {
-            bodyEntityA.hitPoints += bodyEntityB.initialHitPoints;
-            bodyEntityA.initialHitPoints += bodyEntityB.initialHitPoints;
-            //bodyEntityB.sprite.visible = NO;
-            //CGPoint positionNew = CGPointMake(-100, -100);
-            //bodyEntityB.body->SetTransform([Helper toMeters:positionNew], 0);
-            
+            if(bodyEntityA.hitPoints)
+            {
+                bodyEntityA.hitPoints += bodyEntityB.initialHitPoints;
+                bodyEntityA.initialHitPoints += bodyEntityB.initialHitPoints;
+            }
         }
     }
 }
