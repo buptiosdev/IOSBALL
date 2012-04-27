@@ -18,7 +18,10 @@
     bool moveToFinger;
 	CGPoint fingerLocation;
     CGPoint playerVelocity;
-    CCLayer *a;
+    NSMutableArray *_flyActionArray;
+    int directionBefore;
+    int directionCurrent;
+
 }
 
 +(id) flyAnimal:(b2World*)world;
@@ -26,4 +29,7 @@
 -(void) ccTouchMovedForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 
+@property (assign, nonatomic) CCSprite* sprite;
+@property (nonatomic, retain) NSMutableArray *flyActionArray;
+@property (assign, nonatomic)  CCAction *flyAction;
 @end

@@ -107,12 +107,12 @@
 
     //添加场景的粒子效果
 	// remove any previous particle FX
-    [self removeChildByTag:1 cleanup:YES];    
-    
-    CCParticleSystem* system;    
-    system = [CCParticleRain node];    
-    
-    [self addChild:system z:1 tag:15];       
+//    [self removeChildByTag:1 cleanup:YES];    
+//    
+//    CCParticleSystem* system;    
+//    system = [CCParticleRain node];    
+//    
+//    [self addChild:system z:1 tag:15];       
     
 }
 
@@ -134,12 +134,12 @@
 
     //添加场景的粒子效果
 	// remove any previous particle FX
-    [self removeChildByTag:1 cleanup:YES];    
-    
-    CCParticleSystem* system;    
-    system = [CCParticleSnow node];  
-    
-    [self addChild:system z:1 tag:15];       
+//    [self removeChildByTag:1 cleanup:YES];    
+//    
+//    CCParticleSystem* system;    
+//    system = [CCParticleSnow node];  
+//    
+//    [self addChild:system z:1 tag:15];       
     
     
     
@@ -169,12 +169,12 @@
     
     //添加场景的粒子效果
 	// remove any previous particle FX
-    [self removeChildByTag:1 cleanup:YES];    
-    
-    CCParticleSystem* system;    
-    system = [CCParticleGalaxy node];
-    
-    [self addChild:system z:1 tag:15]; 
+//    [self removeChildByTag:1 cleanup:YES];    
+//    
+//    CCParticleSystem* system;    
+//    system = [CCParticleGalaxy node];
+//    
+//    [self addChild:system z:1 tag:15]; 
     
     
 }
@@ -182,6 +182,7 @@
 -(void) dealloc
 {
 	[candies release];
+    
 	[super dealloc];
 }
 

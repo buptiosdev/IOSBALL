@@ -157,7 +157,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CCLabelTTF *gameOver = [CCLabelTTF labelWithString:@"GAME OVER!" fontName:@"Marker Felt" fontSize:60];
                     gameOver.position = CGPointMake(screenSize.width / 2, screenSize.height / 3);
                     [self addChild:gameOver z:100 tag:100];
-                    [GameMainScene sharedMainScene].isGameOver = YES;;
+                    [GameMainScene sharedMainScene].isGameOver = YES;
                     
                     return;
                 }else
@@ -166,9 +166,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                 }
                 CGPoint positionNew = CGPointMake(-100, -100);
                 bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
-                CCLOG(@"die!!!\n");
                 bodyNode.sprite.visible = NO;
-                
+                //[bodyNode removeBody];
             } 
 		}
 	}
@@ -179,13 +178,17 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 }
 -(void) dealloc
 {
-	[super dealloc];
-    delete world;
+	delete world;
 	world = NULL;
-    
+	
     delete contactListener;
 	contactListener = NULL;
-    instanceOfBodyObjectsLayer = nil; 
+    
+    instanceOfBodyObjectsLayer = nil;   
+    
+    [super dealloc];
+    
+
 }
 
 @end

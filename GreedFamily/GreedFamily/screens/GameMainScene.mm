@@ -140,9 +140,9 @@ static GameMainScene *instanceOfMainScene;
 
 -(void) dealloc
 {
-	[super dealloc];
-    
     instanceOfMainScene = nil; 
+	
+    [super dealloc];
 }
 
 @end

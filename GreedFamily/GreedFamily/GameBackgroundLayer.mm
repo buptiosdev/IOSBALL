@@ -74,8 +74,10 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 
 -(void) dealloc
 {
+    instanceOfGameBackgroundLayer = nil; 
+    
 	[super dealloc];
     
-    instanceOfGameBackgroundLayer = nil; 
+
 }
 @end

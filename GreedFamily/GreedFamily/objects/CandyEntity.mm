@@ -7,7 +7,7 @@
 //
 
 #import "CandyEntity.h"
-
+#import "GameBackgroundLayer.h"
 
 @interface CandyEntity (PrivateMethods)
 //-(void) initSpawnFrequency;
@@ -15,12 +15,12 @@
 @end
 
 @implementation CandyEntity
-
+@synthesize sprite = _sprite;
 
 
 -(void) dealloc
 {
-	[[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+	//[[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
 	[super dealloc];
 }
 
@@ -88,7 +88,6 @@
 
 -(void) update:(ccTime)delta
 {
-    CCLOG(@"hello\n");
     if (self.sprite.visible)
 	{
         b2Vec2 bodyPos = self.body->GetWorldCenter();
@@ -188,7 +187,10 @@
     {
         [self initBallMove:CandyParam];
         
-        CCSprite* tempSprite = [CCSprite spriteWithSpriteFrameName:candyParamDef.spriteFrameName];
+        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+        self.sprite = [CCSprite spriteWithSpriteFrameName:candyParamDef.spriteFrameName];
+        [batch addChild:self.sprite];       
+        
         hitPoints = candyParamDef.initialHitPoints;
         initialHitPoints = candyParamDef.initialHitPoints;
 
@@ -204,7 +206,7 @@
         bodyDef.linearDamping = candyParamDef.linearDamping;
         
         b2CircleShape circleShape;
-        float radiusInMeters = (tempSprite.contentSize.width / PTM_RATIO) * 0.5f;
+        float radiusInMeters = (self.sprite.contentSize.width / PTM_RATIO) * 0.5f;
         circleShape.m_radius = radiusInMeters;
         
         // Define the dynamic body fixture.
@@ -214,10 +216,16 @@
         fixtureDef.friction = candyParamDef.friction;
         fixtureDef.restitution = candyParamDef.restitution;
         
+//        [super initSprite:candyParamDef.spriteFrameName];
+        
+//        [super createBodyInWorld:world 
+//                         bodyDef:&bodyDef 
+//                      fixtureDef:&fixtureDef
+//                      spriteFrameName:candyParamDef.spriteFrameName]; 
+        
         [super createBodyInWorld:world 
                          bodyDef:&bodyDef 
-                      fixtureDef:&fixtureDef 
-                 spriteFrameName:candyParamDef.spriteFrameName]; 
+                      fixtureDef:&fixtureDef]; 
         self.sprite.position = candyParamDef.startPos;
         [self scheduleUpdate];
     }

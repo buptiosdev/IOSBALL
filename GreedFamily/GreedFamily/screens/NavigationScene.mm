@@ -57,12 +57,13 @@
 		
 		self.isTouchEnabled = YES;
 		
-		CCSprite * background = [CCSprite spriteWithFile:@"menubackground.png"];
-        NSAssert( background != nil, @"background must be non-nil");
         CGSize size = [[CCDirector sharedDirector] winSize];
+		/*CCSprite * background = [CCSprite spriteWithFile:@"menubackground.png"];
+        NSAssert( background != nil, @"background must be non-nil");
+        
         
 		[background setPosition:ccp(size.width / 2, size.height/2)];
-		[self addChild:background];
+		[self addChild:background];*/
 		
 		//CCBitmapFontAtlas * newgameLabel = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"NEW GAME" fntFile:@"hud_font.fnt"];
         CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];

@@ -58,7 +58,7 @@ struct CandyParam {
 
 //+(id) CandyWithType:(CandyTypes)CandyType World:(b2World *)world;
 +(id) CandyWithParam:(CandyParam)candyParam World:(b2World *)world;
-
+@property (assign, nonatomic) CCSprite* sprite;
 //+(int) getSpawnFrequencyForCandyType:(CandyTypes)CandyType;
 //
 //-(void) spawn;

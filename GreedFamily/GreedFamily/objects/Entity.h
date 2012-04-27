@@ -20,13 +20,14 @@
 	int hitPoints;
 }
 
-@property (readonly, nonatomic) b2Body* body;
-@property (readonly, nonatomic) CCSprite* sprite;
+@property (nonatomic) b2Body* body;
+@property (assign, nonatomic) CCSprite* sprite;
 @property (nonatomic) int initialHitPoints;
 @property (nonatomic) int hitPoints;
 
 -(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef spriteFrameName:(NSString*)spriteFrameName;
-
+-(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef;
+-(void)initSprite:(NSString*)spriteFrameName;
 -(void) removeSprite;
 -(void) removeBody;
 -(void) updateBadyPosition:(CGPoint)positionNew;

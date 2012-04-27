@@ -15,44 +15,73 @@
 @synthesize initialHitPoints;
 @synthesize hitPoints;
 
--(CCSprite *)sprite
+//-(CCSprite *)sprite
+//{
+//    if (!_sprite) 
+//    {
+//        _sprite = [[[CCSprite alloc] init] autorelease];
+//    }
+//    
+//    return _sprite;
+//}
+
+-(void)initSprite:(NSString*)spriteFrameName
 {
-    if (!_sprite) 
-    {
-        _sprite = [[CCSprite alloc] init];
-    }
+
+    CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+    self.sprite = [CCSprite spriteWithSpriteFrameName:spriteFrameName];
+    [batch addChild:self.sprite];
+
     
-    return _sprite;
 }
 
--(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef spriteFrameName:(NSString*)spriteFrameName
+-(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef  spriteFrameName:(NSString*)spriteFrameName
 {
 	NSAssert(world != NULL, @"world is null!");
 	NSAssert(bodyDef != NULL, @"bodyDef is null!");
 	NSAssert(spriteFrameName != nil, @"spriteFrameName is nil!");
 	
     //可以先暂时去掉，看看什么效果，但是要考虑内存释放的问题
-	//[self removeSprite];
-	//[self removeBody];
+	[self removeSprite];
+	[self removeBody];
 	
     CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-	_sprite = [CCSprite spriteWithSpriteFrameName:spriteFrameName];
-	[batch addChild:_sprite];
+	self.sprite = [CCSprite spriteWithSpriteFrameName:spriteFrameName];
+	[batch addChild:self.sprite];
 	
-	_body = world->CreateBody(bodyDef);
-	_body->SetUserData(self);
+	self.body = world->CreateBody(bodyDef);
+	self.body->SetUserData(self);
 	
 	if (fixtureDef != NULL)
 	{
-		_body->CreateFixture(fixtureDef);
+		self.body->CreateFixture(fixtureDef);
 	}
 }
 
+-(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef  
+{
+	NSAssert(world != NULL, @"world is null!");
+	NSAssert(bodyDef != NULL, @"bodyDef is null!");
+	
+    //可以先暂时去掉，看看什么效果，但是要考虑内存释放的问题
+	[self removeSprite];
+	[self removeBody];
+	
+
+	
+	self.body = world->CreateBody(bodyDef);
+	self.body->SetUserData(self);
+	
+	if (fixtureDef != NULL)
+	{
+		self.body->CreateFixture(fixtureDef);
+	}
+}
 
 /*通过这个函数改变精灵的位置*/
 -(void) updateBadyPosition:(CGPoint)positionNew
 {
-	b2Vec2 bodyPos = _body->GetWorldCenter();
+	b2Vec2 bodyPos = self.body->GetWorldCenter();
     //CGPoint bodyPosition = [Helper toPixels:bodyPos];
 	b2Vec2 fingerPos = [Helper toMeters:positionNew];
 	
@@ -68,7 +97,7 @@
 	b2Vec2 force = 20.0f * bodyToFinger;
     //body->SetTransform([Helper toMeters:positionNew], 0);
     
-	_body->ApplyForce(force, _body->GetWorldCenter());
+	self.body->ApplyForce(force, self.body->GetWorldCenter());
     
     //sprite.position = [Helper toPixels:body->GetPosition()];
 //    bodyPos = body->GetWorldCenter();
@@ -78,18 +107,18 @@
 -(void) removeSprite
 {
 	CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-	if (_sprite != nil && [batch.children containsObject:_sprite])
+	if (self.sprite != nil && [batch.children containsObject:self.sprite])
 	{
-		[batch.children removeObject:_sprite];
+		[batch.children removeObject:self.sprite];
 		_sprite = nil;
 	}
 }
 
 -(void) removeBody
 {
-	if (_body != NULL)
+	if (self.body != NULL)
 	{
-		_body->GetWorld()->DestroyBody(_body);
+		self.body->GetWorld()->DestroyBody(self.body);
 		_body = NULL;
 	}
 }
@@ -99,7 +128,7 @@
     
 	[self removeSprite];
     //走进去会断错，暂去掉
-	[self removeBody];
+	//[self removeBody];
 	
 	[super dealloc];
 }
