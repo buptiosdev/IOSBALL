@@ -37,7 +37,7 @@
         
 
         
-        Storage *storage = [Storage node];
+        Storage *storage = [Storage createStorage:16];
         [self addChild:storage z:1 tag:StorageTag];
         
         Bag *bag = [Bag node];
