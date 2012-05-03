@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "Storage.h"
 typedef enum
 {   
     GameSkyTag = 1,
@@ -23,5 +23,6 @@ typedef enum
     
 }
 +(id)CreateTouchCatchLayer;
-
++(TouchCatchLayer *)sharedTouchCatchLayer;
+-(Storage*) getStorage;
 @end

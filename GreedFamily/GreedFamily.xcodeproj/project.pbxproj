@@ -163,6 +163,9 @@
 		70081FCC153F9881003F042A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70081FCB153F9881003F042A /* RootViewController.m */; };
 		70081FD2153F9881003F042A /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70081FD1153F9881003F042A /* GLES-Render.mm */; };
 		70081FD5153F9881003F042A /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 70081FD4153F9881003F042A /* blocks.png */; };
+		700F68A61549A9B900D639AE /* dragon.png in Resources */ = {isa = PBXBuildFile; fileRef = 700F68A51549A9B900D639AE /* dragon.png */; };
+		700F68B9154C411F00D639AE /* Food.mm in Sources */ = {isa = PBXBuildFile; fileRef = 700F68B8154C411B00D639AE /* Food.mm */; };
+		700F68CD1552BBAE00D639AE /* PropertyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 700F68CC1552BBAB00D639AE /* PropertyCache.m */; };
 		7011F2C215410E40000B2C12 /* Storage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7011F2C115410E40000B2C12 /* Storage.mm */; };
 		7011F2C615411DB9000B2C12 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7011F2C515411DB9000B2C12 /* ContactListener.mm */; };
 		706EA9A2153F9AE90003C4B2 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99D153F9AE90003C4B2 /* LoadingScene.mm */; };
@@ -516,6 +519,11 @@
 		70081FD1153F9881003F042A /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		70081FD3153F9881003F042A /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		70081FD4153F9881003F042A /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		700F68A51549A9B900D639AE /* dragon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dragon.png; path = Resources/dragon.png; sourceTree = "<group>"; };
+		700F68B7154C411900D639AE /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		700F68B8154C411B00D639AE /* Food.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Food.mm; sourceTree = "<group>"; };
+		700F68CB1552BBA900D639AE /* PropertyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyCache.h; sourceTree = "<group>"; };
+		700F68CC1552BBAB00D639AE /* PropertyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyCache.m; sourceTree = "<group>"; };
 		7011F2C015410E40000B2C12 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		7011F2C115410E40000B2C12 /* Storage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Storage.mm; sourceTree = "<group>"; };
 		7011F2C415411DB8000B2C12 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -643,6 +651,7 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				700F68A51549A9B900D639AE /* dragon.png */,
 				4A78F87E1546D9EB001811B1 /* paused.png */,
 				706EAB5D153FBE680003C4B2 /* blues.mp3 */,
 				706EAB5E153FBE680003C4B2 /* hit.caf */,
@@ -1130,12 +1139,16 @@
 				706EAB77153FC40B0003C4B2 /* LandAnimal.mm */,
 				7011F2C015410E40000B2C12 /* Storage.h */,
 				7011F2C115410E40000B2C12 /* Storage.mm */,
+				700F68B7154C411900D639AE /* Food.h */,
+				700F68B8154C411B00D639AE /* Food.mm */,
 				70018D991541B144001FBF35 /* Bag.h */,
 				70018D9A1541B144001FBF35 /* Bag.mm */,
 				70018D9C1541B166001FBF35 /* GamePause.h */,
 				70018D9D1541B166001FBF35 /* GamePause.mm */,
 				70018D9F1541B19C001FBF35 /* GameSky.h */,
 				70018DA01541B19C001FBF35 /* GameSky.mm */,
+				700F68CB1552BBA900D639AE /* PropertyCache.h */,
+				700F68CC1552BBAB00D639AE /* PropertyCache.m */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -1195,6 +1208,7 @@
 				70081DEA153F987C003F042A /* Sources */,
 				70081DEB153F987C003F042A /* Frameworks */,
 				70081DEC153F987C003F042A /* Resources */,
+				70E8E78D1548516900BC4DAC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1260,10 +1274,27 @@
 				706EAB64153FBE680003C4B2 /* menubackground.png in Resources */,
 				706EAB66153FBF990003C4B2 /* magicball_default.plist in Resources */,
 				4A78F87F1546D9EB001811B1 /* paused.png in Resources */,
+				700F68A61549A9B900D639AE /* dragon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		70E8E78D1548516900BC4DAC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ] || [ \"${PLATFORM_NAME}\" == \"ipados\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		70081DEA153F987C003F042A /* Sources */ = {
@@ -1425,6 +1456,8 @@
 				70018D9E1541B167001FBF35 /* GamePause.mm in Sources */,
 				70018DA11541B19D001FBF35 /* GameSky.mm in Sources */,
 				4A78F87A1546D8B5001811B1 /* PauseLayer.mm in Sources */,
+				700F68B9154C411F00D639AE /* Food.mm in Sources */,
+				700F68CD1552BBAE00D639AE /* PropertyCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,7 +1468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1455,7 +1488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;

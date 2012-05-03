@@ -14,6 +14,8 @@
 @interface Storage (PrivateMethods)
 -(id)initWithCapacity:(int)storageCapacity;
 -(void)moveFood;
+-(void)reduceFood:(int)count Turn:(int)turn;
+-(void)oneSecondCheckMax:(ccTime)delta;
 @end
 
 @implementation Storage
@@ -28,6 +30,9 @@
 {
     return [[[self alloc] initWithCapacity:storageCapacity] autorelease];
 }
+
+
+
 
 -(id)initWithCapacity:(int)capacity
 {
@@ -46,6 +51,7 @@
         canCombine = NO;
         
         [self scheduleUpdate];
+        [self schedule:@selector(oneSecondCheckMax:) interval:1];
     }
     
     return self;
@@ -219,6 +225,12 @@
                 
                 isCombine = YES;
             }
+            else
+            {
+                isCombine = NO;
+                continue;
+            }
+            
         }
     }
     
@@ -236,6 +248,9 @@
     
     [self moveFood];
     canCombine = NO;
+    
+    //消完后马上检查，为连续消做准备
+    [self checkCombineFood];
 }
 
 -(void) update:(ccTime)delta
@@ -244,11 +259,71 @@
     i++;
     if (0 == i % 100) 
     {
-        [self addFoodToStorage:(int)(CCRANDOM_0_1()*100) % 3 ];
+        if (i == 100)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 100)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 200)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 300)
+        {
+            [self addFoodToStorage:2];
+        }
+        else if (i == 400)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 500)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 600)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 700)
+        {
+            [self addFoodToStorage:2];
+        }
+        else if (i == 800)
+        {
+            [self addFoodToStorage:2];
+        }
+        else if (i == 100)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 900)
+        {
+            [self addFoodToStorage:1];
+        }
+        else if (i == 1000)
+        {
+            [self addFoodToStorage:1];
+        }
+        else
+        {
+            [self addFoodToStorage:(int)(CCRANDOM_0_1()*102) % 2 ];
+        }
+            
     }
         
     [self checkCombineFood];
     
+}
+
+-(void)oneSecondCheckMax:(ccTime)delta
+{
+    if (currentCount == storageCapacity)
+    {
+        [self reduceFood:storageCapacity Turn:1];
+    }
 }
 
 -(bool) isTouchForMe:(CGPoint)touchLocation
@@ -266,7 +341,8 @@
     {
         _sprite.color = ccRED;
         
-        if (canCombine)
+        //可以连续消
+        while (canCombine) 
         {
             [self doCombineFood];
         }

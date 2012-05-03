@@ -14,6 +14,15 @@
 
 @implementation TouchCatchLayer
 
+/*创造一个半单例，让其他类可以很方便访问scene*/
+static TouchCatchLayer *instanceOfTouchCatchLayer;
++(TouchCatchLayer *)sharedTouchCatchLayer
+{
+    NSAssert(nil != instanceOfTouchCatchLayer, @"TouchCatchLayer instance not yet initialized!");
+    
+    return instanceOfTouchCatchLayer;
+}
+
 +(id)CreateTouchCatchLayer
 {
 	return [[[self alloc] init] autorelease];
@@ -23,6 +32,8 @@
 {
     if ((self = [super init]))
     {
+        instanceOfTouchCatchLayer = self;
+        
         /*开启触事件监测*/
         self.isTouchEnabled = YES;
         
@@ -37,7 +48,7 @@
         
 
         
-        Storage *storage = [Storage createStorage:16];
+        Storage *storage = [Storage createStorage:14];
         [self addChild:storage z:1 tag:StorageTag];
         
         Bag *bag = [Bag node];
@@ -46,6 +57,14 @@
     }
     return self;
 }
+
+-(Storage*) getStorage
+{
+	CCNode* node = [self getChildByTag:StorageTag];
+	NSAssert([node isKindOfClass:[Storage class]], @"node is not a FlyEntity!");
+	return (Storage*)node;
+}
+
 -(void) dealloc
 {
 	[super dealloc];
