@@ -11,21 +11,26 @@
 #import "Box2D.h"
 #import "ContactListener.h"
 #import "FlyEntity.h"
+#import "PropertyCache.h"
+
 typedef enum
 {   
     CandyCacheTag = 1,
     FlyEntityTag,
+    PropCacheTag,
 
     
 }BodyObjectsLayerTags;
 @interface BodyObjectsLayer : CCLayer 
 {
-    b2World* world;
+    //b2World* world;
     ContactListener* contactListener;
     
 }
+@property (nonatomic) b2World* world;
 +(id)CreateBodyObjectsLayer;
 +(CGRect) screenRect;
 +(BodyObjectsLayer *)sharedBodyObjectsLayer;
 -(FlyEntity*) flyAnimal;
+-(PropertyCache*) getPropertyCache;
 @end

@@ -9,6 +9,8 @@
 #import "Bag.h"
 #import "GameBackgroundLayer.h"
 #import "Helper.h"
+#import "BodyObjectsLayer.h"
+#import "PropertyCache.h"
 
 @implementation Bag
 @synthesize sprite = _sprite;
@@ -48,7 +50,13 @@
     bool isTouchHandled = [self isTouchForMe:location]; 
     if (isTouchHandled)
     {
+        static int i = 0;
+        i += CCRANDOM_0_1()*10;
+        int tag = i % 3;
         _sprite.color = ccRED;
+        PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
+        b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
+        [thePropCache addOneProperty:tag World:theworld Tag:tag];
     }
     return isTouchHandled;
 }

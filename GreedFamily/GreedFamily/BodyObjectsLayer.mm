@@ -11,7 +11,7 @@
 #import "FlyEntity.h"
 #import "CandyCache.h"
 #import "GameMainScene.h"
-
+#import "PropertyCache.h"
 
 @interface BodyObjectsLayer (PrivateMethods)
 -(void) initBox2dWorld;
@@ -19,7 +19,7 @@
 @end
 
 @implementation BodyObjectsLayer
-
+@synthesize world = _world;
 /*屏幕尺寸*/
 static CGRect screenRect;
 
@@ -48,17 +48,20 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
         [self initBox2dWorld];
         
         
-        FlyEntity* flyAnimal = [FlyEntity flyAnimal:world];
+        FlyEntity* flyAnimal = [FlyEntity flyAnimal:self.world];
         [self addChild:flyAnimal z:-1 tag:FlyEntityTag];
         
 
-        CandyCache* candyCache = [CandyCache cache:world];
+        CandyCache* candyCache = [CandyCache cache:self.world];
         [self addChild:candyCache z:-1 tag:CandyCacheTag];
+        
+        PropertyCache* propertyCache = [PropertyCache propCache:self.world];
+        [self addChild:propertyCache z:-1 tag:PropCacheTag];
         
         [self scheduleUpdate];
     }
+    
     return self;
-
 }
 
 //还需要完善底部
@@ -68,14 +71,14 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
     //这里不需要加重力
 	b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
 	bool allowBodiesToSleep = true;
-	world = new b2World(gravity, allowBodiesToSleep);
+	_world = new b2World(gravity, allowBodiesToSleep);
     
     contactListener = new ContactListener();
-	world->SetContactListener(contactListener);
+	_world->SetContactListener(contactListener);
     
 	// Define the static container body, which will provide the collisions at screen borders.
 	b2BodyDef containerBodyDef;
-	b2Body* containerBody = world->CreateBody(&containerBodyDef);
+	b2Body* containerBody = self.world->CreateBody(&containerBodyDef);
 	
 	// for the ground body we'll need these values
 	CGSize screenSize = [CCDirector sharedDirector].winSize;
@@ -122,6 +125,13 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	return (FlyEntity*)node;
 }
 
+-(PropertyCache*) getPropertyCache
+{
+	CCNode* node = [self getChildByTag:PropCacheTag];
+	NSAssert([node isKindOfClass:[PropertyCache class]], @"node is not a PropertyCache!");
+	return (PropertyCache *)node;
+}
+
 -(void) update:(ccTime)delta
 {
 	// The number of iterations influence the accuracy of the physics simulation. With higher values the
@@ -130,12 +140,12 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	float timeStep = 0.03f;
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
-	world->Step(timeStep, velocityIterations, positionIterations);
+	self.world->Step(timeStep, velocityIterations, positionIterations);
 	
 	// for each body, get its assigned BodyNode and update the sprite's position
     int bodysize=0;
     int deadenemycnt=0;
-	for (b2Body* body = world->GetBodyList(); body != nil; body = body->GetNext())
+	for (b2Body* body = self.world->GetBodyList(); body != nil; body = body->GetNext())
 	{
         bodysize++;
 		Entity* bodyNode = (Entity *)body->GetUserData();
@@ -178,8 +188,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 }
 -(void) dealloc
 {
-	delete world;
-	world = NULL;
+	//delete self.world;
+	//world = NULL;
 	
     delete contactListener;
 	contactListener = NULL;

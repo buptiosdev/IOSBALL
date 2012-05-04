@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Box2D.h"
 
-@interface propertyCache : CCNode {
+@interface PropertyCache : CCNode 
+{
+  	CCSpriteBatchNode* batch;
+	CCArray* props;
+	int cacheNum;
     
+	int updateCount;  
 }
 
++(id)propCache:(b2World *)world;
+-(void)addOneProperty:(NSInteger)type World:(b2World *)world Tag:(int)taget;
 @end

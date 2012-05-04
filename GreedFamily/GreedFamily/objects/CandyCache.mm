@@ -88,7 +88,7 @@
     cacheParam.ballType = ballType;
     
     CandyEntity* cache = [CandyEntity CandyWithParam:cacheParam World:world];
-    [self addChild:cache z:1 tag:taget];
+    [batch addChild:cache z:1 tag:taget];
     [candies addObject:cache];
 }
 
