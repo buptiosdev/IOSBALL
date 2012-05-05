@@ -30,13 +30,13 @@
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         _spritein = [CCSprite spriteWithSpriteFrameName:@"pausein.png"];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        _spritein.position = CGPointMake(450, screenSize.height - 10);
+        _spritein.position = CGPointMake(464, screenSize.height - 10);
         //_spritein.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
         _spritein.visible = NO;
         [batch addChild:_spritein z:2];
         
         _spriteout = [CCSprite spriteWithSpriteFrameName:@"pauseout.png"];
-        _spriteout.position = CGPointMake(450, screenSize.height - 10);
+        _spriteout.position = CGPointMake(464, screenSize.height - 10);
         //_spritein.position = CGPointMake(screenSize.width / 2, screenSize.height / 2);
         _spriteout.visible = YES;
         [batch addChild:_spriteout z:1];

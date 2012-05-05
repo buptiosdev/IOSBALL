@@ -182,14 +182,14 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = CGPointMake(200, 200);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeCrystalBall;
-    propertyParamDef.spriteFrameName = @"pic_2.png";
+    propertyParamDef.spriteFrameName = @"pic_4.png";
     propertyParamDef.density = 0.5;
     propertyParamDef.restitution = 1.5;
     propertyParamDef.linearDamping = 0.2;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.5;
     propertyParamDef.radius = 0.5;
-    propertyParamDef.initialHitPoints = 1;
+    propertyParamDef.initialHitPoints = 2;
     
 }
 
@@ -199,14 +199,14 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = CGPointMake(200, 100);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeCrystalBall;
-    propertyParamDef.spriteFrameName = @"pic_4.png";
+    propertyParamDef.spriteFrameName = @"pic_6.png";
     propertyParamDef.density = 0.2;
     propertyParamDef.restitution = 1.5;
     propertyParamDef.linearDamping = 0.2;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.5;
     propertyParamDef.radius = 0.5;
-    propertyParamDef.initialHitPoints = 1;
+    propertyParamDef.initialHitPoints = 2;
     
 }
 
@@ -216,14 +216,14 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = CGPointMake(100, 200);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeBlackBomb;
-    propertyParamDef.spriteFrameName = @"pic_3.png";
+    propertyParamDef.spriteFrameName = @"pic_1.png";
     propertyParamDef.density = 0.7;
     propertyParamDef.restitution = 0.7;
     propertyParamDef.linearDamping = 0.2;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.2;
     propertyParamDef.radius = 0.5;
-    propertyParamDef.initialHitPoints = 1;
+    propertyParamDef.initialHitPoints = 2;
     
 }
 
