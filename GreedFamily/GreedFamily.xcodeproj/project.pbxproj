@@ -169,6 +169,10 @@
 		700F68D51552C57300D639AE /* PropertyEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 700F68D41552C57000D639AE /* PropertyEntity.mm */; };
 		7011F2C215410E40000B2C12 /* Storage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7011F2C115410E40000B2C12 /* Storage.mm */; };
 		7011F2C615411DB9000B2C12 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7011F2C515411DB9000B2C12 /* ContactListener.mm */; };
+		701B2EA9155831270035335F /* bitmapfont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA7155831270035335F /* bitmapfont.fnt */; };
+		701B2EAA155831270035335F /* bitmapfont.png in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA8155831270035335F /* bitmapfont.png */; };
+		701B2EB31559736A0035335F /* getscore.caf in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EB11559736A0035335F /* getscore.caf */; };
+		701B2EB41559736A0035335F /* needtouch.caf in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EB21559736A0035335F /* needtouch.caf */; };
 		706EA9A2153F9AE90003C4B2 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99D153F9AE90003C4B2 /* LoadingScene.mm */; };
 		706EA9A3153F9AE90003C4B2 /* GameMainScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99F153F9AE90003C4B2 /* GameMainScene.mm */; };
 		706EA9A4153F9AE90003C4B2 /* NavigationScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA9A1153F9AE90003C4B2 /* NavigationScene.mm */; };
@@ -531,6 +535,10 @@
 		7011F2C115410E40000B2C12 /* Storage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Storage.mm; sourceTree = "<group>"; };
 		7011F2C415411DB8000B2C12 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		7011F2C515411DB9000B2C12 /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
+		701B2EA7155831270035335F /* bitmapfont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapfont.fnt; path = Resources/bitmapfont.fnt; sourceTree = "<group>"; };
+		701B2EA8155831270035335F /* bitmapfont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapfont.png; path = Resources/bitmapfont.png; sourceTree = "<group>"; };
+		701B2EB11559736A0035335F /* getscore.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = getscore.caf; path = Resources/getscore.caf; sourceTree = "<group>"; };
+		701B2EB21559736A0035335F /* needtouch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = needtouch.caf; path = Resources/needtouch.caf; sourceTree = "<group>"; };
 		706EA99C153F9AE90003C4B2 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = screens/LoadingScene.h; sourceTree = "<group>"; };
 		706EA99D153F9AE90003C4B2 /* LoadingScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LoadingScene.mm; path = screens/LoadingScene.mm; sourceTree = "<group>"; };
 		706EA99E153F9AE90003C4B2 /* GameMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameMainScene.h; path = screens/GameMainScene.h; sourceTree = "<group>"; };
@@ -654,6 +662,10 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				701B2EB11559736A0035335F /* getscore.caf */,
+				701B2EB21559736A0035335F /* needtouch.caf */,
+				701B2EA7155831270035335F /* bitmapfont.fnt */,
+				701B2EA8155831270035335F /* bitmapfont.png */,
 				700F68A51549A9B900D639AE /* dragon.png */,
 				4A78F87E1546D9EB001811B1 /* paused.png */,
 				706EAB5D153FBE680003C4B2 /* blues.mp3 */,
@@ -1280,6 +1292,10 @@
 				706EAB66153FBF990003C4B2 /* magicball_default.plist in Resources */,
 				4A78F87F1546D9EB001811B1 /* paused.png in Resources */,
 				700F68A61549A9B900D639AE /* dragon.png in Resources */,
+				701B2EA9155831270035335F /* bitmapfont.fnt in Resources */,
+				701B2EAA155831270035335F /* bitmapfont.png in Resources */,
+				701B2EB31559736A0035335F /* getscore.caf in Resources */,
+				701B2EB41559736A0035335F /* needtouch.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

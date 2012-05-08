@@ -49,7 +49,7 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
 
         
         Storage *storage = [Storage createStorage:14];
-        [self addChild:storage z:1 tag:StorageTag];
+        [self addChild:storage z:-3 tag:StorageTag];
         
         Bag *bag = [Bag node];
         [self addChild:bag z:1 tag:BagTag];

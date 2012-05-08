@@ -14,7 +14,7 @@ typedef enum
 	FoodTypeCake = 0,
 	FoodTypeChocolate,
 	FoodTypePuding,
-} BallType;
+} FoodType;
 @interface Food : CCNode 
 {
     

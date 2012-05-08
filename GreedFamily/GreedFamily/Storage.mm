@@ -8,6 +8,7 @@
 
 #import "Storage.h"
 #import "GameBackgroundLayer.h"
+#import "SimpleAudioEngine.h"
 #import "Helper.h"
 #import "Food.h"
 
@@ -23,7 +24,7 @@
 
 -(void) registerWithTouchDispatcher
 {
-    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
+    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-2 swallowsTouches:YES];
 }
 
 +(id)createStorage:(int)storageCapacity
@@ -32,7 +33,42 @@
 }
 
 
-
+-(void)initScores
+{
+    CCSprite *cakeScore = [CCSprite spriteWithSpriteFrameName:@"cake3.png"];
+    CCSprite *chocolateScore = [CCSprite spriteWithSpriteFrameName:@"chocolate.png"];
+    CCSprite *pudingScore = [CCSprite spriteWithSpriteFrameName:@"puding2.png"];
+    
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    cakeScore.position = CGPointMake(295, screenSize.height - 20);
+    chocolateScore.position = CGPointMake(355, screenSize.height - 20);
+    pudingScore.position = CGPointMake(415, screenSize.height - 20);
+    CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+    [batch addChild:cakeScore];
+    [batch addChild:chocolateScore];
+    [batch addChild:pudingScore];
+    
+    // Add the score label with z value of -1 so it's drawn below everything else
+    cakeScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    cakeScoreLabel.position = CGPointMake(320, screenSize.height - 5);
+    cakeScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
+    cakeScoreLabel.scale = 0.4;
+    [self addChild:cakeScoreLabel z:-2];
+    
+    chocolateScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    
+    chocolateScoreLabel.position = CGPointMake(380, screenSize.height - 5);
+    chocolateScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
+    chocolateScoreLabel.scale = 0.4;
+    [self addChild:chocolateScoreLabel z:-2];
+    
+    pudingScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    pudingScoreLabel.position = CGPointMake(435, screenSize.height - 5);
+    pudingScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
+    pudingScoreLabel.scale = 0.4;
+    [self addChild:pudingScoreLabel z:-2];
+    
+}
 
 -(id)initWithCapacity:(int)capacity
 {
@@ -45,6 +81,8 @@
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         _sprite.position = CGPointMake(screenSize.width / 2, 20);
         [batch addChild:_sprite];
+        
+        [self initScores];
 
         foodArray = [[CCArray alloc] initWithCapacity:storageCapacity];
         combinArray = (int *)malloc(storageCapacity*sizeof(int));
@@ -106,6 +144,7 @@
             if (curFood.foodType == leftFood.foodType) 
             {
                 canCombine = YES;
+                [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
                 break;
             }
         }
@@ -177,11 +216,12 @@
     
 }
 
--(void)doCombineFood
+-(void)doCombineFood:(int *)totalNum
 {
     int combineNum = 0;
     BOOL isCombine = NO;
-    
+    int sameTypeCount = 0;
+
     
     if(!canCombine)
     {
@@ -212,6 +252,8 @@
                 int a;
                 if (!isCombine)
                 {
+                    sameTypeCount = 2;
+                    foodInStorage[curFood.foodType] += 2;
                     a = i - 2;
                     *(combinArray+combineNum) = a;
                     combineNum++;
@@ -219,11 +261,22 @@
                     *(combinArray+combineNum) = a;
                     combineNum++;
                 }
+                
+                sameTypeCount++;
+                foodInStorage[curFood.foodType] += 1;
+                
                 a = i;
                 *(combinArray+combineNum) = a;
                 combineNum++;
                 
+                if (theSameTypeNumOfOneTime < sameTypeCount) 
+                {
+                    theSameTypeNumOfOneTime = sameTypeCount;
+                }
+                
                 isCombine = YES;
+                needUpdateScore = YES;
+                [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
             }
             else
             {
@@ -239,6 +292,9 @@
     {
         return;
     }
+    
+    *totalNum +=  combineNum;
+    
     int index;
     for (int i=0;i < combineNum; i++) 
     {
@@ -252,6 +308,14 @@
     //消完后马上检查，为连续消做准备
     [self checkCombineFood];
 }
+
+-(void)updateScores
+{
+    [cakeScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[0]]];
+    [chocolateScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[1]]];
+    [pudingScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[2]]];
+}
+
 
 -(void) update:(ccTime)delta
 {
@@ -316,6 +380,12 @@
         
     [self checkCombineFood];
     
+    if (needUpdateScore)
+    {
+        [self updateScores];
+        needUpdateScore = NO;
+    }
+    
 }
 
 -(void)oneSecondCheckMax:(ccTime)delta
@@ -337,6 +407,9 @@
 {
     CGPoint location = [Helper locationFromTouch:touch];
     bool isTouchHandled = [self isTouchForMe:location]; 
+    int timesPerTouch = 0;
+    int totalCount = 0;
+    
     if (isTouchHandled)
     {
         _sprite.color = ccRED;
@@ -344,7 +417,19 @@
         //可以连续消
         while (canCombine) 
         {
-            [self doCombineFood];
+            timesPerTouch++;
+            timesOfOneTouch++;
+            [self doCombineFood:&totalCount];
+        }
+        
+        if (timesOfOneTouch < timesPerTouch) 
+        {
+            timesOfOneTouch = timesPerTouch;
+        }
+        
+        if (numbersOfOneTime < totalCount)
+        {
+            numbersOfOneTime = totalCount;
         }
     }
     return isTouchHandled;

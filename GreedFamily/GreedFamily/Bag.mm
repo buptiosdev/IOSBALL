@@ -14,10 +14,10 @@
 
 @implementation Bag
 @synthesize sprite = _sprite;
--(void) registerWithTouchDispatcher
-{
-    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-2 swallowsTouches:YES];
-}
+//-(void) registerWithTouchDispatcher
+//{
+//    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
+//}
 
 
 - (void)onStart:(id)sender{
@@ -80,7 +80,7 @@
         CCMenu *menu = [CCMenu menuWithItems:starts, bombs, fruits, crystals, nil];
         menu.position = ccp(464, 200);
 
-        [menu alignItemsVerticallyWithPadding: 0.0f];
+        [menu alignItemsVerticallyWithPadding: 10.0f];
         [self addChild:menu z: -2];
         
         
@@ -93,66 +93,66 @@
 
 
 
-
--(bool) isTouchForMe:(CGPoint)touchLocation
-{
-    
-    return CGRectContainsPoint([self.sprite boundingBox], touchLocation);
-}
-
-
--(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    CGPoint location = [Helper locationFromTouch:touch];
-    bool isTouchHandled = [self isTouchForMe:location]; 
-    if (isTouchHandled)
-    {
-        _sprite.color = ccRED;
-//        static int i = 0;
-//        i += CCRANDOM_0_1()*10;
-//        int tag = i % 3;
-//        PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
-//        b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
-//        [thePropCache addOneProperty:tag World:theworld Tag:tag];
-    }
-    return isTouchHandled;
-}
-
--(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	_sprite.color = ccYELLOW;
-    
-    
-}
-
--(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	_sprite.color = ccWHITE;
-}
-
-
-#pragma mark Layer - Callbacks
--(void) onEnter
-{
-    [self registerWithTouchDispatcher];
-	// then iterate over all the children
-	[super onEnter];
-}
-
-// issue #624.
-// Can't register mouse, touches here because of #issue #1018, and #1021
--(void) onEnterTransitionDidFinish
-{	
-	[super onEnterTransitionDidFinish];
-}
-
--(void) onExit
-{
-    
-    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
-	
-	[super onExit];
-}
+//
+//-(bool) isTouchForMe:(CGPoint)touchLocation
+//{
+//    
+//    return CGRectContainsPoint([self.sprite boundingBox], touchLocation);
+//}
+//
+//
+//-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    CGPoint location = [Helper locationFromTouch:touch];
+//    bool isTouchHandled = [self isTouchForMe:location]; 
+//    if (isTouchHandled)
+//    {
+//        _sprite.color = ccRED;
+////        static int i = 0;
+////        i += CCRANDOM_0_1()*10;
+////        int tag = i % 3;
+////        PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
+////        b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
+////        [thePropCache addOneProperty:tag World:theworld Tag:tag];
+//    }
+//    return isTouchHandled;
+//}
+//
+//-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//	_sprite.color = ccYELLOW;
+//    
+//    
+//}
+//
+//-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//	_sprite.color = ccWHITE;
+//}
+//
+//
+//#pragma mark Layer - Callbacks
+//-(void) onEnter
+//{
+//    [self registerWithTouchDispatcher];
+//	// then iterate over all the children
+//	[super onEnter];
+//}
+//
+//// issue #624.
+//// Can't register mouse, touches here because of #issue #1018, and #1021
+//-(void) onEnterTransitionDidFinish
+//{	
+//	[super onEnterTransitionDidFinish];
+//}
+//
+//-(void) onExit
+//{
+//    
+//    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+//	
+//	[super onExit];
+//}
 
 -(void) dealloc
 {

@@ -108,7 +108,7 @@
         
         //阻力
         bodyDef.linearDamping = 0.1f;
-        bodyDef.angularDamping = 1.0f;
+        bodyDef.angularDamping = 10.0f;
 
         
 		b2CircleShape circleShape;

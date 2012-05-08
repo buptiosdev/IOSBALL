@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface Bag : CCNode <CCTargetedTouchDelegate>
+//@interface Bag : CCNode <CCTargetedTouchDelegate>
+@interface Bag : CCNode 
 {
     
 }
