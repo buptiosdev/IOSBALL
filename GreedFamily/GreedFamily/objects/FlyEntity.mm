@@ -268,14 +268,16 @@
 	
 	//b2Vec2 force = 2.0f * bodyToFinger;
     
-    CGPoint bodyPosition = [Helper toPixels:self.body->GetPosition()];
-    CGPoint acceleration = ccpSub(fingerLocation, bodyPosition);
+    //CGPoint bodyPosition = [Helper toPixels:self.body->GetPosition()];
+    CGPoint acceleration = ccpSub(fingerLocationEnd, fingerLocationBegin);
+    acceleration = ccpMult(acceleration, 5/(time2 -time1));
+    CCLOG(@"time1 = %f, time2 = %f, time = %f", time1, time2, time2 -time1);
     // 控制减速的速率(值越低=可以更快的改变方向) 
-    float deceleration = 0.4f; 
+    float deceleration = 0.5f; 
     //加速计敏感度的值越大,主角精灵对加速计的输入就越敏感 
     float sensitivity = 1.2f;
     // 最大速度值 
-    float maxVelocity = 40;
+    float maxVelocity = 4000;
     // 基于当前加速计的加速度调整速度
     //CGPoint playerVelocity;
     BOOL yOverflow = NO;
@@ -331,7 +333,7 @@
 	if (moveToFinger == YES)
 	{
 		[self applyForceTowardsFinger];
-        
+        moveToFinger = NO;
 	}
 
 //    //[self applyForceWichAccelar];
@@ -360,10 +362,14 @@
 -(BOOL) ccTouchBeganForSky:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	fingerLocation = [Helper locationFromTouch:touch];
+    
+    time1 = CFAbsoluteTimeGetCurrent();
+    
+    fingerLocationBegin = [Helper locationFromTouch:touch];
     bool isTouchHandled = [self isTouchForMe:fingerLocation];
     if (isTouchHandled)
     {
-        moveToFinger = YES;
+        //moveToFinger = YES;
         self.sprite.color = ccYELLOW;
     }
     
@@ -373,11 +379,14 @@
 -(void) ccTouchMovedForSky:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	fingerLocation = [Helper locationFromTouch:touch];
+    fingerLocationEnd = [Helper locationFromTouch:touch];
+    
 }
 
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	moveToFinger = NO;
+    time2 = CFAbsoluteTimeGetCurrent();
+	moveToFinger = YES;
     self.sprite.color = ccWHITE;
 }
 

@@ -17,10 +17,14 @@
 {
     bool moveToFinger;
 	CGPoint fingerLocation;
+    CGPoint fingerLocationBegin;
+    CGPoint fingerLocationEnd;
     CGPoint playerVelocity;
     NSMutableArray *_flyActionArray;
     int directionBefore;
     int directionCurrent;
+    double time1;
+    double time2;
 
 }
 
