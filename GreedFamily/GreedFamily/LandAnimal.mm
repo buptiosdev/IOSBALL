@@ -45,12 +45,14 @@
     
     if(pos.x>rightBorderLimit){
         direction=-1;
+        self.sprite.flipX=YES;
     }
     if(pos.x<leftBorderLimit)
     {
         direction=1;
+        self.sprite.flipX=NO;
     }
-    pos.x+=direction*0.2;
+    pos.x+=direction*0.5;
     self.sprite.position=pos;
     
 }
