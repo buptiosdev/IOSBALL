@@ -10,8 +10,9 @@
 #import "cocos2d.h"
 
 @interface LandAnimal : CCNode {
-    
+    int direction;
 }
-@property (readonly, nonatomic) CCSprite* sprite;
+//@property (readonly, nonatomic) CCSprite* sprite;
+@property (assign, nonatomic) CCSprite* sprite;
 +(id)CreateLandAnimal;
 @end
