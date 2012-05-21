@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4A78F87A1546D8B5001811B1 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A78F8791546D8B5001811B1 /* PauseLayer.mm */; };
 		4A78F87F1546D9EB001811B1 /* paused.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A78F87E1546D9EB001811B1 /* paused.png */; };
+		4A7A83FD156A882900841572 /* LandCandyCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A83FA156A882900841572 /* LandCandyCache.mm */; };
+		4A7A83FE156A882900841572 /* LandCandyEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A83FC156A882900841572 /* LandCandyEntity.mm */; };
 		70018D9B1541B144001FBF35 /* Bag.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9A1541B144001FBF35 /* Bag.mm */; };
 		70018D9E1541B167001FBF35 /* GamePause.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9D1541B166001FBF35 /* GamePause.mm */; };
 		70018DA11541B19D001FBF35 /* GameSky.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018DA01541B19C001FBF35 /* GameSky.mm */; };
@@ -209,6 +211,10 @@
 		4A78F8781546D8B5001811B1 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
 		4A78F8791546D8B5001811B1 /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
 		4A78F87E1546D9EB001811B1 /* paused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paused.png; path = Resources/paused.png; sourceTree = "<group>"; };
+		4A7A83F9156A882900841572 /* LandCandyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandCandyCache.h; sourceTree = "<group>"; };
+		4A7A83FA156A882900841572 /* LandCandyCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LandCandyCache.mm; sourceTree = "<group>"; };
+		4A7A83FB156A882900841572 /* LandCandyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandCandyEntity.h; sourceTree = "<group>"; };
+		4A7A83FC156A882900841572 /* LandCandyEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LandCandyEntity.mm; sourceTree = "<group>"; };
 		70018D991541B144001FBF35 /* Bag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bag.h; sourceTree = "<group>"; };
 		70018D9A1541B144001FBF35 /* Bag.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bag.mm; sourceTree = "<group>"; };
 		70018D9C1541B166001FBF35 /* GamePause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePause.h; sourceTree = "<group>"; };
@@ -1161,6 +1167,10 @@
 				700F68B7154C411900D639AE /* Food.h */,
 				700F68B8154C411B00D639AE /* Food.mm */,
 				70018D991541B144001FBF35 /* Bag.h */,
+				4A7A83F9156A882900841572 /* LandCandyCache.h */,
+				4A7A83FA156A882900841572 /* LandCandyCache.mm */,
+				4A7A83FB156A882900841572 /* LandCandyEntity.h */,
+				4A7A83FC156A882900841572 /* LandCandyEntity.mm */,
 				70018D9A1541B144001FBF35 /* Bag.mm */,
 				70018D9C1541B166001FBF35 /* GamePause.h */,
 				70018D9D1541B166001FBF35 /* GamePause.mm */,
@@ -1480,6 +1490,8 @@
 				700F68B9154C411F00D639AE /* Food.mm in Sources */,
 				700F68CD1552BBAE00D639AE /* PropertyCache.mm in Sources */,
 				700F68D51552C57300D639AE /* PropertyEntity.mm in Sources */,
+				4A7A83FD156A882900841572 /* LandCandyCache.mm in Sources */,
+				4A7A83FE156A882900841572 /* LandCandyEntity.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

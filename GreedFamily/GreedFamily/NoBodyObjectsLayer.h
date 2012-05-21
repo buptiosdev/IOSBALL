@@ -12,7 +12,7 @@ typedef enum
 {   
     LandAnimalTag = 1,
     CompetitorTag,
-    
+    LandCandyTag
     
 }NoBodyObjectsLayerTags;
 

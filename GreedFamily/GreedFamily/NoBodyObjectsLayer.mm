@@ -9,6 +9,7 @@
 #import "NoBodyObjectsLayer.h"
 #import "LandAnimal.h"
 #import "Competitor.h"
+#import "LandCandyCache.h"
 
 @implementation NoBodyObjectsLayer
 +(id)CreateNoBodyObjectsLayer
@@ -25,6 +26,9 @@
         
         Competitor *competitor = [Competitor CreateCompetitor];
         [self addChild:competitor z:1 tag:CompetitorTag];
+        
+        LandCandyCache * landcandyCache = [LandCandyCache initLandCache];
+        [self addChild:landcandyCache z:1 tag:LandCandyTag];
     }
     return self;
 }

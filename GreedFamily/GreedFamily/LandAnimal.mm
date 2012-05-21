@@ -8,6 +8,7 @@
 
 #import "LandAnimal.h"
 #import "GameBackgroundLayer.h"
+#import "LandCandyCache.h"
 
 @implementation LandAnimal
 
@@ -35,6 +36,14 @@
     return self;
 }
 
+-(int)checkforcollsion
+{
+    int direction=0;
+    LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+    direction=[instanceOfLandCandyCache CheckforCandyCollision:self.sprite];
+    return direction;
+}
+
 -(void)update:(ccTime)delta
 {
     CGPoint pos=self.sprite.position;
@@ -45,11 +54,16 @@
     
     if(pos.x>rightBorderLimit){
         direction=-1;
-        self.sprite.flipX=YES;
-    }
-    if(pos.x<leftBorderLimit)
+    }else if(pos.x<leftBorderLimit)
     {
         direction=1;
+    }else{
+        direction=[self checkforcollsion];
+    }
+    
+    if(direction==-1){
+        self.sprite.flipX=YES;
+    }else if (direction==1){
         self.sprite.flipX=NO;
     }
     pos.x+=direction*0.5;
