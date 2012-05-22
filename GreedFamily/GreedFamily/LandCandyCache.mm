@@ -28,6 +28,21 @@ static LandCandyCache *instanceOfLandCandyCache;
 
 -(id) CreateLandCandy:(int)balltype Pos:(CGPoint)position
 {
+    int num = [landcandies count];
+    if(num>0){
+        for(int i=0;i<num;i++)
+        {
+            LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
+            CCSprite * candy=landcandy.sprite;
+            if(candy.visible==NO && landcandy.Balltype==balltype)
+            {
+                candy.visible=YES;
+                candy.position=position;
+                landcandy.position=position;
+                return landcandy;
+            }
+        }
+    }
     LandCandyEntity * candyEntity = [LandCandyEntity CreateLandCandyEntity:balltype Pos:position];
     [self addChild:candyEntity z:0 tag:2];
     [landcandies addObject:candyEntity];
@@ -46,14 +61,20 @@ static LandCandyCache *instanceOfLandCandyCache;
     {
         LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
         CCSprite * candy=landcandy.sprite;
+        if(candy.visible==NO)
+        {
+            continue;
+        }
+        
         float candysize=[candy texture].contentSize.width;
         float actualdistance=ccpDistance(landanimal.position, candy.position);
         float collisiondistance=landanimalsize*0.5f+candysize*0.4f;
         if(actualdistance<=collisiondistance)
         {
-            //delete from the CCArray
             //set the candy unvisible
+            candy.visible=NO;
             //call the storage interface
+            
         }else{
             if(actualdistance<distance){
                 distance=actualdistance;
@@ -85,8 +106,6 @@ static LandCandyCache *instanceOfLandCandyCache;
 
 -(void)update:(ccTime)delta
 {
-    
-    
 }
 
 -(void) dealloc

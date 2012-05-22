@@ -38,10 +38,10 @@
 
 -(int)checkforcollsion
 {
-    int direction=0;
+    //int direction=0;
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
-    direction=[instanceOfLandCandyCache CheckforCandyCollision:self.sprite];
-    return direction;
+    return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite];
+    //return direction;
 }
 
 -(void)update:(ccTime)delta
