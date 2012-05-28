@@ -55,6 +55,14 @@ void ContactListener::BeginContact(b2Contact* contact)
             {
                 bodyEntityB.hitPoints += bodyEntityA.initialHitPoints;
                 bodyEntityB.initialHitPoints += bodyEntityA.initialHitPoints;
+                //add by liujin     
+                //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+
+                //if(bodyEntityB.scaleY == 0)
+                //{  
+                //    contact_flag  = 1;
+                //} 
+                
             }
         }
         if (0 >= bodyEntityB.hitPoints) {
@@ -71,6 +79,7 @@ void ContactListener::EndContact(b2Contact* contact)
 {
 	b2Body* bodyA = contact->GetFixtureA()->GetBody();
 	b2Body* bodyB = contact->GetFixtureB()->GetBody();
+    
 	Entity* bodyEntityA = (Entity*)bodyA->GetUserData();
 	Entity* bodyEntityB = (Entity*)bodyB->GetUserData();
     
