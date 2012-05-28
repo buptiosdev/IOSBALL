@@ -77,19 +77,21 @@
 
 -(void)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget
 {
+    //结构体  定义糖果的各种属性
     CandyParam cacheParam = {0};
     
     //firstcacheParam.initialHitPoints = 4;
-
+    //球的初始位置    
     cacheParam.startPos=CGPoint(startPos);
 
     cacheParam.isDynamicBody = isDynamicBody;
 
+    //球的类型
     cacheParam.ballType = ballType;
     
     CandyEntity* cache = [CandyEntity CandyWithParam:cacheParam World:world];
-    [batch addChild:cache z:1 tag:taget];
-    [candies addObject:cache];
+   // [batch addChild:cache z:1 tag:taget];
+    //[candies addObject:cache];
 }
 
 
@@ -102,7 +104,9 @@
     candies = [[CCArray alloc] initWithCapacity:cacheNum];
 	CGRect screenRect = [BodyObjectsLayer screenRect];
 
-    CGPoint startPos1=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 4);
+    //球出来的位置     
+    CGPoint startPos1=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 2);
+    
     [self defineBall:world Type:BallTypeRandomBall Pos:startPos1 Dynamic:YES Tag:1];
 
     //添加场景的粒子效果
