@@ -33,7 +33,7 @@ typedef enum
 
 @interface CandyCache : CCNode 
 {
-	CCSpriteBatchNode* batch;
+	//CCSpriteBatchNode* batch;
 	CCArray* candies;
 	int cacheNum;
     

@@ -25,8 +25,10 @@ typedef enum
 {
     //b2World* world;
     ContactListener* contactListener;
+    int contact_flag;
     
 }
+
 @property (nonatomic) b2World* world;
 +(id)CreateBodyObjectsLayer;
 +(CGRect) screenRect;
