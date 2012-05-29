@@ -82,14 +82,14 @@
 -(void)addOneProperty:(NSInteger)type World:(b2World *)world  Array:(CCArray *)array Tag:(int)taget 
 {
     PropertyEntity* cache = [PropertyEntity createProperty:type World:world];
-    [batch addChild:cache z:1 tag:taget];
+    [self addChild:cache z:1 tag:taget];
     [array addObject:cache];
 }
 
 -(void)addOneProperty:(NSInteger)type World:(b2World *)world Tag:(int)taget 
 {
     PropertyEntity* cache = [PropertyEntity createProperty:type World:world];
-    [batch addChild:cache z:1 tag:taget];
+    [self addChild:cache z:1 tag:taget];
     [cache moveProperty];
     
 }

@@ -46,8 +46,6 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         GamePause *gamePause = [GamePause node];
         [self addChild:gamePause z:2 tag:GamePauseTag];
         
-
-        
         Storage *storage = [Storage createStorage:14];
         [self addChild:storage z:-3 tag:StorageTag];
         

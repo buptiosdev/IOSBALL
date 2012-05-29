@@ -50,7 +50,6 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
         
         FlyEntity* flyAnimal = [FlyEntity flyAnimal:self.world];
         [self addChild:flyAnimal z:-1 tag:FlyEntityTag];
-        
 
         CandyCache* candyCache = [CandyCache cache:self.world];
         [self addChild:candyCache z:-1 tag:CandyCacheTag];

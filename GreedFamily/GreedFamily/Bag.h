@@ -12,7 +12,7 @@
 //@interface Bag : CCNode <CCTargetedTouchDelegate>
 @interface Bag : CCNode 
 {
-    
+    CCProgressTimer *timeTmp;
 }
 @property (readonly, nonatomic) CCSprite* sprite;
 @end

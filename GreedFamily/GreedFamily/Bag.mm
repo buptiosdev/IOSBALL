@@ -84,14 +84,34 @@
         [self addChild:menu z: -2];
         
         
-        
+//        timeTmp.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
+//        timeTmp.percentage = 0; //当前进度       
+//        timeTmp.position = ccp(200, 200);         
+//        
+//        
+//        timeTmp = [CCProgressTimer progressWithFile:@"cd.png"];
+//
+//        [self addChild:timeTmp];
+//
+//
+//        int mPercentage = 100;  
+//        [timeTmp setPercentage:mPercentage];
+//        [timeTmp setPercentage:(100-mPercentage++)]; 
+    
     }
     
     return self;
 }
 
 
-
+-(void)update:(ccTime)delta
+{
+    timeTmp.percentage++;  
+    if(timeTmp.percentage>=100)
+    {  
+        timeTmp.percentage=0;  
+    } 
+}
 
 //
 //-(bool) isTouchForMe:(CGPoint)touchLocation

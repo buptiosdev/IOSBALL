@@ -104,10 +104,9 @@
 		b2BodyDef bodyDef;
 		bodyDef.position = [Helper toMeters:startPos];
         bodyDef.type = b2_dynamicBody;
-        bodyDef.angularDamping = 0.5f;
         
         //阻力
-        bodyDef.linearDamping = 0.1f;
+        bodyDef.linearDamping = 0.6f;
         bodyDef.angularDamping = 10.0f;
 
         
