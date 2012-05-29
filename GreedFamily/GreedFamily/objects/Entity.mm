@@ -76,6 +76,7 @@
 	{
 		self.body->CreateFixture(fixtureDef);
 	}
+    
 }
 
 /*通过这个函数改变精灵的位置*/

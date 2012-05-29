@@ -57,10 +57,13 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         [self addChild:ground z:-3];
         
         // Play the background music in an endless loop.
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.caf"];    
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
+        
+        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
+        //[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.caf"];    
+        //[[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
+        //[[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
+        
+        
         //加载瓷砖地图层
         //TileMapLayer *tileMapLayer = [TileMapLayer node];
         //[self addChild:tileMapLayer z:-2 tag:TileMapLayerTag];

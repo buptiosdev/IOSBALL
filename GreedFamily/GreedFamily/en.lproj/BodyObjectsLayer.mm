@@ -10,6 +10,7 @@
 #import "Helper.h"
 #import "FlyEntity.h"
 #import "CandyCache.h"
+#import "CandyEntity.h"
 #import "GameMainScene.h"
 #import "PropertyCache.h"
 
@@ -63,6 +64,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
     return self;
 }
 
+//初始化四个边框
 //还需要完善底部
 -(void) initBox2dWorld
 {
@@ -91,11 +93,16 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	// Create the screen box' sides by using a polygon assigning each side individually.
 	b2PolygonShape screenBoxShape;
 	int density = 1;
-	
-    
+    b2FixtureDef fixtureDef;
+    //fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = 0.3; //密度 
+    fixtureDef.friction = 0.6    ; //摩擦力
+    fixtureDef.restitution = 0 ;  //弹性系数 复原
+	    
     // bottom
     screenBoxShape.SetAsEdge(lowerLeftCorner, lowerRightCorner);
     containerBody->CreateFixture(&screenBoxShape, density);
+    //containerBody->CreateFixture(&fixtureDef);
     
     // top
     screenBoxShape.SetAsEdge(upperLeftCorner, upperRightCorner);
@@ -116,7 +123,6 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	return screenRect;
 }
 
-
 -(FlyEntity*) flyAnimal
 {
 	CCNode* node = [self getChildByTag:FlyEntityTag];
@@ -131,11 +137,13 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	return (PropertyCache *)node;
 }
 
+//判断游戏是否结束  
 -(void) update:(ccTime)delta
 {
 	// The number of iterations influence the accuracy of the physics simulation. With higher values the
 	// body's velocity and position are more accurately tracked but at the cost of speed.
 	// Usually for games only 1 position iteration is necessary to achieve good results.
+    //CCLOG(@"int哦 here");
 	float timeStep = 0.03f;
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
@@ -160,7 +168,9 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
             {
                 if([bodyNode isKindOfClass:[FlyEntity class]])
                 {
+                    CCLOG(@"haha");
                     // add the labels shown during game over
+                    /*    
                     CGSize screenSize = [[CCDirector sharedDirector] winSize];
                     
                     CCLabelTTF *gameOver = [CCLabelTTF labelWithString:@"GAME OVER!" fontName:@"Marker Felt" fontSize:60];
@@ -169,21 +179,83 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     [GameMainScene sharedMainScene].isGameOver = YES;
                     
                     return;
-                }else
+                     */
+                }
+                //add by jin at 5.27
+                else if ([bodyNode isKindOfClass:[CandyEntity class]])
                 {
+                    //持续的给Candy加向下的力
+                    
+                    CCLOG(@"Into here ！糖果的血为0");
+                    b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();
+                    //CCLOG("x=%d, y=%f\n", bodyPos.y0);
+
+                    //if (bodyPos.y<=0)
+                    //{    
+                    //    CCLOG(@"haha");
+                    //}    
+                    
+                    //CGPoint bodyPosition = [Helper toPixels:bodyPos];
+                    CGPoint newposition = CGPointMake(0, 0);
+                    b2Vec2 fingerPos = [Helper toMeters:newposition];
+                    
+                    b2Vec2 bodyToFinger = fingerPos - bodyPos;
+                    //b2Vec2 bodyToFinger = fingerPos;
+                    
+                    
+                    // "Real" gravity falls off by the square over distance. Feel free to try it this way:
+                    //float distance = bodyToFinger.Normalize();
+                    //float distanceSquared = distance * distance;
+                    //b2Vec2 force = ((1.0f / distanceSquared) * 20.0f) * bodyToFinger;
+                    
+                    b2Vec2 force = 30.0f * bodyToFinger;
+                    //body->SetTransform([Helper toMeters:positionNew], 0);
+                    
+                    bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());
+                    
+                    //bodyNode.hitPoints=0;
+                    
+                    
+                }   
+                
+                
+                else
+                {
+                    CCLOG(@"其实是到这来了");
+                    //奇怪没到上面去
+                    
+                    b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();                    
+                    CGPoint newposition = CGPointMake(0, 0);
+                    b2Vec2 fingerPos = [Helper toMeters:newposition];
+                    
+                    b2Vec2 bodyToFinger = fingerPos - bodyPos;
+                    
+                    b2Vec2 force = 30.0f * bodyToFinger;
+                    //body->SetTransform([Helper toMeters:positionNew], 0);
+                    
+                    bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());                    
+                    
                     deadenemycnt++;
                 }
+                
+                /*
                 CGPoint positionNew = CGPointMake(-100, -100);
                 bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
+                */
+                
+                /*
                 bodyNode.sprite.visible = NO;
+                */
+                
                 //[bodyNode removeBody];
             } 
 		}
 	}
+    /*
     if(deadenemycnt>=bodysize-2){
         [GameMainScene sharedMainScene].isGamePass = YES;
     }
-    
+    */
 }
 -(void) dealloc
 {

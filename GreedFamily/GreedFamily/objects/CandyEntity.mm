@@ -108,11 +108,15 @@
 	}    
 }
 
+
+
+
 +(id)CandyWithParam:(CandyParam)candyParam World:(b2World *)world
 {
 	return [[[self alloc] initCandyWithParam:candyParam World:world] autorelease];
 }
 
+//定义几种球的属性 
 -(void)initRandomBall:(CandyParam)param
 {
     ballMove = @selector(moveTheBallRandom:forceOut:);
@@ -181,6 +185,7 @@
     }
 }
 
+//传入结构体 初始化糖果
 -(id)initCandyWithParam:(CandyParam)CandyParam World:(b2World *)world
 {
     if ((self = [super init]))
@@ -205,6 +210,7 @@
         bodyDef.angularDamping = candyParamDef.angularDamping;
         bodyDef.linearDamping = candyParamDef.linearDamping;
         
+        //刚体形状 
         b2CircleShape circleShape;
         float radiusInMeters = (self.sprite.contentSize.width / PTM_RATIO) * 0.5f;
         circleShape.m_radius = radiusInMeters;
@@ -223,6 +229,7 @@
 //                      fixtureDef:&fixtureDef
 //                      spriteFrameName:candyParamDef.spriteFrameName]; 
         
+        //添加到world
         [super createBodyInWorld:world 
                          bodyDef:&bodyDef 
                       fixtureDef:&fixtureDef]; 

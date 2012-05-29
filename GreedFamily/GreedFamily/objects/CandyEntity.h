@@ -38,7 +38,7 @@ struct CandyParam {
     
     NSString *spriteFrameName;
     
-    int	initialHitPoints;
+    int	 initialHitPoints;
     
     int ballType;
     
