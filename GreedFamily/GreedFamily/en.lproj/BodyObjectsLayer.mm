@@ -137,6 +137,16 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	return (PropertyCache *)node;
 }
 
++(void)addDownForth:(CGPoint)curPosition forceOut:(b2Vec2 *)force
+{
+    CGPoint positionNew = CGPointMake(0, -10);
+    
+    b2Vec2 bodyPos = [Helper toMeters:positionNew];
+    
+    *force = bodyPos;
+    
+}
+
 //判断游戏是否结束  
 -(void) update:(ccTime)delta
 {
@@ -187,7 +197,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //持续的给Candy加向下的力
                     
                     CCLOG(@"Into here ！糖果的血为0");
-                    b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();
+                    //b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();
                     //CCLOG("x=%d, y=%f\n", bodyPos.y0);
 
                     //if (bodyPos.y<=0)
@@ -196,10 +206,10 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //}    
                     
                     //CGPoint bodyPosition = [Helper toPixels:bodyPos];
-                    CGPoint newposition = CGPointMake(0, 0);
-                    b2Vec2 fingerPos = [Helper toMeters:newposition];
+                    //CGPoint newposition = CGPointMake(0, 0);
+                    //b2Vec2 fingerPos = [Helper toMeters:newposition];
                     
-                    b2Vec2 bodyToFinger = fingerPos - bodyPos;
+                    //b2Vec2 bodyToFinger = fingerPos - bodyPos;
                     //b2Vec2 bodyToFinger = fingerPos;
                     
                     
@@ -208,13 +218,14 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //float distanceSquared = distance * distance;
                     //b2Vec2 force = ((1.0f / distanceSquared) * 20.0f) * bodyToFinger;
                     
-                    b2Vec2 force = 30.0f * bodyToFinger;
+                    //b2Vec2 force = 30.0f * bodyToFinger;
                     //body->SetTransform([Helper toMeters:positionNew], 0);
                     
-                    bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());
+                    //bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());
                     
                     //bodyNode.hitPoints=0;
-                    
+                    CandyEntity* candyNode = (CandyEntity*)bodyNode;
+                    candyNode.changeTheForth;
                     
                 }   
                 

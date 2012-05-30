@@ -12,7 +12,7 @@
 
 @interface PropertyCache : CCNode 
 {
-  	CCSpriteBatchNode* batch;
+  	//CCSpriteBatchNode* batch;
 	CCArray* props;
 	int cacheNum;
     

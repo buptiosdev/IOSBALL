@@ -17,7 +17,6 @@
 @implementation CandyEntity
 @synthesize sprite = _sprite;
 
-
 -(void) dealloc
 {
 	//[[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
@@ -86,6 +85,21 @@
     
 }
 
+-(void)addDownForth:(CGPoint)curPosition forceOut:(b2Vec2 *)force
+{
+    CGPoint positionNew = CGPointMake(0, -10);
+    
+    b2Vec2 bodyPos = [Helper toMeters:positionNew];
+    
+    *force = bodyPos;
+    
+}
+
+-(void)changeTheForth
+{
+    ballMove = @selector(addDownForth:forceOut:);
+}
+
 -(void) update:(ccTime)delta
 {
     if (self.sprite.visible)
@@ -125,7 +139,7 @@
     candyParamDef.ballType = param.ballType;
     candyParamDef.spriteFrameName = @"puding2.png";
     candyParamDef.density = (0 == param.density) ? 0.5 : param.density;
-    candyParamDef.restitution = (0 == param.restitution) ? 1.5 : param.restitution;
+    candyParamDef.restitution = (0 == param.restitution) ? 0.7 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
     candyParamDef.angularDamping = (0 == param.restitution) ? 0.1 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.5 : param.friction;
@@ -142,7 +156,7 @@
     candyParamDef.ballType = param.ballType;
     candyParamDef.spriteFrameName = @"chocolate.png";
     candyParamDef.density = (0 == param.density) ? 0.8 : param.density;
-    candyParamDef.restitution = (0 == param.restitution) ? 0.8 : param.restitution;
+    candyParamDef.restitution = (0 == param.restitution) ? 0.6 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.5 : param.linearDamping;
     candyParamDef.angularDamping = (0 == param.restitution) ? 0.5 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
@@ -234,6 +248,7 @@
                          bodyDef:&bodyDef 
                       fixtureDef:&fixtureDef]; 
         self.sprite.position = candyParamDef.startPos;
+        
         [self scheduleUpdate];
     }
     
