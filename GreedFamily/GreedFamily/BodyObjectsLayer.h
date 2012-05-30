@@ -12,6 +12,7 @@
 #import "ContactListener.h"
 #import "FlyEntity.h"
 #import "PropertyCache.h"
+#import "LandCandyCache.h"
 
 typedef enum
 {   
