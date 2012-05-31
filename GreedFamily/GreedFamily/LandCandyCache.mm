@@ -64,9 +64,10 @@ static LandCandyCache *instanceOfLandCandyCache;
             if(landcandy.sprite.visible == NO 
                && landcandy.ballType == balltype)
             {
+                landcandy.isDowning = YES;
                 landcandy.sprite.visible = YES;
                 landcandy.sprite.position = position;
-                landcandy.isDowning = YES;
+
                 return;
                 //return landcandy;
             }

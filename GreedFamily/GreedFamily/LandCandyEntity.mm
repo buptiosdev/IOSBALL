@@ -63,7 +63,7 @@
         self.sprite.position = pos;
         
         self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1);
-        isDowning = YES;
+        _isDowning = YES;
         //让球往下运动
         [self scheduleUpdate];
     }
@@ -72,7 +72,7 @@
 
 -(void)update:(ccTime)delta
 {
-    if (!isDowning)
+    if (!_isDowning)
     {
         return;
     }
@@ -96,7 +96,7 @@
     {
         LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
         [landCandyCache addToLandCandies:self];
-        isDowning = NO;
+        self.isDowning = NO;
     }
 }
 

@@ -169,7 +169,10 @@
     [self defineBall:world Type:BallTypeKillerBall Pos:startPos4 Dynamic:YES Tag:4];
     
     CGPoint startPos5=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4 * 3);
-    [self defineBall:world Type:BallTypeBalloom Pos:startPos5 Dynamic:YES Tag:5];
+    [self defineBall:world Type:BallTypeKillerBall Pos:startPos5 Dynamic:YES Tag:5];
+    
+    CGPoint startPos6=CGPointMake(screenRect.size.width / 8 * 3, screenRect.size.height / 8 * 3);
+    [self defineBall:world Type:BallTypeKillerBall Pos:startPos6 Dynamic:YES Tag:6];
     
     //添加场景的粒子效果
 	// remove any previous particle FX

@@ -13,7 +13,6 @@
     //int Balltype;
     //CGPoint position;
     //CGPoint candyVelocity;
-    BOOL isDowning;
 }
 @property (assign, nonatomic) CCSprite* sprite;
 @property (assign, nonatomic) int ballType;

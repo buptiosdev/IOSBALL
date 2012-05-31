@@ -311,74 +311,15 @@
 
 -(void)updateScores
 {
-    [cakeScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[0]]];
-    [chocolateScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[1]]];
-    [pudingScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[2]]];
+    [pudingScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[0]]];
+    [cakeScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[1]]];
+    [chocolateScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[2]]];
+
 }
 
 
 -(void) update:(ccTime)delta
 {
-    static int i = 0;
-    i++;
-//    if (0 == i % 100) 
-    if (0)
-    {
-        if (i == 100)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 100)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 200)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 300)
-        {
-            [self addFoodToStorage:2];
-        }
-        else if (i == 400)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 500)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 600)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 700)
-        {
-            [self addFoodToStorage:2];
-        }
-        else if (i == 800)
-        {
-            [self addFoodToStorage:2];
-        }
-        else if (i == 100)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 900)
-        {
-            [self addFoodToStorage:1];
-        }
-        else if (i == 1000)
-        {
-            [self addFoodToStorage:1];
-        }
-        else
-        {
-            [self addFoodToStorage:(int)(CCRANDOM_0_1()*102) % 2 ];
-        }
-            
-    }
-        
     [self checkCombineFood];
     
     if (needUpdateScore)
