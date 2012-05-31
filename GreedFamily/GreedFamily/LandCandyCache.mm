@@ -54,9 +54,10 @@ static LandCandyCache *instanceOfLandCandyCache;
 -(void) CreateLandCandy:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity
 {
     int num = [controlCandies count];
+    int i = 0;
     if(num>0)
     {
-        for(int i = 0;i < num;i++)
+        for(i = 0;i < num;i++)
         {
             LandCandyEntity * landcandy = [controlCandies objectAtIndex:i];
 
@@ -73,7 +74,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     }
     LandCandyEntity * candyEntity = [LandCandyEntity CreateLandCandyEntity:balltype Pos:position BodyVelocity:bodyVelocity];
     [self addChild:candyEntity z:2 tag:2];
-    [controlCandies insertObject:candyEntity atIndex:num];
+    [controlCandies insertObject:candyEntity atIndex:i];
     return;
     //[landcandies addObject:candyEntity];
     //return candyEntity;
@@ -83,6 +84,7 @@ static LandCandyCache *instanceOfLandCandyCache;
 {
     [landcandies insertObject:landCandy atIndex:landnum];
     landnum++;
+    CCLOG(@"landnum++ =%d\n",landnum);
 }
 
 -(int)CheckforCandyCollision:(CCSprite *)landanimal
@@ -109,7 +111,9 @@ static LandCandyCache *instanceOfLandCandyCache;
         {
             //set the candy unvisible
             candy.visible=NO;
+            
             landnum--;
+            CCLOG(@"landnum-- =%d\n",landnum);
             [landcandies removeObjectAtIndex:i];
             //call the storage interface
             Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
