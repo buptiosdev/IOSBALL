@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "LandCandyEntity.h"
 @interface LandCandyCache : CCNode {
     CCArray * landcandies;
+    CCArray * controlCandies;
+    int landnum;
 }
 +(id)initLandCache;
 //+(id) CreateLandCandy:(int)balltype Pos:(CGPoint)position;
 +(LandCandyCache *)sharedLandCandyCache;
 -(int)CheckforCandyCollision:(CCSprite *)landanimal;
+-(void) CreateLandCandy:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity;
+-(void)addToLandCandies:(LandCandyEntity *)landCandy;
 @end

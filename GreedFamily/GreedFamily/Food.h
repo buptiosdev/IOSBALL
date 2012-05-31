@@ -11,9 +11,10 @@
 #import "Storage.h"
 typedef enum
 {
-	FoodTypeCake = 0,
+	FoodTypePuding = 0,
+    FoodTypeCake,
 	FoodTypeChocolate,
-	FoodTypePuding,
+
 } FoodType;
 @interface Food : CCNode 
 {

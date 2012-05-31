@@ -10,12 +10,15 @@
 #import "cocos2d.h"
 
 @interface LandCandyEntity : CCNode {
-    int Balltype;
-    CGPoint position;
-    CCSprite * sprite;
+    //int Balltype;
+    //CGPoint position;
+    //CGPoint candyVelocity;
+    BOOL isDowning;
 }
 @property (assign, nonatomic) CCSprite* sprite;
-@property (assign, nonatomic) int Balltype;
-@property (assign, nonatomic) CGPoint position;
-+(id)CreateLandCandyEntity:(int)balltype Pos:(CGPoint)position;
+@property (assign, nonatomic) int ballType;
+@property (assign, nonatomic) CGPoint candyPosition;
+@property (assign, nonatomic) CGPoint candyVelocity;
+@property (assign, nonatomic) BOOL isDowning;
++(id)CreateLandCandyEntity:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity;
 @end

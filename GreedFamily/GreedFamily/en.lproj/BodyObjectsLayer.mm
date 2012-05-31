@@ -13,6 +13,7 @@
 #import "CandyEntity.h"
 #import "GameMainScene.h"
 #import "PropertyCache.h"
+#import "LandCandyCache.h"
 
 @interface BodyObjectsLayer (PrivateMethods)
 -(void) initBox2dWorld;
@@ -166,7 +167,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	{
         bodysize++;
 		Entity* bodyNode = (Entity *)body->GetUserData();
-		if (bodyNode != NULL && bodyNode.sprite != nil)
+		if (bodyNode != NULL && bodyNode.sprite != nil && YES == bodyNode.sprite.visible)
 		{
 			// update the sprite's position to where their physics bodies are
             //bodysize++;
@@ -224,12 +225,37 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());
                     
                     //bodyNode.hitPoints=0;
+                    
+//                    if(bodyNode.body->IsActive())
+//                    {
+//
+//                        CCLOG(@"Into IsSleepingAllowed");
+//                        LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+//                        //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
+//                        [instanceOfLandCandyCache CreateLandCandy:1 Pos:bodyNode.position];
+//                        bodyNode.sprite.visible = NO;
+//                        
+//                    }           
+//                    
+//                    
+//                    CandyEntity* candyNode = (CandyEntity*)bodyNode;
+//                    candyNode.changeTheForth;
+                    
+                    CCLOG(@"调用精灵切换");
                     CandyEntity* candyNode = (CandyEntity*)bodyNode;
-                    candyNode.changeTheForth;
+                    CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+                    //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
+                    [instanceOfLandCandyCache CreateLandCandy:candyNode.candyType Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
+                    
+                    //消失
+                    CGPoint positionNew = CGPointMake(-100, -100);
+                    bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
+                    bodyNode.sprite.visible = NO;
                     
                 }   
                 
-                
+
                 else
                 {
                     CCLOG(@"其实是到这来了");

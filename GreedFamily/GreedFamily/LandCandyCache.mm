@@ -8,7 +8,8 @@
 
 #import "LandCandyCache.h"
 #import "LandCandyEntity.h"
-
+#import "TouchCatchLayer.h"
+#import "Storage.h"
 
 @implementation LandCandyCache
 
@@ -26,38 +27,73 @@ static LandCandyCache *instanceOfLandCandyCache;
     return instanceOfLandCandyCache;
 }
 
--(id) CreateLandCandy:(int)balltype Pos:(CGPoint)position
+//-(id) CreateLandCandy:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity
+//{
+//    int num = [landcandies count];
+//    if(num>0){
+//        for(int i=0;i<num;i++)
+//        {
+//            LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
+//            CCSprite * candy=landcandy.sprite;
+//            if(candy.visible==NO && landcandy.ballType==balltype)
+//            {
+//                candy.visible=YES;
+//                candy.position=position;
+//                landcandy.position=position;
+//                return landcandy;
+//            }
+//        }
+//    }
+//    LandCandyEntity * candyEntity = [LandCandyEntity CreateLandCandyEntity:balltype Pos:position BodyVelocity:bodyVelocity];
+//    [self addChild:candyEntity z:-2 tag:2];
+//    [landcandies insertObject:candyEntity atIndex:num];
+//    //[landcandies addObject:candyEntity];
+//    return candyEntity;
+//}
+
+-(void) CreateLandCandy:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity
 {
-    int num = [landcandies count];
-    if(num>0){
-        for(int i=0;i<num;i++)
+    int num = [controlCandies count];
+    if(num>0)
+    {
+        for(int i = 0;i < num;i++)
         {
-            LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
-            CCSprite * candy=landcandy.sprite;
-            if(candy.visible==NO && landcandy.Balltype==balltype)
+            LandCandyEntity * landcandy = [controlCandies objectAtIndex:i];
+
+            if(landcandy.sprite.visible == NO 
+               && landcandy.ballType == balltype)
             {
-                candy.visible=YES;
-                candy.position=position;
-                landcandy.position=position;
-                return landcandy;
+                landcandy.sprite.visible = YES;
+                landcandy.sprite.position = position;
+                landcandy.isDowning = YES;
+                return;
+                //return landcandy;
             }
         }
     }
-    LandCandyEntity * candyEntity = [LandCandyEntity CreateLandCandyEntity:balltype Pos:position];
-    [self addChild:candyEntity z:0 tag:2];
-    [landcandies addObject:candyEntity];
-    return candyEntity;
+    LandCandyEntity * candyEntity = [LandCandyEntity CreateLandCandyEntity:balltype Pos:position BodyVelocity:bodyVelocity];
+    [self addChild:candyEntity z:2 tag:2];
+    [controlCandies insertObject:candyEntity atIndex:num];
+    return;
+    //[landcandies addObject:candyEntity];
+    //return candyEntity;
+}
+
+-(void)addToLandCandies:(LandCandyEntity *)landCandy
+{
+    [landcandies insertObject:landCandy atIndex:landnum];
+    landnum++;
 }
 
 -(int)CheckforCandyCollision:(CCSprite *)landanimal
 {
-    float landanimalsize=[landanimal texture].contentSize.width;
+    float landanimalsize = landanimal.contentSize.width;
     //float spidersize=[[spiders lastObject] texture].contentSize.width;
     //float collisiondistance=playersize*0.5f+spidersize*0.4f;
-    int num=[landcandies count];
+    //int num=[landcandies count];
     int direction = 0;
     float distance=1000;
-    for(int i=0;i<num;i++)
+    for(int i=0;i<landnum;i++)
     {
         LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
         CCSprite * candy=landcandy.sprite;
@@ -66,14 +102,18 @@ static LandCandyCache *instanceOfLandCandyCache;
             continue;
         }
         
-        float candysize=[candy texture].contentSize.width;
+        float candysize = candy.contentSize.width;
         float actualdistance=ccpDistance(landanimal.position, candy.position);
         float collisiondistance=landanimalsize*0.5f+candysize*0.4f;
         if(actualdistance<=collisiondistance)
         {
             //set the candy unvisible
             candy.visible=NO;
+            landnum--;
+            [landcandies removeObjectAtIndex:i];
             //call the storage interface
+            Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+            [storage addFoodToStorage:landcandy.ballType];
             
         }else{
             if(actualdistance<distance){
@@ -95,10 +135,11 @@ static LandCandyCache *instanceOfLandCandyCache;
     if ((self = [super init]))
 	{
         instanceOfLandCandyCache = self;
-        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         int numbers=10;
-        landcandies=[[CCArray alloc]initWithCapacity:numbers];
-        
+        landcandies = [[CCArray alloc]initWithCapacity:numbers];
+        controlCandies = [[CCArray alloc]initWithCapacity:numbers];
+        landnum = 0;
         //[self scheduleUpdate];
     }
     return self;
@@ -111,6 +152,7 @@ static LandCandyCache *instanceOfLandCandyCache;
 -(void) dealloc
 {
 	[landcandies release];
+    [controlCandies release];
 	[super dealloc];
 }
 @end

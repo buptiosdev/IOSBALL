@@ -50,7 +50,7 @@
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     float imageWidthHalved = [self.sprite contentSize].width * 0.5f; 
     float leftBorderLimit = imageWidthHalved;
-    float rightBorderLimit = screenSize.width - imageWidthHalved;
+    float rightBorderLimit = screenSize.width - imageWidthHalved - 30;
     
     if(pos.x>rightBorderLimit){
         direction=-1;

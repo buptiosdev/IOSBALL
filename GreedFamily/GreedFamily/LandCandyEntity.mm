@@ -8,18 +8,23 @@
 
 #import "LandCandyEntity.h"
 #import "CandyEntity.h"
+#import "LandCandyCache.h"
+#import "GameBackgroundLayer.h"
 @interface LandCandyEntity (PrivateMethods)
--(id)initLandCandy:(int)balltype Pos:(CGPoint)pos;
+-(id)initLandCandy:(int)balltype Pos:(CGPoint)pos BodyVelocity:(CGPoint)bodyVelocity;
 @end
 
 @implementation LandCandyEntity
 
 @synthesize sprite = _sprite;
-@synthesize Balltype = _Balltype;
-@synthesize position = _position;
-+(id)CreateLandCandyEntity:(int)balltype Pos:(CGPoint)position
+@synthesize ballType = _ballType;
+@synthesize candyPosition = _candyPosition;
+@synthesize candyVelocity = _candyVelocity;
+@synthesize isDowning = _isDowning;
++(id)CreateLandCandyEntity:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity
 {
-    return [[[self alloc] initLandCandy:balltype Pos:position] autorelease];
+
+    return [[[self alloc] initLandCandy:balltype Pos:position BodyVelocity:bodyVelocity] autorelease];
 }
 
 -(id)chooseBall:(int)balltype
@@ -41,19 +46,63 @@
     return spriteName;
 }
 
--(id)initLandCandy:(int)balltype Pos:(CGPoint)pos
+-(id)initLandCandy:(int)balltype Pos:(CGPoint)pos BodyVelocity:(CGPoint)bodyVelocity
 {
     if ((self = [super init]))
 	{
-        Balltype=balltype;
-        position=pos;
-        NSString * spriteName=[self chooseBall:(balltype)];
+        self.ballType = balltype;
+        self.candyVelocity = pos;
+        NSString * spriteName = [self chooseBall:(balltype)];
+//        self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
+//        self.sprite.position = pos;
+//        [self addChild:self.sprite];
+        
+        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
-        self.sprite.position=pos;
-        [self addChild:self.sprite];
+        [batch addChild:self.sprite];
+        self.sprite.position = pos;
+        
+        self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1);
+        isDowning = YES;
+        //让球往下运动
+        [self scheduleUpdate];
     }
-    return self;
+    return self; 
 }
 
+-(void)update:(ccTime)delta
+{
+    if (!isDowning)
+    {
+        return;
+    }
 
+
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    float imageWidthHalved = [self.sprite contentSize].width * 0.5f; 
+    float leftBorderLimit = imageWidthHalved;
+    float rightBorderLimit = screenSize.width - imageWidthHalved - 30;
+    CGPoint pos = ccpAdd(self.sprite.position, self.candyVelocity);  
+    if(pos.x>rightBorderLimit){
+        pos.x = rightBorderLimit;
+    }else if(pos.x<leftBorderLimit)
+    {
+        pos.x = leftBorderLimit;
+    }
+    
+    self.sprite.position = pos;
+    
+    if (self.sprite.position.y <=  60) 
+    {
+        LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
+        [landCandyCache addToLandCandies:self];
+        isDowning = NO;
+    }
+}
+
+-(void) dealloc
+{
+    CCLOG(@"我靠，被释放了！");
+	[super dealloc];
+}
 @end
