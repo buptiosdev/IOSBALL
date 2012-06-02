@@ -9,6 +9,7 @@
 #import "LandAnimal.h"
 #import "GameBackgroundLayer.h"
 #import "LandCandyCache.h"
+#import "NoBodyObjectsLayer.h"
 
 @implementation LandAnimal
 
@@ -40,7 +41,7 @@
 {
     //int direction=0;
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
-    return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite];
+    return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:LandAnimalTag];
     //return direction;
 }
 
