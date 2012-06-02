@@ -12,6 +12,7 @@
 #import "GamePause.h"
 #import "Bag.h"
 
+
 @implementation TouchCatchLayer
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
@@ -51,6 +52,8 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         
         Bag *bag = [Bag node];
         [self addChild:bag z:1 tag:BagTag];
+        
+
     
     }
     return self;
