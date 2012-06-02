@@ -205,6 +205,7 @@
 		706EAB7E153FC4480003C4B2 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7C153FC4480003C4B2 /* Helper.mm */; };
 		70CBDFFF1574681300DBE24A /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE0011574681300DBE24A /* ContactListener.mm */; };
 		70CBE0021574681300DBE24A /* BodyObjectsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE0041574681300DBE24A /* BodyObjectsLayer.mm */; };
+		C6C56C351579DA9C00F60F33 /* gameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* gameScore.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -591,6 +592,8 @@
 		706EAB7C153FC4480003C4B2 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Helper.mm; path = tools/Helper.mm; sourceTree = "<group>"; };
 		70CBE0001574681300DBE24A /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = en; path = en.lproj/ContactListener.mm; sourceTree = "<group>"; };
 		70CBE0031574681300DBE24A /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = en; path = en.lproj/BodyObjectsLayer.mm; sourceTree = "<group>"; };
+		C6C56C331579DA9B00F60F33 /* gameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameScore.h; sourceTree = "<group>"; };
+		C6C56C341579DA9C00F60F33 /* gameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gameScore.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1176,6 +1179,8 @@
 				70018D9D1541B166001FBF35 /* GamePause.mm */,
 				70018D9F1541B19C001FBF35 /* GameSky.h */,
 				70018DA01541B19C001FBF35 /* GameSky.mm */,
+				C6C56C331579DA9B00F60F33 /* gameScore.h */,
+				C6C56C341579DA9C00F60F33 /* gameScore.mm */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -1492,6 +1497,7 @@
 				700F68D51552C57300D639AE /* PropertyEntity.mm in Sources */,
 				4A7A83FD156A882900841572 /* LandCandyCache.mm in Sources */,
 				4A7A83FE156A882900841572 /* LandCandyEntity.mm in Sources */,
+				C6C56C351579DA9C00F60F33 /* gameScore.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
