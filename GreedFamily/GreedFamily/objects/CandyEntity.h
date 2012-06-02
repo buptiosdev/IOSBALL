@@ -17,6 +17,16 @@ typedef enum
 	BallType_MAX,
 } BallType;
 
+typedef enum
+{
+	PositionOne = 0,
+	PositionTwo,
+	PositionThree,
+    PositionFour,
+    PositionFive,
+	Position_MAX,
+} EnterPosition;
+
 struct CandyParam {
     
     CGPoint startPos;
@@ -59,6 +69,7 @@ struct CandyParam {
 //+(id) CandyWithType:(CandyTypes)CandyType World:(b2World *)world;
 +(id) CandyWithParam:(CandyParam)candyParam World:(b2World *)world;
 -(void)changeTheForth;
+-(void)spawn:(int)enterPosition;
 @property (assign, nonatomic) int candyType;
 @property (assign, nonatomic) CCSprite* sprite;
 //+(int) getSpawnFrequencyForCandyType:(CandyTypes)CandyType;

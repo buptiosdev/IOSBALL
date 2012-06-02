@@ -19,6 +19,8 @@
 -(void)initFstScenecache:(b2World *)world;
 -(void)initScdScenecache:(b2World *)world;
 -(void)initThrdScenecache:(b2World *)world;
+-(void)initFreeScene:(b2World *)world;
+-(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget;
 @end
 
 
@@ -47,11 +49,54 @@
 }
 
 
+//创造糖果库
+-(void) initCandyBank:(b2World *)world
+{
+    //创造糖果库数组，一个二维数组
+    candyBank = [[CCArray alloc] initWithCapacity:BallType_MAX];
+    
+    CGPoint startPos = CGPointMake(-100, -100);
+    //创建每一种糖果类型
+	for (int i = 0; i < BallType_MAX; i++)
+	{
+		//现在每一种创建5个
+		int capacity = 5;
+
+		
+		// no alloc needed since the candybank array will retain anything added to it
+		CCArray* candiesOfType = [CCArray arrayWithCapacity:capacity];
+		[candyBank addObject:candiesOfType];
+	}
+
+    //初始化每一种糖果
+    for (int i = 0; i < BallType_MAX; i++)
+	{
+		CCArray* candiesOfType = [candyBank objectAtIndex:i];
+		int numEnemiesOfType = [candiesOfType capacity];
+		
+		for (int j = 0; j < numEnemiesOfType; j++)
+		{
+            CandyEntity *candy = [self defineBall:world Type:i Pos:startPos Dynamic:YES Tag:1];
+            [candiesOfType addObject: candy];
+		}
+	}
+    
+    return;
+}
+
 -(void) initEnemiesWithWorld:(b2World *)world 
 {
+    /*初始化糖果库*/
+    [self initCandyBank:world];
     /*获取关卡号*/
     int order = [GameMainScene sharedMainScene].sceneNum;
     
+    [self initFreeScene:world];
+    
+    return;
+    
+    
+    //自由关
     switch (order) {
         case TargetSceneFstScene:
             [self initFstScenecache:world];
@@ -68,14 +113,8 @@
     }
 }
 
--(void)abc:(CGPoint)curPosition forceOut:(b2Vec2 *)force
-{
-    //CCLOG("x=%d, y=%f\n", curPosition.x, curPosition.y);
-    *force = [Helper toMeters:curPosition];
-}
 
-
--(void)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget
+-(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget
 {
     //结构体  定义糖果的各种属性
     CandyParam cacheParam = {0};
@@ -90,13 +129,51 @@
     cacheParam.ballType = ballType;
     
     CandyEntity* cache = [CandyEntity CandyWithParam:cacheParam World:world];
+    cache.sprite.visible = NO;
     [self addChild:cache z:1 tag:taget];
-    [candies addObject:cache];
+    
+    return cache;
+    //[candies addObject:cache];
 }
 
+-(void)spawnCandyOfType:(int)candyType
+{
+    srandom(time(NULL));
+    CCArray* candyOfType = [candyBank objectAtIndex:candyType];
+	
+	CandyEntity* candy;
+	CCARRAY_FOREACH(candyOfType, candy)
+    {
+        if (NO == candy.sprite.visible)
+        {
+            CCLOG(@"spawn candy type %i", candyType);
+            int enterPosition = random() % 5;
+            [candy spawn:enterPosition]; 
+            
+            return;
+        }
+    }
+    
+    return;
+}
 
+-(void)randomSpawnCandy:(ccTime)delta
+{
+    srandom(time(NULL));
+    int candyType = random() % 3;
+    [self spawnCandyOfType:candyType];
+    
+    return;
+}
 
-
+-(void)initFreeScene:(b2World *)world
+{
+    int spawnFrequency = 5;
+		
+    [self schedule:@selector(randomSpawnCandy:) interval:spawnFrequency];
+    
+    return;
+}
 
 -(void)initFstScenecache:(b2World *)world
 {
@@ -189,7 +266,7 @@
 -(void) dealloc
 {
 	[candies release];
-    
+    [candyBank release];
 	[super dealloc];
 }
 
