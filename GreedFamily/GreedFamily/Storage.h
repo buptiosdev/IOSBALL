@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "CandyEntity.h"
+#import "gameScore.h"
 
 #define StorageCount  8
 
@@ -39,8 +40,18 @@
     BOOL canCombine;
     BOOL needUpdateScore;
     
+    
+    
+    
+        
+    
+    
+    
 }
 @property (readonly, nonatomic) CCSprite* sprite;
 +(id)createStorage:(int)storageCapacity;
++(Storage *)sharedStorage;
 -(void)addFoodToStorage:(int)foodType;
+
+
 @end

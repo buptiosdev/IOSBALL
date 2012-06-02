@@ -15,7 +15,7 @@ typedef enum
     GamePauseTag,
     BagTag,
     StorageTag,
-    
+    GameScoreTag
     
 }TouchCatchTags;
 

@@ -22,6 +22,8 @@
 @implementation Storage
 @synthesize sprite = _sprite;
 
+
+
 -(void) registerWithTouchDispatcher
 {
     [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-2 swallowsTouches:YES];
@@ -35,6 +37,7 @@
 
 -(void)initScores
 {
+    //display the Type Of Score  
     CCSprite *cakeScore = [CCSprite spriteWithSpriteFrameName:@"cake3.png"];
     CCSprite *chocolateScore = [CCSprite spriteWithSpriteFrameName:@"chocolate.png"];
     CCSprite *pudingScore = [CCSprite spriteWithSpriteFrameName:@"puding2.png"];
@@ -68,6 +71,8 @@
     pudingScoreLabel.scale = 0.4;
     [self addChild:pudingScoreLabel z:-2];
     
+
+    
 }
 
 -(id)initWithCapacity:(int)capacity
@@ -88,8 +93,16 @@
         combinArray = (int *)malloc(storageCapacity*sizeof(int));
         canCombine = NO;
         
+        
+
+        //gameScore *instanceOfgameScore = [gameScore sharedgameScore];
+
+                
         [self scheduleUpdate];
         [self schedule:@selector(oneSecondCheckMax:) interval:1];
+        
+        //实时计算得分
+        [self schedule:@selector(updateGameScore:) interval:2];
     }
     
     return self;
@@ -338,6 +351,36 @@
     }
 }
 
+-(void)updateGameScore:(ccTime)delta 
+{
+    CCLOG(@"Into updateGameScore!");
+    gameScore *instanceOfgameScore = [gameScore sharedgameScore];
+    /*
+    -(void)calculateGameScore:(int)level TimesofOneTouch:(int)timesofonetouch 
+NumbersOfOneTime:(int)numbersOfOneTime 
+TheSameTypeNumOfOneTime:(int)theSameTypeNumOfOneTime
+Chocolate:(int)choclolatenum
+Cake:(int)cakenum
+Circle:(int)circlenum
+     */
+    //一次消的次数 
+    //int timesOfOneTouch;
+    //一次消除的个数（所有类型）
+    //int numbersOfOneTime;
+    //一种类型消除个数
+    //int theSameTypeNumOfOneTime;
+
+    [instanceOfgameScore calculateGameScore:1 
+                                         TimesofOneTouch:timesOfOneTouch 
+                                         NumbersOfOneTime:numbersOfOneTime 
+                                         TheSameTypeNumOfOneTime:theSameTypeNumOfOneTime 
+                                         Chocolate:foodInStorage[2] 
+                                         Cake:foodInStorage[1] 
+                                         Circle:foodInStorage[0]];
+
+}
+
+
 -(bool) isTouchForMe:(CGPoint)touchLocation
 {
     
@@ -419,4 +462,6 @@
     free(combinArray);
 	[super dealloc];
 }
+
+
 @end
