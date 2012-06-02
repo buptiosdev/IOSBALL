@@ -34,6 +34,7 @@ typedef enum
 @interface CandyCache : CCNode 
 {
 	CCArray* candies;
+    CCArray* candyBank;
 	int cacheNum;
     
 	int updateCount;

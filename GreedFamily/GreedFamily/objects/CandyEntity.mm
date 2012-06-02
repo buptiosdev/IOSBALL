@@ -200,6 +200,71 @@
     }
 }
 
+//糖果进入游戏
+-(void)spawn:(int)enterPosition
+{
+    CGPoint appearPosition;
+    CGPoint positionNew;
+    b2Vec2 enterForce;
+    srandom(time(NULL));
+    self.hitPoints = self.initialHitPoints;
+    switch (enterPosition) 
+    {
+        case PositionOne:
+            appearPosition = CGPointMake(30, 200);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(10, CCRANDOM_MINUS1_1()*10);
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionTwo:
+            appearPosition = CGPointMake(120, 320);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*10, -10);
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionThree:
+            appearPosition = CGPointMake(220, 320);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*10, -10);
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionFour:
+            appearPosition = CGPointMake(320, 320);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*10, -10);
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionFive:
+            appearPosition = CGPointMake(420, 200);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(-10, CCRANDOM_MINUS1_1()*10);
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        default:
+            break;
+    }
+}
+
 //传入结构体 初始化糖果
 -(id)initCandyWithParam:(CandyParam)CandyParam World:(b2World *)world
 {
