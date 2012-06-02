@@ -136,7 +136,7 @@
     //[candies addObject:cache];
 }
 
--(void)spawnCandyOfType:(int)candyType
+-(BOOL)spawnCandyOfType:(int)candyType
 {
     srandom(time(NULL));
     CCArray* candyOfType = [candyBank objectAtIndex:candyType];
@@ -150,18 +150,24 @@
             int enterPosition = random() % 5;
             [candy spawn:enterPosition]; 
             
-            return;
+            return YES;
         }
     }
     
-    return;
+    return NO;
 }
 
 -(void)randomSpawnCandy:(ccTime)delta
 {
     srandom(time(NULL));
-    int candyType = random() % 3;
-    [self spawnCandyOfType:candyType];
+    
+    int candyType; 
+    BOOL isCreateSuccess = NO;
+    while (!isCreateSuccess) 
+    {
+        candyType = random() % 3;
+        isCreateSuccess = [self spawnCandyOfType:candyType];
+    }
     
     return;
 }
