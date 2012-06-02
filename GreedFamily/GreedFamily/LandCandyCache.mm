@@ -10,6 +10,7 @@
 #import "LandCandyEntity.h"
 #import "TouchCatchLayer.h"
 #import "Storage.h"
+#import "NoBodyObjectsLayer.h"
 
 @implementation LandCandyCache
 
@@ -88,7 +89,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     CCLOG(@"landnum++ =%d\n",landnum);
 }
 
--(int)CheckforCandyCollision:(CCSprite *)landanimal
+-(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype
 {
     float landanimalsize = landanimal.contentSize.width;
     //float spidersize=[[spiders lastObject] texture].contentSize.width;
@@ -117,8 +118,11 @@ static LandCandyCache *instanceOfLandCandyCache;
             CCLOG(@"landnum-- =%d\n",landnum);
             [landcandies removeObjectAtIndex:i];
             //call the storage interface
-            Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
-            [storage addFoodToStorage:landcandy.ballType];
+            if(landtype == LandAnimalTag)
+            {
+                Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+                [storage addFoodToStorage:landcandy.ballType];
+            }
             
         }else{
             if(actualdistance<distance){

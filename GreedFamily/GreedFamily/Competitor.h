@@ -10,8 +10,8 @@
 #import "cocos2d.h"
 
 @interface Competitor : CCNode {
-    
+    int direction;
 }
-@property (readonly, nonatomic) CCSprite* sprite;
+@property (assign, nonatomic) CCSprite* sprite;
 +(id)CreateCompetitor;
 @end
