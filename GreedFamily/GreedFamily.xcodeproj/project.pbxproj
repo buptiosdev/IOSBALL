@@ -206,6 +206,7 @@
 		7090368A157A15A400082E10 /* gameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70903689157A15A400082E10 /* gameScore.mm */; };
 		70CBDFFF1574681300DBE24A /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE0011574681300DBE24A /* ContactListener.mm */; };
 		70CBE0021574681300DBE24A /* BodyObjectsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE0041574681300DBE24A /* BodyObjectsLayer.mm */; };
+		C6C56C351579DA9C00F60F33 /* gameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* gameScore.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -594,6 +595,8 @@
 		70903689157A15A400082E10 /* gameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gameScore.mm; sourceTree = "<group>"; };
 		70CBE0001574681300DBE24A /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = en; path = en.lproj/ContactListener.mm; sourceTree = "<group>"; };
 		70CBE0031574681300DBE24A /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = en; path = en.lproj/BodyObjectsLayer.mm; sourceTree = "<group>"; };
+		C6C56C331579DA9B00F60F33 /* gameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameScore.h; sourceTree = "<group>"; };
+		C6C56C341579DA9C00F60F33 /* gameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gameScore.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1181,6 +1184,8 @@
 				70018D9D1541B166001FBF35 /* GamePause.mm */,
 				70018D9F1541B19C001FBF35 /* GameSky.h */,
 				70018DA01541B19C001FBF35 /* GameSky.mm */,
+				C6C56C331579DA9B00F60F33 /* gameScore.h */,
+				C6C56C341579DA9C00F60F33 /* gameScore.mm */,
 			);
 			name = objects;
 			sourceTree = "<group>";
