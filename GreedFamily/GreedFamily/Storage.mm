@@ -17,6 +17,8 @@
 -(void)moveFood;
 -(void)reduceFood:(int)count Turn:(int)turn;
 -(void)oneSecondCheckMax:(ccTime)delta;
+-(void)combineMain:(int)totalNum;
+-(void)checkCombineFood;
 @end
 
 @implementation Storage
@@ -95,6 +97,79 @@
     return self;
 }
 
+//炸掉仓库
+-(void)bombStorage
+{
+    int num = [foodArray count];
+    for (int i=0;i < num; i++) 
+    {
+        [self reduceFood:i Turn:i];
+    }
+}
+
+//消除同一种颜色的球
+-(void)combinTheSameType
+{
+    int combineNum = 0;
+    BOOL isCombine = NO;
+    int sameTypeCount = 0;
+    Food *lastFood = nil;
+    Food * curFood = nil;
+    int lastType = 0;
+    int a;
+    if ([foodArray count] > 0)
+    {
+        lastFood = [foodArray objectAtIndex:[foodArray count] - 1];
+        lastType = lastFood.foodType;
+    }
+    else
+    {
+        return;
+    }
+    
+    for (int i=0;i < storageCapacity; i++)
+    {
+        if ( i >= [foodArray count])
+        {
+            break;
+        }
+        
+        curFood = [foodArray objectAtIndex:i];
+        if (curFood.foodType == lastFood.foodType) 
+        {
+            sameTypeCount++;
+            foodInStorage[curFood.foodType] += 1;
+            
+            a = i;
+            *(combinArray+combineNum) = a;
+            combineNum++;
+            
+            if (theSameTypeNumOfOneTime < sameTypeCount) 
+            {
+                theSameTypeNumOfOneTime = sameTypeCount;
+            }
+        }
+    }
+        
+    needUpdateScore = YES;
+    [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+    canCombine = YES;
+    
+    int index;
+    for (int i=0;i < combineNum; i++) 
+    {
+        index = *(combinArray + i);
+        [self reduceFood:index Turn:i];
+    }
+    
+    [self moveFood];
+    canCombine = NO;
+    
+    //消完后马上检查，为连续消做准备
+    [self checkCombineFood];
+    
+    [self combineMain:combineNum];
+}
 
 -(void)addFoodToStorage:(int)foodType
 {
@@ -103,10 +178,28 @@
         CCLOG(@"storage is alread full!\n");
         return;
     }
-    Food * food = [[Food alloc]initWithStorage:self Type:foodType Count:currentCount];
-    [foodArray insertObject:food atIndex:currentCount];
-    currentCount++;
-    [food release];
+    if (foodType < 3)
+    {
+        Food * food = [[Food alloc]initWithStorage:self Type:foodType Count:currentCount];
+        [foodArray insertObject:food atIndex:currentCount];
+        currentCount++;
+        [food release];
+    }
+    //白炸弹
+    else if (5 == foodType)
+    {
+        
+    }
+    //黑炸弹
+    else if (4 == foodType)
+    {
+        [self bombStorage];
+    }
+    //水晶球
+    else if (3 == foodType)
+    {
+        [self combinTheSameType];
+    }
 }
 
 -(void)reduceFood:(int)count Turn:(int)turn
@@ -307,6 +400,7 @@
     
     //消完后马上检查，为连续消做准备
     [self checkCombineFood];
+
 }
 
 -(void)updateScores
@@ -344,35 +438,41 @@
     return CGRectContainsPoint([self.sprite boundingBox], touchLocation);
 }
 
+-(void)combineMain:(int)totalCount
+{
+    int timesPerTouch = 0;
+    //int totalCount = 0;
+    //可以连续消
+    while (canCombine) 
+    {
+        timesPerTouch++;
+        timesOfOneTouch++;
+        [self doCombineFood:&totalCount];
+    }
+    
+    if (timesOfOneTouch < timesPerTouch) 
+    {
+        timesOfOneTouch = timesPerTouch;
+    }
+    
+    if (numbersOfOneTime < totalCount)
+    {
+        numbersOfOneTime = totalCount;
+    }
+}
+
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint location = [Helper locationFromTouch:touch];
     bool isTouchHandled = [self isTouchForMe:location]; 
-    int timesPerTouch = 0;
-    int totalCount = 0;
+
     
     if (isTouchHandled)
     {
         _sprite.color = ccRED;
         
-        //可以连续消
-        while (canCombine) 
-        {
-            timesPerTouch++;
-            timesOfOneTouch++;
-            [self doCombineFood:&totalCount];
-        }
-        
-        if (timesOfOneTouch < timesPerTouch) 
-        {
-            timesOfOneTouch = timesPerTouch;
-        }
-        
-        if (numbersOfOneTime < totalCount)
-        {
-            numbersOfOneTime = totalCount;
-        }
+        [self combineMain:0];
     }
     return isTouchHandled;
 }

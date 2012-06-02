@@ -40,6 +40,15 @@
         case BallTypeBalloom:
             spriteName=@"cake3.png";
             break;
+        case 3:
+            spriteName=@"pic_4.png";
+            break;
+        case 4:
+            spriteName=@"pic_1.png";
+            break;
+        case 5:
+            spriteName=@"pic_6.png";
+            break;
         default:
             break;
     }

@@ -19,7 +19,7 @@ typedef enum
 	PropType_MAX,
 } PropType;
 
-struct CandyParam {
+struct ProParam {
     
     CGPoint startPos;
     //b2CircleShape circleShape;
@@ -53,12 +53,13 @@ struct CandyParam {
 @interface PropertyEntity : Entity
 {
     SEL ballMove;
-    CandyParam propertyParamDef;
+    ProParam propertyParamDef;
     
 }
 +(id)createProperty:(NSInteger)propertyType World:(b2World *)world;
 +(int) getSpawnFrequencyForType:(NSInteger)type;
 -(void) moveProperty;
+@property (assign, nonatomic) int propertyType;
 @property (assign, nonatomic) CCSprite* sprite;
 //+(int) getSpawnFrequencyForCandyType:(CandyTypes)CandyType;
 //

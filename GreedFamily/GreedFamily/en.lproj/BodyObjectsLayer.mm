@@ -14,6 +14,8 @@
 #import "GameMainScene.h"
 #import "PropertyCache.h"
 #import "LandCandyCache.h"
+#import "PropertyEntity.h"
+
 
 @interface BodyObjectsLayer (PrivateMethods)
 -(void) initBox2dWorld;
@@ -198,33 +200,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //持续的给Candy加向下的力
                     
                     CCLOG(@"Into here ！糖果的血为0");
-                    //b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();
-                    //CCLOG("x=%d, y=%f\n", bodyPos.y0);
 
-                    //if (bodyPos.y<=0)
-                    //{    
-                    //    CCLOG(@"haha");
-                    //}    
-                    
-                    //CGPoint bodyPosition = [Helper toPixels:bodyPos];
-                    //CGPoint newposition = CGPointMake(0, 0);
-                    //b2Vec2 fingerPos = [Helper toMeters:newposition];
-                    
-                    //b2Vec2 bodyToFinger = fingerPos - bodyPos;
-                    //b2Vec2 bodyToFinger = fingerPos;
-                    
-                    
-                    // "Real" gravity falls off by the square over distance. Feel free to try it this way:
-                    //float distance = bodyToFinger.Normalize();
-                    //float distanceSquared = distance * distance;
-                    //b2Vec2 force = ((1.0f / distanceSquared) * 20.0f) * bodyToFinger;
-                    
-                    //b2Vec2 force = 30.0f * bodyToFinger;
-                    //body->SetTransform([Helper toMeters:positionNew], 0);
-                    
-                    //bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());
-                    
-                    //bodyNode.hitPoints=0;
                     
 //                    if(bodyNode.body->IsActive())
 //                    {
@@ -256,35 +232,23 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                 }   
                 
 
-                else
+                else if([bodyNode isKindOfClass:[PropertyEntity class]])
                 {
-                    CCLOG(@"其实是到这来了");
-                    //奇怪没到上面去
+                    int typeChange = 3;
+                    CCLOG(@"属性球");
+                    PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
+                    CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+                    //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
+                    [instanceOfLandCandyCache CreateLandCandy:(PropertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
                     
-                    b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();                    
-                    CGPoint newposition = CGPointMake(0, 0);
-                    b2Vec2 fingerPos = [Helper toMeters:newposition];
+                    //消失
+                    CGPoint positionNew = CGPointMake(-100, -100);
+                    bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
+                    bodyNode.sprite.visible = NO;
                     
-                    b2Vec2 bodyToFinger = fingerPos - bodyPos;
-                    
-                    b2Vec2 force = 30.0f * bodyToFinger;
-                    //body->SetTransform([Helper toMeters:positionNew], 0);
-                    
-                    bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());                    
-                    
-                    deadenemycnt++;
                 }
-                
-                /*
-                CGPoint positionNew = CGPointMake(-100, -100);
-                bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
-                */
-                
-                /*
-                bodyNode.sprite.visible = NO;
-                */
-                
-                //[bodyNode removeBody];
+
             } 
 		}
 	}

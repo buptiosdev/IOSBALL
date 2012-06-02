@@ -17,6 +17,7 @@
 
 
 @synthesize sprite = _sprite;
+@synthesize propertyType = _propertyType;
 
 static CCArray* spawnFrequency;
 -(void) initSpawnFrequency
@@ -69,7 +70,7 @@ static CCArray* spawnFrequency;
 	
     b2Vec2 bodyToFinger = fingerPos - bodyPos;
     
-    *force = 20 * bodyToFinger;
+    *force = 100 * bodyToFinger;
     
 }
 
@@ -101,7 +102,7 @@ static CCArray* spawnFrequency;
 	
     b2Vec2 bodyToFinger = fingerPos - bodyPos;
     
-    *force = 20 * bodyToFinger;
+    *force = 200 * bodyToFinger;
     
 }
 
@@ -133,7 +134,7 @@ static CCArray* spawnFrequency;
 	
     b2Vec2 bodyToFinger = fingerPos - bodyPos;
     
-    *force = 20 * bodyToFinger;
+    *force = 50 * bodyToFinger;
     
 }
 
@@ -198,7 +199,7 @@ static CCArray* spawnFrequency;
     ballMove = @selector(moveWhiteBomb:forceOut:);
     propertyParamDef.startPos = CGPointMake(200, 100);/*random?*/
     propertyParamDef.isDynamicBody = YES;
-    propertyParamDef.ballType = PropTypeCrystalBall;
+    propertyParamDef.ballType = PropTypeWhiteBomb;
     propertyParamDef.spriteFrameName = @"pic_6.png";
     propertyParamDef.density = 0.2;
     propertyParamDef.restitution = 1.5;
@@ -285,6 +286,7 @@ static CCArray* spawnFrequency;
                          bodyDef:&bodyDef 
                       fixtureDef:&fixtureDef]; 
         self.sprite.position = propertyParamDef.startPos;
+        self.propertyType = propertyParamDef.ballType;
         [self scheduleUpdate];
     }
     
