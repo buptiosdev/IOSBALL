@@ -11,8 +11,12 @@
 
 @interface LandAnimal : CCNode {
     int direction;
+    float speed;
+    int waitinterval;
 }
 //@property (readonly, nonatomic) CCSprite* sprite;
 @property (assign, nonatomic) CCSprite* sprite;
 +(id)CreateLandAnimal;
++(LandAnimal *)sharedLandAnimal;
+-(void)eatAction;
 @end

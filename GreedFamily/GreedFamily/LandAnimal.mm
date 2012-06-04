@@ -20,10 +20,19 @@
 	return [[[self alloc] init] autorelease];
 }
 
+static LandAnimal *instanceOfLandAnimal;
++(LandAnimal *)sharedLandAnimal
+{
+    NSAssert(nil != instanceOfLandAnimal, @"BodyObjectsLayer instance not yet initialized!");
+    
+    return instanceOfLandAnimal;
+}
+
 -(id)init
 {
     if ((self = [super init]))
 	{
+        instanceOfLandAnimal = self;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         self.sprite = [CCSprite spriteWithSpriteFrameName:@"mouse.png"];
         CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
@@ -33,8 +42,17 @@
         [self addChild:self.sprite]; 
         [self scheduleUpdate];
         direction=1;
+        speed=0.5f;
+        waitinterval=0;
     }
     return self;
+}
+
+-(void)eatAction
+{
+    waitinterval = 60;
+    CCAction* action = [CCBlink actionWithDuration:1 blinks:5];
+    [self runAction:action];
 }
 
 -(int)checkforcollsion
@@ -47,6 +65,11 @@
 
 -(void)update:(ccTime)delta
 {
+    if(waitinterval>0)
+    {
+        waitinterval--;
+        return;
+    }
     CGPoint pos=self.sprite.position;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     float imageWidthHalved = [self.sprite contentSize].width * 0.5f; 

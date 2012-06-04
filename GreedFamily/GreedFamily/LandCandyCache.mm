@@ -11,6 +11,8 @@
 #import "TouchCatchLayer.h"
 #import "Storage.h"
 #import "NoBodyObjectsLayer.h"
+#import "Competitor.h"
+#import "LandAnimal.h"
 
 @implementation LandCandyCache
 
@@ -122,6 +124,11 @@ static LandCandyCache *instanceOfLandCandyCache;
             {
                 Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
                 [storage addFoodToStorage:landcandy.ballType];
+                [[LandAnimal sharedLandAnimal]eatAction];
+            }
+            else
+            {
+                [[Competitor sharedCompetitor]eatAction];
             }
             
         }else{
