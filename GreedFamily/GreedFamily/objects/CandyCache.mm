@@ -172,13 +172,18 @@
     srandom(time(NULL));
     
     int candyType = 2; 
+    int count = 0;
     BOOL isCreateSuccess = NO;
-    while (!isCreateSuccess) 
-    {
-        //candyType = random() % 2;
-        isCreateSuccess = [self spawnCandyOfType:candyType];
-    }
     
+    for (count = 0; count < 15; count++) 
+    {
+        while (!isCreateSuccess) 
+        {
+            //candyType = random() % 2;
+            isCreateSuccess = [self spawnCandyOfType:candyType];
+        }
+    }
+
     return;
 }
 
@@ -188,11 +193,16 @@
     srandom(time(NULL));
     
     int candyType; 
+    int count = 0;
     BOOL isCreateSuccess = NO;
-    while (!isCreateSuccess) 
+    
+    for (count = 0; count < 20; count++) 
     {
-        candyType = random() % 2;
-        isCreateSuccess = [self spawnCandyOfType:candyType];
+        while (!isCreateSuccess) 
+        {
+            candyType = random() % 2;
+            isCreateSuccess = [self spawnCandyOfType:candyType];
+        }
     }
     
     return;
@@ -214,11 +224,7 @@
     [self schedule:@selector(fstScenecache:) interval:spawnFrequency];
     
     return;
-    
 }
-
-
-
 
 -(void)initScdScenecache:(b2World *)world
 {
@@ -227,7 +233,6 @@
     [self schedule:@selector(scdScenecache:) interval:spawnFrequency];
     
     return; 
-    
 }
 
 -(void)initThrdScenecache:(b2World *)world
