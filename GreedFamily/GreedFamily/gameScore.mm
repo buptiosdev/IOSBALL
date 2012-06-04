@@ -8,6 +8,17 @@
 
 #import "gameScore.h"
 
+/*
+@interface gameScore (PrivateMethods)
+-(void)updateLabelOfTotalScore:(ccTime)delta;
+@end
+*/
+
+
+
+
+
+
 
 @implementation gameScore
 
@@ -29,9 +40,9 @@ static gameScore  *instanceOfgameScore;
         //set Score Rules 
         [self setScoreSetRules];
         
-        [self scheduleUpdate];
+        //[self scheduleUpdate];
         
-        //[self schedule:@selector(updateLabelOfTotalScore:) interval:1];        
+        [self schedule:@selector(updateLabelOfTotalScore:) interval:1];        
         
     }
     
@@ -177,6 +188,16 @@ static gameScore  *instanceOfgameScore;
     
 }
 
+//update 与  [self scheduleUpdate] 对应
+-(void) update:(ccTime)delta
+{
+    CCLOG(@"Into updateLabelOfTotalScore\n");
+
+}
+
+
+
+/*
 -(void) update:(ccTime)delta
 {
     //CCLOG(@"Into updateLabelOfTotalScore\n");
@@ -185,18 +206,18 @@ static gameScore  *instanceOfgameScore;
     //CCLOG(@"temp_myscore:%d",temp_myscore);
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
 }
-
+*/
 
 
 -(void)updateLabelOfTotalScore:(ccTime)delta
 {
-    CCLOG(@"Into updateLabelOfTotalScore\n");
+    CCLOG(@"Into updateLabelOfTotalScore  哈哈哈哈\n");
 
-    /*
-       int temp_myscore;
+    
+    int temp_myscore;
     temp_myscore = [self getGameNowScore:1];
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
-    */
+    
     
 }
 
