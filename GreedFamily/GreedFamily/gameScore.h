@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "MyGameScore.h"
+/*
 struct  struct_gameScore{
     int level1NowScore;
     int level1HighestScore;
@@ -21,7 +22,7 @@ struct  struct_gameScore{
     int level5NowScore;
     int level5HighestScore;
 } ;
-
+*/
 struct  struct_gameScore_rules{
     int candy;
     int chocolate;
