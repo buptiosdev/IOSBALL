@@ -28,7 +28,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "80"
          endingLineNumber = "80"
-         landmarkName = "-defineBall:Type:Pos:Dynamic:Tag:"
+         landmarkName = "-initCandyBank:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -126,7 +126,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "53"
          endingLineNumber = "53"
-         landmarkName = "-initEnemiesWithWorld:"
+         landmarkName = "-initCandyBank:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -140,7 +140,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "54"
          endingLineNumber = "54"
-         landmarkName = "-initEnemiesWithWorld:"
+         landmarkName = "-initCandyBank:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -504,7 +504,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "205"
          endingLineNumber = "205"
-         landmarkName = "-initCandyWithParam:World:"
+         landmarkName = "-spawn:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -882,7 +882,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "53"
          endingLineNumber = "53"
-         landmarkName = "-initLandCandy:Pos:BodyVelocity:"
+         landmarkName = "-chooseBall:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -966,7 +966,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "76"
          endingLineNumber = "76"
-         landmarkName = "-update:"
+         landmarkName = "-initLandCandy:Pos:BodyVelocity:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -980,7 +980,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "77"
          endingLineNumber = "77"
-         landmarkName = "-update:"
+         landmarkName = "-initLandCandy:Pos:BodyVelocity:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -994,8 +994,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "81"
          endingLineNumber = "81"
-         landmarkName = "-update:"
-         landmarkType = "5">
+         landmarkName = "@implementation LandCandyEntity"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1008,7 +1008,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "75"
          endingLineNumber = "75"
-         landmarkName = "-update:"
+         landmarkName = "-initLandCandy:Pos:BodyVelocity:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
