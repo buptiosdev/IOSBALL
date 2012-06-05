@@ -106,8 +106,8 @@
         bodyDef.type = b2_dynamicBody;
         
         //阻力
-        bodyDef.linearDamping = 0.6f;
-        bodyDef.angularDamping = 10.0f;
+        bodyDef.linearDamping = 0.4f;
+        bodyDef.angularDamping = 100.0f;
 
         
 		b2CircleShape circleShape;

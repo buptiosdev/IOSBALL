@@ -91,11 +91,6 @@
     /*获取关卡号*/
     int order = [GameMainScene sharedMainScene].sceneNum;
     
-    [self initFreeScene:world];
-    
-    return;
-    
-    
     //自由关
     switch (order) {
         case TargetSceneFstScene:
@@ -105,7 +100,7 @@
             [self initScdScenecache:world];
             break;
         case TargetSceneThrdScene:
-            [self initThrdScenecache:world];
+            [self initFreeScene:world];
             break;
         default:
             NSAssert1(nil, @"unsupported TargetScene %i", order);
@@ -172,6 +167,47 @@
     return;
 }
 
+-(void)fstScenecache:(ccTime)delta
+{
+    srandom(time(NULL));
+    
+    int candyType = 2; 
+    int count = 0;
+    BOOL isCreateSuccess = NO;
+    
+    for (count = 0; count < 15; count++) 
+    {
+        while (!isCreateSuccess) 
+        {
+            //candyType = random() % 2;
+            isCreateSuccess = [self spawnCandyOfType:candyType];
+        }
+    }
+
+    return;
+}
+
+
+-(void)scdScenecache:(ccTime)delta
+{
+    srandom(time(NULL));
+    
+    int candyType; 
+    int count = 0;
+    BOOL isCreateSuccess = NO;
+    
+    for (count = 0; count < 20; count++) 
+    {
+        while (!isCreateSuccess) 
+        {
+            candyType = random() % 2;
+            isCreateSuccess = [self spawnCandyOfType:candyType];
+        }
+    }
+    
+    return;
+}
+
 -(void)initFreeScene:(b2World *)world
 {
     int spawnFrequency = 5;
@@ -183,54 +219,20 @@
 
 -(void)initFstScenecache:(b2World *)world
 {
-    cacheNum = 1;
-    candies = [[CCArray alloc] initWithCapacity:cacheNum];
-	CGRect screenRect = [BodyObjectsLayer screenRect];
-
-    //球出来的位置     
-    CGPoint startPos1=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 2);
+    int spawnFrequency = 5;
     
-    [self defineBall:world Type:BallTypeRandomBall Pos:startPos1 Dynamic:YES Tag:1];
-
-    //添加场景的粒子效果
-	// remove any previous particle FX
-//    [self removeChildByTag:1 cleanup:YES];    
-//    
-//    CCParticleSystem* system;    
-//    system = [CCParticleRain node];    
-//    
-//    [self addChild:system z:1 tag:15];       
+    [self schedule:@selector(fstScenecache:) interval:spawnFrequency];
     
+    return;
 }
-
-
-
 
 -(void)initScdScenecache:(b2World *)world
 {
+    int spawnFrequency = 5;
     
-    cacheNum = 2;
-    candies = [[CCArray alloc] initWithCapacity:cacheNum];
-	CGRect screenRect = [BodyObjectsLayer screenRect];
+    [self schedule:@selector(scdScenecache:) interval:spawnFrequency];
     
-    CGPoint startPos1=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 4);
-    [self defineBall:world Type:BallTypeRandomBall Pos:startPos1 Dynamic:YES Tag:1];
-    
-    CGPoint startPos2=CGPointMake(screenRect.size.width / 4, screenRect.size.height / 4);
-    [self defineBall:world Type:BallTypeKillerBall Pos:startPos2 Dynamic:YES Tag:2];
-
-    //添加场景的粒子效果
-	// remove any previous particle FX
-//    [self removeChildByTag:1 cleanup:YES];    
-//    
-//    CCParticleSystem* system;    
-//    system = [CCParticleSnow node];  
-//    
-//    [self addChild:system z:1 tag:15];       
-    
-    
-    
-    
+    return; 
 }
 
 -(void)initThrdScenecache:(b2World *)world

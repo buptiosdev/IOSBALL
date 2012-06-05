@@ -94,14 +94,18 @@
     CGPoint pos = ccpAdd(self.sprite.position, self.candyVelocity);  
     if(pos.x>rightBorderLimit){
         pos.x = rightBorderLimit;
+        //self.candyVelocity.x = -self.candyVelocity.x;
+        self.candyVelocity = CGPointMake(-self.candyVelocity.x, self.candyVelocity.y);
     }else if(pos.x<leftBorderLimit)
     {
         pos.x = leftBorderLimit;
+        //self.candyVelocity.x = -self.candyVelocity.x;
+        self.candyVelocity = CGPointMake(-self.candyVelocity.x, self.candyVelocity.y);
     }
     
     self.sprite.position = pos;
     
-    if (self.sprite.position.y <=  60) 
+    if (self.sprite.position.y <=  55) 
     {
         LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
         [landCandyCache addToLandCandies:self];

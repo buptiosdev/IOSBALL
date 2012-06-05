@@ -145,7 +145,7 @@
     candyParamDef.angularDamping = (0 == param.restitution) ? 0.1 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.5 : param.friction;
     candyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
-    candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 2 : param.initialHitPoints;
+    candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 1 : param.initialHitPoints;
 
 }
 
@@ -162,7 +162,7 @@
     candyParamDef.angularDamping = (0 == param.restitution) ? 0.5 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
     candyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
-    candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 2 : param.initialHitPoints;
+    candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 1 : param.initialHitPoints;
     
 }
 
@@ -179,7 +179,7 @@
     candyParamDef.angularDamping = (0 == param.restitution) ? 0.3 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
     candyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
-    candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 2 : param.initialHitPoints;
+    candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 1 : param.initialHitPoints;
 
 }
 
