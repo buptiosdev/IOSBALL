@@ -32,7 +32,19 @@ struct  struct_gameScore_rules{
     int Once4circle;
     
 };
-
+struct  struct_gameScore{
+    int level1NowScore;
+    int level1HighestScore;
+    int level2NowScore;
+    int level2HighestScore;
+    int level3NowScore;
+    int level3HighestScore;
+    int level4NowScore;
+    int level4HighestScore;    
+    int level5NowScore;
+    int level5HighestScore;
+    int version;
+} ;
 
 
 
@@ -58,6 +70,8 @@ struct  struct_gameScore_rules{
 
 //获得当前关卡最高得分
 -(int)getGameHighestScore:(int)level;
+
+
 
 
 //计算当前得分

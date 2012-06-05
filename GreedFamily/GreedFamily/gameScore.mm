@@ -22,6 +22,7 @@
 
 @implementation gameScore
 
+NSUserDefaults * standardUserDefaults;
 
 static gameScore  *instanceOfgameScore;
 +(gameScore *)sharedgameScore
@@ -41,6 +42,83 @@ static gameScore  *instanceOfgameScore;
         [self setScoreSetRules];
         
         //[self scheduleUpdate];
+        
+        //MyGameScore* p_sharedScrore = [MyGameScore sharedScore];
+        /*
+        p_sharedScrore = [MyGameScore sharedScore];
+        [p_sharedScrore synchronize];
+        CCLOG(@"读取到的  is %d",p_sharedScrore.data.level1HighestScore);           
+
+       my_struct_gameScore = p_sharedScrore.data;
+        int i;
+        my_struct_gameScore.level1HighestScore = 12;
+
+        p_sharedScrore.data = my_struct_gameScore;
+        
+        CCLOG(@"修改后的  is %d",p_sharedScrore.data.level1HighestScore);   
+        
+        [p_sharedScrore synchronize];
+         */
+        /*
+        NSString *saveStr1 = @"我是";   
+        NSString *saveStr2 = @"数据";   
+        int i = 3;
+        NSArray *array = [NSArray arrayWithObjects:saveStr1, saveStr2, i,nil];            
+        //Save   
+        NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];   
+        [saveDefaults setObject:array forKey:@"SaveKey"];   
+        //用于测试是否已经保存了数据   
+        saveStr1 = @"hhhhhhiiii";   
+        saveStr2 =@"mmmmmmiiii";  
+        
+        //---Load   
+        array = [saveDefaults objectForKey:@"SaveKey"];   
+        saveStr1 = [array objectAtIndex:0];   
+        saveStr2 = [array objectAtIndex:1];   
+        i = [array objectAtIndex:1];   
+        CCLOG(@"str:%@",saveStr1);   
+        CCLOG(@"astr:%@",saveStr2);  
+        CCLOG(@"astr:%@",saveStr2); 
+        */
+        
+        // create a standardUserDefaults variable
+
+        standardUserDefaults = [[MyGameScore sharedScore] standardUserDefaults];
+        
+        // saving an NSString
+        [standardUserDefaults setObject:@"mystring" forKey:@"string"];
+        
+        // saving an NSInteger
+        [standardUserDefaults setInteger:42 forKey:@"integer"];
+        
+        // saving a Double
+        [standardUserDefaults setDouble:3.1415 forKey:@"double"];
+        
+        // saving a Float
+        [standardUserDefaults setFloat:3.1415 forKey:@"float"];
+        
+        // synchronize the settings
+        [standardUserDefaults synchronize];
+        
+        
+        
+        // getting an NSString object
+        NSString *myString = [standardUserDefaults stringForKey:@"string"];
+        
+        
+
+        // getting an NSInteger object
+        NSInteger myInt = [standardUserDefaults integerForKey:@"integer"];
+             
+        
+        NSInteger level1 = [standardUserDefaults integerForKey:@"level1HighestScore"];
+        
+        CCLOG(@"level1 highest score is %d",level1);
+        
+        // getting an Float object
+        float myFloat = [standardUserDefaults floatForKey:@"float"];
+        
+        
         
         [self schedule:@selector(updateLabelOfTotalScore:) interval:1];        
         
@@ -134,7 +212,7 @@ static gameScore  *instanceOfgameScore;
         return my_struct_gameScore.level5HighestScore;
     }  
     
-    CCLOG(@"Into getGameHighestScore ERROR/n");
+    CCLOG(@"Into getGameHighestScore ERROR\n");
     return 0;
 
 }
@@ -162,6 +240,9 @@ static gameScore  *instanceOfgameScore;
         case 1:
             my_struct_gameScore.level1NowScore = tempnowscore;
             my_struct_gameScore.level1HighestScore = temphighestscore;
+            //http://codeexamples.wordpress.com/2011/02/12/nsuserdefaults-example/
+            [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temphighestscore forKey:@"level1HighestScore"];
+            //[standardUserDefaults setInteger:temphighestscore forKey:@"level1HighestScore"];
             break;
         case 2:
             my_struct_gameScore.level2NowScore = tempnowscore;
