@@ -36,18 +36,20 @@ void ContactListener::BeginContact(b2Contact* contact)
     
 	if (bodyEntityA != NULL && bodyEntityB != NULL) 
     {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
+        
         
         bodyEntityA.sprite.color = ccMAGENTA; 
         bodyEntityB.sprite.color = ccMAGENTA;
         
         if ([bodyEntityA isKindOfClass:[FlyEntity class]])
         {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
             bodyEntityB.hitPoints--;
         }
              
         else if ([bodyEntityB isKindOfClass:[FlyEntity class]]) 
         {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
             bodyEntityA.hitPoints--;
         }
 

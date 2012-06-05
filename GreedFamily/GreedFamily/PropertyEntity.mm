@@ -190,7 +190,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.5;
     propertyParamDef.radius = 0.5;
-    propertyParamDef.initialHitPoints = 2;
+    propertyParamDef.initialHitPoints = 1;
     
 }
 
@@ -207,7 +207,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.5;
     propertyParamDef.radius = 0.5;
-    propertyParamDef.initialHitPoints = 2;
+    propertyParamDef.initialHitPoints = 1;
     
 }
 
@@ -224,7 +224,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.2;
     propertyParamDef.radius = 0.5;
-    propertyParamDef.initialHitPoints = 2;
+    propertyParamDef.initialHitPoints = 1;
     
 }
 

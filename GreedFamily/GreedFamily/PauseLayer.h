@@ -15,4 +15,5 @@
 }
 +(id)createPauseLayer:(ccColor4B)color;
 - (id) initWithColor1:(ccColor4B)color;
+- (id) initWithColorLayer:(ccColor4B)color;
 @end

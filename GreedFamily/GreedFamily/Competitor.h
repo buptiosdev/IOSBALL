@@ -11,7 +11,11 @@
 
 @interface Competitor : CCNode {
     int direction;
+    float speed;
+    int waitinterval;
 }
 @property (assign, nonatomic) CCSprite* sprite;
 +(id)CreateCompetitor;
++(Competitor *)sharedCompetitor;
+-(void)eatAction;
 @end

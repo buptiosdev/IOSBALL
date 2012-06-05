@@ -16,11 +16,19 @@
 {
 	return [[[self alloc] init] autorelease];
 }
+static Competitor *instanceOfCompetitor;
++(Competitor *)sharedCompetitor
+{
+    NSAssert(nil != instanceOfCompetitor, @"BodyObjectsLayer instance not yet initialized!");
+    
+    return instanceOfCompetitor;
+}
 
 -(id)init
 {
     if ((self = [super init]))
 	{
+        instanceOfCompetitor=self;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         self.sprite = [CCSprite spriteWithSpriteFrameName:@"bear.png"];
         CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
@@ -29,9 +37,20 @@
         self.sprite.position=startPos;
         [self addChild:self.sprite]; 
         [self scheduleUpdate];
+        //CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
+        //[self runAction:action];
         direction=-1;
+        speed = 0.5f;
+        waitinterval=0;
     }
     return self;
+}
+
+-(void)eatAction
+{
+    waitinterval = 60;
+    CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
+    [self runAction:action];
 }
 
 -(int)checkforcollsion
@@ -44,6 +63,11 @@
 
 -(void)update:(ccTime)delta
 {
+    if(waitinterval>0)
+    {
+        waitinterval--;
+        return;
+    }
     CGPoint pos=self.sprite.position;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     float imageWidthHalved = [self.sprite contentSize].width * 0.5f; 
@@ -61,8 +85,9 @@
     }else if (direction==1){
         self.sprite.flipX=NO;
     }
-    pos.x+=direction*0.6;
+    pos.x+=direction*speed;
     self.sprite.position=pos;
     [self checkforcollsion];
+    return;
 }
 @end
