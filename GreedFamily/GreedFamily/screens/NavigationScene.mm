@@ -107,12 +107,20 @@
     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)mode]];
 }
 
+-(void)returnMain:(CCMenuItemLabel *)btn
+{
+	int mode = btn.tag;
+    [self removeChildByTag:mode cleanup:YES];
+    return;
+    
+}
+
 -(void)showDifficultySelection
 {
 	ccColor4B c = {0,0,0,180};
 	//CCColorLayer * difficulty = [CCColorLayer layerWithColor:c];
     CCLayerColor * difficulty=[CCLayerColor layerWithColor:c];
-	[self addChild:difficulty];
+	[self addChild:difficulty z:1 tag:TargetNavigationScen];
 	
 	CCMenuItemImage * easyBtn = [CCMenuItemImage itemFromNormalImage:@"easy.png"
 													   selectedImage:@"easy_dwn.png" 
@@ -133,16 +141,22 @@
                                                           disabledImage:@"extreme_dis.png"
                                                                  target:self
                                                                selector:@selector(selectMode:)];
+    
+    CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:30];
+    [returnLabel setColor:ccRED];
+    CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain:)];
 	
     [easyBtn setIsEnabled:YES];
 	[normalBtn setIsEnabled:YES];
     [extremeBtn setIsEnabled:YES];
+    [returnBtn setIsEnabled:YES];
 	
-	[easyBtn setTag:1];
-	[normalBtn setTag:2];
-	[extremeBtn setTag:3];
+	[easyBtn setTag:TargetSceneFstScene];
+	[normalBtn setTag:TargetSceneScdScene];
+	[extremeBtn setTag:TargetSceneThrdScene];
+    [returnBtn setTag:TargetNavigationScen];
 	
-	CCMenu * dMenu = [CCMenu menuWithItems:easyBtn,normalBtn,extremeBtn,nil];
+	CCMenu * dMenu = [CCMenu menuWithItems:easyBtn,normalBtn,extremeBtn,returnBtn,nil];
 	[dMenu alignItemsVerticallyWithPadding:10];
 	[difficulty addChild:dMenu];
 }
