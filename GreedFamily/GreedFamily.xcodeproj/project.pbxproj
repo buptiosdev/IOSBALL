@@ -11,6 +11,7 @@
 		4A78F87F1546D9EB001811B1 /* paused.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A78F87E1546D9EB001811B1 /* paused.png */; };
 		4A7A83FD156A882900841572 /* LandCandyCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A83FA156A882900841572 /* LandCandyCache.mm */; };
 		4A7A83FE156A882900841572 /* LandCandyEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A83FC156A882900841572 /* LandCandyEntity.mm */; };
+		4A7FA06F1580F4B7009A0001 /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7FA06E1580F4B7009A0001 /* LevelScene.m */; };
 		70018D9B1541B144001FBF35 /* Bag.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9A1541B144001FBF35 /* Bag.mm */; };
 		70018D9E1541B167001FBF35 /* GamePause.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9D1541B166001FBF35 /* GamePause.mm */; };
 		70018DA11541B19D001FBF35 /* GameSky.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018DA01541B19C001FBF35 /* GameSky.mm */; };
@@ -217,6 +218,8 @@
 		4A7A83FA156A882900841572 /* LandCandyCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LandCandyCache.mm; sourceTree = "<group>"; };
 		4A7A83FB156A882900841572 /* LandCandyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandCandyEntity.h; sourceTree = "<group>"; };
 		4A7A83FC156A882900841572 /* LandCandyEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LandCandyEntity.mm; sourceTree = "<group>"; };
+		4A7FA06D1580F4B7009A0001 /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
+		4A7FA06E1580F4B7009A0001 /* LevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScene.m; sourceTree = "<group>"; };
 		70018D991541B144001FBF35 /* Bag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bag.h; sourceTree = "<group>"; };
 		70018D9A1541B144001FBF35 /* Bag.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bag.mm; sourceTree = "<group>"; };
 		70018D9C1541B166001FBF35 /* GamePause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePause.h; sourceTree = "<group>"; };
@@ -1197,6 +1200,8 @@
 				706EA99F153F9AE90003C4B2 /* GameMainScene.mm */,
 				706EA9A0153F9AE90003C4B2 /* NavigationScene.h */,
 				706EA9A1153F9AE90003C4B2 /* NavigationScene.mm */,
+				4A7FA06D1580F4B7009A0001 /* LevelScene.h */,
+				4A7FA06E1580F4B7009A0001 /* LevelScene.m */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -1504,6 +1509,7 @@
 				4A7A83FE156A882900841572 /* LandCandyEntity.mm in Sources */,
 				C6C56C351579DA9C00F60F33 /* gameScore.mm in Sources */,
 				C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */,
+				4A7FA06F1580F4B7009A0001 /* LevelScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
