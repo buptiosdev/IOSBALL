@@ -39,18 +39,9 @@
     //BOOL isCombine;
     BOOL canCombine;
     BOOL needUpdateScore;
-    
-    
-    
-    
-        
-    
-    
-    
 }
 @property (readonly, nonatomic) CCSprite* sprite;
 +(id)createStorage:(int)storageCapacity;
-+(Storage *)sharedStorage;
 -(void)addFoodToStorage:(int)foodType;
 
 

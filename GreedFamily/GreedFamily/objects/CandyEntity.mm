@@ -8,6 +8,7 @@
 
 #import "CandyEntity.h"
 #import "GameBackgroundLayer.h"
+#import "BodyObjectsLayer.h"
 
 @interface CandyEntity (PrivateMethods)
 //-(void) initSpawnFrequency;
@@ -27,62 +28,70 @@
 
 -(void)moveTheBallRandom:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
-    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);	
-    CGPoint positionNew = ccpAdd(curPosition, velocity);
+    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1(), CCRANDOM_MINUS1_1());
+//    srandom(time(NULL));
+    if (curPosition.x < 50)
+    {
+        velocity.x = 2;
+    }
+    else if (curPosition.x > 410)
+    {
+        velocity.x = -2;
+    }
     
-    b2Vec2 fingerPos = [Helper toMeters:positionNew];
-    b2Vec2 bodyPos = [Helper toMeters:curPosition];
-	
-    b2Vec2 bodyToFinger = fingerPos - bodyPos;
+    if (curPosition.y < 70)
+    {
+        velocity.y = 2;
+    }
+    else if (curPosition.y > 270)
+    {
+        velocity.y = -2;
+    }
+    candyVelocity = ccpAdd(velocity, candyVelocity);
     
-    *force = 20 * bodyToFinger;
+    b2Vec2 fingerPos = [Helper toMeters:velocity];
+    
+    *force = 3 * fingerPos;
     
 }
 
 -(void)moveTheKillerBall:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
-    CGPoint velocity = CGPointMake(1.0f, CCRANDOM_MINUS1_1() * 0.1);
-    CGPoint positionNew = ccpAdd(curPosition, velocity);
-    
-    b2Vec2 fingerPos = [Helper toMeters:positionNew];
-    b2Vec2 bodyPos = [Helper toMeters:curPosition];
-	
-    b2Vec2 bodyToFinger = fingerPos - bodyPos;
-    
-    *force =  CCRANDOM_MINUS1_1() * 1000 * bodyToFinger;
+    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1(), CCRANDOM_MINUS1_1());
+//    srandom(time(NULL));
+
+    if (curPosition.y < 70)
+    {
+        velocity.y = 3;
+    }
+
+    candyVelocity = ccpAdd(velocity, candyVelocity);
+
+    b2Vec2 fingerPos = [Helper toMeters:velocity];
+
+    *force = 5 * fingerPos;
     
 }
 
 
 -(void)moveBalloom:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
-    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);	
-    if (curPosition.x < 50)
+    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1() * 3, CCRANDOM_MINUS1_1() * 4);	
+
+    if (curPosition.y < 70)
     {
-        velocity.x = 10;
+        velocity.y = 1;
     }
-    else if (curPosition.x > 430)
-    {
-        velocity.x = -10;
-    }
+
     
-    if (curPosition.y < 50)
-    {
-        velocity.y = 10;
-    }
-    else if (curPosition.y > 270)
-    {
-        velocity.y = -10;
-    }
+    candyVelocity = ccpAdd(velocity, candyVelocity);
     
-    CGPoint positionNew = ccpAdd(curPosition, velocity);
     
-    b2Vec2 fingerPos = [Helper toMeters:positionNew];
-    b2Vec2 bodyPos = [Helper toMeters:curPosition];
-	
-    b2Vec2 bodyToFinger = fingerPos - bodyPos;
+    b2Vec2 fingerPos = [Helper toMeters:velocity];
+
+
     
-    *force = 20 * bodyToFinger;
+    *force = 4 * fingerPos;
     
 }
 
@@ -103,24 +112,36 @@
 
 -(void) update:(ccTime)delta
 {
+//    if (self.sprite.visible)
+//	{
+//        b2Vec2 bodyPos = self.body->GetWorldCenter();
+//        CGPoint bodyPosition = [Helper toPixels:bodyPos];
+//        b2Vec2 force;
+//        //函数指针
+//        //void(*getForchFunc)(id, SEL, CGPoint);
+//
+//        //IMP getForchFunc = [self methodForSelector:ballMove];
+//        //getForchFunc(self, ballMove, bodyPosition, &force);
+//
+//        //  SEL a = @selector(moveTheBallRandom: forceOut:);
+//        IMP getForchFunc = [self methodForSelector:ballMove];
+//        getForchFunc(self, ballMove, bodyPosition, &force); 
+//        
+//        self.body->ApplyForce(force, self.body->GetWorldCenter());
+//        
+//	}    
     if (self.sprite.visible)
-	{
-        b2Vec2 bodyPos = self.body->GetWorldCenter();
-        CGPoint bodyPosition = [Helper toPixels:bodyPos];
-        b2Vec2 force;
-        //函数指针
-        //void(*getForchFunc)(id, SEL, CGPoint);
+    {
+        float mass = self.body->GetMass();  
+        float density = 0;  
+        density = self.body->GetFixtureList()->GetDensity();  
 
-        //IMP getForchFunc = [self methodForSelector:ballMove];
-        //getForchFunc(self, ballMove, bodyPosition, &force);
+        float volumn = mass / density;  
+        
+        // mass = rho * volumn，水的密度是1.0，  
 
-        //  SEL a = @selector(moveTheBallRandom: forceOut:);
-        IMP getForchFunc = [self methodForSelector:ballMove];
-        getForchFunc(self, ballMove, bodyPosition, &force); 
-        
-        self.body->ApplyForce(force, self.body->GetWorldCenter());
-        
-	}    
+        self.body->ApplyForce(b2Vec2(CCRANDOM_MINUS1_1() * volumn, CCRANDOM_MINUS1_1() * volumn), self.body->GetWorldCenter());    
+    }
 }
 
 
@@ -140,7 +161,7 @@
     candyParamDef.ballType = param.ballType;
     candyParamDef.spriteFrameName = @"puding2.png";
     candyParamDef.density = (0 == param.density) ? 0.5 : param.density;
-    candyParamDef.restitution = (0 == param.restitution) ? 0.7 : param.restitution;
+    candyParamDef.restitution = (0 == param.restitution) ? 1.5 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
     candyParamDef.angularDamping = (0 == param.restitution) ? 0.1 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.5 : param.friction;
@@ -157,9 +178,9 @@
     candyParamDef.ballType = param.ballType;
     candyParamDef.spriteFrameName = @"chocolate.png";
     candyParamDef.density = (0 == param.density) ? 0.8 : param.density;
-    candyParamDef.restitution = (0 == param.restitution) ? 0.6 : param.restitution;
-    candyParamDef.linearDamping = (0 == param.restitution) ? 0.5 : param.linearDamping;
-    candyParamDef.angularDamping = (0 == param.restitution) ? 0.5 : param.angularDamping;
+    candyParamDef.restitution = (0 == param.restitution) ? 0.8 : param.restitution;
+    candyParamDef.linearDamping = (0 == param.restitution) ? 0.1 : param.linearDamping;
+    candyParamDef.angularDamping = (0 == param.restitution) ? 0.1 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
     candyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
     candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 1 : param.initialHitPoints;
@@ -173,7 +194,7 @@
     candyParamDef.isDynamicBody = param.isDynamicBody;
     candyParamDef.ballType = param.ballType;
     candyParamDef.spriteFrameName = @"cake3.png";
-    candyParamDef.density = (0 == param.density) ? 0.1 : param.density;
+    candyParamDef.density = (0 == param.density) ? 0.2 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.5 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
     candyParamDef.angularDamping = (0 == param.restitution) ? 0.3 : param.angularDamping;
@@ -206,7 +227,7 @@
     CGPoint appearPosition;
     CGPoint positionNew;
     b2Vec2 enterForce;
-    srandom(time(NULL));
+//    srandom(time(NULL));
     self.hitPoints = self.initialHitPoints;
     switch (enterPosition) 
     {
@@ -215,7 +236,7 @@
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
-            positionNew = CGPointMake(10, CCRANDOM_MINUS1_1()*10);
+            positionNew = CGPointMake(5 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*5);
             enterForce = [Helper toMeters:positionNew];
             self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
             break;
@@ -225,7 +246,7 @@
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
-            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*10, -10);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*5, -5 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
             self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
             break;
@@ -235,7 +256,7 @@
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
-            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*10, -10);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*2, -2 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
             self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
             break;
@@ -245,7 +266,7 @@
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
-            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*10, -10);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*3, -3 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
             self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
             break;
@@ -255,7 +276,7 @@
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
-            positionNew = CGPointMake(-10, CCRANDOM_MINUS1_1()*10);
+            positionNew = CGPointMake(-3 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*3);
             enterForce = [Helper toMeters:positionNew];
             self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
             break;
@@ -270,6 +291,7 @@
 {
     if ((self = [super init]))
     {
+        srandom(time(NULL));
         [self initBallMove:CandyParam];
         
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];

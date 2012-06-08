@@ -40,4 +40,5 @@ typedef enum
 	int updateCount;
 }
 +(id)cache:(b2World *)world;
+@property (assign, nonatomic)BOOL isFinish;
 @end

@@ -108,7 +108,8 @@
         //阻力
         bodyDef.linearDamping = 0.4f;
         bodyDef.angularDamping = 100.0f;
-
+        //不旋转
+        bodyDef.fixedRotation = true;
         
 		b2CircleShape circleShape;
 		float radiusInMeters = (self.sprite.contentSize.width / PTM_RATIO) * 0.5f;

@@ -23,8 +23,9 @@
 -(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget;
 @end
 
-
 @implementation CandyCache
+
+@synthesize isFinish = _isFinish;
 
 +(id) cache:(b2World *)world
 {
@@ -90,7 +91,7 @@
     [self initCandyBank:world];
     /*获取关卡号*/
     int order = [GameMainScene sharedMainScene].sceneNum;
-    
+    _isFinish = NO;
     //自由关
     switch (order) {
         case TargetSceneFstScene:
@@ -155,10 +156,10 @@
 -(void)randomSpawnCandy:(ccTime)delta
 {
     srandom(time(NULL));
-    
+    int i = 0;
     int candyType; 
     BOOL isCreateSuccess = NO;
-    while (!isCreateSuccess) 
+    while (!isCreateSuccess && i < 3) 
     {
         candyType = random() % 3;
         isCreateSuccess = [self spawnCandyOfType:candyType];
@@ -170,39 +171,56 @@
 -(void)fstScenecache:(ccTime)delta
 {
     srandom(time(NULL));
-    
-    int candyType = 2; 
-    int count = 0;
+    int i = 0;
+    int candyType = 0; 
+    static int count = 0;
     BOOL isCreateSuccess = NO;
     
-    for (count = 0; count < 15; count++) 
+    if (count < 15) 
     {
-        while (!isCreateSuccess) 
+        while (!isCreateSuccess && i <3) 
         {
+            i++;
             //candyType = random() % 2;
             isCreateSuccess = [self spawnCandyOfType:candyType];
         }
+        if (isCreateSuccess)
+        {
+            count++;
+        }
+    }
+    else
+    {
+        _isFinish = YES;
     }
 
     return;
 }
 
-
 -(void)scdScenecache:(ccTime)delta
 {
     srandom(time(NULL));
-    
+    int i = 0;
     int candyType; 
-    int count = 0;
+    static int count = 0;
     BOOL isCreateSuccess = NO;
     
-    for (count = 0; count < 20; count++) 
+    if (count < 20) 
     {
-        while (!isCreateSuccess) 
+        while (!isCreateSuccess && i <3) 
         {
+            i++;
             candyType = random() % 2;
             isCreateSuccess = [self spawnCandyOfType:candyType];
         }
+        if (isCreateSuccess)
+        {
+            count++;
+        }
+    }
+    else
+    {
+        _isFinish = YES;
     }
     
     return;

@@ -62,6 +62,7 @@ struct CandyParam {
 {
     SEL ballMove;
     CandyParam candyParamDef;
+    CGPoint candyVelocity;
 
 }
 

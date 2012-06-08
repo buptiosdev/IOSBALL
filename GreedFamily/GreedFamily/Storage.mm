@@ -124,7 +124,7 @@
 -(void)combinTheSameType
 {
     int combineNum = 0;
-    BOOL isCombine = NO;
+//    BOOL isCombine = NO;
     int sameTypeCount = 0;
     Food *lastFood = nil;
     Food * curFood = nil;
