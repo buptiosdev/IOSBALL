@@ -58,7 +58,8 @@
 	switch (targetScene_)
 	{
         case TargetNavigationScen:
-            [[CCDirector sharedDirector] replaceScene:[NavigationScene sceneWithNavigationScene]];
+            //[[CCDirector sharedDirector] replaceScene:[NavigationScene sceneWithNavigationScene]];
+            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
             break;
             
 		case TargetSceneFstScene:
@@ -73,7 +74,7 @@
 			// Always warn if an unspecified enum value was used. It's a reminder for yourself to update the switch
 			// whenever you add more enum values.
 			NSAssert2(nil, @"%@: unsupported TargetScene %i", NSStringFromSelector(_cmd), targetScene_);
-            [[CCDirector sharedDirector] replaceScene:[NavigationScene sceneWithNavigationScene]];
+            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
 			break;
 	}
 	

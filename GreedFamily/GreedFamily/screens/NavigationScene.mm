@@ -6,8 +6,7 @@
 //  Copyright 2012年 __MyCompanyName__. All rights reserved.
 //
 #import "NavigationScene.h"
-//#import "GameMainScene.h"
-#import "LoadingScene.h"
+#import "LevelScene.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -101,70 +100,11 @@
     return self;
 }
 
--(void)selectMode:(CCMenuItemImage *)btn
-{
-	int mode = btn.tag;
-    [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)mode]];
-}
-
--(void)returnMain:(CCMenuItemLabel *)btn
-{
-	int mode = btn.tag;
-    [self removeChildByTag:mode cleanup:YES];
-    return;
-    
-}
-
--(void)showDifficultySelection
-{
-	ccColor4B c = {0,0,0,180};
-	//CCColorLayer * difficulty = [CCColorLayer layerWithColor:c];
-    CCLayerColor * difficulty=[CCLayerColor layerWithColor:c];
-	[self addChild:difficulty z:1 tag:TargetNavigationScen];
-	
-	CCMenuItemImage * easyBtn = [CCMenuItemImage itemFromNormalImage:@"easy.png"
-													   selectedImage:@"easy_dwn.png" 
-													   disabledImage:@"easy_dis.png"
-															  target:self
-															selector:@selector(selectMode:)];
-    
-    
-    
-	CCMenuItemImage * normalBtn = [CCMenuItemImage itemFromNormalImage:@"normal.png"
-                                                         selectedImage:@"normal_dwn.png" 
-                                                         disabledImage:@"normal_dis.png"
-                                                                target:self
-                                                              selector:@selector(selectMode:)];
-	
-	CCMenuItemImage * extremeBtn = [CCMenuItemImage itemFromNormalImage:@"extreme.png"
-                                                          selectedImage:@"extreme_dwn.png" 
-                                                          disabledImage:@"extreme_dis.png"
-                                                                 target:self
-                                                               selector:@selector(selectMode:)];
-    
-    CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:30];
-    [returnLabel setColor:ccRED];
-    CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain:)];
-	
-    [easyBtn setIsEnabled:YES];
-	[normalBtn setIsEnabled:YES];
-    [extremeBtn setIsEnabled:YES];
-    [returnBtn setIsEnabled:YES];
-	
-	[easyBtn setTag:TargetSceneFstScene];
-	[normalBtn setTag:TargetSceneScdScene];
-	[extremeBtn setTag:TargetSceneThrdScene];
-    [returnBtn setTag:TargetNavigationScen];
-	
-	CCMenu * dMenu = [CCMenu menuWithItems:easyBtn,normalBtn,extremeBtn,returnBtn,nil];
-	[dMenu alignItemsVerticallyWithPadding:10];
-	[difficulty addChild:dMenu];
-}
-
 -(void)newGame:(id)sender
 {
 	//start a new game
-    [self showDifficultySelection];
+    //[self showDifficultySelection];
+	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
 
 -(void)options:(id)sender
@@ -199,8 +139,6 @@
 +(id)sceneWithNavigationScene
 {
     return [[[self alloc] initWithNavigationScene] autorelease];
-    
-    
 }
 /*
 -(CGPoint) locationFromTouch:(UITouch*)touch
