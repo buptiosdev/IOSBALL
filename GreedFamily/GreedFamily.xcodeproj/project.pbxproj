@@ -175,6 +175,7 @@
 		701B2EAA155831270035335F /* bitmapfont.png in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA8155831270035335F /* bitmapfont.png */; };
 		701B2EB31559736A0035335F /* getscore.caf in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EB11559736A0035335F /* getscore.caf */; };
 		701B2EB41559736A0035335F /* needtouch.caf in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EB21559736A0035335F /* needtouch.caf */; };
+		705807861583CEF200C66EDE /* background_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705807851583CEF200C66EDE /* background_1.jpg */; };
 		706EA9A2153F9AE90003C4B2 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99D153F9AE90003C4B2 /* LoadingScene.mm */; };
 		706EA9A3153F9AE90003C4B2 /* GameMainScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99F153F9AE90003C4B2 /* GameMainScene.mm */; };
 		706EA9A4153F9AE90003C4B2 /* NavigationScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA9A1153F9AE90003C4B2 /* NavigationScene.mm */; };
@@ -549,6 +550,7 @@
 		701B2EA8155831270035335F /* bitmapfont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapfont.png; path = Resources/bitmapfont.png; sourceTree = "<group>"; };
 		701B2EB11559736A0035335F /* getscore.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = getscore.caf; path = Resources/getscore.caf; sourceTree = "<group>"; };
 		701B2EB21559736A0035335F /* needtouch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = needtouch.caf; path = Resources/needtouch.caf; sourceTree = "<group>"; };
+		705807851583CEF200C66EDE /* background_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_1.jpg; path = Resources/background_1.jpg; sourceTree = "<group>"; };
 		706EA99C153F9AE90003C4B2 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = screens/LoadingScene.h; sourceTree = "<group>"; };
 		706EA99D153F9AE90003C4B2 /* LoadingScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LoadingScene.mm; path = screens/LoadingScene.mm; sourceTree = "<group>"; };
 		706EA99E153F9AE90003C4B2 /* GameMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameMainScene.h; path = screens/GameMainScene.h; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				705807851583CEF200C66EDE /* background_1.jpg */,
 				701B2EB11559736A0035335F /* getscore.caf */,
 				701B2EB21559736A0035335F /* needtouch.caf */,
 				701B2EA7155831270035335F /* bitmapfont.fnt */,
@@ -1321,6 +1324,7 @@
 				701B2EAA155831270035335F /* bitmapfont.png in Resources */,
 				701B2EB31559736A0035335F /* getscore.caf in Resources */,
 				701B2EB41559736A0035335F /* needtouch.caf in Resources */,
+				705807861583CEF200C66EDE /* background_1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
