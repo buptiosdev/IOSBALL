@@ -16,6 +16,8 @@
 
 @implementation LandCandyCache
 
+@synthesize landnum = _landnum;
+
 +(id)initLandCache
 {
 	return [[[self alloc] init] autorelease];
@@ -86,20 +88,20 @@ static LandCandyCache *instanceOfLandCandyCache;
 
 -(void)addToLandCandies:(LandCandyEntity *)landCandy
 {
-    [landcandies insertObject:landCandy atIndex:landnum];
-    landnum++;
-    CCLOG(@"landnum++ =%d\n",landnum);
+    [landcandies insertObject:landCandy atIndex:_landnum];
+    _landnum++;
+    CCLOG(@"landnum++ =%d\n",_landnum);
 }
 
 -(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype
 {
-    float landanimalsize = landanimal.contentSize.width;
+    float landanimalsize = landanimal.contentSize.width * landanimal.scaleX;
     //float spidersize=[[spiders lastObject] texture].contentSize.width;
     //float collisiondistance=playersize*0.5f+spidersize*0.4f;
     //int num=[landcandies count];
     int direction = 0;
     float distance=1000;
-    for(int i=0;i<landnum;i++)
+    for(int i=0;i<_landnum;i++)
     {
         LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
         CCSprite * candy=landcandy.sprite;
@@ -108,7 +110,7 @@ static LandCandyCache *instanceOfLandCandyCache;
             continue;
         }
         
-        float candysize = candy.contentSize.width;
+        float candysize = candy.contentSize.width * candy.scaleX;
         float actualdistance=ccpDistance(landanimal.position, candy.position);
         float collisiondistance=landanimalsize*0.5f+candysize*0.4f;
         if(actualdistance<=collisiondistance)
@@ -116,8 +118,8 @@ static LandCandyCache *instanceOfLandCandyCache;
             //set the candy unvisible
             candy.visible=NO;
             
-            landnum--;
-            CCLOG(@"landnum-- =%d\n",landnum);
+            _landnum--;
+            CCLOG(@"landnum-- =%d\n",_landnum);
             [landcandies removeObjectAtIndex:i];
             //call the storage interface
             if(landtype == LandAnimalTag)
@@ -155,7 +157,7 @@ static LandCandyCache *instanceOfLandCandyCache;
         int numbers=10;
         landcandies = [[CCArray alloc]initWithCapacity:numbers];
         controlCandies = [[CCArray alloc]initWithCapacity:numbers];
-        landnum = 0;
+        _landnum = 0;
         //[self scheduleUpdate];
     }
     return self;

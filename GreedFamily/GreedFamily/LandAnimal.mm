@@ -34,10 +34,13 @@ static LandAnimal *instanceOfLandAnimal;
 	{
         instanceOfLandAnimal = self;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        self.sprite = [CCSprite spriteWithSpriteFrameName:@"mouse.png"];
-        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
+        self.sprite = [CCSprite spriteWithSpriteFrameName:@"bird-wife.png"];
+        //按照像素设定图片大小
+        self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(40)/[self.sprite contentSize].height;
+//        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
         //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
-        CGPoint startPos = CGPointMake((screenSize.width) * 0.5f, [ground contentSize].height + [self.sprite contentSize].height );
+        CGPoint startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 5);
         self.sprite.position=startPos;
         [self addChild:self.sprite]; 
         [self scheduleUpdate];

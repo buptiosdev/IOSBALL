@@ -24,6 +24,7 @@
 {
 	if ((self = [super init]))
 	{
+        int storageCapacity = 16;
 		self.theStorage = storage;
 		
 		[_theStorage addChild:self];
@@ -32,8 +33,15 @@
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         NSString *spriteName = [self getFoodSpriteName:foodType];
         _mySprite = [CCSprite spriteWithSpriteFrameName:spriteName];
-        CGPoint initPosition = CGPointMake(16 * 32 + 16, 20);
-        CGPoint moveToPosition = CGPointMake(count * 32 + 16, 20);
+        //float  contentSize  = [_mySprite contentSize].width; //得到图片的宽高
+        //按照像素设定图片大小
+        _mySprite.scaleX=(25)/[_mySprite contentSize].width; //按照像素定制图片宽高
+        _mySprite.scaleY=(25)/[_mySprite contentSize].height;
+        float widthPer = [_mySprite contentSize].width * _mySprite.scaleX;
+        float highPer = [_mySprite contentSize].height * _mySprite.scaleY;
+        CGPoint initPosition = CGPointMake(storageCapacity * widthPer 
+                                           + widthPer * 0.5, highPer * 0.5);
+        CGPoint moveToPosition = CGPointMake(count * widthPer + widthPer * 0.5, highPer * 0.5);
         _mySprite.position = initPosition;
 
 //        CCAction *moveAction = [CCSequence actions:
@@ -60,13 +68,13 @@
     switch (foodType) 
     {
         case FoodTypePuding:
-            foodSpriteName = @"puding2.png";
+            foodSpriteName = @"apple-.png";
             break;
         case FoodTypeChocolate:
-            foodSpriteName = @"chocolate.png";
+            foodSpriteName = @"cheese-.png";
             break;
         case FoodTypeCake:
-            foodSpriteName = @"cake3.png";
+            foodSpriteName = @"candy-.png";
             break;
         default:
             break;

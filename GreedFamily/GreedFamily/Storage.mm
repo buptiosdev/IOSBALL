@@ -19,6 +19,7 @@
 -(void)oneSecondCheckMax:(ccTime)delta;
 -(void)combineMain:(int)totalNum;
 -(void)checkCombineFood;
+-(void)checkLastCombineFood;
 @end
 
 @implementation Storage
@@ -40,9 +41,20 @@
 -(void)initScores
 {
     //display the Type Of Score  
-    CCSprite *cakeScore = [CCSprite spriteWithSpriteFrameName:@"cake3.png"];
-    CCSprite *chocolateScore = [CCSprite spriteWithSpriteFrameName:@"chocolate.png"];
-    CCSprite *pudingScore = [CCSprite spriteWithSpriteFrameName:@"puding2.png"];
+    CCSprite *cakeScore = [CCSprite spriteWithSpriteFrameName:@"candy-.png"];
+    CCSprite *chocolateScore = [CCSprite spriteWithSpriteFrameName:@"cheese-.png"];
+    CCSprite *pudingScore = [CCSprite spriteWithSpriteFrameName:@"apple-.png"];
+    
+    //按照像素设定图片大小
+    cakeScore.scaleX=(20)/[cakeScore contentSize].width;//按照像素定制图片宽高
+    chocolateScore.scaleX=(20)/[chocolateScore contentSize].width; //按照像素定制图片宽高
+    pudingScore.scaleX=(20)/[pudingScore contentSize].width; //按照像素定制图片宽高
+    
+    cakeScore.scaleY=(20)/[cakeScore contentSize].height;//按照像素定制图片宽高
+    chocolateScore.scaleY=(20)/[chocolateScore contentSize].height; //按照像素定制图片宽高
+    pudingScore.scaleY=(20)/[pudingScore contentSize].height; //按照像素定制图片宽高
+    
+
     
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     cakeScore.position = CGPointMake(295, screenSize.height - 20);
@@ -85,6 +97,8 @@
         storageCapacity = capacity;
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         _sprite = [CCSprite spriteWithSpriteFrameName:@"storage.png"];
+        //先不可见，后续再去掉或替换图片
+        _sprite.visible = NO;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         _sprite.position = CGPointMake(screenSize.width / 2, 20);
         [batch addChild:_sprite];
@@ -259,6 +273,44 @@
 
 }
 
+-(void)checkLastCombineFood
+{
+    int n = [foodArray count];
+    
+    if (n < 3) 
+    {
+        canCombine = NO;
+        return;
+    }
+
+    Food * curFood = nil;
+    Food * leftFood = nil;
+    Food *leftmostFood= nil;
+    leftmostFood = [foodArray objectAtIndex:n-3];
+    leftFood = [foodArray objectAtIndex:n-2];
+    if (leftFood.foodType != leftmostFood.foodType)
+    {
+        canCombine = NO;
+        return;
+    }
+    curFood = [foodArray objectAtIndex:n-1];
+    if (curFood.foodType == leftFood.foodType) 
+    {
+        if (!canCombine)
+        {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+            canCombine = YES;
+        }
+        
+    }
+    else
+    {
+        canCombine = NO;
+    }
+        
+    return;
+}
+
 -(void)moveFood
 {
     Food *curFood = nil;
@@ -274,7 +326,13 @@
         {
             continue;
         }
-        CGPoint moveToPosition = CGPointMake(i * 32 + 16, 20);
+        
+        float widthPer = [curFood.mySprite contentSize].width * curFood.mySprite.scaleX;
+        float highPer = [curFood.mySprite contentSize].height * curFood.mySprite.scaleY;
+
+        CGPoint moveToPosition = CGPointMake(i * widthPer + widthPer * 0.5, highPer * 0.5);
+        
+        
         if (!__CGPointEqualToPoint(curFood.mySprite.position, moveToPosition))
         {
 //            CCAction *moveAction = [CCSequence actions:
@@ -427,7 +485,7 @@
 
 -(void) update:(ccTime)delta
 {
-    [self checkCombineFood];
+    [self checkLastCombineFood];
     
     if (needUpdateScore)
     {

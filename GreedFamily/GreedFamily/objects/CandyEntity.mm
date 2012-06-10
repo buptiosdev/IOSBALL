@@ -159,7 +159,7 @@
     candyParamDef.startPos = param.startPos;
     candyParamDef.isDynamicBody = param.isDynamicBody;
     candyParamDef.ballType = param.ballType;
-    candyParamDef.spriteFrameName = @"puding2.png";
+    candyParamDef.spriteFrameName = @"apple+.png";
     candyParamDef.density = (0 == param.density) ? 0.5 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 1.5 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
@@ -176,7 +176,7 @@
     candyParamDef.startPos = param.startPos;
     candyParamDef.isDynamicBody = param.isDynamicBody;
     candyParamDef.ballType = param.ballType;
-    candyParamDef.spriteFrameName = @"chocolate.png";
+    candyParamDef.spriteFrameName = @"cheese+.png";
     candyParamDef.density = (0 == param.density) ? 0.8 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.8 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.1 : param.linearDamping;
@@ -193,7 +193,7 @@
     candyParamDef.startPos = param.startPos;
     candyParamDef.isDynamicBody = param.isDynamicBody;
     candyParamDef.ballType = param.ballType;
-    candyParamDef.spriteFrameName = @"cake3.png";
+    candyParamDef.spriteFrameName = @"candy+.png";
     candyParamDef.density = (0 == param.density) ? 0.2 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.5 : param.restitution;
     candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
@@ -296,6 +296,10 @@
         
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:candyParamDef.spriteFrameName];
+
+        //按照像素设定图片大小
+        self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(40)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];       
         
         hitPoints = candyParamDef.initialHitPoints;
@@ -314,7 +318,7 @@
         
         //刚体形状 
         b2CircleShape circleShape;
-        float radiusInMeters = (self.sprite.contentSize.width / PTM_RATIO) * 0.5f;
+        float radiusInMeters = (self.sprite.contentSize.width * self.sprite.scaleX / PTM_RATIO) * 0.5f;
         circleShape.m_radius = radiusInMeters;
         
         // Define the dynamic body fixture.

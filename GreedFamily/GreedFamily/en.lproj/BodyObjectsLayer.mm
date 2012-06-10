@@ -133,6 +133,15 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	return (FlyEntity*)node;
 }
 
+-(CGPoint) getFlySpeed
+{
+	CCNode* node = [self getChildByTag:FlyEntityTag];
+	NSAssert([node isKindOfClass:[FlyEntity class]], @"node is not a FlyEntity!");
+    FlyEntity *flyAnimal = (FlyEntity*)node;
+	return [flyAnimal getFlySpeed];
+}
+
+
 -(PropertyCache*) getPropertyCache
 {
 	CCNode* node = [self getChildByTag:PropCacheTag];
@@ -162,17 +171,12 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	int32 positionIterations = 1;
 	self.world->Step(timeStep, velocityIterations, positionIterations);
 	
-	// for each body, get its assigned BodyNode and update the sprite's position
-    int bodysize=0;
-    int deadenemycnt=0;
+    //int deadenemycnt=0;
 	for (b2Body* body = self.world->GetBodyList(); body != nil; body = body->GetNext())
 	{
-        bodysize++;
 		Entity* bodyNode = (Entity *)body->GetUserData();
 		if (bodyNode != NULL && bodyNode.sprite != nil && YES == bodyNode.sprite.visible)
 		{
-			// update the sprite's position to where their physics bodies are
-            //bodysize++;
 			bodyNode.sprite.position = [Helper toPixels:body->GetPosition()];
 			float angle = body->GetAngle();
 			bodyNode.sprite.rotation = -(CC_RADIANS_TO_DEGREES(angle));
@@ -200,26 +204,16 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //持续的给Candy加向下的力
                     
                     CCLOG(@"Into here ！糖果的血为0");
-
-                    
-//                    if(bodyNode.body->IsActive())
-//                    {
-//
-//                        CCLOG(@"Into IsSleepingAllowed");
-//                        LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
-//                        //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
-//                        [instanceOfLandCandyCache CreateLandCandy:1 Pos:bodyNode.position];
-//                        bodyNode.sprite.visible = NO;
-//                        
-//                    }           
-//                    
-//                    
-//                    CandyEntity* candyNode = (CandyEntity*)bodyNode;
-//                    candyNode.changeTheForth;
                     
                     CCLOG(@"调用精灵切换");
                     CandyEntity* candyNode = (CandyEntity*)bodyNode;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    
+                    CGPoint flyVelocity = [self getFlySpeed];
+                    flyVelocity = ccpMult(flyVelocity, 2);
+                    
+                    bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
+                    
                     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
                     //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
                     [instanceOfLandCandyCache CreateLandCandy:candyNode.candyType Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
@@ -231,7 +225,6 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                 }   
                 
-
                 else if([bodyNode isKindOfClass:[PropertyEntity class]])
                 {
                     int typeChange = 3;
@@ -252,11 +245,6 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
             } 
 		}
 	}
-    /*
-    if(deadenemycnt>=bodysize-2){
-        [GameMainScene sharedMainScene].isGamePass = YES;
-    }
-    */
 }
 -(void) dealloc
 {

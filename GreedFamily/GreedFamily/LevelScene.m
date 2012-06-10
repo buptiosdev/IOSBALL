@@ -59,7 +59,7 @@
         
         [easyBtn setIsEnabled:YES];
         [normalBtn setIsEnabled:YES];
-        [extremeBtn setIsEnabled:NO];
+        [extremeBtn setIsEnabled:YES];
         [returnBtn setIsEnabled:YES];
         
         [easyBtn setTag:TargetSceneFstScene];

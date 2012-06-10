@@ -119,7 +119,7 @@ static GameMainScene *instanceOfMainScene;
 	{
 		return;
 	}
-	[AppDelegate get].paused =NO;
+	[AppDelegate get].paused = NO;
 	[self onEnter];
 }
 

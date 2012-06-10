@@ -319,6 +319,11 @@
     
 }
 
+-(CGPoint)getFlySpeed
+{
+    return [Helper toPixels:self.body->GetLinearVelocity()];
+}
+
 -(void) update:(ccTime)delta
 {
     // The Player should also be stopped from going outside the screen

@@ -12,8 +12,10 @@
 @interface LandCandyCache : CCNode {
     CCArray * landcandies;
     CCArray * controlCandies;
-    int landnum;
-}
+    }
+
+@property (readonly, nonatomic) int landnum;
+
 +(id)initLandCache;
 //+(id) CreateLandCandy:(int)balltype Pos:(CGPoint)position;
 +(LandCandyCache *)sharedLandCandyCache;

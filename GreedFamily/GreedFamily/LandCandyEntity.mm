@@ -32,13 +32,13 @@
     NSString *spriteName=nil;
     switch (balltype) {
         case BallTypeRandomBall:
-            spriteName=@"puding2.png";
+            spriteName=@"apple-.png";
             break;
         case BallTypeKillerBall:
-            spriteName=@"chocolate.png";
+            spriteName=@"cheese-.png";
             break;
         case BallTypeBalloom:
-            spriteName=@"cake3.png";
+            spriteName=@"candy-.png";
             break;
         case 3:
             spriteName=@"pic_4.png";
@@ -68,6 +68,10 @@
         
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
+
+        //按照像素设定图片大小
+        self.sprite.scaleX=(30)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(30)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];
         self.sprite.position = pos;
         
@@ -105,7 +109,7 @@
     
     self.sprite.position = pos;
     
-    if (self.sprite.position.y <=  55) 
+    if (self.sprite.position.y <=  35) 
     {
         LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
         [landCandyCache addToLandCandies:self];

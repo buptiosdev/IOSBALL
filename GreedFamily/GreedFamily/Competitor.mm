@@ -30,11 +30,14 @@ static Competitor *instanceOfCompetitor;
 	{
         instanceOfCompetitor=self;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        self.sprite = [CCSprite spriteWithSpriteFrameName:@"bear.png"];
-        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
+        self.sprite = [CCSprite spriteWithSpriteFrameName:@"snake.png"];
+        //按照像素设定图片大小
+        self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+        //CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
         //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
-        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, [ground contentSize].height + [self.sprite contentSize].height );
-        self.sprite.position=startPos;
+        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, [self.sprite contentSize].height * self.sprite.scaleY);
+        self.sprite.position = startPos;
         [self addChild:self.sprite]; 
         [self scheduleUpdate];
         //CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
