@@ -128,7 +128,7 @@ static gameScore  *instanceOfgameScore;
     //addTotalScore
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     
-    CCLabelTTF* my_score = [CCLabelTTF labelWithString:@"score:" fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF* my_score = [CCLabelTTF labelWithString:@"SCORE:" fontName:@"Marker Felt" fontSize:20];
     
     my_score.color = ccc3(255,0,0);
     
@@ -136,14 +136,39 @@ static gameScore  *instanceOfgameScore;
     [self addChild:my_score]; 
     
     
+    //and HighestScore
+    
+    CCLabelTTF* my_highestscore = [CCLabelTTF labelWithString:@"BEST:" fontName:@"Marker Felt" fontSize:20];
+    
+    my_highestscore.color = ccc3(255,0,0);
+    my_highestscore.position = CGPointMake(25,screenSize.height - 46);
+    [self addChild:my_highestscore];
+    
+    
     
     
     
     totalScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt"];
-    totalScoreLabel.position = CGPointMake(60, screenSize.height - 5);
+    totalScoreLabel.position = CGPointMake(73, screenSize.height - 5);
     totalScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
     totalScoreLabel.scale = 0.3;
     [self addChild:totalScoreLabel z:-2];
+    
+    int temp_hightestscore;
+    temp_hightestscore = [self getGameHighestScore:1];
+    hightestTotalScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt" ];
+    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_hightestscore]];
+    hightestTotalScoreLabel.position = CGPointMake(73,screenSize.height - 15);
+    hightestTotalScoreLabel.anchorPoint = CGPointMake(0.5, 2.0f);
+    hightestTotalScoreLabel.scale = 0.3;
+    [self addChild:hightestTotalScoreLabel z:-2];
+    
+    
+    
+
+    
+    
+    
     
     return self;
 }
@@ -189,27 +214,34 @@ static gameScore  *instanceOfgameScore;
 }
 
 //获得当前关卡最高得分
+//Get The Score From gameScore.m
 -(int)getGameHighestScore:(int)level;
 {
+    
     if (level == 1)
     {
-        return my_struct_gameScore.level1HighestScore;
+        NSInteger level1 = [standardUserDefaults integerForKey:@"level1HighestScore"];
+        return level1;
     }
     if(level == 2)
     {
-        return my_struct_gameScore.level2HighestScore;
+        NSInteger level2 = [standardUserDefaults integerForKey:@"level2HighestScore"];        
+        return level2;
     }    
     if(level == 3)
     {
-        return my_struct_gameScore.level3HighestScore;
+        NSInteger level3 = [standardUserDefaults integerForKey:@"level3HighestScore"];        
+        return level3;
     }  
     if(level == 4)
     {
-        return my_struct_gameScore.level4HighestScore;
+        NSInteger level4 = [standardUserDefaults integerForKey:@"level4HighestScore"];        
+        return level4;
     }  
     if(level == 5)
     {
-        return my_struct_gameScore.level5HighestScore;
+        NSInteger level5 = [standardUserDefaults integerForKey:@"level5HighestScore"];        
+        return level5;
     }  
     
     CCLOG(@"Into getGameHighestScore ERROR\n");
@@ -239,10 +271,16 @@ static gameScore  *instanceOfgameScore;
     switch (level) {
         case 1:
             my_struct_gameScore.level1NowScore = tempnowscore;
-            my_struct_gameScore.level1HighestScore = temphighestscore;
-            //http://codeexamples.wordpress.com/2011/02/12/nsuserdefaults-example/
-            [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temphighestscore forKey:@"level1HighestScore"];
-            //[standardUserDefaults setInteger:temphighestscore forKey:@"level1HighestScore"];
+            //my_struct_gameScore.level1HighestScore = temphighestscore;
+            temphighestscore = [self getGameHighestScore:1];
+            CCLOG(@"temphighestscore: %d\n",temphighestscore);
+            
+            if (tempnowscore > temphighestscore) {
+
+                //http://codeexamples.wordpress.com/2011/02/12/nsuserdefaults-example/
+                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level1HighestScore"];
+                //[standardUserDefaults setInteger:temphighestscore forKey:@"level1HighestScore"];
+            }
             break;
         case 2:
             my_struct_gameScore.level2NowScore = tempnowscore;
@@ -296,9 +334,12 @@ static gameScore  *instanceOfgameScore;
 
     
     int temp_myscore;
+    int temp_highestscore;
     temp_myscore = [self getGameNowScore:1];
-    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
+    temp_highestscore = [self getGameHighestScore:1];
     
+    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
+    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temp_highestscore]];
     
 }
 
