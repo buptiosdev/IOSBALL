@@ -36,7 +36,7 @@ typedef enum
 	CCArray* candies;
     CCArray* candyBank;
 	int cacheNum;
-    
+    int candyCount;
 	int updateCount;
 }
 +(id)cache:(b2World *)world;

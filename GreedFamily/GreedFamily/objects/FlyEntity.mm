@@ -361,22 +361,34 @@
 }
 -(bool) isTouchForMe:(CGPoint)touchLocation
 {
-    
     return CGRectContainsPoint([self.sprite boundingBox], touchLocation);
 }
--(BOOL) ccTouchBeganForSky:(UITouch *)touch withEvent:(UIEvent *)event
+
+-(void) ccTouchBeganForSky2:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	fingerLocation = [Helper locationFromTouch:touch];
     
     time1 = CFAbsoluteTimeGetCurrent();
     
     fingerLocationBegin = [Helper locationFromTouch:touch];
+
+    return;
+}
+
+-(BOOL) ccTouchBeganForSky:(UITouch *)touch withEvent:(UIEvent *)event
+{
+
     bool isTouchHandled = [self isTouchForMe:fingerLocation];
-    if (isTouchHandled)
+    if (!isTouchHandled)
     {
-        //moveToFinger = YES;
-        self.sprite.color = ccYELLOW;
+
+        return isTouchHandled;
     }
+    fingerLocation = [Helper locationFromTouch:touch];
+    
+    time1 = CFAbsoluteTimeGetCurrent();
+    
+    fingerLocationBegin = [Helper locationFromTouch:touch];
     
 	return isTouchHandled;
 }

@@ -32,6 +32,7 @@
 -(BOOL) ccTouchBeganForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchMovedForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event;
+-(void) ccTouchBeganForSky2:(UITouch *)touch withEvent:(UIEvent *)event;
 -(CGPoint)getFlySpeed;
 
 @property (assign, nonatomic) CCSprite* sprite;

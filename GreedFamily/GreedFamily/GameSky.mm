@@ -28,10 +28,32 @@
 }
 
 
+
+-(bool) isTouchForMe:(CGPoint)touchLocation
+{
+    //随便设置的范围，到时再具体考量	
+    CGRect rec = CGRectMake(0, 0, 340, 440);
+    return CGRectContainsPoint(rec, touchLocation);
+}
+
+//方案1：触摸天空触发小鸟移动
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    return [flyEntity ccTouchBeganForSky:touch withEvent:event];
+    CGPoint fingerLocation = [Helper locationFromTouch:touch];
+
+    bool isTouchHandled = [self isTouchForMe:fingerLocation];
+    if (isTouchHandled) 
+    {
+        [flyEntity ccTouchBeganForSky2:touch withEvent:event];
+    }
+	return isTouchHandled;
 }
+
+//触发移动方案2：触摸小鸟触发移动
+//-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    return [flyEntity ccTouchBeganForSky:touch withEvent:event];
+//}
 
 -(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {

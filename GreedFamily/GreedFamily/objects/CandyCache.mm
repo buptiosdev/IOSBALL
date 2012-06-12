@@ -89,6 +89,7 @@
 {
     /*初始化糖果库*/
     [self initCandyBank:world];
+    candyCount = 0;
     /*获取关卡号*/
     int order = [GameMainScene sharedMainScene].sceneNum;
     _isFinish = NO;
@@ -161,6 +162,7 @@
     BOOL isCreateSuccess = NO;
     while (!isCreateSuccess && i < 3) 
     {
+        i++;
         candyType = random() % 3;
         isCreateSuccess = [self spawnCandyOfType:candyType];
     }
@@ -173,10 +175,9 @@
     srandom(time(NULL));
     int i = 0;
     int candyType = 0; 
-    static int count = 0;
     BOOL isCreateSuccess = NO;
     
-    if (count < 15) 
+    if (candyCount < 15) 
     {
         while (!isCreateSuccess && i <3) 
         {
@@ -186,7 +187,7 @@
         }
         if (isCreateSuccess)
         {
-            count++;
+            candyCount++;
         }
     }
     else
@@ -202,10 +203,9 @@
     srandom(time(NULL));
     int i = 0;
     int candyType; 
-    static int count = 0;
     BOOL isCreateSuccess = NO;
     
-    if (count < 20) 
+    if (candyCount < 20) 
     {
         while (!isCreateSuccess && i <3) 
         {
@@ -215,7 +215,7 @@
         }
         if (isCreateSuccess)
         {
-            count++;
+            candyCount++;
         }
     }
     else
