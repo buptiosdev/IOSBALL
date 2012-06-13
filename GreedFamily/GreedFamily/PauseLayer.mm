@@ -15,56 +15,27 @@
 
 +(id)createPauseLayer:(ccColor4B)color
 {
-    //return [[[PauseLayer alloc] initWithColor1:color] autorelease];
     return [[[PauseLayer alloc] initWithColorLayer:color] autorelease];
 }
 
-//- (id) initWithColor1:(ccColor4B)color{
-//    if ((self = [super initWithColor:color])) {
-//		
-//		self.isTouchEnabled=YES;
-//		
-//		CCSprite * paused = [CCSprite spriteWithFile:@"paused.png"];
-//		[paused setPosition:ccp(240,160)];
-//		[self addChild:paused];
-//		
-//    }
-//    return self;
-//}
-//
-//
-//
-//- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//	for( UITouch *touch in touches ) {
-//		CGPoint location = [touch locationInView: [touch view]];
-//		
-//		location = [[CCDirector sharedDirector] convertToGL: location];
-//		
-////		GameLayer * gl = (GameLayer *)[self.parent getChildByTag:KGameLayer];
-////		[gl resume];
-//        [[GameMainScene sharedMainScene]resume];
-//		[self.parent removeChild:self cleanup:YES];
-//	}
-//}
 
 -(void)returnGame
 {
-    [[GameMainScene sharedMainScene] resume];
+    [[GameMainScene sharedMainScene] resumeGame];
     [self.parent removeChild:self cleanup:YES];
 }
 
 -(void)returnMain
 {
 	//start a new game
-    [[GameMainScene sharedMainScene] resume];
+    [[GameMainScene sharedMainScene] resumeGame];
     [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
 }
 
 -(void)returnLevel
 {
 	//start a new game
-    [[GameMainScene sharedMainScene] resume];
+    [[GameMainScene sharedMainScene] resumeGame];
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
 

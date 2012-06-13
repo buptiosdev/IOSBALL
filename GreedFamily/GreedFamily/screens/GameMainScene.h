@@ -38,5 +38,5 @@ typedef enum
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) BOOL isGamePass;
 -(void)pauseGame;
--(void)resume;
+-(void)resumeGame;
 @end
