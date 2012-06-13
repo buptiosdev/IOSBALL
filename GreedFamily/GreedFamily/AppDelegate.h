@@ -15,7 +15,7 @@
 	RootViewController	*viewController;
     bool paused;
 }
-+(AppDelegate *) get;
++(AppDelegate *) getAppDelegate;
 
 @property(readwrite,nonatomic) bool paused;
 @property (nonatomic, retain) UIWindow *window;

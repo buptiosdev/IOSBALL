@@ -115,7 +115,7 @@
 }
 
 //add by lyp just for pause
-+(AppDelegate *) get {
++(AppDelegate *) getAppDelegate {
 	
 	return (AppDelegate *) [[UIApplication sharedApplication] delegate];
 }

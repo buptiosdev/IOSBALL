@@ -75,7 +75,7 @@ static LandAnimal *instanceOfLandAnimal;
     }
     CGPoint pos=self.sprite.position;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    float imageWidthHalved = [self.sprite contentSize].width * 0.5f; 
+    float imageWidthHalved = [self.sprite contentSize].width * self.sprite.scaleX * 0.5f; 
     float leftBorderLimit = imageWidthHalved;
     float rightBorderLimit = screenSize.width - imageWidthHalved - 30;
     
@@ -96,6 +96,7 @@ static LandAnimal *instanceOfLandAnimal;
     pos.x+=direction*0.5;
     self.sprite.position=pos;
     
+    return;
 }
 
 

@@ -90,12 +90,11 @@ static GameMainScene *instanceOfMainScene;
     return self;
 }
 
-//add lyp test for pause
 - (void) onPauseExit
 {
-	if(![AppDelegate get].paused)
+	if(![AppDelegate getAppDelegate].paused)
 	{
-		[AppDelegate get].paused = YES;
+		[AppDelegate getAppDelegate].paused = YES;
 		[super onExit];
 	}
 } 
@@ -103,24 +102,20 @@ static GameMainScene *instanceOfMainScene;
 -(void)pauseGame
 {
 	ccColor4B c = {100,100,0,100};
-	//PauseLayer * p = [[[PauseLayer alloc]initWithColor:c]autorelease];
-	//PauseLayer * p = [[[PauseLayer alloc]initWithColor:c]autorelease];
     PauseLayer * p = [PauseLayer createPauseLayer:c];
-    [self.parent addChild:p z:10];
-    //[[GameMainScene sharedMainScene] addChild:p z:10];
+    [self.parent addChild:p z:10]; 
 	[self onPauseExit];
 }
 
 
-
-- (void) resume
+- (void) resumeGame
 {
-	if(![AppDelegate get].paused)
+	if(![AppDelegate getAppDelegate].paused)
 	{
 		return;
 	}
-	[AppDelegate get].paused = NO;
-	[self onEnter];
+	[AppDelegate getAppDelegate].paused = NO;
+	[super onEnter];
 }
 
 -(void) update:(ccTime)delta
