@@ -383,7 +383,7 @@
     {
         return isTouchHandled;
     }
-    //fingerLocation = [Helper locationFromTouch:touch];
+    fingerLocation = [Helper locationFromTouch:touch];
     
     time1 = CFAbsoluteTimeGetCurrent();
     
@@ -394,8 +394,14 @@
 
 -(void) ccTouchMovedForSky:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	//fingerLocation = [Helper locationFromTouch:touch];
+	fingerLocation = [Helper locationFromTouch:touch];
     fingerLocationEnd = [Helper locationFromTouch:touch];
+//    time2 = CFAbsoluteTimeGetCurrent();
+//    float distance = ccpDistance(fingerLocationBegin, fingerLocationEnd);
+//    if (distance > 1) 
+//    {
+//        moveToFinger = YES;
+//    }
     
     
 }
