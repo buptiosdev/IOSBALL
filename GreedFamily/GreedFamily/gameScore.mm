@@ -7,7 +7,7 @@
 //
 
 #import "gameScore.h"
-
+#import "GameMainScene.h"
 /*
 @interface gameScore (PrivateMethods)
 -(void)updateLabelOfTotalScore:(ccTime)delta;
@@ -40,6 +40,11 @@ static gameScore  *instanceOfgameScore;
         
         //set Score Rules 
         [self setScoreSetRules];
+        
+        /*获取关卡号*/
+        gamelevel= [GameMainScene sharedMainScene].sceneNum;
+
+        
         
         //[self scheduleUpdate];
         
@@ -86,42 +91,43 @@ static gameScore  *instanceOfgameScore;
         standardUserDefaults = [[MyGameScore sharedScore] standardUserDefaults];
         
         // saving an NSString
-        [standardUserDefaults setObject:@"mystring" forKey:@"string"];
+        //[standardUserDefaults setObject:@"mystring" forKey:@"string"];
         
         // saving an NSInteger
-        [standardUserDefaults setInteger:42 forKey:@"integer"];
+        //[standardUserDefaults setInteger:42 forKey:@"integer"];
         
         // saving a Double
-        [standardUserDefaults setDouble:3.1415 forKey:@"double"];
+        //[standardUserDefaults setDouble:3.1415 forKey:@"double"];
         
         // saving a Float
-        [standardUserDefaults setFloat:3.1415 forKey:@"float"];
+        //[standardUserDefaults setFloat:3.1415 forKey:@"float"];
         
         // synchronize the settings
-        [standardUserDefaults synchronize];
+        //[standardUserDefaults synchronize];
         
         
         
         // getting an NSString object
-        NSString *myString = [standardUserDefaults stringForKey:@"string"];
+        //NSString *myString = [standardUserDefaults stringForKey:@"string"];
         
         
 
         // getting an NSInteger object
-        NSInteger myInt = [standardUserDefaults integerForKey:@"integer"];
+        //NSInteger myInt = [standardUserDefaults integerForKey:@"integer"];
              
         
-        NSInteger level1 = [standardUserDefaults integerForKey:@"level1HighestScore"];
+        //NSInteger level1 = [standardUserDefaults integerForKey:@"level1HighestScore"];
         
-        CCLOG(@"level1 highest score is %d",level1);
+        //CCLOG(@"level1 highest score is %d",level1);
         
         // getting an Float object
-        float myFloat = [standardUserDefaults floatForKey:@"float"];
+        //float myFloat = [standardUserDefaults floatForKey:@"float"];
         
         
         
-        [self schedule:@selector(updateLabelOfTotalScore:) interval:1];        
-        
+        //[self schedule:@selector(updateLabelOfTotalScore:) interval:1 MyFlag:1];     
+
+        [self schedule:@selector(updateLabelOfTotalScore:) interval:0.3];     
     }
     
 
@@ -265,14 +271,13 @@ static gameScore  *instanceOfgameScore;
     
     CCLOG(@"tempnowscore = %d\n",tempnowscore);   
     
-    //加入本地存储后首先进行初始化
+    
     temphighestscore = tempnowscore;
     
     switch (level) {
         case 1:
             my_struct_gameScore.level1NowScore = tempnowscore;
-            //my_struct_gameScore.level1HighestScore = temphighestscore;
-            temphighestscore = [self getGameHighestScore:1];
+            temphighestscore = [self getGameHighestScore:level];
             CCLOG(@"temphighestscore: %d\n",temphighestscore);
             
             if (tempnowscore > temphighestscore) {
@@ -284,19 +289,31 @@ static gameScore  *instanceOfgameScore;
             break;
         case 2:
             my_struct_gameScore.level2NowScore = tempnowscore;
-            my_struct_gameScore.level2HighestScore = temphighestscore;
+            temphighestscore = [self getGameHighestScore:level];
+            if(tempnowscore > temphighestscore){
+                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level2HighestScore"];                
+            }
             break;            
         case 3:
             my_struct_gameScore.level3NowScore = tempnowscore;
-            my_struct_gameScore.level3HighestScore = temphighestscore;
+            temphighestscore = [self getGameHighestScore:level];
+            if(tempnowscore > temphighestscore){
+                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level3HighestScore"];                
+            }
             break;   
         case 4:
             my_struct_gameScore.level4NowScore = tempnowscore;
-            my_struct_gameScore.level4HighestScore = temphighestscore;
+            temphighestscore = [self getGameHighestScore:level];
+            if(tempnowscore > temphighestscore){
+                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level4HighestScore"];                
+            }
             break;   
         case 5:
             my_struct_gameScore.level5NowScore = tempnowscore;
-            my_struct_gameScore.level5HighestScore = temphighestscore;
+            temphighestscore = [self getGameHighestScore:level];
+            if(tempnowscore > temphighestscore){
+                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level5HighestScore"];                
+            }
             break;               
         default:
             CCLOG(@"Into default  Meanings Something is Wrong  Check \n");
@@ -328,15 +345,15 @@ static gameScore  *instanceOfgameScore;
 */
 
 
--(void)updateLabelOfTotalScore:(ccTime)delta
+-(void)updateLabelOfTotalScore:(ccTime)delta 
 {
     CCLOG(@"Into updateLabelOfTotalScore  哈哈哈哈\n");
 
     
     int temp_myscore;
     int temp_highestscore;
-    temp_myscore = [self getGameNowScore:1];
-    temp_highestscore = [self getGameHighestScore:1];
+    temp_myscore = [self getGameNowScore:gamelevel];
+    temp_highestscore = [self getGameHighestScore:gamelevel];
     
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
     [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temp_highestscore]];

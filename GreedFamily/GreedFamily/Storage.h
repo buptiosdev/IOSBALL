@@ -39,6 +39,8 @@
     //BOOL isCombine;
     BOOL canCombine;
     BOOL needUpdateScore;
+    int gamelevel;
+    
 }
 @property (readonly, nonatomic) CCSprite* sprite;
 +(id)createStorage:(int)storageCapacity;
