@@ -32,7 +32,7 @@
 -(bool) isTouchForMe:(CGPoint)touchLocation
 {
     //随便设置的范围，到时再具体考量	
-    CGRect rec = CGRectMake(0, 0, 340, 440);
+    CGRect rec = CGRectMake(0, 0, 480, 360);
     return CGRectContainsPoint(rec, touchLocation);
 }
 

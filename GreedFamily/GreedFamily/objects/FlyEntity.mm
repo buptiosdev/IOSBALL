@@ -366,7 +366,7 @@
 
 -(void) ccTouchBeganForSky2:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	fingerLocation = [Helper locationFromTouch:touch];
+	//fingerLocation = [Helper locationFromTouch:touch];
     
     time1 = CFAbsoluteTimeGetCurrent();
     
@@ -381,10 +381,9 @@
     bool isTouchHandled = [self isTouchForMe:fingerLocation];
     if (!isTouchHandled)
     {
-
         return isTouchHandled;
     }
-    fingerLocation = [Helper locationFromTouch:touch];
+    //fingerLocation = [Helper locationFromTouch:touch];
     
     time1 = CFAbsoluteTimeGetCurrent();
     
@@ -395,16 +394,21 @@
 
 -(void) ccTouchMovedForSky:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	fingerLocation = [Helper locationFromTouch:touch];
+	//fingerLocation = [Helper locationFromTouch:touch];
     fingerLocationEnd = [Helper locationFromTouch:touch];
+    
     
 }
 
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    fingerLocationEnd = [Helper locationFromTouch:touch];
     time2 = CFAbsoluteTimeGetCurrent();
-	moveToFinger = YES;
-    self.sprite.color = ccWHITE;
+    float distance = ccpDistance(fingerLocationBegin, fingerLocationEnd);
+    if (distance > 1) 
+    {
+        moveToFinger = YES;
+    }
 }
 
 -(void) dealloc
