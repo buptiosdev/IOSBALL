@@ -11,6 +11,7 @@
 #import "SimpleAudioEngine.h"
 #import "Helper.h"
 #import "Food.h"
+#import "GameMainScene.h"
 
 @interface Storage (PrivateMethods)
 -(id)initWithCapacity:(int)storageCapacity;
@@ -94,6 +95,7 @@
     if ((self = [super init]))
     {
         //[self registerWithTouchDispatcher];
+        gamelevel= [GameMainScene sharedMainScene].sceneNum;
         storageCapacity = capacity;
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         _sprite = [CCSprite spriteWithSpriteFrameName:@"storage.png"];
@@ -118,7 +120,7 @@
         [self schedule:@selector(oneSecondCheckMax:) interval:1];
         
         //实时计算得分
-        [self schedule:@selector(updateGameScore:) interval:2];
+        [self schedule:@selector(updateGameScore:) interval:0.5];
     }
     
     return self;
@@ -522,7 +524,7 @@ Circle:(int)circlenum
     //一种类型消除个数
     //int theSameTypeNumOfOneTime;
 
-    [instanceOfgameScore calculateGameScore:1 
+    [instanceOfgameScore calculateGameScore:gamelevel 
                                          TimesofOneTouch:timesOfOneTouch 
                                          NumbersOfOneTime:numbersOfOneTime 
                                          TheSameTypeNumOfOneTime:theSameTypeNumOfOneTime 

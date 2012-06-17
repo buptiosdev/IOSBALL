@@ -56,7 +56,7 @@ struct  struct_gameScore{
     struct_gameScore my_struct_gameScore;
     CCLabelBMFont*  totalScoreLabel;
     CCLabelBMFont* hightestTotalScoreLabel;
-    
+    int gamelevel;
     
     
 }
