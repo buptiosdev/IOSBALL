@@ -9,6 +9,7 @@
 #import "Competitor.h"
 #import "LandCandyCache.h"
 #import "NoBodyObjectsLayer.h"
+#import "GameMainScene.h"
 
 @implementation Competitor
 @synthesize sprite = _sprite;
@@ -43,7 +44,7 @@ static Competitor *instanceOfCompetitor;
         //CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
         //[self runAction:action];
         direction=-1;
-        speed = 0.5f;
+        speed = [GameMainScene sharedMainScene].mainscenParam.landCompetSpeed;
         waitinterval=0;
     }
     return self;

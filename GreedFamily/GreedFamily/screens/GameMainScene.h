@@ -28,8 +28,39 @@ typedef enum
     
 }MainSceneLayerTags;
 
+
+typedef enum
+{   
+    NoTime = 0,
+    OneTime,
+    TwoTime,
+    FiveTime,
+    OneTimePer30s,
+    OneTimePer20s,
+    OneTimePer10s,
+    OneTimePer5s,
+    
+}PropertyFrequency;
+
+
+struct SceneParam 
+{
+    BOOL landCompetitorExist;
+    BOOL pend;
+    int candyCount;
+    int candyType;
+    int candyFrequency;
+    int bombFrequency;
+    int crystalFrequency;
+    float landCompetSpeed;
+    float landAnimalSpeed;
+};
+
+
+
 @interface GameMainScene : CCLayer 
 {
+    
 }
 +(id)createMainLayer:(int)order;
 +(GameMainScene*) sharedMainScene;
@@ -37,6 +68,7 @@ typedef enum
 @property (nonatomic) int sceneNum;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) BOOL isGamePass;
+@property (nonatomic) SceneParam mainscenParam;
 -(void)pauseGame;
 -(void)resumeGame;
 @end

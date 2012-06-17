@@ -10,6 +10,7 @@
 #import "GameBackgroundLayer.h"
 #import "LandCandyCache.h"
 #import "NoBodyObjectsLayer.h"
+#import "GameMainScene.h"
 
 @implementation LandAnimal
 
@@ -44,9 +45,9 @@ static LandAnimal *instanceOfLandAnimal;
         self.sprite.position=startPos;
         [self addChild:self.sprite]; 
         [self scheduleUpdate];
-        direction=1;
-        speed=0.5f;
-        waitinterval=0;
+        direction = 1;
+        speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
+        waitinterval = 0;
     }
     return self;
 }

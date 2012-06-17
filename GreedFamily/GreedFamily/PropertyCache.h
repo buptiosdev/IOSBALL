@@ -15,8 +15,12 @@
   	//CCSpriteBatchNode* batch;
 	CCArray* props;
 	int cacheNum;
-    
+    int bombNum;
+    int crystalNum;
+    int bombCount;
+    int crystalCount;
 	int updateCount;  
+    b2World *gameWorld;
 }
 
 +(id)propCache:(b2World *)world;

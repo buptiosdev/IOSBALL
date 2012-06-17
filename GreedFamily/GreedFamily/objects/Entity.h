@@ -12,6 +12,17 @@
 #import "Box2D.h"
 #import "Helper.h"
 //#import "Component.h"
+
+typedef enum
+{
+	PositionOne = 0,
+	PositionTwo,
+	PositionThree,
+    PositionFour,
+    PositionFive,
+	Position_MAX,
+} EnterPosition;
+
 @class Component;
 
 @interface Entity : CCNode 
@@ -19,6 +30,7 @@
     int initialHitPoints;
 	int hitPoints;
 }
+
 
 @property (nonatomic) b2Body* body;
 @property (assign, nonatomic) CCSprite* sprite;

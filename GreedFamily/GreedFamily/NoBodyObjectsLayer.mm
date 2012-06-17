@@ -10,6 +10,7 @@
 #import "LandAnimal.h"
 #import "Competitor.h"
 #import "LandCandyCache.h"
+#import "GameMainScene.h"
 
 @implementation NoBodyObjectsLayer
 +(id)CreateNoBodyObjectsLayer
@@ -24,8 +25,13 @@
         LandAnimal *landAnimal = [LandAnimal CreateLandAnimal];
         [self addChild:landAnimal z:1 tag:LandAnimalTag];
         
-        Competitor *competitor = [Competitor CreateCompetitor];
-        [self addChild:competitor z:1 tag:CompetitorTag];
+        BOOL isCreate = [GameMainScene sharedMainScene].mainscenParam.landCompetitorExist;
+        
+        if (isCreate)
+        {
+            Competitor *competitor = [Competitor CreateCompetitor];
+            [self addChild:competitor z:1 tag:CompetitorTag];
+        }
         
         LandCandyCache * landcandyCache = [LandCandyCache initLandCache];
         [self addChild:landcandyCache z:1 tag:LandCandyTag];

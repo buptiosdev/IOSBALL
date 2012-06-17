@@ -44,97 +44,85 @@ static CCArray* spawnFrequency;
 
 -(void)moveCrystalBall:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
-    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);	
+    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1(), CCRANDOM_MINUS1_1());
+    //    srandom(time(NULL));
     if (curPosition.x < 50)
     {
-        velocity.x = 10;
+        velocity.x = 1;
     }
-    else if (curPosition.x > 430)
+    else if (curPosition.x > 410)
     {
-        velocity.x = -10;
+        velocity.x = -1;
     }
     
-    if (curPosition.y < 50)
+    if (curPosition.y < 70)
     {
-        velocity.y = 10;
+        velocity.y = 1;
     }
     else if (curPosition.y > 270)
     {
-        velocity.y = -10;
+        velocity.y = -1;
     }
     
-    CGPoint positionNew = ccpAdd(curPosition, velocity);
+    b2Vec2 fingerPos = [Helper toMeters:velocity];
     
-    b2Vec2 fingerPos = [Helper toMeters:positionNew];
-    b2Vec2 bodyPos = [Helper toMeters:curPosition];
-	
-    b2Vec2 bodyToFinger = fingerPos - bodyPos;
-    
-    *force = 100 * bodyToFinger;
+    *force = 1 * fingerPos;
     
 }
 
 -(void)moveBlackBomb:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
-    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);	
+    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1(), CCRANDOM_MINUS1_1());
+    //    srandom(time(NULL));
     if (curPosition.x < 50)
     {
-        velocity.x = 10;
+        velocity.x = 3;
     }
-    else if (curPosition.x > 430)
+    else if (curPosition.x > 410)
     {
-        velocity.x = -10;
+        velocity.x = -3;
     }
     
-    if (curPosition.y < 50)
+    if (curPosition.y < 70)
     {
-        velocity.y = 10;
+        velocity.y = 3;
     }
     else if (curPosition.y > 270)
     {
-        velocity.y = -10;
+        velocity.y = -3;
     }
     
-    CGPoint positionNew = ccpAdd(curPosition, velocity);
+    b2Vec2 fingerPos = [Helper toMeters:velocity];
     
-    b2Vec2 fingerPos = [Helper toMeters:positionNew];
-    b2Vec2 bodyPos = [Helper toMeters:curPosition];
-	
-    b2Vec2 bodyToFinger = fingerPos - bodyPos;
-    
-    *force = 200 * bodyToFinger;
+    *force = 3 * fingerPos;
     
 }
 
 -(void)moveWhiteBomb:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
-    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1()*0.1, CCRANDOM_MINUS1_1() * 0.1);	
+    CGPoint velocity = CGPointMake(CCRANDOM_MINUS1_1(), CCRANDOM_MINUS1_1());
+    //    srandom(time(NULL));
     if (curPosition.x < 50)
     {
-        velocity.x = 10;
+        velocity.x = 2;
     }
-    else if (curPosition.x > 430)
+    else if (curPosition.x > 410)
     {
-        velocity.x = -10;
+        velocity.x = -2;
     }
     
-    if (curPosition.y < 50)
+    if (curPosition.y < 70)
     {
-        velocity.y = 10;
+        velocity.y = 2;
     }
     else if (curPosition.y > 270)
     {
-        velocity.y = -10;
+        velocity.y = -2;
     }
     
-    CGPoint positionNew = ccpAdd(curPosition, velocity);
+    b2Vec2 fingerPos = [Helper toMeters:velocity];
     
-    b2Vec2 fingerPos = [Helper toMeters:positionNew];
-    b2Vec2 bodyPos = [Helper toMeters:curPosition];
-	
-    b2Vec2 bodyToFinger = fingerPos - bodyPos;
-    
-    *force = 50 * bodyToFinger;
+    *force = 3 * fingerPos;
     
 }
 
@@ -180,7 +168,7 @@ static CCArray* spawnFrequency;
 -(void)initCrystalBall
 {
     ballMove = @selector(moveCrystalBall:forceOut:);
-    propertyParamDef.startPos = CGPointMake(200, 200);/*random?*/
+    propertyParamDef.startPos = CGPointMake(-200, -200);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeCrystalBall;
     propertyParamDef.spriteFrameName = @"pic_4.png";
@@ -197,7 +185,7 @@ static CCArray* spawnFrequency;
 -(void)initWhiteBomb
 {
     ballMove = @selector(moveWhiteBomb:forceOut:);
-    propertyParamDef.startPos = CGPointMake(200, 100);/*random?*/
+    propertyParamDef.startPos = CGPointMake(-200, -100);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeWhiteBomb;
     propertyParamDef.spriteFrameName = @"pic_6.png";
@@ -214,7 +202,7 @@ static CCArray* spawnFrequency;
 -(void)initBlackBomb
 {
     ballMove = @selector(moveBlackBomb:forceOut:);
-    propertyParamDef.startPos = CGPointMake(100, 200);/*random?*/
+    propertyParamDef.startPos = CGPointMake(-100, -200);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeBlackBomb;
     propertyParamDef.spriteFrameName = @"pic_1.png";
@@ -293,6 +281,71 @@ static CCArray* spawnFrequency;
     return self;
 }
 
+
+//进入游戏
+-(void)spawn:(int)enterPosition
+{
+    CGPoint appearPosition;
+    CGPoint positionNew;
+    b2Vec2 enterForce;
+    //    srandom(time(NULL));
+    self.hitPoints = self.initialHitPoints;
+    switch (enterPosition) 
+    {
+        case PositionOne:
+            appearPosition = CGPointMake(30, 200);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(5 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*5);
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionTwo:
+            appearPosition = CGPointMake(120, 320);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*5, -5 * CCRANDOM_0_1());
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionThree:
+            appearPosition = CGPointMake(220, 320);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*2, -2 * CCRANDOM_0_1());
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionFour:
+            appearPosition = CGPointMake(320, 320);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(CCRANDOM_MINUS1_1()*3, -3 * CCRANDOM_0_1());
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        case PositionFive:
+            appearPosition = CGPointMake(420, 200);
+            self.sprite.position = CGPoint(appearPosition);
+            self.sprite.visible = YES;
+            self.body->SetTransform([Helper toMeters:appearPosition], 0);
+            positionNew = CGPointMake(-3 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*3);
+            enterForce = [Helper toMeters:positionNew];
+            self.body->ApplyForce(enterForce, self.body->GetWorldCenter());
+            break;
+            
+        default:
+            break;
+    }
+}
 -(void) dealloc
 {
 	[spawnFrequency release];

@@ -18,13 +18,14 @@
 -(void) enableBox2dDebugDrawing;
 -initWithOrder:(int)order;
 +(id)createMainLayer:(int)order;
+-(void)initSceneParam:(int)order;
 @end
 
 @implementation GameMainScene
 @synthesize sceneNum = _sceneNum;
 @synthesize isGameOver = _isGameOver;
 @synthesize isGamePass = _isGamePass;
-
+@synthesize mainscenParam = _mainscenParam;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static GameMainScene *instanceOfMainScene;
@@ -69,7 +70,7 @@ static GameMainScene *instanceOfMainScene;
         _sceneNum = order;
         _isGameOver = NO;
         _isGamePass = NO;
-
+        [self initSceneParam:order];
         GameBackgroundLayer *gameBackgroundLayer = [GameBackgroundLayer CreateGameBackgroundLayer];
         [self addChild:gameBackgroundLayer z:-1 tag:BackGroundLayerTag];
         
@@ -89,6 +90,221 @@ static GameMainScene *instanceOfMainScene;
     
     return self;
 }
+
+
+-(void)initSceneParam:(int)order
+{
+    switch (order) {
+        case TargetScene1stScene:
+            _mainscenParam.candyCount = 10;
+            _mainscenParam.candyType = 1;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.crystalFrequency = NoTime;
+            break;
+        case TargetScene2ndScene:
+            _mainscenParam.candyCount = 15;
+            _mainscenParam.candyType = 2;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.crystalFrequency = NoTime;
+            break;
+        case TargetScene3rdScene:
+            _mainscenParam.candyCount = 20;
+            _mainscenParam.candyType = 2;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.crystalFrequency = TwoTime;
+            break;
+        case TargetScene4thScene:
+            _mainscenParam.candyCount = 20;
+            _mainscenParam.candyType = 2;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene5thScene:
+            _mainscenParam.candyCount = 25;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene6thScene:
+            _mainscenParam.candyCount = 25;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.crystalFrequency = OneTimePer20s;
+            break;
+        case TargetScene7thScene:
+            _mainscenParam.candyCount = 25;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene8thScene:
+            _mainscenParam.candyCount = 30;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = OneTimePer20s;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene9thScene:
+            _mainscenParam.candyCount = 30;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene10thScene:
+            _mainscenParam.candyCount = 30;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.3f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene11thScene:
+            _mainscenParam.candyCount = 30;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.3f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = OneTimePer20s;
+            break;
+        case TargetScene12thScene:
+            _mainscenParam.candyCount = 30;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.4f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene13thScene:
+            _mainscenParam.candyCount = 40;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.4f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene14thScene:
+            _mainscenParam.candyCount = 40;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.4f;
+            _mainscenParam.bombFrequency = OneTimePer20s;
+            _mainscenParam.crystalFrequency = OneTime;
+            break;
+        case TargetScene15thScene:
+            _mainscenParam.candyCount = 40;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = NoTime;
+            break;
+        case TargetScene16thScene:
+            _mainscenParam.candyCount = 40;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.crystalFrequency = OneTimePer20s;
+            break;
+        case TargetScene17thScene:
+            _mainscenParam.candyCount = 45;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.6f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = TwoTime;
+            break;
+        case TargetScene18thScene:
+            _mainscenParam.candyCount = 45;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 3;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.6f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = TwoTime;
+            break;
+        case TargetScene19thScene:
+            _mainscenParam.candyCount = 50;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 3;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.6f;
+            _mainscenParam.bombFrequency = OneTimePer20s;
+            _mainscenParam.crystalFrequency = TwoTime;
+            break;
+        case TargetScene20thScene:
+            _mainscenParam.candyCount = 50;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = YES;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 1.0f;
+            _mainscenParam.bombFrequency = OneTimePer30s;
+            _mainscenParam.crystalFrequency = TwoTime;
+            break;
+        default:
+            break;
+    }
+}
+
+
+
+
+
+
 
 - (void) onPauseExit
 {
@@ -117,6 +333,7 @@ static GameMainScene *instanceOfMainScene;
 	[AppDelegate getAppDelegate].paused = NO;
 	[super onEnter];
 }
+
 
 -(void) update:(ccTime)delta
 {

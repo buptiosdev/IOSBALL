@@ -56,6 +56,7 @@ struct ProParam {
     ProParam propertyParamDef;
     
 }
+-(void)spawn:(int)enterPosition;
 +(id)createProperty:(NSInteger)propertyType World:(b2World *)world;
 +(int) getSpawnFrequencyForType:(NSInteger)type;
 -(void) moveProperty;

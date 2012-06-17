@@ -17,15 +17,6 @@ typedef enum
 	BallType_MAX,
 } BallType;
 
-typedef enum
-{
-	PositionOne = 0,
-	PositionTwo,
-	PositionThree,
-    PositionFour,
-    PositionFive,
-	Position_MAX,
-} EnterPosition;
 
 struct CandyParam {
     

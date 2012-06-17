@@ -16,10 +16,7 @@
 @interface CandyCache (PrivateMethods)
 -(void)initEnemiesWithWorld:(b2World *)world;
 -(id)initWithWorld:(b2World *)world;
--(void)initFstScenecache:(b2World *)world;
--(void)initScdScenecache:(b2World *)world;
--(void)initThrdScenecache:(b2World *)world;
--(void)initFreeScene:(b2World *)world;
+-(void)initScenecache:(b2World *)world;
 -(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget;
 @end
 
@@ -90,24 +87,8 @@
     /*初始化糖果库*/
     [self initCandyBank:world];
     candyCount = 0;
-    /*获取关卡号*/
-    int order = [GameMainScene sharedMainScene].sceneNum;
     _isFinish = NO;
-    //自由关
-    switch (order) {
-        case TargetSceneFstScene:
-            [self initFstScenecache:world];
-            break;
-        case TargetSceneScdScene:
-            [self initScdScenecache:world];
-            break;
-        case TargetSceneThrdScene:
-            [self initFreeScene:world];
-            break;
-        default:
-            NSAssert1(nil, @"unsupported TargetScene %i", order);
-            break;
-    }
+    [self initScenecache:world];
 }
 
 
@@ -154,63 +135,22 @@
     return NO;
 }
 
--(void)randomSpawnCandy:(ccTime)delta
+
+-(void)sceneCache:(ccTime)delta
 {
     srandom(time(NULL));
     int i = 0;
     int candyType; 
-    BOOL isCreateSuccess = NO;
-    while (!isCreateSuccess && i < 3) 
-    {
-        i++;
-        candyType = random() % 3;
-        isCreateSuccess = [self spawnCandyOfType:candyType];
-    }
-    
-    return;
-}
-
--(void)fstScenecache:(ccTime)delta
-{
-    srandom(time(NULL));
-    int i = 0;
-    int candyType = 0; 
+    int candyTotal = [GameMainScene sharedMainScene].mainscenParam.candyCount;
+    int candyTotalType = [GameMainScene sharedMainScene].mainscenParam.candyType;
     BOOL isCreateSuccess = NO;
     
-    if (candyCount < 15) 
+    if (candyCount < candyTotal) 
     {
         while (!isCreateSuccess && i <3) 
         {
             i++;
-            //candyType = random() % 2;
-            isCreateSuccess = [self spawnCandyOfType:candyType];
-        }
-        if (isCreateSuccess)
-        {
-            candyCount++;
-        }
-    }
-    else
-    {
-        _isFinish = YES;
-    }
-
-    return;
-}
-
--(void)scdScenecache:(ccTime)delta
-{
-    srandom(time(NULL));
-    int i = 0;
-    int candyType; 
-    BOOL isCreateSuccess = NO;
-    
-    if (candyCount < 20) 
-    {
-        while (!isCreateSuccess && i <3) 
-        {
-            i++;
-            candyType = random() % 2;
+            candyType = random() % candyTotalType;
             isCreateSuccess = [self spawnCandyOfType:candyType];
         }
         if (isCreateSuccess)
@@ -226,68 +166,156 @@
     return;
 }
 
--(void)initFreeScene:(b2World *)world
+-(void)initScenecache:(b2World *)world
 {
-    int spawnFrequency = 5;
-		
-    [self schedule:@selector(randomSpawnCandy:) interval:spawnFrequency];
+    int spawnFrequency = [GameMainScene sharedMainScene].mainscenParam.candyFrequency;
+    
+    [self schedule:@selector(sceneCache:) interval:spawnFrequency];
     
     return;
 }
 
--(void)initFstScenecache:(b2World *)world
-{
-    int spawnFrequency = 5;
-    
-    [self schedule:@selector(fstScenecache:) interval:spawnFrequency];
-    
-    return;
-}
 
--(void)initScdScenecache:(b2World *)world
-{
-    int spawnFrequency = 5;
-    
-    [self schedule:@selector(scdScenecache:) interval:spawnFrequency];
-    
-    return; 
-}
-
--(void)initThrdScenecache:(b2World *)world
-{
-    cacheNum = 5;
-    candies = [[CCArray alloc] initWithCapacity:cacheNum];
-	CGRect screenRect = [BodyObjectsLayer screenRect];
-    
-    CGPoint startPos1=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 2);
-    [self defineBall:world Type:BallTypeBalloom Pos:startPos1 Dynamic:YES Tag:1];
-    
-    CGPoint startPos2=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4 * 3);
-    [self defineBall:world Type:BallTypeKillerBall Pos:startPos2 Dynamic:YES Tag:2];
-    
-    CGPoint startPos3=CGPointMake(screenRect.size.width / 4, screenRect.size.height / 4);
-    [self defineBall:world Type:BallTypeRandomBall Pos:startPos3 Dynamic:YES Tag:3];   
-    
-    CGPoint startPos4=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4);
-    [self defineBall:world Type:BallTypeKillerBall Pos:startPos4 Dynamic:YES Tag:4];
-    
-    CGPoint startPos5=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4 * 3);
-    [self defineBall:world Type:BallTypeKillerBall Pos:startPos5 Dynamic:YES Tag:5];
-    
-    CGPoint startPos6=CGPointMake(screenRect.size.width / 8 * 3, screenRect.size.height / 8 * 3);
-    [self defineBall:world Type:BallTypeKillerBall Pos:startPos6 Dynamic:YES Tag:6];
-    
-    //添加场景的粒子效果
-	// remove any previous particle FX
-//    [self removeChildByTag:1 cleanup:YES];    
+//-(void)randomSpawnCandy:(ccTime)delta
+//{
+//    srandom(time(NULL));
+//    int i = 0;
+//    int candyType; 
+//    BOOL isCreateSuccess = NO;
+//    while (!isCreateSuccess && i < 3) 
+//    {
+//        i++;
+//        candyType = random() % 3;
+//        isCreateSuccess = [self spawnCandyOfType:candyType];
+//    }
 //    
-//    CCParticleSystem* system;    
-//    system = [CCParticleGalaxy node];
+//    return;
+//}
+//
+//
+//
+//-(void)fstScenecache:(ccTime)delta
+//{
+//    srandom(time(NULL));
+//    int i = 0;
+//    int candyType = 0; 
+//    BOOL isCreateSuccess = NO;
 //    
-//    [self addChild:system z:1 tag:15]; 
-    
-    
-}
+//    if (candyCount < 15) 
+//    {
+//        while (!isCreateSuccess && i <3) 
+//        {
+//            i++;
+//            //candyType = random() % 2;
+//            isCreateSuccess = [self spawnCandyOfType:candyType];
+//        }
+//        if (isCreateSuccess)
+//        {
+//            candyCount++;
+//        }
+//    }
+//    else
+//    {
+//        _isFinish = YES;
+//    }
+//
+//    return;
+//}
+//
+//-(void)scdScenecache:(ccTime)delta
+//{
+//    srandom(time(NULL));
+//    int i = 0;
+//    int candyType; 
+//    BOOL isCreateSuccess = NO;
+//    
+//    if (candyCount < 20) 
+//    {
+//        while (!isCreateSuccess && i <3) 
+//        {
+//            i++;
+//            candyType = random() % 2;
+//            isCreateSuccess = [self spawnCandyOfType:candyType];
+//        }
+//        if (isCreateSuccess)
+//        {
+//            candyCount++;
+//        }
+//    }
+//    else
+//    {
+//        _isFinish = YES;
+//    }
+//    
+//    return;
+//}
+//
+//
+//
+//-(void)initFreeScene:(b2World *)world
+//{
+//    int spawnFrequency = 5;
+//		
+//    [self schedule:@selector(randomSpawnCandy:) interval:spawnFrequency];
+//    
+//    return;
+//}
+//
+//-(void)initFstScenecache:(b2World *)world
+//{
+//    int spawnFrequency = 5;
+//    
+//    [self schedule:@selector(fstScenecache:) interval:spawnFrequency];
+//    
+//    return;
+//}
+//
+//
+//
+//-(void)initScdScenecache:(b2World *)world
+//{
+//    int spawnFrequency = 5;
+//    
+//    [self schedule:@selector(scdScenecache:) interval:spawnFrequency];
+//    
+//    return; 
+//}
+//
+//-(void)initThrdScenecache:(b2World *)world
+//{
+//    cacheNum = 5;
+//    candies = [[CCArray alloc] initWithCapacity:cacheNum];
+//	CGRect screenRect = [BodyObjectsLayer screenRect];
+//    
+//    CGPoint startPos1=CGPointMake(screenRect.size.width / 2, screenRect.size.height / 2);
+//    [self defineBall:world Type:BallTypeBalloom Pos:startPos1 Dynamic:YES Tag:1];
+//    
+//    CGPoint startPos2=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4 * 3);
+//    [self defineBall:world Type:BallTypeKillerBall Pos:startPos2 Dynamic:YES Tag:2];
+//    
+//    CGPoint startPos3=CGPointMake(screenRect.size.width / 4, screenRect.size.height / 4);
+//    [self defineBall:world Type:BallTypeRandomBall Pos:startPos3 Dynamic:YES Tag:3];   
+//    
+//    CGPoint startPos4=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4);
+//    [self defineBall:world Type:BallTypeKillerBall Pos:startPos4 Dynamic:YES Tag:4];
+//    
+//    CGPoint startPos5=CGPointMake(screenRect.size.width / 4 * 3, screenRect.size.height / 4 * 3);
+//    [self defineBall:world Type:BallTypeKillerBall Pos:startPos5 Dynamic:YES Tag:5];
+//    
+//    CGPoint startPos6=CGPointMake(screenRect.size.width / 8 * 3, screenRect.size.height / 8 * 3);
+//    [self defineBall:world Type:BallTypeKillerBall Pos:startPos6 Dynamic:YES Tag:6];
+//    
+//    //添加场景的粒子效果
+//	// remove any previous particle FX
+////    [self removeChildByTag:1 cleanup:YES];    
+////    
+////    CCParticleSystem* system;    
+////    system = [CCParticleGalaxy node];
+////    
+////    [self addChild:system z:1 tag:15]; 
+//    
+//    
+//}
 
 -(void) dealloc
 {

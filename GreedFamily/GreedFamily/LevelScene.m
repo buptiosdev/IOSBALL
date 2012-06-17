@@ -62,9 +62,9 @@
         [extremeBtn setIsEnabled:YES];
         [returnBtn setIsEnabled:YES];
         
-        [easyBtn setTag:TargetSceneFstScene];
-        [normalBtn setTag:TargetSceneScdScene];
-        [extremeBtn setTag:TargetSceneThrdScene];
+        [easyBtn setTag:TargetScene1stScene];
+        [normalBtn setTag:TargetScene2ndScene];
+        [extremeBtn setTag:TargetScene3rdScene];
         //[returnBtn setTag:TargetNavigationScen];
         
         CCMenu * dMenu = [CCMenu menuWithItems:easyBtn,normalBtn,extremeBtn,returnBtn,nil];
