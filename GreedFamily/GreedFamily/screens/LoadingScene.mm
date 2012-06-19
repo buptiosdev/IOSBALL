@@ -55,28 +55,36 @@
 	
 	// Decide which scene to load based on the TargetScenes enum.
 	// You could also use TargetScene to load the same with using a variety of transitions.
-	switch (targetScene_)
-	{
-        case TargetNavigationScen:
-            //[[CCDirector sharedDirector] replaceScene:[NavigationScene sceneWithNavigationScene]];
-            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
-            break;
-            
-		case TargetScene1stScene:
-		case TargetScene2ndScene:
-        case TargetScene3rdScene:
-			//[[CCDirector sharedDirector] replaceScene:[GameMainScene createMainLayer:targetScene_]];
-            [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
-			break;
-
-			
-		default:
-			// Always warn if an unspecified enum value was used. It's a reminder for yourself to update the switch
-			// whenever you add more enum values.
-			NSAssert2(nil, @"%@: unsupported TargetScene %i", NSStringFromSelector(_cmd), targetScene_);
-            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
-			break;
-	}
+//	switch (targetScene_)
+//	{
+//        case TargetNavigationScen:
+//            //[[CCDirector sharedDirector] replaceScene:[NavigationScene sceneWithNavigationScene]];
+//            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+//            break;
+//            
+//		case TargetScene1stScene:
+//		case TargetScene2ndScene:
+//        case TargetScene3rdScene:
+//			//[[CCDirector sharedDirector] replaceScene:[GameMainScene createMainLayer:targetScene_]];
+//            [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
+//			break;
+//
+//			
+//		default:
+//			// Always warn if an unspecified enum value was used. It's a reminder for yourself to update the switch
+//			// whenever you add more enum values.
+//			NSAssert2(nil, @"%@: unsupported TargetScene %i", NSStringFromSelector(_cmd), targetScene_);
+//            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+//			break;
+//	}
+    if(targetScene_>=TargetNavigationScen||targetScene_<=TargetSceneINVALID)
+    {
+        [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    }
+    else
+    {
+        [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
+    }
 	
 }
 
