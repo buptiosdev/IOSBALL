@@ -70,16 +70,20 @@
             [self createBombTimes];
             break;    
         case OneTimePer5s:
-            [self schedule:@selector(propertiesspawn:) interval:5];
+            bombNum = 5;
+            [self schedule:@selector(bombFrequency:) interval:5];
             break;
         case OneTimePer10s:
-            [self schedule:@selector(propertiesspawn:) interval:10];
+            bombNum = 5;
+            [self schedule:@selector(bombFrequency:) interval:10];
             break;
         case OneTimePer20s:
-            [self schedule:@selector(propertiesspawn:) interval:20];
+            bombNum = 5;
+            [self schedule:@selector(bombFrequency:) interval:20];
             break;
         case OneTimePer30s:
-            [self schedule:@selector(propertiesspawn:) interval:30];
+            bombNum = 5;
+            [self schedule:@selector(bombFrequency:) interval:30];
             break;
         default:
             break;
@@ -102,16 +106,20 @@
             [self createCrystalTimes];
             break;    
         case OneTimePer5s:
-            [self schedule:@selector(propertiesspawn:) interval:5];
+            crystalNum = 5;
+            [self schedule:@selector(crystalFrequency:) interval:5];
             break;
         case OneTimePer10s:
-            [self schedule:@selector(propertiesspawn:) interval:10];
+            crystalNum = 5;
+            [self schedule:@selector(crystalFrequency:) interval:10];
             break;
         case OneTimePer20s:
-            [self schedule:@selector(propertiesspawn:) interval:20];
+            crystalNum = 5;
+            [self schedule:@selector(crystalFrequency:) interval:20];
             break;
         case OneTimePer30s:
-            [self schedule:@selector(propertiesspawn:) interval:30];
+            crystalNum = 5;
+            [self schedule:@selector(crystalFrequency:) interval:30];
             break;
         default:
             break;
@@ -154,7 +162,7 @@
 
 -(void)crystalFrequency:(ccTime)delta
 {
-    if (crystalCount < crystalNum || bombNum == 1) 
+    if (crystalCount < crystalNum || bombNum == 0) 
     {
         [self addOneProperty:0 World:gameWorld Tag:0];
         crystalCount++;
