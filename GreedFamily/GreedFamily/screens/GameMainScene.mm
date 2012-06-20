@@ -13,6 +13,7 @@
 #import "ObjectsLayer.h"
 #import "PauseLayer.h"
 #import "AppDelegate.h"
+#import "ResultLayer.h"
 
 @interface GameMainScene (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
@@ -321,6 +322,9 @@ static GameMainScene *instanceOfMainScene;
     PauseLayer * p = [PauseLayer createPauseLayer:c];
     [self.parent addChild:p z:10]; 
 	[self onPauseExit];
+//   test for resultlayer    
+//    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)100 AddScore:(int)50];
+//    [self.parent addChild:p z:10]; 
 }
 
 
