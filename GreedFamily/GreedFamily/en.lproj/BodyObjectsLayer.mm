@@ -86,7 +86,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	
 	// for the ground body we'll need these values
 	CGSize screenSize = [CCDirector sharedDirector].winSize;
-	float widthInMeters = (screenSize.width - 32) / PTM_RATIO;
+	float widthInMeters = (screenSize.width) / PTM_RATIO;
 	float heightInMeters = screenSize.height / PTM_RATIO;
 	b2Vec2 lowerLeftCorner = b2Vec2(0, 60/PTM_RATIO);
 	b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 60/PTM_RATIO);
@@ -180,6 +180,12 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 			bodyNode.sprite.position = [Helper toPixels:body->GetPosition()];
 			float angle = body->GetAngle();
 			bodyNode.sprite.rotation = -(CC_RADIANS_TO_DEGREES(angle));
+            
+            if ([bodyNode isKindOfClass:[CandyEntity class]] && 1 == bodyNode.hitPoints)
+            {
+                CandyEntity* candyNode = (CandyEntity*)bodyNode;
+                candyNode.cover.visible = NO;
+            }
             
             if (bodyNode.hitPoints <= 0)
             {

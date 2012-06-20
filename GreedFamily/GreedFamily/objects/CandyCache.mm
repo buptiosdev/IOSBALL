@@ -16,8 +16,10 @@
 @interface CandyCache (PrivateMethods)
 -(void)initEnemiesWithWorld:(b2World *)world;
 -(id)initWithWorld:(b2World *)world;
+-(void)initCandyBank:(b2World *)world InvisibaleNum:(int)invisibaleNum;
 -(void)initScenecache:(b2World *)world;
--(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget;
+-(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Blood:(int)blood
+        Dynamic:(BOOL)isDynamicBody Tag:(int)taget;
 @end
 
 @implementation CandyCache
@@ -48,8 +50,9 @@
 
 
 //创造糖果库
--(void) initCandyBank:(b2World *)world
+-(void) initCandyBank:(b2World *)world InvisibaleNum:(int)invisibaleNum
 {
+    int blood = 1;
     //创造糖果库数组，一个二维数组
     candyBank = [[CCArray alloc] initWithCapacity:BallType_MAX];
     
@@ -60,7 +63,7 @@
 		//现在每一种创建5个
 		int capacity = 5;
 
-		
+
 		// no alloc needed since the candybank array will retain anything added to it
 		CCArray* candiesOfType = [CCArray arrayWithCapacity:capacity];
 		[candyBank addObject:candiesOfType];
@@ -74,7 +77,16 @@
 		
 		for (int j = 0; j < numEnemiesOfType; j++)
 		{
-            CandyEntity *candy = [self defineBall:world Type:i Pos:startPos Dynamic:YES Tag:1];
+            if (j < invisibaleNum)
+            {
+                blood = 2;
+            }
+            else
+            {
+                blood = 1;
+            }
+            CandyEntity *candy = [self defineBall:world Type:i Pos:startPos 
+                                            Blood:blood Dynamic:YES Tag:1];
             [candiesOfType addObject: candy];
 		}
 	}
@@ -84,15 +96,17 @@
 
 -(void) initEnemiesWithWorld:(b2World *)world 
 {
+    int invisibaleNum = [GameMainScene sharedMainScene].mainscenParam.invisibaleNum;
     /*初始化糖果库*/
-    [self initCandyBank:world];
+    [self initCandyBank:world InvisibaleNum:invisibaleNum];
     candyCount = 0;
     _isFinish = NO;
     [self initScenecache:world];
 }
 
 
--(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Dynamic:(BOOL)isDynamicBody Tag:(int)taget
+-(id)defineBall:(b2World *)world Type:(int)ballType Pos:(CGPoint)startPos Blood:(int)blood
+        Dynamic:(BOOL)isDynamicBody Tag:(int)taget
 {
     //结构体  定义糖果的各种属性
     CandyParam cacheParam = {0};
@@ -102,6 +116,8 @@
     cacheParam.startPos=CGPoint(startPos);
 
     cacheParam.isDynamicBody = isDynamicBody;
+    
+    cacheParam.initialHitPoints = blood;
 
     //球的类型
     cacheParam.ballType = ballType;

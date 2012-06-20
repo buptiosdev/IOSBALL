@@ -17,6 +17,7 @@
 
 @implementation CandyEntity
 @synthesize sprite = _sprite;
+@synthesize cover = _cover;
 @synthesize candyType = _candyType;
 
 -(void) dealloc
@@ -112,24 +113,9 @@
 
 -(void) update:(ccTime)delta
 {
-//    if (self.sprite.visible)
-//	{
-//        b2Vec2 bodyPos = self.body->GetWorldCenter();
-//        CGPoint bodyPosition = [Helper toPixels:bodyPos];
-//        b2Vec2 force;
-//        //函数指针
-//        //void(*getForchFunc)(id, SEL, CGPoint);
-//
-//        //IMP getForchFunc = [self methodForSelector:ballMove];
-//        //getForchFunc(self, ballMove, bodyPosition, &force);
-//
-//        //  SEL a = @selector(moveTheBallRandom: forceOut:);
-//        IMP getForchFunc = [self methodForSelector:ballMove];
-//        getForchFunc(self, ballMove, bodyPosition, &force); 
-//        
-//        self.body->ApplyForce(force, self.body->GetWorldCenter());
-//        
-//	}    
+    //同步壳的位置
+    self.cover.position = self.sprite.position;
+    
     if (self.sprite.visible)
     {
         float mass = self.body->GetMass();  
@@ -235,6 +221,10 @@
             appearPosition = CGPointMake(30, 200);
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(5 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*5);
             enterForce = [Helper toMeters:positionNew];
@@ -245,6 +235,10 @@
             appearPosition = CGPointMake(120, 320);
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*5, -5 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -252,9 +246,13 @@
             break;
             
         case PositionThree:
-            appearPosition = CGPointMake(220, 320);
+            appearPosition = CGPointMake(235, 320);
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*2, -2 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -262,9 +260,13 @@
             break;
             
         case PositionFour:
-            appearPosition = CGPointMake(320, 320);
+            appearPosition = CGPointMake(350, 320);
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*3, -3 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -272,9 +274,13 @@
             break;
             
         case PositionFive:
-            appearPosition = CGPointMake(420, 200);
+            appearPosition = CGPointMake(450, 200);
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(-3 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*3);
             enterForce = [Helper toMeters:positionNew];
@@ -302,8 +308,18 @@
         self.sprite.scaleY=(40)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];       
         
+
+        self.cover = [CCSprite spriteWithSpriteFrameName:@"pic_6.png"];
+        //按照像素设定图片大小
+        self.cover.scaleX=(40)/[self.cover contentSize].width; //按照像素定制图片宽高
+        self.cover.scaleY=(40)/[self.cover contentSize].height;
+        self.cover.visible = NO;
+        [batch addChild:self.cover z:2]; 
+
+        
         hitPoints = candyParamDef.initialHitPoints;
         initialHitPoints = candyParamDef.initialHitPoints;
+        
 
         b2BodyDef bodyDef;
         bodyDef.position = [Helper toMeters:candyParamDef.startPos];
@@ -341,6 +357,13 @@
                       fixtureDef:&fixtureDef]; 
         self.sprite.position = candyParamDef.startPos;
         self.candyType = candyParamDef.ballType;
+        
+        if (initialHitPoints == 2)
+        {
+            self.cover.position = self.sprite.position;
+            self.cover.visible = YES;
+        }
+
         
         [self scheduleUpdate];
     }

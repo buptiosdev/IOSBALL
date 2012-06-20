@@ -94,7 +94,7 @@
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     float imageWidthHalved = [self.sprite contentSize].width * self.sprite.scaleX * 0.5f; 
     float leftBorderLimit = imageWidthHalved;
-    float rightBorderLimit = screenSize.width - imageWidthHalved - 30;
+    float rightBorderLimit = screenSize.width - imageWidthHalved;
     CGPoint pos = ccpAdd(self.sprite.position, self.candyVelocity);  
     if(pos.x>rightBorderLimit){
         pos.x = rightBorderLimit;

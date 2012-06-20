@@ -224,6 +224,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.4f;
             _mainscenParam.bombFrequency = OneTimePer30s;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene14thScene:
             _mainscenParam.candyCount = 40;
@@ -234,6 +235,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.4f;
             _mainscenParam.bombFrequency = OneTimePer20s;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.invisibaleNum = 2;
             break;
         case TargetScene15thScene:
             _mainscenParam.candyCount = 40;
@@ -244,6 +246,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = OneTimePer30s;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene16thScene:
             _mainscenParam.candyCount = 40;
@@ -254,6 +257,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = OneTimePer20s;
+            _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene17thScene:
             _mainscenParam.candyCount = 45;
@@ -264,6 +268,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.6f;
             _mainscenParam.bombFrequency = OneTimePer30s;
             _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene18thScene:
             _mainscenParam.candyCount = 45;
@@ -274,6 +279,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.6f;
             _mainscenParam.bombFrequency = OneTimePer30s;
             _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene19thScene:
             _mainscenParam.candyCount = 50;
@@ -284,6 +290,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.6f;
             _mainscenParam.bombFrequency = OneTimePer20s;
             _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene20thScene:
             _mainscenParam.candyCount = 50;
@@ -294,6 +301,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 1.0f;
             _mainscenParam.bombFrequency = OneTimePer30s;
             _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.invisibaleNum = 5;
             break;
         default:
             break;

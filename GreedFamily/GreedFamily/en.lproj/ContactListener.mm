@@ -45,12 +45,14 @@ void ContactListener::BeginContact(b2Contact* contact)
         {
             [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
             bodyEntityB.hitPoints--;
+
         }
              
         else if ([bodyEntityB isKindOfClass:[FlyEntity class]]) 
         {
             [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
             bodyEntityA.hitPoints--;
+
         }
 
         

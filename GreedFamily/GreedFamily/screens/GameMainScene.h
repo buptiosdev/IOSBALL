@@ -52,6 +52,7 @@ struct SceneParam
     int candyFrequency;
     int bombFrequency;
     int crystalFrequency;
+    int invisibaleNum;
     float landCompetSpeed;
     float landAnimalSpeed;
 };

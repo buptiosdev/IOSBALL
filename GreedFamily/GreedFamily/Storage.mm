@@ -381,7 +381,7 @@
 
     
 }
-
+//从仓库前面往后消
 -(void)doCombineFood:(int *)totalNum
 {
     int combineNum = 0;
@@ -476,6 +476,91 @@
 
 }
 
+//从仓库后面往前消
+-(void)doCombineFoodFromLast:(int *)totalNum
+{
+    int combineNum = 0;
+    BOOL isCombine = NO;
+    int sameTypeCount = 0;
+    
+    int foodCount = [foodArray count];
+    
+    if(!canCombine)
+    {
+        return;
+    }
+    
+    for (int i = foodCount - 3; i >= 0; i--) 
+    {
+        Food * curFood = nil;
+        Food * rightFood = nil;
+        Food *rightmostFood= nil;
+        rightmostFood = [foodArray objectAtIndex:i+2];
+        rightFood = [foodArray objectAtIndex:i+1];
+        if (rightFood.foodType != rightmostFood.foodType)
+        {
+            isCombine = NO;
+            continue;
+        }
+        curFood = [foodArray objectAtIndex:i];
+        if (curFood.foodType == rightFood.foodType) 
+        {
+            int a;
+            if (!isCombine)
+            {
+                sameTypeCount = 2;
+                foodInStorage[curFood.foodType] += 2;
+                a = i + 2;
+                *(combinArray+combineNum) = a;
+                combineNum++;
+                a = i + 1;
+                *(combinArray+combineNum) = a;
+                combineNum++;
+            }
+            
+            sameTypeCount++;
+            foodInStorage[curFood.foodType] += 1;
+            
+            a = i;
+            *(combinArray+combineNum) = a;
+            combineNum++;
+            
+            if (theSameTypeNumOfOneTime < sameTypeCount) 
+            {
+                theSameTypeNumOfOneTime = sameTypeCount;
+            }
+            
+            isCombine = YES;
+            needUpdateScore = YES;
+            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+        }
+    }
+        
+    if (!canCombine)
+    {
+        return;
+    }
+    
+    *totalNum +=  combineNum;
+    
+    int index; 
+
+    for (int i = combineNum - 1, j = 0; i >= 0; i--, j++) 
+    {
+        index = *(combinArray + j);
+        [self reduceFood:index Turn:i];
+    }
+    
+    [self moveFood];
+    canCombine = NO;
+    
+    //消完后马上检查，为连续消做准备
+    [self checkCombineFood];
+    
+    return;
+}
+
+
 -(void)updateScores
 {
     [pudingScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[0]]];
@@ -550,7 +635,9 @@ Circle:(int)circlenum
     {
         timesPerTouch++;
         timesOfOneTouch++;
-        [self doCombineFood:&totalCount];
+        //[self doCombineFood:&totalCount];
+        //改为从后往前消除
+        [self doCombineFoodFromLast:&totalCount];
     }
     
     if (timesOfOneTouch < timesPerTouch) 
