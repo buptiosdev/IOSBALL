@@ -46,7 +46,8 @@ static ObjectsLayer *instanceOfObjectsLayer;
     {
         if (0 >= [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache].aliveCandy) 
         {
-            if (0 >= [[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandCandyCache].landnum) 
+            if (0 >= [[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandCandyCache].airnum 
+                && 0 >= [[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandCandyCache].landnum) 
             {
                 return YES;
             }

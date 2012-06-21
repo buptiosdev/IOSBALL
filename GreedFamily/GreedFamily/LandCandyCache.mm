@@ -17,6 +17,7 @@
 @implementation LandCandyCache
 
 @synthesize landnum = _landnum;
+@synthesize airnum = _airnum;
 
 +(id)initLandCache
 {
@@ -72,7 +73,7 @@ static LandCandyCache *instanceOfLandCandyCache;
                 landcandy.isDowning = YES;
                 landcandy.sprite.visible = YES;
                 landcandy.sprite.position = position;
-
+                _airnum++;
                 return;
                 //return landcandy;
             }
@@ -81,6 +82,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     LandCandyEntity * candyEntity = [LandCandyEntity CreateLandCandyEntity:balltype Pos:position BodyVelocity:bodyVelocity];
     [self addChild:candyEntity z:2 tag:2];
     [controlCandies insertObject:candyEntity atIndex:i];
+    _airnum++;
     return;
     //[landcandies addObject:candyEntity];
     //return candyEntity;
@@ -90,6 +92,7 @@ static LandCandyCache *instanceOfLandCandyCache;
 {
     [landcandies insertObject:landCandy atIndex:_landnum];
     _landnum++;
+    _airnum--;
     CCLOG(@"landnum++ =%d\n",_landnum);
 }
 
