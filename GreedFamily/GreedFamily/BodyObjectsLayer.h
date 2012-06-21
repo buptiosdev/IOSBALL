@@ -12,6 +12,7 @@
 #import "ContactListener.h"
 #import "FlyEntity.h"
 #import "PropertyCache.h"
+#import "CandyCache.h"
 #import "LandCandyCache.h"
 
 typedef enum
@@ -36,4 +37,5 @@ typedef enum
 +(BodyObjectsLayer *)sharedBodyObjectsLayer;
 -(FlyEntity*) flyAnimal;
 -(PropertyCache*) getPropertyCache;
+-(CandyCache*) getCandyCache;
 @end

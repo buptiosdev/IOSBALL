@@ -21,4 +21,6 @@ typedef enum
     
 }
 +(id)CreateObjectsLayer;
++(ObjectsLayer *)sharedObjectsLayer;
+-(BOOL)isGameFinish;
 @end

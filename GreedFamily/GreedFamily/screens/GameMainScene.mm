@@ -97,6 +97,7 @@ static GameMainScene *instanceOfMainScene;
 {
     switch (order) {
         case TargetScene1stScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 10;
             _mainscenParam.candyType = 1;
             _mainscenParam.candyFrequency = 5;
@@ -107,6 +108,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = NoTime;
             break;
         case TargetScene2ndScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 15;
             _mainscenParam.candyType = 2;
             _mainscenParam.candyFrequency = 5;
@@ -117,6 +119,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = NoTime;
             break;
         case TargetScene3rdScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 20;
             _mainscenParam.candyType = 2;
             _mainscenParam.candyFrequency = 5;
@@ -127,6 +130,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = TwoTime;
             break;
         case TargetScene4thScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 20;
             _mainscenParam.candyType = 2;
             _mainscenParam.candyFrequency = 5;
@@ -137,6 +141,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTime;
             break;
         case TargetScene5thScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 25;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -147,6 +152,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTime;
             break;
         case TargetScene6thScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 25;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -157,6 +163,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTimePer20s;
             break;
         case TargetScene7thScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 25;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -167,6 +174,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTime;
             break;
         case TargetScene8thScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -177,6 +185,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTime;
             break;
         case TargetScene9thScene:
+            _mainscenParam.maxVisibaleNum = 5;
             _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -187,6 +196,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTime;
             break;
         case TargetScene10thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -197,6 +207,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTime;
             break;
         case TargetScene11thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -207,6 +218,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTimePer20s;
             break;
         case TargetScene12thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -217,6 +229,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.crystalFrequency = OneTime;
             break;
         case TargetScene13thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -228,6 +241,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene14thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -239,6 +253,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 2;
             break;
         case TargetScene15thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -250,6 +265,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene16thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -261,6 +277,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene17thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 45;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -272,6 +289,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene18thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 45;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
@@ -283,6 +301,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene19thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 50;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
@@ -294,6 +313,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene20thScene:
+            _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 50;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -361,6 +381,8 @@ static GameMainScene *instanceOfMainScene;
         [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)_sceneNum]];
     }
 }
+
+
 
 -(void) dealloc
 {

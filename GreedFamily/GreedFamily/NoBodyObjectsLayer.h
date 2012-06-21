@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "LandCandyCache.h"
+
 typedef enum
 {   
     LandAnimalTag = 1,
@@ -20,5 +22,6 @@ typedef enum
     
 }
 +(id)CreateNoBodyObjectsLayer;
-
++(NoBodyObjectsLayer *)sharedNoBodyObjectsLayer;
+-(LandCandyCache*) getLandCandyCache;
 @end

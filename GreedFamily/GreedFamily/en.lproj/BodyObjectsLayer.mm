@@ -149,6 +149,14 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	return (PropertyCache *)node;
 }
 
+
+-(CandyCache*) getCandyCache
+{
+	CCNode* node = [self getChildByTag:CandyCacheTag];
+	NSAssert([node isKindOfClass:[CandyCache class]], @"node is not a CandyCache!");
+	return (CandyCache *)node;
+}
+
 +(void)addDownForth:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
     CGPoint positionNew = CGPointMake(0, -10);
@@ -228,6 +236,11 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CGPoint positionNew = CGPointMake(-100, -100);
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
+                    CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
+                    if (candyCache != NULL)
+                    {
+                        candyCache.aliveCandy--;
+                    }
                     
                 }   
                 
@@ -245,6 +258,11 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CGPoint positionNew = CGPointMake(-100, -100);
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
+                    CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
+                    if (candyCache != NULL)
+                    {
+                        candyCache.aliveCandy--;
+                    }
                     
                 }
 
@@ -258,7 +276,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	//world = NULL;
 	
     delete contactListener;
-	contactListener = NULL;
+	contactListener = nil;
     
     instanceOfBodyObjectsLayer = nil;   
     

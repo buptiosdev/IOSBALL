@@ -38,7 +38,9 @@ typedef enum
 	int cacheNum;
     int candyCount;
 	int updateCount;
+    int maxVisibalNum;
 }
 +(id)cache:(b2World *)world;
 @property (assign, nonatomic)BOOL isFinish;
+@property (assign, nonatomic)int aliveCandy;
 @end

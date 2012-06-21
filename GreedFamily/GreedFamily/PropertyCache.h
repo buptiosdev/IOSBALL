@@ -20,6 +20,7 @@
     int bombCount;
     int crystalCount;
 	int updateCount;  
+    int maxVisibalNum;
     b2World *gameWorld;
 }
 

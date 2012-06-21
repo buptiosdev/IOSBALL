@@ -25,6 +25,7 @@
 @implementation CandyCache
 
 @synthesize isFinish = _isFinish;
+@synthesize aliveCandy = _aliveCandy;
 
 +(id) cache:(b2World *)world
 {
@@ -40,7 +41,8 @@
 		//CCSpriteFrame* frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"monster-a.png"];
 		//batch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
 		//[self addChild:batch];
-		
+		maxVisibalNum = [GameMainScene sharedMainScene].mainscenParam.maxVisibaleNum;
+        
 		[self initEnemiesWithWorld:world];
 
 	}
@@ -101,6 +103,7 @@
     [self initCandyBank:world InvisibaleNum:invisibaleNum];
     candyCount = 0;
     _isFinish = NO;
+    _aliveCandy = 0;
     [self initScenecache:world];
 }
 
@@ -161,6 +164,12 @@
     int candyTotalType = [GameMainScene sharedMainScene].mainscenParam.candyType;
     BOOL isCreateSuccess = NO;
     
+    //界面上最多存在maxVisibalNum个球
+    if (_aliveCandy > maxVisibalNum)
+    {
+        return;
+    }
+    
     if (candyCount < candyTotal) 
     {
         while (!isCreateSuccess && i <3) 
@@ -172,6 +181,8 @@
         if (isCreateSuccess)
         {
             candyCount++;
+            _aliveCandy++;
+            
         }
     }
     else

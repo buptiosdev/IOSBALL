@@ -13,6 +13,15 @@
 #import "GameMainScene.h"
 
 @implementation NoBodyObjectsLayer
+
+/*创造一个半单例，让其他类可以很方便访问scene*/
+static NoBodyObjectsLayer *instanceOfNoBodyObjectsLayer;
++(NoBodyObjectsLayer *)sharedNoBodyObjectsLayer
+{
+    NSAssert(nil != instanceOfNoBodyObjectsLayer, @"BodyObjectsLayer instance not yet initialized!");
+    
+    return instanceOfNoBodyObjectsLayer;
+}
 +(id)CreateNoBodyObjectsLayer
 {
 	return [[[self alloc] init] autorelease];
@@ -22,6 +31,8 @@
 {
     if ((self = [super init]))
     {
+        instanceOfNoBodyObjectsLayer = self;
+        
         LandAnimal *landAnimal = [LandAnimal CreateLandAnimal];
         [self addChild:landAnimal z:1 tag:LandAnimalTag];
         
@@ -38,6 +49,14 @@
     }
     return self;
 }
+
+-(LandCandyCache*) getLandCandyCache
+{
+	CCNode* node = [self getChildByTag:LandCandyTag];
+	NSAssert([node isKindOfClass:[LandCandyCache class]], @"node is not a LandCandyCache!");
+	return (LandCandyCache *)node;
+}
+
 
 -(void) dealloc
 {

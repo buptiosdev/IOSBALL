@@ -220,11 +220,11 @@
         case PositionOne:
             appearPosition = CGPointMake(30, 200);
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
             if (2 == self.initialHitPoints)
             {
                 self.cover.visible = YES;
             }
+            self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(5 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*5);
             enterForce = [Helper toMeters:positionNew];
@@ -234,11 +234,11 @@
         case PositionTwo:
             appearPosition = CGPointMake(120, 320);
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
             if (2 == self.initialHitPoints)
             {
                 self.cover.visible = YES;
             }
+            self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*5, -5 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -248,11 +248,11 @@
         case PositionThree:
             appearPosition = CGPointMake(235, 320);
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
             if (2 == self.initialHitPoints)
             {
                 self.cover.visible = YES;
             }
+            self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*2, -2 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -262,11 +262,11 @@
         case PositionFour:
             appearPosition = CGPointMake(350, 320);
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
             if (2 == self.initialHitPoints)
             {
                 self.cover.visible = YES;
             }
+            self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*3, -3 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -276,11 +276,11 @@
         case PositionFive:
             appearPosition = CGPointMake(450, 200);
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
             if (2 == self.initialHitPoints)
             {
                 self.cover.visible = YES;
             }
+            self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(-3 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*3);
             enterForce = [Helper toMeters:positionNew];

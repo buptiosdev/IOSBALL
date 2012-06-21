@@ -9,6 +9,7 @@
 #import "PropertyCache.h"
 #import "PropertyEntity.h"
 #import "GameMainScene.h"
+#import "BodyObjectsLayer.h"
 
 @interface PropertyCache() 
 -(id)initWithWorld:(b2World *)world;
@@ -28,7 +29,7 @@
 	if ((self = [super init]))
 	{
         gameWorld = world;
-		
+		maxVisibalNum = [GameMainScene sharedMainScene].mainscenParam.maxVisibaleNum;
 		//[self preInitPropWithWorld:world];
         [self initPropsFrequency];
 	}
@@ -153,8 +154,16 @@
 {
     if (bombCount < bombNum || bombNum == 0) 
     {
+        CandyCache *candyCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache];
+        //界面上最多存在maxVisibalNum个球
+        if (candyCache.aliveCandy > maxVisibalNum)
+        {
+            return;
+        }
+
         [self addOneProperty:1 World:gameWorld Tag:1];
         bombCount++;
+        candyCache.aliveCandy++;
     }
      
     return;
@@ -164,8 +173,16 @@
 {
     if (crystalCount < crystalNum || bombNum == 0) 
     {
+        CandyCache *candyCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache];
+        //界面上最多存在maxVisibalNum个球
+        if (candyCache.aliveCandy > maxVisibalNum)
+        {
+            return;
+        }
+        
         [self addOneProperty:0 World:gameWorld Tag:0];
         crystalCount++;
+        candyCache.aliveCandy++;
     }
     
     return;
