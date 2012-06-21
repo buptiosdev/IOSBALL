@@ -45,6 +45,6 @@
 @property (readonly, nonatomic) CCSprite* sprite;
 +(id)createStorage:(int)storageCapacity;
 -(void)addFoodToStorage:(int)foodType;
-
+-(void)combineMain:(int)totalNum;
 
 @end

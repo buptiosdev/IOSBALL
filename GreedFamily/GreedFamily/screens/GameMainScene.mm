@@ -329,7 +329,18 @@ static GameMainScene *instanceOfMainScene;
     }
 }
 
-
+-(void)endGame
+{
+    //1.调用一次消球接口 
+    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+    [storage combineMain:0];
+    //2.调用算分接口
+    
+    //3.生成关卡结束显示层
+    ccColor4B c = {255,255,0,100};
+    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)100 AddScore:(int)50];
+    [self.parent addChild:p z:10]; 
+}
 
 
 
@@ -379,6 +390,14 @@ static GameMainScene *instanceOfMainScene;
         _sceneNum++;
         sleep(2);
         [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)_sceneNum]];
+    }
+    
+    BOOL finish=[ObjectsLayer sharedObjectsLayer].isGameFinish;
+    if(finish)
+    {
+        //防止多次调用
+        [self unscheduleAllSelectors];
+        [self endGame];
     }
 }
 

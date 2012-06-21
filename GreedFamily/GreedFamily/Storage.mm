@@ -18,7 +18,6 @@
 -(void)moveFood;
 -(void)reduceFood:(int)count Turn:(int)turn;
 -(void)oneSecondCheckMax:(ccTime)delta;
--(void)combineMain:(int)totalNum;
 -(void)checkCombineFood;
 -(void)checkLastCombineFood;
 @end
