@@ -114,7 +114,6 @@
     //结构体  定义糖果的各种属性
     CandyParam cacheParam = {0};
     
-    //firstcacheParam.initialHitPoints = 4;
     //球的初始位置    
     cacheParam.startPos=CGPoint(startPos);
 

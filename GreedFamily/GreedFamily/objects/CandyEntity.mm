@@ -130,9 +130,6 @@
     }
 }
 
-
-
-
 +(id)CandyWithParam:(CandyParam)candyParam World:(b2World *)world
 {
 	return [[[self alloc] initCandyWithParam:candyParam World:world] autorelease];
@@ -218,8 +215,9 @@
     switch (enterPosition) 
     {
         case PositionOne:
-            appearPosition = CGPointMake(30, 200);
+            appearPosition = CGPointMake(20, 200);
             self.sprite.position = CGPoint(appearPosition);
+            self.cover.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
             {
                 self.cover.visible = YES;
@@ -232,7 +230,8 @@
             break;
             
         case PositionTwo:
-            appearPosition = CGPointMake(120, 320);
+            appearPosition = CGPointMake(120, 300);
+            self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
             {
@@ -246,7 +245,8 @@
             break;
             
         case PositionThree:
-            appearPosition = CGPointMake(235, 320);
+            appearPosition = CGPointMake(235, 300);
+            self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
             {
@@ -260,7 +260,8 @@
             break;
             
         case PositionFour:
-            appearPosition = CGPointMake(350, 320);
+            appearPosition = CGPointMake(350, 300);
+            self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
             {
@@ -274,7 +275,8 @@
             break;
             
         case PositionFive:
-            appearPosition = CGPointMake(450, 200);
+            appearPosition = CGPointMake(460, 200);
+            self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
             {
@@ -304,15 +306,15 @@
         self.sprite = [CCSprite spriteWithSpriteFrameName:candyParamDef.spriteFrameName];
 
         //按照像素设定图片大小
-        self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(40)/[self.sprite contentSize].height;
+        self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(35)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];       
         
 
         self.cover = [CCSprite spriteWithSpriteFrameName:@"pic_6.png"];
         //按照像素设定图片大小
-        self.cover.scaleX=(40)/[self.cover contentSize].width; //按照像素定制图片宽高
-        self.cover.scaleY=(40)/[self.cover contentSize].height;
+        self.cover.scaleX=(35)/[self.cover contentSize].width; //按照像素定制图片宽高
+        self.cover.scaleY=(35)/[self.cover contentSize].height;
         self.cover.visible = NO;
         [batch addChild:self.cover z:2]; 
 

@@ -28,21 +28,52 @@
 
 
 
--(void)initFlyAction:(CCTexture2D *)texture
+-(void)initFlyAction
 {        
     
     _flyActionArray = [[NSMutableArray alloc] init];
-    NSMutableArray *animFrames = [NSMutableArray array];
+    //NSMutableArray *animFrames = [NSMutableArray array];
     
     for (int i =0; i <8; i++) {
         
-        [animFrames removeAllObjects];
+        //[animFrames removeAllObjects];
         
-        for (int j =0; j <10; j++) {
-            CCSpriteFrame *frame = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(j*75, i*70, 75, 70)];
-            [animFrames addObject:frame];
+//        for (int j =0; j <10; j++) {	
+//            CCSpriteFrame *frame = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(j*75, i*70, 75, 70)];
+//            [animFrames addObject:frame];
+//        }
+//        CCAnimation *animation = [CCAnimation animationWithName:@"fly" delay:0.1f frames:animFrames];
+        CCAnimation* animation = nil;
+        switch (i) {
+            case 0:
+                animation = [CCAnimation animationWithFrame:@"boybird_3_" frameCount:5 delay:0.08f];
+                break;
+            case 1:
+                animation = [CCAnimation animationWithFrame:@"boybird_5_" frameCount:3 delay:0.1f];
+                break;
+            case 2:
+                animation = [CCAnimation animationWithFrame:@"boybird_6_" frameCount:5 delay:0.08f];
+                break;
+            case 3:
+                animation = [CCAnimation animationWithFrame:@"boybird_7_" frameCount:3 delay:0.1f];
+                break;
+            case 4:
+                animation = [CCAnimation animationWithFrame:@"boybird_9_" frameCount:5 delay:0.08f];
+                break;
+            case 5:
+                animation = [CCAnimation animationWithFrame:@"boybird_11_" frameCount:3 delay:0.1f];
+                break;
+            case 6:
+                animation = [CCAnimation animationWithFrame:@"boybird_0_" frameCount:5 delay:0.08f];
+                break;
+            case 7:
+                animation = [CCAnimation animationWithFrame:@"boybird_2_" frameCount:3 delay:0.1f];
+                break;
+                
+            default:
+                break;
         }
-        CCAnimation *animation = [CCAnimation animationWithName:@"fly" delay:0.1f frames:animFrames];
+        
                
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,
@@ -75,18 +106,25 @@
 //         [self.sprite runAction:repeat];
         directionBefore = 0;
         directionCurrent = 0;
-        CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];
+        //CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];
         //初始化动态效果
-        [self initFlyAction:texture];
+        [self initFlyAction];
         
         
-        CCSpriteFrame *frame1 = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 75, 70) ];
+        //CCSpriteFrame *frame1 = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 75, 70) ];
         
-        self.sprite = [CCSprite spriteWithSpriteFrame:frame1];
+        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
+        self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+        
+        //按照像素设定图片大小
+        self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+        [batch addChild:self.sprite]; 
+        //self.sprite = [CCSprite spriteWithSpriteFrame:frame1];
         // batch node for all dynamic elements
-        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"dragon.png" capacity:100];
-        [self addChild:batch2 z:0 tag:2];
-        [batch2 addChild:self.sprite];
+        //CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"dragon.png" capacity:100];
+        //[self addChild:batch2 z:0 tag:2];
+        //[batch2 addChild:self.sprite];
         //self.sprite = [CCSprite spriteWithSpriteFrameName:@"bird.png"];
         //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         //[batch addChild:self.sprite];
@@ -251,8 +289,8 @@
     self.flyAction = [_flyActionArray objectAtIndex:runAnim];
     [self.sprite runAction:_flyAction];
     directionBefore = directionCurrent;
-    
 }
+
 -(void) applyForceTowardsFinger
 {
 	//b2Vec2 bodyPos = body->GetWorldCenter();
@@ -310,8 +348,6 @@
     {
         playerVelocity.x = playerVelocity.y * acceleration.x / acceleration.y;
     }
-    
-
 
     b2Vec2 force = [Helper toMeters:playerVelocity];
     
@@ -359,6 +395,7 @@
     //bodyVelocity =  ccpMult(bodyVelocity, bodyAngularVelocity);
     [self playFlyAction:bodyVelocity];
 }
+
 -(bool) isTouchForMe:(CGPoint)touchLocation
 {
     return CGRectContainsPoint([self.sprite boundingBox], touchLocation);

@@ -19,5 +19,8 @@
 @property (assign, nonatomic) CGPoint candyPosition;
 @property (assign, nonatomic) CGPoint candyVelocity;
 @property (assign, nonatomic) BOOL isDowning;
+@property (nonatomic, retain) NSMutableArray *landCandyActionArray;
+@property (assign, nonatomic)  CCAction *fallAction;
+
 +(id)CreateLandCandyEntity:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity;
 @end

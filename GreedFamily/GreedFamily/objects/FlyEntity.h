@@ -20,7 +20,7 @@
     CGPoint fingerLocationBegin;
     CGPoint fingerLocationEnd;
     CGPoint playerVelocity;
-    NSMutableArray *_flyActionArray;
+    //NSMutableArray *_flyActionArray;
     int directionBefore;
     int directionCurrent;
     double time1;

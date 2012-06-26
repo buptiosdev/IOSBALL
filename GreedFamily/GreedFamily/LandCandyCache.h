@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) int landnum;
 @property (readonly, nonatomic) int airnum;
 
+
 +(id)initLandCache;
 //+(id) CreateLandCandy:(int)balltype Pos:(CGPoint)position;
 +(LandCandyCache *)sharedLandCandyCache;

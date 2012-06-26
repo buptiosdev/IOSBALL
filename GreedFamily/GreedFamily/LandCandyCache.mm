@@ -19,6 +19,7 @@
 @synthesize landnum = _landnum;
 @synthesize airnum = _airnum;
 
+
 +(id)initLandCache
 {
 	return [[[self alloc] init] autorelease];
@@ -56,6 +57,8 @@ static LandCandyCache *instanceOfLandCandyCache;
 //    //[landcandies addObject:candyEntity];
 //    return candyEntity;
 //}
+
+
 
 -(void) CreateLandCandy:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity
 {
@@ -120,7 +123,6 @@ static LandCandyCache *instanceOfLandCandyCache;
         {
             //set the candy unvisible
             candy.visible=NO;
-            
             _landnum--;
             CCLOG(@"landnum-- =%d\n",_landnum);
             [landcandies removeObjectAtIndex:i];
@@ -156,11 +158,13 @@ static LandCandyCache *instanceOfLandCandyCache;
     if ((self = [super init]))
 	{
         instanceOfLandCandyCache = self;
+
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         int numbers=10;
         landcandies = [[CCArray alloc]initWithCapacity:numbers];
         controlCandies = [[CCArray alloc]initWithCapacity:numbers];
         _landnum = 0;
+        _airnum = 0;
         //[self scheduleUpdate];
     }
     return self;

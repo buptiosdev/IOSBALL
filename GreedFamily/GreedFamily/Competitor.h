@@ -10,11 +10,14 @@
 #import "cocos2d.h"
 
 @interface Competitor : CCNode {
-    int direction;
+    int directionBefore;
+    int directionCurrent;
     float speed;
     int waitinterval;
 }
 @property (assign, nonatomic) CCSprite* sprite;
+@property (nonatomic, retain) NSMutableArray *landCompetitorActionArray;
+@property (assign, nonatomic)  CCAction *moveAction;
 +(id)CreateCompetitor;
 +(Competitor *)sharedCompetitor;
 -(void)eatAction;

@@ -19,7 +19,7 @@
 	for (int i = 0; i < frameCount; i++)
 	{
 		// Assuming all animation files are named "nameX.png" with X being a consecutive number starting with 0.
-		NSString* file = [NSString stringWithFormat:@"%@%i.png", name, i];
+		NSString* file = [NSString stringWithFormat:@"%@%i.png", name, i+1];
 		CCTexture2D* texture = [[CCTextureCache sharedTextureCache] addImage:file];
 
 		// Assuming that image file animations always use the whole image for each animation frame.
@@ -44,7 +44,7 @@
 	NSMutableArray* frames = [NSMutableArray arrayWithCapacity:frameCount];
 	for (int i = 0; i < frameCount; i++)
 	{
-		NSString* file = [NSString stringWithFormat:@"%@%i.png", frame, i];
+		NSString* file = [NSString stringWithFormat:@"%@%i.png", frame, i+1];
 		CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
 		CCSpriteFrame* frame = [frameCache spriteFrameByName:file];
 		[frames addObject:frame];

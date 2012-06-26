@@ -36,10 +36,16 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         //加载所有的图片列表
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
+        [frameCache addSpriteFramesWithFile:@"elements_default.plist"];
         
         // batch node for all dynamic elements
         CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
         [self addChild:batch z:0 tag:BatchTag];
+        
+        // batch node for all animation elements
+        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
+        [self addChild:batch2 z:0 tag:AnimationTag];
+        
 
     //    // a bright background is desireable for this pinball table
     //    CCColorLayer* colorLayer = [CCColorLayer layerWithColor:ccc4(0, 0, 255, 200)];
@@ -76,12 +82,16 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
     }
     return self;
 }
+
 -(CCSpriteBatchNode*) getSpriteBatch
 {
 	return (CCSpriteBatchNode*)[self getChildByTag:BatchTag];
 }
 
-
+-(CCSpriteBatchNode*) getAnimationBatch
+{
+	return (CCSpriteBatchNode*)[self getChildByTag:AnimationTag];
+}
 
 -(void) dealloc
 {

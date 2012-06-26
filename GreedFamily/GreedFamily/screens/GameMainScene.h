@@ -22,6 +22,7 @@ typedef enum
 typedef enum
 {   
     BatchTag= 1,
+    AnimationTag,
     TouchCatchLayerTag,
     ObjectsLayerTag,
     BackGroundLayerTag,

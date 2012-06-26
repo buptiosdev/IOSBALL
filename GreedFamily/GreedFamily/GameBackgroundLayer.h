@@ -15,4 +15,5 @@
 +(id)CreateGameBackgroundLayer;
 +(GameBackgroundLayer *)sharedGameBackgroundLayer;
 -(CCSpriteBatchNode*) getSpriteBatch;
+-(CCSpriteBatchNode*) getAnimationBatch;
 @end
