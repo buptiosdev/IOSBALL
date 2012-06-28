@@ -116,7 +116,7 @@
     //同步壳的位置
     self.cover.position = self.sprite.position;
     
-    if (self.sprite.visible)
+    if (self.hitPoints != -1)
     {
         float mass = self.body->GetMass();  
         float density = 0;  
@@ -222,7 +222,10 @@
             {
                 self.cover.visible = YES;
             }
-            self.sprite.visible = YES;
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(5 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*5);
             enterForce = [Helper toMeters:positionNew];
@@ -237,7 +240,10 @@
             {
                 self.cover.visible = YES;
             }
-            self.sprite.visible = YES;
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*5, -5 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -252,7 +258,10 @@
             {
                 self.cover.visible = YES;
             }
-            self.sprite.visible = YES;
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*2, -2 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -267,7 +276,10 @@
             {
                 self.cover.visible = YES;
             }
-            self.sprite.visible = YES;
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*3, -3 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -282,7 +294,10 @@
             {
                 self.cover.visible = YES;
             }
-            self.sprite.visible = YES;
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(-3 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*3);
             enterForce = [Helper toMeters:positionNew];
@@ -317,9 +332,19 @@
         self.cover.scaleY=(35)/[self.cover contentSize].height;
         self.cover.visible = NO;
         [batch addChild:self.cover z:2]; 
-
+        self.sprite.position = candyParamDef.startPos;
         
-        hitPoints = candyParamDef.initialHitPoints;
+        self.candyType = candyParamDef.ballType;
+        
+        if (initialHitPoints == 2)
+        {
+            self.cover.position = self.sprite.position;
+            self.cover.visible = YES;
+            self.sprite.visible = NO;
+        }
+        
+        //初始化为-1，spawn会赋值
+        hitPoints = -1;
         initialHitPoints = candyParamDef.initialHitPoints;
         
 
@@ -357,14 +382,7 @@
         [super createBodyInWorld:world 
                          bodyDef:&bodyDef 
                       fixtureDef:&fixtureDef]; 
-        self.sprite.position = candyParamDef.startPos;
-        self.candyType = candyParamDef.ballType;
-        
-        if (initialHitPoints == 2)
-        {
-            self.cover.position = self.sprite.position;
-            self.cover.visible = YES;
-        }
+
 
         
         [self scheduleUpdate];

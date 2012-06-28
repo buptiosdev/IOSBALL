@@ -140,7 +140,7 @@
 	CandyEntity* candy;
 	CCARRAY_FOREACH(candyOfType, candy)
     {
-        if (NO == candy.sprite.visible)
+        if (-1 == candy.hitPoints)
         {
             CCLOG(@"spawn candy type %i", candyType);
             int enterPosition = random() % 5;

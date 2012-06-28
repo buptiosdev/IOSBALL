@@ -171,7 +171,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = CGPointMake(-200, -200);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeCrystalBall;
-    propertyParamDef.spriteFrameName = @"pic_4.png";
+    propertyParamDef.spriteFrameName = @"crystallball.png";
     propertyParamDef.density = 0.5;
     propertyParamDef.restitution = 1.5;
     propertyParamDef.linearDamping = 0.2;
@@ -205,7 +205,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = CGPointMake(-100, -200);/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeBlackBomb;
-    propertyParamDef.spriteFrameName = @"pic_1.png";
+    propertyParamDef.spriteFrameName = @"blackbomb.png";
     propertyParamDef.density = 0.7;
     propertyParamDef.restitution = 0.7;
     propertyParamDef.linearDamping = 0.2;
@@ -241,11 +241,15 @@ static CCArray* spawnFrequency;
     {
         [self initPropertyMove:propertyType];
         
-        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:propertyParamDef.spriteFrameName];
+        //按照像素设定图片大小
+        self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(35)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];       
         
-        hitPoints = propertyParamDef.initialHitPoints;
+        //初始化为－1
+        hitPoints = -1;
         initialHitPoints = propertyParamDef.initialHitPoints;
         
         b2BodyDef bodyDef;
@@ -260,7 +264,7 @@ static CCArray* spawnFrequency;
         bodyDef.linearDamping = propertyParamDef.linearDamping;
         
         b2CircleShape circleShape;
-        float radiusInMeters = (self.sprite.contentSize.width / PTM_RATIO) * 0.5f;
+        float radiusInMeters = (self.sprite.contentSize.width * self.sprite.scaleX/ PTM_RATIO) * 0.5f;
         circleShape.m_radius = radiusInMeters;
         
         // Define the dynamic body fixture.

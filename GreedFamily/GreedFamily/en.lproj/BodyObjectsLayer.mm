@@ -183,7 +183,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	for (b2Body* body = self.world->GetBodyList(); body != nil; body = body->GetNext())
 	{
 		Entity* bodyNode = (Entity *)body->GetUserData();
-		if (bodyNode != NULL && bodyNode.sprite != nil && YES == bodyNode.sprite.visible)
+		if (bodyNode != NULL && bodyNode.sprite != nil && -1 < bodyNode.hitPoints)
 		{
 			bodyNode.sprite.position = [Helper toPixels:body->GetPosition()];
 			float angle = body->GetAngle();
@@ -192,10 +192,11 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
             if ([bodyNode isKindOfClass:[CandyEntity class]] && 1 == bodyNode.hitPoints)
             {
                 CandyEntity* candyNode = (CandyEntity*)bodyNode;
+                candyNode.sprite.visible = YES;
                 candyNode.cover.visible = NO;
             }
             
-            if (bodyNode.hitPoints <= 0)
+            if (bodyNode.hitPoints == 0)
             {
                 if([bodyNode isKindOfClass:[FlyEntity class]])
                 {
@@ -236,6 +237,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CGPoint positionNew = CGPointMake(-100, -100);
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
+                    bodyNode.hitPoints = -1;
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
                     if (candyCache != NULL)
                     {
@@ -259,6 +261,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CGPoint positionNew = CGPointMake(-100, -100);
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
+                    bodyNode.hitPoints = -1;
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
                     if (candyCache != NULL)
                     {

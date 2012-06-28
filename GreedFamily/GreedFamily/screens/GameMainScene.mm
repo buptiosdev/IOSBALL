@@ -315,7 +315,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 4;
             break;
         case TargetScene20thScene:
-            _mainscenParam.maxVisibaleNum = 10;
+            _mainscenParam.maxVisibaleNum = 7;
             _mainscenParam.candyCount = 50;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;

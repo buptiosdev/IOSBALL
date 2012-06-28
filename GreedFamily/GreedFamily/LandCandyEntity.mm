@@ -46,10 +46,10 @@
             spriteName=@"candy-_1.png";
             break;
         case 3:
-            spriteName=@"pic_4.png";
+            spriteName=@"crystallball.png";
             break;
         case 4:
-            spriteName=@"pic_1.png";
+            spriteName=@"blackbomb.png";
             break;
         case 5:
             spriteName=@"pic_6.png";
