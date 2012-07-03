@@ -7,6 +7,7 @@
 //
 #import "NavigationScene.h"
 #import "LevelScene.h"
+#import "OptionsScene.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -110,8 +111,8 @@
 -(void)options:(id)sender
 {
 	//show the options of the game
-    //OptionsScene * gs = [OptionsScene node];
-	//[[CCDirector sharedDirector]replaceScene:gs];
+    OptionsScene * gs = [OptionsScene node];
+	[[CCDirector sharedDirector]replaceScene:gs];
 }
 
 -(void)about:(id)sender

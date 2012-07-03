@@ -40,17 +40,20 @@ void ContactListener::BeginContact(b2Contact* contact)
         
 //        bodyEntityA.sprite.color = ccMAGENTA; 
 //        bodyEntityB.sprite.color = ccMAGENTA;
-        
+        NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+        BOOL sound = [usrDef boolForKey:@"sound"];
         if ([bodyEntityA isKindOfClass:[FlyEntity class]])
         {
-            [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
+            if(sound)
+                [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
             bodyEntityB.hitPoints--;
 
         }
              
         else if ([bodyEntityB isKindOfClass:[FlyEntity class]]) 
         {
-            [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
+            if(sound)
+                [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
             bodyEntityA.hitPoints--;
 
         }
