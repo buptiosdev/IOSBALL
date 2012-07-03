@@ -12,6 +12,8 @@
 		4A7A83FD156A882900841572 /* LandCandyCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A83FA156A882900841572 /* LandCandyCache.mm */; };
 		4A7A83FE156A882900841572 /* LandCandyEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A83FC156A882900841572 /* LandCandyEntity.mm */; };
 		4A7E716E159217E9008A4148 /* ResultLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E716D159217E9008A4148 /* ResultLayer.m */; };
+		4A7F130915A344D00073E99E /* BodyObjectsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F130715A344D00073E99E /* BodyObjectsLayer.mm */; };
+		4A7F130A15A344D00073E99E /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F130815A344D00073E99E /* ContactListener.mm */; };
 		4A7FA06F1580F4B7009A0001 /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7FA06E1580F4B7009A0001 /* LevelScene.m */; };
 		70018D9B1541B144001FBF35 /* Bag.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9A1541B144001FBF35 /* Bag.mm */; };
 		70018D9E1541B167001FBF35 /* GamePause.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9D1541B166001FBF35 /* GamePause.mm */; };
@@ -208,8 +210,6 @@
 		706EAB78153FC40B0003C4B2 /* LandAnimal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB77153FC40B0003C4B2 /* LandAnimal.mm */; };
 		706EAB7D153FC4480003C4B2 /* CCAnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */; };
 		706EAB7E153FC4480003C4B2 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7C153FC4480003C4B2 /* Helper.mm */; };
-		70CBDFFF1574681300DBE24A /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE0011574681300DBE24A /* ContactListener.mm */; };
-		70CBE0021574681300DBE24A /* BodyObjectsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE0041574681300DBE24A /* BodyObjectsLayer.mm */; };
 		C6C56C351579DA9C00F60F33 /* gameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* gameScore.mm */; };
 		C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6D634BC157CF3030074818D /* MyGameScore.mm */; };
 /* End PBXBuildFile section */
@@ -224,6 +224,8 @@
 		4A7A83FC156A882900841572 /* LandCandyEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LandCandyEntity.mm; sourceTree = "<group>"; };
 		4A7E716C159217E9008A4148 /* ResultLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLayer.h; sourceTree = "<group>"; };
 		4A7E716D159217E9008A4148 /* ResultLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLayer.m; sourceTree = "<group>"; };
+		4A7F130715A344D00073E99E /* BodyObjectsLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BodyObjectsLayer.mm; sourceTree = "<group>"; };
+		4A7F130815A344D00073E99E /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		4A7FA06D1580F4B7009A0001 /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 		4A7FA06E1580F4B7009A0001 /* LevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScene.m; sourceTree = "<group>"; };
 		70018D991541B144001FBF35 /* Bag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bag.h; sourceTree = "<group>"; };
@@ -603,8 +605,6 @@
 		706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CCAnimationHelper.mm; path = tools/CCAnimationHelper.mm; sourceTree = "<group>"; };
 		706EAB7B153FC4480003C4B2 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = tools/Helper.h; sourceTree = "<group>"; };
 		706EAB7C153FC4480003C4B2 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Helper.mm; path = tools/Helper.mm; sourceTree = "<group>"; };
-		70CBE0001574681300DBE24A /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = en; path = en.lproj/ContactListener.mm; sourceTree = "<group>"; };
-		70CBE0031574681300DBE24A /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = en; path = en.lproj/BodyObjectsLayer.mm; sourceTree = "<group>"; };
 		C6C56C331579DA9B00F60F33 /* gameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameScore.h; sourceTree = "<group>"; };
 		C6C56C341579DA9C00F60F33 /* gameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gameScore.mm; sourceTree = "<group>"; };
 		C6D634BB157CF3030074818D /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
@@ -1234,6 +1234,8 @@
 		706EA99A153F9AB80003C4B2 /* layers */ = {
 			isa = PBXGroup;
 			children = (
+				4A7F130715A344D00073E99E /* BodyObjectsLayer.mm */,
+				4A7F130815A344D00073E99E /* ContactListener.mm */,
 				4A78F8781546D8B5001811B1 /* PauseLayer.h */,
 				4A78F8791546D8B5001811B1 /* PauseLayer.mm */,
 				706EAB3C153FA3590003C4B2 /* TouchCatchLayer.h */,
@@ -1243,11 +1245,9 @@
 				706EAB42153FA45C0003C4B2 /* GameBackgroundLayer.h */,
 				706EAB43153FA45C0003C4B2 /* GameBackgroundLayer.mm */,
 				706EAB45153FA69D0003C4B2 /* BodyObjectsLayer.h */,
-				70CBE0041574681300DBE24A /* BodyObjectsLayer.mm */,
 				706EAB48153FA8E60003C4B2 /* NoBodyObjectsLayer.h */,
 				706EAB49153FA8E60003C4B2 /* NoBodyObjectsLayer.mm */,
 				7011F2C415411DB8000B2C12 /* ContactListener.h */,
-				70CBE0011574681300DBE24A /* ContactListener.mm */,
 				4A7E716C159217E9008A4148 /* ResultLayer.h */,
 				4A7E716D159217E9008A4148 /* ResultLayer.m */,
 			);
@@ -1503,7 +1503,6 @@
 				706EAB3E153FA3590003C4B2 /* TouchCatchLayer.mm in Sources */,
 				706EAB41153FA3FD0003C4B2 /* ObjectsLayer.mm in Sources */,
 				706EAB44153FA45C0003C4B2 /* GameBackgroundLayer.mm in Sources */,
-				70CBE0021574681300DBE24A /* BodyObjectsLayer.mm in Sources */,
 				706EAB4A153FA8E70003C4B2 /* NoBodyObjectsLayer.mm in Sources */,
 				706EAB6F153FC28B0003C4B2 /* CandyCache.mm in Sources */,
 				706EAB70153FC28B0003C4B2 /* CandyEntity.mm in Sources */,
@@ -1514,7 +1513,6 @@
 				706EAB7D153FC4480003C4B2 /* CCAnimationHelper.mm in Sources */,
 				706EAB7E153FC4480003C4B2 /* Helper.mm in Sources */,
 				7011F2C215410E40000B2C12 /* Storage.mm in Sources */,
-				70CBDFFF1574681300DBE24A /* ContactListener.mm in Sources */,
 				70018D9B1541B144001FBF35 /* Bag.mm in Sources */,
 				70018D9E1541B167001FBF35 /* GamePause.mm in Sources */,
 				70018DA11541B19D001FBF35 /* GameSky.mm in Sources */,
@@ -1528,29 +1526,12 @@
 				C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */,
 				4A7FA06F1580F4B7009A0001 /* LevelScene.m in Sources */,
 				4A7E716E159217E9008A4148 /* ResultLayer.m in Sources */,
+				4A7F130915A344D00073E99E /* BodyObjectsLayer.mm in Sources */,
+				4A7F130A15A344D00073E99E /* ContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		70CBE0011574681300DBE24A /* ContactListener.mm */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70CBE0001574681300DBE24A /* en */,
-			);
-			name = ContactListener.mm;
-			sourceTree = "<group>";
-		};
-		70CBE0041574681300DBE24A /* BodyObjectsLayer.mm */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70CBE0031574681300DBE24A /* en */,
-			);
-			name = BodyObjectsLayer.mm;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		70081FD6153F9881003F042A /* Debug */ = {

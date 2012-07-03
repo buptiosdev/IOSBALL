@@ -13,6 +13,9 @@
 #import "CandyEntity.h"
 #import "GameMainScene.h"
 #import "PropertyCache.h"
+#import "LandCandyCache.h"
+#import "PropertyEntity.h"
+
 
 @interface BodyObjectsLayer (PrivateMethods)
 -(void) initBox2dWorld;
@@ -83,7 +86,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	
 	// for the ground body we'll need these values
 	CGSize screenSize = [CCDirector sharedDirector].winSize;
-	float widthInMeters = (screenSize.width - 32) / PTM_RATIO;
+	float widthInMeters = (screenSize.width) / PTM_RATIO;
 	float heightInMeters = screenSize.height / PTM_RATIO;
 	b2Vec2 lowerLeftCorner = b2Vec2(0, 60/PTM_RATIO);
 	b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 60/PTM_RATIO);
@@ -130,11 +133,28 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	return (FlyEntity*)node;
 }
 
+-(CGPoint) getFlySpeed
+{
+	CCNode* node = [self getChildByTag:FlyEntityTag];
+	NSAssert([node isKindOfClass:[FlyEntity class]], @"node is not a FlyEntity!");
+    FlyEntity *flyAnimal = (FlyEntity*)node;
+	return [flyAnimal getFlySpeed];
+}
+
+
 -(PropertyCache*) getPropertyCache
 {
 	CCNode* node = [self getChildByTag:PropCacheTag];
 	NSAssert([node isKindOfClass:[PropertyCache class]], @"node is not a PropertyCache!");
 	return (PropertyCache *)node;
+}
+
+
+-(CandyCache*) getCandyCache
+{
+	CCNode* node = [self getChildByTag:CandyCacheTag];
+	NSAssert([node isKindOfClass:[CandyCache class]], @"node is not a CandyCache!");
+	return (CandyCache *)node;
 }
 
 +(void)addDownForth:(CGPoint)curPosition forceOut:(b2Vec2 *)force
@@ -159,24 +179,25 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	int32 positionIterations = 1;
 	self.world->Step(timeStep, velocityIterations, positionIterations);
 	
-	// for each body, get its assigned BodyNode and update the sprite's position
-    int bodysize=0;
-    int deadenemycnt=0;
+    //int deadenemycnt=0;
 	for (b2Body* body = self.world->GetBodyList(); body != nil; body = body->GetNext())
 	{
-        bodysize++;
 		Entity* bodyNode = (Entity *)body->GetUserData();
-		if (bodyNode != NULL && bodyNode.sprite != nil)
+		if (bodyNode != NULL && bodyNode.sprite != nil && -1 < bodyNode.hitPoints)
 		{
-			// update the sprite's position to where their physics bodies are
-            //bodysize++;
 			bodyNode.sprite.position = [Helper toPixels:body->GetPosition()];
 			float angle = body->GetAngle();
 			bodyNode.sprite.rotation = -(CC_RADIANS_TO_DEGREES(angle));
             
-            if (bodyNode.hitPoints <= 0)
+            if ([bodyNode isKindOfClass:[CandyEntity class]] && 1 == bodyNode.hitPoints)
             {
-                        
+                CandyEntity* candyNode = (CandyEntity*)bodyNode;
+                candyNode.sprite.visible = YES;
+                candyNode.cover.visible = NO;
+            }
+            
+            if (bodyNode.hitPoints == 0)
+            {
                 if([bodyNode isKindOfClass:[FlyEntity class]])
                 {
                     CCLOG(@"haha");
@@ -198,88 +219,60 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //持续的给Candy加向下的力
                     
                     CCLOG(@"Into here ！糖果的血为0");
-                    //b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();
-                    //CCLOG("x=%d, y=%f\n", bodyPos.y0);
-
-                    //if (bodyPos.y<=0)
-                    //{    
-                    //    CCLOG(@"haha");
-                    //}    
                     
-                    //CGPoint bodyPosition = [Helper toPixels:bodyPos];
-                    //CGPoint newposition = CGPointMake(0, 0);
-                    //b2Vec2 fingerPos = [Helper toMeters:newposition];
-                    
-                    //b2Vec2 bodyToFinger = fingerPos - bodyPos;
-                    //b2Vec2 bodyToFinger = fingerPos;
-                    
-                    
-                    // "Real" gravity falls off by the square over distance. Feel free to try it this way:
-                    //float distance = bodyToFinger.Normalize();
-                    //float distanceSquared = distance * distance;
-                    //b2Vec2 force = ((1.0f / distanceSquared) * 20.0f) * bodyToFinger;
-                    
-                    //b2Vec2 force = 30.0f * bodyToFinger;
-                    //body->SetTransform([Helper toMeters:positionNew], 0);
-                    
-                    //bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());
-                    
-                    //bodyNode.hitPoints=0;
-
-                    if(bodyNode.body->IsSleepingAllowed())
-                    {
-                        //bodyNode.sprite.visible = NO;
-                        CCLOG(@"Into IsSleepingAllowed");
-                        LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
-                        //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
-                        [instanceOfLandCandyCache CreateLandCandy:2 Pos:bodyNode.position];
-                        
-                    }           
-                    
-                    
+                    CCLOG(@"调用精灵切换");
                     CandyEntity* candyNode = (CandyEntity*)bodyNode;
-                    candyNode.changeTheForth;
+                    //CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    
+                    CGPoint flyVelocity = [self getFlySpeed];
+                    //flyVelocity = ccpMult(flyVelocity, 2);
+                    
+                    //bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
+                    
+                    LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+                    //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
+                    [instanceOfLandCandyCache CreateLandCandy:candyNode.candyType Pos:bodyNode.sprite.position BodyVelocity:flyVelocity];
+                    
+                    //消失
+                    CGPoint positionNew = CGPointMake(-100, -100);
+                    bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
+                    bodyNode.sprite.visible = NO;
+                    bodyNode.hitPoints = -1;
+                    CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
+                    if (candyCache != NULL)
+                    {
+                        candyCache.aliveCandy--;
+                    }
                     
                 }   
                 
-                
-                else
+                else if([bodyNode isKindOfClass:[PropertyEntity class]])
                 {
-                    CCLOG(@"其实是到这来了");
-                    //奇怪没到上面去
+                    int typeChange = 3;
+                    CCLOG(@"属性球");
+                    PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
+                    //CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+                    //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
+                    CGPoint flyVelocity = [self getFlySpeed];
+                    [instanceOfLandCandyCache CreateLandCandy:(PropertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:flyVelocity];
                     
-                    b2Vec2 bodyPos = bodyNode.body->GetWorldCenter();                    
-                    CGPoint newposition = CGPointMake(0, 0);
-                    b2Vec2 fingerPos = [Helper toMeters:newposition];
+                    //消失
+                    CGPoint positionNew = CGPointMake(-100, -100);
+                    bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
+                    bodyNode.sprite.visible = NO;
+                    bodyNode.hitPoints = -1;
+                    CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
+                    if (candyCache != NULL)
+                    {
+                        candyCache.aliveCandy--;
+                    }
                     
-                    b2Vec2 bodyToFinger = fingerPos - bodyPos;
-                    
-                    b2Vec2 force = 30.0f * bodyToFinger;
-                    //body->SetTransform([Helper toMeters:positionNew], 0);
-                    
-                    bodyNode.body->ApplyForce(force, bodyNode.body->GetWorldCenter());                    
-                    
-                    deadenemycnt++;
                 }
-                
-                /*
-                CGPoint positionNew = CGPointMake(-100, -100);
-                bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
-                */
-                
-                /*
-                bodyNode.sprite.visible = NO;
-                */
-                
-                //[bodyNode removeBody];
+
             } 
 		}
 	}
-    /*
-    if(deadenemycnt>=bodysize-2){
-        [GameMainScene sharedMainScene].isGamePass = YES;
-    }
-    */
 }
 -(void) dealloc
 {
@@ -287,7 +280,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	//world = NULL;
 	
     delete contactListener;
-	contactListener = NULL;
+	contactListener = nil;
     
     instanceOfBodyObjectsLayer = nil;   
     
