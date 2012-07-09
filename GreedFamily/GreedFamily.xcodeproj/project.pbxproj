@@ -213,6 +213,11 @@
 		706EAB78153FC40B0003C4B2 /* LandAnimal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB77153FC40B0003C4B2 /* LandAnimal.mm */; };
 		706EAB7D153FC4480003C4B2 /* CCAnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */; };
 		706EAB7E153FC4480003C4B2 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7C153FC4480003C4B2 /* Helper.mm */; };
+		70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C015A9D670007D35B5 /* Parse.framework */; };
+		70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C415A9D69C007D35B5 /* Security.framework */; };
+		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
+		70C7C3E715A9E372007D35B5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3E615A9E372007D35B5 /* CFNetwork.framework */; };
+		70C7C3FD15AA7965007D35B5 /* GameCenterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */; };
 		C6C56C351579DA9C00F60F33 /* gameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* gameScore.mm */; };
 		C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6D634BC157CF3030074818D /* MyGameScore.mm */; };
 /* End PBXBuildFile section */
@@ -612,6 +617,12 @@
 		706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CCAnimationHelper.mm; path = tools/CCAnimationHelper.mm; sourceTree = "<group>"; };
 		706EAB7B153FC4480003C4B2 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = tools/Helper.h; sourceTree = "<group>"; };
 		706EAB7C153FC4480003C4B2 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Helper.mm; path = tools/Helper.mm; sourceTree = "<group>"; };
+		70C7C3C015A9D670007D35B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		70C7C3C415A9D69C007D35B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		70C7C3E615A9E372007D35B5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		70C7C3FB15AA7965007D35B5 /* GameCenterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterScene.h; sourceTree = "<group>"; };
+		70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterScene.m; sourceTree = "<group>"; };
 		C6C56C331579DA9B00F60F33 /* gameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameScore.h; sourceTree = "<group>"; };
 		C6C56C341579DA9C00F60F33 /* gameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gameScore.mm; sourceTree = "<group>"; };
 		C6D634BB157CF3030074818D /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
@@ -623,6 +634,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70C7C3E715A9E372007D35B5 /* CFNetwork.framework in Frameworks */,
+				70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */,
+				70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */,
+				70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */,
 				70081DF3153F987C003F042A /* QuartzCore.framework in Frameworks */,
 				70081DF5153F987C003F042A /* OpenGLES.framework in Frameworks */,
 				70081DF7153F987C003F042A /* OpenAL.framework in Frameworks */,
@@ -657,6 +672,10 @@
 		70081DF1153F987C003F042A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70C7C3E615A9E372007D35B5 /* CFNetwork.framework */,
+				70C7C3C415A9D69C007D35B5 /* Security.framework */,
+				70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */,
+				70C7C3C015A9D670007D35B5 /* Parse.framework */,
 				70081DF2153F987C003F042A /* QuartzCore.framework */,
 				70081DF4153F987C003F042A /* OpenGLES.framework */,
 				70081DF6153F987C003F042A /* OpenAL.framework */,
@@ -1225,6 +1244,8 @@
 				706EA9A1153F9AE90003C4B2 /* NavigationScene.mm */,
 				4A7FA06D1580F4B7009A0001 /* LevelScene.h */,
 				4A7FA06E1580F4B7009A0001 /* LevelScene.m */,
+				70C7C3FB15AA7965007D35B5 /* GameCenterScene.h */,
+				70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -1275,7 +1296,6 @@
 				70081DEA153F987C003F042A /* Sources */,
 				70081DEB153F987C003F042A /* Frameworks */,
 				70081DEC153F987C003F042A /* Resources */,
-				70E8E78D1548516900BC4DAC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1355,22 +1375,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		70E8E78D1548516900BC4DAC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ] || [ \"${PLATFORM_NAME}\" == \"ipados\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		70081DEA153F987C003F042A /* Sources */ = {
@@ -1542,6 +1546,7 @@
 				4A7F130915A344D00073E99E /* BodyObjectsLayer.mm in Sources */,
 				4A7F130A15A344D00073E99E /* ContactListener.mm in Sources */,
 				4A7F130D15A3465F0073E99E /* OptionsScene.m in Sources */,
+				70C7C3FD15AA7965007D35B5 /* GameCenterScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1552,7 +1557,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHEN CHEN (564C7G45GF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHEN CHEN (564C7G45GF)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1564,6 +1570,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "443C98DA-3EBB-49A8-802F-14738B1AF249";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "443C98DA-3EBB-49A8-802F-14738B1AF249";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1572,7 +1580,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHEN CHEN (564C7G45GF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHEN CHEN (564C7G45GF)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1580,6 +1589,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "443C98DA-3EBB-49A8-802F-14738B1AF249";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "443C98DA-3EBB-49A8-802F-14738B1AF249";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1589,6 +1600,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GreedFamily/Prefix.pch;
@@ -1606,6 +1621,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GreedFamily/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
