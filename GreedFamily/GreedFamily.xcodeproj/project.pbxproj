@@ -218,6 +218,8 @@
 		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
 		70C7C3E715A9E372007D35B5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3E615A9E372007D35B5 /* CFNetwork.framework */; };
 		70C7C3FD15AA7965007D35B5 /* GameCenterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */; };
+		70C7C40415AA7FF2007D35B5 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C40315AA7FF2007D35B5 /* GCHelper.m */; };
+		70C7C40615AA86A2007D35B5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C40515AA86A2007D35B5 /* GameKit.framework */; };
 		C6C56C351579DA9C00F60F33 /* gameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* gameScore.mm */; };
 		C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6D634BC157CF3030074818D /* MyGameScore.mm */; };
 /* End PBXBuildFile section */
@@ -623,6 +625,9 @@
 		70C7C3E615A9E372007D35B5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		70C7C3FB15AA7965007D35B5 /* GameCenterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterScene.h; sourceTree = "<group>"; };
 		70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterScene.m; sourceTree = "<group>"; };
+		70C7C40215AA7FF2007D35B5 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCHelper.h; path = tools/GCHelper.h; sourceTree = "<group>"; };
+		70C7C40315AA7FF2007D35B5 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCHelper.m; path = tools/GCHelper.m; sourceTree = "<group>"; };
+		70C7C40515AA86A2007D35B5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C6C56C331579DA9B00F60F33 /* gameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameScore.h; sourceTree = "<group>"; };
 		C6C56C341579DA9C00F60F33 /* gameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gameScore.mm; sourceTree = "<group>"; };
 		C6D634BB157CF3030074818D /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
@@ -634,6 +639,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70C7C40615AA86A2007D35B5 /* GameKit.framework in Frameworks */,
 				70C7C3E715A9E372007D35B5 /* CFNetwork.framework in Frameworks */,
 				70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */,
 				70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */,
@@ -672,6 +678,7 @@
 		70081DF1153F987C003F042A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70C7C40515AA86A2007D35B5 /* GameKit.framework */,
 				70C7C3E615A9E372007D35B5 /* CFNetwork.framework */,
 				70C7C3C415A9D69C007D35B5 /* Security.framework */,
 				70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */,
@@ -1253,6 +1260,8 @@
 		70081FDE153F9954003F042A /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				70C7C40215AA7FF2007D35B5 /* GCHelper.h */,
+				70C7C40315AA7FF2007D35B5 /* GCHelper.m */,
 				706EAB79153FC4480003C4B2 /* CCAnimationHelper.h */,
 				706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */,
 				706EAB7B153FC4480003C4B2 /* Helper.h */,
@@ -1547,6 +1556,7 @@
 				4A7F130A15A344D00073E99E /* ContactListener.mm in Sources */,
 				4A7F130D15A3465F0073E99E /* OptionsScene.m in Sources */,
 				70C7C3FD15AA7965007D35B5 /* GameCenterScene.m in Sources */,
+				70C7C40415AA7FF2007D35B5 /* GCHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 #import "GameCenterScene.h"
 #import "NavigationScene.h"
-
+#import "GCHelper.h"
 
 @implementation GameCenterScene
 
@@ -45,8 +45,10 @@
         CCMenu * menu = [CCMenu menuWithItems:returnBtn,nil];
 		[self addChild:menu];
 		[menu setPosition:ccp(0,0)];
+        
+        [[GCHelper sharedInstance] authenticateLocalUser];
 
-    }
+    }   
     
     return self;
 }
