@@ -12,6 +12,8 @@
 #import "GameConfig.h"
 #import "RootViewController.h"
 #import "NavigationScene.h"
+#import "Parse/Parse.h"
+#import "RootViewController.h"
 
 @implementation AppDelegate
 
@@ -112,6 +114,50 @@
 	
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
+    
+    //add push notice function
+    [Parse setApplicationId:@"w1rAzcRAdPuoX60nNy3fKewfZPYCvgJQdXZYEJ3r" clientKey:@"Rg9avoCht3xPnM8ZrM42rBBeMIijaxpQMcSmAImu"];
+    [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
+     (UIRemoteNotificationTypeBadge|
+      UIRemoteNotificationTypeSound|
+      UIRemoteNotificationTypeAlert)];
+}
+
+
+//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+//{
+//    // ****************************************************************************
+//    // Uncomment and fill in with your Parse credentials:
+//    [Parse setApplicationId:@"w1rAzcRAdPuoX60nNy3fKewfZPYCvgJQdXZYEJ3r" clientKey:@"Rg9avoCht3xPnM8ZrM42rBBeMIijaxpQMcSmAImu"];
+////    //
+////    // If you are using Facebook, uncomment and fill in with your Facebook App Id:
+////    // [PFFacebookUtils initializeWithApplicationId:@"your_facebook_app_id"];
+////    // ****************************************************************************
+////    
+////    [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
+////     (UIRemoteNotificationTypeBadge|
+////     UIRemoteNotificationTypeSound|
+////     UIRemoteNotificationTypeAlert)];
+//    return YES;
+//}
+
+- (void)application:(UIApplication *)application 
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
+{
+    [PFPush storeDeviceToken:newDeviceToken]; // Send parse the device token
+    // Subscribe this user to the broadcast channel, "" 
+    [PFPush subscribeToChannelInBackground:@"" block:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Successfully subscribed to the broadcast channel.");
+        } else {
+            NSLog(@"Failed to subscribe to the broadcast channel.");
+        }
+    }];
+}
+
+- (void)application:(UIApplication *)application 
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 //add by lyp just for pause
