@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "GCHelper.h"
 
-@interface GameCenterScene : CCLayer {
+@interface GameCenterScene : CCLayer <GCHelperDelegate>
+{
     
 }
 +(id)createGameCenterScene;

@@ -19,5 +19,5 @@
 
 @property(readwrite,nonatomic) bool paused;
 @property (nonatomic, retain) UIWindow *window;
-
+@property (nonatomic, retain) RootViewController *viewController;
 @end

@@ -9,6 +9,7 @@
 #import "GameCenterScene.h"
 #import "NavigationScene.h"
 #import "GCHelper.h"
+#import "AppDelegate.h"
 
 @implementation GameCenterScene
 
@@ -47,7 +48,11 @@
 		[menu setPosition:ccp(0,0)];
         
         [[GCHelper sharedInstance] authenticateLocalUser];
-
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;  
+        [[GCHelper sharedInstance] findMatchWithMinPlayers:2 
+                                                maxPlayers:2 
+                                            viewController:delegate.viewController
+                                                  delegate:self];
     }   
     
     return self;

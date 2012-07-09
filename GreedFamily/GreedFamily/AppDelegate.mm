@@ -16,7 +16,7 @@
 #import "RootViewController.h"
 
 @implementation AppDelegate
-
+@synthesize viewController;
 @synthesize window,paused;
 
 - (void) removeStartupFlicker
