@@ -8,11 +8,12 @@
 #import "NavigationScene.h"
 #import "LevelScene.h"
 #import "OptionsScene.h"
+#import "GameCenterScene.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
 -(void)options:(id)sender;
--(void)about:(id)sender;
+-(void)gamecenter:(id)sender;
 @end
 
 
@@ -68,17 +69,17 @@
 		//CCBitmapFontAtlas * newgameLabel = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"NEW GAME" fntFile:@"hud_font.fnt"];
         CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *optionsLabel=[CCLabelTTF labelWithString:@"OPTIONS" fontName:@"Marker Felt" fontSize:30];
-        CCLabelTTF *aboutLabel=[CCLabelTTF labelWithString:@"ABOUT" fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"GAME CENTER" fontName:@"Marker Felt" fontSize:30];
 		
 		[newgameLabel setColor:ccRED];
 		[optionsLabel setColor:ccRED];
-		[aboutLabel setColor:ccRED];
+		[gamecenterLabel setColor:ccRED];
 		
 		CCMenuItemLabel * newgame = [CCMenuItemLabel itemWithLabel:newgameLabel target:self selector:@selector(newGame:)];
 		CCMenuItemLabel * options = [CCMenuItemLabel itemWithLabel:optionsLabel target:self selector:@selector(options:)];
-		CCMenuItemLabel * about = [CCMenuItemLabel itemWithLabel:aboutLabel target:self selector:@selector(about:)];
+		CCMenuItemLabel * gamecenter = [CCMenuItemLabel itemWithLabel:gamecenterLabel target:self selector:@selector(gamecenter:)];
 		
-		CCMenu * menu = [CCMenu menuWithItems:newgame,options,about,nil];
+		CCMenu * menu = [CCMenu menuWithItems:newgame,options,gamecenter,nil];
 		[menu alignItemsVerticallyWithPadding:10];
 		[self addChild:menu];
 		[menu setPosition:ccp(size.width,size.height/3)];
@@ -91,7 +92,7 @@
 							[CCDelayTime actionWithDuration:0.5],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
 							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
 							nil]];
-		[about runAction:[CCSequence actions:
+		[gamecenter runAction:[CCSequence actions:
                           [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
                           [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
                           nil]];
@@ -115,9 +116,11 @@
 	[[CCDirector sharedDirector]replaceScene:gs];
 }
 
--(void)about:(id)sender
+-(void)gamecenter:(id)sender
 {
-	//about the game 
+	//connect to game center
+    [[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
+
 }
 
 
