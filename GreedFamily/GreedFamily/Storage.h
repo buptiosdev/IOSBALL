@@ -13,6 +13,8 @@
 
 #define StorageCount  8
 
+#define timeReward 5
+
 //struct FoodInStorage {
 //    int pudingCount;
 //    int chocolateCount;
@@ -33,18 +35,24 @@
     
     int foodInStorage[BallType_MAX];
     
-    CCLabelBMFont* cakeScoreLabel;
-    CCLabelBMFont* chocolateScoreLabel;
-    CCLabelBMFont* pudingScoreLabel;
+    CCLabelBMFont* cheeseScoreLabel;
+    CCLabelBMFont* candyScoreLabel;
+    CCLabelBMFont* appleScoreLabel;
     //BOOL isCombine;
     BOOL canCombine;
     BOOL needUpdateScore;
+    int continuousConbineFlag;
+    
+    
     int gamelevel;
     
+    int nowScoreTime;
+    int counter;
+    int lastScoreTime;
 }
 @property (readonly, nonatomic) CCSprite* sprite;
 +(id)createStorage:(int)storageCapacity;
 -(void)addFoodToStorage:(int)foodType;
--(void)combineMain:(int)totalNum;
+
 
 @end

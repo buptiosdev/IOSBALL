@@ -67,13 +67,16 @@
     NSString *foodSpriteName;
     switch (foodType) 
     {
-        case FoodTypePuding:
+            //case FoodTypePuding:
+        case FoodTypeApple:            
             foodSpriteName = @"apple-.png";
             break;
-        case FoodTypeChocolate:
+            //case FoodTypeChocolate:
+        case FoodTypeCheese:            
             foodSpriteName = @"cheese-.png";
             break;
-        case FoodTypeCake:
+            //case FoodTypeCake:
+        case FoodTypeCandy:        
             foodSpriteName = @"candy-.png";
             break;
         default:
