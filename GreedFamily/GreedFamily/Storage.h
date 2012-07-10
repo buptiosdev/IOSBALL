@@ -54,5 +54,6 @@
 +(id)createStorage:(int)storageCapacity;
 -(void)addFoodToStorage:(int)foodType;
 
+-(void)doMyCombineFood;
 
 @end

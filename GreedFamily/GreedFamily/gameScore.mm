@@ -189,6 +189,7 @@ static gameScore  *instanceOfgameScore;
 }
 
 //获取当前关卡得分
+/*
 -(int )getGameNowScore:(int)level
 {
     if (level == 1)
@@ -216,6 +217,7 @@ static gameScore  *instanceOfgameScore;
     return 0;
     
 }
+ */
 
 //获得当前关卡最高得分
 //Get The Score From gameScore.m
@@ -402,7 +404,7 @@ static gameScore  *instanceOfgameScore;
 
 
 
-
+/*
 -(void)calculateGameScore:(int)level TimesofOneTouch:(int)timesofonetouch 
          NumbersOfOneTime:(int)numbersOfOneTime 
   TheSameTypeNumOfOneTime:(int)theSameTypeNumOfOneTime
@@ -472,6 +474,8 @@ static gameScore  *instanceOfgameScore;
     
     
 }
+*/
+
 
 //update 与  [self scheduleUpdate] 对应
 -(void) update:(ccTime)delta
@@ -519,5 +523,28 @@ static gameScore  *instanceOfgameScore;
     return 0;
 }
 
+//when level is over ,call the function
+-(CCArray *)calculateScoreWhenGameIsOver:(int)level
+{
+    CCLOG(@"Into calculateScoreWhenGameIsOver\n");
+    CCArray *LevelScore;
+    [LevelScore insertObject:[NSNumber numberWithInteger:(my_nowlevelscore-award_nowlevelscore)] atIndex:0];
+    
+    [LevelScore insertObject:[NSNumber numberWithInteger:award_nowlevelscore] atIndex:1];  
+    
+    return LevelScore;
+
+}
+
 
 @end
+
+
+
+
+
+
+
+
+
+

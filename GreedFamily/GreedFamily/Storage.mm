@@ -398,7 +398,7 @@
 //add by lj at 6.20
 //根据触摸引起的消球 
 //计算得分
--(void)doMyCombineFood:(int *)totalNum
+-(void)doMyCombineFood
 {
     CCLOG(@"Into doMyCombineFood");
     //continuousConbineFlag 一次消了多少个球
@@ -419,15 +419,22 @@
         //调用一次性消球 得分函数         
         gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
         
-        [instanceOfgameScore calculateContinuousCombineAward:continuousConbineFlag myLevel:gamelevel];
-        
+        [instanceOfgameScore calculateContinuousCombineAward:continuousConbineFlag myLevel:gamelevel];        
     }
     
     [self moveFood];
     
     canCombine = FALSE;
-    
 }
+
+-(CCArray * )getScoreByLevel:(int)level
+{
+        CCArray *LevelScore;
+        gameScore *instanceOfgameScore = [gameScore sharedgameScore];  
+        LevelScore = [instanceOfgameScore calculateScoreWhenGameIsOver:level];
+        return LevelScore;
+}
+
 
 //判断是否能消除消球 如果能的话消除 并将消球从仓库中去掉
 //返回1
@@ -717,8 +724,7 @@
     {
         timesPerTouch++;
         timesOfOneTouch++;
-        //[self doCombineFood:&totalCount];
-        [self doMyCombineFood:&totalCount];
+        [self doMyCombineFood];
     }
     
     if (timesOfOneTouch < timesPerTouch) 
