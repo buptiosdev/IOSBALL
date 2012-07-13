@@ -21,6 +21,7 @@
 -(void)combineMain:(int)totalNum;
 -(void)checkCombineFood;
 -(void)checkLastCombineFood;
+-(int)doCombineFoodLoop;
 @end
 
 @implementation Storage
@@ -418,7 +419,6 @@
         
         //调用一次性消球 得分函数         
         gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
-        
         [instanceOfgameScore calculateContinuousCombineAward:continuousConbineFlag myLevel:gamelevel];        
     }
     
@@ -430,7 +430,7 @@
 -(CCArray * )getScoreByLevel:(int)level
 {
         CCArray *LevelScore;
-        gameScore *instanceOfgameScore = [gameScore sharedgameScore];  
+        gameScore *instanceOfgameScore = [gameScore sharedgameScore];
         LevelScore = [instanceOfgameScore calculateScoreWhenGameIsOver:level];
         return LevelScore;
 }
@@ -767,7 +767,6 @@
                 {
                     //调用时间奖励 得分函数         
                     gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
-                    
                     [instanceOfgameScore calculateTimeAward:gamelevel];
                     
                     //

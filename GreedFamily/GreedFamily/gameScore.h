@@ -73,7 +73,7 @@ struct  struct_gameScore{
 
 //获取当前关卡得分
 //-(int)getGameNowScore:(int)level HighestScore:(int)highestscore NowScore:(int)nowScore;
--(int)getGameNowScore:(int)level;
+//-(int)getGameNowScore:(int)level;
 
 //获得当前关卡最高得分
 -(int)getGameHighestScore:(int)level;
@@ -103,4 +103,10 @@ struct  struct_gameScore{
                                  Candy:(int)candynum
                                  Apple:(int)applenum;
 
+-(CCArray *)calculateScoreWhenGameIsOver:(int)level;
+
+-(void)calculateContinuousCombineAward:(int)continuousflag 
+                               myLevel:(int)gameLevel;
+
+-(void)calculateTimeAward:(int)gameLevel;
 @end

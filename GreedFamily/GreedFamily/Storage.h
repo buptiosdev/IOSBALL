@@ -53,7 +53,7 @@
 @property (readonly, nonatomic) CCSprite* sprite;
 +(id)createStorage:(int)storageCapacity;
 -(void)addFoodToStorage:(int)foodType;
-
+-(CCArray * )getScoreByLevel:(int)level;
 -(void)doMyCombineFood;
 
 @end
