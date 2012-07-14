@@ -63,6 +63,8 @@ struct  struct_gameScore{
     int my_nowlevelscore;
     //当前关卡游戏奖励得分
     int award_nowlevelscore;
+    CCArray *LevelScore;
+
     
     
 }

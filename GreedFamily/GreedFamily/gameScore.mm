@@ -46,7 +46,7 @@ static gameScore  *instanceOfgameScore;
         my_nowlevelscore = 0;
         award_nowlevelscore = 0;        
         
-        
+        LevelScore = [[CCArray alloc] initWithCapacity:2];        
         //[self scheduleUpdate];
         
         //MyGameScore* p_sharedScrore = [MyGameScore sharedScore];
@@ -527,11 +527,15 @@ static gameScore  *instanceOfgameScore;
 -(CCArray *)calculateScoreWhenGameIsOver:(int)level
 {
     CCLOG(@"Into calculateScoreWhenGameIsOver\n");
-    CCArray *LevelScore;
+
+    CCLOG(@"my_nowlevelscore is %d",my_nowlevelscore);
+    CCLOG(@"award_nowlevelscore is %d",award_nowlevelscore);   
+
     [LevelScore insertObject:[NSNumber numberWithInteger:(my_nowlevelscore-award_nowlevelscore)] atIndex:0];
     
     [LevelScore insertObject:[NSNumber numberWithInteger:award_nowlevelscore] atIndex:1];  
     
+
     return LevelScore;
 
 }
