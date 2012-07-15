@@ -100,7 +100,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
     //fixtureDef.shape = &dynamicBox;
     fixtureDef.density = 0.3; //密度 
     fixtureDef.friction = 0.6    ; //摩擦力
-    fixtureDef.restitution = 0 ;  //弹性系数 复原
+    fixtureDef.restitution = 0.5 ;  //弹性系数 复原
 	    
     // bottom
     screenBoxShape.SetAsEdge(lowerLeftCorner, lowerRightCorner);
@@ -222,16 +222,17 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     CCLOG(@"调用精灵切换");
                     CandyEntity* candyNode = (CandyEntity*)bodyNode;
-                    //CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     
                     CGPoint flyVelocity = [self getFlySpeed];
-                    //flyVelocity = ccpMult(flyVelocity, 2);
+                    bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
-                    //bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
+                    bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
                     
                     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
                     //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
-                    [instanceOfLandCandyCache CreateLandCandy:candyNode.candyType Pos:bodyNode.sprite.position BodyVelocity:flyVelocity];
+                    [instanceOfLandCandyCache CreateLandCandy:candyNode.candyType Pos:bodyNode.sprite.position 
+                                                 BodyVelocity:bodyVelocity];
                     
                     //消失
                     CGPoint positionNew = CGPointMake(-100, -100);
@@ -251,11 +252,15 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     int typeChange = 3;
                     CCLOG(@"属性球");
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
-                    //CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    CGPoint flyVelocity = [self getFlySpeed];
+                    CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
+                    bodyVelocity = ccpMult(bodyVelocity, 0.1);
+                    
+                    bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
                     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
                     //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
-                    CGPoint flyVelocity = [self getFlySpeed];
-                    [instanceOfLandCandyCache CreateLandCandy:(PropertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:flyVelocity];
+    
+                    [instanceOfLandCandyCache CreateLandCandy:(PropertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
                     
                     //消失
                     CGPoint positionNew = CGPointMake(-100, -100);

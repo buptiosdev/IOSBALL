@@ -318,7 +318,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.maxVisibaleNum = 7;
             _mainscenParam.candyCount = 50;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 1.0f;
             _mainscenParam.landAnimalSpeed = 0.5f;

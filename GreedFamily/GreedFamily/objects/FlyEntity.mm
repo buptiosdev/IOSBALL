@@ -158,7 +158,7 @@
 		fixtureDef.shape = &circleShape;
 		fixtureDef.density = 0.5f;
 		fixtureDef.friction = 0.7f;
-		fixtureDef.restitution = 0.5f;
+		fixtureDef.restitution = 0.8f;
 		
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef];
         self.sprite.position = startPos;
