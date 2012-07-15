@@ -531,15 +531,27 @@ static gameScore  *instanceOfgameScore;
     CCLOG(@"my_nowlevelscore is %d",my_nowlevelscore);
     CCLOG(@"award_nowlevelscore is %d",award_nowlevelscore);   
 
-    [LevelScore insertObject:[NSNumber numberWithInteger:(my_nowlevelscore-award_nowlevelscore)] atIndex:0];
+    [LevelScore insertObject:[NSNumber numberWithInteger:(int)(my_nowlevelscore-award_nowlevelscore)] atIndex:0];
     
     [LevelScore insertObject:[NSNumber numberWithInteger:award_nowlevelscore] atIndex:1];  
-    
 
+    
+    
+    //id temp = [LevelScore objectAtIndex:1];
+    //int addscore = [temp intValue];
+    
+    //CCLOG(@"addscore is %d",addscore);
     return LevelScore;
 
 }
 
+
+-(void) dealloc
+{
+    [LevelScore release];
+
+	[super dealloc];
+}
 
 @end
 

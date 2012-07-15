@@ -338,8 +338,21 @@ static GameMainScene *instanceOfMainScene;
     [storage doMyCombineFood];
     //2.调用算分接口
     CCArray * levelscore=[storage getScoreByLevel:(int)_sceneNum];
-    int score=[levelscore indexOfObject:0];
-    int addscore=[levelscore indexOfObject:0];
+    //int score=[levelscore indexOfObject:0];
+    //int addscore=[levelscore indexOfObject:0];
+
+
+    
+    id temp1 = [levelscore objectAtIndex:1];
+    int addscore = [temp1 intValue];    
+    
+    id temp2 = [levelscore objectAtIndex:0];
+    int score = [temp2 intValue];    
+    
+    CCLOG(@"score is %d",score);
+    
+    CCLOG(@"addscore is %d",addscore);
+    
     //3.生成关卡结束显示层
     ccColor4B c = {255,255,0,100};
     ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore];

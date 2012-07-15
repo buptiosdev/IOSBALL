@@ -429,9 +429,13 @@
 
 -(CCArray * )getScoreByLevel:(int)level
 {
+        CCLOG(@"INTO getScoreByLevel\n\n");
         CCArray *LevelScore;
         gameScore *instanceOfgameScore = [gameScore sharedgameScore];
         LevelScore = [instanceOfgameScore calculateScoreWhenGameIsOver:level];
+    
+        //int addscore = (int)[LevelScore objectAtIndex:1];
+        //CCLOG(@"addscore is %d\n\n",addscore);
         return LevelScore;
 }
 

@@ -66,7 +66,6 @@ struct  struct_gameScore{
     CCArray *LevelScore;
 
     
-    
 }
 +(gameScore *)sharedgameScore;
 
