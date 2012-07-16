@@ -134,6 +134,8 @@
 
 -(BOOL)spawnCandyOfType:(int)candyType
 {
+    int enterPosition;
+    
     srandom(time(NULL));
     CCArray* candyOfType = [candyBank objectAtIndex:candyType];
 	
@@ -143,7 +145,12 @@
         if (-1 == candy.hitPoints)
         {
             CCLOG(@"spawn candy type %i", candyType);
-            int enterPosition = random() % 5;
+            do {
+                enterPosition = random() % 5;
+            } while (enterPosition == [BodyObjectsLayer sharedBodyObjectsLayer].curEnterPosition); 
+            
+            [BodyObjectsLayer sharedBodyObjectsLayer].curEnterPosition = enterPosition;
+            
             [candy spawn:enterPosition]; 
             
             return YES;

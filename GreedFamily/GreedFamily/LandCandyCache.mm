@@ -100,6 +100,20 @@ static LandCandyCache *instanceOfLandCandyCache;
     CCLOG(@"landnum++ =%d\n",_landnum);
 }
 
+-(void)competitorEat:(int)foodType
+{
+    //冰块
+    if (foodType == 5) 
+    {
+        [[Competitor sharedCompetitor] decreaseSpeed];
+    }
+    //炸弹
+    else if (foodType == 4)
+    {
+        [[Competitor sharedCompetitor] bombed];
+    }
+}
+
 -(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype
 {
     float landanimalsize = landanimal.contentSize.width * landanimal.scaleX;
@@ -136,6 +150,7 @@ static LandCandyCache *instanceOfLandCandyCache;
             }
             else
             {
+                [self competitorEat:landcandy.ballType];
                 [[Competitor sharedCompetitor]eatAction];
             }
             

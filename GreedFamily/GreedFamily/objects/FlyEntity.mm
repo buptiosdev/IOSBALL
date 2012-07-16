@@ -276,8 +276,10 @@
     //float moveDuration = distanceToMove / playerVelocity;
     
     cocosAngle +=23;
-    if (cocosAngle <0)
+    while (cocosAngle <0)
+    {
         cocosAngle +=360;
+    }
     
     int runAnim = (int)((cocosAngle)/45);
     directionCurrent = runAnim;

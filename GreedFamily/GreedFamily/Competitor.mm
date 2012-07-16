@@ -93,7 +93,7 @@ static Competitor *instanceOfCompetitor;
 
 -(void)eatAction
 {
-    waitinterval = 60;
+    waitinterval = +60;
     CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
     [self runAction:action];
 }
@@ -104,6 +104,26 @@ static Competitor *instanceOfCompetitor;
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
     return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:CompetitorTag];
     //return direction;
+}
+
+-(void)recoverSpeed: (ccTime) dt
+{
+    speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
+    [self unschedule:@selector(recoverSpeed:)];   
+}
+
+//加速
+-(void)decreaseSpeed
+{
+    speed = speed / 2;
+    [self schedule:@selector(recoverSpeed:) interval:10];
+    //加入加速特效
+}
+
+-(void)bombed
+{
+    waitinterval += 180;
+    //加入炸弹特效
 }
 
 -(void)update:(ccTime)delta

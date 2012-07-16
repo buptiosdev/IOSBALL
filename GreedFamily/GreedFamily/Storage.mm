@@ -12,6 +12,7 @@
 #import "Helper.h"
 #import "Food.h"
 #import "GameMainScene.h"
+#import "LandAnimal.h"
 
 @interface Storage (PrivateMethods)
 -(id)initWithCapacity:(int)storageCapacity;
@@ -226,14 +227,22 @@
         currentCount++;
         [food release];
     }
-    //白炸弹
+    //辣椒
+    else if (6 == foodType)
+    {
+        CCLOG(@"hot!!!!!!!!\n");
+        [[LandAnimal sharedLandAnimal] increaseSpeed];
+    }
+    //冰块
     else if (5 == foodType)
     {
-        
+        CCLOG(@"cool!!!!!!!\n");
+        [[LandAnimal sharedLandAnimal] decreaseSpeed];
     }
     //黑炸弹
     else if (4 == foodType)
     {
+        [[LandAnimal sharedLandAnimal] bombed];
         [self bombStorage];
     }
     //水晶球

@@ -94,7 +94,7 @@ static LandAnimal *instanceOfLandAnimal;
 
 -(void)eatAction
 {
-    waitinterval = 60;
+    waitinterval += 60;
     CCAction* action = [CCBlink actionWithDuration:1 blinks:5];
     [self runAction:action];
 }
@@ -105,6 +105,33 @@ static LandAnimal *instanceOfLandAnimal;
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
     return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:LandAnimalTag];
     //return direction;
+}
+
+-(void)recoverSpeed: (ccTime) dt
+{
+    speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
+    [self unschedule:@selector(recoverSpeed:)];   
+}
+
+-(void)increaseSpeed
+{
+    speed = speed * 2;
+    [self schedule:@selector(recoverSpeed:) interval:10];
+    //加入加速特效
+}
+
+-(void)decreaseSpeed
+{
+    speed = speed / 2;
+    [self schedule:@selector(recoverSpeed:) interval:10];
+    //加入减速特效
+}
+
+
+-(void)bombed
+{
+    waitinterval += 180;
+    //加入炸弹特效
 }
 
 -(void)update:(ccTime)delta

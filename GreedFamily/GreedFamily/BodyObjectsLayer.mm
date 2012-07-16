@@ -24,6 +24,7 @@
 
 @implementation BodyObjectsLayer
 @synthesize world = _world;
+@synthesize curEnterPosition = _curEnterPosition;
 /*屏幕尺寸*/
 static CGRect screenRect;
 
@@ -46,6 +47,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
     if ((self = [super init]))
     {
         instanceOfBodyObjectsLayer = self;
+        _curEnterPosition = 0;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         screenRect = CGRectMake(0, 0, screenSize.width, screenSize.height);
         

@@ -20,5 +20,7 @@
 @property (assign, nonatomic)  CCAction *moveAction;
 +(id)CreateCompetitor;
 +(Competitor *)sharedCompetitor;
+-(void)decreaseSpeed;
+-(void)bombed;
 -(void)eatAction;
 @end

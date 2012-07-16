@@ -52,7 +52,10 @@
             spriteName=@"blackbomb.png";
             break;
         case 5:
-            spriteName=@"pic_6.png";
+            spriteName=@"ice-.png";
+            break;
+        case 6:
+            spriteName=@"pepper-.png";
             break;
         default:
             break;

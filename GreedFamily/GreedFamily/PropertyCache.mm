@@ -13,6 +13,7 @@
 
 @interface PropertyCache() 
 -(id)initWithWorld:(b2World *)world;
+-(void)propFrequency:(ccTime)delta;
 -(void)initPropsFrequency;
 @end
 
@@ -30,6 +31,8 @@
 	{
         gameWorld = world;
 		maxVisibalNum = [GameMainScene sharedMainScene].mainscenParam.maxVisibaleNum;
+        memset(propNum, 0, sizeof(propNum));
+        memset(propCount, 0, sizeof(propCount));
 		//[self preInitPropWithWorld:world];
         [self initPropsFrequency];
 	}
@@ -37,94 +40,116 @@
 	return self;    
 }
 
+-(void)createPropTimes
+{
+    int totalProps = 0;
+    
+    int maxTime = [GameMainScene sharedMainScene].mainscenParam.candyCount 
+                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency
+                    - DELAY_TIME;
+    
+    for (int i = 0; i < PROPS_TYPE_COUNT; i++)
+    {
+        totalProps += propNum[i]; 
+    }
+    
+    int gapTime = random() % 5;
+    [self schedule:@selector(propFrequency:) interval:maxTime/totalProps - gapTime];
+}
+
 -(void)createBombTimes
 {
-    [self schedule:@selector(bombFrequency:) interval:60];
+    int gapTime = random() % 15;
+    [self schedule:@selector(bombFrequency:) interval:60 - gapTime];
 }
 
 -(void)createCrystalTimes
 {
-    [self schedule:@selector(crystalFrequency:) interval:60];
+    int gapTime = random() % 10;
+    [self schedule:@selector(crystalFrequency:) interval:60 - gapTime];
 }
 -(void)initPropsFrequency
 {
-    int bombFrequency = [GameMainScene sharedMainScene].mainscenParam.bombFrequency;
-    int crystalFrequency = [GameMainScene sharedMainScene].mainscenParam.crystalFrequency;
-
-    bombNum = 0;
-    crystalNum = 0;
+    propNum[0] = [GameMainScene sharedMainScene].mainscenParam.bombFrequency;
+    propNum[1] = [GameMainScene sharedMainScene].mainscenParam.crystalFrequency;
+    propNum[2] = 2;
+    propNum[3] = 2;
     
-    switch (bombFrequency) 
-    {
-        case NoTime:
-            break;
-        case OneTime:
-            bombNum = 1;
-            [self createBombTimes];
-            break;
-        case TwoTime:
-            bombNum = 2;
-            [self createBombTimes];
-            break;
-        case FiveTime:
-            bombNum = 5;
-            [self createBombTimes];
-            break;    
-        case OneTimePer5s:
-            bombNum = 5;
-            [self schedule:@selector(bombFrequency:) interval:5];
-            break;
-        case OneTimePer10s:
-            bombNum = 5;
-            [self schedule:@selector(bombFrequency:) interval:10];
-            break;
-        case OneTimePer20s:
-            bombNum = 5;
-            [self schedule:@selector(bombFrequency:) interval:20];
-            break;
-        case OneTimePer30s:
-            bombNum = 5;
-            [self schedule:@selector(bombFrequency:) interval:30];
-            break;
-        default:
-            break;
-    }
-    
-    switch (crystalFrequency) 
-    {
-        case NoTime:
-            break;
-        case OneTime:
-            crystalNum = 1;
-            [self createCrystalTimes];
-            break;
-        case TwoTime:
-            crystalNum = 2;
-            [self createCrystalTimes];
-            break;
-        case FiveTime:
-            crystalNum = 5;
-            [self createCrystalTimes];
-            break;    
-        case OneTimePer5s:
-            crystalNum = 5;
-            [self schedule:@selector(crystalFrequency:) interval:5];
-            break;
-        case OneTimePer10s:
-            crystalNum = 5;
-            [self schedule:@selector(crystalFrequency:) interval:10];
-            break;
-        case OneTimePer20s:
-            crystalNum = 5;
-            [self schedule:@selector(crystalFrequency:) interval:20];
-            break;
-        case OneTimePer30s:
-            crystalNum = 5;
-            [self schedule:@selector(crystalFrequency:) interval:30];
-            break;
-        default:
-            break;
-    }
+    [self createPropTimes];
+//    bombNum = 0;
+//    crystalNum = 0;
+//    
+//    switch (bombFrequency) 
+//    {
+//        case NoTime:
+//            break;
+//        case OneTime:
+//            bombNum = 1;
+//            [self createBombTimes];
+//            break;
+//        case TwoTime:
+//            bombNum = 2;
+//            [self createBombTimes];
+//            break;
+//        case FiveTime:
+//            bombNum = 5;
+//            [self createBombTimes];
+//            break;    
+//        case OneTimePer5s:
+//            bombNum = 5;
+//            [self schedule:@selector(bombFrequency:) interval:5];
+//            break;
+//        case OneTimePer10s:
+//            bombNum = 5;
+//            [self schedule:@selector(bombFrequency:) interval:10];
+//            break;
+//        case OneTimePer20s:
+//            bombNum = 5;
+//            [self schedule:@selector(bombFrequency:) interval:20];
+//            break;
+//        case OneTimePer30s:
+//            bombNum = 5;
+//            [self schedule:@selector(bombFrequency:) interval:30];
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    switch (crystalFrequency) 
+//    {
+//        case NoTime:
+//            break;
+//        case OneTime:
+//            crystalNum = 1;
+//            [self createCrystalTimes];
+//            break;
+//        case TwoTime:
+//            crystalNum = 2;
+//            [self createCrystalTimes];
+//            break;
+//        case FiveTime:
+//            crystalNum = 5;
+//            [self createCrystalTimes];
+//            break;    
+//        case OneTimePer5s:
+//            crystalNum = 5;
+//            [self schedule:@selector(crystalFrequency:) interval:5];
+//            break;
+//        case OneTimePer10s:
+//            crystalNum = 5;
+//            [self schedule:@selector(crystalFrequency:) interval:10];
+//            break;
+//        case OneTimePer20s:
+//            crystalNum = 5;
+//            [self schedule:@selector(crystalFrequency:) interval:20];
+//            break;
+//        case OneTimePer30s:
+//            crystalNum = 5;
+//            [self schedule:@selector(crystalFrequency:) interval:30];
+//            break;
+//        default:
+//            break;
+//    }
 
 
 }
@@ -140,53 +165,66 @@
 
 -(void)addOneProperty:(NSInteger)type World:(b2World *)world Tag:(int)taget 
 {
+    int enterPosition;
+    
     PropertyEntity* cache = [PropertyEntity createProperty:type World:world];
     [self addChild:cache z:1 tag:taget];
-    int enterPosition = random() % 5;
+    do {
+        enterPosition = random() % 5;
+    } while (enterPosition == [BodyObjectsLayer sharedBodyObjectsLayer].curEnterPosition); 
+    
+    [BodyObjectsLayer sharedBodyObjectsLayer].curEnterPosition = enterPosition;
+        
     [cache spawn:enterPosition]; 
     
 }
 
 
-
-
--(void)bombFrequency:(ccTime)delta
+-(void)propFrequency:(ccTime)delta
 {
-    if (bombCount < bombNum || bombNum == 0) 
+    int i = 0;
+    int propType;
+    
+    static int passTime;
+    passTime += delta;
+    
+    //属性球会过一段时间再出现
+    if (passTime < DELAY_TIME) 
     {
-        CandyCache *candyCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache];
-        //界面上最多存在maxVisibalNum个球
-        if (candyCache.aliveCandy > maxVisibalNum)
-        {
-            return;
-        }
-
-        [self addOneProperty:1 World:gameWorld Tag:1];
-        bombCount++;
-        candyCache.aliveCandy++;
+        return;
     }
-     
-    return;
-}
-
--(void)crystalFrequency:(ccTime)delta
-{
-    if (crystalCount < crystalNum || bombNum == 0) 
+    
+    CandyCache *candyCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache];
+    //界面上最多存在maxVisibalNum个球
+    if (candyCache.aliveCandy > maxVisibalNum)
     {
-        CandyCache *candyCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache];
-        //界面上最多存在maxVisibalNum个球
-        if (candyCache.aliveCandy > maxVisibalNum)
-        {
-            return;
-        }
-        
-        [self addOneProperty:0 World:gameWorld Tag:0];
-        crystalCount++;
-        candyCache.aliveCandy++;
+        return;
     }
+    
+
+    //随机出球种类，虽多随3次
+    do {
+        propType = random() % 4;
+        i++;
+    }
+    while (propCount[propType] >= propNum[propType] && i < 10);
+    
+    if (propCount[propType] >= propNum[propType])
+    {
+        return;
+    }
+
+    [self addOneProperty:propType World:gameWorld Tag:propType];
+
+    propCount[propType]++;
+    candyCache.aliveCandy++;
+
     
     return;
 }
+
+
+
 
 
 

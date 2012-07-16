@@ -32,6 +32,7 @@ typedef enum
 }
 
 @property (nonatomic) b2World* world;
+@property (nonatomic) int curEnterPosition;
 +(id)CreateBodyObjectsLayer;
 +(CGRect) screenRect;
 +(BodyObjectsLayer *)sharedBodyObjectsLayer;

@@ -21,5 +21,8 @@
 @property (assign, nonatomic)  CCAction *moveAction;
 +(id)CreateLandAnimal;
 +(LandAnimal *)sharedLandAnimal;
+-(void)decreaseSpeed;
+-(void)increaseSpeed;
+-(void)bombed;
 -(void)eatAction;
 @end

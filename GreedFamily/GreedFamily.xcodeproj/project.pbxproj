@@ -1275,8 +1275,6 @@
 		706EA99A153F9AB80003C4B2 /* layers */ = {
 			isa = PBXGroup;
 			children = (
-				4A7F130715A344D00073E99E /* BodyObjectsLayer.mm */,
-				4A7F130815A344D00073E99E /* ContactListener.mm */,
 				4A78F8781546D8B5001811B1 /* PauseLayer.h */,
 				4A78F8791546D8B5001811B1 /* PauseLayer.mm */,
 				706EAB3C153FA3590003C4B2 /* TouchCatchLayer.h */,
@@ -1286,9 +1284,11 @@
 				706EAB42153FA45C0003C4B2 /* GameBackgroundLayer.h */,
 				706EAB43153FA45C0003C4B2 /* GameBackgroundLayer.mm */,
 				706EAB45153FA69D0003C4B2 /* BodyObjectsLayer.h */,
+				4A7F130715A344D00073E99E /* BodyObjectsLayer.mm */,
 				706EAB48153FA8E60003C4B2 /* NoBodyObjectsLayer.h */,
 				706EAB49153FA8E60003C4B2 /* NoBodyObjectsLayer.mm */,
 				7011F2C415411DB8000B2C12 /* ContactListener.h */,
+				4A7F130815A344D00073E99E /* ContactListener.mm */,
 				4A7E716C159217E9008A4148 /* ResultLayer.h */,
 				4A7E716D159217E9008A4148 /* ResultLayer.m */,
 			);

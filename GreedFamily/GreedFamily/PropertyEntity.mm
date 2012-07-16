@@ -20,27 +20,27 @@
 @synthesize propertyType = _propertyType;
 
 static CCArray* spawnFrequency;
--(void) initSpawnFrequency
-{
-	// initialize how frequent the enemies will spawn
-	if (spawnFrequency == nil)
-	{
-		spawnFrequency = [[CCArray alloc] initWithCapacity:PropType_MAX];
-		[spawnFrequency insertObject:[NSNumber numberWithInt:80] atIndex:PropTypeCrystalBall];
-		[spawnFrequency insertObject:[NSNumber numberWithInt:260] atIndex:PropTypeWhiteBomb];
-		[spawnFrequency insertObject:[NSNumber numberWithInt:1500] atIndex:PropTypeBlackBomb];
-		
-		// spawn one enemy immediately
-		//[self spawn];
-	}
-}
-
-+(int) getSpawnFrequencyForType:(NSInteger)type
-{
-	NSAssert(type < PropType_MAX, @"invalid type");
-	NSNumber* number = [spawnFrequency objectAtIndex:type];
-	return [number intValue];
-}
+//-(void) initSpawnFrequency
+//{
+//	// initialize how frequent the enemies will spawn
+//	if (spawnFrequency == nil)
+//	{
+//		spawnFrequency = [[CCArray alloc] initWithCapacity:PropType_MAX];
+//		[spawnFrequency insertObject:[NSNumber numberWithInt:80] atIndex:PropTypeCrystalBall];
+//		[spawnFrequency insertObject:[NSNumber numberWithInt:260] atIndex:PropTypeWhiteBomb];
+//		[spawnFrequency insertObject:[NSNumber numberWithInt:1500] atIndex:PropTypeBlackBomb];
+//		
+//		// spawn one enemy immediately
+//		//[self spawn];
+//	}
+//}
+//
+//+(int) getSpawnFrequencyForType:(NSInteger)type
+//{
+//	NSAssert(type < PropType_MAX, @"invalid type");
+//	NSNumber* number = [spawnFrequency objectAtIndex:type];
+//	return [number intValue];
+//}
 
 -(void)moveCrystalBall:(CGPoint)curPosition forceOut:(b2Vec2 *)force
 {
@@ -140,24 +140,39 @@ static CCArray* spawnFrequency;
 
 -(void) update:(ccTime)delta
 {
-    if (self.sprite.visible)
-	{
-        b2Vec2 bodyPos = self.body->GetWorldCenter();
-        CGPoint bodyPosition = [Helper toPixels:bodyPos];
-        b2Vec2 force;
-        //函数指针
-        //void(*getForchFunc)(id, SEL, CGPoint);
+//    if (self.sprite.visible)
+//	{
+//        b2Vec2 bodyPos = self.body->GetWorldCenter();
+//        CGPoint bodyPosition = [Helper toPixels:bodyPos];
+//        b2Vec2 force;
+//        //函数指针
+//        //void(*getForchFunc)(id, SEL, CGPoint);
+//        
+//        //IMP getForchFunc = [self methodForSelector:ballMove];
+//        //getForchFunc(self, ballMove, bodyPosition, &force);
+//        
+//        //  SEL a = @selector(moveTheBallRandom: forceOut:);
+//        IMP getForchFunc = [self methodForSelector:ballMove];
+//        getForchFunc(self, ballMove, bodyPosition, &force); 
+//        
+//        self.body->ApplyForce(force, self.body->GetWorldCenter());
+//        
+//        
+//        
+//	}    
+    
+    if (self.hitPoints != -1)
+    {
+        float mass = self.body->GetMass();  
+        float density = 0;  
+        density = self.body->GetFixtureList()->GetDensity();  
         
-        //IMP getForchFunc = [self methodForSelector:ballMove];
-        //getForchFunc(self, ballMove, bodyPosition, &force);
+        float volumn = mass / density;  
         
-        //  SEL a = @selector(moveTheBallRandom: forceOut:);
-        IMP getForchFunc = [self methodForSelector:ballMove];
-        getForchFunc(self, ballMove, bodyPosition, &force); 
+        // mass = rho * volumn，水的密度是1.0，  
         
-        self.body->ApplyForce(force, self.body->GetWorldCenter());
-        
-	}    
+        self.body->ApplyForce(b2Vec2(CCRANDOM_MINUS1_1() * volumn, CCRANDOM_MINUS1_1() * volumn), self.body->GetWorldCenter());    
+    }
 }
 
 +(id)createProperty:(NSInteger)propertyType World:(b2World *)world
@@ -173,7 +188,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.ballType = PropTypeCrystalBall;
     propertyParamDef.spriteFrameName = @"crystallball.png";
     propertyParamDef.density = 0.5;
-    propertyParamDef.restitution = 1.5;
+    propertyParamDef.restitution = 0.8;
     propertyParamDef.linearDamping = 0.2;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.5;
@@ -182,15 +197,32 @@ static CCArray* spawnFrequency;
     
 }
 
--(void)initWhiteBomb
+-(void)initIce
 {
     ballMove = @selector(moveWhiteBomb:forceOut:);
     propertyParamDef.startPos = CGPointMake(-200, -100);/*random?*/
     propertyParamDef.isDynamicBody = YES;
-    propertyParamDef.ballType = PropTypeWhiteBomb;
-    propertyParamDef.spriteFrameName = @"pic_6.png";
-    propertyParamDef.density = 0.2;
-    propertyParamDef.restitution = 1.5;
+    propertyParamDef.ballType = PropTypeIce;
+    propertyParamDef.spriteFrameName = @"ice+.png";
+    propertyParamDef.density = 0.6;
+    propertyParamDef.restitution = 0.2;
+    propertyParamDef.linearDamping = 0.2;
+    propertyParamDef.angularDamping = 0.1;
+    propertyParamDef.friction = 0.5;
+    propertyParamDef.radius = 0.5;
+    propertyParamDef.initialHitPoints = 1;
+    
+}
+
+-(void)initPepper
+{
+    ballMove = @selector(moveWhiteBomb:forceOut:);
+    propertyParamDef.startPos = CGPointMake(-200, -100);/*random?*/
+    propertyParamDef.isDynamicBody = YES;
+    propertyParamDef.ballType = PropTypePepper;
+    propertyParamDef.spriteFrameName = @"pepper+.png";
+    propertyParamDef.density = 0.1;
+    propertyParamDef.restitution = 0.9;
     propertyParamDef.linearDamping = 0.2;
     propertyParamDef.angularDamping = 0.1;
     propertyParamDef.friction = 0.5;
@@ -227,8 +259,11 @@ static CCArray* spawnFrequency;
         case PropTypeBlackBomb:
             [self initBlackBomb];
             break;
-        case PropTypeWhiteBomb:
-            [self initWhiteBomb];
+        case PropTypeIce:
+            [self initIce];
+            break;
+        case PropTypePepper:
+            [self initPepper];
             break;
         default:
             break;
@@ -337,7 +372,7 @@ static CCArray* spawnFrequency;
             break;
             
         case PositionFive:
-            appearPosition = CGPointMake(420, 200);
+            appearPosition = CGPointMake(460, 200);
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);

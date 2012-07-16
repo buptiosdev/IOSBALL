@@ -10,15 +10,16 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 
+#define PROPS_TYPE_COUNT 4
+#define DELAY_TIME 15
+
 @interface PropertyCache : CCNode 
 {
   	//CCSpriteBatchNode* batch;
 	CCArray* props;
 	int cacheNum;
-    int bombNum;
-    int crystalNum;
-    int bombCount;
-    int crystalCount;
+    int propNum[PROPS_TYPE_COUNT];//4种属性球：0：水晶球 1：毒蘑菇  2：冰块  3：辣椒
+    int propCount[PROPS_TYPE_COUNT];
 	int updateCount;  
     int maxVisibalNum;
     b2World *gameWorld;

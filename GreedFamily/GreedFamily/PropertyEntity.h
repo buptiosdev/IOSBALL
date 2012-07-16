@@ -15,7 +15,8 @@ typedef enum
 {
 	PropTypeCrystalBall = 0,
     PropTypeBlackBomb,
-    PropTypeWhiteBomb,
+    PropTypeIce,
+    PropTypePepper,
 	PropType_MAX,
 } PropType;
 
