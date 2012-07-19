@@ -25,6 +25,7 @@
 @synthesize isDowning = _isDowning;
 @synthesize landCandyActionArray = _landCandyActionArray;
 @synthesize fallAction = _fallAction;
+@synthesize waitinterval = _waitinterval;
 
 +(id)CreateLandCandyEntity:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity
 {
@@ -105,6 +106,7 @@
         [self initFallAction];
         self.ballType = balltype;
         self.candyVelocity = pos;
+        self.waitinterval = 15;
         NSString * spriteName = [self chooseBall:(balltype)];
 //        self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
 //        self.sprite.position = pos;
@@ -141,7 +143,11 @@
     {
         return;
     }
-
+    if(_waitinterval>0)
+    {
+        _waitinterval--;
+        return;
+    }
 
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     float imageWidthHalved = [self.sprite contentSize].width * self.sprite.scaleX * 0.5f; 
@@ -166,7 +172,13 @@
         LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
         [landCandyCache addToLandCandies:self];
         self.isDowning = NO;
-        
+        //落地特效
+        CCParticleSystem* system;
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"drop_start.plist"];
+        system.positionType = kCCPositionTypeGrouped;
+        system.autoRemoveOnFinish = YES;
+        system.position = self.sprite.position;
+        [self addChild:system];
     }
 }
 

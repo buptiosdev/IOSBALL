@@ -223,6 +223,15 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CCLOG(@"Into here ！糖果的血为0");
                     
                     CCLOG(@"调用精灵切换");
+                    //气泡破裂特效
+                    CCParticleSystem* system;
+                    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bublle_break.plist"];
+                    system.positionType = kCCPositionTypeFree;
+                    system.autoRemoveOnFinish = YES;
+                    system.position = bodyNode.sprite.position;
+                    [self addChild:system];
+
+                    
                     CandyEntity* candyNode = (CandyEntity*)bodyNode;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     
@@ -239,8 +248,10 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //消失
                     CGPoint positionNew = CGPointMake(-100, -100);
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
-                    bodyNode.sprite	.visible = NO;
+                    bodyNode.sprite.visible = NO;
                     bodyNode.hitPoints = -1;
+                    
+                    
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
                     if (candyCache != NULL)
                     {
@@ -253,6 +264,15 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                 {
                     int typeChange = 3;
                     CCLOG(@"属性球");
+                    
+                    //气泡破裂特效
+                    CCParticleSystem* system;
+                    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bublle_break.plist"];
+                    system.positionType = kCCPositionTypeFree;
+                    system.autoRemoveOnFinish = YES;
+                    system.position = bodyNode.sprite.position;
+                    [self addChild:system];
+                    
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
                     CGPoint flyVelocity = [self getFlySpeed];
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
@@ -269,6 +289,9 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
                     bodyNode.hitPoints = -1;
+                    
+
+                    
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
                     if (candyCache != NULL)
                     {

@@ -76,6 +76,7 @@ static LandCandyCache *instanceOfLandCandyCache;
                 landcandy.isDowning = YES;
                 landcandy.sprite.visible = YES;
                 landcandy.sprite.position = position;
+                landcandy.waitinterval = 15;
                 landcandy.candyVelocity = CGPointMake(bodyVelocity.x/100, -1);
                 _airnum++;
                 return;

@@ -20,6 +20,7 @@
 -initWithOrder:(int)order;
 +(id)createMainLayer:(int)order;
 -(void)initSceneParam:(int)order;
+-(void)preloadParticleEffect;
 @end
 
 @implementation GameMainScene
@@ -71,6 +72,7 @@ static GameMainScene *instanceOfMainScene;
         _sceneNum = order;
         _isGameOver = NO;
         _isGamePass = NO;
+        [self preloadParticleEffect];
         [self initSceneParam:order];
         GameBackgroundLayer *gameBackgroundLayer = [GameBackgroundLayer CreateGameBackgroundLayer];
         [self addChild:gameBackgroundLayer z:-1 tag:BackGroundLayerTag];
@@ -90,6 +92,18 @@ static GameMainScene *instanceOfMainScene;
     }
     
     return self;
+}
+
+-(void) preloadParticleEffects:(NSString*)particleFile
+{
+	[ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:particleFile];
+}
+
+-(void)preloadParticleEffect
+{
+    // To preload the textures, play each effect once off-screen
+    [self preloadParticleEffects:@"bublle_break.plist"];
+    [self preloadParticleEffects:@"drop_start.plist"];
 }
 
 

@@ -13,6 +13,7 @@
     //int Balltype;
     //CGPoint position;
     //CGPoint candyVelocity;
+    
 }
 @property (assign, nonatomic) CCSprite* sprite;
 @property (assign, nonatomic) int ballType;
@@ -21,6 +22,7 @@
 @property (assign, nonatomic) BOOL isDowning;
 @property (nonatomic, retain) NSMutableArray *landCandyActionArray;
 @property (assign, nonatomic)  CCAction *fallAction;
+@property (assign, nonatomic)  int waitinterval;
 
 +(id)CreateLandCandyEntity:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity;
 @end
