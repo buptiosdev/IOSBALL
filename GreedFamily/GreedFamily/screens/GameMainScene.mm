@@ -106,7 +106,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
+            
         case TargetScene2ndScene:
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 7;
@@ -117,7 +120,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
+            
         case TargetScene3rdScene:
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 10;
@@ -128,7 +134,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
+            
         case TargetScene4thScene:
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 15;
@@ -139,6 +148,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
         case TargetScene5thScene:
             _mainscenParam.maxVisibaleNum = 3;
@@ -150,6 +161,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = OneTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
         case TargetScene6thScene:
             _mainscenParam.maxVisibaleNum = 4;
@@ -161,6 +174,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
         case TargetScene7thScene:
             _mainscenParam.maxVisibaleNum = 4;
@@ -172,6 +187,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
         case TargetScene8thScene:
             _mainscenParam.maxVisibaleNum = 4;
@@ -183,6 +200,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
         case TargetScene9thScene:
             _mainscenParam.maxVisibaleNum = 4;
@@ -194,6 +213,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
         case TargetScene10thScene:
             _mainscenParam.maxVisibaleNum = 4;
@@ -205,17 +226,21 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = OneTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = NoTime;
+            _mainscenParam.iceFrequency = NoTime;
             break;
         case TargetScene11thScene:
             _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 15;
-            _mainscenParam.candyType = 2;
+            _mainscenParam.candyCount = 20;
+            _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
-            _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = OneTime;
+            _mainscenParam.iceFrequency = OneTime;
             _mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene12thScene:
@@ -226,8 +251,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = OneTime;
+            _mainscenParam.iceFrequency = TwoTime;
             _mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene13thScene:
@@ -240,6 +267,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = OneTime;
+            _mainscenParam.iceFrequency = TwoTime;
             _mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene14thScene:
@@ -252,6 +281,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = TwoTime;
+            _mainscenParam.iceFrequency = TwoTime;
             _mainscenParam.invisibaleNum = 2;
             break;
         case TargetScene15thScene:
@@ -264,6 +295,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.pepperFrequency = TwoTime;
+            _mainscenParam.iceFrequency = ThreeTime;
             _mainscenParam.invisibaleNum = 2;
             break;
         case TargetScene16thScene:
@@ -275,7 +308,9 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetSpeed = 0.6f;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
-            _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = OneTime;
+            _mainscenParam.iceFrequency = FourTime;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene17thScene:
@@ -286,8 +321,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.6f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.bombFrequency = ThreeTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = TwoTime;
+            _mainscenParam.iceFrequency = ThreeTime;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene18thScene:
@@ -300,6 +337,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = TwoTime;
+            _mainscenParam.iceFrequency = ThreeTime;
             _mainscenParam.invisibaleNum = 4;
             break;
         case TargetScene19thScene:
@@ -310,8 +349,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 1.0f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = TwoTime;
+            _mainscenParam.bombFrequency = ThreeTime;
             _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = ThreeTime;
+            _mainscenParam.iceFrequency = FourTime;
             _mainscenParam.invisibaleNum = 4;
             break;
         case TargetScene20thScene:
@@ -323,7 +364,9 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetSpeed = 1.0f;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = FiveTime;
-            _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.pepperFrequency = ThreeTime;
+            _mainscenParam.iceFrequency = FiveTime;
             _mainscenParam.invisibaleNum = 5;
             break;
         default:

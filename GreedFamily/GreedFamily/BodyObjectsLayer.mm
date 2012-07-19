@@ -239,7 +239,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //消失
                     CGPoint positionNew = CGPointMake(-100, -100);
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
-                    bodyNode.sprite.visible = NO;
+                    bodyNode.sprite	.visible = NO;
                     bodyNode.hitPoints = -1;
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
                     if (candyCache != NULL)

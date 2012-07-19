@@ -584,17 +584,17 @@
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {480, 40}}</string>
+			<string>{{0, 0}, {287, 39}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{480, 40}</string>
+			<string>{287, 39}</string>
 			<key>spriteSourceSize</key>
-			<string>{480, 40}</string>
+			<string>{287, 39}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{10, 251}, {480, 40}}</string>
+			<string>{{12, 253}, {287, 39}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>

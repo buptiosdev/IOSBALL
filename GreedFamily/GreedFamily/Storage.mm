@@ -13,6 +13,8 @@
 #import "Food.h"
 #import "GameMainScene.h"
 #import "LandAnimal.h"
+#import "Bag.h"
+#import "TouchCatchLayer.h"
 
 @interface Storage (PrivateMethods)
 -(id)initWithCapacity:(int)storageCapacity;
@@ -106,7 +108,7 @@
         //先不可见，后续再去掉或替换图片
         _sprite.visible = NO;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        _sprite.position = CGPointMake(screenSize.width / 2, 20);
+        _sprite.position = CGPointMake(screenSize.width / 4, 20);
         [batch addChild:_sprite];
         
         [self initScores];
@@ -230,8 +232,8 @@
     //辣椒
     else if (6 == foodType)
     {
-        CCLOG(@"hot!!!!!!!!\n");
-        [[LandAnimal sharedLandAnimal] increaseSpeed];
+        Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
+        [bag addPepper];
     }
     //冰块
     else if (5 == foodType)
@@ -248,7 +250,8 @@
     //水晶球
     else if (3 == foodType)
     {
-        [self combinTheSameType];
+        Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
+        [bag addCrystal];
     }
 }
 

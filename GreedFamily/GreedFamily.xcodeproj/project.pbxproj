@@ -1641,6 +1641,7 @@
 				INFOPLIST_FILE = GreedFamily/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "\"GreedFamily/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

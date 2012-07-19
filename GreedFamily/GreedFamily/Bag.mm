@@ -11,6 +11,9 @@
 #import "Helper.h"
 #import "BodyObjectsLayer.h"
 #import "PropertyCache.h"
+#import "LandAnimal.h"
+//#import "Storage.h"
+#import "TouchCatchLayer.h"
 
 @implementation Bag
 @synthesize sprite = _sprite;
@@ -20,21 +23,45 @@
 //}
 
 
-- (void)onStart:(id)sender{
-    PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
-    b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
-    [thePropCache addOneProperty:1 World:theworld Tag:1];
-}
-- (void)onBomb:(id)sender{
-    PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
-    b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
-    [thePropCache addOneProperty:2 World:theworld Tag:2];
+//- (void)onStart:(id)sender{
+//    PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
+//    b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
+//    [thePropCache addOneProperty:1 World:theworld Tag:1];
+//}
+//- (void)onBomb:(id)sender{
+//    PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
+//    b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
+//    [thePropCache addOneProperty:2 World:theworld Tag:2];
+//}
+//
+//- (void)onCrystal:(id)sender{
+//    PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
+//    b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
+//    [thePropCache addOneProperty:0 World:theworld Tag:0];
+//}
+-(void)onPepper:(id)sender
+{
+    if (0 >= pepperNum) 
+    {
+        return;
+    }
+    CCLOG(@"hot!!!!!!!!\n");
+    [[LandAnimal sharedLandAnimal] increaseSpeed];
+    pepperNum--;
+    [pepperLabel setString:[NSString stringWithFormat:@"x%i", pepperNum]];
 }
 
-- (void)onCrystal:(id)sender{
-    PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
-    b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
-    [thePropCache addOneProperty:0 World:theworld Tag:0];
+-(void)onCrystal:(id)sender
+{
+    if (0 >= crystalNum)
+    {
+        return;
+    }
+    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+
+    [storage combinTheSameType];
+    crystalNum--;
+    [crystalLabel setString:[NSString stringWithFormat:@"x%i", crystalNum]];
 }
 -(id)init
 {
@@ -42,32 +69,35 @@
     {
         //[self registerWithTouchDispatcher];
         
-        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-        _sprite = [CCSprite spriteWithSpriteFrameName:@"bag_background.png"];
+//        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+//        _sprite = [CCSprite spriteWithSpriteFrameName:@"bag_background.png"];
+//        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+//        _sprite.position = CGPointMake(464, screenSize.height / 2);
+//        [batch addChild:_sprite z:-3];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        _sprite.position = CGPointMake(464, screenSize.height / 2);
-        [batch addChild:_sprite z:-3];
+        pepperNum = 0;
+        crystalNum = 0;
         
-        CCSprite *startNormal = [CCSprite spriteWithSpriteFrameName:@"start2.png"];
-        CCSprite *startSelected = [CCSprite spriteWithSpriteFrameName:@"start.png"];
-        CCMenuItemSprite *starts = [CCMenuItemSprite itemFromNormalSprite:startNormal 
-                                                           selectedSprite:startSelected 
-                                                                   target:self 
-                                                                 selector:@selector(onStart:)];
+//        CCSprite *startNormal = [CCSprite spriteWithSpriteFrameName:@"start2.png"];
+//        CCSprite *startSelected = [CCSprite spriteWithSpriteFrameName:@"start.png"];
+//        CCMenuItemSprite *starts = [CCMenuItemSprite itemFromNormalSprite:startNormal 
+//                                                           selectedSprite:startSelected 
+//                                                                   target:self 
+//                                                                 selector:@selector(onStart:)];
+//        
+//        CCSprite *bombNormal = [CCSprite spriteWithSpriteFrameName:@"bomb1.png"];
+//        CCSprite *bombSelected = [CCSprite spriteWithSpriteFrameName:@"bomb2.png"];
+//        CCMenuItemSprite *bombs = [CCMenuItemSprite itemFromNormalSprite:bombNormal 
+//                                                           selectedSprite:bombSelected 
+//                                                                   target:self 
+//                                                                 selector:@selector(onBomb:)];
         
-        CCSprite *bombNormal = [CCSprite spriteWithSpriteFrameName:@"bomb1.png"];
-        CCSprite *bombSelected = [CCSprite spriteWithSpriteFrameName:@"bomb2.png"];
-        CCMenuItemSprite *bombs = [CCMenuItemSprite itemFromNormalSprite:bombNormal 
-                                                           selectedSprite:bombSelected 
-                                                                   target:self 
-                                                                 selector:@selector(onBomb:)];
-        
-        CCSprite *fruitNormal = [CCSprite spriteWithSpriteFrameName:@"apple.png"];
-        CCSprite *fruitSelected = [CCSprite spriteWithSpriteFrameName:@"moon.png"];
+        CCSprite *fruitNormal = [CCSprite spriteWithSpriteFrameName:@"moon.png"];
+        CCSprite *fruitSelected = [CCSprite spriteWithSpriteFrameName:@"apple.png"];
         CCMenuItemSprite *fruits = [CCMenuItemSprite itemFromNormalSprite:fruitNormal 
                                                           selectedSprite:fruitSelected 
                                                                   target:self 
-                                                                selector:@selector(onBomb:)];
+                                                                selector:@selector(onPepper:)];
         
         CCSprite *crystalNormal = [CCSprite spriteWithSpriteFrameName:@"crystal.png"];
         CCSprite *crystalSelected = [CCSprite spriteWithSpriteFrameName:@"ball.png"];
@@ -77,11 +107,25 @@
                                                                 selector:@selector(onCrystal:)];
         
 
-        CCMenu *menu = [CCMenu menuWithItems:starts, bombs, fruits, crystals, nil];
-        menu.position = ccp(464, 200);
-
-        [menu alignItemsVerticallyWithPadding: 10.0f];
+        //CCMenu *menu = [CCMenu menuWithItems:starts, bombs, fruits, crystals, nil];
+        CCMenu *menu = [CCMenu menuWithItems:fruits, crystals, nil];
+        [menu setPosition:ccp(screenSize.width * 3 / 4 + 20, 15)];
+        [menu alignItemsHorizontallyWithPadding:30];
         [self addChild:menu z: -2];
+        
+        
+        pepperLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        pepperLabel.position = CGPointMake(360, 15);
+        pepperLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
+        pepperLabel.scale = 0.2;
+        [self addChild:pepperLabel z:-1];
+        
+        
+        crystalLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        crystalLabel.position = CGPointMake(420, 13);
+        crystalLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
+        crystalLabel.scale = 0.2;
+        [self addChild:crystalLabel z:-1];
         
         
 //        timeTmp.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
@@ -101,6 +145,18 @@
     }
     
     return self;
+}
+
+-(void)addPepper
+{
+    pepperNum++;
+    [pepperLabel setString:[NSString stringWithFormat:@"x%i", pepperNum]];
+}
+
+-(void)addCrystal
+{
+    crystalNum++;
+    [crystalLabel setString:[NSString stringWithFormat:@"x%i", crystalNum]];
 }
 
 

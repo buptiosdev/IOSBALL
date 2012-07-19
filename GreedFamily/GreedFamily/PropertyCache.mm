@@ -53,8 +53,13 @@
         totalProps += propNum[i]; 
     }
     
-    int gapTime = random() % 5;
-    [self schedule:@selector(propFrequency:) interval:maxTime/totalProps - gapTime];
+    int gapTime = random() % 3;
+    int intervalTime = maxTime/totalProps - gapTime;
+    if (0 >= intervalTime) 
+    {
+        return;
+    }
+    [self schedule:@selector(propFrequency:) interval:intervalTime];
 }
 
 -(void)createBombTimes
@@ -70,10 +75,10 @@
 }
 -(void)initPropsFrequency
 {
-    propNum[0] = [GameMainScene sharedMainScene].mainscenParam.bombFrequency;
-    propNum[1] = [GameMainScene sharedMainScene].mainscenParam.crystalFrequency;
-    propNum[2] = 2;
-    propNum[3] = 2;
+    propNum[0] = [GameMainScene sharedMainScene].mainscenParam.crystalFrequency;
+    propNum[1] = [GameMainScene sharedMainScene].mainscenParam.bombFrequency;
+    propNum[2] = [GameMainScene sharedMainScene].mainscenParam.iceFrequency;
+    propNum[3] = [GameMainScene sharedMainScene].mainscenParam.pepperFrequency;
     
     [self createPropTimes];
 //    bombNum = 0;

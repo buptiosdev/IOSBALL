@@ -12,7 +12,15 @@
 //@interface Bag : CCNode <CCTargetedTouchDelegate>
 @interface Bag : CCNode 
 {
+    int pepperNum;
+    int crystalNum;
     CCProgressTimer *timeTmp;
+    CCLabelBMFont* pepperLabel;
+    CCLabelBMFont* crystalLabel;
 }
 @property (readonly, nonatomic) CCSprite* sprite;
+
+-(void)addCrystal;
+-(void)addPepper;
+
 @end

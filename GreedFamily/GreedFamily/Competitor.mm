@@ -93,7 +93,7 @@ static Competitor *instanceOfCompetitor;
 
 -(void)eatAction
 {
-    waitinterval = +60;
+    waitinterval += 60;
     CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
     [self runAction:action];
 }
@@ -108,7 +108,7 @@ static Competitor *instanceOfCompetitor;
 
 -(void)recoverSpeed: (ccTime) dt
 {
-    speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
+    speed = [GameMainScene sharedMainScene].mainscenParam.landCompetSpeed;
     [self unschedule:@selector(recoverSpeed:)];   
 }
 

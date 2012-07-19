@@ -47,12 +47,12 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         GamePause *gamePause = [GamePause node];
         [self addChild:gamePause z:2 tag:GamePauseTag];
         
-        Storage *storage = [Storage createStorage:14];
+        Storage *storage = [Storage createStorage:10];
         [self addChild:storage z:-3 tag:StorageTag];
         
         //先不考虑
-//        Bag *bag = [Bag node];
-//        [self addChild:bag z:1 tag:BagTag];
+        Bag *bag = [Bag node];
+        [self addChild:bag z:1 tag:BagTag];
         
     }
     return self;
@@ -61,8 +61,15 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
 -(Storage*) getStorage
 {
 	CCNode* node = [self getChildByTag:StorageTag];
-	NSAssert([node isKindOfClass:[Storage class]], @"node is not a FlyEntity!");
+	NSAssert([node isKindOfClass:[Storage class]], @"node is not a storage!");
 	return (Storage*)node;
+}
+
+-(Bag*) getBag
+{
+	CCNode* node = [self getChildByTag:BagTag];
+	NSAssert([node isKindOfClass:[Bag class]], @"node is not a bag!");
+	return (Bag*)node;
 }
 
 -(void) dealloc

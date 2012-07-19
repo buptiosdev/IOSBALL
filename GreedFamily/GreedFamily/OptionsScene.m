@@ -91,7 +91,7 @@
 		CCMenu * menu = [CCMenu menuWithItems:music,sound,returnBtn,nil];
 		[self addChild:menu];
 		[menu setPosition:ccp(0,0)];
-		
+		//[menu alignItemsHorizontallyWithPadding:23];
 		NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"sound"] == YES)
 			sound.selectedIndex = 1;

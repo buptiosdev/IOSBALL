@@ -35,11 +35,9 @@ typedef enum
     NoTime = 0,
     OneTime,
     TwoTime,
+    ThreeTime,
+    FourTime,
     FiveTime,
-    OneTimePer30s,
-    OneTimePer20s,
-    OneTimePer10s,
-    OneTimePer5s,
     
 }PropertyFrequency;
 
@@ -52,6 +50,8 @@ struct SceneParam
     int candyType;
     int candyFrequency;
     int bombFrequency;
+    int pepperFrequency;
+    int iceFrequency;
     int crystalFrequency;
     int invisibaleNum;
     int maxVisibaleNum;
