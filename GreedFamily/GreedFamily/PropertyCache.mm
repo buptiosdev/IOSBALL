@@ -53,8 +53,13 @@
         totalProps += propNum[i]; 
     }
     
+    if (0 >= totalProps) 
+    {
+        return;
+    }
+    
     int gapTime = random() % 3;
-    int intervalTime = maxTime/totalProps - gapTime;
+    int intervalTime = maxTime/(totalProps + 1) - gapTime;
     if (0 >= intervalTime) 
     {
         return;
