@@ -106,24 +106,96 @@ static Competitor *instanceOfCompetitor;
     //return direction;
 }
 
--(void)recoverSpeed: (ccTime) dt
+-(void)recoverSpeedForde: (ccTime) dt
 {
     speed = [GameMainScene sharedMainScene].mainscenParam.landCompetSpeed;
-    [self unschedule:@selector(recoverSpeed:)];   
+    [self unschedule:@selector(recoverSpeedForde:)];   
+    //消除特效
+    [self removeChildByTag:IceType cleanup:YES];
+    isIce = NO;
 }
 
-//加速
+-(void)recoverSpeedForIn: (ccTime) dt
+{
+    speed = [GameMainScene sharedMainScene].mainscenParam.landCompetSpeed;
+    [self unschedule:@selector(recoverSpeedForIn:)];   
+    //消除特效
+    [self removeChildByTag:PepperType cleanup:YES];
+    isPepper = NO;
+}
+
+-(void)reduceCrystal: (ccTime) dt
+{
+    [self unschedule:@selector(reduceCrystal:)];   
+    //消除特效
+    [self removeChildByTag:CrystalType cleanup:YES];
+    isCrystal = NO;
+}
+
+
+-(void)increaseSpeed
+{
+    [self unschedule:@selector(recoverSpeedForIn:)];   
+    //消除特效
+    [self removeChildByTag:PepperType cleanup:YES];
+    isPepper = NO;
+    
+    speed = speed * 2;
+    [self schedule:@selector(recoverSpeedForIn:) interval:10];
+    //加入加速特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_poison.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = self.sprite.position;
+    [self addChild:system z:1 tag:PepperType];
+    isPepper = YES;
+}
+
 -(void)decreaseSpeed
 {
+    [self unschedule:@selector(recoverSpeedForde:)];   
+    //消除特效
+    [self removeChildByTag:IceType cleanup:YES];
+    isIce = NO;
+
     speed = speed / 2;
-    [self schedule:@selector(recoverSpeed:) interval:10];
-    //加入加速特效
+    [self schedule:@selector(recoverSpeedForde:) interval:10];
+    //加入减速特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_ice.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = self.sprite.position;
+    [self addChild:system z:1 tag:IceType];
+    isIce = YES;
 }
+
+-(void)getCrystal
+{
+    
+    [self schedule:@selector(reduceCrystal:) interval:2];
+    //加入水晶球特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_crystal.plist"];
+    system.positionType = kCCPositionTypeGrouped;
+    system.autoRemoveOnFinish = YES;
+    system.position = self.sprite.position;
+    [self addChild:system z:1 tag:CrystalType];
+    isCrystal = YES;
+}
+
 
 -(void)bombed
 {
     waitinterval += 180;
     //加入炸弹特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_bomb.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = self.sprite.position;
+    [self addChild:system];
 }
 
 -(void)update:(ccTime)delta
@@ -166,6 +238,25 @@ static Competitor *instanceOfCompetitor;
     pos.x+=directionCurrent*speed;
     self.sprite.position=pos;
     [self checkforcollsion];
+    
+    //同步自身位置，供特效实用
+    if (isPepper) 
+    {
+        CCNode* node = [self getChildByTag:PepperType];
+        node.position = pos;
+    }
+    if (isIce) 
+    {
+        CCNode* node = [self getChildByTag:IceType];
+        node.position = pos;
+        
+    }
+    if (isCrystal) 
+    {
+        CCNode* node = [self getChildByTag:CrystalType];
+        node.position = pos;
+        
+    }
     return;
 }
 @end

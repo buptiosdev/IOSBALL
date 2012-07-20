@@ -215,6 +215,12 @@
 		706EAB7E153FC4480003C4B2 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7C153FC4480003C4B2 /* Helper.mm */; };
 		7081958015B86B4900ABB13E /* bublle_break.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081957E15B86B4900ABB13E /* bublle_break.plist */; };
 		7081958115B86B4900ABB13E /* drop_start.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081957F15B86B4900ABB13E /* drop_start.plist */; };
+		7081959315B8F00100ABB13E /* land_bomb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081958E15B8F00100ABB13E /* land_bomb.plist */; };
+		7081959415B8F00100ABB13E /* land_crystal.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081958F15B8F00100ABB13E /* land_crystal.plist */; };
+		7081959515B8F00100ABB13E /* land_ice.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081959015B8F00100ABB13E /* land_ice.plist */; };
+		7081959615B8F00100ABB13E /* land_pepper_left.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081959115B8F00100ABB13E /* land_pepper_left.plist */; };
+		7081959715B8F00100ABB13E /* land_pepper_right.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081959215B8F00100ABB13E /* land_pepper_right.plist */; };
+		7081959C15B90C8500ABB13E /* land_poison.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081959B15B90C8500ABB13E /* land_poison.plist */; };
 		70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C015A9D670007D35B5 /* Parse.framework */; };
 		70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C415A9D69C007D35B5 /* Security.framework */; };
 		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
@@ -623,6 +629,12 @@
 		706EAB7C153FC4480003C4B2 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Helper.mm; path = tools/Helper.mm; sourceTree = "<group>"; };
 		7081957E15B86B4900ABB13E /* bublle_break.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bublle_break.plist; path = Resources/bublle_break.plist; sourceTree = "<group>"; };
 		7081957F15B86B4900ABB13E /* drop_start.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = drop_start.plist; path = Resources/drop_start.plist; sourceTree = "<group>"; };
+		7081958E15B8F00100ABB13E /* land_bomb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_bomb.plist; path = Resources/land_bomb.plist; sourceTree = "<group>"; };
+		7081958F15B8F00100ABB13E /* land_crystal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_crystal.plist; path = Resources/land_crystal.plist; sourceTree = "<group>"; };
+		7081959015B8F00100ABB13E /* land_ice.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_ice.plist; path = Resources/land_ice.plist; sourceTree = "<group>"; };
+		7081959115B8F00100ABB13E /* land_pepper_left.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_pepper_left.plist; path = Resources/land_pepper_left.plist; sourceTree = "<group>"; };
+		7081959215B8F00100ABB13E /* land_pepper_right.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_pepper_right.plist; path = Resources/land_pepper_right.plist; sourceTree = "<group>"; };
+		7081959B15B90C8500ABB13E /* land_poison.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_poison.plist; path = Resources/land_poison.plist; sourceTree = "<group>"; };
 		70C7C3C015A9D670007D35B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		70C7C3C415A9D69C007D35B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -723,6 +735,12 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7081959B15B90C8500ABB13E /* land_poison.plist */,
+				7081958E15B8F00100ABB13E /* land_bomb.plist */,
+				7081958F15B8F00100ABB13E /* land_crystal.plist */,
+				7081959015B8F00100ABB13E /* land_ice.plist */,
+				7081959115B8F00100ABB13E /* land_pepper_left.plist */,
+				7081959215B8F00100ABB13E /* land_pepper_right.plist */,
 				7081957E15B86B4900ABB13E /* bublle_break.plist */,
 				7081957F15B86B4900ABB13E /* drop_start.plist */,
 				4A7F130E15A346790073E99E /* options_check_d.png */,
@@ -1388,6 +1406,12 @@
 				4A7F131115A346790073E99E /* options_check.png in Resources */,
 				7081958015B86B4900ABB13E /* bublle_break.plist in Resources */,
 				7081958115B86B4900ABB13E /* drop_start.plist in Resources */,
+				7081959315B8F00100ABB13E /* land_bomb.plist in Resources */,
+				7081959415B8F00100ABB13E /* land_crystal.plist in Resources */,
+				7081959515B8F00100ABB13E /* land_ice.plist in Resources */,
+				7081959615B8F00100ABB13E /* land_pepper_left.plist in Resources */,
+				7081959715B8F00100ABB13E /* land_pepper_right.plist in Resources */,
+				7081959C15B90C8500ABB13E /* land_poison.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

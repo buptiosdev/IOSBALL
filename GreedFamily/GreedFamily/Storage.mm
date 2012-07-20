@@ -232,24 +232,28 @@
     //辣椒
     else if (6 == foodType)
     {
+        CCLOG(@"oh yah!!!!!!!\n");
         Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
         [bag addPepper];
     }
     //冰块
     else if (5 == foodType)
     {
-        CCLOG(@"cool!!!!!!!\n");
+        CCLOG(@"cold!!!!!!!\n");
         [[LandAnimal sharedLandAnimal] decreaseSpeed];
     }
     //黑炸弹
     else if (4 == foodType)
     {
+        CCLOG(@"oh no!!!!!!!\n");
         [[LandAnimal sharedLandAnimal] bombed];
         [self bombStorage];
     }
     //水晶球
     else if (3 == foodType)
     {
+        CCLOG(@"cool!!!!!!!\n");
+        [[LandAnimal sharedLandAnimal] getCrystal];
         Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
         [bag addCrystal];
     }

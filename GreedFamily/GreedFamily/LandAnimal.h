@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#define PATICLE_NUM
 
-@interface LandAnimal : CCNode {
+
+
+@interface LandAnimal : CCNode 
+{
+    BOOL isIce;
+    BOOL isPepper;
+    BOOL isCrystal;
     float speed;
     int waitinterval;
     int directionBefore;
@@ -25,4 +32,5 @@
 -(void)increaseSpeed;
 -(void)bombed;
 -(void)eatAction;
+-(void)getCrystal;
 @end

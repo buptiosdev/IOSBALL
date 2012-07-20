@@ -113,6 +113,24 @@ static LandCandyCache *instanceOfLandCandyCache;
     {
         [[Competitor sharedCompetitor] bombed];
     }
+    //水晶球
+    else if (foodType == 3)
+    {
+        [[Competitor sharedCompetitor] getCrystal];
+    }
+    //辣椒
+    else if (foodType == 6)
+    {
+        [[Competitor sharedCompetitor] increaseSpeed];
+    }
+    [[Competitor sharedCompetitor]eatAction];
+}
+
+-(void)landAnimalEat:(int)foodType
+{
+    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+    [storage addFoodToStorage:foodType];
+    [[LandAnimal sharedLandAnimal]eatAction];
 }
 
 -(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype
@@ -145,14 +163,12 @@ static LandCandyCache *instanceOfLandCandyCache;
             //call the storage interface
             if(landtype == LandAnimalTag)
             {
-                Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
-                [storage addFoodToStorage:landcandy.ballType];
-                [[LandAnimal sharedLandAnimal]eatAction];
+                [self landAnimalEat:landcandy.ballType];
             }
             else
             {
                 [self competitorEat:landcandy.ballType];
-                [[Competitor sharedCompetitor]eatAction];
+                
             }
             
         }else{

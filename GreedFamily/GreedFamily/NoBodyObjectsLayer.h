@@ -18,6 +18,15 @@ typedef enum
     
 }NoBodyObjectsLayerTags;
 
+typedef enum
+{
+	IceType = 50,   
+    PepperType,              
+	BombType,            
+    CrystalType
+    
+} ParticleType;
+
 @interface NoBodyObjectsLayer : CCLayer {
     
 }
