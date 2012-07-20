@@ -506,8 +506,9 @@
         left_index= [foodArray count] -3;       
         temp = 2;
         CCLOG(@"right_index is %d",right_index);
-        if (right_index <2 or counter_flag>=30)
+        if (right_index < 2 )
         {
+
             break;
         }
         
