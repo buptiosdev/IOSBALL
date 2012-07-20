@@ -334,9 +334,11 @@ static gameScore  *instanceOfgameScore;
             tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.apple;
             break;
         case 1:
-            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.candy;         
+            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.candy;    
+            break;
         case 2:    
-            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.cheese;                     
+            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.cheese;   
+            break;
         default:
             CCLOG(@"No myfoodType Means something is wrong check!  \n");            
             break;
@@ -404,77 +406,6 @@ static gameScore  *instanceOfgameScore;
 
 
 
-/*
--(void)calculateGameScore:(int)level TimesofOneTouch:(int)timesofonetouch 
-         NumbersOfOneTime:(int)numbersOfOneTime 
-  TheSameTypeNumOfOneTime:(int)theSameTypeNumOfOneTime
-                Chocolate:(int)choclolatenum
-                     Cake:(int)cakenum
-                   Circle:(int)circlenum
-{
-    CCLOG(@"Into calculateGameScore\n");
-    int tempnowscore;
-    int temphighestscore;
-    
-    tempnowscore = choclolatenum*my_struct_gameScore_rules.chocolate+cakenum*my_struct_gameScore_rules.candy+circlenum*my_struct_gameScore_rules.circle;
-    
-    tempnowscore += timesofonetouch*my_struct_gameScore_rules.Once4circle+numbersOfOneTime*my_struct_gameScore_rules.Once5circle+numbersOfOneTime*my_struct_gameScore_rules.Once6circle;
-    
-    CCLOG(@"tempnowscore = %d\n",tempnowscore);   
-    
-    
-    temphighestscore = tempnowscore;
-    
-    switch (level) {
-        case 1:
-            my_struct_gameScore.level1NowScore = tempnowscore;
-            temphighestscore = [self getGameHighestScore:level];
-            CCLOG(@"temphighestscore: %d\n",temphighestscore);
-            
-            if (tempnowscore > temphighestscore) {
-                
-                //http://codeexamples.wordpress.com/2011/02/12/nsuserdefaults-example/
-                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level1HighestScore"];
-                //[standardUserDefaults setInteger:temphighestscore forKey:@"level1HighestScore"];
-            }
-            break;
-        case 2:
-            my_struct_gameScore.level2NowScore = tempnowscore;
-            temphighestscore = [self getGameHighestScore:level];
-            if(tempnowscore > temphighestscore){
-                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level2HighestScore"];                
-            }
-            break;            
-        case 3:
-            my_struct_gameScore.level3NowScore = tempnowscore;
-            temphighestscore = [self getGameHighestScore:level];
-            if(tempnowscore > temphighestscore){
-                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level3HighestScore"];                
-            }
-            break;   
-        case 4:
-            my_struct_gameScore.level4NowScore = tempnowscore;
-            temphighestscore = [self getGameHighestScore:level];
-            if(tempnowscore > temphighestscore){
-                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level4HighestScore"];                
-            }
-            break;   
-        case 5:
-            my_struct_gameScore.level5NowScore = tempnowscore;
-            temphighestscore = [self getGameHighestScore:level];
-            if(tempnowscore > temphighestscore){
-                [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level5HighestScore"];                
-            }
-            break;               
-        default:
-            CCLOG(@"Into default  Meanings Something is Wrong  Check \n");
-            break;
-    }
-    
-    
-    
-}
-*/
 
 
 //update 与  [self scheduleUpdate] 对应
@@ -485,17 +416,6 @@ static gameScore  *instanceOfgameScore;
 }
 
 
-
-/*
- -(void) update:(ccTime)delta
- {
- //CCLOG(@"Into updateLabelOfTotalScore\n");
- int temp_myscore;
- temp_myscore = [self getGameNowScore:1];
- //CCLOG(@"temp_myscore:%d",temp_myscore);
- [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
- }
- */
 
 
 -(void)updateLabelOfTotalScore:(ccTime)delta 
@@ -523,28 +443,96 @@ static gameScore  *instanceOfgameScore;
     return 0;
 }
 
+
+
 //when level is over ,call the function
--(CCArray *)calculateScoreWhenGameIsOver:(int)level
+-(CCArray *)calculateScoreWhenGameIsOver:(int)level timestamp:(int)mytimestamp
 {
     CCLOG(@"Into calculateScoreWhenGameIsOver\n");
-
+    
     CCLOG(@"my_nowlevelscore is %d",my_nowlevelscore);
-    CCLOG(@"award_nowlevelscore is %d",award_nowlevelscore);   
-
-    [LevelScore insertObject:[NSNumber numberWithInteger:(int)(my_nowlevelscore-award_nowlevelscore)] atIndex:0];
+    CCLOG(@"mytimestamp is %d",mytimestamp);
     
-    [LevelScore insertObject:[NSNumber numberWithInteger:award_nowlevelscore] atIndex:1];  
-
+    //返回的基础得分
+    [LevelScore insertObject:[NSNumber numberWithInteger:(int)(my_nowlevelscore)] atIndex:0];
     
     
-    //id temp = [LevelScore objectAtIndex:1];
-    //int addscore = [temp intValue];
+    //rewardTimeScore 返回的时间奖励得分    
+    int rewardTimeScore;
     
-    //CCLOG(@"addscore is %d",addscore);
+    int timelimit = level*2;
+    
+    if (mytimestamp<=timelimit) {
+        rewardTimeScore = RewardTimeScore;
+    }
+    else
+    {    
+        rewardTimeScore = RewardTimeScore*(timelimit/mytimestamp);
+    }
+    
+    
+    [LevelScore insertObject:[NSNumber numberWithInteger:rewardTimeScore] atIndex:1];  
+    
+    my_nowlevelscore +=rewardTimeScore;
+    
+    int temphighestscore = [self getGameHighestScore:level];    
+    if (my_nowlevelscore > temphighestscore)
+    {
+        //直接将int 装成string  当做关卡的值传进去        
+        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",level];
+        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:my_nowlevelscore forKey:str_gamelevel];        
+        
+        //更新左上角关卡的值 
+        
+        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",my_nowlevelscore]];        
+        [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]]; 
+    }
+    else
+    {
+        [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
+    }
+    
+    //返回的星级评定
+    
+    
+    int starNum ;
+    if (rewardTimeScore<(RewardTimeScore/3))
+    {
+        starNum = 1;
+    }  
+    
+    else if ((RewardTimeScore/3)<=rewardTimeScore<=((RewardTimeScore/3)*2))
+    {
+        starNum = 2;
+    }        
+    
+    else
+    {
+        starNum = 3;
+    }
+    
+    //直接将int 装成string  当做关卡的值传进去        
+    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
+    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];
+    [[[MyGameScore sharedScore] standardUserDefaults] setInteger:starNum forKey:str_starlevel];         
+    
+    [LevelScore insertObject:[NSNumber numberWithInteger:starNum] atIndex:2];  
     return LevelScore;
-
+    
 }
 
+
+//获得当前关卡星级评定
+
+-(int)getGameStarNumber:(int)level
+{
+    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
+    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];    
+    
+    NSInteger starNum = [standardUserDefaults integerForKey:str_starlevel];    
+    
+    return starNum;
+}
 
 -(void) dealloc
 {

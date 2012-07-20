@@ -397,6 +397,8 @@ static GameMainScene *instanceOfMainScene;
     //1.调用一次消球接口 
     Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
     [storage doMyCombineFood];
+    //[storage combineBallNew];
+    
     //2.调用算分接口
     CCArray * levelscore=[storage getScoreByLevel:(int)_sceneNum];
     //int score=[levelscore indexOfObject:0];
@@ -409,11 +411,18 @@ static GameMainScene *instanceOfMainScene;
     
     id temp2 = [levelscore objectAtIndex:0];
     int score = [temp2 intValue];    
+
+    id temp3 = [levelscore objectAtIndex:2];
+    int starNum = [temp3 intValue];
     
     CCLOG(@"score is %d",score);
     
     CCLOG(@"addscore is %d",addscore);
+
+    CCLOG(@"starNum is %d",starNum);
     
+    
+
     //3.生成关卡结束显示层
     ccColor4B c = {255,255,0,100};
     ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore];

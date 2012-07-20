@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "MyGameScore.h"
+
+#define  RewardTimeScore 5
+
 /*
  struct  struct_gameScore{
  int level1NowScore;
@@ -78,7 +81,8 @@ struct  struct_gameScore{
 
 //获得当前关卡最高得分
 -(int)getGameHighestScore:(int)level;
-
+//获取当前关卡的星级评定
+-(int)getGameStarNumber:(int)level;
 
 
 
@@ -89,13 +93,14 @@ struct  struct_gameScore{
 //int numbersOfOneTime;
 //一种类型消除个数
 //int theSameTypeNumOfOneTime;
+/*
 -(void)calculateGameScore:(int)level TimesofOneTouch:(int)timesofonetouch 
          NumbersOfOneTime:(int)numbersOfOneTime 
   TheSameTypeNumOfOneTime:(int)theSameTypeNumOfOneTime
                 Chocolate:(int)choclolatenum
                      Cake:(int)cakenum
                    Circle:(int)circlenum;
-
+*/
 //一次性消球得分
 -(void)calculateConsistentCombineScore:(int)mygamelevel
                     oneTimeScoreNumber:(int)oneTimeScoreNum

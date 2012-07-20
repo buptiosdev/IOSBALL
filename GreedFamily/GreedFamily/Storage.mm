@@ -151,6 +151,62 @@
 }
 
 //消除同一种颜色的球
+//add by liujin at 7.19 
+-(void)combinTheSameTypeNew
+{
+    int nowcount = [foodArray count];
+    int left_index = 0;
+    int right_index = nowcount -1;    
+    Food *nowFood = nil;    
+    while(1)
+    {
+        right_index = [foodArray count]-1;
+        
+        if (left_index==right_index)
+        {
+            nowFood = [foodArray objectAtIndex:right_index];                    
+            foodInStorage[nowFood.foodType]++;            
+            
+            //删除right_index;
+            [[foodArray objectAtIndex:right_index] mySprite].visible = NO;
+            [foodArray removeObjectAtIndex:right_index];                
+            currentCount--;             
+            break;
+        }
+        while(left_index<right_index)
+        {
+            if ([[foodArray objectAtIndex:right_index] foodType] == [[foodArray objectAtIndex:left_index] foodType]) 
+            {
+                nowFood = [foodArray objectAtIndex:right_index];                    
+                foodInStorage[nowFood.foodType]++;
+                [[foodArray objectAtIndex:left_index] mySprite].visible = NO;
+                [foodArray removeObjectAtIndex:left_index];                
+                currentCount--; 
+                [self moveFood];
+                break;
+            }
+            else
+            {
+                left_index++;
+            }
+            
+        }
+        
+    }//end while
+    
+    gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+    
+    [instanceOfgameScore calculateBaseScore:gamelevel
+                                     Cheese:foodInStorage[2]
+                                      Candy:foodInStorage[1]
+                                      Apple:foodInStorage[0]];        
+    
+    [self combineBallNew];
+    
+}
+
+
+//消除同一种颜色的球
 -(void)combinTheSameType
 {
     int combineNum = 0;
@@ -256,6 +312,10 @@
         [[LandAnimal sharedLandAnimal] getCrystal];
         Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
         [bag addCrystal];
+        
+        //原来消球调用的函数
+        //[self combinTheSameType];
+        //[self combinTheSameTypeNew];        
     }
 }
 
@@ -412,6 +472,147 @@
     
     
 }
+
+//触摸引发的消球
+//added by rauljin at 7.17
+-(void)combineBallNew
+{
+    CCLOG(@"Into combineBallNew\n\n");
+    
+    int nowcount = [foodArray count];
+    if(nowcount < 3 )
+    {
+        return;
+    }    
+    CCLOG(@"nowcount:%d",nowcount);
+    
+    Food *nowFood = nil;
+    
+    int left_index = nowcount - 3;
+    int mid_index = nowcount -2;
+    int right_index = nowcount -1;
+    int temp = 2;
+    int consisFlag = 0;
+    
+    while(1)
+    {
+        CCLOG(@"while 1 hahaha\n");
+        right_index = [foodArray count] -1;
+        mid_index = [foodArray count] -2;
+        left_index= [foodArray count] -3;       
+        temp = 2;
+        CCLOG(@"right_index is %d",right_index);
+        if (right_index <2)
+        {
+            break;
+        }
+        
+        
+        while(left_index>=0)
+        {
+            CCLOG(@"while left_index\n");
+            if([[foodArray objectAtIndex:right_index] foodType] == [[foodArray objectAtIndex:mid_index] foodType] && [[foodArray objectAtIndex:left_index] foodType] ==[[foodArray objectAtIndex:mid_index] foodType])            
+            {
+                temp = temp + 1;
+                if (left_index == 0)
+                {
+                    if (temp>=3)
+                    {
+                        CCLOG(@"这次消去的水果个数为 %d",temp);
+                        nowFood = [foodArray objectAtIndex:left_index];    
+                        foodInStorage[nowFood.foodType] += temp;
+                        
+                        //调用一次性消球 得分函数         
+                        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+                        
+                        [instanceOfgameScore calculateConsistentCombineScore:gamelevel
+                                                          oneTimeScoreNumber:temp
+                                                                    foodType:nowFood.foodType
+                                                                      Cheese:foodInStorage[2]
+                                                                       Candy:foodInStorage[1]
+                                                                       Apple:foodInStorage[0]];      
+                        
+                        
+                        consisFlag ++;
+                        while (temp>0)
+                        {
+                            [[foodArray objectAtIndex:left_index] mySprite].visible = NO;
+                            [foodArray removeObjectAtIndex:left_index];
+                            temp --;
+                            currentCount--;
+                            [self moveFood];
+                        }
+                    }
+                    break;
+                    
+                }
+                
+                left_index--;
+                mid_index--;
+            }
+            
+            else
+            {
+                if (temp>=3)
+                {
+                    CCLOG(@"这次消去的水果个数为 %d",temp);
+                    consisFlag++;
+                    nowFood = [foodArray objectAtIndex:mid_index];    
+                    foodInStorage[nowFood.foodType] += temp;                
+                    
+                    //调用一次性消球 得分函数         
+                    gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+                    
+                    [instanceOfgameScore calculateConsistentCombineScore:gamelevel
+                                                      oneTimeScoreNumber:temp
+                                                                foodType:nowFood.foodType
+                                                                  Cheese:foodInStorage[2]
+                                                                   Candy:foodInStorage[1]
+                                                                   Apple:foodInStorage[0]];                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    while (temp>0) 
+                    {
+                        [[foodArray objectAtIndex:mid_index] mySprite].visible = NO;
+                        [foodArray removeObjectAtIndex:mid_index];
+                        temp --;
+                        currentCount--;
+                        [self moveFood];
+                    }
+                    break;
+                }
+                left_index--;
+                mid_index--;
+                right_index--;
+            }
+            
+        }
+        
+    }   
+    
+    CCLOG(@"consisFlag is %d",consisFlag);
+    if (consisFlag>0)
+    {    
+        //调用连续消球 得分函数         
+        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+        [instanceOfgameScore calculateContinuousCombineAward:consisFlag myLevel:gamelevel];            
+    }
+    
+    [self moveFood];
+    
+}
+
+
+
+
+
+
+
+
 //add by lj at 6.20
 //根据触摸引起的消球 
 //计算得分
@@ -783,7 +984,7 @@
                 nowScoreTime = counter;
                 CCLOG(@"nowScoreTime is %d",nowScoreTime);
                 CCLOG(@"lastScoreTime is %d",lastScoreTime);
-                if ((nowScoreTime-lastScoreTime)>timeReward)
+                if ((nowScoreTime-lastScoreTime)<timeReward)
                 {
                     //调用时间奖励 得分函数         
                     gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
@@ -795,7 +996,8 @@
             }    
         }    
         //调用消球函数
-        [self combineMain:0];
+        //[self combineMain:0];
+        [self combineBallNew];        
     } //end of if 
     
     return isTouchHandled;
