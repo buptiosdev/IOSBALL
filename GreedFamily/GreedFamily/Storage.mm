@@ -477,7 +477,7 @@
 //added by rauljin at 7.17
 -(void)combineBallNew
 {
-    int counter_flag;
+    int counter_flag = 0;
     CCLOG(@"Into combineBallNew\n\n");
     
     int nowcount = [foodArray count];
@@ -494,19 +494,19 @@
     int right_index = nowcount -1;
     int temp = 2;
     int consisFlag = 0;
-    if (!canCombine) {
-        return;
-    }
+    //if (!canCombine) {
+    //    return;
+    //}
     while(1)
     {
         counter_flag++;
-        CCLOG(@"while 1 hahaha\n");
+        //CCLOG(@"while 1 hahaha\n");
         right_index = [foodArray count] -1;
         mid_index = [foodArray count] -2;
         left_index= [foodArray count] -3;       
         temp = 2;
-        CCLOG(@"right_index is %d",right_index);
-        if (right_index < 2 )
+        //CCLOG(@"right_index is %d",right_index);
+        if (right_index < 2 || counter_flag>30)
         {
 
             break;
@@ -515,7 +515,8 @@
         
         while(left_index>=0)
         {
-            CCLOG(@"while left_index\n");
+            //CCLOG(@"while left_index\n");
+            counter_flag++;    
             if([[foodArray objectAtIndex:right_index] foodType] == [[foodArray objectAtIndex:mid_index] foodType] && [[foodArray objectAtIndex:left_index] foodType] ==[[foodArray objectAtIndex:mid_index] foodType])            
             {
                 temp = temp + 1;
@@ -897,7 +898,12 @@
     
 }
 
+-(int)getStarNumber:(int)levle
+{
 
+
+
+}
 -(void)updateGameScore:(ccTime)delta 
 {
     CCLOG(@"Into updateGameScore!");
@@ -999,10 +1005,11 @@
                 }    
                 lastScoreTime = counter;
             }    
-        }    
-        //调用消球函数
-        //[self combineMain:0];
-        [self combineBallNew];        
+            //调用消球函数
+            //[self combineMain:0];
+            [self combineBallNew];               
+        } //end if   
+     
     } //end of if 
     
     return isTouchHandled;

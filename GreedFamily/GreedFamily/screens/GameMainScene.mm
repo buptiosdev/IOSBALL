@@ -396,8 +396,8 @@ static GameMainScene *instanceOfMainScene;
 {
     //1.调用一次消球接口 
     Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
-    [storage doMyCombineFood];
-    //[storage combineBallNew];
+    //[storage doMyCombineFood];
+    [storage combineBallNew];
     
     //2.调用算分接口
     CCArray * levelscore=[storage getScoreByLevel:(int)_sceneNum];
