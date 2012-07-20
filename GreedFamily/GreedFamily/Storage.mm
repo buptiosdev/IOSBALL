@@ -477,6 +477,7 @@
 //added by rauljin at 7.17
 -(void)combineBallNew
 {
+    int counter_flag;
     CCLOG(@"Into combineBallNew\n\n");
     
     int nowcount = [foodArray count];
@@ -498,13 +499,14 @@
     }
     while(1)
     {
+        counter_flag++;
         CCLOG(@"while 1 hahaha\n");
         right_index = [foodArray count] -1;
         mid_index = [foodArray count] -2;
         left_index= [foodArray count] -3;       
         temp = 2;
         CCLOG(@"right_index is %d",right_index);
-        if (right_index <2)
+        if (right_index <2 or counter_flag>=30)
         {
             break;
         }
@@ -648,14 +650,14 @@
 
 -(CCArray * )getScoreByLevel:(int)level
 {
-        CCLOG(@"INTO getScoreByLevel\n\n");
-        CCArray *LevelScore;
-        gameScore *instanceOfgameScore = [gameScore sharedgameScore];
-        LevelScore = [instanceOfgameScore calculateScoreWhenGameIsOver:level];
+    CCLOG(@"INTO getScoreByLevel\n\n");
+    CCArray *LevelScore;
+    gameScore *instanceOfgameScore = [gameScore sharedgameScore];
+    LevelScore = [instanceOfgameScore calculateScoreWhenGameIsOver:level timestamp:counter];
     
-        //int addscore = (int)[LevelScore objectAtIndex:1];
-        //CCLOG(@"addscore is %d\n\n",addscore);
-        return LevelScore;
+    //int addscore = (int)[LevelScore objectAtIndex:1];
+    //CCLOG(@"addscore is %d\n\n",addscore);
+    return LevelScore;
 }
 
 
