@@ -115,4 +115,5 @@ struct  struct_gameScore{
                                myLevel:(int)gameLevel;
 
 -(void)calculateTimeAward:(int)gameLevel;
+-(int)getGameStarNumber:(int)level;
 @end

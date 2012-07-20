@@ -44,8 +44,7 @@
     int continuousConbineFlag;
     
     
-    int gamelevel;
-    
+    int gamelevel;    
     int nowScoreTime;
     int counter;
     int lastScoreTime;

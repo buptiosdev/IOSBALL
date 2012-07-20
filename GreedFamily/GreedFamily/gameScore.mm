@@ -262,6 +262,7 @@ static gameScore  *instanceOfgameScore;
 }
 
 
+
 //时间奖励得分函数
 -(void)calculateTimeAward:(int)gameLevel
 {
@@ -310,6 +311,45 @@ static gameScore  *instanceOfgameScore;
     
 }
 
+
+-(void)calculateBaseScore:(int)mygamelevel
+                   Cheese:(int)cheesenum
+                    Candy:(int)candynum
+                    Apple:(int)applenum
+{
+    CCLOG(@"Into calculateBaseScore\n");
+    int base_score =  cheesenum*my_struct_gameScore_rules.cheese+ candynum*my_struct_gameScore_rules.candy+applenum*my_struct_gameScore_rules.apple;
+    int tempnowscore = award_nowlevelscore + base_score;
+    
+    my_nowlevelscore = tempnowscore;    
+    
+    //获取游戏关卡的历史最高分
+    int temphighestscore = [self getGameHighestScore:mygamelevel];
+    
+    CCLOG(@"temphighestscore: %d\n",temphighestscore);    
+    
+    if (tempnowscore > temphighestscore) 
+    {
+        
+        //直接将int 装成string  当做关卡的值传进去        
+        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",mygamelevel];
+        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:str_gamelevel];   
+        
+        //更新左上角关卡的值 
+        
+        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",tempnowscore]];
+        
+    }        
+    
+    else
+    {
+        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temphighestscore]];
+    }
+    
+    
+    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+    
+}
 
 
 

@@ -493,7 +493,9 @@
     int right_index = nowcount -1;
     int temp = 2;
     int consisFlag = 0;
-    
+    if (!canCombine) {
+        return;
+    }
     while(1)
     {
         CCLOG(@"while 1 hahaha\n");
@@ -915,7 +917,7 @@
     CCLOG(@"numbersOfOneTime :%d\n",numbersOfOneTime);
     CCLOG(@"theSameTypeNumOfOneTime q q :%d\n",theSameTypeNumOfOneTime);
     
-    
+    /*
     [instanceOfgameScore calculateGameScore:gamelevel 
                             TimesofOneTouch:timesOfOneTouch 
                            NumbersOfOneTime:numbersOfOneTime 
@@ -923,7 +925,7 @@
                                   Chocolate:foodInStorage[2] 
                                        Cake:foodInStorage[1] 
                                      Circle:foodInStorage[0]];
-    
+    */
 }
 
 
