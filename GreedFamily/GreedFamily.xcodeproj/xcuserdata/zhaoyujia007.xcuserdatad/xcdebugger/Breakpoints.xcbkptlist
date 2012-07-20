@@ -266,7 +266,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "579"
          endingLineNumber = "579"
-         landmarkName = "-doCombineFood:"
+         landmarkName = "-combineBallNew"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -406,7 +406,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "580"
          endingLineNumber = "580"
-         landmarkName = "-doCombineFood:"
+         landmarkName = "-combineBallNew"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -644,7 +644,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "399"
          endingLineNumber = "399"
-         landmarkName = "-moveFood"
+         landmarkName = "-checkLastCombineFood"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -658,7 +658,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "282"
          endingLineNumber = "282"
-         landmarkName = "-checkCombineFood"
+         landmarkName = "-addFoodToStorage:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -672,7 +672,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "373"
          endingLineNumber = "373"
-         landmarkName = "-moveFood"
+         landmarkName = "-checkLastCombineFood"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -714,7 +714,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "379"
          endingLineNumber = "379"
-         landmarkName = "-moveFood"
+         landmarkName = "-checkLastCombineFood"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -756,7 +756,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "269"
          endingLineNumber = "269"
-         landmarkName = "-reduceFood:Turn:"
+         landmarkName = "-combinTheSameType"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1120,7 +1120,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "656"
          endingLineNumber = "656"
-         landmarkName = "-updateScores"
+         landmarkName = "-getScoreByLevel:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

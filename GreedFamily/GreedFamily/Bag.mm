@@ -59,7 +59,8 @@
     }
     Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
 
-    [storage combinTheSameType];
+    //[storage combinTheSameType];
+    [storage combinTheSameTypeNew]; 
     crystalNum--;
     [crystalLabel setString:[NSString stringWithFormat:@"x%i", crystalNum]];
 }

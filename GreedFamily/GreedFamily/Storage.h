@@ -55,6 +55,6 @@
 -(void)addFoodToStorage:(int)foodType;
 -(CCArray * )getScoreByLevel:(int)level;
 -(void)doMyCombineFood;
--(void)combinTheSameType;
+-(void)combinTheSameTypeNew;
 
 @end
