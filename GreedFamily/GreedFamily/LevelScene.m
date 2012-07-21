@@ -9,6 +9,7 @@
 #import "LevelScene.h"
 #import "LoadingScene.h"
 #import "NavigationScene.h"
+#import "CCScrollLayer.h"
 
 @implementation LevelScene
 
@@ -30,7 +31,7 @@
 		self.isTouchEnabled = YES;
         ccColor4B c = {0,0,0,180};
         CCLayerColor * difficulty=[CCLayerColor layerWithColor:c];
-        [self addChild:difficulty z:0 tag:TargetNavigationScen];
+        //[self addChild:difficulty z:0 tag:TargetNavigationScen];
         
 //        CCMenuItemImage * easyBtn = [CCMenuItemImage itemFromNormalImage:@"easy.png"
 //                                                           selectedImage:@"easy_dwn.png" 
@@ -179,22 +180,48 @@
         CCMenu * normalMenu = [CCMenu menuWithItems:LevelBtn6,LevelBtn7,LevelBtn8,LevelBtn9,LevelBtn10, nil];
         [normalMenu alignItemsHorizontallyWithPadding:20];
         [normalMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
-        [difficulty addChild:normalMenu];
+        //[difficulty addChild:normalMenu];
         
         CCMenu * hardMenu = [CCMenu menuWithItems:LevelBtn11,LevelBtn12,LevelBtn13,LevelBtn14,LevelBtn15, nil];
         [hardMenu alignItemsHorizontallyWithPadding:8];
         [hardMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*3/6)];
-        [difficulty addChild:hardMenu];
+        //[difficulty addChild:hardMenu];
         
         CCMenu * extremeMenu = [CCMenu menuWithItems:LevelBtn16,LevelBtn17,LevelBtn18,LevelBtn19,LevelBtn20, nil];
         [extremeMenu alignItemsHorizontallyWithPadding:8];
         [extremeMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*2/6)];
-        [difficulty addChild:extremeMenu];
+        //[difficulty addChild:extremeMenu];
         
         CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
         [returnMenu alignItemsHorizontallyWithPadding:10];
         [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/6)];
         [difficulty addChild:returnMenu];
+        
+        //test
+        // create a blank layer for page 2
+        CCLayer *pageTwo = [[CCLayer alloc] init];
+        
+        // create a custom font menu for page 2
+        //CCLabelTTF *tlabel=[CCLabelTTF labelWithString:@"Page 2" fontName:@"Marker Felt" fontSize:25];
+        //CCLabelBMFont *tlabel = [CCLabelBMFont labelWithString:@"Page 2" fntFile:@"customfont.fnt"];
+        //CCMenuItemLabel *titem = [CCMenuItemLabel itemWithLabel:tlabel target:self selector:@selector(returnMain)];
+        //CCMenu *menu = [CCMenu menuWithItems: titem, nil];
+        //menu.position = ccp(screenSize.width/2, screenSize.height/2);
+        
+        // add menu to page 2
+        [pageTwo addChild:normalMenu];
+        
+        CCLayer *pageThree = [[CCLayer alloc] init];
+        [pageThree addChild:hardMenu];
+        
+        CCLayer *pageFour = [[CCLayer alloc] init];
+        [pageFour addChild:extremeMenu];
+        
+        // now create the scroller and pass-in the pages (set widthOffset to 0 for fullscreen pages)
+        CCScrollLayer *scroller = [[CCScrollLayer alloc] initWithLayers:[NSMutableArray arrayWithObjects: difficulty,pageTwo,pageThree,pageFour,nil] widthOffset: 0];
+        
+        // finally add the scroller to your scene
+        [self addChild:scroller];
         
     }
     return self;
