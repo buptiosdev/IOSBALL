@@ -145,8 +145,22 @@
         CCSequence *seq = [CCSequence actions: animate,
                            nil];
         
-        self.flyAction = [CCRepeatForever actionWithAction: seq ];
-        [_flyActionArray addObject:self.flyAction];
+//        self.flyAction = [CCRepeatForever actionWithAction: seq ];
+//        [_flyActionArray addObject:self.flyAction];
+        
+        
+        CCSpeed *speed =[CCSpeed actionWithAction:[CCRepeatForever actionWithAction:seq] speed:1.0f];
+//        if (0 == i) {
+//            [speed setTag:SpeedTag0]; 
+//
+//        }
+//        else
+//        {
+//           [speed setTag:SpeedTag1]; 
+//        }
+        
+
+        [_flyActionArray addObject:speed];
 
     }
 
@@ -355,15 +369,39 @@
     //8个方向
     //int runAnim = (int)((cocosAngle)/45);
     directionCurrent = runAnim;
-    if (directionCurrent == directionBefore)
+    if (directionCurrent != directionBefore)
     {
-        return;
+        [self.sprite stopAction:_flyAction];
+        self.flyAction = [_flyActionArray objectAtIndex:runAnim];
+        [self.sprite runAction:_flyAction];
+        directionBefore = directionCurrent;
     }
-    [self.sprite stopAction:_flyAction];
-    self.flyAction = [_flyActionArray objectAtIndex:runAnim];
-    [self.sprite runAction:_flyAction];
+
+    //根据飞行速度调节动画速率
+    CGFloat flySpeed = ccpLengthSQ([self getFlySpeed]);
+    if (flySpeed < 100)
+    {
+        [self.flyAction setSpeed:1];
+    }  
+    else if (flySpeed < 1000) 
+    {
+        [self.flyAction setSpeed:1.3];
+    }
+    else if (flySpeed > 50000)
+    {
+        [self.flyAction setSpeed:3];
+    }
+    else if (flySpeed > 20000)
+    {
+        [self.flyAction setSpeed:2];
+    }
+    else
+    {
+        [self.flyAction setSpeed:1.5];
+        
+    }
     
-    directionBefore = directionCurrent;
+    
 }
 
 -(void) applyForceTowardsFinger

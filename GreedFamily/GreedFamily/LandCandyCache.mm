@@ -156,7 +156,9 @@ static LandCandyCache *instanceOfLandCandyCache;
         if(actualdistance<=collisiondistance)
         {
             //set the candy unvisible
-            candy.visible=NO;
+            id actionScale = [CCScaleBy actionWithDuration:2]; 
+            [candy runAction:actionScale];
+            //candy.visible=NO;
             _landnum--;
             CCLOG(@"landnum-- =%d\n",_landnum);
             [landcandies removeObjectAtIndex:i];

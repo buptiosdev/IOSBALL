@@ -12,6 +12,13 @@
 #import "Entity.h"
 #import "Box2D.h"
 
+typedef enum
+{
+    SpeedTag0 = 0,
+    SpeedTag1,
+	TagType_MAX,
+} TagType;
+
 // Re-implementation of the Ship class using Components
 @interface FlyEntity : Entity  
 {
@@ -38,5 +45,5 @@
 
 @property (assign, nonatomic) CCSprite* sprite;
 @property (nonatomic, retain) NSMutableArray *flyActionArray;
-@property (assign, nonatomic)  CCAction *flyAction;
+@property (assign, nonatomic)  CCSpeed *flyAction;
 @end
