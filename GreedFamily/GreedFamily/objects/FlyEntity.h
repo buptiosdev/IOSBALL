@@ -23,6 +23,7 @@
     //NSMutableArray *_flyActionArray;
     int directionBefore;
     int directionCurrent;
+    int familyType; /*0.小鸟 1.小猪*/
     double time1;
     double time2;
 

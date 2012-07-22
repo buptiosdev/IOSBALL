@@ -47,6 +47,9 @@
 		NSString* file = [NSString stringWithFormat:@"%@%i.png", frame, i+1];
 		CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
 		CCSpriteFrame* frame = [frameCache spriteFrameByName:file];
+        //frame->scaleX = (50)/[self->sprite contentSize].width; //按照像素定制图片宽高
+//        self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+        
 		[frames addObject:frame];
 	}
 	

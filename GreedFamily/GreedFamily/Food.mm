@@ -24,7 +24,6 @@
 {
 	if ((self = [super init]))
 	{
-        int storageCapacity = 16;
 		self.theStorage = storage;
 		
 		[_theStorage addChild:self];
@@ -39,8 +38,7 @@
         _mySprite.scaleY=(25)/[_mySprite contentSize].height;
         float widthPer = [_mySprite contentSize].width * _mySprite.scaleX;
         float highPer = [_mySprite contentSize].height * _mySprite.scaleY;
-        CGPoint initPosition = CGPointMake(storageCapacity * widthPer 
-                                           + widthPer * 0.5, highPer * 0.5);
+        CGPoint initPosition = CGPointMake((widthPer * 10 + widthPer * 0.5), highPer * 0.5);
         CGPoint moveToPosition = CGPointMake(count * widthPer + widthPer * 0.5, highPer * 0.5);
         _mySprite.position = initPosition;
 
@@ -52,10 +50,10 @@
 //        [self runAction:moveAction];
         CCMoveTo* move = [CCMoveTo actionWithDuration:3 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:4];
-        [self runAction:ease];
+        [_mySprite runAction:ease];
 
         
-        _mySprite.position = moveToPosition;
+        //_mySprite.position = moveToPosition;
 		[batch addChild:_mySprite];
 	}
 	

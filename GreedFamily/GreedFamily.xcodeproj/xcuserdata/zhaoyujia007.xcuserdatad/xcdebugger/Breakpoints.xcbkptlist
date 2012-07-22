@@ -191,11 +191,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "444"
-         endingLineNumber = "444"
+         startingLineNumber = "517"
+         endingLineNumber = "517"
          landmarkName = "-ccTouchMovedForSky:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -205,11 +205,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "311"
-         endingLineNumber = "311"
+         startingLineNumber = "384"
+         endingLineNumber = "384"
          landmarkName = "-applyForceTowardsFinger"
          landmarkType = "5">
       </FileBreakpoint>
@@ -219,11 +219,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "368"
-         endingLineNumber = "368"
+         startingLineNumber = "441"
+         endingLineNumber = "441"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -261,11 +261,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "579"
-         endingLineNumber = "579"
+         startingLineNumber = "591"
+         endingLineNumber = "591"
          landmarkName = "-combineBallNew"
          landmarkType = "5">
       </FileBreakpoint>
@@ -359,11 +359,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Bag.mm"
-         timestampString = "364320203.05906"
+         timestampString = "364500415.774211"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "235"
-         endingLineNumber = "235"
+         startingLineNumber = "236"
+         endingLineNumber = "236"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
@@ -401,11 +401,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "580"
-         endingLineNumber = "580"
+         startingLineNumber = "592"
+         endingLineNumber = "592"
          landmarkName = "-combineBallNew"
          landmarkType = "5">
       </FileBreakpoint>
@@ -429,11 +429,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "362335464.562461"
+         timestampString = "364634768.184373"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "158"
-         endingLineNumber = "158"
+         startingLineNumber = "226"
+         endingLineNumber = "226"
          landmarkName = "-initWithWorld:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -457,11 +457,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "362335464.562461"
+         timestampString = "364634768.184373"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "140"
-         endingLineNumber = "140"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
          landmarkName = "-initWithWorld:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -485,11 +485,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "362335464.562461"
+         timestampString = "364634768.184373"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "130"
-         endingLineNumber = "130"
+         startingLineNumber = "198"
+         endingLineNumber = "198"
          landmarkName = "-initWithWorld:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -499,11 +499,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "362335464.562461"
+         timestampString = "364634768.184373"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "129"
-         endingLineNumber = "129"
+         startingLineNumber = "197"
+         endingLineNumber = "197"
          landmarkName = "-initWithWorld:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -513,11 +513,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "285"
-         endingLineNumber = "285"
+         startingLineNumber = "357"
+         endingLineNumber = "357"
          landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -527,11 +527,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "290"
-         endingLineNumber = "290"
+         startingLineNumber = "362"
+         endingLineNumber = "362"
          landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -541,11 +541,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "284"
-         endingLineNumber = "284"
+         startingLineNumber = "356"
+         endingLineNumber = "356"
          landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -555,11 +555,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "326"
-         endingLineNumber = "326"
+         startingLineNumber = "399"
+         endingLineNumber = "399"
          landmarkName = "-applyForceTowardsFinger"
          landmarkType = "5">
       </FileBreakpoint>
@@ -569,11 +569,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "398"
-         endingLineNumber = "398"
+         startingLineNumber = "471"
+         endingLineNumber = "471"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -597,11 +597,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Food.mm"
-         timestampString = "360995154.439221"
+         timestampString = "364641687.002829"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
          landmarkName = "-initWithStorage:Type:Count:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -639,11 +639,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "399"
-         endingLineNumber = "399"
+         startingLineNumber = "409"
+         endingLineNumber = "409"
          landmarkName = "-checkLastCombineFood"
          landmarkType = "5">
       </FileBreakpoint>
@@ -653,11 +653,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "282"
-         endingLineNumber = "282"
+         startingLineNumber = "289"
+         endingLineNumber = "289"
          landmarkName = "-addFoodToStorage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -667,11 +667,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "373"
-         endingLineNumber = "373"
+         startingLineNumber = "383"
+         endingLineNumber = "383"
          landmarkName = "-checkLastCombineFood"
          landmarkType = "5">
       </FileBreakpoint>
@@ -709,11 +709,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "379"
-         endingLineNumber = "379"
+         startingLineNumber = "389"
+         endingLineNumber = "389"
          landmarkName = "-checkLastCombineFood"
          landmarkType = "5">
       </FileBreakpoint>
@@ -751,11 +751,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "269"
-         endingLineNumber = "269"
+         startingLineNumber = "276"
+         endingLineNumber = "276"
          landmarkName = "-combinTheSameType"
          landmarkType = "5">
       </FileBreakpoint>
@@ -765,11 +765,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "313"
-         endingLineNumber = "313"
+         startingLineNumber = "386"
+         endingLineNumber = "386"
          landmarkName = "-applyForceTowardsFinger"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1031,11 +1031,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "420"
-         endingLineNumber = "420"
+         startingLineNumber = "493"
+         endingLineNumber = "493"
          landmarkName = "-ccTouchBeganForSky:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1045,11 +1045,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364112329.440425"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "452"
-         endingLineNumber = "452"
+         startingLineNumber = "525"
+         endingLineNumber = "525"
          landmarkName = "-ccTouchEndedForSky:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1115,11 +1115,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "364448490.910401"
+         timestampString = "364641486.440626"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "656"
-         endingLineNumber = "656"
+         startingLineNumber = "664"
+         endingLineNumber = "664"
          landmarkName = "-getScoreByLevel:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1479,11 +1479,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/objects/FlyEntity.mm"
-         timestampString = "364123086.203909"
+         timestampString = "364634945.279655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "291"
-         endingLineNumber = "291"
+         startingLineNumber = "363"
+         endingLineNumber = "363"
          landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1807,6 +1807,20 @@
          startingLineNumber = "256"
          endingLineNumber = "256"
          landmarkName = "-update:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/objects/FlyEntity.mm"
+         timestampString = "364634945.279655"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "348"
+         endingLineNumber = "348"
+         landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

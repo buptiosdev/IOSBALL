@@ -34,7 +34,8 @@
     _flyActionArray = [[NSMutableArray alloc] init];
     //NSMutableArray *animFrames = [NSMutableArray array];
     
-    for (int i =0; i <8; i++) {
+//    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 2; i++) {
         
         //[animFrames removeAllObjects];
         
@@ -44,36 +45,101 @@
 //        }
 //        CCAnimation *animation = [CCAnimation animationWithName:@"fly" delay:0.1f frames:animFrames];
         CCAnimation* animation = nil;
-        switch (i) {
-            case 0:
-                animation = [CCAnimation animationWithFrame:@"boybird_3_" frameCount:5 delay:0.08f];
-                break;
-            case 1:
-                animation = [CCAnimation animationWithFrame:@"boybird_5_" frameCount:3 delay:0.1f];
-                break;
-            case 2:
-                animation = [CCAnimation animationWithFrame:@"boybird_6_" frameCount:5 delay:0.08f];
-                break;
-            case 3:
-                animation = [CCAnimation animationWithFrame:@"boybird_7_" frameCount:3 delay:0.1f];
-                break;
-            case 4:
-                animation = [CCAnimation animationWithFrame:@"boybird_9_" frameCount:5 delay:0.08f];
-                break;
-            case 5:
-                animation = [CCAnimation animationWithFrame:@"boybird_11_" frameCount:3 delay:0.1f];
-                break;
-            case 6:
-                animation = [CCAnimation animationWithFrame:@"boybird_0_" frameCount:5 delay:0.08f];
-                break;
-            case 7:
-                animation = [CCAnimation animationWithFrame:@"boybird_2_" frameCount:3 delay:0.1f];
-                break;
-                
-            default:
-                break;
-        }
         
+        
+        if (0 == familyType) 
+        {
+            switch (i) 
+            {
+                case 0:
+                    animation = [CCAnimation animationWithFrame:@"boybird_3_" frameCount:5 delay:0.1f];
+                    break;
+                case 1:
+                    animation = [CCAnimation animationWithFrame:@"boybird_9_" frameCount:5 delay:0.1f];
+                    break;
+                    
+                    
+                default:
+                    break;
+            }
+//            switch (i) 
+//            {
+//                case 0:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_3_" frameCount:5 delay:0.08f];
+//                    break;
+//                case 1:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_5_" frameCount:3 delay:0.1f];
+//                    break;
+//                case 2:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_6_" frameCount:5 delay:0.08f];
+//                    break;
+//                case 3:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_7_" frameCount:3 delay:0.1f];
+//                    break;
+//                case 4:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_9_" frameCount:5 delay:0.08f];
+//                    break;
+//                case 5:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_11_" frameCount:3 delay:0.1f];
+//                    break;
+//                case 6:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_0_" frameCount:5 delay:0.08f];
+//                    break;
+//                case 7:
+//                    animation = [CCAnimation animationWithFrame:@"boybird_2_" frameCount:3 delay:0.1f];
+//                    break;
+//                    
+//                default:
+//                    break;
+//            }
+        }
+        else if (1 == familyType)
+        {
+            switch (i) 
+            {
+                case 0:
+                    animation = [CCAnimation animationWithFrame:@"boypig_3_" frameCount:5 delay:0.1f];
+                    break;
+                case 1:
+                    animation = [CCAnimation animationWithFrame:@"boypig_9_" frameCount:5 delay:0.1f];
+                    break;
+
+                    
+                default:
+                    break;
+            }
+
+//            switch (i) 
+//            {
+//                case 0:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_3_" frameCount:5 delay:0.1f];
+//                    break;
+//                case 1:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_5_" frameCount:5 delay:0.1f];
+//                    break;
+//                case 2:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_6_" frameCount:5 delay:0.1f];
+//                    break;
+//                case 3:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_7_" frameCount:5 delay:0.1f];
+//                    break;
+//                case 4:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_9_" frameCount:5 delay:0.1f];
+//                    break;
+//                case 5:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_11_" frameCount:5 delay:0.1f];
+//                    break;
+//                case 6:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_0_" frameCount:5 delay:0.1f];
+//                    break;
+//                case 7:
+//                    animation = [CCAnimation animationWithFrame:@"boypig_2_" frameCount:5 delay:0.1f];
+//                    break;
+//                    
+//                default:
+//                    break;
+//            }
+        }
                
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,
@@ -92,18 +158,10 @@
     if ((self = [super init]))
 	{
 		CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        //先把动态去掉
         
-//         // create an animation object from all the sprite animation frames
-//         CCAnimation* anim = [CCAnimation animationWithFrame:@"ship-anim" frameCount:5 delay:0.08f];
-//         
-//         // add the animation to the sprite (optional)
-//         //[sprite addAnimation:anim];
-//         
-//         // run the animation by using the CCAnimate action
-//         CCAnimate* animate = [CCAnimate actionWithAnimation:anim];
-//         CCRepeatForever* repeat = [CCRepeatForever actionWithAction:animate];
-//         [self.sprite runAction:repeat];
+        //指定是猪还是鸟。0。小鸟 1。小猪
+        familyType = 1;
+
         directionBefore = 0;
         directionCurrent = 0;
         //CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];
@@ -114,11 +172,21 @@
         //CCSpriteFrame *frame1 = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 75, 70) ];
         
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
-        self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
-        
+        if (0 == familyType)
+        {
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+            //按照像素设定图片大小
+            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+        }
+        else if (1 == familyType)
+        {
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"boypig_3_1.png"];
+            //按照像素设定图片大小
+            self.sprite.scaleX=(70)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(70)/[self.sprite contentSize].height;
+        }
         //按照像素设定图片大小
-        self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(50)/[self.sprite contentSize].height;
         [batch addChild:self.sprite]; 
         //self.sprite = [CCSprite spriteWithSpriteFrame:frame1];
         // batch node for all dynamic elements
@@ -275,13 +343,17 @@
     //float dragonVelocity =480.0/3.0;
     //float moveDuration = distanceToMove / playerVelocity;
     
-    cocosAngle +=23;
+    //cocosAngle +=23;
+    cocosAngle +=85;
     while (cocosAngle <0)
     {
         cocosAngle +=360;
     }
     
-    int runAnim = (int)((cocosAngle)/45);
+    //2个方向
+    int runAnim = (int)((cocosAngle)/180);
+    //8个方向
+    //int runAnim = (int)((cocosAngle)/45);
     directionCurrent = runAnim;
     if (directionCurrent == directionBefore)
     {
@@ -290,6 +362,7 @@
     [self.sprite stopAction:_flyAction];
     self.flyAction = [_flyActionArray objectAtIndex:runAnim];
     [self.sprite runAction:_flyAction];
+    
     directionBefore = directionCurrent;
 }
 

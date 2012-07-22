@@ -167,8 +167,12 @@
             nowFood = [foodArray objectAtIndex:right_index];                    
             foodInStorage[nowFood.foodType]++;            
             
+
+
             //删除right_index;
-            [[foodArray objectAtIndex:right_index] mySprite].visible = NO;
+            //[[foodArray objectAtIndex:right_index] mySprite].visible = NO;
+            id actionScale = [CCScaleBy actionWithDuration:2]; 
+            [[[foodArray objectAtIndex:right_index] mySprite] runAction:actionScale];
             [foodArray removeObjectAtIndex:right_index];                
             currentCount--;             
             break;
@@ -179,7 +183,10 @@
             {
                 nowFood = [foodArray objectAtIndex:right_index];                    
                 foodInStorage[nowFood.foodType]++;
-                [[foodArray objectAtIndex:left_index] mySprite].visible = NO;
+                //[[foodArray objectAtIndex:left_index] mySprite].visible = NO;
+                id actionScale = [CCScaleBy actionWithDuration:2];                 
+                [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
+
                 [foodArray removeObjectAtIndex:left_index];                
                 currentCount--; 
                 [self moveFood];
@@ -322,8 +329,11 @@
 //消去消球后调用的函数
 -(void)reduceFood:(int)count Turn:(int)turn
 {
-    [[foodArray objectAtIndex:(count - turn)] mySprite].visible = NO;
+    //[[foodArray objectAtIndex:(count - turn)] mySprite].visible = NO;
     //    [foodArray removeObjectAtIndex:count];
+    id actionScale = [CCScaleBy actionWithDuration:2];    
+    [[[foodArray objectAtIndex:(count - turn)] mySprite] runAction:actionScale];
+    
     [foodArray removeObjectAtIndex:(count - turn)];
     currentCount--;
 }
@@ -438,9 +448,9 @@
             
             CCMoveTo* move = [CCMoveTo actionWithDuration:3 position:moveToPosition]; 
             CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:4];
-            [curFood runAction:ease];
+            [curFood.mySprite runAction:ease];
             
-            curFood.mySprite.position = moveToPosition;
+            //curFood.mySprite.position = moveToPosition;
         }
         
         //        if (nil == curFood)
@@ -542,7 +552,9 @@
                         consisFlag ++;
                         while (temp>0)
                         {
-                            [[foodArray objectAtIndex:left_index] mySprite].visible = NO;
+                            id actionScale = [CCScaleBy actionWithDuration:2]; 
+                            [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
+                            //[[foodArray objectAtIndex:left_index] mySprite].visible = NO;
                             [foodArray removeObjectAtIndex:left_index];
                             temp --;
                             currentCount--;
@@ -583,7 +595,9 @@
                     
                     while (temp>0) 
                     {
-                        [[foodArray objectAtIndex:mid_index] mySprite].visible = NO;
+                        id actionScale = [CCScaleBy actionWithDuration:2]; 
+                        [[[foodArray objectAtIndex:mid_index] mySprite] runAction:actionScale];
+                        //[[foodArray objectAtIndex:mid_index] mySprite].visible = NO;
                         [foodArray removeObjectAtIndex:mid_index];
                         temp --;
                         currentCount--;
@@ -611,12 +625,6 @@
     [self moveFood];
     
 }
-
-
-
-
-
-
 
 
 //add by lj at 6.20
@@ -732,7 +740,10 @@
         CCLOG(@"该次的消球数为 oneTimeScoreNum %d \n" ,oneTimeScoreNum);
         for (int x=0;x<oneTimeScoreNum; x++) 
         {
-            [[foodArray objectAtIndex:(nowcount-x-1)] mySprite].visible = NO;
+            id actionScale = [CCScaleBy actionWithDuration:2]; 
+            [[[foodArray objectAtIndex:(nowcount-x-1)] mySprite] runAction:actionScale];
+            
+            //[[foodArray objectAtIndex:(nowcount-x-1)] mySprite].visible = NO;
             [foodArray removeObjectAtIndex:(nowcount -x -1)];
             currentCount--;
         }
