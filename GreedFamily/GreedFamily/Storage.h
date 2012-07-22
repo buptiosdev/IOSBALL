@@ -53,7 +53,7 @@
 +(id)createStorage:(int)storageCapacity;
 -(void)addFoodToStorage:(int)foodType;
 -(CCArray * )getScoreByLevel:(int)level;
--(void)doMyCombineFood;
+//-(void)doMyCombineFood;
 -(void)combinTheSameTypeNew;
 
 @end

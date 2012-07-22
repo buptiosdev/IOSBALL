@@ -25,12 +25,11 @@
 -(void)checkCombineFood;
 -(void)checkLastCombineFood;
 -(int)doCombineFoodLoop;
+-(void)checkMax;
 @end
 
 @implementation Storage
 @synthesize sprite = _sprite;
-
-
 
 -(void) registerWithTouchDispatcher
 {
@@ -125,7 +124,7 @@
         [self scheduleUpdate];
         
         //处理最外面的球球
-        [self schedule:@selector(oneSecondCheckMax:) interval:1];
+        //[self schedule:@selector(oneSecondCheckMax:) interval:1];
         
         //实时计算得分
         //得分在触摸时进行计算 
@@ -173,8 +172,14 @@
             //[[foodArray objectAtIndex:right_index] mySprite].visible = NO;
             id actionScale = [CCScaleBy actionWithDuration:2]; 
             [[[foodArray objectAtIndex:right_index] mySprite] runAction:actionScale];
-            [foodArray removeObjectAtIndex:right_index];                
-            currentCount--;             
+            [foodArray removeObjectAtIndex:right_index];    
+            [CCDelayTime actionWithDuration:1];
+            currentCount--;      
+            
+            //得分音效
+            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+
+            
             break;
         }
         while(left_index<right_index)
@@ -213,69 +218,6 @@
 }
 
 
-//消除同一种颜色的球
--(void)combinTheSameType
-{
-    int combineNum = 0;
-    //    BOOL isCombine = NO;
-    int sameTypeCount = 0;
-    Food *lastFood = nil;
-    Food * curFood = nil;
-    int lastType = 0;
-    int a;
-    if ([foodArray count] > 0)
-    {
-        lastFood = [foodArray objectAtIndex:[foodArray count] - 1];
-        lastType = lastFood.foodType;
-    }
-    else
-    {
-        return;
-    }
-    
-    for (int i=0;i < storageCapacity; i++)
-    {
-        if ( i >= [foodArray count])
-        {
-            break;
-        }
-        
-        curFood = [foodArray objectAtIndex:i];
-        if (curFood.foodType == lastFood.foodType) 
-        {
-            sameTypeCount++;
-            foodInStorage[curFood.foodType] += 1;
-            
-            a = i;
-            *(combinArray+combineNum) = a;
-            combineNum++;
-            
-            if (theSameTypeNumOfOneTime < sameTypeCount) 
-            {
-                theSameTypeNumOfOneTime = sameTypeCount;
-            }
-        }
-    }
-    
-    needUpdateScore = YES;
-    [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
-    canCombine = YES;
-    
-    int index;
-    for (int i=0;i < combineNum; i++) 
-    {
-        index = *(combinArray + i);
-        [self reduceFood:index Turn:i];
-    }
-    
-    [self moveFood];
-    canCombine = NO;
-    
-    //消完后马上检查，为连续消做准备
-    [self checkCombineFood];
-    
-    [self combineMain:combineNum];
-}
 
 -(void)addFoodToStorage:(int)foodType
 {
@@ -290,7 +232,11 @@
         Food * food = [[Food alloc]initWithStorage:self Type:foodType Count:currentCount];
         [foodArray insertObject:food atIndex:currentCount];
         currentCount++;
+        
         [food release];
+        
+        //检查是否达到最大
+        [self checkMax];
     }
     //辣椒
     else if (6 == foodType)
@@ -336,42 +282,6 @@
     
     [foodArray removeObjectAtIndex:(count - turn)];
     currentCount--;
-}
-
--(void)checkCombineFood
-{
-    if (canCombine)
-    {
-        return;
-    }
-    for (int i=0;i < storageCapacity; i++)
-    {
-        if ( i >= [foodArray count])
-        {
-            break;
-        }
-        if (i>1) 
-        {
-            Food * curFood = nil;
-            Food * leftFood = nil;
-			Food *leftmostFood= nil;
-            leftmostFood = [foodArray objectAtIndex:i-2];
-            leftFood = [foodArray objectAtIndex:i-1];
-            if (leftFood.foodType != leftmostFood.foodType)
-            {
-                continue;
-            }
-            curFood = [foodArray objectAtIndex:i];
-            if (curFood.foodType == leftFood.foodType) 
-            {
-                canCombine = YES;
-                [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
-                break;
-            }
-        }
-    }
-    
-    
 }
 
 //检查是否能消
@@ -527,7 +437,8 @@
         {
             //CCLOG(@"while left_index\n");
             counter_flag++;    
-            if([[foodArray objectAtIndex:right_index] foodType] == [[foodArray objectAtIndex:mid_index] foodType] && [[foodArray objectAtIndex:left_index] foodType] ==[[foodArray objectAtIndex:mid_index] foodType])            
+            if([[foodArray objectAtIndex:right_index] foodType] == [[foodArray objectAtIndex:mid_index] foodType] 
+               && [[foodArray objectAtIndex:left_index] foodType] ==[[foodArray objectAtIndex:mid_index] foodType])            
             {
                 temp = temp + 1;
                 if (left_index == 0)
@@ -560,6 +471,10 @@
                             currentCount--;
                             [self moveFood];
                         }
+                        
+                        //得分音效
+                        [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+
                     }
                     break;
                     
@@ -589,20 +504,21 @@
                                                                    Apple:foodInStorage[0]];                    
                     
                     
-                    
-                    
-                    
-                    
                     while (temp>0) 
                     {
                         id actionScale = [CCScaleBy actionWithDuration:2]; 
                         [[[foodArray objectAtIndex:mid_index] mySprite] runAction:actionScale];
                         //[[foodArray objectAtIndex:mid_index] mySprite].visible = NO;
                         [foodArray removeObjectAtIndex:mid_index];
-                        temp --;
+                        temp--;
                         currentCount--;
                         [self moveFood];
                     }
+                    
+                    //得分音效
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+
+                    
                     break;
                 }
                 left_index--;
@@ -627,36 +543,6 @@
 }
 
 
-//add by lj at 6.20
-//根据触摸引起的消球 
-//计算得分
--(void)doMyCombineFood
-{
-    CCLOG(@"Into doMyCombineFood");
-    //continuousConbineFlag 一次消了多少个球
-    continuousConbineFlag = 0;
-    while([self doCombineFoodLoop])
-    {
-        continuousConbineFlag++;
-    }
-    
-    //连续消球的奖励得分
-    //即最右边的糖果消掉，左边的糖果还能消除的情况 
-    if (continuousConbineFlag > 1)
-    {
-        CCLOG(@"连续消球的次数 %d\n",continuousConbineFlag);
-        //连续消球的次数 = continuousConbineFlag -1
-        //调用连续消球的奖励得分函数
-        
-        //调用一次性消球 得分函数         
-        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
-        [instanceOfgameScore calculateContinuousCombineAward:continuousConbineFlag myLevel:gamelevel];        
-    }
-    
-    [self moveFood];
-    
-    canCombine = FALSE;
-}
 
 -(CCArray * )getScoreByLevel:(int)level
 {
@@ -668,207 +554,6 @@
     //int addscore = (int)[LevelScore objectAtIndex:1];
     //CCLOG(@"addscore is %d\n\n",addscore);
     return LevelScore;
-}
-
-
-//判断是否能消除消球 如果能的话消除 并将消球从仓库中去掉
-//返回1
-//用于主体的调用该方法处理在一次触摸中连续消球的
-//并记录连续消球的次数
-
-//return  0 没法消除
-//return  1 能消除 并且已经消除了（可能存在4个或者5个球连着的情况 也一并消除）
--(int)doCombineFoodLoop
-{
-    CCLOG(@"Into doCombineFoodLoop /n/n/n");
-    
-    //一次消同类型球的个数
-    int oneTimeScoreNum = 0;
-    
-    int nowcount = [foodArray count];
-    if(nowcount < 3 )
-    {
-        return 0;
-    }    
-    CCLOG(@"nowcount:%d",nowcount);
-    Food * leftFood = nil;
-    Food * midFood = nil;
-    Food *rightFood = nil;    
-    Food *tempFood = nil;
-    rightFood = [foodArray objectAtIndex:nowcount-1];
-    midFood = [foodArray objectAtIndex:nowcount-2];
-    leftFood = [foodArray objectAtIndex:nowcount-3];    
-    
-    if (rightFood.foodType == midFood.foodType && leftFood.foodType==midFood.foodType)    
-    {
-        oneTimeScoreNum = 3;
-        foodInStorage[midFood.foodType] += 3;
-        int j= nowcount -4;
-        if (j>=0)   //存在4个即以上的消球
-        {    
-            CCLOG(@"INTO here !!!!!!!!!!!!!!!!!!!");    
-            tempFood = [foodArray objectAtIndex:j];
-            
-            //左边的等于还在左边的
-            while (j>=0 && (leftFood.foodType == tempFood.foodType)) 
-            {
-                
-                oneTimeScoreNum++;
-                foodInStorage[midFood.foodType] += 1;
-                if((j-1)<0)
-                {
-                    break;
-                }    
-                tempFood = [foodArray objectAtIndex:j-1];
-                //leftFood = tempFood;
-                j--;
-            }   
-            
-        }//end if (j>0)
-        
-        //调用更新糖果个数函数
-        needUpdateScore = YES;
-        
-        [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
-        
-        
-        
-        
-        
-        //将球从仓库中去掉
-        //oneTimeScoreNum 该次消掉了多少同类型的球
-        CCLOG(@"该次的消球数为 oneTimeScoreNum %d \n" ,oneTimeScoreNum);
-        for (int x=0;x<oneTimeScoreNum; x++) 
-        {
-            id actionScale = [CCScaleBy actionWithDuration:2]; 
-            [[[foodArray objectAtIndex:(nowcount-x-1)] mySprite] runAction:actionScale];
-            
-            //[[foodArray objectAtIndex:(nowcount-x-1)] mySprite].visible = NO;
-            [foodArray removeObjectAtIndex:(nowcount -x -1)];
-            currentCount--;
-        }
-        
-        //调用一次性消球 得分函数         
-        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
-        
-        [instanceOfgameScore calculateConsistentCombineScore:gamelevel
-                                          oneTimeScoreNumber:oneTimeScoreNum
-                                                    foodType:rightFood.foodType
-                                                      Cheese:foodInStorage[2]
-                                                       Candy:foodInStorage[1]
-                                                       Apple:foodInStorage[0]];
-        
-        
-        
-        return 1;
-        
-    } //end if
-    
-    else 
-    {
-        //没法消除了
-        CCLOG(@"无法消除了!\n\n");
-        return 0;
-    }
-    
-    
-}
-
-
-
-//消球 
--(void)doCombineFood:(int *)totalNum
-{
-    int combineNum = 0;
-    BOOL isCombine = NO;
-    int sameTypeCount = 0;
-    
-    
-    if(!canCombine)
-    {
-        return;
-    }
-    
-    for (int i=0;i < storageCapacity; i++)
-    {
-        if ( i >= [foodArray count])
-        {
-            break;
-        }
-        if (i>1) 
-        {
-            Food * curFood = nil;
-            Food * leftFood = nil;
-			Food *leftmostFood= nil;
-            leftmostFood = [foodArray objectAtIndex:i-2];
-            leftFood = [foodArray objectAtIndex:i-1];
-            if (leftFood.foodType != leftmostFood.foodType)
-            {
-                isCombine = NO;
-                continue;
-            }
-            curFood = [foodArray objectAtIndex:i];
-            if (curFood.foodType == leftFood.foodType) 
-            {
-                int a;
-                if (!isCombine)
-                {
-                    sameTypeCount = 2;
-                    foodInStorage[curFood.foodType] += 2;
-                    a = i - 2;
-                    *(combinArray+combineNum) = a;
-                    combineNum++;
-                    a = i - 1;
-                    *(combinArray+combineNum) = a;
-                    combineNum++;
-                }
-                
-                sameTypeCount++;
-                foodInStorage[curFood.foodType] += 1;
-                
-                a = i;
-                *(combinArray+combineNum) = a;
-                combineNum++;
-                
-                if (theSameTypeNumOfOneTime < sameTypeCount) 
-                {
-                    theSameTypeNumOfOneTime = sameTypeCount;
-                }
-                
-                isCombine = YES;
-                needUpdateScore = YES;
-                [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
-            }
-            else
-            {
-                isCombine = NO;
-                continue;
-            }
-            
-        }
-    }
-    
-    
-    if (!canCombine)
-    {
-        return;
-    }
-    
-    *totalNum +=  combineNum;
-    
-    int index;
-    for (int i=0;i < combineNum; i++) 
-    {
-        index = *(combinArray + i);
-        [self reduceFood:index Turn:i];
-    }
-    
-    [self moveFood];
-    canCombine = NO;
-    
-    //消完后马上检查，为连续消做准备
-    [self checkCombineFood];
-    
 }
 
 -(void)updateScores
@@ -892,11 +577,15 @@
     
 }
 
--(void)oneSecondCheckMax:(ccTime)delta
+-(void)checkMax
 {
     if (currentCount == storageCapacity)
     {
-        [self reduceFood:storageCapacity Turn:1];
+        id actionScale = [CCScaleBy actionWithDuration:2];    
+        [[[foodArray objectAtIndex:0] mySprite] runAction:actionScale];
+        [foodArray removeObjectAtIndex:0];
+        currentCount--;
+        [self moveFood];
     }
 }
 
@@ -905,47 +594,14 @@
 {
     //CCLOG(@"counter is %d",counter);
     counter++;
-    
-    
+    return;
 }
 
 -(int)getStarNumber:(int)levle
 {
 
+    return levle;
 
-
-}
--(void)updateGameScore:(ccTime)delta 
-{
-    CCLOG(@"Into updateGameScore!");
-    gameScore *instanceOfgameScore = [gameScore sharedgameScore];
-    /*
-     -(void)calculateGameScore:(int)level TimesofOneTouch:(int)timesofonetouch 
-     NumbersOfOneTime:(int)numbersOfOneTime 
-     TheSameTypeNumOfOneTime:(int)theSameTypeNumOfOneTime
-     Chocolate:(int)choclolatenum
-     Cake:(int)cakenum
-     Circle:(int)circlenum
-     */
-    //一次消的次数 
-    //int timesOfOneTouch;
-    //一次消除的个数（所有类型）
-    //int numbersOfOneTime;
-    //一种类型消除个数
-    //int theSameTypeNumOfOneTime;
-    CCLOG(@"timesOfOneTouch :%d\n",timesOfOneTouch);
-    CCLOG(@"numbersOfOneTime :%d\n",numbersOfOneTime);
-    CCLOG(@"theSameTypeNumOfOneTime q q :%d\n",theSameTypeNumOfOneTime);
-    
-    /*
-    [instanceOfgameScore calculateGameScore:gamelevel 
-                            TimesofOneTouch:timesOfOneTouch 
-                           NumbersOfOneTime:numbersOfOneTime 
-                    TheSameTypeNumOfOneTime:theSameTypeNumOfOneTime 
-                                  Chocolate:foodInStorage[2] 
-                                       Cake:foodInStorage[1] 
-                                     Circle:foodInStorage[0]];
-    */
 }
 
 
@@ -954,33 +610,6 @@
     
     return CGRectContainsPoint([self.sprite boundingBox], touchLocation);
 }
-
-//触摸引发的消球 
--(void)combineMain:(int)totalCount
-{
-    CCLOG(@"Into combineMain /n/n/n");
-    //同类型的球消了多少个 
-    int timesPerTouch = 0;
-    //int totalCount = 0;
-    //可以连续消
-    while (canCombine) 
-    {
-        timesPerTouch++;
-        timesOfOneTouch++;
-        [self doMyCombineFood];
-    }
-    
-    if (timesOfOneTouch < timesPerTouch) 
-    {
-        timesOfOneTouch = timesPerTouch;
-    }
-    
-    if (numbersOfOneTime < totalCount)
-    {
-        numbersOfOneTime = totalCount;
-    }
-}
-
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -1068,6 +697,396 @@
     free(combinArray);
 	[super dealloc];
 }
+
+//-(void)checkCombineFood
+//{
+//    if (canCombine)
+//    {
+//        return;
+//    }
+//    for (int i=0;i < storageCapacity; i++)
+//    {
+//        if ( i >= [foodArray count])
+//        {
+//            break;
+//        }
+//        if (i>1) 
+//        {
+//            Food * curFood = nil;
+//            Food * leftFood = nil;
+//			Food *leftmostFood= nil;
+//            leftmostFood = [foodArray objectAtIndex:i-2];
+//            leftFood = [foodArray objectAtIndex:i-1];
+//            if (leftFood.foodType != leftmostFood.foodType)
+//            {
+//                continue;
+//            }
+//            curFood = [foodArray objectAtIndex:i];
+//            if (curFood.foodType == leftFood.foodType) 
+//            {
+//                canCombine = YES;
+//                //可以消求音效
+//                [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+//                break;
+//            }
+//        }
+//    }
+//    
+//    
+//}
+//
+
+
+//触摸引发的消球 
+//-(void)combineMain:(int)totalCount
+//{
+//    CCLOG(@"Into combineMain /n/n/n");
+//    //同类型的球消了多少个 
+//    int timesPerTouch = 0;
+//    //int totalCount = 0;
+//    //可以连续消
+//    while (canCombine) 
+//    {
+//        timesPerTouch++;
+//        timesOfOneTouch++;
+//        [self doMyCombineFood];
+//    }
+//    
+//    if (timesOfOneTouch < timesPerTouch) 
+//    {
+//        timesOfOneTouch = timesPerTouch;
+//    }
+//    
+//    if (numbersOfOneTime < totalCount)
+//    {
+//        numbersOfOneTime = totalCount;
+//    }
+//}
+
+////add by lj at 6.20
+////根据触摸引起的消球 
+////计算得分
+//-(void)doMyCombineFood
+//{
+//    CCLOG(@"Into doMyCombineFood");
+//    //continuousConbineFlag 一次消了多少个球
+//    continuousConbineFlag = 0;
+//    while([self doCombineFoodLoop])
+//    {
+//        continuousConbineFlag++;
+//    }
+//    
+//    //连续消球的奖励得分
+//    //即最右边的糖果消掉，左边的糖果还能消除的情况 
+//    if (continuousConbineFlag > 1)
+//    {
+//        CCLOG(@"连续消球的次数 %d\n",continuousConbineFlag);
+//        //连续消球的次数 = continuousConbineFlag -1
+//        //调用连续消球的奖励得分函数
+//        
+//        //调用一次性消球 得分函数         
+//        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+//        [instanceOfgameScore calculateContinuousCombineAward:continuousConbineFlag myLevel:gamelevel];        
+//    }
+//    
+//    [self moveFood];
+//    
+//    canCombine = FALSE;
+//}
+
+
+////判断是否能消除消球 如果能的话消除 并将消球从仓库中去掉
+////返回1
+////用于主体的调用该方法处理在一次触摸中连续消球的
+////并记录连续消球的次数
+//
+////return  0 没法消除
+////return  1 能消除 并且已经消除了（可能存在4个或者5个球连着的情况 也一并消除）
+//-(int)doCombineFoodLoop
+//{
+//    CCLOG(@"Into doCombineFoodLoop /n/n/n");
+//    
+//    //一次消同类型球的个数
+//    int oneTimeScoreNum = 0;
+//    
+//    int nowcount = [foodArray count];
+//    if(nowcount < 3 )
+//    {
+//        return 0;
+//    }    
+//    CCLOG(@"nowcount:%d",nowcount);
+//    Food * leftFood = nil;
+//    Food * midFood = nil;
+//    Food *rightFood = nil;    
+//    Food *tempFood = nil;
+//    rightFood = [foodArray objectAtIndex:nowcount-1];
+//    midFood = [foodArray objectAtIndex:nowcount-2];
+//    leftFood = [foodArray objectAtIndex:nowcount-3];    
+//    
+//    if (rightFood.foodType == midFood.foodType && leftFood.foodType==midFood.foodType)    
+//    {
+//        oneTimeScoreNum = 3;
+//        foodInStorage[midFood.foodType] += 3;
+//        int j= nowcount -4;
+//        if (j>=0)   //存在4个即以上的消球
+//        {    
+//            CCLOG(@"INTO here !!!!!!!!!!!!!!!!!!!");    
+//            tempFood = [foodArray objectAtIndex:j];
+//            
+//            //左边的等于还在左边的
+//            while (j>=0 && (leftFood.foodType == tempFood.foodType)) 
+//            {
+//                
+//                oneTimeScoreNum++;
+//                foodInStorage[midFood.foodType] += 1;
+//                if((j-1)<0)
+//                {
+//                    break;
+//                }    
+//                tempFood = [foodArray objectAtIndex:j-1];
+//                //leftFood = tempFood;
+//                j--;
+//            }   
+//            
+//        }//end if (j>0)
+//        
+//        //调用更新糖果个数函数
+//        needUpdateScore = YES;
+//        
+//        [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+//        
+//        //将球从仓库中去掉
+//        //oneTimeScoreNum 该次消掉了多少同类型的球
+//        CCLOG(@"该次的消球数为 oneTimeScoreNum %d \n" ,oneTimeScoreNum);
+//        for (int x=0;x<oneTimeScoreNum; x++) 
+//        {
+//            id actionScale = [CCScaleBy actionWithDuration:2]; 
+//            [[[foodArray objectAtIndex:(nowcount-x-1)] mySprite] runAction:actionScale];
+//            
+//            //[[foodArray objectAtIndex:(nowcount-x-1)] mySprite].visible = NO;
+//            [foodArray removeObjectAtIndex:(nowcount -x -1)];
+//            currentCount--;
+//        }
+//        
+//        //调用一次性消球 得分函数         
+//        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+//        
+//        [instanceOfgameScore calculateConsistentCombineScore:gamelevel
+//                                          oneTimeScoreNumber:oneTimeScoreNum
+//                                                    foodType:rightFood.foodType
+//                                                      Cheese:foodInStorage[2]
+//                                                       Candy:foodInStorage[1]
+//                                                       Apple:foodInStorage[0]];
+//        
+//        
+//        
+//        return 1;
+//        
+//    } //end if
+//    
+//    else 
+//    {
+//        //没法消除了
+//        CCLOG(@"无法消除了!\n\n");
+//        return 0;
+//    }
+//    
+//    
+//}
+
+
+//消除同一种颜色的球
+//-(void)combinTheSameType
+//{
+//    int combineNum = 0;
+//    //    BOOL isCombine = NO;
+//    int sameTypeCount = 0;
+//    Food *lastFood = nil;
+//    Food * curFood = nil;
+//    int lastType = 0;
+//    int a;
+//    if ([foodArray count] > 0)
+//    {
+//        lastFood = [foodArray objectAtIndex:[foodArray count] - 1];
+//        lastType = lastFood.foodType;
+//    }
+//    else
+//    {
+//        return;
+//    }
+//    
+//    for (int i=0;i < storageCapacity; i++)
+//    {
+//        if ( i >= [foodArray count])
+//        {
+//            break;
+//        }
+//        
+//        curFood = [foodArray objectAtIndex:i];
+//        if (curFood.foodType == lastFood.foodType) 
+//        {
+//            sameTypeCount++;
+//            foodInStorage[curFood.foodType] += 1;
+//            
+//            a = i;
+//            *(combinArray+combineNum) = a;
+//            combineNum++;
+//            
+//            if (theSameTypeNumOfOneTime < sameTypeCount) 
+//            {
+//                theSameTypeNumOfOneTime = sameTypeCount;
+//            }
+//        }
+//    }
+//    
+//    needUpdateScore = YES;
+//    [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+//    canCombine = YES;
+//    
+//    int index;
+//    for (int i=0;i < combineNum; i++) 
+//    {
+//        index = *(combinArray + i);
+//        [self reduceFood:index Turn:i];
+//    }
+//    
+//    [self moveFood];
+//    canCombine = NO;
+//    
+//    //消完后马上检查，为连续消做准备
+//    [self checkCombineFood];
+//    
+//    [self combineMain:combineNum];
+//}
+
+////消球 
+//-(void)doCombineFood:(int *)totalNum
+//{
+//    int combineNum = 0;
+//    BOOL isCombine = NO;
+//    int sameTypeCount = 0;
+//    
+//    
+//    if(!canCombine)
+//    {
+//        return;
+//    }
+//    
+//    for (int i=0;i < storageCapacity; i++)
+//    {
+//        if ( i >= [foodArray count])
+//        {
+//            break;
+//        }
+//        if (i>1) 
+//        {
+//            Food * curFood = nil;
+//            Food * leftFood = nil;
+//			Food *leftmostFood= nil;
+//            leftmostFood = [foodArray objectAtIndex:i-2];
+//            leftFood = [foodArray objectAtIndex:i-1];
+//            if (leftFood.foodType != leftmostFood.foodType)
+//            {
+//                isCombine = NO;
+//                continue;
+//            }
+//            curFood = [foodArray objectAtIndex:i];
+//            if (curFood.foodType == leftFood.foodType) 
+//            {
+//                int a;
+//                if (!isCombine)
+//                {
+//                    sameTypeCount = 2;
+//                    foodInStorage[curFood.foodType] += 2;
+//                    a = i - 2;
+//                    *(combinArray+combineNum) = a;
+//                    combineNum++;
+//                    a = i - 1;
+//                    *(combinArray+combineNum) = a;
+//                    combineNum++;
+//                }
+//                
+//                sameTypeCount++;
+//                foodInStorage[curFood.foodType] += 1;
+//                
+//                a = i;
+//                *(combinArray+combineNum) = a;
+//                combineNum++;
+//                
+//                if (theSameTypeNumOfOneTime < sameTypeCount) 
+//                {
+//                    theSameTypeNumOfOneTime = sameTypeCount;
+//                }
+//                
+//                isCombine = YES;
+//                needUpdateScore = YES;
+//                [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+//            }
+//            else
+//            {
+//                isCombine = NO;
+//                continue;
+//            }
+//            
+//        }
+//    }
+//    
+//    
+//    if (!canCombine)
+//    {
+//        return;
+//    }
+//    
+//    *totalNum +=  combineNum;
+//    
+//    int index;
+//    for (int i=0;i < combineNum; i++) 
+//    {
+//        index = *(combinArray + i);
+//        [self reduceFood:index Turn:i];
+//    }
+//    
+//    [self moveFood];
+//    canCombine = NO;
+//    
+//    //消完后马上检查，为连续消做准备
+//    [self checkCombineFood];
+//    
+//}
+
+
+//-(void)updateGameScore:(ccTime)delta 
+//{
+//    CCLOG(@"Into updateGameScore!");
+//    gameScore *instanceOfgameScore = [gameScore sharedgameScore];
+//    /*
+//     -(void)calculateGameScore:(int)level TimesofOneTouch:(int)timesofonetouch 
+//     NumbersOfOneTime:(int)numbersOfOneTime 
+//     TheSameTypeNumOfOneTime:(int)theSameTypeNumOfOneTime
+//     Chocolate:(int)choclolatenum
+//     Cake:(int)cakenum
+//     Circle:(int)circlenum
+//     */
+//    //一次消的次数 
+//    //int timesOfOneTouch;
+//    //一次消除的个数（所有类型）
+//    //int numbersOfOneTime;
+//    //一种类型消除个数
+//    //int theSameTypeNumOfOneTime;
+//    CCLOG(@"timesOfOneTouch :%d\n",timesOfOneTouch);
+//    CCLOG(@"numbersOfOneTime :%d\n",numbersOfOneTime);
+//    CCLOG(@"theSameTypeNumOfOneTime q q :%d\n",theSameTypeNumOfOneTime);
+//    
+//    /*
+//    [instanceOfgameScore calculateGameScore:gamelevel 
+//                            TimesofOneTouch:timesOfOneTouch 
+//                           NumbersOfOneTime:numbersOfOneTime 
+//                    TheSameTypeNumOfOneTime:theSameTypeNumOfOneTime 
+//                                  Chocolate:foodInStorage[2] 
+//                                       Cake:foodInStorage[1] 
+//                                     Circle:foodInStorage[0]];
+//    */
+//}
 
 
 @end
