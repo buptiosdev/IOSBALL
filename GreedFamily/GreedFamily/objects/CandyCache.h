@@ -39,6 +39,7 @@ typedef enum
     int candyCount;
 	int updateCount;
     int maxVisibalNum;
+    CCLabelBMFont* remainBallLabel;
 }
 +(id)cache:(b2World *)world;
 @property (assign, nonatomic)BOOL isFinish;

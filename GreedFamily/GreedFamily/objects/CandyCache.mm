@@ -12,6 +12,7 @@
 #import "LoadingScene.h"
 #import "GameMainScene.h"
 #import "BodyObjectsLayer.h"
+#import "GameBackgroundLayer.h"
 
 @interface CandyCache (PrivateMethods)
 -(void)initEnemiesWithWorld:(b2World *)world;
@@ -104,7 +105,31 @@
     candyCount = 0;
     _isFinish = NO;
     _aliveCandy = 0;
+
     [self initScenecache:world];
+    
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    CCSprite *remainBallScore = [CCSprite spriteWithSpriteFrameName:@"pic_4.png"];
+    
+    //按照像素设定图片大小
+    remainBallScore.scaleX=(20)/[remainBallScore contentSize].width;//按照像素定制图片宽高
+    
+    
+    remainBallScore.scaleY=(20)/[remainBallScore contentSize].height;//按照像素定制图片宽高
+    
+
+    remainBallScore.position = CGPointMake(225, screenSize.height - 20);
+
+    CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+    [batch addChild:remainBallScore];
+
+    //剩余球数
+    remainBallLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    [remainBallLabel setString:[NSString stringWithFormat:@"x%i", [GameMainScene sharedMainScene].mainscenParam.candyCount]];
+    remainBallLabel.position = CGPointMake(250, screenSize.height - 5);
+    remainBallLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
+    remainBallLabel.scale = 0.4;
+    [self addChild:remainBallLabel z:-2];
 }
 
 
@@ -188,6 +213,8 @@
         {
             candyCount++;
             _aliveCandy++;
+            //更新剩余球数
+            [remainBallLabel setString:[NSString stringWithFormat:@"x%i", candyTotal - candyCount]];
             
         }
     }

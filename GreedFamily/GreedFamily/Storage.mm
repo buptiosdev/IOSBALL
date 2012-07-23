@@ -89,6 +89,8 @@
     cheeseScoreLabel.scale = 0.4;
     [self addChild:cheeseScoreLabel z:-2];
     
+
+    
     counter = 0;
     nowScoreTime = 0;
     lastScoreTime = 0;
@@ -157,6 +159,7 @@
     int left_index = 0;
     int right_index = nowcount -1;    
     Food *nowFood = nil;    
+
     while(1)
     {
         right_index = [foodArray count]-1;
@@ -165,15 +168,11 @@
         {
             nowFood = [foodArray objectAtIndex:right_index];                    
             foodInStorage[nowFood.foodType]++;            
-            
-
-
             //删除right_index;
             //[[foodArray objectAtIndex:right_index] mySprite].visible = NO;
             id actionScale = [CCScaleBy actionWithDuration:2]; 
             [[[foodArray objectAtIndex:right_index] mySprite] runAction:actionScale];
-            [foodArray removeObjectAtIndex:right_index];    
-            [CCDelayTime actionWithDuration:1];
+            [foodArray removeObjectAtIndex:right_index];  
             currentCount--;      
             
             //得分音效
@@ -189,12 +188,12 @@
                 nowFood = [foodArray objectAtIndex:right_index];                    
                 foodInStorage[nowFood.foodType]++;
                 //[[foodArray objectAtIndex:left_index] mySprite].visible = NO;
-                id actionScale = [CCScaleBy actionWithDuration:2];                 
+                id actionScale = [CCScaleBy actionWithDuration:2]; 
                 [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
-
                 [foodArray removeObjectAtIndex:left_index];                
                 currentCount--; 
                 [self moveFood];
+
                 break;
             }
             else

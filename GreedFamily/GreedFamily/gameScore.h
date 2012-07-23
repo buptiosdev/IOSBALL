@@ -108,8 +108,13 @@ struct  struct_gameScore{
                                 Cheese:(int)cheesenum
                                  Candy:(int)candynum
                                  Apple:(int)applenum;
+-(void)calculateBaseScore:(int)mygamelevel
+                   Cheese:(int)cheesenum
+                    Candy:(int)candynum
+                    Apple:(int)applenum;
 
--(CCArray *)calculateScoreWhenGameIsOver:(int)level;
+//-(CCArray *)calculateScoreWhenGameIsOver:(int)level;
+-(CCArray *)calculateScoreWhenGameIsOver:(int)level timestamp:(int)mytimestamp;
 
 -(void)calculateContinuousCombineAward:(int)continuousflag 
                                myLevel:(int)gameLevel;

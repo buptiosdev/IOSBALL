@@ -38,6 +38,7 @@
     CCLabelBMFont* cheeseScoreLabel;
     CCLabelBMFont* candyScoreLabel;
     CCLabelBMFont* appleScoreLabel;
+
     //BOOL isCombine;
     BOOL canCombine;
     BOOL needUpdateScore;
@@ -55,5 +56,6 @@
 -(CCArray * )getScoreByLevel:(int)level;
 //-(void)doMyCombineFood;
 -(void)combinTheSameTypeNew;
+-(void)combineBallNew;
 
 @end
