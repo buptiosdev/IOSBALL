@@ -371,10 +371,13 @@
     directionCurrent = runAnim;
     if (directionCurrent != directionBefore)
     {
-        [self.sprite stopAction:_flyAction];
-        self.flyAction = [_flyActionArray objectAtIndex:runAnim];
-        [self.sprite runAction:_flyAction];
-        directionBefore = directionCurrent;
+        if(runAnim ==0 || runAnim ==1)
+        {
+            [self.sprite stopAction:_flyAction];
+            self.flyAction = [_flyActionArray objectAtIndex:runAnim];
+            [self.sprite runAction:_flyAction];
+            directionBefore = directionCurrent;
+        }
     }
 
     //根据飞行速度调节动画速率
