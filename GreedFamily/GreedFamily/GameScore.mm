@@ -702,10 +702,15 @@ static GameScore  *instanceOfgameScore;
         starNum = 3;
     }
     
-    //直接将int 装成string  当做关卡的值传进去        
-    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
-    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];
-    [[[MyGameScore sharedScore] standardUserDefaults] setInteger:starNum forKey:str_starlevel];         
+    //直接将int 装成string  当做关卡的值传进去 
+    //增加与最大值的比较，只有大于最大值时才更新
+    int maxStar=[self getGameStarNumber:level];
+    if(starNum>maxStar)
+    {
+        NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
+        str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];
+        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:starNum forKey:str_starlevel];         
+    }
     
     [LevelScore insertObject:[NSNumber numberWithInteger:starNum] atIndex:2];  
     return LevelScore;
