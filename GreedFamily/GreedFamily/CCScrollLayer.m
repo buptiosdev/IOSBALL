@@ -81,7 +81,7 @@ enum
 		self.minimumTouchLengthToChangePage = 100.0f;
 		
 		// Show indicator by default.
-		self.showPagesIndicator = YES;
+		self.showPagesIndicator = NO;
 		
 		// Set up the starting variables
 		currentScreen_ = 1;

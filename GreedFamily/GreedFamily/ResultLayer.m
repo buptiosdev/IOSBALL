@@ -16,14 +16,14 @@
 
 
 @interface ResultLayer (PrivateMethods)
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore;
+-(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum;
 @end
 
 @implementation ResultLayer
 
-+(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore
++(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore  StarNum:(int)starnum
 {
-    return [[[ResultLayer alloc] initWithResult:color Level:level Score:score AddScore:addscore] autorelease];
+    return [[[ResultLayer alloc] initWithResult:color Level:level Score:score AddScore:addscore StarNum:starnum] autorelease];
 }
 
 -(void)chooseLevel:(CCMenuItemImage *)btn
@@ -37,7 +37,7 @@
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
 
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore
+-(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum
 {
     if ((self = [super initWithColor:color]))
     {
@@ -59,6 +59,13 @@
 		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 2 / 5 );
         [labeltotalscore setColor:ccBLUE];
 		[self addChild:labeltotalscore];
+        
+        for(int i=0;i<starnum;i++)
+        {
+            CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];
+            star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
+            [self addChild:star];
+        }
         
         CCLabelTTF *retryLabel=[CCLabelTTF labelWithString:@"Retry" fontName:@"Marker Felt" fontSize:30];
         [retryLabel setColor:ccRED];

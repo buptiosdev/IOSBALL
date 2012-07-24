@@ -12,5 +12,5 @@
 @interface ResultLayer : CCLayerColor {
     
 }
-+(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore;
++(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum;
 @end

@@ -427,7 +427,7 @@ static GameMainScene *instanceOfMainScene;
 
     //3.生成关卡结束显示层
     ccColor4B c = {255,255,0,100};
-    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore];
+    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum];
     [self.parent addChild:p z:10]; 
 }
 
