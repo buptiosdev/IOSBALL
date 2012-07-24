@@ -118,10 +118,7 @@ struct  struct_gameScore{
                                  Candy:(int)candynum
                                  Apple:(int)applenum
                              DelayTime:(int)delayTime;
--(void)calculateBaseScore:(int)mygamelevel
-                   Cheese:(int)cheesenum
-                    Candy:(int)candynum
-                    Apple:(int)applenum;
+
 
 //-(CCArray *)calculateScoreWhenGameIsOver:(int)level;
 -(CCArray *)calculateScoreWhenGameIsOver:(int)level timestamp:(int)mytimestamp;

@@ -169,6 +169,7 @@ static GameScore  *instanceOfgameScore;
         hightestTotalScoreLabel.anchorPoint = CGPointMake(0.5, 2.0f);
         hightestTotalScoreLabel.scale = 0.3;
         [self addChild:hightestTotalScoreLabel z:-2];
+        
     
     
     }
@@ -300,6 +301,13 @@ static GameScore  *instanceOfgameScore;
     
     [self addChild:getContinuousAward z:-1 tag:ContinuousAwardScoreTag];
     [self schedule:@selector(removeContinuousAwardScore:) interval:6];
+    //加入特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bluescore.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = getContinuousAward.position;
+    [self addChild:system];
     
     //得分音效
     //得分特效
@@ -332,57 +340,57 @@ static GameScore  *instanceOfgameScore;
     
 }
 
--(void)calculateBaseScore:(int)mygamelevel
-                   Cheese:(int)cheesenum
-                    Candy:(int)candynum
-                    Apple:(int)applenum
-{
-    CCLOG(@"Into calculateBaseScore\n");
-    int base_score =  cheesenum*my_struct_gameScore_rules.cheese+ candynum*my_struct_gameScore_rules.candy+applenum*my_struct_gameScore_rules.apple;
-    int tempnowscore = award_nowlevelscore + base_score;
-    
-    my_nowlevelscore = tempnowscore;    
-    
-    //获取游戏关卡的历史最高分
-    int temphighestscore = [self getGameHighestScore:mygamelevel];
-    
-    CCLOG(@"temphighestscore: %d\n",temphighestscore);    
-    
-    if (tempnowscore > temphighestscore) 
-    {
-        
-        //直接将int 装成string  当做关卡的值传进去        
-        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",mygamelevel];
-
-        //分数累加特效
-        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:str_gamelevel];   
-        
-        //更新左上角关卡的值 
-        
-        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",tempnowscore]];
-        
-    }        
-    
-    else
-    {
-        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temphighestscore]];
-    }
-    
-    //加分特效
-    [self unschedule:@selector(removeBaseScore:)];   
-    //消除特效
-    [self removeChildByTag:BaseScoreTag cleanup:YES];
-    CCLabelBMFont*  getBaseScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
-    [getBaseScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
-    getBaseScore.position = CGPointMake(50, 80);
-    getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getBaseScore.scale = 0.5;
-    getBaseScore.color = ccYELLOW;
-    [self addChild:getBaseScore z:-1 tag:BaseScoreTag];
-    [self schedule:@selector(removeBaseScore:) interval:2];
-    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
-    
-}
+//-(void)calculateBaseScore:(int)mygamelevel
+//                   Cheese:(int)cheesenum
+//                    Candy:(int)candynum
+//                    Apple:(int)applenum
+//{
+//    CCLOG(@"Into calculateBaseScore\n");
+//    int base_score =  cheesenum*my_struct_gameScore_rules.cheese+ candynum*my_struct_gameScore_rules.candy+applenum*my_struct_gameScore_rules.apple;
+//    int tempnowscore = award_nowlevelscore + base_score;
+//    
+//    my_nowlevelscore = tempnowscore;    
+//    
+//    //获取游戏关卡的历史最高分
+//    int temphighestscore = [self getGameHighestScore:mygamelevel];
+//    
+//    CCLOG(@"temphighestscore: %d\n",temphighestscore);    
+//    
+//    if (tempnowscore > temphighestscore) 
+//    {
+//        
+//        //直接将int 装成string  当做关卡的值传进去        
+//        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",mygamelevel];
+//
+//        //分数累加特效
+//        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:str_gamelevel];   
+//        
+//        //更新左上角关卡的值 
+//        
+//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",tempnowscore]];
+//        
+//    }        
+//    
+//    else
+//    {
+//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temphighestscore]];
+//    }
+//    
+//    //加分特效
+//    [self unschedule:@selector(removeBaseScore:)];   
+//    //消除特效
+//    [self removeChildByTag:BaseScoreTag cleanup:YES];
+//    CCLabelBMFont*  getBaseScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+//    [getBaseScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+//    getBaseScore.position = CGPointMake(50, 80);
+//    getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
+//    getBaseScore.scale = 0.5;
+//    getBaseScore.color = ccYELLOW;
+//    [self addChild:getBaseScore z:-1 tag:BaseScoreTag];
+//    [self schedule:@selector(removeBaseScore:) interval:2];
+//    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+//    
+//}
 
 - (void) CallBackUpdateScore:(id)sender 
 {
@@ -437,6 +445,14 @@ static GameScore  *instanceOfgameScore;
     //[CCSpawn actions:ac1, ac2, seq, nil]
     //将5个劢作组合为一个序列，注意丌要忘了用nil结尾。 
     [getBaseScore runAction:[CCSequence actions:ac3, ac1, ac0,nil]]; 
+    //加入特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"colorscore.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = getBaseScore.position;
+
+    [self addChild:system];
     //得分音效
     //得分特效
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
@@ -473,8 +489,6 @@ static GameScore  *instanceOfgameScore;
     getAwardScore.scale = 0.5;
     getAwardScore.color = ccRED;
 
-    
-    //[CCSpawn actions:ac1, ac2, seq, nil]
     //将5个劢作组合为一个序列，注意丌要忘了用nil结尾。 
     id ac0_ = [CCToggleVisibility action]; 
     id ac1_ = [CCMoveTo actionWithDuration:2 position:ccp(50,300)]; 
@@ -483,7 +497,13 @@ static GameScore  *instanceOfgameScore;
     
     [self addChild:getAwardScore z:-1 tag:AwardScoreTag];
     [self schedule:@selector(removeAwardScore:) interval:6];
-    
+    //加入特效
+    CCParticleSystem* system2;
+    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"redscore.plist"];
+    system2.positionType = kCCPositionTypeFree;
+    system2.autoRemoveOnFinish = YES;
+    system2.position = getAwardScore.position;
+    [self addChild:system2];
     //得分音效
     //得分特效
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
