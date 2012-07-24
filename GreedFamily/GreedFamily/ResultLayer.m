@@ -66,6 +66,8 @@
             //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
             CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star.png"];
             star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
+            star.scaleX=(40)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
+            star.scaleY=(40)/[star contentSize].height;
             //[batch addChild:star];
             [self addChild:star];
         }
