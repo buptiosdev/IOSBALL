@@ -227,6 +227,9 @@
 		70C7C3FD15AA7965007D35B5 /* GameCenterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */; };
 		70C7C40415AA7FF2007D35B5 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C40315AA7FF2007D35B5 /* GCHelper.m */; };
 		70C7C40615AA86A2007D35B5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C40515AA86A2007D35B5 /* GameKit.framework */; };
+		70C9D13015BEE4EE001977E5 /* bluescore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D12D15BEE4E4001977E5 /* bluescore.plist */; };
+		70C9D13115BEE4EE001977E5 /* colorscore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D12E15BEE4E7001977E5 /* colorscore.plist */; };
+		70C9D13215BEE4EE001977E5 /* redscore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D12F15BEE4EA001977E5 /* redscore.plist */; };
 		C6C56C351579DA9C00F60F33 /* GameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* GameScore.mm */; };
 		C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6D634BC157CF3030074818D /* MyGameScore.mm */; };
 /* End PBXBuildFile section */
@@ -643,7 +646,10 @@
 		70C7C40215AA7FF2007D35B5 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCHelper.h; path = tools/GCHelper.h; sourceTree = "<group>"; };
 		70C7C40315AA7FF2007D35B5 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCHelper.m; path = tools/GCHelper.m; sourceTree = "<group>"; };
 		70C7C40515AA86A2007D35B5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		C6C56C331579DA9B00F60F33 /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; path = GameScore.h; sourceTree = "<group>"; };
+		70C9D12D15BEE4E4001977E5 /* bluescore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bluescore.plist; path = Resources/bluescore.plist; sourceTree = "<group>"; };
+		70C9D12E15BEE4E7001977E5 /* colorscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = colorscore.plist; path = Resources/colorscore.plist; sourceTree = "<group>"; };
+		70C9D12F15BEE4EA001977E5 /* redscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = redscore.plist; path = Resources/redscore.plist; sourceTree = "<group>"; };
+		C6C56C331579DA9B00F60F33 /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScore.h; sourceTree = "<group>"; };
 		C6C56C341579DA9C00F60F33 /* GameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScore.mm; sourceTree = "<group>"; };
 		C6D634BB157CF3030074818D /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
 		C6D634BC157CF3030074818D /* MyGameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyGameScore.mm; sourceTree = "<group>"; };
@@ -734,6 +740,9 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				70C9D12D15BEE4E4001977E5 /* bluescore.plist */,
+				70C9D12E15BEE4E7001977E5 /* colorscore.plist */,
+				70C9D12F15BEE4EA001977E5 /* redscore.plist */,
 				7081959B15B90C8500ABB13E /* land_poison.plist */,
 				7081958E15B8F00100ABB13E /* land_bomb.plist */,
 				7081958F15B8F00100ABB13E /* land_crystal.plist */,
@@ -1409,6 +1418,9 @@
 				7081959415B8F00100ABB13E /* land_crystal.plist in Resources */,
 				7081959515B8F00100ABB13E /* land_ice.plist in Resources */,
 				7081959C15B90C8500ABB13E /* land_poison.plist in Resources */,
+				70C9D13015BEE4EE001977E5 /* bluescore.plist in Resources */,
+				70C9D13115BEE4EE001977E5 /* colorscore.plist in Resources */,
+				70C9D13215BEE4EE001977E5 /* redscore.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
