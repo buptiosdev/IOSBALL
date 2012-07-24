@@ -113,8 +113,10 @@ static GameMainScene *instanceOfMainScene;
 
 -(void)initSceneParam:(int)order
 {
+    _mainscenParam.order = order;
     switch (order) {
         case TargetScene1stScene:
+            
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 3;
             _mainscenParam.candyType = 1;

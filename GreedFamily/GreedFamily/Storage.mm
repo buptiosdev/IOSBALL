@@ -158,8 +158,9 @@
     int nowcount = [foodArray count];
     int left_index = 0;
     int right_index = nowcount -1;    
+    int temp = 0;
     Food *nowFood = nil;    
-
+    
     while(1)
     {
         right_index = [foodArray count]-1;
@@ -174,7 +175,7 @@
             [[[foodArray objectAtIndex:right_index] mySprite] runAction:actionScale];
             [foodArray removeObjectAtIndex:right_index];  
             currentCount--;      
-            
+            temp++;
             //得分音效
             [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
 
@@ -192,6 +193,7 @@
                 [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
                 [foodArray removeObjectAtIndex:left_index];                
                 currentCount--; 
+                temp++;
                 [self moveFood];
 
                 break;
@@ -205,12 +207,17 @@
         
     }//end while
     
-    gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+    GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
     
-    [instanceOfgameScore calculateBaseScore:gamelevel
-                                     Cheese:foodInStorage[2]
-                                      Candy:foodInStorage[1]
-                                      Apple:foodInStorage[0]];        
+
+    
+    [instanceOfgameScore calculateConsistentCombineScore:gamelevel
+                                      oneTimeScoreNumber:temp
+                                                foodType:nowFood.foodType
+                                                  Cheese:foodInStorage[2]
+                                                   Candy:foodInStorage[1]
+                                                   Apple:foodInStorage[0]
+                                               DelayTime:0]; 
     
     [self combineBallNew];
     
@@ -413,11 +420,13 @@
     int right_index = nowcount -1;
     int temp = 2;
     int consisFlag = 0;
+    int delayTime = 0;
     //if (!canCombine) {
     //    return;
     //}
     while(1)
     {
+        delayTime += 2;
         counter_flag++;
         //CCLOG(@"while 1 hahaha\n");
         right_index = [foodArray count] -1;
@@ -449,14 +458,15 @@
                         foodInStorage[nowFood.foodType] += temp;
                         
                         //调用一次性消球 得分函数         
-                        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+                        GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
                         
                         [instanceOfgameScore calculateConsistentCombineScore:gamelevel
                                                           oneTimeScoreNumber:temp
                                                                     foodType:nowFood.foodType
                                                                       Cheese:foodInStorage[2]
                                                                        Candy:foodInStorage[1]
-                                                                       Apple:foodInStorage[0]];      
+                                                                       Apple:foodInStorage[0]
+                                                                   DelayTime:delayTime];      
                         
                         
                         consisFlag ++;
@@ -493,14 +503,15 @@
                     foodInStorage[nowFood.foodType] += temp;                
                     
                     //调用一次性消球 得分函数         
-                    gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+                    GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
                     
                     [instanceOfgameScore calculateConsistentCombineScore:gamelevel
                                                       oneTimeScoreNumber:temp
                                                                 foodType:nowFood.foodType
                                                                   Cheese:foodInStorage[2]
                                                                    Candy:foodInStorage[1]
-                                                                   Apple:foodInStorage[0]];                    
+                                                                   Apple:foodInStorage[0]
+                                                               DelayTime:delayTime]; 
                     
                     
                     while (temp>0) 
@@ -533,7 +544,7 @@
     if (consisFlag>0)
     {    
         //调用连续消球 得分函数         
-        gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+        GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
         [instanceOfgameScore calculateContinuousCombineAward:consisFlag myLevel:gamelevel];            
     }
     
@@ -547,7 +558,7 @@
 {
     CCLOG(@"INTO getScoreByLevel\n\n");
     CCArray *LevelScore;
-    gameScore *instanceOfgameScore = [gameScore sharedgameScore];
+    GameScore *instanceOfgameScore = [GameScore sharedgameScore];
     LevelScore = [instanceOfgameScore calculateScoreWhenGameIsOver:level timestamp:counter];
     
     //int addscore = (int)[LevelScore objectAtIndex:1];
@@ -637,7 +648,7 @@
                 if ((nowScoreTime-lastScoreTime)<timeReward)
                 {
                     //调用时间奖励 得分函数         
-                    gameScore *instanceOfgameScore = [gameScore sharedgameScore];     
+                    GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
                     [instanceOfgameScore calculateTimeAward:gamelevel];
                     
                     //

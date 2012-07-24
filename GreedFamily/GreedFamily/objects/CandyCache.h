@@ -27,10 +27,6 @@ typedef enum
 	ParticleTypes_MAX,
 } ParticleTypes;
 
-
-
-
-
 @interface CandyCache : CCNode 
 {
 	CCArray* candies;

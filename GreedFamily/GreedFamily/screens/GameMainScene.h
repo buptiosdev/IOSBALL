@@ -55,6 +55,7 @@ struct SceneParam
     int crystalFrequency;
     int invisibaleNum;
     int maxVisibaleNum;
+    int order;
     float landCompetSpeed;
     float landAnimalSpeed;
 };

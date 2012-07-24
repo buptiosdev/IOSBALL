@@ -26,6 +26,14 @@
  int level5HighestScore;
  } ;
  */
+
+typedef enum
+{
+	BaseScoreTag = 0,
+    AwardScoreTag,
+	ContinuousAwardScoreTag,
+	ScoreTags_MAX,
+} ScoreTags;
 struct  struct_gameScore_rules{
     int apple;
     int cheese;
@@ -55,7 +63,7 @@ struct  struct_gameScore{
 
 
 
-@interface gameScore : CCNode {
+@interface GameScore : CCNode {
     
     struct_gameScore_rules my_struct_gameScore_rules;
     struct_gameScore my_struct_gameScore;
@@ -66,11 +74,12 @@ struct  struct_gameScore{
     int my_nowlevelscore;
     //当前关卡游戏奖励得分
     int award_nowlevelscore;
+    int delayTime;
     CCArray *LevelScore;
 
     
 }
-+(gameScore *)sharedgameScore;
++(GameScore *)sharedgameScore;
 
 //初始化得分规则
 -(void)setScoreSetRules;
@@ -107,7 +116,8 @@ struct  struct_gameScore{
                               foodType:(int)myfoodType
                                 Cheese:(int)cheesenum
                                  Candy:(int)candynum
-                                 Apple:(int)applenum;
+                                 Apple:(int)applenum
+                             DelayTime:(int)delayTime;
 -(void)calculateBaseScore:(int)mygamelevel
                    Cheese:(int)cheesenum
                     Candy:(int)candynum

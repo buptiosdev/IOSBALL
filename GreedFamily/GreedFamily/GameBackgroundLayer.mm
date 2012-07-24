@@ -9,7 +9,7 @@
 #import "GameBackgroundLayer.h"
 #import "GameMainScene.h"
 #import "SimpleAudioEngine.h"
-#import "gameScore.h"
+#import "GameScore.h"
 
 @implementation GameBackgroundLayer
 
@@ -73,8 +73,8 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
         
         
-        gameScore *my_gamescore = [gameScore node];
-        [self addChild:my_gamescore z:1 tag:-3 ];        
+        GameScore *myGameScore = [GameScore node];
+        [self addChild:myGameScore z:1 tag:-3 ];        
         
         //加载瓷砖地图层
         //TileMapLayer *tileMapLayer = [TileMapLayer node];
