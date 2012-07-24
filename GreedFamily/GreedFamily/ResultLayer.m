@@ -9,6 +9,7 @@
 #import "ResultLayer.h"
 #import "LevelScene.h"
 #import "LoadingScene.h"
+#import "GameBackgroundLayer.h"
 
 // 该类在GameMainScene中关卡结束时被调用，用于显示分数／关卡等信息
 // 使用方法参见 GameMainScene:pauseGame中注释的部分
@@ -62,8 +63,10 @@
         
         for(int i=0;i<starnum;i++)
         {
-            CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];
+            //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+            CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star.png"];
             star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
+            //[batch addChild:star];
             [self addChild:star];
         }
         
