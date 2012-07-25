@@ -173,7 +173,17 @@
             //[[foodArray objectAtIndex:right_index] mySprite].visible = NO;
             id actionScale = [CCScaleBy actionWithDuration:2]; 
             [[[foodArray objectAtIndex:right_index] mySprite] runAction:actionScale];
-            [foodArray removeObjectAtIndex:right_index];  
+  
+            
+            //闪烁特效
+            CCParticleSystem* system;
+            system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_crystal.plist"];
+            system.positionType = kCCPositionTypeFree;
+            system.autoRemoveOnFinish = YES;
+            system.position = [[foodArray objectAtIndex:right_index] mySprite].position;
+            [self addChild:system];
+            
+            [foodArray removeObjectAtIndex:right_index]; 
             currentCount--;      
             temp++;
             //得分音效
@@ -191,7 +201,15 @@
                 //[[foodArray objectAtIndex:left_index] mySprite].visible = NO;
                 id actionScale = [CCScaleBy actionWithDuration:2]; 
                 [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
-                [foodArray removeObjectAtIndex:left_index];                
+                [foodArray removeObjectAtIndex:left_index]; 
+                //闪烁特效
+                CCParticleSystem* system;
+                system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_crystal.plist"];
+                system.positionType = kCCPositionTypeFree;
+                system.autoRemoveOnFinish = YES;
+                system.position = [[foodArray objectAtIndex:left_index] mySprite].position;
+                [self addChild:system];
+                
                 currentCount--; 
                 temp++;
                 [self moveFood];
@@ -285,6 +303,14 @@
     //    [foodArray removeObjectAtIndex:count];
     id actionScale = [CCScaleBy actionWithDuration:2];    
     [[[foodArray objectAtIndex:(count - turn)] mySprite] runAction:actionScale];
+    //爆炸特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_bomb.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = [[foodArray objectAtIndex:(count - turn)] mySprite].position;
+    [self addChild:system];
+    
     
     [foodArray removeObjectAtIndex:(count - turn)];
     currentCount--;
@@ -471,9 +497,19 @@
                         
                         consisFlag ++;
                         while (temp>0)
-                        {
-                            id actionScale = [CCScaleBy actionWithDuration:2]; 
-                            [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
+                        { 
+                            id ac1 = [CCScaleBy actionWithDuration:0.5 scale:1.5*nowFood.scaleX]; 
+                            id ac2 = [CCScaleBy actionWithDuration:2];
+                            [[[foodArray objectAtIndex:left_index] mySprite] 
+                             runAction:[CCSequence actions:ac1, ac2, nil]]; 
+//                            [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
+                            //闪烁特效
+                            CCParticleSystem* system;
+                            system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"shootingstars.plist"];
+                            system.positionType = kCCPositionTypeFree;
+                            system.autoRemoveOnFinish = YES;
+                            system.position = [[foodArray objectAtIndex:left_index] mySprite].position;
+                            [self addChild:system];
                             //[[foodArray objectAtIndex:left_index] mySprite].visible = NO;
                             [foodArray removeObjectAtIndex:left_index];
                             temp --;
@@ -516,8 +552,17 @@
                     
                     while (temp>0) 
                     {
-                        id actionScale = [CCScaleBy actionWithDuration:2]; 
-                        [[[foodArray objectAtIndex:mid_index] mySprite] runAction:actionScale];
+                        id ac1 = [CCScaleBy actionWithDuration:0.5 scale:1.5*nowFood.scaleX]; 
+                        id ac2 = [CCScaleBy actionWithDuration:2]; 
+                        [[[foodArray objectAtIndex:mid_index] mySprite] 
+                         runAction:[CCSequence actions:ac1, ac2, nil]]; 
+                        //闪烁特效
+                        CCParticleSystem* system;
+                        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"shootingstars.plist"];
+                        system.positionType = kCCPositionTypeFree;
+                        system.autoRemoveOnFinish = YES;
+                        system.position = [[foodArray objectAtIndex:mid_index] mySprite].position;
+                        [self addChild:system];
                         //[[foodArray objectAtIndex:mid_index] mySprite].visible = NO;
                         [foodArray removeObjectAtIndex:mid_index];
                         temp--;

@@ -201,7 +201,7 @@
             self.sprite.scaleY=(70)/[self.sprite contentSize].height;
         }
         //按照像素设定图片大小
-        [batch addChild:self.sprite]; 
+        [batch addChild:self.sprite z:-1]; 
         //self.sprite = [CCSprite spriteWithSpriteFrame:frame1];
         // batch node for all dynamic elements
         //CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"dragon.png" capacity:100];
@@ -232,14 +232,14 @@
         bodyDef.fixedRotation = true;
         
 		b2CircleShape circleShape;
-		float radiusInMeters = (self.sprite.contentSize.width / PTM_RATIO) * 0.5f;
+		float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 15) / PTM_RATIO) * 0.5f;
 		circleShape.m_radius = radiusInMeters;
 		
 		// Define the dynamic body fixture.
 		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &circleShape;
-		fixtureDef.density = 0.5f;
-		fixtureDef.friction = 0.7f;
+		fixtureDef.density = 0.7f;
+		fixtureDef.friction = 0.5f;
 		fixtureDef.restitution = 0.8f;
 		
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef];
@@ -385,22 +385,33 @@
     if (flySpeed < 100)
     {
         [self.flyAction setSpeed:1];
+        [self removeChildByTag:100 cleanup:YES];
     }  
     else if (flySpeed < 1000) 
     {
         [self.flyAction setSpeed:1.3];
+        [self removeChildByTag:100 cleanup:YES];
     }
-    else if (flySpeed > 50000)
+    else if (flySpeed > 40000)
     {
         [self.flyAction setSpeed:3];
+        //加入炸弹特效
+        CCParticleSystem* system;
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"speedfast2.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        system.position = self.sprite.position;
+        [self addChild:system z:-1 tag:100];
     }
     else if (flySpeed > 20000)
     {
         [self.flyAction setSpeed:2];
+        [self removeChildByTag:100 cleanup:YES];
     }
     else
     {
         [self.flyAction setSpeed:1.5];
+        [self removeChildByTag:100 cleanup:YES];
         
     }
     

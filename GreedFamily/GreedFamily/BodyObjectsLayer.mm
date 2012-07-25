@@ -267,7 +267,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     //气泡破裂特效
                     CCParticleSystem* system;
-                    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bublle_break.plist"];
+                    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bublle_break2.plist"];
                     system.positionType = kCCPositionTypeFree;
                     system.autoRemoveOnFinish = YES;
                     system.position = bodyNode.sprite.position;

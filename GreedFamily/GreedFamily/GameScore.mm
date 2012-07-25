@@ -340,62 +340,8 @@ static GameScore  *instanceOfgameScore;
     
 }
 
-//-(void)calculateBaseScore:(int)mygamelevel
-//                   Cheese:(int)cheesenum
-//                    Candy:(int)candynum
-//                    Apple:(int)applenum
-//{
-//    CCLOG(@"Into calculateBaseScore\n");
-//    int base_score =  cheesenum*my_struct_gameScore_rules.cheese+ candynum*my_struct_gameScore_rules.candy+applenum*my_struct_gameScore_rules.apple;
-//    int tempnowscore = award_nowlevelscore + base_score;
-//    
-//    my_nowlevelscore = tempnowscore;    
-//    
-//    //获取游戏关卡的历史最高分
-//    int temphighestscore = [self getGameHighestScore:mygamelevel];
-//    
-//    CCLOG(@"temphighestscore: %d\n",temphighestscore);    
-//    
-//    if (tempnowscore > temphighestscore) 
-//    {
-//        
-//        //直接将int 装成string  当做关卡的值传进去        
-//        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",mygamelevel];
-//
-//        //分数累加特效
-//        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:str_gamelevel];   
-//        
-//        //更新左上角关卡的值 
-//        
-//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",tempnowscore]];
-//        
-//    }        
-//    
-//    else
-//    {
-//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temphighestscore]];
-//    }
-//    
-//    //加分特效
-//    [self unschedule:@selector(removeBaseScore:)];   
-//    //消除特效
-//    [self removeChildByTag:BaseScoreTag cleanup:YES];
-//    CCLabelBMFont*  getBaseScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
-//    [getBaseScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
-//    getBaseScore.position = CGPointMake(50, 80);
-//    getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
-//    getBaseScore.scale = 0.5;
-//    getBaseScore.color = ccYELLOW;
-//    [self addChild:getBaseScore z:-1 tag:BaseScoreTag];
-//    [self schedule:@selector(removeBaseScore:) interval:2];
-//    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
-//    
-//}
 
-- (void) CallBackUpdateScore:(id)sender 
-{
-        [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
-}
+
 
 
 
@@ -509,106 +455,12 @@ static GameScore  *instanceOfgameScore;
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
 }
 
-//一次性消掉N(N>3)个球的得分计算 传进来各种类型的球的数量   
-//oneTimeScoreNum  一次消掉了多少个球
-//-(void)calculateConsistentCombineScore:(int)mygamelevel
-//                    oneTimeScoreNumber:(int)oneTimeScoreNum
-//                              foodType:(int)myfoodType
-//                                Cheese:(int)cheesenum
-//                                 Candy:(int)candynum
-//                                 Apple:(int)applenum
-//{
-//    CCLOG(@"Into calculateConsistentCombineScore\n");
-//    int tempnowscore = 0;
-//    int temphighestscore = 0;
-//    switch (myfoodType) {
-//        case 0:
-//            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.apple;
-//            break;
-//        case 1:
-//            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.candy;    
-//            break;
-//        case 2:    
-//            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.cheese;   
-//            break;
-//        default:
-//            CCLOG(@"No myfoodType Means something is wrong check!  \n");            
-//            break;
-//    }
-//    //奖励得分累加
-//    award_nowlevelscore = award_nowlevelscore + tempnowscore;
-//    
-//    //加上基础得分做判断
-//    CCLOG(@"applenum:%d",applenum);
-//    int base_score =  cheesenum*my_struct_gameScore_rules.cheese+ candynum*my_struct_gameScore_rules.candy+applenum*my_struct_gameScore_rules.apple;
-//    
-//    tempnowscore = award_nowlevelscore + base_score;
-//    
-//    
-//    
-//    my_nowlevelscore = tempnowscore;
-//    
-//    //获取游戏关卡的历史最高分
-//    temphighestscore = [self getGameHighestScore:mygamelevel];
-//    
-//    CCLOG(@"temphighestscore: %d\n",temphighestscore);    
-//    
-//    
-//    if (tempnowscore > temphighestscore) 
-//    {
-//        
-//        //直接将int 装成string  当做关卡的值传进去        
-//        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",mygamelevel];
-//        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:str_gamelevel];   
-//        
-//        //更新左上角关卡的值 
-//        
-//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",tempnowscore]];
-//        
-//    }        
-//    
-//    else
-//    {
-//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temphighestscore]];
-//    }
-//    
-//    
-//    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
-//    
-//    
-//    
-//    
-//    
-//    
-//    //NSString *str_gamelevel = [[NSString alloc] init];
-//    
-//    //str_gamelevel = [NSString stringWithFormat:@"%d",gamelevel];
-//    
-//    //CCLOG(@"转换后的string %s\n",str_gamelevel);    
-//    
-//    
-//    
-//    //[[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level1HighestScore"];    
-//    
-//    
-//    //[str_gamelevel release];
-//    
-//    
-//}
-
-
-
-
-
 //update 与  [self scheduleUpdate] 对应
 -(void) update:(ccTime)delta
 {
     CCLOG(@"Into updateLabelOfTotalScore\n");
     
 }
-
-
-
 
 -(void)updateLabelOfTotalScore:(ccTime)delta 
 {
@@ -734,7 +586,144 @@ static GameScore  *instanceOfgameScore;
 
 	[super dealloc];
 }
+//-(void)calculateBaseScore:(int)mygamelevel
+//                   Cheese:(int)cheesenum
+//                    Candy:(int)candynum
+//                    Apple:(int)applenum
+//{
+//    CCLOG(@"Into calculateBaseScore\n");
+//    int base_score =  cheesenum*my_struct_gameScore_rules.cheese+ candynum*my_struct_gameScore_rules.candy+applenum*my_struct_gameScore_rules.apple;
+//    int tempnowscore = award_nowlevelscore + base_score;
+//    
+//    my_nowlevelscore = tempnowscore;    
+//    
+//    //获取游戏关卡的历史最高分
+//    int temphighestscore = [self getGameHighestScore:mygamelevel];
+//    
+//    CCLOG(@"temphighestscore: %d\n",temphighestscore);    
+//    
+//    if (tempnowscore > temphighestscore) 
+//    {
+//        
+//        //直接将int 装成string  当做关卡的值传进去        
+//        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",mygamelevel];
+//
+//        //分数累加特效
+//        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:str_gamelevel];   
+//        
+//        //更新左上角关卡的值 
+//        
+//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",tempnowscore]];
+//        
+//    }        
+//    
+//    else
+//    {
+//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temphighestscore]];
+//    }
+//    
+//    //加分特效
+//    [self unschedule:@selector(removeBaseScore:)];   
+//    //消除特效
+//    [self removeChildByTag:BaseScoreTag cleanup:YES];
+//    CCLabelBMFont*  getBaseScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+//    [getBaseScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+//    getBaseScore.position = CGPointMake(50, 80);
+//    getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
+//    getBaseScore.scale = 0.5;
+//    getBaseScore.color = ccYELLOW;
+//    [self addChild:getBaseScore z:-1 tag:BaseScoreTag];
+//    [self schedule:@selector(removeBaseScore:) interval:2];
+//    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+//    
+//}
 
+//一次性消掉N(N>3)个球的得分计算 传进来各种类型的球的数量   
+//oneTimeScoreNum  一次消掉了多少个球
+//-(void)calculateConsistentCombineScore:(int)mygamelevel
+//                    oneTimeScoreNumber:(int)oneTimeScoreNum
+//                              foodType:(int)myfoodType
+//                                Cheese:(int)cheesenum
+//                                 Candy:(int)candynum
+//                                 Apple:(int)applenum
+//{
+//    CCLOG(@"Into calculateConsistentCombineScore\n");
+//    int tempnowscore = 0;
+//    int temphighestscore = 0;
+//    switch (myfoodType) {
+//        case 0:
+//            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.apple;
+//            break;
+//        case 1:
+//            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.candy;    
+//            break;
+//        case 2:    
+//            tempnowscore = (oneTimeScoreNum-3)*my_struct_gameScore_rules.cheese;   
+//            break;
+//        default:
+//            CCLOG(@"No myfoodType Means something is wrong check!  \n");            
+//            break;
+//    }
+//    //奖励得分累加
+//    award_nowlevelscore = award_nowlevelscore + tempnowscore;
+//    
+//    //加上基础得分做判断
+//    CCLOG(@"applenum:%d",applenum);
+//    int base_score =  cheesenum*my_struct_gameScore_rules.cheese+ candynum*my_struct_gameScore_rules.candy+applenum*my_struct_gameScore_rules.apple;
+//    
+//    tempnowscore = award_nowlevelscore + base_score;
+//    
+//    
+//    
+//    my_nowlevelscore = tempnowscore;
+//    
+//    //获取游戏关卡的历史最高分
+//    temphighestscore = [self getGameHighestScore:mygamelevel];
+//    
+//    CCLOG(@"temphighestscore: %d\n",temphighestscore);    
+//    
+//    
+//    if (tempnowscore > temphighestscore) 
+//    {
+//        
+//        //直接将int 装成string  当做关卡的值传进去        
+//        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",mygamelevel];
+//        [[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:str_gamelevel];   
+//        
+//        //更新左上角关卡的值 
+//        
+//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",tempnowscore]];
+//        
+//    }        
+//    
+//    else
+//    {
+//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temphighestscore]];
+//    }
+//    
+//    
+//    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+//    
+//    
+//    
+//    
+//    
+//    
+//    //NSString *str_gamelevel = [[NSString alloc] init];
+//    
+//    //str_gamelevel = [NSString stringWithFormat:@"%d",gamelevel];
+//    
+//    //CCLOG(@"转换后的string %s\n",str_gamelevel);    
+//    
+//    
+//    
+//    //[[[MyGameScore sharedScore] standardUserDefaults] setInteger:tempnowscore forKey:@"level1HighestScore"];    
+//    
+//    
+//    //[str_gamelevel release];
+//    
+//    
+//}
 @end
 
 

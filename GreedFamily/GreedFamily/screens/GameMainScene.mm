@@ -422,8 +422,6 @@ static GameMainScene *instanceOfMainScene;
     CCLOG(@"addscore is %d",addscore);
 
     CCLOG(@"starNum is %d",starNum);
-    
-    
 
     //3.生成关卡结束显示层
     ccColor4B c = {255,255,0,100};

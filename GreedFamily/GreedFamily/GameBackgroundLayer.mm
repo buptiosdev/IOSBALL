@@ -44,7 +44,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         
         // batch node for all animation elements
         CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
-        [self addChild:batch2 z:0 tag:AnimationTag];
+        [self addChild:batch2 z:-1 tag:AnimationTag];
         
 
     //    // a bright background is desireable for this pinball table

@@ -230,6 +230,10 @@
 		70C9D13015BEE4EE001977E5 /* bluescore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D12D15BEE4E4001977E5 /* bluescore.plist */; };
 		70C9D13115BEE4EE001977E5 /* colorscore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D12E15BEE4E7001977E5 /* colorscore.plist */; };
 		70C9D13215BEE4EE001977E5 /* redscore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D12F15BEE4EA001977E5 /* redscore.plist */; };
+		70C9D13415BF8B79001977E5 /* speedfast.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D13315BF8B78001977E5 /* speedfast.plist */; };
+		70C9D13615BF9535001977E5 /* speedfast2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D13515BF9532001977E5 /* speedfast2.plist */; };
+		70C9D13815BF98AA001977E5 /* bublle_break2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D13715BF98A6001977E5 /* bublle_break2.plist */; };
+		70C9D13A15BF9BF4001977E5 /* shootingstars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C9D13915BF9BF2001977E5 /* shootingstars.plist */; };
 		C6C56C351579DA9C00F60F33 /* GameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* GameScore.mm */; };
 		C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6D634BC157CF3030074818D /* MyGameScore.mm */; };
 /* End PBXBuildFile section */
@@ -649,6 +653,10 @@
 		70C9D12D15BEE4E4001977E5 /* bluescore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bluescore.plist; path = Resources/bluescore.plist; sourceTree = "<group>"; };
 		70C9D12E15BEE4E7001977E5 /* colorscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = colorscore.plist; path = Resources/colorscore.plist; sourceTree = "<group>"; };
 		70C9D12F15BEE4EA001977E5 /* redscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = redscore.plist; path = Resources/redscore.plist; sourceTree = "<group>"; };
+		70C9D13315BF8B78001977E5 /* speedfast.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = speedfast.plist; path = Resources/speedfast.plist; sourceTree = "<group>"; };
+		70C9D13515BF9532001977E5 /* speedfast2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = speedfast2.plist; path = Resources/speedfast2.plist; sourceTree = "<group>"; };
+		70C9D13715BF98A6001977E5 /* bublle_break2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bublle_break2.plist; path = Resources/bublle_break2.plist; sourceTree = "<group>"; };
+		70C9D13915BF9BF2001977E5 /* shootingstars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = shootingstars.plist; path = Resources/shootingstars.plist; sourceTree = "<group>"; };
 		C6C56C331579DA9B00F60F33 /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScore.h; sourceTree = "<group>"; };
 		C6C56C341579DA9C00F60F33 /* GameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScore.mm; sourceTree = "<group>"; };
 		C6D634BB157CF3030074818D /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
@@ -740,6 +748,10 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				70C9D13915BF9BF2001977E5 /* shootingstars.plist */,
+				70C9D13715BF98A6001977E5 /* bublle_break2.plist */,
+				70C9D13515BF9532001977E5 /* speedfast2.plist */,
+				70C9D13315BF8B78001977E5 /* speedfast.plist */,
 				70C9D12D15BEE4E4001977E5 /* bluescore.plist */,
 				70C9D12E15BEE4E7001977E5 /* colorscore.plist */,
 				70C9D12F15BEE4EA001977E5 /* redscore.plist */,
@@ -1421,6 +1433,10 @@
 				70C9D13015BEE4EE001977E5 /* bluescore.plist in Resources */,
 				70C9D13115BEE4EE001977E5 /* colorscore.plist in Resources */,
 				70C9D13215BEE4EE001977E5 /* redscore.plist in Resources */,
+				70C9D13415BF8B79001977E5 /* speedfast.plist in Resources */,
+				70C9D13615BF9535001977E5 /* speedfast2.plist in Resources */,
+				70C9D13815BF98AA001977E5 /* bublle_break2.plist in Resources */,
+				70C9D13A15BF9BF4001977E5 /* shootingstars.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1665,8 +1681,8 @@
 				INFOPLIST_FILE = GreedFamily/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "61A120A1-7FF2-4530-8EE1-81E75777E482";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "61A120A1-7FF2-4530-8EE1-81E75777E482";
+				PROVISIONING_PROFILE = "D87A4406-6D5A-40BF-8633-5E5545197724";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D87A4406-6D5A-40BF-8633-5E5545197724";
 				USER_HEADER_SEARCH_PATHS = "\"GreedFamily/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1689,8 +1705,8 @@
 				INFOPLIST_FILE = GreedFamily/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "61A120A1-7FF2-4530-8EE1-81E75777E482";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "61A120A1-7FF2-4530-8EE1-81E75777E482";
+				PROVISIONING_PROFILE = "D87A4406-6D5A-40BF-8633-5E5545197724";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D87A4406-6D5A-40BF-8633-5E5545197724";
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "\"GreedFamily/libs\"";
 				VALIDATE_PRODUCT = YES;
