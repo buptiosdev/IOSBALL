@@ -81,7 +81,7 @@ enum
 		self.minimumTouchLengthToChangePage = 100.0f;
 		
 		// Show indicator by default.
-		self.showPagesIndicator = NO;
+		self.showPagesIndicator = YES;
 		
 		// Set up the starting variables
 		currentScreen_ = 1;
@@ -122,7 +122,7 @@ enum
 	{
 		// Prepare Points Array
 		CGFloat n = (CGFloat)totalScreens_; //< Total points count in CGFloat.
-		CGFloat pY = ceilf ( self.contentSize.height / 8.0f ); //< Points y-coord in parent coord sys.
+		CGFloat pY = ceilf ( self.contentSize.height / 5.0f ); //< Points y-coord in parent coord sys.
 		CGFloat d = 16.0f * CC_CONTENT_SCALE_FACTOR(); //< Distance between points.
 		CGPoint points[totalScreens_];	
 		for (int i=0; i < totalScreens_; ++i)
@@ -141,7 +141,8 @@ enum
 		ccDrawPoints( points, totalScreens_ );
 		
 		// Draw White Point for Selected Page
-		glColor4ub(0xFF,0xFF,0xFF,0xFF);
+		//glColor4ub(0xFF,0xFF,0xFF,0xFF);
+        glColor4ub(0xFF,0,0,0xFF);
 		ccDrawPoint(points[currentScreen_ - 1]);
 		
 		// Restore GL Values

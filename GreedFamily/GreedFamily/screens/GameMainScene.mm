@@ -464,6 +464,11 @@ static GameMainScene *instanceOfMainScene;
 	[super onEnter];
 }
 
+-(void)sleepForEndGame: (ccTime) dt
+{
+    [self unschedule:@selector(sleepForEndGame:)]; 
+    [self endGame];
+}
 
 -(void) update:(ccTime)delta
 {
@@ -484,7 +489,7 @@ static GameMainScene *instanceOfMainScene;
     {
         //防止多次调用
         [self unscheduleAllSelectors];
-        [self endGame];
+        [self schedule:@selector(sleepForEndGame:) interval:5];
     }
 }
 

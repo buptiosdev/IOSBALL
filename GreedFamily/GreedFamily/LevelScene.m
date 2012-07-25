@@ -195,7 +195,7 @@
         
         CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
         [returnMenu alignItemsHorizontallyWithPadding:10];
-        [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/6)];
+        [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/7)];
         [self addChild:returnMenu];
         
         //test
