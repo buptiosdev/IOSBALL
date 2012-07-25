@@ -123,7 +123,7 @@
         //gameScore *instanceOfgameScore = [gameScore sharedgameScore];
         
         
-        [self scheduleUpdate];
+        //[self scheduleUpdate];
         
         //处理最外面的球球
         //[self schedule:@selector(oneSecondCheckMax:) interval:1];
@@ -135,6 +135,8 @@
         
         //计算两次消球的时间间隔
         [self schedule:@selector(gameTimeUpdate:) interval:1];
+        [self schedule:@selector(getScoreUpdate:) interval:1];
+
         
     }
     
@@ -324,6 +326,7 @@
     
     if (n < 3) 
     {
+        self.sprite.visible = NO;
         canCombine = NO;
         return;
     }
@@ -335,21 +338,28 @@
     leftFood = [foodArray objectAtIndex:n-2];
     if (leftFood.foodType != leftmostFood.foodType)
     {
+        self.sprite.visible = NO;
         canCombine = NO;
         return;
     }
     curFood = [foodArray objectAtIndex:n-1];
     if (curFood.foodType == leftFood.foodType) 
     {
-        if (!canCombine)
+        //if (!canCombine)
         {
             [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
             canCombine = YES;
+            id ac0 = [CCShow action];
+            id ac1 = [CCBlink actionWithDuration:1 blinks:2]; 
+            id ac2 = [CCToggleVisibility action]; 
+            [self.sprite
+             runAction:[CCSequence actions:ac0, ac1, ac2, nil]]; 
         }
         
     }
     else
     {
+        self.sprite.visible = NO;
         canCombine = NO;
     }
     
@@ -619,8 +629,7 @@
     
 }
 
-
--(void) update:(ccTime)delta
+-(void)getScoreUpdate:(ccTime)delta
 {
     [self checkLastCombineFood];
     
