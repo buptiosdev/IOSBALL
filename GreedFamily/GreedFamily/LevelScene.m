@@ -53,6 +53,22 @@
 //                                                                     target:self
 //                                                                   selector:@selector(selectMode:)];
         
+//        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+//        [frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
+//        
+//        CCSprite *test = [CCSprite spriteWithSpriteFrameName:@"get0start.png"];
+//        test.scaleX=(50)/[test contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        test.scaleY=(50)/[test contentSize].height;
+//        CCSprite *test1 = [CCSprite spriteWithSpriteFrameName:@"get1start.png"];
+//        test1.scaleX=(50)/[test1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        test1.scaleY=(50)/[test1 contentSize].height;
+//        CCMenuItemSprite *fruits = [CCMenuItemSprite itemFromNormalSprite:test 
+//                                                           selectedSprite:test1 
+//                                                                   target:self 
+//                                                                 selector:@selector(selectMode:)];
+        
+        
+        
         CCLabelTTF *Label1=[CCLabelTTF labelWithString:@"Level 1" fontName:@"Marker Felt" fontSize:25];
         [Label1 setColor:ccRED];
         CCMenuItemLabel * LevelBtn1 = [CCMenuItemLabel itemWithLabel:Label1 target:self selector:@selector(selectMode:)];
@@ -201,21 +217,17 @@
         //test
         CCLayer *pageOne = [[CCLayer alloc] init];
         [pageOne addChild:easyMenu];
+        [pageOne addChild:normalMenu];
         
         // create a blank layer for page 2
         CCLayer *pageTwo = [[CCLayer alloc] init];
         
         // add menu to page 2
-        [pageTwo addChild:normalMenu];
-        
-        CCLayer *pageThree = [[CCLayer alloc] init];
-        [pageThree addChild:hardMenu];
-        
-        CCLayer *pageFour = [[CCLayer alloc] init];
-        [pageFour addChild:extremeMenu];
+        [pageTwo addChild:hardMenu];
+        [pageTwo addChild:extremeMenu];
         
         // now create the scroller and pass-in the pages (set widthOffset to 0 for fullscreen pages)
-        CCScrollLayer *scroller = [[CCScrollLayer alloc] initWithLayers:[NSMutableArray arrayWithObjects: pageOne,pageTwo,pageThree,pageFour,nil] widthOffset: 0];
+        CCScrollLayer *scroller = [[CCScrollLayer alloc] initWithLayers:[NSMutableArray arrayWithObjects: pageOne,pageTwo,nil] widthOffset: 0];
         
         // finally add the scroller to your scene
         [self addChild:scroller];

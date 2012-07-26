@@ -139,7 +139,8 @@
 
 -(void)goBack:(id)sender
 {
-    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    //[[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    [[CCDirector sharedDirector] popScene];
 }
 
 

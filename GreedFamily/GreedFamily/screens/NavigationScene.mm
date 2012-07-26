@@ -113,7 +113,8 @@
 {
 	//show the options of the game
     OptionsScene * gs = [OptionsScene node];
-	[[CCDirector sharedDirector]replaceScene:gs];
+	//[[CCDirector sharedDirector]replaceScene:gs];
+    [[CCDirector sharedDirector]pushScene:gs];
 }
 
 -(void)gamecenter:(id)sender
