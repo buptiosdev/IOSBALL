@@ -178,6 +178,8 @@
 		700F68CD1552BBAE00D639AE /* PropertyCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 700F68CC1552BBAB00D639AE /* PropertyCache.mm */; };
 		700F68D51552C57300D639AE /* PropertyEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 700F68D41552C57000D639AE /* PropertyEntity.mm */; };
 		7011F2C215410E40000B2C12 /* Storage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7011F2C115410E40000B2C12 /* Storage.mm */; };
+		701AD0A615C270F40017C064 /* level_default_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701AD0A415C270F40017C064 /* level_default_default.plist */; };
+		701AD0A715C270F40017C064 /* level_default_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 701AD0A515C270F40017C064 /* level_default_default.png */; };
 		701B2EA9155831270035335F /* bitmapfont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA7155831270035335F /* bitmapfont.fnt */; };
 		701B2EAA155831270035335F /* bitmapfont.png in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA8155831270035335F /* bitmapfont.png */; };
 		701B2EB31559736A0035335F /* getscore.caf in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EB11559736A0035335F /* getscore.caf */; };
@@ -583,6 +585,8 @@
 		7011F2C015410E40000B2C12 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		7011F2C115410E40000B2C12 /* Storage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Storage.mm; sourceTree = "<group>"; };
 		7011F2C415411DB8000B2C12 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
+		701AD0A415C270F40017C064 /* level_default_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_default_default.plist; path = Resources/level_default_default.plist; sourceTree = "<group>"; };
+		701AD0A515C270F40017C064 /* level_default_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level_default_default.png; path = Resources/level_default_default.png; sourceTree = "<group>"; };
 		701B2EA7155831270035335F /* bitmapfont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapfont.fnt; path = Resources/bitmapfont.fnt; sourceTree = "<group>"; };
 		701B2EA8155831270035335F /* bitmapfont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapfont.png; path = Resources/bitmapfont.png; sourceTree = "<group>"; };
 		701B2EB11559736A0035335F /* getscore.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = getscore.caf; path = Resources/getscore.caf; sourceTree = "<group>"; };
@@ -748,6 +752,8 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				701AD0A415C270F40017C064 /* level_default_default.plist */,
+				701AD0A515C270F40017C064 /* level_default_default.png */,
 				70C9D13915BF9BF2001977E5 /* shootingstars.plist */,
 				70C9D13715BF98A6001977E5 /* bublle_break2.plist */,
 				70C9D13515BF9532001977E5 /* speedfast2.plist */,
@@ -1437,6 +1443,8 @@
 				70C9D13615BF9535001977E5 /* speedfast2.plist in Resources */,
 				70C9D13815BF98AA001977E5 /* bublle_break2.plist in Resources */,
 				70C9D13A15BF9BF4001977E5 /* shootingstars.plist in Resources */,
+				701AD0A615C270F40017C064 /* level_default_default.plist in Resources */,
+				701AD0A715C270F40017C064 /* level_default_default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1681,8 +1689,8 @@
 				INFOPLIST_FILE = GreedFamily/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D87A4406-6D5A-40BF-8633-5E5545197724";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D87A4406-6D5A-40BF-8633-5E5545197724";
+				PROVISIONING_PROFILE = "590BC9C1-F1E3-4EA2-AF71-0CB8BC725816";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "590BC9C1-F1E3-4EA2-AF71-0CB8BC725816";
 				USER_HEADER_SEARCH_PATHS = "\"GreedFamily/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1705,8 +1713,8 @@
 				INFOPLIST_FILE = GreedFamily/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D87A4406-6D5A-40BF-8633-5E5545197724";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D87A4406-6D5A-40BF-8633-5E5545197724";
+				PROVISIONING_PROFILE = "590BC9C1-F1E3-4EA2-AF71-0CB8BC725816";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "590BC9C1-F1E3-4EA2-AF71-0CB8BC725816";
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "\"GreedFamily/libs\"";
 				VALIDATE_PRODUCT = YES;

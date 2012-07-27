@@ -345,16 +345,17 @@
     curFood = [foodArray objectAtIndex:n-1];
     if (curFood.foodType == leftFood.foodType) 
     {
-        //if (!canCombine)
+        if (!canCombine)
         {
             [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
-            canCombine = YES;
-            id ac0 = [CCShow action];
-            id ac1 = [CCBlink actionWithDuration:1 blinks:2]; 
-            id ac2 = [CCToggleVisibility action]; 
-            [self.sprite
-             runAction:[CCSequence actions:ac0, ac1, ac2, nil]]; 
+            
         }
+        canCombine = YES;
+        id ac0 = [CCShow action];
+        id ac1 = [CCBlink actionWithDuration:1 blinks:2]; 
+        id ac2 = [CCToggleVisibility action]; 
+        [self.sprite
+         runAction:[CCSequence actions:ac0, ac1, ac2, nil]]; 
         
     }
     else
