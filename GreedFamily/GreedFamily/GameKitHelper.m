@@ -61,7 +61,7 @@ static GameKitHelper *instanceOfGameKitHelper;
 @synthesize achievements;
 @synthesize currentMatch;
 @synthesize matchStarted;
-@synthesize callCount = _callCount;
+@synthesize callCount;
 
 -(id) init
 {
@@ -128,7 +128,6 @@ static GameKitHelper *instanceOfGameKitHelper;
 	if (isGameCenterAvailable == NO)
 		return;
 
-    _callCount++;
 	GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
 	if (localPlayer.authenticated == NO)
 	{
@@ -182,7 +181,7 @@ static GameKitHelper *instanceOfGameKitHelper;
 	if (isGameCenterAvailable == NO)
 		return;
     //初始化调用次数
-    _callCount = 0;
+    callCount = 0;
 	// Register to receive notifications when local player authentication status changes
 	NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
@@ -609,7 +608,7 @@ static GameKitHelper *instanceOfGameKitHelper;
 {
 	if (isGameCenterAvailable == NO)
 		return;
-	
+	callCount++;
 	GKLeaderboardViewController* leaderboardVC = [[[GKLeaderboardViewController alloc] init] autorelease];
 	if (leaderboardVC != nil)
 	{
@@ -630,7 +629,7 @@ static GameKitHelper *instanceOfGameKitHelper;
 {
 	if (isGameCenterAvailable == NO)
 		return;
-	
+	callCount++;
 	GKAchievementViewController* achievementsVC = [[[GKAchievementViewController alloc] init] autorelease];
 	if (achievementsVC != nil)
 	{

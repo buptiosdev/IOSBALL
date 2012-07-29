@@ -54,6 +54,7 @@
 	
 	GKMatch* currentMatch;
 	bool matchStarted;
+    int callCount;
 }
 
 @property (nonatomic, retain) id<GameKitHelperProtocol> delegate;
