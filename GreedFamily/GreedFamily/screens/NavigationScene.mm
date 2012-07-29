@@ -9,6 +9,7 @@
 #import "LevelScene.h"
 #import "OptionsScene.h"
 #import "GameCenterScene.h"
+#import "GameKitHelper.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -19,7 +20,7 @@
 
 @implementation NavigationScene
 
-
+@synthesize viewType = _viewType;
 
 -(id)initWithNavigationScene
 {
@@ -69,7 +70,9 @@
 		//CCBitmapFontAtlas * newgameLabel = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"NEW GAME" fntFile:@"hud_font.fnt"];
         CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *optionsLabel=[CCLabelTTF labelWithString:@"OPTIONS" fontName:@"Marker Felt" fontSize:30];
-        CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"GAME CENTER" fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"Multi Play" fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF *leaderboardLabel=[CCLabelTTF labelWithString:@"LeaderBoard" fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF *archievementsLabel=[CCLabelTTF labelWithString:@"Achievements" fontName:@"Marker Felt" fontSize:30];
 		
 		[newgameLabel setColor:ccRED];
 		[optionsLabel setColor:ccRED];
@@ -77,9 +80,11 @@
 		
 		CCMenuItemLabel * newgame = [CCMenuItemLabel itemWithLabel:newgameLabel target:self selector:@selector(newGame:)];
 		CCMenuItemLabel * options = [CCMenuItemLabel itemWithLabel:optionsLabel target:self selector:@selector(options:)];
-		CCMenuItemLabel * gamecenter = [CCMenuItemLabel itemWithLabel:gamecenterLabel target:self selector:@selector(gamecenter:)];
+		CCMenuItemLabel * gamecenter = [CCMenuItemLabel itemWithLabel:gamecenterLabel target:self selector:@selector(connectGameCenter:)];
+        CCMenuItemLabel * leaderboard = [CCMenuItemLabel itemWithLabel:leaderboardLabel target:self selector:@selector(showGameLeaderboard:)];
+		CCMenuItemLabel * archievements = [CCMenuItemLabel itemWithLabel:archievementsLabel target:self selector:@selector(showGameAchievements:)];
 		
-		CCMenu * menu = [CCMenu menuWithItems:newgame,options,gamecenter,nil];
+		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,gamecenter,nil];
 		[menu alignItemsVerticallyWithPadding:10];
 		[self addChild:menu];
 		[menu setPosition:ccp(size.width,size.height/3)];
@@ -92,10 +97,18 @@
 							[CCDelayTime actionWithDuration:0.5],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
 							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
 							nil]];
-		[gamecenter runAction:[CCSequence actions:
-                          [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+		[leaderboard runAction:[CCSequence actions:
+                          [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
                           [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
                           nil]];
+        
+        [archievements runAction:[CCSequence actions:
+                               [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+                               [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+                               nil]];
+        [gamecenter runAction:[CCSequence actions:
+                                [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+                                [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
 		
     }    
     
@@ -117,13 +130,57 @@
     [[CCDirector sharedDirector]pushScene:gs];
 }
 
--(void)gamecenter:(id)sender
+-(void) updateScoreAndShowLeaderBoard
+{
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper showLeaderboard];
+}
+
+-(void) updateScoreAndShowAchievements
+{
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper showAchievements];
+}
+
+-(void)showGameLeaderboard:(id)sender
 {
 	//connect to game center
-    [[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    gkHelper.delegate = self;
+    _viewType = 0;
+    [gkHelper authenticateLocalPlayer];
+
+    //第一次调用需要初始化后在里边调用
+    if (gkHelper.callCount != 1) 
+    {
+        [self updateScoreAndShowLeaderBoard];
+    }
 
 }
 
+
+-(void)showGameAchievements:(id)sender
+{
+	//connect to game center
+    //[[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    gkHelper.delegate = self;
+    _viewType = 1;
+    [gkHelper authenticateLocalPlayer];
+    
+    //第一次调用需要初始化后在里边调用
+    if (gkHelper.callCount != 1) 
+    {
+        [self updateScoreAndShowAchievements];
+    }
+    
+}
+                               
+-(void)connectGameCenter:(id)sender
+{
+    //connect to game center
+    [[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
+}
 
 +(id)scene
 {
@@ -145,6 +202,103 @@
 {
     return [[[self alloc] initWithNavigationScene] autorelease];
 }
+
+
+
+#pragma mark GameKitHelper delegate methods
+-(int) getViewType
+{
+    return _viewType;
+}
+
+-(void) onLocalPlayerAuthenticationChanged
+{
+	GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+	CCLOG(@"LocalPlayer isAuthenticated changed to: %@", localPlayer.authenticated ? @"YES" : @"NO");
+	
+	if (localPlayer.authenticated)
+	{
+		GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+		[gkHelper getLocalPlayerFriends];
+		//[gkHelper resetAchievements];
+	}	
+}
+
+-(void) onFriendListReceived:(NSArray*)friends
+{
+	CCLOG(@"onFriendListReceived: %@", [friends description]);
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+	[gkHelper getPlayerInfo:friends];
+}
+
+-(void) onPlayerInfoReceived:(NSArray*)players
+{
+	CCLOG(@"onPlayerInfoReceived: %@", [players description]);
+    
+    for (GKPlayer* gkPlayer in players)
+	{
+		CCLOG(@"PlayerID: %@, Alias: %@, isFriend: %i", gkPlayer.playerID, gkPlayer.alias, gkPlayer.isFriend);
+	}
+	
+    //传入分数
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+	[gkHelper submitScore:100000 category:@"Playtime"];
+    //[gkHelper submitScore:1234 category:@"1"];
+}
+
+-(void) onScoresSubmitted:(bool)success
+{
+	CCLOG(@"onScoresSubmitted: %@", success ? @"YES" : @"NO");
+	
+	if (success)
+	{
+		GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+		[gkHelper retrieveTopTenAllTimeGlobalScores];
+	}
+}
+
+-(void) onScoresReceived:(NSArray*)scores
+{
+	CCLOG(@"onScoresReceived: %@", [scores description]);
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+	
+    if (_viewType == 0) 
+    {
+        [gkHelper showLeaderboard];
+    }
+    
+    else
+    {
+        [gkHelper showAchievements];
+    }
+}
+
+-(void) onLeaderboardViewDismissed
+{
+	CCLOG(@"onLeaderboardViewDismissed");
+}
+
+-(void) onAchievementReported:(GKAchievement*)achievement
+{
+	CCLOG(@"onAchievementReported: %@", achievement);
+}
+
+-(void) onAchievementsLoaded:(NSDictionary*)achievements
+{
+	CCLOG(@"onLocalPlayerAchievementsLoaded: %@", [achievements description]);
+}
+
+-(void) onResetAchievements:(bool)success
+{
+	CCLOG(@"onResetAchievements: %@", success ? @"YES" : @"NO");
+}
+
+-(void) onAchievementsViewDismissed
+{
+    
+	CCLOG(@"onAchievementsViewDismissed");
+}
+
 /*
 -(CGPoint) locationFromTouch:(UITouch*)touch
 {

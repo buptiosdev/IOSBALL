@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "GameKitHelper.h"
 
-@interface NavigationScene : CCLayer
+@interface NavigationScene : CCLayer <GameKitHelperProtocol>
 {
     /*
     CGPoint fingerLocation;
@@ -22,5 +23,5 @@
 }
 +(id)sceneWithNavigationScene;
 +(id)scene;
-
+@property (nonatomic, readonly) int viewType; //0:leaderbroad  1:achievements
 @end

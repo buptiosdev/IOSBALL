@@ -180,6 +180,8 @@
 		7011F2C215410E40000B2C12 /* Storage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7011F2C115410E40000B2C12 /* Storage.mm */; };
 		701AD0A615C270F40017C064 /* level_default_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701AD0A415C270F40017C064 /* level_default_default.plist */; };
 		701AD0A715C270F40017C064 /* level_default_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 701AD0A515C270F40017C064 /* level_default_default.png */; };
+		701AD0DA15C41F4C0017C064 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 701AD0D915C41F4C0017C064 /* GameKitHelper.m */; };
+		701AD0EA15C4E2260017C064 /* GKMatchmakerViewController-LandscapeOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 701AD0E915C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.m */; };
 		701B2EA9155831270035335F /* bitmapfont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA7155831270035335F /* bitmapfont.fnt */; };
 		701B2EAA155831270035335F /* bitmapfont.png in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA8155831270035335F /* bitmapfont.png */; };
 		701B2EB31559736A0035335F /* getscore.caf in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EB11559736A0035335F /* getscore.caf */; };
@@ -587,6 +589,10 @@
 		7011F2C415411DB8000B2C12 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		701AD0A415C270F40017C064 /* level_default_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_default_default.plist; path = Resources/level_default_default.plist; sourceTree = "<group>"; };
 		701AD0A515C270F40017C064 /* level_default_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level_default_default.png; path = Resources/level_default_default.png; sourceTree = "<group>"; };
+		701AD0D815C41F4C0017C064 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		701AD0D915C41F4C0017C064 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
+		701AD0E815C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GKMatchmakerViewController-LandscapeOnly.h"; sourceTree = "<group>"; };
+		701AD0E915C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GKMatchmakerViewController-LandscapeOnly.m"; sourceTree = "<group>"; };
 		701B2EA7155831270035335F /* bitmapfont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapfont.fnt; path = Resources/bitmapfont.fnt; sourceTree = "<group>"; };
 		701B2EA8155831270035335F /* bitmapfont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapfont.png; path = Resources/bitmapfont.png; sourceTree = "<group>"; };
 		701B2EB11559736A0035335F /* getscore.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = getscore.caf; path = Resources/getscore.caf; sourceTree = "<group>"; };
@@ -1308,6 +1314,8 @@
 		70081FDE153F9954003F042A /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				701AD0D815C41F4C0017C064 /* GameKitHelper.h */,
+				701AD0D915C41F4C0017C064 /* GameKitHelper.m */,
 				4A7C5E4615BA6ABD00A713EC /* CCScrollLayer.h */,
 				4A7C5E4715BA6ABD00A713EC /* CCScrollLayer.m */,
 				70C7C40215AA7FF2007D35B5 /* GCHelper.h */,
@@ -1318,6 +1326,8 @@
 				706EAB7C153FC4480003C4B2 /* Helper.mm */,
 				C6D634BB157CF3030074818D /* MyGameScore.h */,
 				C6D634BC157CF3030074818D /* MyGameScore.mm */,
+				701AD0E815C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.h */,
+				701AD0E915C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -1623,6 +1633,8 @@
 				70C7C3FD15AA7965007D35B5 /* GameCenterScene.m in Sources */,
 				70C7C40415AA7FF2007D35B5 /* GCHelper.m in Sources */,
 				4A7C5E4815BA6ABD00A713EC /* CCScrollLayer.m in Sources */,
+				701AD0DA15C41F4C0017C064 /* GameKitHelper.m in Sources */,
+				701AD0EA15C4E2260017C064 /* GKMatchmakerViewController-LandscapeOnly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

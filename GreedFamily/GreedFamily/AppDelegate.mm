@@ -101,6 +101,9 @@
 	// make the View Controller a child of the main window
 	[window addSubview: viewController.view];
 	
+    // Must add the root view controller for GameKitHelper to work!
+	window.rootViewController = viewController;
+    
 	[window makeKeyAndVisible];
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
