@@ -151,7 +151,7 @@
     [gkHelper authenticateLocalPlayer];
 
     //第一次调用需要初始化后在里边调用
-    if (gkHelper.callCount != 1) 
+    if (gkHelper.callCount != 0) 
     {
         [self updateScoreAndShowLeaderBoard];
     }
@@ -239,11 +239,10 @@
 	{
 		CCLOG(@"PlayerID: %@, Alias: %@, isFriend: %i", gkPlayer.playerID, gkPlayer.alias, gkPlayer.isFriend);
 	}
-	
+    
     //传入分数
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-	[gkHelper submitScore:100000 category:@"Playtime"];
-    //[gkHelper submitScore:1234 category:@"1"];
+    [gkHelper submitScore:100000 category:@"Playtime"];
 }
 
 -(void) onScoresSubmitted:(bool)success
@@ -262,6 +261,11 @@
 	CCLOG(@"onScoresReceived: %@", [scores description]);
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
 	
+    if (0 != gkHelper.callCount) 
+    {
+        return;
+    }
+    
     if (_viewType == 0) 
     {
         [gkHelper showLeaderboard];
