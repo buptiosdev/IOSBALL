@@ -504,14 +504,16 @@ static GameScore  *instanceOfgameScore;
     //rewardTimeScore 返回的时间奖励得分    
     int rewardTimeScore;
     
-    int timelimit = level*2;
+    int timelimit = [GameMainScene sharedMainScene].mainscenParam.candyCount 
+                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency + RewardTimeScore * 3 *((level - 1)/5 + 1);
     
-    if (mytimestamp<=timelimit) {
-        rewardTimeScore = RewardTimeScore;
+    if (mytimestamp<=timelimit) 
+    {
+        rewardTimeScore = (timelimit - mytimestamp)/1;
     }
     else
     {    
-        rewardTimeScore = RewardTimeScore*(timelimit/mytimestamp);
+        rewardTimeScore = 0;
     }
     
     
@@ -522,6 +524,8 @@ static GameScore  *instanceOfgameScore;
     int temphighestscore = [self getGameHighestScore:level];    
     if (my_nowlevelscore > temphighestscore)
     {
+        //新纪录音效
+        //新纪录特效
         //直接将int 装成string  当做关卡的值传进去        
         NSString *str_gamelevel = [NSString stringWithFormat:@"%d",level];
         [[[MyGameScore sharedScore] standardUserDefaults] setInteger:my_nowlevelscore forKey:str_gamelevel];        
@@ -539,19 +543,21 @@ static GameScore  *instanceOfgameScore;
     //返回的星级评定
 
     int starNum ;
-    if (rewardTimeScore<(RewardTimeScore/3))
-    {
-        starNum = 1;
-    }  
-    
-    else if ((RewardTimeScore/3)<=rewardTimeScore<=((RewardTimeScore/3)*2))
-    {
-        starNum = 2;
-    }        
-    
-    else
+    if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 3)
     {
         starNum = 3;
+    }
+    else if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 2)
+    {
+        starNum = 2;
+    }
+    else if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 1)
+    {
+        starNum = 1;
+    }
+    else
+    {
+        starNum = 0;
     }
     
     //直接将int 装成string  当做关卡的值传进去 
