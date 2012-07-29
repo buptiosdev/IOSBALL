@@ -10,6 +10,7 @@
 #import "OptionsScene.h"
 #import "GameCenterScene.h"
 #import "GameKitHelper.h"
+#import "GameScore.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -132,13 +133,35 @@
 
 -(void) updateScoreAndShowLeaderBoard
 {
-    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    //更新累计得分
+    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
+    int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    //更新累计总时间
+    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
+    
+    //传入分数和时间累计数
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper submitScore:temTotalTime category:strTotalTime];
+    [gkHelper submitScore:temTotalScore category:strTotalScore];
+    
     [gkHelper showLeaderboard];
 }
 
 -(void) updateScoreAndShowAchievements
 {
-    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    //更新累计得分
+    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
+    int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    //更新累计总时间
+    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
+    
+    //传入分数和时间累计数
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper submitScore:temTotalTime category:strTotalScore];
+    [gkHelper submitScore:temTotalScore category:strTotalScore];
+    
     [gkHelper showAchievements];
 }
 
@@ -240,9 +263,17 @@
 		CCLOG(@"PlayerID: %@, Alias: %@, isFriend: %i", gkPlayer.playerID, gkPlayer.alias, gkPlayer.isFriend);
 	}
     
-    //传入分数
+    //更新累计得分
+    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
+    int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    //更新累计总时间
+    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
+    
+    //传入分数和时间累计数
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-    [gkHelper submitScore:100000 category:@"Playtime"];
+    [gkHelper submitScore:temTotalTime category:strTotalScore];
+    [gkHelper submitScore:temTotalScore category:strTotalScore];
 }
 
 -(void) onScoresSubmitted:(bool)success

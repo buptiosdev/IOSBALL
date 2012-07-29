@@ -91,42 +91,42 @@ static GCHelper *sharedHelper = nil;
     return;
 }
 
--(void)lookupPlayers 
-{
-    NSLog(@"Looking up %d players...", match.playerIDs.count);
-    
-    [GKPlayer loadPlayersForIdentifiers:match.playerIDs 
-                  withCompletionHandler:^(NSArray *players, NSError *error)
-     {
-         if (error != nil)
-         {
-             NSLog(@"Error retrieving player info: %@", error.localizedDescription);
-             
-             matchStarted = NO;
-             [delegate matchEnded];
-             
-         }
-         else
-         {
-             // Populate players dict
-             self.playersDict = [NSMutableDictionary dictionaryWithCapacity:players.count];
-             
-             for (GKPlayer *player in players)
-             {
-                 NSLog(@"Found player: %@", player.alias);
-                 
-                 [playersDict setObject:player forKey:player.playerID];
-                 
-             }
-             
-             // Notify delegate match can begin
-             matchStarted = YES;
-             [delegate matchStarted];
-             }
-      }];
-    
-}
-
+//-(void)lookupPlayers 
+//{
+//    NSLog(@"Looking up %d players...", match.playerIDs.count);
+//    
+//    [GKPlayer loadPlayersForIdentifiers:match.playerIDs 
+//                  withCompletionHandler:^(NSArray *players, NSError *error)
+//     {
+//         if (error != nil)
+//         {
+//             NSLog(@"Error retrieving player info: %@", error.localizedDescription);
+//             
+//             matchStarted = NO;
+//             [delegate matchEnded];
+//             
+//         }
+//         else
+//         {
+//             // Populate players dict
+//             self.playersDict = [NSMutableDictionary dictionaryWithCapacity:players.count];
+//             
+//             for (GKPlayer *player in players)
+//             {
+//                 NSLog(@"Found player: %@", player.alias);
+//                 
+//                 [playersDict setObject:player forKey:player.playerID];
+//                 
+//             }
+//             
+//             // Notify delegate match can begin
+//             matchStarted = YES;
+//             [delegate matchStarted];
+//             }
+//      }];
+//    
+//}
+//
 
 -(void)authenticateLocalUser 
 {
@@ -243,88 +243,88 @@ static GCHelper *sharedHelper = nil;
 }
 
 // A peer-to-peer match has been found, the game should start
--(void)matchmakerViewController:(GKMatchmakerViewController *)viewController 
-                   didFindMatch:(GKMatch *)theMatch 
-{
-    [presentingViewController dismissModalViewControllerAnimated:YES];
-    self.match = theMatch;
-    match.delegate = self;
-    if (!matchStarted && match.expectedPlayerCount == 0)
-    {
-        NSLog(@"Ready to start match!1");
-        [self lookupPlayers];
-    }
-    NSLog(@"play count is %d\n", match.expectedPlayerCount);
-}
+//-(void)matchmakerViewController:(GKMatchmakerViewController *)viewController 
+//                   didFindMatch:(GKMatch *)theMatch 
+//{
+//    [presentingViewController dismissModalViewControllerAnimated:YES];
+//    self.match = theMatch;
+//    match.delegate = self;
+//    if (!matchStarted && match.expectedPlayerCount == 0)
+//    {
+//        NSLog(@"Ready to start match!1");
+//        [self lookupPlayers];
+//    }
+//    NSLog(@"play count is %d\n", match.expectedPlayerCount);
+//}
 
 
 //The match received data sent from the player.
--(void)match:(GKMatch *)theMatch didReceiveData:(NSData *)data 
-       fromPlayer:(NSString *)playerID 
-{
-    if (match != theMatch) return;
-    
-    [delegate match:theMatch didReceiveData:data fromPlayer:playerID];
-    
-    return;
-}
+//-(void)match:(GKMatch *)theMatch didReceiveData:(NSData *)data 
+//       fromPlayer:(NSString *)playerID 
+//{
+//    if (match != theMatch) return;
+//    
+//    [delegate match:theMatch didReceiveData:data fromPlayer:playerID];
+//    
+//    return;
+//}
 
 
 // The player state changed (eg. connected or disconnected)
--(void)match:(GKMatch *)theMatch player:(NSString *)playerID 
-       didChangeState:(GKPlayerConnectionState)state 
-{
-    if (match != theMatch) return; 
-    
-    switch (state)
-    {   
-        case GKPlayerStateConnected: 
-            
-            // handle a new player connection.
-            NSLog(@"Player connected!");
-            if (!matchStarted && theMatch.expectedPlayerCount == 0)
-            {
-                NSLog(@"Ready to start match!2");
-                [self lookupPlayers];
-            }
-            break; 
-            
-        case GKPlayerStateDisconnected:
-            // a player just disconnected. 
-            NSLog( @"Player disconnected!");
-            matchStarted = NO;
-            [delegate matchEnded];
-            break;
-            
-    }
-    
-    return;
-}
+//-(void)match:(GKMatch *)theMatch player:(NSString *)playerID 
+//       didChangeState:(GKPlayerConnectionState)state 
+//{
+//    if (match != theMatch) return; 
+//    
+//    switch (state)
+//    {   
+//        case GKPlayerStateConnected: 
+//            
+//            // handle a new player connection.
+//            NSLog(@"Player connected!");
+//            if (!matchStarted && theMatch.expectedPlayerCount == 0)
+//            {
+//                NSLog(@"Ready to start match!2");
+//                [self lookupPlayers];
+//            }
+//            break; 
+//            
+//        case GKPlayerStateDisconnected:
+//            // a player just disconnected. 
+//            NSLog( @"Player disconnected!");
+//            matchStarted = NO;
+//            [delegate matchEnded];
+//            break;
+//            
+//    }
+//    
+//    return;
+//}
 
 // The match was unable to connect with the player due to an error.
--(void)match:(GKMatch *)theMatch connectionWithPlayerFailed:(NSString *)playerID 
-                                 withError:(NSError *)error 
-{
-    if (match != theMatch) return;
-    
-    NSLog(@"Failed to connect to player with error: %@", error.localizedDescription);
-    matchStarted = NO;
-    [delegate matchEnded];
-    
-    return;
-}
+//-(void)match:(GKMatch *)theMatch connectionWithPlayerFailed:(NSString *)playerID 
+//                                 withError:(NSError *)error 
+//{
+//    if (match != theMatch) return;
+//    
+//    NSLog(@"Failed to connect to player with error: %@", error.localizedDescription);
+//    matchStarted = NO;
+//    [delegate matchEnded];
+//    
+//    return;
+//}
 
 // The match was unable to be established with any players due to an error.
--(void)match:(GKMatch *)theMatch didFailWithError:(NSError*)error 
-{
-    
-    if (match != theMatch)return;
-    
-    NSLog(@"Match failed with error: %@", error.localizedDescription);
-    matchStarted = NO;
-    [delegate matchEnded];
-    
-    return;
-}
+//-(void)match:(GKMatch *)theMatch didFailWithError:(NSError*)error 
+//{
+//    
+//    if (match != theMatch)return;
+//    
+//    NSLog(@"Match failed with error: %@", error.localizedDescription);
+//    matchStarted = NO;
+//    [delegate matchEnded];
+//    
+//    return;
+//}
 
 @end

@@ -351,11 +351,11 @@ static GameScore  *instanceOfgameScore;
                                 Cheese:(int)cheesenum
                                  Candy:(int)candynum
                                  Apple:(int)applenum
-                             DelayTime:(int)delayTime
+                             DelayTime:(int)delayTimeTmp
 {
     CCLOG(@"Into calculateConsistentCombineScore\n");
     int tempnowscore = 0;
-    int tmpDelayTime = delayTime;
+    int tmpDelayTime = delayTimeTmp;
     //基本得分：
     switch (myfoodType) {
         case 0:
@@ -500,14 +500,13 @@ static GameScore  *instanceOfgameScore;
     //返回的基础得分
     [LevelScore insertObject:[NSNumber numberWithInteger:(int)(my_nowlevelscore)] atIndex:0];
     
-    
     //rewardTimeScore 返回的时间奖励得分    
     int rewardTimeScore;
     
     int timelimit = [GameMainScene sharedMainScene].mainscenParam.candyCount 
-                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency + RewardTimeScore * 3 *((level - 1)/5 + 1);
+                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency + RewardTimeScore  * ((level - 1)/5 + 1);
     
-    if (mytimestamp<=timelimit) 
+    if (mytimestamp <= timelimit) 
     {
         rewardTimeScore = (timelimit - mytimestamp)/1;
     }
@@ -516,12 +515,24 @@ static GameScore  *instanceOfgameScore;
         rewardTimeScore = 0;
     }
     
-    
     [LevelScore insertObject:[NSNumber numberWithInteger:rewardTimeScore] atIndex:1];  
     
-    my_nowlevelscore +=rewardTimeScore;
+    my_nowlevelscore += rewardTimeScore;
     
-    int temphighestscore = [self getGameHighestScore:level];    
+    int temphighestscore = [self getGameHighestScore:level];   
+    
+    //更新累计总得分
+    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
+    int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore]; 
+    temTotalScore += my_nowlevelscore;
+    [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temTotalScore forKey:strTotalScore]; 
+    //更新累计总时间
+    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
+    temTotalTime += mytimestamp;
+    [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temTotalTime forKey:strTotalTime]; 
+    
+    
     if (my_nowlevelscore > temphighestscore)
     {
         //新纪录音效
