@@ -77,7 +77,7 @@
             {
                 star=0;
             }
-            NSString *starname = [NSString stringWithFormat:@"star%i.png", star];
+            NSString *starname = [NSString stringWithFormat:@"get%istart.png", star];
             CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
             levelpic.scaleX=(60)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
             levelpic.scaleY=(60)/[levelpic contentSize].height;
@@ -92,7 +92,7 @@
             }
             
             [levelpic addChild:Labelnum];
-            CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:@"star0.png"];
+            CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:@"get0start.png"];
             defaultstar.scaleX=(60)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
             defaultstar.scaleY=(60)/[defaultstar contentSize].height;
             CCMenuItemSprite *level = [CCMenuItemSprite itemFromNormalSprite:levelpic 
