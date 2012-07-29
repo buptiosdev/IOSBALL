@@ -34,6 +34,7 @@ typedef enum
 	ContinuousAwardScoreTag,
 	ScoreTags_MAX,
 } ScoreTags;
+
 struct  struct_gameScore_rules{
     int apple;
     int cheese;
@@ -43,8 +44,8 @@ struct  struct_gameScore_rules{
     int Once6circle;
     int Once5circle;
     int Once4circle;
-    
 };
+
 struct  struct_gameScore{
     int level1NowScore;
     int level1HighestScore;
@@ -57,16 +58,15 @@ struct  struct_gameScore{
     int level5NowScore;
     int level5HighestScore;
     int version;
-} ;
+};
 
 
 
 
 
 @interface GameScore : CCNode {
-    
-    struct_gameScore_rules my_struct_gameScore_rules;
-    struct_gameScore my_struct_gameScore;
+    struct struct_gameScore_rules my_struct_gameScore_rules;
+    struct struct_gameScore my_struct_gameScore;
     CCLabelBMFont*  totalScoreLabel;
     CCLabelBMFont* hightestTotalScoreLabel;
     int gamelevel;
@@ -76,9 +76,8 @@ struct  struct_gameScore{
     int award_nowlevelscore;
     int delayTime;
     CCArray *LevelScore;
-
-    
 }
+
 +(GameScore *)sharedgameScore;
 
 //初始化得分规则
@@ -127,5 +126,5 @@ struct  struct_gameScore{
                                myLevel:(int)gameLevel;
 
 -(void)calculateTimeAward:(int)gameLevel;
--(int)getGameStarNumber:(int)level;
+//-(int)getGameStarNumber:(int)level;
 @end

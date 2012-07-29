@@ -10,6 +10,7 @@
 #import "LoadingScene.h"
 #import "NavigationScene.h"
 #import "CCScrollLayer.h"
+//#import "GameScore.h"
 
 @implementation LevelScene
 
@@ -23,6 +24,16 @@
 -(void)returnMain
 {
     [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+}
+
+-(int)getGameStarNumber:(int)level
+{
+    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
+    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];    
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    NSInteger starNum = [usrDef integerForKey:str_starlevel];    
+    
+    return starNum;
 }
 
 -(id)initWithLevelScene
@@ -53,164 +64,189 @@
 //                                                                     target:self
 //                                                                   selector:@selector(selectMode:)];
         
-//        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-//        [frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
-//        
-//        CCSprite *test = [CCSprite spriteWithSpriteFrameName:@"get0start.png"];
-//        test.scaleX=(50)/[test contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        test.scaleY=(50)/[test contentSize].height;
-//        CCSprite *test1 = [CCSprite spriteWithSpriteFrameName:@"get1start.png"];
-//        test1.scaleX=(50)/[test1 contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        test1.scaleY=(50)/[test1 contentSize].height;
-//        CCMenuItemSprite *fruits = [CCMenuItemSprite itemFromNormalSprite:test 
-//                                                           selectedSprite:test1 
-//                                                                   target:self 
-//                                                                 selector:@selector(selectMode:)];
-        
-        
-        
-        CCLabelTTF *Label1=[CCLabelTTF labelWithString:@"Level 1" fontName:@"Marker Felt" fontSize:25];
-        [Label1 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn1 = [CCMenuItemLabel itemWithLabel:Label1 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label2=[CCLabelTTF labelWithString:@"Level 2" fontName:@"Marker Felt" fontSize:25];
-        [Label2 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn2 = [CCMenuItemLabel itemWithLabel:Label2 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label3=[CCLabelTTF labelWithString:@"Level 3" fontName:@"Marker Felt" fontSize:25];
-        [Label3 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn3 = [CCMenuItemLabel itemWithLabel:Label3 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label4=[CCLabelTTF labelWithString:@"Level 4" fontName:@"Marker Felt" fontSize:25];
-        [Label4 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn4 = [CCMenuItemLabel itemWithLabel:Label4 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label5=[CCLabelTTF labelWithString:@"Level 5" fontName:@"Marker Felt" fontSize:25];
-        [Label5 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn5 = [CCMenuItemLabel itemWithLabel:Label5 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label6=[CCLabelTTF labelWithString:@"Level 6" fontName:@"Marker Felt" fontSize:25];
-        [Label6 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn6 = [CCMenuItemLabel itemWithLabel:Label6 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label7=[CCLabelTTF labelWithString:@"Level 7" fontName:@"Marker Felt" fontSize:25];
-        [Label7 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn7 = [CCMenuItemLabel itemWithLabel:Label7 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label8=[CCLabelTTF labelWithString:@"Level 8" fontName:@"Marker Felt" fontSize:25];
-        [Label8 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn8 = [CCMenuItemLabel itemWithLabel:Label8 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label9=[CCLabelTTF labelWithString:@"Level 9" fontName:@"Marker Felt" fontSize:25];
-        [Label9 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn9 = [CCMenuItemLabel itemWithLabel:Label9 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label10=[CCLabelTTF labelWithString:@"Level 10" fontName:@"Marker Felt" fontSize:25];
-        [Label10 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn10 = [CCMenuItemLabel itemWithLabel:Label10 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label11=[CCLabelTTF labelWithString:@"Level 11" fontName:@"Marker Felt" fontSize:25];
-        [Label11 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn11 = [CCMenuItemLabel itemWithLabel:Label11 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label12=[CCLabelTTF labelWithString:@"Level 12" fontName:@"Marker Felt" fontSize:25];
-        [Label12 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn12 = [CCMenuItemLabel itemWithLabel:Label12 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label13=[CCLabelTTF labelWithString:@"Level 13" fontName:@"Marker Felt" fontSize:25];
-        [Label13 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn13 = [CCMenuItemLabel itemWithLabel:Label13 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label14=[CCLabelTTF labelWithString:@"Level 14" fontName:@"Marker Felt" fontSize:25];
-        [Label14 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn14 = [CCMenuItemLabel itemWithLabel:Label14 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label15=[CCLabelTTF labelWithString:@"Level 15" fontName:@"Marker Felt" fontSize:25];
-        [Label15 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn15 = [CCMenuItemLabel itemWithLabel:Label15 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label16=[CCLabelTTF labelWithString:@"Level 16" fontName:@"Marker Felt" fontSize:25];
-        [Label16 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn16 = [CCMenuItemLabel itemWithLabel:Label16 target:self selector:@selector(selectMode:)];
+        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        [frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        int number=20;
+        CCArray * levelarray = [[CCArray alloc]initWithCapacity:number];
+        bool isZero=NO;
+        for(int i=0;i<20;i++)
+        {
+            int star=[self getGameStarNumber:i+1];
+            if(isZero==YES)
+            {
+                star=0;
+            }
+            NSString *starname = [NSString stringWithFormat:@"star%i.png", star];
+            CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
+            levelpic.scaleX=(60)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
+            levelpic.scaleY=(60)/[levelpic contentSize].height;
+            CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
+            if(i<9)
+            {
+                Labelnum.anchorPoint=CGPointMake(-1.2, -0.6);
+            }
+            else
+            {
+                Labelnum.anchorPoint=CGPointMake(-0.5, -0.6);
+            }
+            
+            [levelpic addChild:Labelnum];
+            CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:@"star0.png"];
+            defaultstar.scaleX=(60)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
+            defaultstar.scaleY=(60)/[defaultstar contentSize].height;
+            CCMenuItemSprite *level = [CCMenuItemSprite itemFromNormalSprite:levelpic 
+                                                               selectedSprite:defaultstar 
+                                                                       target:self 
+                                                                     selector:@selector(selectMode:)];
+            [level setTag:i+1];
 
-        CCLabelTTF *Label17=[CCLabelTTF labelWithString:@"Level 17" fontName:@"Marker Felt" fontSize:25];
-        [Label17 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn17 = [CCMenuItemLabel itemWithLabel:Label17 target:self selector:@selector(selectMode:)];
+            if(isZero==YES)
+            {
+                [level setIsEnabled:NO];
+            }
+            else
+            {
+                [level setIsEnabled:YES];
+                [Labelnum setColor:ccRED];
+            }
+            
+            if(star==0)
+            {
+                if(isZero==NO)
+                {
+                    isZero=YES;
+                }
+            }
+            [levelarray addObject:level];
+        }
         
-        CCLabelTTF *Label18=[CCLabelTTF labelWithString:@"Level 18" fontName:@"Marker Felt" fontSize:25];
-        [Label18 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn18 = [CCMenuItemLabel itemWithLabel:Label18 target:self selector:@selector(selectMode:)];
         
-        CCLabelTTF *Label19=[CCLabelTTF labelWithString:@"Level 19" fontName:@"Marker Felt" fontSize:25];
-        [Label19 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn19 = [CCMenuItemLabel itemWithLabel:Label19 target:self selector:@selector(selectMode:)];
-        
-        CCLabelTTF *Label20=[CCLabelTTF labelWithString:@"Level 20" fontName:@"Marker Felt" fontSize:25];
-        [Label20 setColor:ccRED];
-        CCMenuItemLabel * LevelBtn20 = [CCMenuItemLabel itemWithLabel:Label20 target:self selector:@selector(selectMode:)];
+//        CCLabelTTF *Label1=[CCLabelTTF labelWithString:@"Level 1" fontName:@"Marker Felt" fontSize:25];
+//        [Label1 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn1 = [CCMenuItemLabel itemWithLabel:Label1 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label2=[CCLabelTTF labelWithString:@"Level 2" fontName:@"Marker Felt" fontSize:25];
+//        [Label2 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn2 = [CCMenuItemLabel itemWithLabel:Label2 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label3=[CCLabelTTF labelWithString:@"Level 3" fontName:@"Marker Felt" fontSize:25];
+//        [Label3 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn3 = [CCMenuItemLabel itemWithLabel:Label3 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label4=[CCLabelTTF labelWithString:@"Level 4" fontName:@"Marker Felt" fontSize:25];
+//        [Label4 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn4 = [CCMenuItemLabel itemWithLabel:Label4 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label5=[CCLabelTTF labelWithString:@"Level 5" fontName:@"Marker Felt" fontSize:25];
+//        [Label5 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn5 = [CCMenuItemLabel itemWithLabel:Label5 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label6=[CCLabelTTF labelWithString:@"Level 6" fontName:@"Marker Felt" fontSize:25];
+//        [Label6 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn6 = [CCMenuItemLabel itemWithLabel:Label6 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label7=[CCLabelTTF labelWithString:@"Level 7" fontName:@"Marker Felt" fontSize:25];
+//        [Label7 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn7 = [CCMenuItemLabel itemWithLabel:Label7 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label8=[CCLabelTTF labelWithString:@"Level 8" fontName:@"Marker Felt" fontSize:25];
+//        [Label8 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn8 = [CCMenuItemLabel itemWithLabel:Label8 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label9=[CCLabelTTF labelWithString:@"Level 9" fontName:@"Marker Felt" fontSize:25];
+//        [Label9 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn9 = [CCMenuItemLabel itemWithLabel:Label9 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label10=[CCLabelTTF labelWithString:@"Level 10" fontName:@"Marker Felt" fontSize:25];
+//        [Label10 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn10 = [CCMenuItemLabel itemWithLabel:Label10 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label11=[CCLabelTTF labelWithString:@"Level 11" fontName:@"Marker Felt" fontSize:25];
+//        [Label11 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn11 = [CCMenuItemLabel itemWithLabel:Label11 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label12=[CCLabelTTF labelWithString:@"Level 12" fontName:@"Marker Felt" fontSize:25];
+//        [Label12 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn12 = [CCMenuItemLabel itemWithLabel:Label12 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label13=[CCLabelTTF labelWithString:@"Level 13" fontName:@"Marker Felt" fontSize:25];
+//        [Label13 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn13 = [CCMenuItemLabel itemWithLabel:Label13 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label14=[CCLabelTTF labelWithString:@"Level 14" fontName:@"Marker Felt" fontSize:25];
+//        [Label14 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn14 = [CCMenuItemLabel itemWithLabel:Label14 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label15=[CCLabelTTF labelWithString:@"Level 15" fontName:@"Marker Felt" fontSize:25];
+//        [Label15 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn15 = [CCMenuItemLabel itemWithLabel:Label15 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label16=[CCLabelTTF labelWithString:@"Level 16" fontName:@"Marker Felt" fontSize:25];
+//        [Label16 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn16 = [CCMenuItemLabel itemWithLabel:Label16 target:self selector:@selector(selectMode:)];
+//
+//        CCLabelTTF *Label17=[CCLabelTTF labelWithString:@"Level 17" fontName:@"Marker Felt" fontSize:25];
+//        [Label17 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn17 = [CCMenuItemLabel itemWithLabel:Label17 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label18=[CCLabelTTF labelWithString:@"Level 18" fontName:@"Marker Felt" fontSize:25];
+//        [Label18 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn18 = [CCMenuItemLabel itemWithLabel:Label18 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label19=[CCLabelTTF labelWithString:@"Level 19" fontName:@"Marker Felt" fontSize:25];
+//        [Label19 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn19 = [CCMenuItemLabel itemWithLabel:Label19 target:self selector:@selector(selectMode:)];
+//        
+//        CCLabelTTF *Label20=[CCLabelTTF labelWithString:@"Level 20" fontName:@"Marker Felt" fontSize:25];
+//        [Label20 setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn20 = [CCMenuItemLabel itemWithLabel:Label20 target:self selector:@selector(selectMode:)];
+//        
+//        
+//        [LevelBtn1 setTag:TargetScene1stScene];
+//        [LevelBtn2 setTag:TargetScene2ndScene];
+//        [LevelBtn3 setTag:TargetScene3rdScene];
+//        [LevelBtn4 setTag:TargetScene4thScene];
+//        [LevelBtn5 setTag:TargetScene5thScene];
+//        [LevelBtn6 setTag:TargetScene6thScene];
+//        [LevelBtn7 setTag:TargetScene7thScene];
+//        [LevelBtn8 setTag:TargetScene8thScene];
+//        [LevelBtn9 setTag:TargetScene9thScene];
+//        [LevelBtn10 setTag:TargetScene10thScene];
+//        [LevelBtn11 setTag:TargetScene11thScene];
+//        [LevelBtn12 setTag:TargetScene12thScene];
+//        [LevelBtn13 setTag:TargetScene13thScene];
+//        [LevelBtn14 setTag:TargetScene14thScene];
+//        [LevelBtn15 setTag:TargetScene15thScene];
+//        [LevelBtn16 setTag:TargetScene16thScene];
+//        [LevelBtn17 setTag:TargetScene17thScene];
+//        [LevelBtn18 setTag:TargetScene18thScene];
+//        [LevelBtn19 setTag:TargetScene19thScene];
+//        [LevelBtn20 setTag:TargetScene20thScene];
         
         CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:25];
         [returnLabel setColor:ccRED];
         CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
+
+        CCMenu * easyMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:0],[levelarray objectAtIndex:1],[levelarray objectAtIndex:2],[levelarray objectAtIndex:3],[levelarray objectAtIndex:4],nil];
+        [easyMenu alignItemsHorizontallyWithPadding:-15];
+        [easyMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*5/6)];
         
-//        [easyBtn setIsEnabled:YES];
-//        [normalBtn setIsEnabled:YES];
-//        [extremeBtn setIsEnabled:YES];
-//        [returnBtn setIsEnabled:YES];
-//        
-//        [easyBtn setTag:TargetScene1stScene];
-//        [normalBtn setTag:TargetScene2ndScene];
-//        [extremeBtn setTag:TargetScene3rdScene];
-//        //[returnBtn setTag:TargetNavigationScen];
-        [LevelBtn1 setTag:TargetScene1stScene];
-        [LevelBtn2 setTag:TargetScene2ndScene];
-        [LevelBtn3 setTag:TargetScene3rdScene];
-        [LevelBtn4 setTag:TargetScene4thScene];
-        [LevelBtn5 setTag:TargetScene5thScene];
-        [LevelBtn6 setTag:TargetScene6thScene];
-        [LevelBtn7 setTag:TargetScene7thScene];
-        [LevelBtn8 setTag:TargetScene8thScene];
-        [LevelBtn9 setTag:TargetScene9thScene];
-        [LevelBtn10 setTag:TargetScene10thScene];
-        [LevelBtn11 setTag:TargetScene11thScene];
-        [LevelBtn12 setTag:TargetScene12thScene];
-        [LevelBtn13 setTag:TargetScene13thScene];
-        [LevelBtn14 setTag:TargetScene14thScene];
-        [LevelBtn15 setTag:TargetScene15thScene];
-        [LevelBtn16 setTag:TargetScene16thScene];
-        [LevelBtn17 setTag:TargetScene17thScene];
-        [LevelBtn18 setTag:TargetScene18thScene];
-        [LevelBtn19 setTag:TargetScene19thScene];
-        [LevelBtn20 setTag:TargetScene20thScene];
+        CCMenu * normalMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:5],[levelarray objectAtIndex:6],[levelarray objectAtIndex:7],[levelarray objectAtIndex:8],[levelarray objectAtIndex:9], nil];
+        [normalMenu alignItemsHorizontallyWithPadding:-15];
+        [normalMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*1/2)];
         
-//        CCMenu * dMenu = [CCMenu menuWithItems:easyBtn,normalBtn,extremeBtn,returnBtn,nil];
-//        CCMenu * dMenu = [CCMenu menuWithItems:LevelBtn1,LevelBtn2,LevelBtn3,LevelBtn4,LevelBtn5,LevelBtn6,LevelBtn7,LevelBtn8,LevelBtn9,LevelBtn10,LevelBtn11,LevelBtn12,LevelBtn13,LevelBtn14,LevelBtn15,LevelBtn16,LevelBtn17,LevelBtn18,LevelBtn19,LevelBtn20,returnBtn,nil];
-//        [dMenu alignItemsVerticallyWithPadding:10];
-//        [dMenu alignItemsHorizontallyWithPadding:10];
-        CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        CCMenu * easyMenu = [CCMenu menuWithItems:LevelBtn1,LevelBtn2,LevelBtn3,LevelBtn4,LevelBtn5,nil];
-        [easyMenu alignItemsHorizontallyWithPadding:23];
-        [easyMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*5/6)];
-        //[difficulty addChild:easyMenu];
+        CCMenu * hardMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:10],[levelarray objectAtIndex:11],[levelarray objectAtIndex:12],[levelarray objectAtIndex:13],[levelarray objectAtIndex:14], nil];
+        [hardMenu alignItemsHorizontallyWithPadding:-15];
+        [hardMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*5/6)];
         
-        CCMenu * normalMenu = [CCMenu menuWithItems:LevelBtn6,LevelBtn7,LevelBtn8,LevelBtn9,LevelBtn10, nil];
-        [normalMenu alignItemsHorizontallyWithPadding:20];
-        [normalMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
-        //[difficulty addChild:normalMenu];
-        
-        CCMenu * hardMenu = [CCMenu menuWithItems:LevelBtn11,LevelBtn12,LevelBtn13,LevelBtn14,LevelBtn15, nil];
-        [hardMenu alignItemsHorizontallyWithPadding:8];
-        [hardMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*3/6)];
-        //[difficulty addChild:hardMenu];
-        
-        CCMenu * extremeMenu = [CCMenu menuWithItems:LevelBtn16,LevelBtn17,LevelBtn18,LevelBtn19,LevelBtn20, nil];
-        [extremeMenu alignItemsHorizontallyWithPadding:8];
-        [extremeMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*2/6)];
-        //[difficulty addChild:extremeMenu];
+        CCMenu * extremeMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:15],[levelarray objectAtIndex:16],[levelarray objectAtIndex:17],[levelarray objectAtIndex:18],[levelarray objectAtIndex:19], nil];
+        [extremeMenu alignItemsHorizontallyWithPadding:-15];
+        [extremeMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*1/2)];
         
         
         CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
-        [returnMenu alignItemsHorizontallyWithPadding:10];
+        [returnMenu alignItemsHorizontallyWithPadding:0];
         [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/7)];
         [self addChild:returnMenu];
         
@@ -221,8 +257,6 @@
         
         // create a blank layer for page 2
         CCLayer *pageTwo = [[CCLayer alloc] init];
-        
-        // add menu to page 2
         [pageTwo addChild:hardMenu];
         [pageTwo addChild:extremeMenu];
         

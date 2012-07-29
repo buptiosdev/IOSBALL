@@ -98,6 +98,11 @@
         
         [retryBtn setTag:level];
         [nextBtn setTag:level+1];
+        if(starnum==0)
+        {
+            [nextBtn setIsEnabled:NO];
+            [nextLabel setColor:ccBLACK];
+        }
         
         CCMenu * dMenu = [CCMenu menuWithItems:retryBtn,LevelBtn,nextBtn,nil];
         [dMenu alignItemsHorizontallyWithPadding:40];
