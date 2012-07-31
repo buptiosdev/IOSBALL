@@ -522,10 +522,23 @@ static GameScore  *instanceOfgameScore;
     int temphighestscore = [self getGameHighestScore:level];   
     
     //更新累计总得分
-    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
-    int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore]; 
-    temTotalScore += my_nowlevelscore;
-    [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temTotalScore forKey:strTotalScore]; 
+    //初始化2个元素
+    int roalType = [GameMainScene sharedMainScene].roleType;
+    NSString *strTotalScore = nil;
+    if (1 == roalType) 
+    {
+        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+    }
+    else 
+    {
+        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    }
+    int  totalRoleScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore]; 
+
+    totalRoleScore += my_nowlevelscore;
+        
+    [[[MyGameScore sharedScore] standardUserDefaults] setInteger:totalRoleScore forKey:strTotalScore]; 
+    
     //更新累计总时间
     NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 

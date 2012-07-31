@@ -188,6 +188,8 @@
 		701B2EB41559736A0035335F /* needtouch.caf in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EB21559736A0035335F /* needtouch.caf */; };
 		702D72941598C4F700F44A18 /* elements_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 702D72921598C4F600F44A18 /* elements_default.plist */; };
 		702D72951598C4F700F44A18 /* elements_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 702D72931598C4F700F44A18 /* elements_default.png */; };
+		702FC0E715C7B13E00B39D2A /* GameShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 702FC0E615C7B13E00B39D2A /* GameShopScene.m */; };
+		702FC0EB15C7B6E700B39D2A /* CCRadioMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 702FC0EA15C7B6E700B39D2A /* CCRadioMenu.m */; };
 		705807861583CEF200C66EDE /* background_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705807851583CEF200C66EDE /* background_1.jpg */; };
 		706EA9A2153F9AE90003C4B2 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99D153F9AE90003C4B2 /* LoadingScene.mm */; };
 		706EA9A3153F9AE90003C4B2 /* GameMainScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99F153F9AE90003C4B2 /* GameMainScene.mm */; };
@@ -599,6 +601,10 @@
 		701B2EB21559736A0035335F /* needtouch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = needtouch.caf; path = Resources/needtouch.caf; sourceTree = "<group>"; };
 		702D72921598C4F600F44A18 /* elements_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = elements_default.plist; path = Resources/elements_default.plist; sourceTree = "<group>"; };
 		702D72931598C4F700F44A18 /* elements_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = elements_default.png; path = Resources/elements_default.png; sourceTree = "<group>"; };
+		702FC0E515C7B13E00B39D2A /* GameShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameShopScene.h; sourceTree = "<group>"; };
+		702FC0E615C7B13E00B39D2A /* GameShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameShopScene.m; sourceTree = "<group>"; };
+		702FC0E915C7B6E700B39D2A /* CCRadioMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRadioMenu.h; sourceTree = "<group>"; };
+		702FC0EA15C7B6E700B39D2A /* CCRadioMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRadioMenu.m; sourceTree = "<group>"; };
 		705807851583CEF200C66EDE /* background_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_1.jpg; path = Resources/background_1.jpg; sourceTree = "<group>"; };
 		706EA99C153F9AE90003C4B2 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = screens/LoadingScene.h; sourceTree = "<group>"; };
 		706EA99D153F9AE90003C4B2 /* LoadingScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LoadingScene.mm; path = screens/LoadingScene.mm; sourceTree = "<group>"; };
@@ -1307,6 +1313,8 @@
 				4A7FA06E1580F4B7009A0001 /* LevelScene.m */,
 				70C7C3FB15AA7965007D35B5 /* GameCenterScene.h */,
 				70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */,
+				702FC0E515C7B13E00B39D2A /* GameShopScene.h */,
+				702FC0E615C7B13E00B39D2A /* GameShopScene.m */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -1314,6 +1322,8 @@
 		70081FDE153F9954003F042A /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				702FC0E915C7B6E700B39D2A /* CCRadioMenu.h */,
+				702FC0EA15C7B6E700B39D2A /* CCRadioMenu.m */,
 				701AD0D815C41F4C0017C064 /* GameKitHelper.h */,
 				701AD0D915C41F4C0017C064 /* GameKitHelper.m */,
 				4A7C5E4615BA6ABD00A713EC /* CCScrollLayer.h */,
@@ -1635,6 +1645,8 @@
 				4A7C5E4815BA6ABD00A713EC /* CCScrollLayer.m in Sources */,
 				701AD0DA15C41F4C0017C064 /* GameKitHelper.m in Sources */,
 				701AD0EA15C4E2260017C064 /* GKMatchmakerViewController-LandscapeOnly.m in Sources */,
+				702FC0E715C7B13E00B39D2A /* GameShopScene.m in Sources */,
+				702FC0EB15C7B6E700B39D2A /* CCRadioMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

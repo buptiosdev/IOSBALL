@@ -11,6 +11,8 @@
 #import "GameCenterScene.h"
 #import "GameKitHelper.h"
 #import "GameScore.h"
+#import "GameShopScene.h"
+#import "CCRadioMenu.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -74,6 +76,7 @@
         CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"Multi Play" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *leaderboardLabel=[CCLabelTTF labelWithString:@"LeaderBoard" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *archievementsLabel=[CCLabelTTF labelWithString:@"Achievements" fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF *gameShopLabel=[CCLabelTTF labelWithString:@"Shop" fontName:@"Marker Felt" fontSize:30];
 		
 		[newgameLabel setColor:ccRED];
 		[optionsLabel setColor:ccRED];
@@ -84,11 +87,12 @@
 		CCMenuItemLabel * gamecenter = [CCMenuItemLabel itemWithLabel:gamecenterLabel target:self selector:@selector(connectGameCenter:)];
         CCMenuItemLabel * leaderboard = [CCMenuItemLabel itemWithLabel:leaderboardLabel target:self selector:@selector(showGameLeaderboard:)];
 		CCMenuItemLabel * archievements = [CCMenuItemLabel itemWithLabel:archievementsLabel target:self selector:@selector(showGameAchievements:)];
+        CCMenuItemLabel * gameShop = [CCMenuItemLabel itemWithLabel:gameShopLabel target:self selector:@selector(connectGameShop:)];
 		
-		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,gamecenter,nil];
+		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,gamecenter,gameShop,nil];
 		[menu alignItemsVerticallyWithPadding:10];
 		[self addChild:menu];
-		[menu setPosition:ccp(size.width,size.height/3)];
+		[menu setPosition:ccp(size.width,size.height/2)];
 		
 		[newgame runAction:[CCSequence actions:
 							[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
@@ -110,16 +114,55 @@
         [gamecenter runAction:[CCSequence actions:
                                 [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
                                 [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
+        [gameShop runAction:[CCSequence actions:
+                               [CCDelayTime actionWithDuration:1.5],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+                               [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
+        
+        
+        //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
+        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
+                                                       selectedImage:@"options_check_d.png" target:self selector:@selector(button1Tapped:)];
+        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
+                                                       selectedImage:@"options_check_d.png" target:self selector:@selector(button2Tapped:)];
+//        CCMenuItem *menuItem3 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
+//                                selectedImage:@"options_check_d.png" target:self selector:@selector(button3Tapped:)];
+        CCRadioMenu *radioMenu =
+        [CCRadioMenu menuWithItems:menuItem1, menuItem2, nil];
+        radioMenu.position = ccp(50, 180);
+        //[radioMenu alignItemsHorizontally];
+        [radioMenu alignItemsVerticallyWithPadding:10];
+        [radioMenu setSelectedItem_:menuItem1];
+        //默认要写一次文件，设置为小鸟
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"RoleType"];
+        [menuItem1 selected];
+        [self addChild:radioMenu];
 		
     }    
     
     return self;
 }
 
+//角色选择回调函数，把角色类型写入文件
+- (void)button1Tapped:(id)sender 
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"RoleType"];
+}
+- (void)button2Tapped:(id)sender 
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"RoleType"];
+}
+//- (void)button3Tapped:(id)sender 
+//{
+//    [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"RoleType"];
+//}
+
 -(void)newGame:(id)sender
 {
 	//start a new game
     //[self showDifficultySelection];
+    //数据提交
+    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+    [[NSUserDefaults standardUserDefaults] synchronize];
 	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
 
@@ -133,12 +176,14 @@
 
 -(void) updateScoreAndShowLeaderBoard
 {
-    //更新累计得分
-    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
+    //更新累计得分,算两个role的总分
+    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
     NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
-    int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
+    int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime];  
     
     //传入分数和时间累计数
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
@@ -150,16 +195,18 @@
 
 -(void) updateScoreAndShowAchievements
 {
-    //更新累计得分
-    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
+    //更新累计得分,算两个role的总分
+    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
     NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
     
     //传入分数和时间累计数
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-    [gkHelper submitScore:temTotalTime category:strTotalScore];
+    [gkHelper submitScore:temTotalTime category:strTotalTime];
     [gkHelper submitScore:temTotalScore category:strTotalScore];
     
     [gkHelper showAchievements];
@@ -203,6 +250,12 @@
 {
     //connect to game center
     [[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
+}
+
+-(void)connectGameShop:(id)sender
+{
+    //connect to game center
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
 }
 
 +(id)scene
@@ -263,9 +316,11 @@
 		CCLOG(@"PlayerID: %@, Alias: %@, isFriend: %i", gkPlayer.playerID, gkPlayer.alias, gkPlayer.isFriend);
 	}
     
-    //更新累计得分
-    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore"];
+    //更新累计得分,算两个role的总分
+    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
     NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 

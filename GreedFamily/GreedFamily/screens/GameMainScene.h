@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 
-
+#define ROLE_TYPE_COUNT 3     //角色种类,最后一个为总得分
 #define PTM_RATIO 32
 
 typedef enum
@@ -70,6 +70,7 @@ struct SceneParam
 +(GameMainScene*) sharedMainScene;
 +(CCScene *) scene:(int)order;
 @property (nonatomic) int sceneNum;
+@property (nonatomic) int roleType;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) BOOL isGamePass;
 @property (nonatomic) SceneParam mainscenParam;

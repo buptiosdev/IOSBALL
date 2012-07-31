@@ -9,6 +9,7 @@
 #import "FlyEntity.h"
 #import "CCAnimationHelper.h"
 #import "GameBackgroundLayer.h"
+#import "GameMainScene.h"
 
 @interface FlyEntity (PrivateMethods)
 -(id) initWithShipImage;
@@ -46,8 +47,9 @@
 //        CCAnimation *animation = [CCAnimation animationWithName:@"fly" delay:0.1f frames:animFrames];
         CCAnimation* animation = nil;
         
-        
-        if (0 == familyType) 
+        familyType = [[GameMainScene sharedMainScene] roleType];
+        //小鸟
+        if (1 == familyType) 
         {
             switch (i) 
             {
@@ -93,7 +95,8 @@
 //                    break;
 //            }
         }
-        else if (1 == familyType)
+        //小猪
+        else if (2 == familyType)
         {
             switch (i) 
             {
@@ -186,14 +189,14 @@
         //CCSpriteFrame *frame1 = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 75, 70) ];
         
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
-        if (0 == familyType)
+        if (1 == familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
             //按照像素设定图片大小
             self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
             self.sprite.scaleY=(50)/[self.sprite contentSize].height;
         }
-        else if (1 == familyType)
+        else if (2 == familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"boypig_3_1.png"];
             //按照像素设定图片大小

@@ -28,6 +28,7 @@
 @synthesize isGameOver = _isGameOver;
 @synthesize isGamePass = _isGamePass;
 @synthesize mainscenParam = _mainscenParam;
+@synthesize roleType = _roleType;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static GameMainScene *instanceOfMainScene;
@@ -70,6 +71,7 @@ static GameMainScene *instanceOfMainScene;
         //初始化一开始，给半单例赋值
         instanceOfMainScene = self;
         _sceneNum = order;
+        _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"];
         _isGameOver = NO;
         _isGamePass = NO;
         [self preloadParticleEffect];
