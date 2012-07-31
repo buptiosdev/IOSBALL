@@ -10,6 +10,7 @@
 #import "GameMainScene.h"
 #import "NavigationScene.h"
 #import "LevelScene.h"
+#import "OptionsScene.h"
 
 @implementation PauseLayer
 
@@ -25,12 +26,18 @@
     [self.parent removeChild:self cleanup:YES];
 }
 
--(void)returnMain
+-(void)showOption
 {
-	//start a new game
-    [[GameMainScene sharedMainScene] resumeGame];
-    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    OptionsScene * gs = [OptionsScene node];
+    [[CCDirector sharedDirector]pushScene:gs];
 }
+
+//-(void)returnMain
+//{
+//	//start a new game
+//    [[GameMainScene sharedMainScene] resumeGame];
+//    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+//}
 
 -(void)returnLevel
 {
@@ -52,15 +59,39 @@
         [continueLabel setColor:ccRED];
         CCMenuItemLabel * continueBtn = [CCMenuItemLabel itemWithLabel:continueLabel target:self selector:@selector(returnGame)];
         
-        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:30];
-        [returnLabel setColor:ccRED];
-        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
+        
+        CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"play2.png"];
+        play1.scaleX=(60)/[play1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        play1.scaleY=(60)/[play1 contentSize].height;
+        CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"play.png"];
+        play.scaleX=(60)/[play contentSize].width; //按照像素定制图片宽高是控制像素的。
+        play.scaleY=(60)/[play contentSize].height;
+        CCMenuItemSprite *playItem = [CCMenuItemSprite itemFromNormalSprite:play1 
+                                                          selectedSprite:play 
+                                                                  target:self 
+                                                                selector:@selector(returnGame)];
+        
+//        CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"option.png"];
+//        option.scaleX=(60)/[option contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        option.scaleY=(60)/[option contentSize].height;
+//        CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"option.png"];
+//        option1.scaleX=(60)/[option1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        option1.scaleY=(60)/[option1 contentSize].height;
+//        CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
+//                                                             selectedSprite:option1 
+//                                                                     target:self 
+//                                                                   selector:@selector(showOption)];
+        
+        
+//        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:30];
+//        [returnLabel setColor:ccRED];
+//        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
         
         CCLabelTTF *LevelLabel=[CCLabelTTF labelWithString:@"Level Menu" fontName:@"Marker Felt" fontSize:30];
         [LevelLabel setColor:ccRED];
         CCMenuItemLabel * LevelBtn = [CCMenuItemLabel itemWithLabel:LevelLabel target:self selector:@selector(returnLevel)];
         
-        CCMenu * dMenu = [CCMenu menuWithItems:continueBtn,returnBtn,LevelBtn,nil];
+        CCMenu * dMenu = [CCMenu menuWithItems:playItem,LevelBtn,nil];
         [dMenu alignItemsVerticallyWithPadding:30];
         [self addChild:dMenu];
     }
