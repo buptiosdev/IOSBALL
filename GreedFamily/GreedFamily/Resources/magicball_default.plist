@@ -802,7 +802,7 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>star.png</key>
+		<key>star_magic.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -840,7 +840,7 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>star2.png</key>
+		<key>star2_magic.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
