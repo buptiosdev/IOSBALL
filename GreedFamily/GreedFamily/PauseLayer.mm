@@ -18,7 +18,6 @@
     return [[[PauseLayer alloc] initWithColorLayer:color] autorelease];
 }
 
-
 -(void)returnGame
 {
     [[GameMainScene sharedMainScene] resumeGame];

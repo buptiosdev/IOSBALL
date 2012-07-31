@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface GameShopScene : CCLayer {
-    
+@interface GameShopScene : CCLayer 
+{
+    CCSpriteBatchNode* batch;    
+    CGSize screenSize;
 }
 +(id)createGameShopScene;
 +(CCScene *) gameShopScene;
