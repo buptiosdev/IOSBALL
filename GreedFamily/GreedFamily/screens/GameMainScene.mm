@@ -446,7 +446,7 @@ static GameMainScene *instanceOfMainScene;
 
 -(void)pauseGame
 {
-	ccColor4B c = {100,100,0,100};
+	ccColor4B c = {200,100,0,100};
     PauseLayer * p = [PauseLayer createPauseLayer:c];
     [self.parent addChild:p z:10]; 
 	[self onPauseExit];

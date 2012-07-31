@@ -55,7 +55,7 @@
         
         CCMenu *menu = [CCMenu menuWithItems:touchPause, nil];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        menu.position = ccp(464, screenSize.height - 10);
+        menu.position = ccp(screenSize.width - 20, screenSize.height - 20);
         
         [menu alignItemsVerticallyWithPadding: 10.0f];
         [self addChild:menu z: -2];
