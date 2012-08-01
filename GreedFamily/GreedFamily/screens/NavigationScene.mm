@@ -131,10 +131,27 @@
         radioMenu.position = ccp(50, 180);
         //[radioMenu alignItemsHorizontally];
         [radioMenu alignItemsVerticallyWithPadding:10];
-        [radioMenu setSelectedItem_:menuItem1];
+        
         //默认要写一次文件，设置为小鸟
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"RoleType"];
-        [menuItem1 selected];
+        NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+        int roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
+        if (roleType > 2 || roleType < 1) 
+        {
+            roleType = 1;
+            [[NSUserDefaults standardUserDefaults] setInteger:roleType forKey:strName];
+        }
+        
+        if (1 == roleType) 
+        {
+            [radioMenu setSelectedItem_:menuItem1];
+            [menuItem1 selected];
+        }
+        else if (2 == roleType)
+        {
+            [radioMenu setSelectedItem_:menuItem2];
+            [menuItem2 selected];
+        }
+        
         [self addChild:radioMenu];
 		
     }    
@@ -145,11 +162,13 @@
 //角色选择回调函数，把角色类型写入文件
 - (void)button1Tapped:(id)sender 
 {
-    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"RoleType"];
+    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:strName];
 }
 - (void)button2Tapped:(id)sender 
 {
-    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"RoleType"];
+    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:strName];
 }
 //- (void)button3Tapped:(id)sender 
 //{
@@ -161,7 +180,8 @@
 	//start a new game
     //[self showDifficultySelection];
     //数据提交
-    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:strName]);
     [[NSUserDefaults standardUserDefaults] synchronize];
 	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }

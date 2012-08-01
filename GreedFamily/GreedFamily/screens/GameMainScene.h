@@ -69,10 +69,12 @@ struct SceneParam
 +(id)createMainLayer:(int)order;
 +(GameMainScene*) sharedMainScene;
 +(CCScene *) scene:(int)order;
+@property (nonatomic) int acceleration;
 @property (nonatomic) int sceneNum;
 @property (nonatomic) int roleType;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) BOOL isGamePass;
+
 @property (nonatomic) SceneParam mainscenParam;
 -(void)pauseGame;
 -(void)resumeGame;

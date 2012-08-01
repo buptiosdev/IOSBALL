@@ -8,6 +8,7 @@
 
 #import "Food.h"
 #import "GameBackgroundLayer.h"
+#import "GameMainScene.h"
 
 @interface Food (PrivateMethods)
 -(NSString *) getFoodSpriteName:(int)foodType;
@@ -38,7 +39,21 @@
         _mySprite.scaleY=(25)/[_mySprite contentSize].height;
         float widthPer = [_mySprite contentSize].width * _mySprite.scaleX;
         float highPer = [_mySprite contentSize].height * _mySprite.scaleY;
-        CGPoint initPosition = CGPointMake((widthPer * 10 + widthPer * 0.5), highPer * 0.5);
+        NSString *strCapacity = nil;
+        if (1 == [[GameMainScene sharedMainScene] roleType]) 
+        {
+            strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Bird"];
+        }
+        else if (2 == [[GameMainScene sharedMainScene] roleType]) 
+        {
+            strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Pig"];
+        }
+        int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
+        if (temCapacity > 12 || temCapacity < 8) 
+        {
+            temCapacity = 8;
+        }
+        CGPoint initPosition = CGPointMake((widthPer * temCapacity + widthPer * 0.5), highPer * 0.5);
         CGPoint moveToPosition = CGPointMake(count * widthPer + widthPer * 0.5, highPer * 0.5);
         _mySprite.position = initPosition;
 

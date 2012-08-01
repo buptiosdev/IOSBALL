@@ -8,6 +8,7 @@
 
 #import "GameShopScene.h"
 #import "NavigationScene.h"
+#import "TouchSwallowLayer.h"
 
 @implementation GameShopScene
 
@@ -32,7 +33,8 @@
 
 -(void)initRoleAndScore
 {
-    int roalType = [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"];
+    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+    roalType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
     NSString *strTotalScore = nil;
     if (1 == roalType) 
     {
@@ -91,10 +93,14 @@
                                                        selectedSprite:addSpeedOnce2 
                                                                target:self 
                                                              selector:@selector(verifyAddSpeedOnce:)];
-    CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速10％\n100Points"] 
+    CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速10％"] 
                                             fontName:@"Marker Felt" fontSize:10];
+    CCLabelTTF *LabelSpend1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED1] 
+                                             fontName:@"Marker Felt" fontSize:10];
     [addSpeedOnceMenu addChild:Labelnum1];
-    
+    [addSpeedOnceMenu addChild:LabelSpend1];
+    LabelSpend1.anchorPoint=CGPointMake(0, 2);
+    Labelnum1.anchorPoint=CGPointMake(0, 1);
     
     CCSprite *addSpeedTwice1 = [CCSprite spriteWithSpriteFrameName:@"blackbomb.png"];
     CCSprite *addSpeedTwice2 = [CCSprite spriteWithSpriteFrameName:@"blackbomb.png"];    
@@ -102,9 +108,14 @@
                                                          selectedSprite:addSpeedTwice2 
                                                                  target:self 
                                                                selector:@selector(verifyAddSpeedTwice:)];
-    CCLabelTTF *Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速20％\n500Points"] 
+    CCLabelTTF *Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速20％"] 
                                              fontName:@"Marker Felt" fontSize:10];
+    CCLabelTTF *LabelSpend2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED2] 
+                                               fontName:@"Marker Felt" fontSize:10];
+    [addSpeedTwiceMenu addChild:LabelSpend2];
     [addSpeedTwiceMenu addChild:Labelnum2];
+    LabelSpend2.anchorPoint=CGPointMake(0, 2);
+    Labelnum2.anchorPoint=CGPointMake(0, 1);
     
     CCSprite *addSpeedThird1 = [CCSprite spriteWithSpriteFrameName:@"ice+.png"];
     CCSprite *addSpeedThird2 = [CCSprite spriteWithSpriteFrameName:@"ice+.png"];
@@ -112,9 +123,14 @@
                                                          selectedSprite:addSpeedThird2 
                                                                  target:self 
                                                                selector:@selector(verifyAddSpeedThird:)];
-    CCLabelTTF *Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速30％\n1000Points"] 
+    CCLabelTTF *Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速30％"] 
                                              fontName:@"Marker Felt" fontSize:10];
+    CCLabelTTF *LabelSpend3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED3] 
+                                               fontName:@"Marker Felt" fontSize:10];
+    [addSpeedThirdMenu addChild:LabelSpend3];
     [addSpeedThirdMenu addChild:Labelnum3];
+    LabelSpend3.anchorPoint=CGPointMake(0, 2);
+    Labelnum3.anchorPoint=CGPointMake(0, 1);
     
     CCSprite *addStorageOnce1 = [CCSprite spriteWithSpriteFrameName:@"pepper+.png"];
     CCSprite *addStorageOnce2 = [CCSprite spriteWithSpriteFrameName:@"pepper+.png"];
@@ -122,13 +138,34 @@
                                                                   selectedSprite:addStorageOnce2 
                                                                           target:self 
                                                                         selector:@selector(verifyAddStorageOnce:)];
-    CCLabelTTF *Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库加1\n300Points"] 
+    CCLabelTTF *Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库加1"] 
                                              fontName:@"Marker Felt" fontSize:10];
+    CCLabelTTF *LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",STORAGE1] 
+                                               fontName:@"Marker Felt" fontSize:10];
+    [addStorageOnceMenu addChild:LabelSpend4];
     [addStorageOnceMenu addChild:Labelnum4];
+    LabelSpend4.anchorPoint=CGPointMake(0, 2);
+    Labelnum4.anchorPoint=CGPointMake(0, 1);
+    
+    
+    CCSprite *addStorageTwice1 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
+    CCSprite *addStorageTwice2 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
+    CCMenuItemSprite *addStorageTwiceMenu = [CCMenuItemSprite itemFromNormalSprite:addStorageTwice1 
+                                                                   selectedSprite:addStorageTwice2 
+                                                                           target:self 
+                                                                         selector:@selector(verifyAddStorageTwice:)];
+    CCLabelTTF *Labelnum5=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库加2"] 
+                                             fontName:@"Marker Felt" fontSize:10];
+    CCLabelTTF *LabelSpend5=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",STORAGE2] 
+                                               fontName:@"Marker Felt" fontSize:10]; 
+    [addStorageTwiceMenu addChild:LabelSpend5];
+    [addStorageTwiceMenu addChild:Labelnum5];
+    LabelSpend5.anchorPoint=CGPointMake(0, 2);
+    Labelnum5.anchorPoint=CGPointMake(0, 1);
     
     
     //CCMenu *menu = [CCMenu menuWithItems:starts, bombs, fruits, crystals, nil];
-    CCMenu *menu = [CCMenu menuWithItems:addSpeedOnceMenu, addSpeedTwiceMenu, addSpeedThirdMenu, addStorageOnceMenu, nil];
+    CCMenu *menu = [CCMenu menuWithItems:addSpeedOnceMenu, addSpeedTwiceMenu, addSpeedThirdMenu, addStorageOnceMenu,                addStorageTwiceMenu, nil];
     [menu setPosition:ccp(screenSize.width * 0.6 , screenSize.height * 0.5)];
     [menu alignItemsHorizontallyWithPadding:30];
     [self addChild:menu z: -2 tag:4];
@@ -157,97 +194,55 @@
     return self;
 }
 
--(void)noOption:(id)sender
-{
-    [self removeChildByTag:100 cleanup:YES];
-}
 
--(void)yesAddSpeedOnce:(id)sender
-{
-    [self removeChildByTag:100 cleanup:YES];
-}
--(void)yesAddSpeedTwice:(id)sender
-{
-    [self removeChildByTag:100 cleanup:YES];
-}
-
--(void)yesAddSpeedThird:(id)sender
-{
-    [self removeChildByTag:100 cleanup:YES];
-}
-
--(void)yesAddStorageOnce:(id)sender
-{
-    [self removeChildByTag:100 cleanup:YES];
-}
 
 -(void)verifyAddSpeedOnce:(id)sender
 {
-    CCLabelTTF *yesLable =[CCLabelTTF labelWithString:@"Yes" fontName:@"Marker Felt" fontSize:30];
-    CCLabelTTF *noLable =[CCLabelTTF labelWithString:@"No" fontName:@"Marker Felt" fontSize:30];
-    CCMenuItemLabel * yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddSpeedOnce:)];
-    CCMenuItemLabel * noMenu = [CCMenuItemLabel itemWithLabel:noLable target:self selector:@selector(noOption:)];
-    
-    CCMenu * menu = [CCMenu menuWithItems:yesMenu,noMenu,nil];
-    [menu alignItemsVerticallyWithPadding:10];
-
-    [menu setPosition:ccp(screenSize.width/2,screenSize.height/2)];
-    [menu alignItemsHorizontallyWithPadding:50];
-    [self addChild:menu z:1 tag:100];
+    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:1 RoleType:roalType];
+    [self addChild:myTouchSwallowLayer];
 }
 -(void)verifyAddSpeedTwice:(id)sender
 {
-    CCLabelTTF *yesLable =[CCLabelTTF labelWithString:@"Yes" fontName:@"Marker Felt" fontSize:30];
-    CCLabelTTF *noLable =[CCLabelTTF labelWithString:@"No" fontName:@"Marker Felt" fontSize:30];
-    CCMenuItemLabel * yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddSpeedTwice:)];
-    CCMenuItemLabel * noMenu = [CCMenuItemLabel itemWithLabel:noLable target:self selector:@selector(noOption:)];
-    
-    CCMenu * menu = [CCMenu menuWithItems:yesMenu,noMenu,nil];
-    [menu alignItemsHorizontallyWithPadding:50];
-
-    [menu setPosition:ccp(screenSize.width/2,screenSize.height/2)];
-    //[menu alignItemsHorizontally];
-    [self addChild:menu z:1 tag:100];
+    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:2 RoleType:roalType];
+    [self addChild:myTouchSwallowLayer];
 }
 -(void)verifyAddSpeedThird:(id)sender
 {
-    CCLayer *touchLayer = [[[CCLayer alloc] init] autorelease];
-    CCLabelTTF *yesLable =[CCLabelTTF labelWithString:@"Yes" fontName:@"Marker Felt" fontSize:30];
-    CCLabelTTF *noLable =[CCLabelTTF labelWithString:@"No" fontName:@"Marker Felt" fontSize:30];
-    CCMenuItemLabel * yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddSpeedThird:)];
-    CCMenuItemLabel * noMenu = [CCMenuItemLabel itemWithLabel:noLable target:self selector:@selector(noOption:)];
-    
-    CCMenu * menu = [CCMenu menuWithItems:yesMenu,noMenu,nil];
-    [menu alignItemsVerticallyWithPadding:10];
-
-    [menu setPosition:ccp(screenSize.width/2,screenSize.height/2)];
-    [menu alignItemsHorizontallyWithPadding:50];
-    
-    
-    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:touchLayer priority:100 swallowsTouches:NO];
-    
-    [touchLayer addChild:menu];
-    
-    [self addChild:touchLayer z:1 tag:100];
+    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:3 RoleType:roalType];
+    [self addChild:myTouchSwallowLayer];
 }
 -(void)verifyAddStorageOnce:(id)sender
 {
-    CCLabelTTF *yesLable =[CCLabelTTF labelWithString:@"Yes" fontName:@"Marker Felt" fontSize:30];
-    CCLabelTTF *noLable =[CCLabelTTF labelWithString:@"No" fontName:@"Marker Felt" fontSize:30];
-    CCMenuItemLabel * yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddStorageOnce:)];
-    CCMenuItemLabel * noMenu = [CCMenuItemLabel itemWithLabel:noLable target:self selector:@selector(noOption:)];
-    
-    CCMenu * menu = [CCMenu menuWithItems:yesMenu,noMenu,nil];
-    [menu alignItemsHorizontallyWithPadding:50];
-
-    [menu setPosition:ccp(screenSize.width/2,screenSize.height/2)];
-    //[menu alignItemsHorizontally];
-    [self addChild:menu z:1 tag:100];
+    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:4 RoleType:roalType];
+    [self addChild:myTouchSwallowLayer];
+}
+-(void)verifyAddStorageTwice:(id)sender
+{
+    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:5 RoleType:roalType];
+    [self addChild:myTouchSwallowLayer];
 }
 
 -(void)goBack:(id)sender
 {
     [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+}
+
+-(void)updateScore
+{
+    NSString *strTotalScore = nil;
+    if (1 == roalType) 
+    {
+        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+    }
+    else 
+    {
+        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    }
+    int  totalRoleScore = [[NSUserDefaults standardUserDefaults] integerForKey:strTotalScore]; 
+    
+    CCNode* node = [self getChildByTag:3];
+    CCLabelBMFont *getTotalScore = (CCLabelBMFont *)node;
+    [getTotalScore setString:[NSString stringWithFormat:@"x%i", totalRoleScore]];
 }
 
 @end

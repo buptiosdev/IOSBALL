@@ -11,7 +11,7 @@
 #import "GameSky.h"
 #import "GamePause.h"
 #import "Bag.h"
-
+#import "GameMainScene.h"
 
 @implementation TouchCatchLayer
 
@@ -47,7 +47,22 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         GamePause *gamePause = [GamePause node];
         [self addChild:gamePause z:2 tag:GamePauseTag];
         
-        Storage *storage = [Storage createStorage:11];
+        //修改游戏参数
+        NSString *strCapacity = nil;
+        if (1 == [[GameMainScene sharedMainScene] roleType]) 
+        {
+            strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Bird"];
+        }
+        else if (2 == [[GameMainScene sharedMainScene] roleType]) 
+        {
+            strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Pig"];
+        }
+        int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
+        if (temCapacity > 12 || temCapacity < 8) 
+        {
+            temCapacity = 8;
+        }
+        Storage *storage = [Storage createStorage:temCapacity];
         [self addChild:storage z:-3 tag:StorageTag];
         
         //先不考虑

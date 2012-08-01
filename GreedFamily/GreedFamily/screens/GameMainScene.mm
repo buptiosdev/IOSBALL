@@ -29,6 +29,7 @@
 @synthesize isGamePass = _isGamePass;
 @synthesize mainscenParam = _mainscenParam;
 @synthesize roleType = _roleType;
+@synthesize acceleration = _acceleration;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static GameMainScene *instanceOfMainScene;
@@ -63,7 +64,7 @@ static GameMainScene *instanceOfMainScene;
 {
     return [[[GameMainScene alloc] initWithOrder:order] autorelease];
 }
--initWithOrder:(int)order
+-(id)initWithOrder:(int)order
 {
     if (self = [super init]) 
     {
@@ -71,7 +72,22 @@ static GameMainScene *instanceOfMainScene;
         //初始化一开始，给半单例赋值
         instanceOfMainScene = self;
         _sceneNum = order;
-        _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"];
+        NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+        _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
+        NSString *strName2 = nil;
+        if (1 == _roleType) 
+        {
+            strName2 = [NSString stringWithFormat:@"%d",@"Acceleration_Bird"];
+        }
+        else if (2 == _roleType) 
+        {
+            strName2 = [NSString stringWithFormat:@"%d",@"Acceleration_Pig"];
+        }
+        _acceleration = [[NSUserDefaults standardUserDefaults]  integerForKey:strName2];
+        if (_acceleration > 50 || _acceleration < 10) 
+        {
+            _acceleration = 10;
+        }
         _isGameOver = NO;
         _isGamePass = NO;
         [self preloadParticleEffect];
@@ -394,6 +410,9 @@ static GameMainScene *instanceOfMainScene;
         default:
             break;
     }
+    //加上商店购买道具    
+    _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
+
 }
 
 -(void)endGame

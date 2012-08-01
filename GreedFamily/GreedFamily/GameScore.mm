@@ -593,7 +593,8 @@ static GameScore  *instanceOfgameScore;
         str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];
         [[[MyGameScore sharedScore] standardUserDefaults] setInteger:starNum forKey:str_starlevel];         
     }
-    
+    //提交缓存文件
+    [[[MyGameScore sharedScore] standardUserDefaults] synchronize];
     [LevelScore insertObject:[NSNumber numberWithInteger:starNum] atIndex:2];  
     return LevelScore;
     
