@@ -51,11 +51,11 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         NSString *strCapacity = nil;
         if (1 == [[GameMainScene sharedMainScene] roleType]) 
         {
-            strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Bird"];
+            strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
         }
         else if (2 == [[GameMainScene sharedMainScene] roleType]) 
         {
-            strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Pig"];
+            strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
         }
         int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
         if (temCapacity > 12 || temCapacity < 8) 

@@ -133,7 +133,7 @@
         [radioMenu alignItemsVerticallyWithPadding:10];
         
         //默认要写一次文件，设置为小鸟
-        NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+        NSString *strName = [NSString stringWithFormat:@"RoleType"];
         int roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
         if (roleType > 2 || roleType < 1) 
         {
@@ -162,12 +162,12 @@
 //角色选择回调函数，把角色类型写入文件
 - (void)button1Tapped:(id)sender 
 {
-    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+    NSString *strName = [NSString stringWithFormat:@"RoleType"];
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:strName];
 }
 - (void)button2Tapped:(id)sender 
 {
-    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+    NSString *strName = [NSString stringWithFormat:@"RoleType"];
     [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:strName];
 }
 //- (void)button3Tapped:(id)sender 
@@ -180,8 +180,8 @@
 	//start a new game
     //[self showDifficultySelection];
     //数据提交
-    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
-    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:strName]);
+    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+
     [[NSUserDefaults standardUserDefaults] synchronize];
 	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
@@ -197,14 +197,15 @@
 -(void) updateScoreAndShowLeaderBoard
 {
     //更新累计得分,算两个role的总分
-    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+    NSString *strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
-    strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
     temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
-    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    NSString *strTotalTime = [NSString stringWithFormat:@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime];  
     
+    strTotalScore = [NSString stringWithFormat:@"Totalscore"];
     //传入分数和时间累计数
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
     [gkHelper submitScore:temTotalTime category:strTotalTime];
@@ -216,14 +217,15 @@
 -(void) updateScoreAndShowAchievements
 {
     //更新累计得分,算两个role的总分
-    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+    NSString *strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
-    strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
     temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
-    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    NSString *strTotalTime = [NSString stringWithFormat:@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
     
+    strTotalScore = [NSString stringWithFormat:@"Totalscore"];
     //传入分数和时间累计数
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
     [gkHelper submitScore:temTotalTime category:strTotalTime];
@@ -337,17 +339,18 @@
 	}
     
     //更新累计得分,算两个role的总分
-    NSString *strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+    NSString *strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
-    strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+    strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
     temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
-    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    NSString *strTotalTime = [NSString stringWithFormat:@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
     
+    strTotalScore = [NSString stringWithFormat:@"Totalscore"];
     //传入分数和时间累计数
 	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-    [gkHelper submitScore:temTotalTime category:strTotalScore];
+    [gkHelper submitScore:temTotalTime category:strTotalTime];
     [gkHelper submitScore:temTotalScore category:strTotalScore];
 }
 

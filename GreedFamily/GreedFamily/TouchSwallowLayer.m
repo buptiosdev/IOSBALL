@@ -113,13 +113,13 @@
     NSString *strAcceleration = nil;
     if (1 == curRoleType) 
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
-        strAcceleration = [NSString stringWithFormat:@"%d",@"Acceleration_Bird"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strAcceleration = [NSString stringWithFormat:@"Acceleration_Bird"];
     }
     else
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
-        strAcceleration = [NSString stringWithFormat:@"%d",@"Acceleration_Pig"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+        strAcceleration = [NSString stringWithFormat:@"Acceleration_Pig"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
 
@@ -157,13 +157,13 @@
     NSString *strAcceleration = nil;
     if (1 == curRoleType) 
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
-        strAcceleration = [NSString stringWithFormat:@"%d",@"Acceleration_Bird"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strAcceleration = [NSString stringWithFormat:@"Acceleration_Bird"];
     }
     else
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
-        strAcceleration = [NSString stringWithFormat:@"%d",@"Acceleration_Pig"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+        strAcceleration = [NSString stringWithFormat:@"Acceleration_Pig"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
     
@@ -201,13 +201,13 @@
     NSString *strAcceleration = nil;
     if (1 == curRoleType) 
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
-        strAcceleration = [NSString stringWithFormat:@"%d",@"Acceleration_Bird"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strAcceleration = [NSString stringWithFormat:@"Acceleration_Bird"];
     }
     else
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
-        strAcceleration = [NSString stringWithFormat:@"%d",@"Acceleration_Pig"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+        strAcceleration = [NSString stringWithFormat:@"Acceleration_Pig"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
     
@@ -244,13 +244,13 @@
     NSString *strCapacity = nil;
     if (1 == curRoleType) 
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
-        strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Bird"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
     }
     else
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
-        strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Pig"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
     
@@ -287,13 +287,13 @@
     NSString *strCapacity = nil;
     if (1 == curRoleType) 
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
-        strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Bird"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
     }
     else
     {
-        strRolaTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
-        strCapacity = [NSString stringWithFormat:@"%d",@"Capacity_Pig"];
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
     

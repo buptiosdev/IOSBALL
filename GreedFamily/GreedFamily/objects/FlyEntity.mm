@@ -47,7 +47,7 @@
 //        CCAnimation *animation = [CCAnimation animationWithName:@"fly" delay:0.1f frames:animFrames];
         CCAnimation* animation = nil;
         
-        familyType = [[GameMainScene sharedMainScene] roleType];
+        
         //小鸟
         if (1 == familyType) 
         {
@@ -176,8 +176,8 @@
 	{
 		CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
-        //指定是猪还是鸟。0。小鸟 1。小猪
-        familyType = 1;
+        //指定是猪还是鸟。1。小鸟 2。小猪
+        familyType = [[GameMainScene sharedMainScene] roleType];
 
         directionBefore = 0;
         directionCurrent = 0;
@@ -224,27 +224,55 @@
                                        (screenSize.height ) * 0.5f);
 		
 		// Create a body definition, it's a static body (bumpers don't move)
-		b2BodyDef bodyDef;
-		bodyDef.position = [Helper toMeters:startPos];
-        bodyDef.type = b2_dynamicBody;
-        
-        //阻力
-        bodyDef.linearDamping = 0.4f;
-        bodyDef.angularDamping = 100.0f;
-        //不旋转
-        bodyDef.fixedRotation = true;
-        
-		b2CircleShape circleShape;
-		float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 15) / PTM_RATIO) * 0.5f;
-		circleShape.m_radius = radiusInMeters;
-		
-		// Define the dynamic body fixture.
-		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &circleShape;
-		fixtureDef.density = 0.7f;
-		fixtureDef.friction = 0.5f;
-		fixtureDef.restitution = 0.8f;
-		
+        //小鸟
+        b2BodyDef bodyDef;
+        b2FixtureDef fixtureDef;
+        if (1 == familyType)
+        {
+            bodyDef.position = [Helper toMeters:startPos];
+            bodyDef.type = b2_dynamicBody;
+            
+            //阻力
+            bodyDef.linearDamping = 0.5f;
+            bodyDef.angularDamping = 100.0f;
+            //不旋转
+            bodyDef.fixedRotation = true;
+            
+            b2CircleShape circleShape;
+            float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 10) / PTM_RATIO) * 0.5f;
+            circleShape.m_radius = radiusInMeters;
+            
+            // Define the dynamic body fixture.
+            fixtureDef.shape = &circleShape;
+            fixtureDef.density = 0.8f;
+            fixtureDef.friction = 0.5f;
+            fixtureDef.restitution = 0.7f;
+
+        }
+        else if (2 == familyType)
+        {
+            
+            bodyDef.position = [Helper toMeters:startPos];
+            bodyDef.type = b2_dynamicBody;
+            
+            //阻力
+            bodyDef.linearDamping = 0.4f;
+            bodyDef.angularDamping = 100.0f;
+            //不旋转
+            bodyDef.fixedRotation = true;
+            
+            b2CircleShape circleShape;
+            float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 15) / PTM_RATIO) * 0.5f;
+            circleShape.m_radius = radiusInMeters;
+            
+            // Define the dynamic body fixture.
+            fixtureDef.shape = &circleShape;
+            fixtureDef.density = 0.7f;
+            fixtureDef.friction = 0.5f;
+            fixtureDef.restitution = 0.8f;
+
+        }
+				
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef];
         self.sprite.position = startPos;
         initialHitPoints = 6;
@@ -388,12 +416,10 @@
     if (flySpeed < 100)
     {
         [self.flyAction setSpeed:1];
-        [self removeChildByTag:100 cleanup:YES];
     }  
     else if (flySpeed < 1000) 
     {
         [self.flyAction setSpeed:1.3];
-        [self removeChildByTag:100 cleanup:YES];
     }
     else if (flySpeed > 40000)
     {
@@ -409,12 +435,10 @@
     else if (flySpeed > 20000)
     {
         [self.flyAction setSpeed:2];
-        [self removeChildByTag:100 cleanup:YES];
     }
     else
     {
         [self.flyAction setSpeed:1.5];
-        [self removeChildByTag:100 cleanup:YES];
         
     }
     

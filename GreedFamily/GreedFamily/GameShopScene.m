@@ -33,16 +33,16 @@
 
 -(void)initRoleAndScore
 {
-    NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+    NSString *strName = [NSString stringWithFormat:@"RoleType"];
     roalType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
     NSString *strTotalScore = nil;
     if (1 == roalType) 
     {
-        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     }
     else 
     {
-        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
     }
     int  totalRoleScore = [[NSUserDefaults standardUserDefaults] integerForKey:strTotalScore]; 
     
@@ -232,11 +232,11 @@
     NSString *strTotalScore = nil;
     if (1 == roalType) 
     {
-        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     }
     else 
     {
-        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
     }
     int  totalRoleScore = [[NSUserDefaults standardUserDefaults] integerForKey:strTotalScore]; 
     

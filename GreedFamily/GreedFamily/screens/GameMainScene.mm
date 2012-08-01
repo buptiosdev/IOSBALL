@@ -72,16 +72,16 @@ static GameMainScene *instanceOfMainScene;
         //初始化一开始，给半单例赋值
         instanceOfMainScene = self;
         _sceneNum = order;
-        NSString *strName = [NSString stringWithFormat:@"%d",@"RoleType"];
+        NSString *strName = [NSString stringWithFormat:@"RoleType"];
         _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
         NSString *strName2 = nil;
         if (1 == _roleType) 
         {
-            strName2 = [NSString stringWithFormat:@"%d",@"Acceleration_Bird"];
+            strName2 = [NSString stringWithFormat:@"Acceleration_Bird"];
         }
         else if (2 == _roleType) 
         {
-            strName2 = [NSString stringWithFormat:@"%d",@"Acceleration_Pig"];
+            strName2 = [NSString stringWithFormat:@"Acceleration_Pig"];
         }
         _acceleration = [[NSUserDefaults standardUserDefaults]  integerForKey:strName2];
         if (_acceleration > 50 || _acceleration < 10) 

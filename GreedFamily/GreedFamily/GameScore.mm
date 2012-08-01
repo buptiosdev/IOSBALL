@@ -527,11 +527,11 @@ static GameScore  *instanceOfgameScore;
     NSString *strTotalScore = nil;
     if (1 == roalType) 
     {
-        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Bird"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     }
     else 
     {
-        strTotalScore = [NSString stringWithFormat:@"%d",@"Totalscore_Pig"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
     }
     int  totalRoleScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore]; 
 
@@ -540,7 +540,7 @@ static GameScore  *instanceOfgameScore;
     [[[MyGameScore sharedScore] standardUserDefaults] setInteger:totalRoleScore forKey:strTotalScore]; 
     
     //更新累计总时间
-    NSString *strTotalTime = [NSString stringWithFormat:@"%d",@"Playtime"];
+    NSString *strTotalTime = [NSString stringWithFormat:@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
     temTotalTime += mytimestamp;
     [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temTotalTime forKey:strTotalTime]; 
