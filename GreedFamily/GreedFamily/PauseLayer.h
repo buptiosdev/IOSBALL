@@ -13,6 +13,6 @@
 @interface PauseLayer : CCLayerColor {
 	
 }
-+(id)createPauseLayer:(ccColor4B)color;
--(id)initWithColorLayer:(ccColor4B)color;
++(id)createPauseLayer:(ccColor4B)color Level:(int)sceneNum;
+-(id)initWithColorLayer:(ccColor4B)color Level:(int)sceneNum;
 @end
