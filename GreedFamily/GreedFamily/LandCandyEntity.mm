@@ -58,6 +58,9 @@
         case 6:
             spriteName=@"pepper-.png";
             break;
+        case 7:
+            spriteName=@"cake.png";
+            break;
         default:
             break;
     }

@@ -53,6 +53,7 @@ struct SceneParam
     int pepperFrequency;
     int iceFrequency;
     int crystalFrequency;
+    int smokeFrequency;
     int invisibaleNum;
     int maxVisibaleNum;
     int order;

@@ -29,4 +29,5 @@
 -(void)bombed;
 -(void)eatAction;
 -(void)getCrystal;
+-(void)reverseDirection;
 @end

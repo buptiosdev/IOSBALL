@@ -8,6 +8,7 @@
 
 #import "GameScore.h"
 #import "GameMainScene.h"
+#import "GameKitHelper.h"
 /*
  @interface gameScore (PrivateMethods)
  -(void)updateLabelOfTotalScore:(ccTime)delta;
@@ -544,6 +545,37 @@ static GameScore  *instanceOfgameScore;
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime]; 
     temTotalTime += mytimestamp;
     [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temTotalTime forKey:strTotalTime]; 
+    
+    //完成 成就
+    if (temTotalTime > 100) 
+    {
+        NSString* playedTenSeconds = @"PlayedForTenSeconds";
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:playedTenSeconds];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:playedTenSeconds percentComplete:percent];
+        }
+
+    }
+    
+    NSString* tap1 = @"1_Tap";
+    NSString* tap20 = @"20_Taps";
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    GKAchievement* achievement = [gkHelper getAchievementByID:tap1];
+    if (achievement.completed == NO)
+    {
+        float percent = achievement.percentComplete + 100;
+        [gkHelper reportAchievementWithID:tap1 percentComplete:percent];
+    }
+    GKAchievement* achievement20 = [gkHelper getAchievementByID:tap20];
+    if (achievement20.completed == NO)
+    {
+        float percent = achievement20.percentComplete + 5;
+        [gkHelper reportAchievementWithID:tap1 percentComplete:percent];
+    }
+    //完成成就 end
     
     
     if (my_nowlevelscore > temphighestscore)

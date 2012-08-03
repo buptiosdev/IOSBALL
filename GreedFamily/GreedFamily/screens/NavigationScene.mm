@@ -261,7 +261,7 @@
     [gkHelper authenticateLocalPlayer];
     
     //第一次调用需要初始化后在里边调用
-    if (gkHelper.callCount != 1) 
+    if (gkHelper.callCount != 0) 
     {
         [self updateScoreAndShowAchievements];
     }

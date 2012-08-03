@@ -87,6 +87,18 @@ static LandAnimal *instanceOfLandAnimal;
         directionCurrent = 1;
         directionBefore = -1;
         speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
+        if (speed > 0.6) 
+        {
+            //加入加速特效
+            CCParticleSystem* system;
+            system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"landspeedfast.plist"];
+            system.positionType = kCCPositionTypeFree;
+            system.autoRemoveOnFinish = YES;
+            system.position = self.sprite.position;
+            [self addChild:system z:1 tag:SpeedfastType];
+            isSpeedfast = YES;
+
+        }
         waitinterval = 0;
     }
     return self;
@@ -101,9 +113,19 @@ static LandAnimal *instanceOfLandAnimal;
 
 -(int)checkforcollsion
 {
-    //int direction=0;
+    int direction=0;
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
-    return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:LandAnimalTag];
+    
+    direction = [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:LandAnimalTag];
+    
+    if (0 != direction) {
+        return direction;
+    }
+    //没有吃到食物，方向没有改变
+    else
+    {
+        return directionCurrent;
+    }
     //return direction;
 }
 
@@ -257,9 +279,24 @@ static LandAnimal *instanceOfLandAnimal;
         node.position = pos;
         
     }
+    if (isSpeedfast) 
+    {
+        CCNode* node = [self getChildByTag:SpeedfastType];
+        node.position = pos;
+    }
 
     return;
 }
-
+-(void)reverseDirection
+{
+    directionBefore = directionCurrent;
+    directionCurrent = -directionBefore;
+}
+-(void)setCurDirection
+{
+    LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+    
+    directionCurrent = [instanceOfLandCandyCache getCurDirection:self.sprite];
+}
 
 @end

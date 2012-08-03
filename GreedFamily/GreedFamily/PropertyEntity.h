@@ -17,6 +17,7 @@ typedef enum
     PropTypeBlackBomb,
     PropTypeIce,
     PropTypePepper,
+    PropSmoke,
 	PropType_MAX,
 } PropType;
 

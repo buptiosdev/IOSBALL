@@ -84,7 +84,8 @@
     propNum[1] = [GameMainScene sharedMainScene].mainscenParam.bombFrequency;
     propNum[2] = [GameMainScene sharedMainScene].mainscenParam.iceFrequency;
     propNum[3] = [GameMainScene sharedMainScene].mainscenParam.pepperFrequency;
-    
+    propNum[4] = [GameMainScene sharedMainScene].mainscenParam.smokeFrequency;
+    //propNum[4] = 2;
     [self createPropTimes];
 //    bombNum = 0;
 //    crystalNum = 0;
@@ -213,11 +214,11 @@
     
 
     //随机出球种类，虽多随3次
-    do {
-        propType = random() % 4;
+    do 
+    {
+        propType = random() % 5;
         i++;
-    }
-    while (propCount[propType] >= propNum[propType] && i < 10);
+    }while (propCount[propType] >= propNum[propType] && i < 10);
     
     if (propCount[propType] >= propNum[propType])
     {

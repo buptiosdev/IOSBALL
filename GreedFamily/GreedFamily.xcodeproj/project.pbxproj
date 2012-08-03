@@ -227,6 +227,10 @@
 		7081959415B8F00100ABB13E /* land_crystal.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081958F15B8F00100ABB13E /* land_crystal.plist */; };
 		7081959515B8F00100ABB13E /* land_ice.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081959015B8F00100ABB13E /* land_ice.plist */; };
 		7081959C15B90C8500ABB13E /* land_poison.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081959B15B90C8500ABB13E /* land_poison.plist */; };
+		708F3B8915CAD9AF000DCF04 /* landspeedfast.plist in Resources */ = {isa = PBXBuildFile; fileRef = 708F3B8515CAD9AF000DCF04 /* landspeedfast.plist */; };
+		708F3B8A15CAD9AF000DCF04 /* smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = 708F3B8615CAD9AF000DCF04 /* smoke.plist */; };
+		708F3B8B15CAD9AF000DCF04 /* smoke2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 708F3B8715CAD9AF000DCF04 /* smoke2.plist */; };
+		708F3B8C15CAD9AF000DCF04 /* sparkle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 708F3B8815CAD9AF000DCF04 /* sparkle.plist */; };
 		70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C015A9D670007D35B5 /* Parse.framework */; };
 		70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C415A9D69C007D35B5 /* Security.framework */; };
 		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
@@ -660,6 +664,10 @@
 		7081958F15B8F00100ABB13E /* land_crystal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_crystal.plist; path = Resources/land_crystal.plist; sourceTree = "<group>"; };
 		7081959015B8F00100ABB13E /* land_ice.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_ice.plist; path = Resources/land_ice.plist; sourceTree = "<group>"; };
 		7081959B15B90C8500ABB13E /* land_poison.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_poison.plist; path = Resources/land_poison.plist; sourceTree = "<group>"; };
+		708F3B8515CAD9AF000DCF04 /* landspeedfast.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = landspeedfast.plist; path = Resources/landspeedfast.plist; sourceTree = "<group>"; };
+		708F3B8615CAD9AF000DCF04 /* smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = smoke.plist; path = Resources/smoke.plist; sourceTree = "<group>"; };
+		708F3B8715CAD9AF000DCF04 /* smoke2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = smoke2.plist; path = Resources/smoke2.plist; sourceTree = "<group>"; };
+		708F3B8815CAD9AF000DCF04 /* sparkle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sparkle.plist; path = Resources/sparkle.plist; sourceTree = "<group>"; };
 		70C7C3C015A9D670007D35B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		70C7C3C415A9D69C007D35B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -767,6 +775,10 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				708F3B8515CAD9AF000DCF04 /* landspeedfast.plist */,
+				708F3B8615CAD9AF000DCF04 /* smoke.plist */,
+				708F3B8715CAD9AF000DCF04 /* smoke2.plist */,
+				708F3B8815CAD9AF000DCF04 /* sparkle.plist */,
 				701AD0A415C270F40017C064 /* level_default_default.plist */,
 				701AD0A515C270F40017C064 /* level_default_default.png */,
 				70C9D13915BF9BF2001977E5 /* shootingstars.plist */,
@@ -1470,6 +1482,10 @@
 				70C9D13A15BF9BF4001977E5 /* shootingstars.plist in Resources */,
 				701AD0A615C270F40017C064 /* level_default_default.plist in Resources */,
 				701AD0A715C270F40017C064 /* level_default_default.png in Resources */,
+				708F3B8915CAD9AF000DCF04 /* landspeedfast.plist in Resources */,
+				708F3B8A15CAD9AF000DCF04 /* smoke.plist in Resources */,
+				708F3B8B15CAD9AF000DCF04 /* smoke2.plist in Resources */,
+				708F3B8C15CAD9AF000DCF04 /* sparkle.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

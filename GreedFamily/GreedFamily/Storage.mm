@@ -290,11 +290,18 @@
         CCLOG(@"cool!!!!!!!\n");
         [[LandAnimal sharedLandAnimal] getCrystal];
         Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
-        [bag addCrystal];
-        
-        //原来消球调用的函数
-        //[self combinTheSameType];
-        //[self combinTheSameTypeNew];        
+        [bag addCrystal];       
+    }
+    else if (7 == foodType)
+    {
+        //烟雾特效
+        CCParticleSystem* system;
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"smoke2.plist"];
+        system.positionType = kCCPositionTypeGrouped;
+        system.autoRemoveOnFinish = YES;
+        //system.position = self.sprite.position;
+        [self addChild:system];
+        [[LandAnimal sharedLandAnimal] reverseDirection];
     }
 }
 
@@ -351,11 +358,17 @@
             
         }
         canCombine = YES;
-        id ac0 = [CCShow action];
-        id ac1 = [CCBlink actionWithDuration:1 blinks:2]; 
-        id ac2 = [CCToggleVisibility action]; 
-        [self.sprite
-         runAction:[CCSequence actions:ac0, ac1, ac2, nil]]; 
+//        id ac0 = [CCShow action];
+//        id ac1 = [CCBlink actionWithDuration:1 blinks:2]; 
+//        id ac2 = [CCToggleVisibility action]; 
+//        [self.sprite
+//         runAction:[CCSequence actions:ac0, ac1, ac2, nil]]; 
+        CCParticleSystem* system;
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"sparkle.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        system.position = self.sprite.position;
+        [self addChild:system];
         
     }
     else

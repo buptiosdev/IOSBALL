@@ -259,4 +259,10 @@ static Competitor *instanceOfCompetitor;
     }
     return;
 }
+
+-(void)reverseDirection
+{
+    directionBefore = directionCurrent;
+    directionCurrent = -directionBefore;
+}
 @end

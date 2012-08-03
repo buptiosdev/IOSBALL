@@ -24,4 +24,5 @@
 -(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype;
 -(void) CreateLandCandy:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity;
 -(void)addToLandCandies:(LandCandyEntity *)landCandy;
+-(int)getCurDirection:(CCSprite *)landanimal;
 @end

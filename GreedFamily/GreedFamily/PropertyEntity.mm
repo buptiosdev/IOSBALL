@@ -248,7 +248,22 @@ static CCArray* spawnFrequency;
     
 }
 
-
+-(void)initSmoke
+{
+    ballMove = @selector(moveBlackBomb:forceOut:);
+    propertyParamDef.startPos = CGPointMake(-100, -200);/*random?*/
+    propertyParamDef.isDynamicBody = YES;
+    propertyParamDef.ballType = PropSmoke;
+    propertyParamDef.spriteFrameName = @"cake.png";
+    propertyParamDef.density = 0.3;
+    propertyParamDef.restitution = 0.7;
+    propertyParamDef.linearDamping = 0.2;
+    propertyParamDef.angularDamping = 0.1;
+    propertyParamDef.friction = 0.3;
+    propertyParamDef.radius = 0.5;
+    propertyParamDef.initialHitPoints = 1;
+    
+}
 
 -(void)initPropertyMove:(NSInteger)propertyType
 {
@@ -265,6 +280,10 @@ static CCArray* spawnFrequency;
         case PropTypePepper:
             [self initPepper];
             break;
+        case PropSmoke:
+            [self initSmoke];
+            break;
+
         default:
             break;
     }

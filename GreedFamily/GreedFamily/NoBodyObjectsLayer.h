@@ -23,7 +23,8 @@ typedef enum
 	IceType = 50,   
     PepperType,              
 	BombType,            
-    CrystalType
+    CrystalType,
+    SpeedfastType
     
 } ParticleType;
 

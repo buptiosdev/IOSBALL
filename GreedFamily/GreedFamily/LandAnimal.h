@@ -17,6 +17,7 @@
     BOOL isIce;
     BOOL isPepper;
     BOOL isCrystal;
+    BOOL isSpeedfast;
     float speed;
     int waitinterval;
     int directionBefore;
@@ -33,4 +34,6 @@
 -(void)bombed;
 -(void)eatAction;
 -(void)getCrystal;
+-(void)reverseDirection;
+-(void)setCurDirection;
 @end

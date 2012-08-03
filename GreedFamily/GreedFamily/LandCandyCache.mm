@@ -98,6 +98,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     [landcandies insertObject:landCandy atIndex:_landnum];
     _landnum++;
     _airnum--;
+    [[LandAnimal sharedLandAnimal] setCurDirection];
     CCLOG(@"landnum++ =%d\n",_landnum);
 }
 
@@ -123,6 +124,10 @@ static LandCandyCache *instanceOfLandCandyCache;
     {
         [[Competitor sharedCompetitor] increaseSpeed];
     }
+    else if (foodType == 7)
+    {
+        [[Competitor sharedCompetitor] reverseDirection];
+    }
     [[Competitor sharedCompetitor]eatAction];
 }
 
@@ -133,6 +138,39 @@ static LandCandyCache *instanceOfLandCandyCache;
     [[LandAnimal sharedLandAnimal]eatAction];
 }
 
+-(int)getCurDirection:(CCSprite *)landanimal
+{
+    int direction = 0;
+    float distance=1000;
+    //float landanimalsize = landanimal.contentSize.width * landanimal.scaleX;
+    for(int i=0;i<_landnum;i++)
+    {
+        LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
+        CCSprite * candy=landcandy.sprite;
+        if(candy.visible==NO)
+        {
+            continue;
+        }
+        
+        float actualdistance=ccpDistance(landanimal.position, candy.position);
+        
+        if(actualdistance<distance)
+        {
+            distance=actualdistance;
+            if(landanimal.position.x-candy.position.x>0)
+            {
+                direction=-1;
+            }
+            else
+            {
+                direction=1;
+            }
+            
+        }
+    }
+    return direction;
+}
+
 -(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype
 {
     float landanimalsize = landanimal.contentSize.width * landanimal.scaleX;
@@ -140,7 +178,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     //float collisiondistance=playersize*0.5f+spidersize*0.4f;
     //int num=[landcandies count];
     int direction = 0;
-    float distance=1000;
+//    float distance=1000;
     for(int i=0;i<_landnum;i++)
     {
         LandCandyEntity * landcandy=[landcandies objectAtIndex:i];
@@ -165,7 +203,12 @@ static LandCandyCache *instanceOfLandCandyCache;
             //call the storage interface
             if(landtype == LandAnimalTag)
             {
+                direction = [self getCurDirection:landanimal];
                 [self landAnimalEat:landcandy.ballType];
+                //烟雾球改变现在方向
+                if (7 == landcandy.ballType) {
+                    direction = -direction;
+                }
             }
             else
             {
@@ -173,20 +216,24 @@ static LandCandyCache *instanceOfLandCandyCache;
                 
             }
             
-        }else{
-            if(actualdistance<distance){
-                distance=actualdistance;
-                if(landanimal.position.x-candy.position.x>0){
-                    direction=-1;
-                }else{
-                    direction=1;
-                }
-            }
         }
+//        else
+//        {
+//            if(actualdistance<distance){
+//                distance=actualdistance;
+//                if(landanimal.position.x-candy.position.x>0){
+//                    direction=-1;
+//                }else{
+//                    direction=1;
+//                }
+//            }
+//        }
 
     }
     return direction;
 }
+
+
 
 -(id)init
 {
