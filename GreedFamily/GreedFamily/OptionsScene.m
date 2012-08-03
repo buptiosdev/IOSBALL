@@ -30,18 +30,18 @@
 //		[background setPosition:ccp(160,240)];
 //		[self addChild:background];
 		
-//		CCBitmapFontAtlas * difficultyLabel = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"DIFFICULTY" fntFile:@"hud_font.fnt"];
+//		CCBitmapFontAtlas * difficultyLabel = [CCBitmapFontAtlas labelWithString:@"DIFFICULTY" fntFile:@"hud_font.fnt"];
 //		[difficultyLabel setColor:ccRED];
 //		[self addChild:difficultyLabel];
 //		[difficultyLabel setPosition:ccp(80,350)];
 		
-		//CCBitmapFontAtlas * musicLabel = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"MUSIC" fntFile:@"hud_font.fnt"];
+		//CCBitmapFontAtlas * musicLabel = [CCBitmapFontAtlas labelWithString:@"MUSIC" fntFile:@"hud_font.fnt"];
         CCLabelTTF *musicLabel=[CCLabelTTF labelWithString:@"MUSIC" fontName:@"Marker Felt" fontSize:30];
 		[musicLabel setColor:ccRED];
 		[self addChild:musicLabel];
 		[musicLabel setPosition:ccp((screenSize.width)/3,(screenSize.height)*3/4)];
 		
-		//CCBitmapFontAtlas * soundLabel = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"SOUND" fntFile:@"hud_font.fnt"];
+		//CCBitmapFontAtlas * soundLabel = [CCBitmapFontAtlas labelWithString:@"SOUND" fntFile:@"hud_font.fnt"];
         CCLabelTTF *soundLabel=[CCLabelTTF labelWithString:@"SOUND" fontName:@"Marker Felt" fontSize:30];
 		[soundLabel setColor:ccRED];
 		[self addChild:soundLabel];

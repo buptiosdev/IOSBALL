@@ -75,7 +75,7 @@
     [batch addChild:roleSprite z:-1 tag:2]; 
     
     //得分
-    CCLabelBMFont*  getTotalScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    CCLabelBMFont*  getTotalScore = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     [getTotalScore setString:[NSString stringWithFormat:@"x%i", totalRoleScore]];
     getTotalScore.position = CGPointMake(20, screenSize.height - 200);
     getTotalScore.anchorPoint = CGPointMake(0.5f, 1.0f);

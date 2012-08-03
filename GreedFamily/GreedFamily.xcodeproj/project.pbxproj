@@ -597,7 +597,7 @@
 		701AD0A415C270F40017C064 /* level_default_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_default_default.plist; path = Resources/level_default_default.plist; sourceTree = "<group>"; };
 		701AD0A515C270F40017C064 /* level_default_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level_default_default.png; path = Resources/level_default_default.png; sourceTree = "<group>"; };
 		701AD0D815C41F4C0017C064 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
-		701AD0D915C41F4C0017C064 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
+		701AD0D915C41F4C0017C064 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GameKitHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		701AD0E815C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GKMatchmakerViewController-LandscapeOnly.h"; sourceTree = "<group>"; };
 		701AD0E915C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GKMatchmakerViewController-LandscapeOnly.m"; sourceTree = "<group>"; };
 		701B2EA7155831270035335F /* bitmapfont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapfont.fnt; path = Resources/bitmapfont.fnt; sourceTree = "<group>"; };
@@ -675,7 +675,7 @@
 		70C7C3FB15AA7965007D35B5 /* GameCenterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterScene.h; sourceTree = "<group>"; };
 		70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterScene.m; sourceTree = "<group>"; };
 		70C7C40215AA7FF2007D35B5 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCHelper.h; path = tools/GCHelper.h; sourceTree = "<group>"; };
-		70C7C40315AA7FF2007D35B5 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCHelper.m; path = tools/GCHelper.m; sourceTree = "<group>"; };
+		70C7C40315AA7FF2007D35B5 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GCHelper.m; path = tools/GCHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		70C7C40515AA86A2007D35B5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		70C9D12D15BEE4E4001977E5 /* bluescore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bluescore.plist; path = Resources/bluescore.plist; sourceTree = "<group>"; };
 		70C9D12E15BEE4E7001977E5 /* colorscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = colorscore.plist; path = Resources/colorscore.plist; sourceTree = "<group>"; };

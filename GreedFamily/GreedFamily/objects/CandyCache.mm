@@ -124,7 +124,7 @@
     [batch addChild:remainBallScore];
 
     //剩余球数
-    remainBallLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    remainBallLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     [remainBallLabel setString:[NSString stringWithFormat:@"x%i", [GameMainScene sharedMainScene].mainscenParam.candyCount]];
     remainBallLabel.position = CGPointMake(250, screenSize.height - 5);
     remainBallLabel.anchorPoint = CGPointMake(0.5f, 1.0f);

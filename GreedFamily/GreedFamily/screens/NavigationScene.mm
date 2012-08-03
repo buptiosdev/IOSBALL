@@ -70,7 +70,7 @@
 		[background setPosition:ccp(size.width / 2, size.height/2)];
 		[self addChild:background];*/
 		
-		//CCBitmapFontAtlas * newgameLabel = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"NEW GAME" fntFile:@"hud_font.fnt"];
+		//CCBitmapFontAtlas * newgameLabel = [CCBitmapFontAtlas labelWithString:@"NEW GAME" fntFile:@"hud_font.fnt"];
         CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *optionsLabel=[CCLabelTTF labelWithString:@"OPTIONS" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"Multi Play" fontName:@"Marker Felt" fontSize:30];

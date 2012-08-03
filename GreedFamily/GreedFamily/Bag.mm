@@ -115,14 +115,14 @@
         [self addChild:menu z: -2];
         
         
-        pepperLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        pepperLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         pepperLabel.position = CGPointMake(360, 15);
         pepperLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
         pepperLabel.scale = 0.2;
         [self addChild:pepperLabel z:-1];
         
         
-        crystalLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        crystalLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         crystalLabel.position = CGPointMake(420, 13);
         crystalLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
         crystalLabel.scale = 0.2;

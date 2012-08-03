@@ -70,20 +70,20 @@
     [batch addChild:cheeseScore];
     
     // Add the score label with z value of -1 so it's drawn below everything else
-    appleScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    appleScoreLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     appleScoreLabel.position = CGPointMake(320, screenSize.height - 5);
     appleScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
     appleScoreLabel.scale = 0.4;
     [self addChild:appleScoreLabel z:-2];
     
-    candyScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    candyScoreLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     
     candyScoreLabel.position = CGPointMake(380, screenSize.height - 5);
     candyScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
     candyScoreLabel.scale = 0.4;
     [self addChild:candyScoreLabel z:-2];
     
-    cheeseScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    cheeseScoreLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     cheeseScoreLabel.position = CGPointMake(435, screenSize.height - 5);
     cheeseScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
     cheeseScoreLabel.scale = 0.4;

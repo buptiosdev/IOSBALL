@@ -156,7 +156,7 @@ static GameScore  *instanceOfgameScore;
         //初始化得分
         my_nowlevelscore = 0;
         
-        totalScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         totalScoreLabel.position = CGPointMake(73, screenSize.height - 5);
         totalScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
         totalScoreLabel.scale = 0.3;
@@ -164,7 +164,7 @@ static GameScore  *instanceOfgameScore;
         
         int temp_hightestscore;
         temp_hightestscore = [self getGameHighestScore:gamelevel];
-        hightestTotalScoreLabel = [CCLabelBMFont bitmapFontAtlasWithString:@"0" fntFile:@"bitmapfont.fnt" ];
+        hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt" ];
         [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_hightestscore]];
         hightestTotalScoreLabel.position = CGPointMake(73,screenSize.height - 15);
         hightestTotalScoreLabel.anchorPoint = CGPointMake(0.5, 2.0f);
@@ -286,7 +286,7 @@ static GameScore  *instanceOfgameScore;
     }
     my_nowlevelscore += (continuousflag-1)*2;
     
-    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     [getContinuousAward setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
     
     getContinuousAward.position = CGPointMake(random()%20 + 10, 80);
@@ -376,7 +376,7 @@ static GameScore  *instanceOfgameScore;
     my_nowlevelscore += tempnowscore;
     //接特效
     //加分特效
-    CCLabelBMFont*  getBaseScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     [getBaseScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
     
     getBaseScore.position = CGPointMake(random()%20 + 10, 80);
@@ -429,7 +429,7 @@ static GameScore  *instanceOfgameScore;
     //接特效
     //加分特效
 
-    CCLabelBMFont*  getAwardScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    CCLabelBMFont*  getAwardScore = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     [getAwardScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
     getAwardScore.position = CGPointMake(random()%20 + 20, 80);
     getAwardScore.anchorPoint = CGPointMake(0.5f, 1.0f);
@@ -689,7 +689,7 @@ static GameScore  *instanceOfgameScore;
 //    [self unschedule:@selector(removeBaseScore:)];   
 //    //消除特效
 //    [self removeChildByTag:BaseScoreTag cleanup:YES];
-//    CCLabelBMFont*  getBaseScore = [CCLabelBMFont bitmapFontAtlasWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+//    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
 //    [getBaseScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
 //    getBaseScore.position = CGPointMake(50, 80);
 //    getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
