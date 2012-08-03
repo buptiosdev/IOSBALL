@@ -103,6 +103,12 @@
     [self.parent removeChild:self cleanup:YES];
 }
 
+-(void)updateScore
+{
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.parent updateScore];
+}
+
 -(void)yesAddSpeedOnce:(id)sender
 {
     //使用时处以10
@@ -142,8 +148,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
     //提交数据
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.parent updateScore];
+    [self updateScore];
     //购买成功音效
     [self.parent removeChild:self cleanup:YES];
 }
@@ -185,8 +190,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
     //提交数据
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.parent updateScore];
+    [self updateScore];
     //购买成功音效
     [self.parent removeChild:self cleanup:YES];
 }
@@ -229,8 +233,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
     //提交数据
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.parent updateScore];
+    [self updateScore];
     //购买成功音效
     [self.parent removeChild:self cleanup:YES];
 }
@@ -272,8 +275,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
     }
     //提交数据
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.parent updateScore];
+    [self updateScore];
     //购买成功音效
     [self.parent removeChild:self cleanup:YES];
 }
@@ -315,8 +317,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
     }
     //提交数据
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.parent updateScore];
+    [self updateScore];
     //购买成功音效
     [self.parent removeChild:self cleanup:YES];
 }

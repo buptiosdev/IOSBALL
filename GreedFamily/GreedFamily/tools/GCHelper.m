@@ -259,15 +259,16 @@ static GCHelper *sharedHelper = nil;
 
 
 //The match received data sent from the player.
-//-(void)match:(GKMatch *)theMatch didReceiveData:(NSData *)data 
-//       fromPlayer:(NSString *)playerID 
-//{
-//    if (match != theMatch) return;
-//    
-//    [delegate match:theMatch didReceiveData:data fromPlayer:playerID];
-//    
-//    return;
-//}
+//不去掉 为了消除警告
+-(void)match:(GKMatch *)theMatch didReceiveData:(NSData *)data 
+       fromPlayer:(NSString *)playerID 
+{
+    if (match != theMatch) return;
+    
+    //[delegate match:theMatch didReceiveData:data fromPlayer:playerID];
+    
+    return;
+}
 
 
 // The player state changed (eg. connected or disconnected)
