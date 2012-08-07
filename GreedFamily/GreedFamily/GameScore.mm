@@ -505,7 +505,7 @@ static GameScore  *instanceOfgameScore;
     int rewardTimeScore;
     
     int timelimit = [GameMainScene sharedMainScene].mainscenParam.candyCount 
-                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency + RewardTimeScore  * ((level - 1)/5 + 1);
+                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency + RewardTimeScore  * ((level - 1)/10 + 1);
     
     if (mytimestamp <= timelimit) 
     {

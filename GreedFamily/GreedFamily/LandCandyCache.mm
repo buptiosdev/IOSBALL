@@ -213,6 +213,8 @@ static LandCandyCache *instanceOfLandCandyCache;
             else
             {
                 [self competitorEat:landcandy.ballType];
+                //同样要设置一下动物的方向
+                [[LandAnimal sharedLandAnimal] setCurDirection];
                 
             }
             

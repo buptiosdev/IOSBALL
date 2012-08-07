@@ -15,8 +15,10 @@
     int pepperNum;
     int crystalNum;
     CCProgressTimer *timeTmp;
-    CCLabelBMFont* pepperLabel;
-    CCLabelBMFont* crystalLabel;
+    CCLabelBMFont *pepperLabel;
+    CCLabelBMFont *crystalLabel;
+    CCMenu *crystalMenu;
+    CCMenu *pepperMenu;
 }
 @property (readonly, nonatomic) CCSprite* sprite;
 

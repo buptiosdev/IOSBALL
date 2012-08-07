@@ -98,4 +98,10 @@
     return foodSpriteName;
 }
 
+-(void) dealloc
+{
+
+	[super dealloc];
+}
+
 @end

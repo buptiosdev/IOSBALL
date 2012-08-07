@@ -67,7 +67,7 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         
         //先不考虑
         Bag *bag = [Bag node];
-        [self addChild:bag z:1 tag:BagTag];
+        [self addChild:bag z:-3 tag:BagTag];
         
     }
     return self;

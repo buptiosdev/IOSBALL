@@ -295,8 +295,13 @@ static LandAnimal *instanceOfLandAnimal;
 -(void)setCurDirection
 {
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
+    int dirction = 0;
     
-    directionCurrent = [instanceOfLandCandyCache getCurDirection:self.sprite];
+    dirction = [instanceOfLandCandyCache getCurDirection:self.sprite];
+    if (0 != dirction)
+    {
+        directionCurrent = dirction;
+    }
 }
 
 @end

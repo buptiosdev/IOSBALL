@@ -198,7 +198,8 @@
         {
             if ([[foodArray objectAtIndex:right_index] foodType] == [[foodArray objectAtIndex:left_index] foodType]) 
             {
-                nowFood = [foodArray objectAtIndex:right_index];                    
+                nowFood = [foodArray objectAtIndex:right_index]; 
+                //Food *delFood = [foodArray objectAtIndex:left_index]; 
                 foodInStorage[nowFood.foodType]++;
                 //[[foodArray objectAtIndex:left_index] mySprite].visible = NO;
                 id actionScale = [CCScaleBy actionWithDuration:2]; 
@@ -211,7 +212,7 @@
                 system.autoRemoveOnFinish = YES;
                 system.position = [[foodArray objectAtIndex:left_index] mySprite].position;
                 [self addChild:system];
-                
+                //[foodArray removeObjectAtIndex:left_index]; 
                 currentCount--; 
                 temp++;
                 [self moveFood];
