@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "MyGameScore.h"
 
-#define  RewardTimeScore 20
+#define  RewardTimeScore 15
 
 /*
  struct  struct_gameScore{

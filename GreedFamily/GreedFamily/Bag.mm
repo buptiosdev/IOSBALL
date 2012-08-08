@@ -14,7 +14,7 @@
 #import "LandAnimal.h"
 //#import "Storage.h"
 #import "TouchCatchLayer.h"
-
+#import "GameMainScene.h"
 @implementation Bag
 @synthesize sprite = _sprite;
 //-(void) registerWithTouchDispatcher
@@ -93,7 +93,8 @@
         pepperLabel.scale = 0.4;
         [pepperPropMenu addChild:pepperLabel z:1];
         pepperMenu = [CCMenu menuWithItems:pepperPropMenu,nil];
-        pepperMenu.position = CGPointMake(360, 15);
+        //change size by diff version
+        pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPos;
         pepperMenu.visible = NO;
         [self addChild:pepperMenu z:-2];
         
@@ -107,12 +108,12 @@
         crystalPropMenu.scaleY=(25)/[crystalProp1 contentSize].height;
 
         crystalLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
-        //crystalPropMenu.position = CGPointMake(420, 20);
         crystalLabel.anchorPoint = CGPointMake(-3, 0.5);
         crystalLabel.scale = 0.4;
         [crystalPropMenu addChild:crystalLabel z:1];
         crystalMenu = [CCMenu menuWithItems:crystalPropMenu,nil];
-        crystalMenu.position = CGPointMake(420, 15);
+        //change size by diff version
+        crystalMenu.position = [GameMainScene sharedMainScene].crystalMenuPos;
         crystalMenu.visible = NO;
         [self addChild:crystalMenu z:-2];
 //        timeTmp.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
@@ -140,10 +141,10 @@
     if (0 == pepperNum) 
     {
         //出现动画
-        
-        pepperMenu.position = CGPointMake(500, 15);
+        //change size by diff version
+        pepperMenu.position = [GameMainScene sharedMainScene].initMenuPos;
+        CGPoint moveToPosition = [GameMainScene sharedMainScene].pepperMenuPos;
         pepperMenu.visible = YES;
-        CGPoint moveToPosition = CGPointMake(360, 15);
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:2];
         [pepperMenu runAction:ease];
@@ -158,9 +159,10 @@
     if (0 == crystalNum) 
     {
         //出现动画
-        crystalMenu.position = CGPointMake(500, 15);
+        //change size by diff version
+        crystalMenu.position = [GameMainScene sharedMainScene].initMenuPos;
+        CGPoint moveToPosition = [GameMainScene sharedMainScene].crystalMenuPos;
         crystalMenu.visible = YES;
-        CGPoint moveToPosition = CGPointMake(420, 15);
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:2];
         [crystalMenu runAction:ease];

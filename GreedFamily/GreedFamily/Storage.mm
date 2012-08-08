@@ -91,9 +91,7 @@
     
 
     
-    counter = 0;
-    nowScoreTime = 0;
-    lastScoreTime = 0;
+
     
 }
 
@@ -108,11 +106,14 @@
         _sprite = [CCSprite spriteWithSpriteFrameName:@"storage.png"];
         //先不可见，后续再去掉或替换图片
         _sprite.visible = NO;
-        CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        _sprite.position = CGPointMake(screenSize.width / 4, 20);
+        //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        _sprite.position = [GameMainScene sharedMainScene].storagePos;
         [batch addChild:_sprite];
         
-        [self initScores];
+        counter = 0;
+        nowScoreTime = 0;
+        lastScoreTime = 0;
+        //[self initScores];
         
         foodArray = [[CCArray alloc] initWithCapacity:storageCapacity];
         combinArray = (int *)malloc(storageCapacity*sizeof(int));

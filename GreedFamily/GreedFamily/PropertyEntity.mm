@@ -8,7 +8,7 @@
 
 #import "PropertyEntity.h"
 #import "GameBackgroundLayer.h"
-
+#import "GameMainScene.h"
 
 @interface PropertyEntity (PrivateMethods)
 -(id)initProperty:(NSInteger)propertyType World:(b2World *)world;
@@ -183,7 +183,8 @@ static CCArray* spawnFrequency;
 -(void)initCrystalBall
 {
     ballMove = @selector(moveCrystalBall:forceOut:);
-    propertyParamDef.startPos = CGPointMake(-200, -200);/*random?*/
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeCrystalBall;
     propertyParamDef.spriteFrameName = @"crystallball.png";
@@ -200,7 +201,8 @@ static CCArray* spawnFrequency;
 -(void)initIce
 {
     ballMove = @selector(moveWhiteBomb:forceOut:);
-    propertyParamDef.startPos = CGPointMake(-200, -100);/*random?*/
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeIce;
     propertyParamDef.spriteFrameName = @"ice+.png";
@@ -217,7 +219,8 @@ static CCArray* spawnFrequency;
 -(void)initPepper
 {
     ballMove = @selector(moveWhiteBomb:forceOut:);
-    propertyParamDef.startPos = CGPointMake(-200, -100);/*random?*/
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypePepper;
     propertyParamDef.spriteFrameName = @"pepper+.png";
@@ -234,7 +237,8 @@ static CCArray* spawnFrequency;
 -(void)initBlackBomb
 {
     ballMove = @selector(moveBlackBomb:forceOut:);
-    propertyParamDef.startPos = CGPointMake(-100, -200);/*random?*/
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeBlackBomb;
     propertyParamDef.spriteFrameName = @"blackbomb.png";
@@ -251,7 +255,8 @@ static CCArray* spawnFrequency;
 -(void)initSmoke
 {
     ballMove = @selector(moveBlackBomb:forceOut:);
-    propertyParamDef.startPos = CGPointMake(-100, -200);/*random?*/
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropSmoke;
     propertyParamDef.spriteFrameName = @"cake.png";
@@ -351,7 +356,8 @@ static CCArray* spawnFrequency;
     switch (enterPosition) 
     {
         case PositionOne:
-            appearPosition = CGPointMake(30, 200);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear1stPos;
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
@@ -361,7 +367,8 @@ static CCArray* spawnFrequency;
             break;
             
         case PositionTwo:
-            appearPosition = CGPointMake(120, 320);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear2ndPos;
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
@@ -371,7 +378,8 @@ static CCArray* spawnFrequency;
             break;
             
         case PositionThree:
-            appearPosition = CGPointMake(220, 320);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear3rdPos;
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
@@ -381,7 +389,8 @@ static CCArray* spawnFrequency;
             break;
             
         case PositionFour:
-            appearPosition = CGPointMake(320, 320);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear4thPos;
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
@@ -391,7 +400,8 @@ static CCArray* spawnFrequency;
             break;
             
         case PositionFive:
-            appearPosition = CGPointMake(460, 200);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear5thPos;
             self.sprite.position = CGPoint(appearPosition);
             self.sprite.visible = YES;
             self.body->SetTransform([Helper toMeters:appearPosition], 0);

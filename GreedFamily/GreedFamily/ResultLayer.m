@@ -45,18 +45,21 @@
         NSString* temp=[@"level score: " stringByAppendingFormat:@" %d",score];
         CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
 		CGSize size = [[CCDirector sharedDirector] winSize];
+        //change size by diff version query
 		labelscore.position = CGPointMake(size.width / 3, size.height * 4 / 5 );
         [labelscore setColor:ccBLUE];
 		[self addChild:labelscore];
         
         temp=[@"added score: " stringByAppendingFormat:@" %d",addscore];
         CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
+        //change size by diff version query
 		labeladdscore.position = CGPointMake(size.width / 3, size.height * 3 / 5 );
         [labeladdscore setColor:ccBLUE];
 		[self addChild:labeladdscore];
         
         temp=[@"total score: " stringByAppendingFormat:@" %d",score+addscore];
         CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
+        //change size by diff version query
 		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 2 / 5 );
         [labeltotalscore setColor:ccBLUE];
 		[self addChild:labeltotalscore];
@@ -66,6 +69,7 @@
         {
             CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
             CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
+            //change size by diff version query
             star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;
@@ -77,6 +81,7 @@
         {
             CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
             CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star_magic.png"];
+            //change size by diff version query
             star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;

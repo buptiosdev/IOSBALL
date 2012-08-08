@@ -77,6 +77,7 @@ static Competitor *instanceOfCompetitor;
         self.sprite.scaleY=(50)/[self.sprite contentSize].height;
         //CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
         //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
+        //change size by diff version query
         CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, [self.sprite contentSize].height * self.sprite.scaleY);
         self.sprite.position = startPos;
         [self addChild:self.sprite]; 

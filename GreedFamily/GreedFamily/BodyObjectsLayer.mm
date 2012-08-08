@@ -90,6 +90,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	CGSize screenSize = [CCDirector sharedDirector].winSize;
 	float widthInMeters = (screenSize.width) / PTM_RATIO;
 	float heightInMeters = screenSize.height / PTM_RATIO;
+    //change size by diff version query
 	b2Vec2 lowerLeftCorner = b2Vec2(0, 60/PTM_RATIO);
 	b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 60/PTM_RATIO);
 	b2Vec2 upperLeftCorner = b2Vec2(0, heightInMeters);
@@ -221,7 +222,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //持续的给Candy加向下的力
                     
                     CCLOG(@"Into here ！糖果的血为0");
-                    
+
                     CCLOG(@"调用精灵切换");
                     //气泡破裂特效
                     CCParticleSystem* system;
@@ -230,7 +231,6 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     system.autoRemoveOnFinish = YES;
                     system.position = bodyNode.sprite.position;
                     [self addChild:system];
-
                     
                     CandyEntity* candyNode = (CandyEntity*)bodyNode;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
@@ -246,7 +246,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                                                  BodyVelocity:bodyVelocity];
                     
                     //消失
-                    CGPoint positionNew = CGPointMake(-100, -100);
+                    //change size by diff version
+                    CGPoint positionNew = [GameMainScene sharedMainScene].initPos;
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
                     bodyNode.hitPoints = -1;
@@ -285,13 +286,12 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     [instanceOfLandCandyCache CreateLandCandy:(PropertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
                     
                     //消失
-                    CGPoint positionNew = CGPointMake(-100, -100);
+                    //change size by diff version
+                    CGPoint positionNew = [GameMainScene sharedMainScene].initPos;
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
                     bodyNode.hitPoints = -1;
-                    
-
-                    
+                
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
                     if (candyCache != NULL)
                     {
@@ -315,8 +315,6 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
     instanceOfBodyObjectsLayer = nil;   
     
     [super dealloc];
-    
-
 }
 
 @end

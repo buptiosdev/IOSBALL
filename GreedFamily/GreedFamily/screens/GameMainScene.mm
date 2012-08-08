@@ -21,6 +21,7 @@
 +(id)createMainLayer:(int)order;
 -(void)initSceneParam:(int)order;
 -(void)preloadParticleEffect;
+-(void)initPointParam;
 @end
 
 @implementation GameMainScene
@@ -30,6 +31,21 @@
 @synthesize mainscenParam = _mainscenParam;
 @synthesize roleType = _roleType;
 @synthesize acceleration = _acceleration;
+
+@synthesize initPos = _initPos;
+@synthesize remainBallPos = _remainBallPos;
+@synthesize remainBallLabelPos = _remainBallLabelPos;
+@synthesize pepperMenuPos = _pepperMenuPos;
+@synthesize crystalMenuPos = _crystalMenuPos;
+@synthesize initMenuPos = _initMenuPos;
+@synthesize appear1stPos = _appear1stPos;
+@synthesize appear2ndPos = _appear2ndPos;
+@synthesize appear3rdPos = _appear3rdPos;
+@synthesize appear4thPos = _appear4thPos;
+@synthesize appear5thPos = _appear5thPos;
+@synthesize backgroundPos = _backgroundPos;
+@synthesize storagePos = _storagePos;
+@synthesize scorePos = _scorePos;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static GameMainScene *instanceOfMainScene;
@@ -92,6 +108,7 @@ static GameMainScene *instanceOfMainScene;
         _isGamePass = NO;
         [self preloadParticleEffect];
         [self initSceneParam:order];
+        [self initPointParam];
         GameBackgroundLayer *gameBackgroundLayer = [GameBackgroundLayer CreateGameBackgroundLayer];
         [self addChild:gameBackgroundLayer z:-1 tag:BackGroundLayerTag];
         
@@ -126,8 +143,36 @@ static GameMainScene *instanceOfMainScene;
     [self preloadParticleEffects:@"land_ice.plist"];
     [self preloadParticleEffects:@"land_poison.plist"];
     [self preloadParticleEffects:@"land_bomb.plist"];
+    [self preloadParticleEffects:@"landspeedfast.plist"];
+    [self preloadParticleEffects:@"redscore.plist"];
+    [self preloadParticleEffects:@"bluescore.plist"];
+    [self preloadParticleEffects:@"colorscore.plist"];
+    [self preloadParticleEffects:@"speedfast2.plist"];
+    [self preloadParticleEffects:@"bublle_break2.plist"];
+    [self preloadParticleEffects:@"shootingstars.plist"];
+    [self preloadParticleEffects:@"smoke2.plist"];
 }
 
+
+-(void)initPointParam
+{
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    
+    _initPos = CGPointMake(-100, -100);
+    _remainBallPos = CGPointMake(225, screenSize.height - 20);
+    _remainBallLabelPos = CGPointMake(250, screenSize.height - 5);
+    _pepperMenuPos = CGPointMake(360, 15);
+    _crystalMenuPos = CGPointMake(420, 15);
+    _initMenuPos = CGPointMake(500, 15);
+    _appear1stPos = CGPointMake(20, screenSize.height * 0.5);
+    _appear2ndPos = CGPointMake(screenSize.width * 0.25, screenSize.height - 20);
+    _appear3rdPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
+    _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
+    _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
+    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
+    _storagePos = CGPointMake(screenSize.width / 4, 20);
+    _scorePos = CGPointMake(25, screenSize.height - 16);
+}
 
 -(void)initSceneParam:(int)order
 {

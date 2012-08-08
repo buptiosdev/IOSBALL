@@ -9,7 +9,7 @@
 #import "CandyEntity.h"
 #import "GameBackgroundLayer.h"
 #import "BodyObjectsLayer.h"
-
+#import "GameMainScene.h"
 @interface CandyEntity (PrivateMethods)
 //-(void) initSpawnFrequency;
 -(id)initCandyWithParam:(CandyParam)candyParam World:(b2World *)world;
@@ -215,7 +215,8 @@
     switch (enterPosition) 
     {
         case PositionOne:
-            appearPosition = CGPointMake(20, 200);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear1stPos;
             self.sprite.position = CGPoint(appearPosition);
             self.cover.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
@@ -233,7 +234,8 @@
             break;
             
         case PositionTwo:
-            appearPosition = CGPointMake(120, 300);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear2ndPos;
             self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
@@ -251,7 +253,8 @@
             break;
             
         case PositionThree:
-            appearPosition = CGPointMake(235, 300);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear3rdPos;
             self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
@@ -269,7 +272,8 @@
             break;
             
         case PositionFour:
-            appearPosition = CGPointMake(350, 300);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear4thPos;
             self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)
@@ -287,7 +291,8 @@
             break;
             
         case PositionFive:
-            appearPosition = CGPointMake(460, 200);
+            //change size by diff version
+            appearPosition = [GameMainScene sharedMainScene].appear5thPos;
             self.cover.position = CGPoint(appearPosition);
             self.sprite.position = CGPoint(appearPosition);
             if (2 == self.initialHitPoints)

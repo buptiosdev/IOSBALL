@@ -219,7 +219,7 @@
         
         self.flyAction = [_flyActionArray objectAtIndex:0];
         [self.sprite runAction:_flyAction];
-        
+        //change size by diff version query
         CGPoint startPos = CGPointMake(([self.sprite contentSize].width) * 0.5f, 
                                        (screenSize.height ) * 0.5f);
 		

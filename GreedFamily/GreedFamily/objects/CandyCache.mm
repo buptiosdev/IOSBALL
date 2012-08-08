@@ -58,8 +58,8 @@
     int blood = 1;
     //创造糖果库数组，一个二维数组
     candyBank = [[CCArray alloc] initWithCapacity:BallType_MAX];
-    
-    CGPoint startPos = CGPointMake(-100, -100);
+    //change size by diff version
+    CGPoint startPos = [GameMainScene sharedMainScene].initPos;
     //创建每一种糖果类型
 	for (int i = 0; i < BallType_MAX; i++)
 	{
@@ -108,7 +108,6 @@
 
     [self initScenecache:world];
     
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CCSprite *remainBallScore = [CCSprite spriteWithSpriteFrameName:@"pic_4.png"];
     
     //按照像素设定图片大小
@@ -117,16 +116,17 @@
     
     remainBallScore.scaleY=(20)/[remainBallScore contentSize].height;//按照像素定制图片宽高
     
-
-    remainBallScore.position = CGPointMake(225, screenSize.height - 20);
-
+    //change size by diff version
+    remainBallScore.position =  [GameMainScene sharedMainScene].remainBallPos;
+    
     CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
     [batch addChild:remainBallScore];
 
     //剩余球数
     remainBallLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
     [remainBallLabel setString:[NSString stringWithFormat:@"x%i", [GameMainScene sharedMainScene].mainscenParam.candyCount]];
-    remainBallLabel.position = CGPointMake(250, screenSize.height - 5);
+    //change size by diff version
+    remainBallLabel.position = [GameMainScene sharedMainScene].remainBallLabelPos; 
     remainBallLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
     remainBallLabel.scale = 0.4;
     [self addChild:remainBallLabel z:-2];

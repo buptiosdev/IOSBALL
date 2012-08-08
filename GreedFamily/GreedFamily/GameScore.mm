@@ -136,13 +136,13 @@ static GameScore  *instanceOfgameScore;
     
     
         //addTotalScore
-        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
         CCLabelTTF* my_score = [CCLabelTTF labelWithString:@"SCORE:" fontName:@"Marker Felt" fontSize:20];
         
         my_score.color = ccc3(255,0,0);
-        
-        my_score.position = CGPointMake(25, screenSize.height - 16);
+        //change size by diff version
+        my_score.position = [GameMainScene sharedMainScene].scorePos;
         [self addChild:my_score]; 
         
         
@@ -151,13 +151,18 @@ static GameScore  *instanceOfgameScore;
         CCLabelTTF* my_highestscore = [CCLabelTTF labelWithString:@"BEST:" fontName:@"Marker Felt" fontSize:20];
         
         my_highestscore.color = ccc3(255,0,0);
-        my_highestscore.position = CGPointMake(25,screenSize.height - 46);
+        //change size by diff version
+        CGPoint distance1 = CGPointMake(0, -30);
+        CGPoint distance2 = CGPointMake(48, 11);
+        CGPoint distance3 = CGPointMake(48, 1);
+        my_highestscore.position =  ccpAdd([GameMainScene sharedMainScene].scorePos, distance1);     
         [self addChild:my_highestscore];
         //初始化得分
         my_nowlevelscore = 0;
         
         totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
-        totalScoreLabel.position = CGPointMake(73, screenSize.height - 5);
+        //change size by diff version
+        totalScoreLabel.position = ccpAdd([GameMainScene sharedMainScene].scorePos, distance2);
         totalScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
         totalScoreLabel.scale = 0.3;
         [self addChild:totalScoreLabel z:-2];
@@ -166,7 +171,8 @@ static GameScore  *instanceOfgameScore;
         temp_hightestscore = [self getGameHighestScore:gamelevel];
         hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt" ];
         [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_hightestscore]];
-        hightestTotalScoreLabel.position = CGPointMake(73,screenSize.height - 15);
+        //change size by diff version
+        hightestTotalScoreLabel.position = ccpAdd([GameMainScene sharedMainScene].scorePos, distance3);
         hightestTotalScoreLabel.anchorPoint = CGPointMake(0.5, 2.0f);
         hightestTotalScoreLabel.scale = 0.3;
         [self addChild:hightestTotalScoreLabel z:-2];

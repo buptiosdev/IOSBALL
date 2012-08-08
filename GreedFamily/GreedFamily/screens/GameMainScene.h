@@ -75,8 +75,22 @@ struct SceneParam
 @property (nonatomic) int roleType;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) BOOL isGamePass;
-
+@property (nonatomic) CGPoint initPos;
+@property (nonatomic) CGPoint remainBallPos;
+@property (nonatomic) CGPoint remainBallLabelPos;
+@property (nonatomic) CGPoint pepperMenuPos;
+@property (nonatomic) CGPoint crystalMenuPos;
+@property (nonatomic) CGPoint initMenuPos;
+@property (nonatomic) CGPoint appear1stPos;
+@property (nonatomic) CGPoint appear2ndPos;
+@property (nonatomic) CGPoint appear3rdPos;
+@property (nonatomic) CGPoint appear4thPos;
+@property (nonatomic) CGPoint appear5thPos;
+@property (nonatomic) CGPoint backgroundPos;
+@property (nonatomic) CGPoint storagePos;
+@property (nonatomic) CGPoint scorePos;
 @property (nonatomic) SceneParam mainscenParam;
+
 -(void)pauseGame;
 -(void)resumeGame;
 @end
