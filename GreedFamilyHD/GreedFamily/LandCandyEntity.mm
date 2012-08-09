@@ -126,7 +126,7 @@
         self.sprite.position = pos;
         
         //change size by diff version manual
-        if (2 == balltype) {
+        if (2 == balltype || 5 == balltype) {
             self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -0.6);
         }
         else

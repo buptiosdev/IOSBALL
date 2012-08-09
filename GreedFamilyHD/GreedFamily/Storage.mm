@@ -633,8 +633,9 @@
 
 -(bool) isTouchForMe:(CGPoint)touchLocation
 {
-    
-    return CGRectContainsPoint([self.sprite boundingBox], touchLocation);
+    //change size by diff version manual
+    CGRect rec = CGRectMake(0, 0, 350, 50);
+    return CGRectContainsPoint(rec, touchLocation);
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event

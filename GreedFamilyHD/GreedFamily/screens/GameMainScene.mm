@@ -170,7 +170,7 @@ static GameMainScene *instanceOfMainScene;
     _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
     _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
-    _storagePos = CGPointMake(screenSize.width / 4, 25);
+    _storagePos = CGPointMake(175, 25);
     _scorePos = CGPointMake(25, screenSize.height - 16);
 }
 
