@@ -36,8 +36,8 @@
         //float  contentSize  = [_mySprite contentSize].width; //得到图片的宽高
         //按照像素设定图片大小
         //change size by diff version manual
-        _mySprite.scaleX=(25)/[_mySprite contentSize].width; //按照像素定制图片宽高
-        _mySprite.scaleY=(25)/[_mySprite contentSize].height;
+        _mySprite.scaleX=(30)/[_mySprite contentSize].width; //按照像素定制图片宽高
+        _mySprite.scaleY=(30)/[_mySprite contentSize].height;
         float widthPer = [_mySprite contentSize].width * _mySprite.scaleX;
         float highPer = [_mySprite contentSize].height * _mySprite.scaleY;
         NSString *strCapacity = nil;

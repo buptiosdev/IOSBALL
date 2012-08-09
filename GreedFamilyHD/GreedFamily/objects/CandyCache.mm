@@ -112,8 +112,8 @@
     
     //按照像素设定图片大小
     //change size by diff version manual
-    remainBallScore.scaleX=(20)/[remainBallScore contentSize].width;//按照像素定制图片宽高
-    remainBallScore.scaleY=(20)/[remainBallScore contentSize].height;//按照像素定制图片宽高
+    remainBallScore.scaleX=(25)/[remainBallScore contentSize].width;//按照像素定制图片宽高
+    remainBallScore.scaleY=(25)/[remainBallScore contentSize].height;//按照像素定制图片宽高
     
     //change size by diff version
     remainBallScore.position =  [GameMainScene sharedMainScene].remainBallPos;

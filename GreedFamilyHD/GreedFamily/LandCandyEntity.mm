@@ -108,7 +108,7 @@
         //初始动画
         [self initFallAction];
         self.ballType = balltype;
-        self.candyVelocity = pos;
+        //self.candyVelocity = pos;
         self.waitinterval = 15;
         NSString * spriteName = [self chooseBall:(balltype)];
 //        self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
@@ -120,12 +120,19 @@
 
         //按照像素设定图片大小
         //change size by diff version manual
-        self.sprite.scaleX=(30)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(30)/[self.sprite contentSize].height;
+        self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(40)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];
         self.sprite.position = pos;
         
-        self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1);
+        //change size by diff version manual
+        if (2 == balltype) {
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -0.6);
+        }
+        else
+        {
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1.2);
+        }
         _isDowning = YES;
         
         //动画
@@ -171,7 +178,8 @@
     
     self.sprite.position = pos;
     
-    if (self.sprite.position.y <=  35) 
+    //change size by diff version manual
+    if (self.sprite.position.y <= 65) 
     {
         LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
         [landCandyCache addToLandCandies:self];

@@ -108,7 +108,7 @@
         //初始动画
         [self initFallAction];
         self.ballType = balltype;
-        self.candyVelocity = pos;
+        //self.candyVelocity = pos;
         self.waitinterval = 15;
         NSString * spriteName = [self chooseBall:(balltype)];
 //        self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
@@ -124,7 +124,13 @@
         [batch addChild:self.sprite];
         self.sprite.position = pos;
         
-        self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1);
+        if (2 == balltype || 5 == balltype) {
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -0.5);
+        }
+        else
+        {
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1.0);
+        }
         _isDowning = YES;
         
         //动画

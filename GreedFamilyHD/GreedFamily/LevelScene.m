@@ -80,8 +80,8 @@
             NSString *starname = [NSString stringWithFormat:@"get%istart.png", star];
             CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
             //change size by diff version manual
-            levelpic.scaleX=(60)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
-            levelpic.scaleY=(60)/[levelpic contentSize].height;
+            levelpic.scaleX=(100)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
+            levelpic.scaleY=(100)/[levelpic contentSize].height;
             CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
             if(i<9)
             {
@@ -95,8 +95,8 @@
             [levelpic addChild:Labelnum];
             CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:@"get0start.png"];
             //change size by diff version manual
-            defaultstar.scaleX=(60)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
-            defaultstar.scaleY=(60)/[defaultstar contentSize].height;
+            defaultstar.scaleX=(100)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
+            defaultstar.scaleY=(100)/[defaultstar contentSize].height;
             CCMenuItemSprite *level = [CCMenuItemSprite itemFromNormalSprite:levelpic 
                                                                selectedSprite:defaultstar 
                                                                        target:self 

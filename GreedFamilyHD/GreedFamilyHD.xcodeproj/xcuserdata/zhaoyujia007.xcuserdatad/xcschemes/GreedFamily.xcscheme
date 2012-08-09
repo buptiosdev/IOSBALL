@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "70081DED153F987C003F042A"
-               BuildableName = "GreedFamily.app"
+               BuildableName = "GreedFamilyHD.app"
                BlueprintName = "GreedFamilyHD"
                ReferencedContainer = "container:GreedFamilyHD.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "70081DED153F987C003F042A"
-            BuildableName = "GreedFamily.app"
+            BuildableName = "GreedFamilyHD.app"
             BlueprintName = "GreedFamilyHD"
             ReferencedContainer = "container:GreedFamilyHD.xcodeproj">
          </BuildableReference>
@@ -50,7 +50,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "70081DED153F987C003F042A"
-            BuildableName = "GreedFamily.app"
+            BuildableName = "GreedFamilyHD.app"
             BlueprintName = "GreedFamilyHD"
             ReferencedContainer = "container:GreedFamilyHD.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "70081DED153F987C003F042A"
-            BuildableName = "GreedFamily.app"
+            BuildableName = "GreedFamilyHD.app"
             BlueprintName = "GreedFamilyHD"
             ReferencedContainer = "container:GreedFamilyHD.xcodeproj">
          </BuildableReference>

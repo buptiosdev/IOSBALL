@@ -86,8 +86,8 @@
                                                                            target:self 
                                                                          selector:@selector(onPepper:)];
         //change size by diff version manual
-        pepperPropMenu.scaleX=(25)/[pepperProp1 contentSize].width; //按照像素定制图片宽高
-        pepperPropMenu.scaleY=(25)/[pepperProp1 contentSize].height;
+        pepperPropMenu.scaleX=(30)/[pepperProp1 contentSize].width; //按照像素定制图片宽高
+        pepperPropMenu.scaleY=(30)/[pepperProp1 contentSize].height;
         pepperLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         
         pepperLabel.anchorPoint = CGPointMake(-3, 0.5);
@@ -105,8 +105,8 @@
                                                                    selectedSprite:crystalProp2 
                                                                            target:self 
                                                                          selector:@selector(onCrystal:)];
-        crystalPropMenu.scaleX=(25)/[crystalProp1 contentSize].width; //按照像素定制图片宽高
-        crystalPropMenu.scaleY=(25)/[crystalProp1 contentSize].height;
+        crystalPropMenu.scaleX=(35)/[crystalProp1 contentSize].width; //按照像素定制图片宽高
+        crystalPropMenu.scaleY=(35)/[crystalProp1 contentSize].height;
 
         crystalLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         crystalLabel.anchorPoint = CGPointMake(-3, 0.5);
@@ -143,8 +143,9 @@
     {
         //出现动画
         //change size by diff version
-        pepperMenu.position = [GameMainScene sharedMainScene].initMenuPos;
         CGPoint moveToPosition = [GameMainScene sharedMainScene].pepperMenuPos;
+        CGPoint distance = CGPointMake(0, -50);
+        pepperMenu.position = ccpAdd(moveToPosition, distance);
         pepperMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:2];
@@ -161,8 +162,9 @@
     {
         //出现动画
         //change size by diff version
-        crystalMenu.position = [GameMainScene sharedMainScene].initMenuPos;
         CGPoint moveToPosition = [GameMainScene sharedMainScene].crystalMenuPos;
+        CGPoint distance = CGPointMake(0, -50);
+        pepperMenu.position = ccpAdd(moveToPosition, distance);
         crystalMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:2];

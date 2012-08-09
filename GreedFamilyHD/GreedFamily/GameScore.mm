@@ -15,12 +15,6 @@
  @end
  */
 
-
-
-
-
-
-
 @implementation GameScore
 
 NSUserDefaults * standardUserDefaults;

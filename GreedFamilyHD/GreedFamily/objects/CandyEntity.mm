@@ -327,16 +327,16 @@
 
         //按照像素设定图片大小
         //change size by diff version manual
-        self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(35)/[self.sprite contentSize].height;
+        self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        self.sprite.scaleY=(40)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];       
         
 
         self.cover = [CCSprite spriteWithSpriteFrameName:@"pic_6.png"];
         //按照像素设定图片大小
         //change size by diff version manual
-        self.cover.scaleX=(35)/[self.cover contentSize].width; //按照像素定制图片宽高
-        self.cover.scaleY=(35)/[self.cover contentSize].height;
+        self.cover.scaleX=(40)/[self.cover contentSize].width; //按照像素定制图片宽高
+        self.cover.scaleY=(40)/[self.cover contentSize].height;
         self.cover.visible = NO;
         [batch addChild:self.cover z:2]; 
         self.sprite.position = candyParamDef.startPos;

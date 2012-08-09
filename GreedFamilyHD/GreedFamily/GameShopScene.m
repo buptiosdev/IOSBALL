@@ -62,16 +62,16 @@
         roleSprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
         //按照像素设定图片大小
         //change size by diff version manual
-        roleSprite.scaleX=(50)/[roleSprite contentSize].width; //按照像素定制图片宽高
-        roleSprite.scaleY=(50)/[roleSprite contentSize].height;
+        roleSprite.scaleX=(60)/[roleSprite contentSize].width; //按照像素定制图片宽高
+        roleSprite.scaleY=(60)/[roleSprite contentSize].height;
     }
     else if (2 == roalType)
     {
         roleSprite = [CCSprite spriteWithSpriteFrameName:@"boypig_3_1.png"];
         //按照像素设定图片大小
         //change size by diff version manual
-        roleSprite.scaleX=(70)/[roleSprite contentSize].width; //按照像素定制图片宽高
-        roleSprite.scaleY=(70)/[roleSprite contentSize].height;
+        roleSprite.scaleX=(75)/[roleSprite contentSize].width; //按照像素定制图片宽高
+        roleSprite.scaleY=(75)/[roleSprite contentSize].height;
     }
     roleSprite.position = CGPointMake(20, screenSize.height - 100);
     [batch addChild:roleSprite z:-1 tag:2]; 
