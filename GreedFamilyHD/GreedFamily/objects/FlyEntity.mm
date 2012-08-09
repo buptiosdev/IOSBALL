@@ -14,7 +14,7 @@
 @interface FlyEntity (PrivateMethods)
 -(id) initWithShipImage;
 -(void)createBallInWorld:(b2World*)world;
--(id)initWithWorld:(b2World *)world;
+-(id)initWithWorld:(b2World *)world RoleType:(int)roleType;
 @end
 
 @implementation FlyEntity
@@ -22,9 +22,9 @@
 @synthesize flyActionArray = _flyActionArray;
 @synthesize sprite = _sprite;
 
-+(id) flyAnimal:(b2World *)world
++(id) flyAnimal:(b2World *)world RoleType:(int)roleType
 {
-	return [[[self alloc] initWithWorld:world] autorelease];
+	return [[[self alloc] initWithWorld:world RoleType:roleType] autorelease];
 }
 
 
@@ -170,15 +170,14 @@
     
 }
 
--(id)initWithWorld:(b2World *)world
+-(id)initWithWorld:(b2World *)world RoleType:(int)roleType
 {
     if ((self = [super init]))
 	{
 		CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
         //指定是猪还是鸟。1。小鸟 2。小猪
-        familyType = [[GameMainScene sharedMainScene] roleType];
-
+        familyType = roleType;
         directionBefore = 0;
         directionCurrent = 0;
         //CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];

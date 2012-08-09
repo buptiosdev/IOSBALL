@@ -53,9 +53,21 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
         
         [self initBox2dWorld];
         
-        
-        FlyEntity* flyAnimal = [FlyEntity flyAnimal:self.world];
-        [self addChild:flyAnimal z:-1 tag:FlyEntityTag];
+        //单人游戏
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) {
+            int familyType = [[GameMainScene sharedMainScene] roleType];
+            FlyEntity* flyAnimal = [FlyEntity flyAnimal:self.world RoleType:familyType];
+            [self addChild:flyAnimal z:-1 tag:FlyEntityTag];
+        }
+        //双人游戏
+        else
+        {
+            FlyEntity* flyAnimal = [FlyEntity flyAnimal:self.world RoleType:1];
+            [self addChild:flyAnimal z:-1 tag:FlyEntityTag];
+            FlyEntity* flyAnimalPlay2 = [FlyEntity flyAnimal:self.world RoleType:2];
+            [self addChild:flyAnimalPlay2 z:-1 tag:FlyEntityPlay2Tag];
+        }
+
 
         CandyCache* candyCache = [CandyCache cache:self.world];
         [self addChild:candyCache z:-1 tag:CandyCacheTag];
@@ -134,6 +146,21 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	CCNode* node = [self getChildByTag:FlyEntityTag];
 	NSAssert([node isKindOfClass:[FlyEntity class]], @"node is not a FlyEntity!");
 	return (FlyEntity*)node;
+}
+
+-(FlyEntity*) flyAnimalPlay2
+{
+	CCNode* node = [self getChildByTag:FlyEntityPlay2Tag];
+	NSAssert([node isKindOfClass:[FlyEntity class]], @"node is not a FlyEntity!");
+	return (FlyEntity*)node;
+}
+
+-(CGPoint) getFlySpeedPlay2
+{
+	CCNode* node = [self getChildByTag:FlyEntityPlay2Tag];
+	NSAssert([node isKindOfClass:[FlyEntity class]], @"node is not a FlyEntity!");
+    FlyEntity *flyAnimal = (FlyEntity*)node;
+	return [flyAnimal getFlySpeed];
 }
 
 -(CGPoint) getFlySpeed
@@ -235,7 +262,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CandyEntity* candyNode = (CandyEntity*)bodyNode;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     
-                    CGPoint flyVelocity = [self getFlySpeed];
+                    //CGPoint flyVelocity = [self getFlySpeed];
+                    CGPoint flyVelocity = bodyNode.otherLineSpeed;
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
                     bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
@@ -275,7 +303,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     [self addChild:system];
                     
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
-                    CGPoint flyVelocity = [self getFlySpeed];
+                    //CGPoint flyVelocity = [self getFlySpeed];
+                    CGPoint flyVelocity = bodyNode.otherLineSpeed;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     

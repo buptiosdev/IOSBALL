@@ -9,7 +9,7 @@
 #import "GameSky.h"
 #import "FlyEntity.h"
 #import "BodyObjectsLayer.h"
-
+#import "GameMainScene.h"
 @implementation GameSky
 
 -(void) registerWithTouchDispatcher
@@ -23,6 +23,12 @@
     {
         //[self registerWithTouchDispatcher];
         flyEntity = [[BodyObjectsLayer sharedBodyObjectsLayer] flyAnimal];
+        if (YES == [GameMainScene sharedMainScene].isPairPlay)
+        {
+            flyEntityPlay2 = [[BodyObjectsLayer sharedBodyObjectsLayer] flyAnimalPlay2];
+        }
+        isMovePlay1 = NO;
+        isMovePlay2 = NO;
     }
     return self;
 }
@@ -37,15 +43,53 @@
     return CGRectContainsPoint(rec, touchLocation);
 }
 
+-(bool) isTouchForPlay1:(CGPoint)touchLocation
+{
+    //随便设置的范围，到时再具体考量
+	//change size by diff version manual
+    CGRect rec = CGRectMake(0, 0, 512, 768);
+    return CGRectContainsPoint(rec, touchLocation);
+}
+
+-(bool) isTouchForPlay2:(CGPoint)touchLocation
+{
+    //随便设置的范围，到时再具体考量
+	//change size by diff version manual
+    CGRect rec = CGRectMake(512, 0, 512, 768);
+    return CGRectContainsPoint(rec, touchLocation);
+}
+
 //方案1：触摸天空触发小鸟移动
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint fingerLocation = [Helper locationFromTouch:touch];
-
-    bool isTouchHandled = [self isTouchForMe:fingerLocation];
-    if (isTouchHandled) 
+    bool isTouchHandled = NO;
+    if (NO == [GameMainScene sharedMainScene].isPairPlay)
     {
-        [flyEntity ccTouchBeganForSky2:touch withEvent:event];
+        isTouchHandled = [self isTouchForMe:fingerLocation];
+        if (isTouchHandled) 
+        {
+            [flyEntity ccTouchBeganForSky2:touch withEvent:event];
+            isMovePlay1 = YES;
+        }
+    }
+    else
+    {
+        bool isTouchPlay1 = [self isTouchForPlay1:fingerLocation];
+        bool isTouchPlay2 = [self isTouchForPlay2:fingerLocation];
+        if (isTouchPlay1) 
+        {
+            [flyEntity ccTouchBeganForSky2:touch withEvent:event];
+            isTouchHandled = YES;
+            isMovePlay1 = YES;
+        }
+        else if (isTouchPlay2)
+        {
+            [flyEntityPlay2 ccTouchBeganForSky2:touch withEvent:event];
+            isTouchHandled = YES;
+            isMovePlay2 = YES;
+        }
+        
     }
 	return isTouchHandled;
 }
@@ -58,13 +102,31 @@
 
 -(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	[flyEntity ccTouchMovedForSky:touch withEvent:event];
+    if (isMovePlay1) 
+    {
+        [flyEntity ccTouchMovedForSky:touch withEvent:event];
+    }
+    if (isMovePlay2) 
+    {
+        [flyEntityPlay2 ccTouchMovedForSky:touch withEvent:event];
+    }
+
      
 }
 
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	[flyEntity ccTouchEndedForSky:touch withEvent:event];
+    if (isMovePlay1) 
+    {
+	
+        [flyEntity ccTouchEndedForSky:touch withEvent:event];
+        isMovePlay1 = NO;
+    }
+    else
+    {
+        [flyEntityPlay2 ccTouchEndedForSky:touch withEvent:event];
+        isMovePlay2 = NO;
+    }
 }
 
 

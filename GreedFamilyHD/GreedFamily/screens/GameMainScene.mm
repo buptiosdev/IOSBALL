@@ -22,6 +22,8 @@
 -(void)initSceneParam:(int)order;
 -(void)preloadParticleEffect;
 -(void)initPointParam;
+-(void)initPairSceneParam:(int)order;
+-(void)initPairPointParam;
 @end
 
 @implementation GameMainScene
@@ -31,12 +33,12 @@
 @synthesize mainscenParam = _mainscenParam;
 @synthesize roleType = _roleType;
 @synthesize acceleration = _acceleration;
-
+@synthesize accelerationPlay2 = _accelerationPlay2;
 @synthesize initPos = _initPos;
 @synthesize remainBallPos = _remainBallPos;
 @synthesize remainBallLabelPos = _remainBallLabelPos;
 @synthesize pepperMenuPos = _pepperMenuPos;
-@synthesize crystalMenuPos = _crystalMenuPos;
+@synthesize pepperMenuPlay2Pos = _pepperMenuPlay2Pos;
 @synthesize initMenuPos = _initMenuPos;
 @synthesize appear1stPos = _appear1stPos;
 @synthesize appear2ndPos = _appear2ndPos;
@@ -46,6 +48,8 @@
 @synthesize backgroundPos = _backgroundPos;
 @synthesize storagePos = _storagePos;
 @synthesize scorePos = _scorePos;
+@synthesize scorePlay2Pos = _scorePlay2Pos;
+@synthesize isPairPlay = _isPairPlay;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static GameMainScene *instanceOfMainScene;
@@ -80,35 +84,75 @@ static GameMainScene *instanceOfMainScene;
 {
     return [[[GameMainScene alloc] initWithOrder:order] autorelease];
 }
+
+-(void)initNomalGame:(int)order
+{
+    _isPairPlay = NO;
+    NSString *strName = [NSString stringWithFormat:@"RoleType"];
+    _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
+    NSString *strName2 = nil;
+    if (1 == _roleType) 
+    {
+        strName2 = [NSString stringWithFormat:@"Acceleration_Bird"];
+    }
+    else if (2 == _roleType) 
+    {
+        strName2 = [NSString stringWithFormat:@"Acceleration_Pig"];
+    }
+    _acceleration = [[NSUserDefaults standardUserDefaults]  integerForKey:strName2];
+    if (_acceleration > 50 || _acceleration < 10) 
+    {
+        _acceleration = 10;
+    }
+    _isGameOver = NO;
+    _isGamePass = NO;
+    [self preloadParticleEffect];
+    [self initSceneParam:order];
+    [self initPointParam];
+}
+
+-(void)initPairGame:(int)order
+{
+    _isPairPlay = YES;
+
+    NSString *strNamePlay1 = [NSString stringWithFormat:@"Acceleration_Bird"];
+    NSString *strNamePlay2 = [NSString stringWithFormat:@"Acceleration_Pig"];
+    _acceleration = [[NSUserDefaults standardUserDefaults]  integerForKey:strNamePlay1];
+    if (_acceleration > 50 || _acceleration < 10) 
+    {
+        _acceleration = 10;
+    }
+    _accelerationPlay2 = [[NSUserDefaults standardUserDefaults]  integerForKey:strNamePlay2];
+    if (_accelerationPlay2 > 50 || _accelerationPlay2 < 10) 
+    {
+        _accelerationPlay2 = 10;
+    }
+    
+    _isGameOver = NO;
+    _isGamePass = NO;
+    [self preloadParticleEffect];
+    [self initPairSceneParam:order];
+    [self initPairPointParam];
+}
+
 -(id)initWithOrder:(int)order
 {
     if (self = [super init]) 
-    {
+    {   
         //self.isAccelerometerEnabled = YES;
         //初始化一开始，给半单例赋值
         instanceOfMainScene = self;
         _sceneNum = order;
-        NSString *strName = [NSString stringWithFormat:@"RoleType"];
-        _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
-        NSString *strName2 = nil;
-        if (1 == _roleType) 
+        //双人游戏 order为0
+        if (0 == order) 
         {
-            strName2 = [NSString stringWithFormat:@"Acceleration_Bird"];
+            [self initPairGame:order];
         }
-        else if (2 == _roleType) 
+        else
         {
-            strName2 = [NSString stringWithFormat:@"Acceleration_Pig"];
+            [self initNomalGame:order];
         }
-        _acceleration = [[NSUserDefaults standardUserDefaults]  integerForKey:strName2];
-        if (_acceleration > 50 || _acceleration < 10) 
-        {
-            _acceleration = 10;
-        }
-        _isGameOver = NO;
-        _isGamePass = NO;
-        [self preloadParticleEffect];
-        [self initSceneParam:order];
-        [self initPointParam];
+        
         GameBackgroundLayer *gameBackgroundLayer = [GameBackgroundLayer CreateGameBackgroundLayer];
         [self addChild:gameBackgroundLayer z:-1 tag:BackGroundLayerTag];
         
@@ -154,6 +198,54 @@ static GameMainScene *instanceOfMainScene;
 }
 
 
+-(void)initPairSceneParam:(int)order
+{
+    _mainscenParam.order = order;
+    switch (order) {
+        case 0:
+            _mainscenParam.maxVisibaleNum = 8;
+            _mainscenParam.candyCount = 50;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeedPlay2 = 0.5f;
+            _mainscenParam.bombFrequency = ThreeTime;
+            _mainscenParam.crystalFrequency = ThreeTime;
+            _mainscenParam.pepperFrequency = FourTime;
+            _mainscenParam.iceFrequency = FourTime;
+            _mainscenParam.smokeFrequency = FourTime;
+            break;
+    }
+    //加上商店购买道具    
+    _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
+    _mainscenParam.landAnimalSpeedPlay2 =  _mainscenParam.landAnimalSpeedPlay2 * _accelerationPlay2 / 10;
+
+
+}
+
+-(void)initPairPointParam
+{
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    
+    _initPos = CGPointMake(-100, -100);
+    _remainBallPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
+    _remainBallLabelPos = CGPointMake(screenSize.width * 0.5 + 25, screenSize.height - 5);
+    _pepperMenuPlay2Pos = CGPointMake(screenSize.width - 120, 25);
+    _pepperMenuPos = CGPointMake(screenSize.width * 0.5 - 120, 25);
+    _initMenuPos = CGPointMake(screenSize.width + 40, 15);
+    _appear1stPos = CGPointMake(20, screenSize.height * 0.5);
+    _appear2ndPos = CGPointMake(screenSize.width * 0.25, screenSize.height - 20);
+    _appear3rdPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
+    _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
+    _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
+    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
+    _storagePos = CGPointMake(175, 25);
+    _scorePos = CGPointMake(25, screenSize.height - 16);
+    _scorePlay2Pos = CGPointMake(100 + 25, screenSize.height - 16);
+}
+
 -(void)initPointParam
 {
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
@@ -162,7 +254,7 @@ static GameMainScene *instanceOfMainScene;
     _remainBallPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
     _remainBallLabelPos = CGPointMake(screenSize.width * 0.5 + 25, screenSize.height - 5);
     _pepperMenuPos = CGPointMake(screenSize.width - 120, 25);
-    _crystalMenuPos = CGPointMake(screenSize.width - 60, 25);
+    //_crystalMenuPos = CGPointMake(screenSize.width - 60, 25);
     _initMenuPos = CGPointMake(screenSize.width + 40, 15);
     _appear1stPos = CGPointMake(20, screenSize.height * 0.5);
     _appear2ndPos = CGPointMake(screenSize.width * 0.25, screenSize.height - 20);

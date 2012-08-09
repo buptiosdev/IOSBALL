@@ -13,6 +13,9 @@
 @interface GameSky : CCNode <CCTargetedTouchDelegate>
 {
     FlyEntity *flyEntity;
+    FlyEntity *flyEntityPlay2;
+    bool isMovePlay1;
+    bool isMovePlay2;
 }
 
 @end

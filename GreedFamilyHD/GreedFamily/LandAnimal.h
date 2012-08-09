@@ -22,12 +22,15 @@
     int waitinterval;
     int directionBefore;
     int directionCurrent;
+    int familyType; /*1.小鸟 2.小猪*/
+    int animalID;
 }
 //@property (readonly, nonatomic) CCSprite* sprite;
 @property (assign, nonatomic) CCSprite* sprite;
 @property (nonatomic, retain) NSMutableArray *landAnimalActionArray;
 @property (assign, nonatomic)  CCAction *moveAction;
-+(id)CreateLandAnimal;
+
++(id)CreateLandAnimal:(int)roleType Play:(int)playID;
 +(LandAnimal *)sharedLandAnimal;
 -(void)decreaseSpeed;
 -(void)increaseSpeed;
@@ -36,4 +39,5 @@
 -(void)getCrystal;
 -(void)reverseDirection;
 -(void)setCurDirection;
+-(id)initWithType:(int)roleType Play:(int)playID;
 @end

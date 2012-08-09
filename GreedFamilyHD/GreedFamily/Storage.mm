@@ -15,9 +15,10 @@
 #import "LandAnimal.h"
 #import "Bag.h"
 #import "TouchCatchLayer.h"
+#import "NoBodyObjectsLayer.h"
 
 @interface Storage (PrivateMethods)
--(id)initWithCapacity:(int)storageCapacity;
+-(id)initWithCapacity:(int)capacity Play:(int)PlayID;
 -(void)moveFood;
 -(void)reduceFood:(int)count Turn:(int)turn;
 -(void)oneSecondCheckMax:(ccTime)delta;
@@ -36,15 +37,18 @@
     [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-2 swallowsTouches:YES];
 }
 
-+(id)createStorage:(int)storageCapacity
++(id)createStorage:(int)storageCapacity Play:(int)playID
 {
-    return [[[self alloc] initWithCapacity:storageCapacity] autorelease];
+    return [[[self alloc] initWithCapacity:storageCapacity Play:playID] autorelease];
 }
 
--(id)initWithCapacity:(int)capacity
+-(id)initWithCapacity:(int)capacity Play:(int)playID
 {
     if ((self = [super init]))
     {
+        storageID = playID;
+        myGameScore = [GameScore createGameScore:playID];
+        [self addChild:myGameScore z:1 tag:-3 ];  
         //[self registerWithTouchDispatcher];
         gamelevel= [GameMainScene sharedMainScene].sceneNum;
         storageCapacity = capacity;
@@ -53,7 +57,13 @@
         //先不可见，后续再去掉或替换图片
         _sprite.visible = NO;
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        //change size by diff version
         _sprite.position = [GameMainScene sharedMainScene].storagePos;
+        if (2 == playID) 
+        {
+            CGPoint distance = CGPointMake(512, 0);
+            _sprite.position = ccpAdd(_sprite.position, distance);
+        }
         [batch addChild:_sprite];
         
         counter = 0;
@@ -175,11 +185,11 @@
         
     }//end while
     
-    GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+    //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
     
 
     
-    [instanceOfgameScore calculateConsistentCombineScore:gamelevel
+    [myGameScore calculateConsistentCombineScore:gamelevel
                                       oneTimeScoreNumber:temp
                                                 foodType:nowFood.foodType
                                                   Cheese:foodInStorage[2]
@@ -203,7 +213,7 @@
     //糖果类型应该小于3   0  1  2 
     if (foodType < 3)
     {
-        Food * food = [[Food alloc]initWithStorage:self Type:foodType Count:currentCount];
+        Food * food = [[Food alloc]initWithStorage:self Type:foodType Count:currentCount StorageID:storageID];
         [foodArray insertObject:food atIndex:currentCount];
         currentCount++;
         
@@ -215,29 +225,68 @@
     //辣椒
     else if (6 == foodType)
     {
+        Bag *bag = nil;
         CCLOG(@"oh yah!!!!!!!\n");
-        Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
+        if (1 == storageID) 
+        {
+            bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
+
+        }
+        else
+        {
+            bag = [[TouchCatchLayer sharedTouchCatchLayer] getBagPlay2];
+
+        }
         [bag addPepper];
     }
     //冰块
     else if (5 == foodType)
     {
+        LandAnimal *landAnimal = nil;
         CCLOG(@"cold!!!!!!!\n");
-        [[LandAnimal sharedLandAnimal] decreaseSpeed];
+        if (1 == storageID) 
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimal];
+        }
+        else
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimalPlay2];
+        }
+        [landAnimal decreaseSpeed];
     }
     //黑炸弹
     else if (4 == foodType)
     {
+        LandAnimal *landAnimal = nil;
         CCLOG(@"oh no!!!!!!!\n");
-        [[LandAnimal sharedLandAnimal] bombed];
+        if (1 == storageID) 
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimal];
+        }
+        else
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimalPlay2];
+        }
+        [landAnimal bombed];
         [self bombStorage];
     }
     //水晶球
     else if (3 == foodType)
     {
+        LandAnimal *landAnimal = nil;
+        Bag *bag = nil;
         CCLOG(@"cool!!!!!!!\n");
-        [[LandAnimal sharedLandAnimal] getCrystal];
-        Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
+        if (1 == storageID) 
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimal];
+            bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
+        }
+        else
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimalPlay2];
+            bag = [[TouchCatchLayer sharedTouchCatchLayer] getBagPlay2];
+        }
+        [landAnimal getCrystal];
         [bag addCrystal];       
     }
     else if (7 == foodType)
@@ -249,7 +298,17 @@
         system.autoRemoveOnFinish = YES;
         //system.position = self.sprite.position;
         [self addChild:system];
-        [[LandAnimal sharedLandAnimal] reverseDirection];
+        
+        LandAnimal *landAnimal = nil;
+        if (1 == storageID) 
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimal];
+        }
+        else
+        {
+            landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimalPlay2];
+        }
+        [landAnimal reverseDirection];
     }
 }
 
@@ -348,6 +407,12 @@
         float highPer = [curFood.mySprite contentSize].height * curFood.mySprite.scaleY;
         
         CGPoint moveToPosition = CGPointMake(i * widthPer + widthPer * 0.5, highPer * 0.5);
+        if (2 == storageID) 
+        {   
+            CGPoint distance = CGPointMake(512, 0);
+            moveToPosition = ccpAdd(distance, moveToPosition);
+        }
+       
         
         
         if (!__CGPointEqualToPoint(curFood.mySprite.position, moveToPosition))
@@ -456,9 +521,9 @@
                         foodInStorage[nowFood.foodType] += temp;
                         
                         //调用一次性消球 得分函数         
-                        GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+                        //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
                         
-                        [instanceOfgameScore calculateConsistentCombineScore:gamelevel
+                        [myGameScore calculateConsistentCombineScore:gamelevel
                                                           oneTimeScoreNumber:temp
                                                                     foodType:nowFood.foodType
                                                                       Cheese:foodInStorage[2]
@@ -511,9 +576,9 @@
                     foodInStorage[nowFood.foodType] += temp;                
                     
                     //调用一次性消球 得分函数         
-                    GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+                    //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
                     
-                    [instanceOfgameScore calculateConsistentCombineScore:gamelevel
+                    [myGameScore calculateConsistentCombineScore:gamelevel
                                                       oneTimeScoreNumber:temp
                                                                 foodType:nowFood.foodType
                                                                   Cheese:foodInStorage[2]
@@ -561,8 +626,8 @@
     if (consisFlag>0)
     {    
         //调用连续消球 得分函数         
-        GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
-        [instanceOfgameScore calculateContinuousCombineAward:consisFlag myLevel:gamelevel];            
+        //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+        [myGameScore calculateContinuousCombineAward:consisFlag myLevel:gamelevel];            
     }
     
     [self moveFood];
@@ -575,8 +640,8 @@
 {
     CCLOG(@"INTO getScoreByLevel\n\n");
     CCArray *LevelScore;
-    GameScore *instanceOfgameScore = [GameScore sharedgameScore];
-    LevelScore = [instanceOfgameScore calculateScoreWhenGameIsOver:level timestamp:counter];
+    //GameScore *instanceOfgameScore = [GameScore sharedgameScore];
+    LevelScore = [myGameScore calculateScoreWhenGameIsOver:level timestamp:counter];
     
     //int addscore = (int)[LevelScore objectAtIndex:1];
     //CCLOG(@"addscore is %d\n\n",addscore);
@@ -631,17 +696,32 @@
 }
 
 
--(bool) isTouchForMe:(CGPoint)touchLocation
+-(bool) isTouchForPlay1:(CGPoint)touchLocation
 {
     //change size by diff version manual
     CGRect rec = CGRectMake(0, 0, 350, 50);
     return CGRectContainsPoint(rec, touchLocation);
 }
 
+-(bool) isTouchForPlay2:(CGPoint)touchLocation
+{
+    //change size by diff version manual
+    CGRect rec = CGRectMake(512, 0, 350, 50);
+    return CGRectContainsPoint(rec, touchLocation);
+}
+
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint location = [Helper locationFromTouch:touch];
-    bool isTouchHandled = [self isTouchForMe:location]; 
+    bool isTouchHandled = NO;
+    if (1 == storageID) 
+    {
+        isTouchHandled = [self isTouchForPlay1:location];
+    } 
+    else
+    {
+        isTouchHandled = [self isTouchForPlay2:location];
+    }
     
     
     if (isTouchHandled)
@@ -665,8 +745,8 @@
                 if ((nowScoreTime-lastScoreTime)<timeReward)
                 {
                     //调用时间奖励 得分函数         
-                    GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
-                    [instanceOfgameScore calculateTimeAward:gamelevel];
+                    //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+                    [myGameScore calculateTimeAward:gamelevel];
                     
                     //
                 }    

@@ -22,12 +22,17 @@ NSUserDefaults * standardUserDefaults;
 static GameScore  *instanceOfgameScore;
 +(GameScore *)sharedgameScore
 {
-    NSAssert(nil != instanceOfgameScore, @"Storage instance not yet initialized!");
+    NSAssert(nil != instanceOfgameScore, @"Score instance not yet initialized!");
     
     return instanceOfgameScore;
 }
 
--(id)init
++(id)createGameScore:(int)playID
+{
+    return [[[self alloc] initWithPlayID:playID] autorelease];
+}
+
+-(id)initWithPlayID:(int)playID
 {
     if ((self = [super init]))
     {
@@ -42,104 +47,34 @@ static GameScore  *instanceOfgameScore;
         award_nowlevelscore = 0;        
         
         LevelScore = [[CCArray alloc] initWithCapacity:2];        
-        //[self scheduleUpdate];
-        
-        //MyGameScore* p_sharedScrore = [MyGameScore sharedScore];
-        /*
-         p_sharedScrore = [MyGameScore sharedScore];
-         [p_sharedScrore synchronize];
-         CCLOG(@"读取到的  is %d",p_sharedScrore.data.level1HighestScore);           
-         
-         my_struct_gameScore = p_sharedScrore.data;
-         int i;
-         my_struct_gameScore.level1HighestScore = 12;
-         
-         p_sharedScrore.data = my_struct_gameScore;
-         
-         CCLOG(@"修改后的  is %d",p_sharedScrore.data.level1HighestScore);   
-         
-         [p_sharedScrore synchronize];
-         */
-        /*
-         NSString *saveStr1 = @"我是";   
-         NSString *saveStr2 = @"数据";   
-         int i = 3;
-         NSArray *array = [NSArray arrayWithObjects:saveStr1, saveStr2, i,nil];            
-         //Save   
-         NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];   
-         [saveDefaults setObject:array forKey:@"SaveKey"];   
-         //用于测试是否已经保存了数据   
-         saveStr1 = @"hhhhhhiiii";   
-         saveStr2 =@"mmmmmmiiii";  
-         
-         //---Load   
-         array = [saveDefaults objectForKey:@"SaveKey"];   
-         saveStr1 = [array objectAtIndex:0];   
-         saveStr2 = [array objectAtIndex:1];   
-         i = [array objectAtIndex:1];   
-         CCLOG(@"str:%@",saveStr1);   
-         CCLOG(@"astr:%@",saveStr2);  
-         CCLOG(@"astr:%@",saveStr2); 
-         */
-        
-        // create a standardUserDefaults variable
-        
+
         standardUserDefaults = [[MyGameScore sharedScore] standardUserDefaults];
-        
-        // saving an NSString
-        //[standardUserDefaults setObject:@"mystring" forKey:@"string"];
-        
-        // saving an NSInteger
-        //[standardUserDefaults setInteger:42 forKey:@"integer"];
-        
-        // saving a Double
-        //[standardUserDefaults setDouble:3.1415 forKey:@"double"];
-        
-        // saving a Float
-        //[standardUserDefaults setFloat:3.1415 forKey:@"float"];
-        
-        // synchronize the settings
-        //[standardUserDefaults synchronize];
-        
-        
-        
-        // getting an NSString object
-        //NSString *myString = [standardUserDefaults stringForKey:@"string"];
-        
-        
-        
-        // getting an NSInteger object
-        //NSInteger myInt = [standardUserDefaults integerForKey:@"integer"];
-        
-        
-        //NSInteger level1 = [standardUserDefaults integerForKey:@"level1HighestScore"];
-        
-        //CCLOG(@"level1 highest score is %d",level1);
-        
-        // getting an Float object
-        //float myFloat = [standardUserDefaults floatForKey:@"float"];
-        
-        
-        
-        //[self schedule:@selector(updateLabelOfTotalScore:) interval:1 MyFlag:1];     
+    
         
         //不需要在update 调用 在调用的时候就做判断 进行存储
         //初始化时需要进行一次更新
         [self schedule:@selector(updateLabelOfTotalScore:) interval:0.3];     
     
-    
-    
         //addTotalScore
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
-        CCLabelTTF* my_score = [CCLabelTTF labelWithString:@"SCORE:" fontName:@"Marker Felt" fontSize:20];
+        CCLabelTTF* my_score = nil;
         
-        my_score.color = ccc3(255,0,0);
+
         //change size by diff version
-        my_score.position = [GameMainScene sharedMainScene].scorePos;
+        if (1 == playID) 
+        {
+            my_score = [CCLabelTTF labelWithString:@" SCORE:" fontName:@"Marker Felt" fontSize:20];
+            my_score.position = [GameMainScene sharedMainScene].scorePos;
+        }
+        //play2
+        else
+        {
+            my_score = [CCLabelTTF labelWithString:@"P2SCORE:" fontName:@"Marker Felt" fontSize:20];
+            my_score.position = [GameMainScene sharedMainScene].scorePlay2Pos;
+        }
+        my_score.color = ccc3(255,0,0);
         [self addChild:my_score]; 
-        
-        
         //and HighestScore
         
         CCLabelTTF* my_highestscore = [CCLabelTTF labelWithString:@"BEST:" fontName:@"Marker Felt" fontSize:20];
@@ -156,7 +91,7 @@ static GameScore  *instanceOfgameScore;
         
         totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         //change size by diff version
-        totalScoreLabel.position = ccpAdd([GameMainScene sharedMainScene].scorePos, distance2);
+        totalScoreLabel.position = ccpAdd(my_score.position, distance2);
         totalScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
         totalScoreLabel.scale = 0.3;
         [self addChild:totalScoreLabel z:-2];
@@ -494,7 +429,6 @@ static GameScore  *instanceOfgameScore;
 -(CCArray *)calculateScoreWhenGameIsOver:(int)level timestamp:(int)mytimestamp
 {
     CCLOG(@"Into calculateScoreWhenGameIsOver\n");
-    
     CCLOG(@"my_nowlevelscore is %d",my_nowlevelscore);
     CCLOG(@"mytimestamp is %d",mytimestamp);
     

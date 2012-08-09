@@ -19,6 +19,7 @@
 #import "ContactListener.h"
 #import "Entity.h"
 #import "CandyEntity.h"
+#import "PropertyEntity.h"
 #import "FlyEntity.h"
 #import "SimpleAudioEngine.h"
 #import "GameMainScene.h"
@@ -60,28 +61,21 @@ void ContactListener::BeginContact(b2Contact* contact)
 
         
         
-//        if (0 >= bodyEntityA.hitPoints) {
-//            if(bodyEntityB.hitPoints>0)
-//            {
-//                bodyEntityB.hitPoints += bodyEntityA.initialHitPoints;
-//                bodyEntityB.initialHitPoints += bodyEntityA.initialHitPoints;
-//                //add by liujin     
-//                //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-//
-//                //if(bodyEntityB.scaleY == 0)
-//                //{  
-//                //    contact_flag  = 1;
-//                //} 
-//                
-//            }
-//        }
-//        if (0 >= bodyEntityB.hitPoints) {
-//            if(bodyEntityA.hitPoints)
-//            {
-//                bodyEntityA.hitPoints += bodyEntityB.initialHitPoints;
-//                bodyEntityA.initialHitPoints += bodyEntityB.initialHitPoints;
-//            }
-//        }
+        if (0 >= bodyEntityA.hitPoints 
+            && ([bodyEntityA isKindOfClass:[CandyEntity class]]|| [bodyEntityA isKindOfClass:[PropertyEntity class]])) 
+        {
+            if ([bodyEntityB isKindOfClass:[FlyEntity class]])
+            {
+                bodyEntityA.otherLineSpeed = [Helper toPixels:bodyEntityB.body->GetLinearVelocity()];
+            }
+        }
+        if (0 >= bodyEntityB.hitPoints 
+            && ([bodyEntityB isKindOfClass:[CandyEntity class]] || [bodyEntityB isKindOfClass:[PropertyEntity class]])) {
+            if ([bodyEntityA isKindOfClass:[FlyEntity class]])
+            {
+                bodyEntityB.otherLineSpeed = [Helper toPixels:bodyEntityA.body->GetLinearVelocity()];
+            }
+        }
     }
 }
 

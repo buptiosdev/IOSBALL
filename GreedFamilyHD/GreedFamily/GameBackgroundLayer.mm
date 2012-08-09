@@ -75,10 +75,6 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
         
-        
-        GameScore *myGameScore = [GameScore node];
-        [self addChild:myGameScore z:1 tag:-3 ];        
-        
         //加载瓷砖地图层
         //TileMapLayer *tileMapLayer = [TileMapLayer node];
         //[self addChild:tileMapLayer z:-2 tag:TileMapLayerTag];

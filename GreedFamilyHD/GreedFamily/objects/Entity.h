@@ -36,7 +36,7 @@ typedef enum
 @property (assign, nonatomic) CCSprite* sprite;
 @property (nonatomic) int initialHitPoints;
 @property (nonatomic) int hitPoints;
-
+@property (nonatomic) CGPoint otherLineSpeed;
 -(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef spriteFrameName:(NSString*)spriteFrameName;
 -(void) createBodyInWorld:(b2World*)world bodyDef:(b2BodyDef*)bodyDef fixtureDef:(b2FixtureDef*)fixtureDef;
 -(void)initSprite:(NSString*)spriteFrameName;

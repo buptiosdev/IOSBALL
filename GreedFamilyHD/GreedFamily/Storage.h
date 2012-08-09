@@ -49,9 +49,11 @@
     int nowScoreTime;
     int counter;
     int lastScoreTime;
+    int storageID;
+    GameScore *myGameScore;
 }
 @property (readonly, nonatomic) CCSprite* sprite;
-+(id)createStorage:(int)storageCapacity;
++(id)createStorage:(int)storageCapacity Play:(int)playID;
 -(void)addFoodToStorage:(int)foodType;
 -(CCArray * )getScoreByLevel:(int)level;
 //-(void)doMyCombineFood;

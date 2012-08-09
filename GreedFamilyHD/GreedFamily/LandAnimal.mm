@@ -19,9 +19,10 @@
 @synthesize landAnimalActionArray = _landAnimalActionArray;
 @synthesize  moveAction = _moveAction;
 
-+(id)CreateLandAnimal
+
++(id)CreateLandAnimal:(int)roleType Play:(int)playID
 {
-	return [[[self alloc] init] autorelease];
+	return [[[self alloc] initWithType:roleType Play:playID] autorelease];
 }
 
 static LandAnimal *instanceOfLandAnimal;
@@ -40,16 +41,35 @@ static LandAnimal *instanceOfLandAnimal;
     for (int i =0; i <2; i++) {
         
         CCAnimation* animation = nil;
-        switch (i) {
-            case 0:
-                animation = [CCAnimation animationWithFrame:@"girlbird_3_" frameCount:3 delay:0.2f];
-                break;
-            case 1:
-                animation = [CCAnimation animationWithFrame:@"girlbird_9_" frameCount:3 delay:0.2f];
-                break;
-                            
-            default:
-                break;
+        //小鸟
+        if (1 == familyType) 
+        {
+            switch (i) {
+                case 0:
+                    animation = [CCAnimation animationWithFrame:@"girlbird_3_" frameCount:3 delay:0.2f];
+                    break;
+                case 1:
+                    animation = [CCAnimation animationWithFrame:@"girlbird_9_" frameCount:3 delay:0.2f];
+                    break;
+                                
+                default:
+                    break;
+            }
+        }
+        //小猪
+        else if (2 == familyType)
+        {
+            switch (i) {
+                case 0:
+                    animation = [CCAnimation animationWithFrame:@"girlbird_3_" frameCount:3 delay:0.2f];
+                    break;
+                case 1:
+                    animation = [CCAnimation animationWithFrame:@"girlbird_9_" frameCount:3 delay:0.2f];
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         
@@ -65,29 +85,53 @@ static LandAnimal *instanceOfLandAnimal;
     
 }
 
--(id)init
+-(id)initWithType:(int)roleType Play:(int)playID
 {
     if ((self = [super init]))
 	{
         instanceOfLandAnimal = self;
+        animalID = playID;
+        familyType = roleType;
         //初始化动画
         [self initMoveAction];
         
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
-        //按照像素设定图片大小
-        //change size by diff version manual
-        self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(50)/[self.sprite contentSize].height;
-//        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
-        //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
-        //change size by diff version manual
-        CGPoint startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 25);
+        CGPoint startPos;
+        //小鸟
+        if (1 == familyType)
+        {
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
+            //按照像素设定图片大小
+            //change size by diff version manual
+            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+            //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
+            //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
+            //change size by diff version manual
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 25);
+            directionCurrent = 1;
+            directionBefore = -1;
+        }
+       
+        //小猪
+        else if (2 == familyType)
+        {
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
+            //按照像素设定图片大小
+            //change size by diff version manual
+            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+            //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
+            //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
+            //change size by diff version manual
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 25);
+            directionCurrent = -1;
+            directionBefore = 1;
+        }
         self.sprite.position=startPos;
         [self addChild:self.sprite]; 
         [self scheduleUpdate];
-        directionCurrent = 1;
-        directionBefore = -1;
+
         speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
         if (speed > 0.6) 
         {
@@ -118,7 +162,7 @@ static LandAnimal *instanceOfLandAnimal;
     int direction=0;
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
     
-    direction = [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:LandAnimalTag];
+    direction = [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:LandAnimalTag Play:animalID];
     
     if (0 != direction) {
         return direction;

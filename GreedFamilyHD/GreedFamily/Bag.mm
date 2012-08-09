@@ -15,6 +15,7 @@
 //#import "Storage.h"
 #import "TouchCatchLayer.h"
 #import "GameMainScene.h"
+#import "NoBodyObjectsLayer.h"
 @implementation Bag
 @synthesize sprite = _sprite;
 //-(void) registerWithTouchDispatcher
@@ -30,7 +31,14 @@
         return;
     }
     CCLOG(@"hot!!!!!!!!\n");
-    [[LandAnimal sharedLandAnimal] increaseSpeed];
+    if (1 == bagID) 
+    {
+        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimal] increaseSpeed];
+    }
+    else
+    {
+        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimalPlay2] increaseSpeed];
+    }
     pepperNum--;
     if (0 == pepperNum) 
     {
@@ -48,8 +56,17 @@
     {
         return;
     }
-    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+    Storage *storage = nil;
 
+    if (1 == bagID) 
+    {
+        storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+
+    }
+    else
+    {
+        storage = [[TouchCatchLayer sharedTouchCatchLayer] getStoragePlay2];
+    }
     //[storage combinTheSameType];
     [storage combinTheSameTypeNew]; 
     crystalNum--;
@@ -62,22 +79,20 @@
     [crystalLabel setString:[NSString stringWithFormat:@"x%i", crystalNum]];
     
 }
--(id)init
+
++(id)createBag:(int)playID
+{
+    return [[[self alloc] initWithPlayID:playID] autorelease];
+}
+
+-(id)initWithPlayID:(int)playID
 {
     if ((self = [super init]))
     {
-        //[self registerWithTouchDispatcher];
-        
-//        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-//        _sprite = [CCSprite spriteWithSpriteFrameName:@"bag_background.png"];
-//        CGSize screenSize = [[CCDirector sharedDirector] winSize];
-//        _sprite.position = CGPointMake(464, screenSize.height / 2);
-//        [batch addChild:_sprite z:-3];
-        //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+
         pepperNum = 0;
         crystalNum = 0;
-        
-
+        bagID = playID;
         
         CCSprite *pepperProp1 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
         CCSprite *pepperProp2 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];    
@@ -95,7 +110,15 @@
         [pepperPropMenu addChild:pepperLabel z:1];
         pepperMenu = [CCMenu menuWithItems:pepperPropMenu,nil];
         //change size by diff version
-        pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPos;
+        if (1 == bagID) 
+        {
+            pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPos;
+        }
+        else
+        {
+            pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPlay2Pos;
+        }
+
         pepperMenu.visible = NO;
         [self addChild:pepperMenu z:-2];
         
@@ -114,7 +137,8 @@
         [crystalPropMenu addChild:crystalLabel z:1];
         crystalMenu = [CCMenu menuWithItems:crystalPropMenu,nil];
         //change size by diff version
-        crystalMenu.position = [GameMainScene sharedMainScene].crystalMenuPos;
+        CGPoint distance = CGPointMake(60, 0);
+        crystalMenu.position = ccpAdd(distance, pepperMenu.position);
         crystalMenu.visible = NO;
         [self addChild:crystalMenu z:-2];
 //        timeTmp.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
@@ -162,9 +186,18 @@
     {
         //出现动画
         //change size by diff version
-        CGPoint moveToPosition = [GameMainScene sharedMainScene].crystalMenuPos;
-        CGPoint distance = CGPointMake(0, -50);
-        pepperMenu.position = ccpAdd(moveToPosition, distance);
+        CGPoint distance = CGPointMake(60, 0);
+        CGPoint moveToPosition;
+        if (1 == bagID) 
+        {
+            moveToPosition = ccpAdd(distance, [GameMainScene sharedMainScene].pepperMenuPos);
+        }
+        else
+        {
+            moveToPosition = ccpAdd(distance, [GameMainScene sharedMainScene].pepperMenuPlay2Pos);
+        }
+        CGPoint distance2 = CGPointMake(0, -50);
+        crystalMenu.position = ccpAdd(moveToPosition, distance2);
         crystalMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:2];

@@ -21,7 +21,7 @@
 +(id)initLandCache;
 //+(id) CreateLandCandy:(int)balltype Pos:(CGPoint)position;
 +(LandCandyCache *)sharedLandCandyCache;
--(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype;
+-(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype Play:(int)playID;
 -(void) CreateLandCandy:(int)balltype Pos:(CGPoint)position BodyVelocity:(CGPoint)bodyVelocity;
 -(void)addToLandCandies:(LandCandyEntity *)landCandy;
 -(int)getCurDirection:(CCSprite *)landanimal;

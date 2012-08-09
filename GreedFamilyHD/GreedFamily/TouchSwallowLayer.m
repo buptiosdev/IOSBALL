@@ -106,7 +106,7 @@
 -(void)updateScore
 {
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.parent updateScore];
+    [(GameShopScene *)self.parent updateScore];
 }
 
 -(void)yesAddSpeedOnce:(id)sender

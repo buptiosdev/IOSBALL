@@ -29,6 +29,80 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
 	return [[[self alloc] init] autorelease];
 }
 
+-(void)initNomal
+{
+    /*传递触摸事件给FlyEntity*/
+    GameSky *gameSky = [GameSky node];
+    [self addChild:gameSky z:-1 tag:GameSkyTag];
+    
+    GamePause *gamePause = [GamePause node];
+    [self addChild:gamePause z:2 tag:GamePauseTag];
+    
+    //修改游戏参数
+    NSString *strCapacity = nil;
+    if (1 == [[GameMainScene sharedMainScene] roleType]) 
+    {
+        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
+    }
+    else if (2 == [[GameMainScene sharedMainScene] roleType]) 
+    {
+        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
+    }
+    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
+    if (temCapacity > 12 || temCapacity < 8) 
+    {
+        temCapacity = 8;
+    }
+    Storage *storage = [Storage createStorage:temCapacity Play:1];
+    [self addChild:storage z:-3 tag:StorageTag];
+    
+    //单人的bag位置为play2处 tag为BagTag
+    Bag *bag = [Bag createBag:1];
+    [self addChild:bag z:-3 tag:BagTag];
+
+    return;
+}
+
+-(void)initPair
+{
+    /*传递触摸事件给FlyEntity*/
+    GameSky *gameSky = [GameSky node];
+    [self addChild:gameSky z:-1 tag:GameSkyTag];
+    
+    GamePause *gamePause = [GamePause node];
+    [self addChild:gamePause z:2 tag:GamePauseTag];
+    
+    
+    //修改游戏参数
+    NSString *strCapacityPlay1 = [NSString stringWithFormat:@"Capacity_Bird"];
+    NSString *strCapacityPlay2 = [NSString stringWithFormat:@"Capacity_Pig"];
+
+    int temCapacityPlay1 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay1]; 
+    if (temCapacityPlay1 > 12 || temCapacityPlay1 < 8) 
+    {
+        temCapacityPlay1 = 8;
+    }
+    int temCapacityPlay2 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay2]; 
+    if (temCapacityPlay2 > 12 || temCapacityPlay2 < 8) 
+    {
+        temCapacityPlay2 = 8;
+    }
+    
+    Storage *storagePlay1 = [Storage createStorage:temCapacityPlay1 Play:1];
+    [self addChild:storagePlay1 z:-3 tag:StorageTag];
+    
+    Storage *storagePlay2 = [Storage createStorage:temCapacityPlay2 Play:2];
+    [self addChild:storagePlay2 z:-3 tag:StoragePlay2Tag];
+    
+    
+    Bag *bagPlay1 = [Bag createBag:1];
+    [self addChild:bagPlay1 z:-3 tag:BagTag];
+    
+    Bag *bagPlay2 = [Bag createBag:2];
+    [self addChild:bagPlay2 z:-3 tag:BagPlay2Tag];
+    
+    return;
+}
 -(id)init
 {
     if ((self = [super init]))
@@ -38,37 +112,15 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         /*开启触事件监测*/
         self.isTouchEnabled = YES;
         
-        //[self registerWithTouchDispatcher];
-        
-        /*传递触摸事件给FlyEntity*/
-        GameSky *gameSky = [GameSky node];
-        [self addChild:gameSky z:-1 tag:GameSkyTag];
-        
-        GamePause *gamePause = [GamePause node];
-        [self addChild:gamePause z:2 tag:GamePauseTag];
-        
-        //修改游戏参数
-        NSString *strCapacity = nil;
-        if (1 == [[GameMainScene sharedMainScene] roleType]) 
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) 
         {
-            strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
+            [self initNomal];
         }
-        else if (2 == [[GameMainScene sharedMainScene] roleType]) 
+        else
         {
-            strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
+            [self initPair];
         }
-        int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-        if (temCapacity > 12 || temCapacity < 8) 
-        {
-            temCapacity = 8;
-        }
-        Storage *storage = [Storage createStorage:temCapacity];
-        [self addChild:storage z:-3 tag:StorageTag];
-        
-        //先不考虑
-        Bag *bag = [Bag node];
-        [self addChild:bag z:-3 tag:BagTag];
-        
+                
     }
     return self;
 }
@@ -83,6 +135,20 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
 -(Bag*) getBag
 {
 	CCNode* node = [self getChildByTag:BagTag];
+	NSAssert([node isKindOfClass:[Bag class]], @"node is not a bag!");
+	return (Bag*)node;
+}
+
+-(Storage*) getStoragePlay2
+{
+	CCNode* node = [self getChildByTag:StoragePlay2Tag];
+	NSAssert([node isKindOfClass:[Storage class]], @"node is not a storage!");
+	return (Storage*)node;
+}
+
+-(Bag*) getBagPlay2
+{
+	CCNode* node = [self getChildByTag:BagPlay2Tag];
 	NSAssert([node isKindOfClass:[Bag class]], @"node is not a bag!");
 	return (Bag*)node;
 }

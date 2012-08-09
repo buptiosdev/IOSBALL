@@ -13,7 +13,7 @@
 #import "NoBodyObjectsLayer.h"
 #import "Competitor.h"
 #import "LandAnimal.h"
-
+#import "GameMainScene.h"
 @implementation LandCandyCache
 
 @synthesize landnum = _landnum;
@@ -98,7 +98,13 @@ static LandCandyCache *instanceOfLandCandyCache;
     [landcandies insertObject:landCandy atIndex:_landnum];
     _landnum++;
     _airnum--;
-    [[LandAnimal sharedLandAnimal] setCurDirection];
+
+    [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimal] setCurDirection];
+    if (YES == [GameMainScene sharedMainScene].isPairPlay) 
+    {
+        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimalPlay2] setCurDirection];
+    }
+
     CCLOG(@"landnum++ =%d\n",_landnum);
 }
 
@@ -131,11 +137,22 @@ static LandCandyCache *instanceOfLandCandyCache;
     [[Competitor sharedCompetitor]eatAction];
 }
 
--(void)landAnimalEat:(int)foodType
+-(void)landAnimalEat:(CCSprite *)landanimal FoodType:(int)foodType Play:(int)playID
 {
-    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+    Storage *storage = nil;
+    if (1 == playID) 
+    {
+        storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage]; 
+    }
+    else
+    {
+        storage = [[TouchCatchLayer sharedTouchCatchLayer] getStoragePlay2];
+    }
+    
     [storage addFoodToStorage:foodType];
-    [[LandAnimal sharedLandAnimal]eatAction];
+    
+    
+    [(LandAnimal *)[landanimal parent] eatAction];
 }
 
 -(int)getCurDirection:(CCSprite *)landanimal
@@ -171,7 +188,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     return direction;
 }
 
--(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype
+-(int)CheckforCandyCollision:(CCSprite *)landanimal Type:(int)landtype Play:(int)playID
 {
     float landanimalsize = landanimal.contentSize.width * landanimal.scaleX;
     //float spidersize=[[spiders lastObject] texture].contentSize.width;
@@ -204,7 +221,19 @@ static LandCandyCache *instanceOfLandCandyCache;
             if(landtype == LandAnimalTag)
             {
                 direction = [self getCurDirection:landanimal];
-                [self landAnimalEat:landcandy.ballType];
+                if (YES == [GameMainScene sharedMainScene].isPairPlay) 
+                {
+                    if (1 == playID) 
+                    {
+                        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimalPlay2] setCurDirection];
+                    }
+                    else
+                    {
+                        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimal] setCurDirection];
+                    }
+                    
+                }
+                [self landAnimalEat:landanimal FoodType:landcandy.ballType Play:playID];
                 //烟雾球改变现在方向
                 if (7 == landcandy.ballType) {
                     direction = -direction;

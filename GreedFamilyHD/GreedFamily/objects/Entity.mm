@@ -14,7 +14,7 @@
 @synthesize sprite = _sprite;
 @synthesize initialHitPoints;
 @synthesize hitPoints;
-
+@synthesize otherLineSpeed = _otherLineSpeed;
 //-(CCSprite *)sprite
 //{
 //    if (!_sprite) 

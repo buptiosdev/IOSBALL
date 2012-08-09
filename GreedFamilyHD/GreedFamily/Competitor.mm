@@ -104,7 +104,7 @@ static Competitor *instanceOfCompetitor;
 {
     //int direction=0;
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
-    return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:CompetitorTag];
+    return [instanceOfLandCandyCache CheckforCandyCollision:self.sprite Type:CompetitorTag Play:0];
     //return direction;
 }
 

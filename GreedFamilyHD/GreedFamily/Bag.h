@@ -14,6 +14,7 @@
 {
     int pepperNum;
     int crystalNum;
+    int bagID;
     CCProgressTimer *timeTmp;
     CCLabelBMFont *pepperLabel;
     CCLabelBMFont *crystalLabel;
@@ -22,7 +23,8 @@
 }
 @property (readonly, nonatomic) CCSprite* sprite;
 
++(id)createBag:(int)playID;
 -(void)addCrystal;
 -(void)addPepper;
-
+-(id)initWithPlayID:(int)playID;
 @end
