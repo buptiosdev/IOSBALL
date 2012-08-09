@@ -12,6 +12,7 @@
 #import "LevelScene.h"
 #import "OptionsScene.h"
 #import "LoadingScene.h"
+#import "CDAudioManager.h"
 
 @implementation PauseLayer
 
@@ -30,10 +31,15 @@
 {
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
-	if(sender.selectedIndex ==1)
-		[usrDef setBool:YES forKey:@"sound"];
-	if(sender.selectedIndex ==0)
-		[usrDef setBool:NO forKey:@"sound"];
+	if(sender.selectedIndex ==1){
+        [usrDef setBool:YES forKey:@"sound"];
+        //[CDAudioManager sharedManager].mute=NO;
+    }
+		
+	if(sender.selectedIndex ==0){
+        [usrDef setBool:NO forKey:@"sound"];
+    }
+		
 }
 
 //-(void)showOption
@@ -86,19 +92,23 @@
                                                           selectedSprite:play 
                                                                   target:self 
                                                                 selector:@selector(returnGame)];
-        //[playItem setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
+        CCMenu * playMenu = [CCMenu menuWithItems:playItem,nil];
+        [playMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
+        [self addChild:playMenu];
         
         CCSprite *level = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
-        level.scaleX=(60)/[level contentSize].width; //按照像素定制图片宽高是控制像素的。
-        level.scaleY=(60)/[level contentSize].height;
+        level.scaleX=(40)/[level contentSize].width; //按照像素定制图片宽高是控制像素的。
+        level.scaleY=(40)/[level contentSize].height;
         CCSprite *level1 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
-        level1.scaleX=(60)/[level1 contentSize].width; //按照像素定制图片宽高是控制像素的。
-        level1.scaleY=(60)/[level1 contentSize].height;
+        level1.scaleX=(40)/[level1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        level1.scaleY=(40)/[level1 contentSize].height;
         CCMenuItemSprite *levelItem = [CCMenuItemSprite itemFromNormalSprite:level 
                                                              selectedSprite:level1 
                                                                      target:self 
                                                                    selector:@selector(returnLevel)];
-        //[levelItem setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*2/6)];
+        CCMenu * levelMenu = [CCMenu menuWithItems:levelItem,nil];
+        [levelMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*2/6)];
+        [self addChild:levelMenu];
         
 //        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:30];
 //        [returnLabel setColor:ccRED];
@@ -134,8 +144,9 @@
 //                                                            selectedImage:@"options_check.png" ];
 		
 		CCMenuItemToggle * sound = [CCMenuItemToggle itemWithTarget:self selector:@selector(changeSound:) items:checked,unchecked,nil];
-        //[sound setPosition:ccp((screenSize.width)*0.3f,(screenSize.height)*2/6)];
-        
+        CCMenu * soundMenu = [CCMenu menuWithItems:sound,nil];
+        [soundMenu setPosition:ccp((screenSize.width)*0.3f,(screenSize.height)*2/6)];
+        [self addChild:soundMenu];
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"sound"] == YES)
 			sound.selectedIndex = 1;
@@ -152,12 +163,14 @@
                                                                       target:self 
                                                                     selector:@selector(retryGame:)];
         [retryItem setTag:sceneNum];
-        //[retryItem setPosition:ccp((screenSize.width)*0.7f,(screenSize.height)*2/6)];
+        CCMenu * retryMenu = [CCMenu menuWithItems:retryItem,nil];
+        [retryMenu setPosition:ccp((screenSize.width)*0.7f,(screenSize.height)*2/6)];
         
-        CCMenu * dMenu = [CCMenu menuWithItems:playItem,levelItem,sound,retryItem,nil];
+        
+        //dMenu.anchorPoint=CGPointMake(0, 0);
         //[dMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
-        [dMenu alignItemsHorizontallyWithPadding:30];
-        [self addChild:dMenu];
+        //[dMenu alignItemsHorizontallyWithPadding:30];
+        [self addChild:retryMenu];
     }
     return self;
 }
