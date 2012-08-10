@@ -17,6 +17,7 @@
 
 
 @synthesize sprite = _sprite;
+
 @synthesize propertyType = _propertyType;
 
 static CCArray* spawnFrequency;
@@ -160,6 +161,8 @@ static CCArray* spawnFrequency;
 //        
 //        
 //	}    
+    //同步壳的位置
+    self.cover.position = self.sprite.position;
     
     if (self.hitPoints != -1)
     {
@@ -300,16 +303,37 @@ static CCArray* spawnFrequency;
     {
         [self initPropertyMove:propertyType];
         
+        if ([GameMainScene sharedMainScene].mainscenParam.invisibaleNum == 5)
+        {
+            propertyParamDef.initialHitPoints = 2;
+        }
+            
+        
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:propertyParamDef.spriteFrameName];
         //按照像素设定图片大小
         self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
         self.sprite.scaleY=(35)/[self.sprite contentSize].height;
-        [batch addChild:self.sprite];       
+        [batch addChild:self.sprite];     
+        
+        CCSpriteBatchNode* batch2 = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+        self.cover = [CCSprite spriteWithSpriteFrameName:@"pic_6.png"];
+        //按照像素设定图片大小
+        self.cover.scaleX=(35)/[self.cover contentSize].width; //按照像素定制图片宽高
+        self.cover.scaleY=(35)/[self.cover contentSize].height;
+        self.cover.visible = NO;
+        [batch2 addChild:self.cover z:2];
         
         //初始化为－1
         hitPoints = -1;
         initialHitPoints = propertyParamDef.initialHitPoints;
+        
+        if (initialHitPoints == 2)
+        {
+            self.cover.position = self.sprite.position;
+            self.cover.visible = YES;
+            self.sprite.visible = NO;
+        }
         
         b2BodyDef bodyDef;
         bodyDef.position = [Helper toMeters:propertyParamDef.startPos];
@@ -359,7 +383,15 @@ static CCArray* spawnFrequency;
             //change size by diff version
             appearPosition = [GameMainScene sharedMainScene].appear1stPos;
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
+            self.cover.position = CGPoint(appearPosition);
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(5 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*5);
             enterForce = [Helper toMeters:positionNew];
@@ -370,7 +402,15 @@ static CCArray* spawnFrequency;
             //change size by diff version
             appearPosition = [GameMainScene sharedMainScene].appear2ndPos;
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
+            self.cover.position = CGPoint(appearPosition);
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*5, -5 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -381,7 +421,15 @@ static CCArray* spawnFrequency;
             //change size by diff version
             appearPosition = [GameMainScene sharedMainScene].appear3rdPos;
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
+            self.cover.position = CGPoint(appearPosition);
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*2, -2 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -392,7 +440,15 @@ static CCArray* spawnFrequency;
             //change size by diff version
             appearPosition = [GameMainScene sharedMainScene].appear4thPos;
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
+            self.cover.position = CGPoint(appearPosition);
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(CCRANDOM_MINUS1_1()*3, -3 * CCRANDOM_0_1());
             enterForce = [Helper toMeters:positionNew];
@@ -403,7 +459,15 @@ static CCArray* spawnFrequency;
             //change size by diff version
             appearPosition = [GameMainScene sharedMainScene].appear5thPos;
             self.sprite.position = CGPoint(appearPosition);
-            self.sprite.visible = YES;
+            self.cover.position = CGPoint(appearPosition);
+            if (2 == self.initialHitPoints)
+            {
+                self.cover.visible = YES;
+            }
+            else
+            {
+                self.sprite.visible = YES;
+            }
             self.body->SetTransform([Helper toMeters:appearPosition], 0);
             positionNew = CGPointMake(-3 * CCRANDOM_0_1(), CCRANDOM_MINUS1_1()*3);
             enterForce = [Helper toMeters:positionNew];
