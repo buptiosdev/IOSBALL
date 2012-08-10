@@ -17,14 +17,14 @@
 
 
 @interface ResultLayer (PrivateMethods)
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum;
+-(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
 @end
 
 @implementation ResultLayer
 
-+(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore  StarNum:(int)starnum
++(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore  StarNum:(int)starnum Newrecord:(int)isnewrecord
 {
-    return [[[ResultLayer alloc] initWithResult:color Level:level Score:score AddScore:addscore StarNum:starnum] autorelease];
+    return [[[ResultLayer alloc] initWithResult:color Level:level Score:score AddScore:addscore StarNum:starnum Newrecord:isnewrecord] autorelease];
 }
 
 -(void)chooseLevel:(CCMenuItemImage *)btn
@@ -38,7 +38,7 @@
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
 
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum
+-(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord
 {
     if ((self = [super initWithColor:color]))
     {
@@ -63,6 +63,19 @@
 		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 2 / 5 );
         [labeltotalscore setColor:ccBLUE];
 		[self addChild:labeltotalscore];
+        
+        if(isnewrecord==1)
+        {
+            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:@"Great!" fontName:@"Marker Felt" fontSize:40];
+            [labelnewrecord setColor:ccRED];
+            labelnewrecord.position=CGPointMake(size.width *3/ 4, size.height *3/4  );;
+            [labelnewrecord runAction:[CCSequence actions:
+                                [CCDelayTime actionWithDuration:0.5],
+                                [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+                                nil]];
+            [self addChild:labelnewrecord];
+        }
+        
         
 
         for(int i=0;i<3;i++)
