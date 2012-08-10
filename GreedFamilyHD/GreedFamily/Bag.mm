@@ -167,7 +167,15 @@
     {
         //出现动画
         //change size by diff version
-        CGPoint moveToPosition = [GameMainScene sharedMainScene].pepperMenuPos;
+        CGPoint moveToPosition;
+        if (1 == bagID) 
+        {
+            moveToPosition = [GameMainScene sharedMainScene].pepperMenuPos;
+        }
+        else
+        {
+            moveToPosition = [GameMainScene sharedMainScene].pepperMenuPlay2Pos;
+        }
         CGPoint distance = CGPointMake(0, -50);
         pepperMenu.position = ccpAdd(moveToPosition, distance);
         pepperMenu.visible = YES;

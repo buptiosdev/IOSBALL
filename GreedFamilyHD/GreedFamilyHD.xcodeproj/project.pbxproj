@@ -220,6 +220,7 @@
 		706EAB78153FC40B0003C4B2 /* LandAnimal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB77153FC40B0003C4B2 /* LandAnimal.mm */; };
 		706EAB7D153FC4480003C4B2 /* CCAnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */; };
 		706EAB7E153FC4480003C4B2 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7C153FC4480003C4B2 /* Helper.mm */; };
+		7077635615D5666C0085E8DA /* LevelScenePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 7077635515D5666C0085E8DA /* LevelScenePair.m */; };
 		7081958015B86B4900ABB13E /* bublle_break.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081957E15B86B4900ABB13E /* bublle_break.plist */; };
 		7081958115B86B4900ABB13E /* drop_start.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081957F15B86B4900ABB13E /* drop_start.plist */; };
 		7081959315B8F00100ABB13E /* land_bomb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081958E15B8F00100ABB13E /* land_bomb.plist */; };
@@ -656,6 +657,8 @@
 		706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CCAnimationHelper.mm; path = tools/CCAnimationHelper.mm; sourceTree = "<group>"; };
 		706EAB7B153FC4480003C4B2 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = tools/Helper.h; sourceTree = "<group>"; };
 		706EAB7C153FC4480003C4B2 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Helper.mm; path = tools/Helper.mm; sourceTree = "<group>"; };
+		7077635415D5666C0085E8DA /* LevelScenePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScenePair.h; sourceTree = "<group>"; };
+		7077635515D5666C0085E8DA /* LevelScenePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScenePair.m; sourceTree = "<group>"; };
 		7081957E15B86B4900ABB13E /* bublle_break.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bublle_break.plist; path = Resources/bublle_break.plist; sourceTree = "<group>"; };
 		7081957F15B86B4900ABB13E /* drop_start.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = drop_start.plist; path = Resources/drop_start.plist; sourceTree = "<group>"; };
 		7081958E15B8F00100ABB13E /* land_bomb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_bomb.plist; path = Resources/land_bomb.plist; sourceTree = "<group>"; };
@@ -1323,6 +1326,8 @@
 				706EA9A1153F9AE90003C4B2 /* NavigationScene.mm */,
 				4A7FA06D1580F4B7009A0001 /* LevelScene.h */,
 				4A7FA06E1580F4B7009A0001 /* LevelScene.m */,
+				7077635415D5666C0085E8DA /* LevelScenePair.h */,
+				7077635515D5666C0085E8DA /* LevelScenePair.m */,
 				70C7C3FB15AA7965007D35B5 /* GameCenterScene.h */,
 				70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */,
 				702FC0E515C7B13E00B39D2A /* GameShopScene.h */,
@@ -1665,6 +1670,7 @@
 				702FC0E715C7B13E00B39D2A /* GameShopScene.m in Sources */,
 				702FC0EB15C7B6E700B39D2A /* CCRadioMenu.m in Sources */,
 				702FC0F615C902FB00B39D2A /* TouchSwallowLayer.m in Sources */,
+				7077635615D5666C0085E8DA /* LevelScenePair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

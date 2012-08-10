@@ -144,7 +144,7 @@ static GameMainScene *instanceOfMainScene;
         instanceOfMainScene = self;
         _sceneNum = order;
         //双人游戏 order为0
-        if (0 == order) 
+        if (0 >= order) 
         {
             [self initPairGame:order];
         }
@@ -202,7 +202,7 @@ static GameMainScene *instanceOfMainScene;
 {
     _mainscenParam.order = order;
     switch (order) {
-        case 0:
+        case TargetScenesPairEasy:
             _mainscenParam.maxVisibaleNum = 8;
             _mainscenParam.candyCount = 50;
             _mainscenParam.candyType = 3;
@@ -216,6 +216,22 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.pepperFrequency = FourTime;
             _mainscenParam.iceFrequency = FourTime;
             _mainscenParam.smokeFrequency = FourTime;
+            break;
+        case TargetScenesPairHard:
+            _mainscenParam.maxVisibaleNum = 8;
+            _mainscenParam.candyCount = 50;
+            _mainscenParam.candyType = 3;
+            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.landCompetitorExist = NO;
+            _mainscenParam.landCompetSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeed = 0.5f;
+            _mainscenParam.landAnimalSpeedPlay2 = 0.5f;
+            _mainscenParam.bombFrequency = FourTime;
+            _mainscenParam.crystalFrequency = ThreeTime;
+            _mainscenParam.pepperFrequency = FourTime;
+            _mainscenParam.iceFrequency = FourTime;
+            _mainscenParam.smokeFrequency = FourTime;
+            _mainscenParam.invisibaleNum = 5;
             break;
     }
     //加上商店购买道具    

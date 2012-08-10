@@ -204,7 +204,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	// body's velocity and position are more accurately tracked but at the cost of speed.
 	// Usually for games only 1 position iteration is necessary to achieve good results.
     //CCLOG(@"int哦 here");
-	float timeStep = 0.03f;
+	float timeStep = 1/60.0;
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
 	self.world->Step(timeStep, velocityIterations, positionIterations);

@@ -15,6 +15,7 @@
 #import "GameShopScene.h"
 #import "CCRadioMenu.h"
 #import "GameMainScene.h"
+#import "LevelScenePair.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -290,7 +291,7 @@
 {
     //connect to game center
     //[[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneINVALID]];
-    [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:0]];
+	[[CCDirector sharedDirector] replaceScene:[LevelScenePair scene]];
 }
 
 +(id)scene

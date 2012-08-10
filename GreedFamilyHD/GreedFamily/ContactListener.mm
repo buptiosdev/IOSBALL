@@ -45,17 +45,33 @@ void ContactListener::BeginContact(b2Contact* contact)
         BOOL sound = [usrDef boolForKey:@"sound"];
         if ([bodyEntityA isKindOfClass:[FlyEntity class]])
         {
-            if(sound)
-                [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
-            bodyEntityB.hitPoints--;
+
+            if (![bodyEntityB isKindOfClass:[FlyEntity class]])
+            {
+                if(sound)
+                {
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
+                }
+                bodyEntityB.hitPoints--;
+            }
+            else
+            {
+                //对手相碰的音效
+            }
 
         }
              
         else if ([bodyEntityB isKindOfClass:[FlyEntity class]]) 
         {
-            if(sound)
-                [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
-            bodyEntityA.hitPoints--;
+            
+            if (![bodyEntityA isKindOfClass:[FlyEntity class]])
+            {
+                if(sound)
+                {
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
+                }
+                bodyEntityA.hitPoints--;
+            }
 
         }
 

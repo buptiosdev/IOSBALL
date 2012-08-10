@@ -77,7 +77,8 @@
 //            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
 //			break;
 //	}
-    if(targetScene_>=TargetNavigationScen||targetScene_<=TargetSceneINVALID)
+    //if(targetScene_>=TargetNavigationScen||targetScene_<=TargetSceneINVALID)
+    if(targetScene_>=TargetNavigationScen)
     {
         [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
     }

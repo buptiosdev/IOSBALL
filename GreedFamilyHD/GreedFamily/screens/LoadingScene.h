@@ -11,6 +11,8 @@
 
 typedef enum
 {
+    TargetScenesPairEasy = -1,
+    TargetScenesPairHard = -2,
 	TargetSceneINVALID = 0,
 	TargetScene1stScene,
 	TargetScene2ndScene,
