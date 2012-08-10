@@ -17,7 +17,7 @@
 
 @implementation CandyEntity
 @synthesize sprite = _sprite;
-@synthesize cover = _cover;
+//@synthesize cover = _cover;
 @synthesize candyType = _candyType;
 
 -(void) dealloc
@@ -341,17 +341,15 @@
         
         self.candyType = candyParamDef.ballType;
         
+        //初始化为-1，spawn会赋值
+        hitPoints = -1;
+        initialHitPoints = candyParamDef.initialHitPoints;
         if (initialHitPoints == 2)
         {
             self.cover.position = self.sprite.position;
             self.cover.visible = YES;
             self.sprite.visible = NO;
         }
-        
-        //初始化为-1，spawn会赋值
-        hitPoints = -1;
-        initialHitPoints = candyParamDef.initialHitPoints;
-        
 
         b2BodyDef bodyDef;
         bodyDef.position = [Helper toMeters:candyParamDef.startPos];

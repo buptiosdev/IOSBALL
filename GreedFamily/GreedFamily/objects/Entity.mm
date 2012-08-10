@@ -14,7 +14,7 @@
 @synthesize sprite = _sprite;
 @synthesize initialHitPoints;
 @synthesize hitPoints;
-
+@synthesize cover =  _cover;
 //-(CCSprite *)sprite
 //{
 //    if (!_sprite) 

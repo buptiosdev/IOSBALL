@@ -192,9 +192,10 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 			float angle = body->GetAngle();
 			bodyNode.sprite.rotation = -(CC_RADIANS_TO_DEGREES(angle));
             
-            if ([bodyNode isKindOfClass:[CandyEntity class]] && 1 == bodyNode.hitPoints)
+            if (([bodyNode isKindOfClass:[CandyEntity class]] || [bodyNode isKindOfClass:[PropertyEntity class]]) 
+                && 1 == bodyNode.hitPoints)
             {
-                CandyEntity* candyNode = (CandyEntity*)bodyNode;
+                Entity* candyNode = (CandyEntity*)bodyNode;
                 candyNode.sprite.visible = YES;
                 candyNode.cover.visible = NO;
             }

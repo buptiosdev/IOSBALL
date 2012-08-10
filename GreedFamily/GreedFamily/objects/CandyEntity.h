@@ -64,7 +64,7 @@ struct CandyParam {
 -(void)spawn:(int)enterPosition;
 @property (assign, nonatomic) int candyType;
 @property (assign, nonatomic) CCSprite* sprite;
-@property (assign, nonatomic) CCSprite* cover;
+//@property (assign, nonatomic) CCSprite* cover;
 //+(int) getSpawnFrequencyForCandyType:(CandyTypes)CandyType;
 //
 //-(void) spawn;
