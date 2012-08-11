@@ -294,16 +294,11 @@
         Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
         [bag addCrystal];       
     }
+    //反向球
     else if (7 == foodType)
     {
-        //烟雾特效
-        CCParticleSystem* system;
-        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"smoke2.plist"];
-        system.positionType = kCCPositionTypeGrouped;
-        system.autoRemoveOnFinish = YES;
-        //system.position = self.sprite.position;
-        [self addChild:system];
-        [[LandAnimal sharedLandAnimal] reverseDirection];
+        Bag *bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
+        [bag addSmoke];
     }
 }
 
