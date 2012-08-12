@@ -122,13 +122,14 @@
     {
         return;
     }
-    //烟雾特效
-    CCParticleSystem* system;
-    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"smoke2.plist"];
-    system.positionType = kCCPositionTypeGrouped;
-    system.autoRemoveOnFinish = YES;
-    //system.position = self.sprite.position;
-    [self addChild:system];
+//可以当作破最高分特效    
+//    
+//    CCParticleSystem* system;
+//    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"smoke2.plist"];
+//    system.positionType = kCCPositionTypeGrouped;
+//    system.autoRemoveOnFinish = YES;
+//    //system.position = self.sprite.position;
+//    [self addChild:system];
 
     [[LandAnimal sharedLandAnimal] reverseDirection];
     smokeNum--;

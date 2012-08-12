@@ -18,6 +18,7 @@
     BOOL isPepper;
     BOOL isCrystal;
     BOOL isSpeedfast;
+    BOOL isSmoke;
     float speed;
     int waitinterval;
     int directionBefore;

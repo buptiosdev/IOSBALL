@@ -24,7 +24,8 @@ typedef enum
     PepperType,              
 	BombType,            
     CrystalType,
-    SpeedfastType
+    SpeedfastType,
+    SmokeType
     
 } ParticleType;
 

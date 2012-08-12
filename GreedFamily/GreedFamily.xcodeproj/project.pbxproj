@@ -220,6 +220,7 @@
 		706EAB78153FC40B0003C4B2 /* LandAnimal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB77153FC40B0003C4B2 /* LandAnimal.mm */; };
 		706EAB7D153FC4480003C4B2 /* CCAnimationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */; };
 		706EAB7E153FC4480003C4B2 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EAB7C153FC4480003C4B2 /* Helper.mm */; };
+		707FE59E15D7A4C200C9456C /* besmoked.plist in Resources */ = {isa = PBXBuildFile; fileRef = 707FE59D15D7A4C200C9456C /* besmoked.plist */; };
 		7081958015B86B4900ABB13E /* bublle_break.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081957E15B86B4900ABB13E /* bublle_break.plist */; };
 		7081958115B86B4900ABB13E /* drop_start.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081957F15B86B4900ABB13E /* drop_start.plist */; };
 		7081959315B8F00100ABB13E /* land_bomb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7081958E15B8F00100ABB13E /* land_bomb.plist */; };
@@ -656,6 +657,7 @@
 		706EAB7A153FC4480003C4B2 /* CCAnimationHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CCAnimationHelper.mm; path = tools/CCAnimationHelper.mm; sourceTree = "<group>"; };
 		706EAB7B153FC4480003C4B2 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = tools/Helper.h; sourceTree = "<group>"; };
 		706EAB7C153FC4480003C4B2 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Helper.mm; path = tools/Helper.mm; sourceTree = "<group>"; };
+		707FE59D15D7A4C200C9456C /* besmoked.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = besmoked.plist; path = Resources/besmoked.plist; sourceTree = "<group>"; };
 		7081957E15B86B4900ABB13E /* bublle_break.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bublle_break.plist; path = Resources/bublle_break.plist; sourceTree = "<group>"; };
 		7081957F15B86B4900ABB13E /* drop_start.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = drop_start.plist; path = Resources/drop_start.plist; sourceTree = "<group>"; };
 		7081958E15B8F00100ABB13E /* land_bomb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = land_bomb.plist; path = Resources/land_bomb.plist; sourceTree = "<group>"; };
@@ -773,6 +775,7 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				707FE59D15D7A4C200C9456C /* besmoked.plist */,
 				708F3B8515CAD9AF000DCF04 /* landspeedfast.plist */,
 				708F3B8615CAD9AF000DCF04 /* smoke.plist */,
 				708F3B8715CAD9AF000DCF04 /* smoke2.plist */,
@@ -1482,6 +1485,7 @@
 				708F3B8A15CAD9AF000DCF04 /* smoke.plist in Resources */,
 				708F3B8B15CAD9AF000DCF04 /* smoke2.plist in Resources */,
 				708F3B8C15CAD9AF000DCF04 /* sparkle.plist in Resources */,
+				707FE59E15D7A4C200C9456C /* besmoked.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
