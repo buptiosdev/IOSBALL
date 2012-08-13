@@ -123,6 +123,10 @@
     while(1)
     {
         right_index = [foodArray count]-1;
+        if (right_index < 1)
+        {
+            return;
+        }
         
         if (left_index==right_index)
         {
