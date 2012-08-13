@@ -64,7 +64,6 @@ struct ProParam {
 -(void) moveProperty;
 @property (assign, nonatomic) int propertyType;
 @property (assign, nonatomic) CCSprite* sprite;
-
 //+(int) getSpawnFrequencyForCandyType:(CandyTypes)CandyType;
 //
 //-(void) spawn;

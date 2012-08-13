@@ -511,7 +511,7 @@ static GameScore  *instanceOfgameScore;
     }
     //完成成就 end
     
-    
+    int isnewrecord=0;
     if (my_nowlevelscore > temphighestscore)
     {
         //新纪录音效
@@ -524,6 +524,7 @@ static GameScore  *instanceOfgameScore;
         
         [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",my_nowlevelscore]];        
         [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]]; 
+        isnewrecord=1;
     }
     else
     {
@@ -562,6 +563,7 @@ static GameScore  *instanceOfgameScore;
     //提交缓存文件
     [[[MyGameScore sharedScore] standardUserDefaults] synchronize];
     [LevelScore insertObject:[NSNumber numberWithInteger:starNum] atIndex:2];  
+    [LevelScore insertObject:[NSNumber numberWithInteger:isnewrecord] atIndex:3]; 
     return LevelScore;
     
 }

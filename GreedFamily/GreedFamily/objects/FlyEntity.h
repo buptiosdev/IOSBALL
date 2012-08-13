@@ -36,7 +36,7 @@ typedef enum
 
 }
 
-+(id) flyAnimal:(b2World*)world;
++(id) flyAnimal:(b2World *)world RoleType:(int)roleType;
 -(BOOL) ccTouchBeganForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchMovedForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event;

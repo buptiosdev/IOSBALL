@@ -22,9 +22,40 @@ static NoBodyObjectsLayer *instanceOfNoBodyObjectsLayer;
     
     return instanceOfNoBodyObjectsLayer;
 }
+
 +(id)CreateNoBodyObjectsLayer
 {
 	return [[[self alloc] init] autorelease];
+}
+
+-(void)initNomal
+{
+    int familyType = [[GameMainScene sharedMainScene] roleType];
+    LandAnimal *landAnimal = [LandAnimal CreateLandAnimal:familyType Play:1];
+    [self addChild:landAnimal z:1 tag:LandAnimalTag];
+    
+    BOOL isCreate = [GameMainScene sharedMainScene].mainscenParam.landCompetitorExist;
+    
+    if (isCreate)
+    {
+        Competitor *competitor = [Competitor CreateCompetitor];
+        [self addChild:competitor z:1 tag:CompetitorTag];
+    }
+    
+    LandCandyCache * landcandyCache = [LandCandyCache initLandCache];
+    [self addChild:landcandyCache z:1 tag:LandCandyTag];
+}
+
+-(void)initPair
+{
+    LandAnimal *landAnimal = [LandAnimal CreateLandAnimal:1 Play:1];
+    [self addChild:landAnimal z:1 tag:LandAnimalTag];
+    
+    LandAnimal *landAnimalPlay2 = [LandAnimal CreateLandAnimal:2 Play:2];
+    [self addChild:landAnimalPlay2 z:1 tag:LandAnimalPlay2Tag];
+    
+    LandCandyCache * landcandyCache = [LandCandyCache initLandCache];
+    [self addChild:landcandyCache z:1 tag:LandCandyTag];
 }
 
 -(id)init
@@ -33,20 +64,17 @@ static NoBodyObjectsLayer *instanceOfNoBodyObjectsLayer;
     {
         instanceOfNoBodyObjectsLayer = self;
         
-        LandAnimal *landAnimal = [LandAnimal CreateLandAnimal];
-        [self addChild:landAnimal z:1 tag:LandAnimalTag];
-        
-        BOOL isCreate = [GameMainScene sharedMainScene].mainscenParam.landCompetitorExist;
-        
-        if (isCreate)
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) 
         {
-            Competitor *competitor = [Competitor CreateCompetitor];
-            [self addChild:competitor z:1 tag:CompetitorTag];
+            [self initNomal];
+        }
+        else
+        {
+            [self initPair];
         }
         
-        LandCandyCache * landcandyCache = [LandCandyCache initLandCache];
-        [self addChild:landcandyCache z:1 tag:LandCandyTag];
     }
+    
     return self;
 }
 
@@ -57,6 +85,19 @@ static NoBodyObjectsLayer *instanceOfNoBodyObjectsLayer;
 	return (LandCandyCache *)node;
 }
 
+-(LandAnimal *) getLandAnimalPlay2
+{
+	CCNode* node = [self getChildByTag:LandAnimalPlay2Tag];
+	NSAssert([node isKindOfClass:[LandAnimal class]], @"node is not a LandAnimal!");
+	return (LandAnimal *)node;
+}
+
+-(LandAnimal *) getLandAnimal
+{
+	CCNode* node = [self getChildByTag:LandAnimalTag];
+	NSAssert([node isKindOfClass:[LandAnimal class]], @"node is not a LandAnimal!");
+	return (LandAnimal *)node;
+}
 
 -(void) dealloc
 {

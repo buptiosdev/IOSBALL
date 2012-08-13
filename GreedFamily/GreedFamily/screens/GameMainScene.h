@@ -59,6 +59,7 @@ struct SceneParam
     int order;
     float landCompetSpeed;
     float landAnimalSpeed;
+    float landAnimalSpeedPlay2;
 };
 
 
@@ -71,15 +72,18 @@ struct SceneParam
 +(GameMainScene*) sharedMainScene;
 +(CCScene *) scene:(int)order;
 @property (nonatomic) int acceleration;
+@property (nonatomic) int accelerationPlay2;
+
 @property (nonatomic) int sceneNum;
 @property (nonatomic) int roleType;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) BOOL isGamePass;
+@property (nonatomic) BOOL isPairPlay;
 @property (nonatomic) CGPoint initPos;
 @property (nonatomic) CGPoint remainBallPos;
 @property (nonatomic) CGPoint remainBallLabelPos;
 @property (nonatomic) CGPoint pepperMenuPos;
-@property (nonatomic) CGPoint crystalMenuPos;
+@property (nonatomic) CGPoint pepperMenuPlay2Pos;
 @property (nonatomic) CGPoint initMenuPos;
 @property (nonatomic) CGPoint appear1stPos;
 @property (nonatomic) CGPoint appear2ndPos;
@@ -89,6 +93,7 @@ struct SceneParam
 @property (nonatomic) CGPoint backgroundPos;
 @property (nonatomic) CGPoint storagePos;
 @property (nonatomic) CGPoint scorePos;
+@property (nonatomic) CGPoint scorePlay2Pos;
 @property (nonatomic) SceneParam mainscenParam;
 
 -(void)pauseGame;

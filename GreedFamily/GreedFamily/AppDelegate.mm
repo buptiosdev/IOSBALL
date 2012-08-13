@@ -158,8 +158,8 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-//    UIApplicationState state = [application applicationState];
-//    if (state == UIApplicationStateInactive)
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateInactive)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"欢迎回来"
                                                         message:@"快开始战斗吧!"

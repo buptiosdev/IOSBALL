@@ -56,7 +56,6 @@
 //        }
         int temCapacity = 11;
         //change size by diff version query
-
         CGPoint initPosition = CGPointMake((widthPer * temCapacity + widthPer * 0.5), highPer * 0.5);
         CGPoint moveToPosition = CGPointMake(count * widthPer + widthPer * 0.5, highPer * 0.5);
         if (2 == storageID) 

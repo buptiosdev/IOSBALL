@@ -195,6 +195,7 @@ static GameMainScene *instanceOfMainScene;
     [self preloadParticleEffects:@"bublle_break2.plist"];
     [self preloadParticleEffects:@"shootingstars.plist"];
     [self preloadParticleEffects:@"smoke2.plist"];
+    [self preloadParticleEffects:@"besmoked.plist"];
 }
 
 
@@ -610,6 +611,9 @@ static GameMainScene *instanceOfMainScene;
     id temp3 = [levelscore objectAtIndex:2];
     int starNum = [temp3 intValue];
     
+    id temp4 = [levelscore objectAtIndex:3];
+    int isnewrecord=[temp4 intValue];
+    
     CCLOG(@"score is %d",score);
     
     CCLOG(@"addscore is %d",addscore);
@@ -618,7 +622,7 @@ static GameMainScene *instanceOfMainScene;
 
     //3.生成关卡结束显示层
     ccColor4B c = {255,255,0,100};
-    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum];
+    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum Newrecord:(int)isnewrecord];
     [self.parent addChild:p z:10]; 
 }
 

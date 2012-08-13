@@ -15,6 +15,7 @@
 //#import "Storage.h"
 #import "TouchCatchLayer.h"
 #import "GameMainScene.h"
+#import "NoBodyObjectsLayer.h"
 @implementation Bag
 @synthesize sprite = _sprite;
 //-(void) registerWithTouchDispatcher
@@ -74,7 +75,14 @@
         return;
     }
     CCLOG(@"hot!!!!!!!!\n");
-    [[LandAnimal sharedLandAnimal] increaseSpeed];
+    if (1 == bagID) 
+    {
+        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimal] increaseSpeed];
+    }
+    else
+    {
+        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimalPlay2] increaseSpeed];
+    }
     pepperNum--;
     if (0 == pepperNum) 
     {
@@ -96,8 +104,17 @@
     {
         return;
     }
-    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+    Storage *storage = nil;
 
+    if (1 == bagID) 
+    {
+        storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+
+    }
+    else
+    {
+        storage = [[TouchCatchLayer sharedTouchCatchLayer] getStoragePlay2];
+    }
     //[storage combinTheSameType];
     [storage combinTheSameTypeNew]; 
     crystalNum--;
@@ -146,22 +163,19 @@
     [smokeLabel setString:[NSString stringWithFormat:@"x%i", smokeNum]];
     
 }
--(id)init
++(id)createBag:(int)playID
+{
+    return [[[self alloc] initWithPlayID:playID] autorelease];
+}
+
+-(id)initWithPlayID:(int)playID
 {
     if ((self = [super init]))
     {
-        //[self registerWithTouchDispatcher];
-        
-//        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-//        _sprite = [CCSprite spriteWithSpriteFrameName:@"bag_background.png"];
-//        CGSize screenSize = [[CCDirector sharedDirector] winSize];
-//        _sprite.position = CGPointMake(464, screenSize.height / 2);
-//        [batch addChild:_sprite z:-3];
-        //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+
         pepperNum = 0;
         crystalNum = 0;
-        
-
+        bagID = playID;
         
         CCSprite *pepperProp1 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
         CCSprite *pepperProp2 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];    
@@ -178,7 +192,15 @@
         [pepperPropMenu addChild:pepperLabel z:1];
         pepperMenu = [CCMenu menuWithItems:pepperPropMenu,nil];
         //change size by diff version
-        pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPos;
+        if (1 == bagID) 
+        {
+            pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPos;
+        }
+        else
+        {
+            pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPlay2Pos;
+        }
+
         pepperMenu.visible = NO;
         [self addChild:pepperMenu z:-2 ];
         CCProgressTimer *timePepper = [CCProgressTimer progressWithFile:@"cd.png"];
@@ -186,7 +208,6 @@
         timePepper.percentage = 0; //当前进度       
         timePepper.position = pepperMenu.position; 
         [self addChild:timePepper z:-1 tag:pepperTimeTag];
-        
         
         CCSprite *crystalProp1 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];
         CCSprite *crystalProp2 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];    
@@ -203,8 +224,8 @@
         [crystalPropMenu addChild:crystalLabel z:1];
         crystalMenu = [CCMenu menuWithItems:crystalPropMenu,nil];
         //change size by diff version
-        CGPoint distance = CGPointMake(40, 0);
-        crystalMenu.position = ccpAdd(distance, [GameMainScene sharedMainScene].pepperMenuPos);
+        CGPoint distance = CGPointMake(0, 45);
+        crystalMenu.position = ccpAdd(distance, pepperMenu.position);
         crystalMenu.visible = NO;
         [self addChild:crystalMenu z:-2];
         CCProgressTimer *timeCrystal = [CCProgressTimer progressWithFile:@"cd.png"];
@@ -229,8 +250,8 @@
         [smokePropMenu addChild:smokeLabel z:1];
         smokeMenu = [CCMenu menuWithItems:smokePropMenu,nil];
         //change size by diff version
-        CGPoint distance2 = CGPointMake(80, 0);
-        smokeMenu.position = ccpAdd(distance2, [GameMainScene sharedMainScene].pepperMenuPos);
+        CGPoint distance2 = CGPointMake(0, 90);
+        smokeMenu.position = ccpAdd(distance2, pepperMenu.position);
 
         smokeMenu.visible = NO;
         [self addChild:smokeMenu z:-2];
@@ -251,11 +272,20 @@
     {
         //出现动画
         //change size by diff version
-        CGPoint distance1 = CGPointMake(0, 0);
-        CGPoint distance2 = CGPointMake(0, -30);
-        CGPoint moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
-        pepperMenu.position = ccpAdd(distance2, moveToPosition);
-    
+        CGPoint moveToPosition;
+        CGPoint distance;
+        if (1 == bagID) 
+        {
+            moveToPosition = [GameMainScene sharedMainScene].pepperMenuPos;
+            distance = CGPointMake(-50, 0);
+        }
+        else
+        {
+            moveToPosition = [GameMainScene sharedMainScene].pepperMenuPlay2Pos;
+            distance = CGPointMake(50, 0);
+        }
+        
+        pepperMenu.position = ccpAdd(moveToPosition, distance);
         pepperMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:2];
@@ -272,11 +302,21 @@
     {
         //出现动画
         //change size by diff version
-        CGPoint distance1 = CGPointMake(40, 0);
-        CGPoint distance2 = CGPointMake(0, -30);
-        CGPoint moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
-        crystalMenu.position = ccpAdd(distance2, moveToPosition);
+        CGPoint distance1 = CGPointMake(0, 45);
+        CGPoint distance2;
+        CGPoint moveToPosition;
+        if (1 == bagID) 
+        {
+            moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
+            distance2 = CGPointMake(-50, 0);
+        }
+        else
+        {
+            moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPlay2Pos);
+            distance2 = CGPointMake(50, 0);
+        }
         
+        crystalMenu.position = ccpAdd(moveToPosition, distance2);
         crystalMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
         CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:2];
@@ -293,9 +333,19 @@
     {
         //出现动画
         //change size by diff version
-        CGPoint distance1 = CGPointMake(80, 0);
-        CGPoint distance2 = CGPointMake(0, -30);
-        CGPoint moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
+        CGPoint distance1 = CGPointMake(0, 90);
+        CGPoint distance2;
+        CGPoint moveToPosition;
+        if (1 == bagID) 
+        {
+            moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
+            distance2 = CGPointMake(-50, 0);
+        }
+        else
+        {
+            moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPlay2Pos);
+            distance2 = CGPointMake(50, 0);
+        }
         smokeMenu.position = ccpAdd(distance2, moveToPosition);
         smokeMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 

@@ -93,7 +93,7 @@
             }
             
             [levelpic addChild:Labelnum];
-            CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:@"get0start.png"];
+            CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:starname];
             //change size by diff version manual
             defaultstar.scaleX=(100)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
             defaultstar.scaleY=(100)/[defaultstar contentSize].height;
@@ -122,6 +122,63 @@
             }
             [levelarray addObject:level];
         }
+        
+        
+// 用锁图片代替没玩过得关卡
+//        for(int i=0;i<20;i++)
+//        {
+//            int star=[self getGameStarNumber:i+1];
+//            NSString *starname;
+//            if(isZero==YES)
+//            {
+//                starname = @"locked.png";
+//            }else
+//            {
+//                starname = [NSString stringWithFormat:@"get%istart.png", star];
+//            }
+//            
+//            CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
+//            levelpic.scaleX=(60)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
+//            levelpic.scaleY=(60)/[levelpic contentSize].height;
+//            CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
+//            if(i<9)
+//            {
+//                Labelnum.anchorPoint=CGPointMake(-1.2, -0.6);
+//            }
+//            else
+//            {
+//                Labelnum.anchorPoint=CGPointMake(-0.5, -0.6);
+//            }
+//            
+//            [levelpic addChild:Labelnum];
+//            CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:starname];
+//            defaultstar.scaleX=(60)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
+//            defaultstar.scaleY=(60)/[defaultstar contentSize].height;
+//            CCMenuItemSprite *level = [CCMenuItemSprite itemFromNormalSprite:levelpic 
+//                                                              selectedSprite:defaultstar 
+//                                                                      target:self 
+//                                                                    selector:@selector(selectMode:)];
+//            [level setTag:i+1];
+//            
+//            if(isZero==YES)
+//            {
+//                [level setIsEnabled:NO];
+//            }
+//            else
+//            {
+//                [level setIsEnabled:YES];
+//                [Labelnum setColor:ccRED];
+//            }
+//            
+//            if(star==0)
+//            {
+//                if(isZero==NO)
+//                {
+//                    isZero=YES;
+//                }
+//            }
+//            [levelarray addObject:level];
+//        }
         
         
 //        CCLabelTTF *Label1=[CCLabelTTF labelWithString:@"Level 1" fontName:@"Marker Felt" fontSize:25];

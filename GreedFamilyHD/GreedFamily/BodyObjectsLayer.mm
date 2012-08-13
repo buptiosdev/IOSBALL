@@ -204,7 +204,9 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	// body's velocity and position are more accurately tracked but at the cost of speed.
 	// Usually for games only 1 position iteration is necessary to achieve good results.
     //CCLOG(@"int哦 here");
-	float timeStep = 1/60.0;
+	//float timeStep = 0.03f;
+    float timeStep = 1/60.0;
+    //float timeStep = 0.1f;
 	int32 velocityIterations = 8;
 	int32 positionIterations = 1;
 	self.world->Step(timeStep, velocityIterations, positionIterations);
@@ -219,9 +221,10 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 			float angle = body->GetAngle();
 			bodyNode.sprite.rotation = -(CC_RADIANS_TO_DEGREES(angle));
             
-            if ([bodyNode isKindOfClass:[CandyEntity class]] && 1 == bodyNode.hitPoints)
+            if (([bodyNode isKindOfClass:[CandyEntity class]] || [bodyNode isKindOfClass:[PropertyEntity class]]) 
+                && 1 == bodyNode.hitPoints)
             {
-                CandyEntity* candyNode = (CandyEntity*)bodyNode;
+                Entity* candyNode = (CandyEntity*)bodyNode;
                 candyNode.sprite.visible = YES;
                 candyNode.cover.visible = NO;
             }

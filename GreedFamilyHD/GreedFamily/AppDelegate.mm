@@ -121,11 +121,60 @@
     //add push notice function
     [Parse setApplicationId:@"w1rAzcRAdPuoX60nNy3fKewfZPYCvgJQdXZYEJ3r" clientKey:@"Rg9avoCht3xPnM8ZrM42rBBeMIijaxpQMcSmAImu"];
     [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
-     (UIRemoteNotificationTypeBadge|
-      UIRemoteNotificationTypeSound|
-      UIRemoteNotificationTypeAlert)];
+     (UIRemoteNotificationTypeSound|
+      UIRemoteNotificationTypeAlert|
+      UIRemoteNotificationTypeBadge)];
+    
+    //添加本地通知 测试  
+    //设置20秒之后 
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:20];
+    //chuagjian一个本地推送
+    UILocalNotification *noti = [[[UILocalNotification alloc] init] autorelease];
+    if (noti) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        //设置推送时间
+        noti.fireDate = date;
+        //设置时区
+        noti.timeZone = [NSTimeZone defaultTimeZone];
+        //设置重复间隔
+        noti.repeatInterval = kCFCalendarUnitWeek;
+        //推送声音
+        noti.soundName = UILocalNotificationDefaultSoundName;
+        //内容
+        noti.alertBody = @"您的小猪猪饿了 快回来看看吧";
+        noti.alertAction = @"确定";
+        //显示在icon上的红色圈中的数子
+        noti.applicationIconBadgeNumber = 1;
+        //设置userinfo 方便在之后需要撤销的时候使用
+        NSDictionary *infoDic = [NSDictionary dictionaryWithObject:@"name" forKey:@"key"];
+        noti.userInfo = infoDic;
+        //添加推送到uiapplication        
+        UIApplication *app = [UIApplication sharedApplication];
+        [app scheduleLocalNotification:noti];  
+        //[app presentLocalNotificationNow:noti];
+        //[noti release];
+    }
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateInactive)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"欢迎回来"
+                                                        message:@"快开始战斗吧!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        //这里，你就可以通过notification的useinfo，干一些你想做的事情了
+        application.applicationIconBadgeNumber -= 1;
+        
+        NSString *reminderText = [notification.userInfo
+                                  objectForKey:@"key"];
+        NSLog(@"%@",reminderText);
+    }
+}
 
 //- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 //{
@@ -151,6 +200,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
     // Subscribe this user to the broadcast channel, "" 
     [PFPush subscribeToChannelInBackground:@"" block:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
+            NSLog(@"devToken=%@",newDeviceToken);  
+
             NSLog(@"Successfully subscribed to the broadcast channel.");
         } else {
             NSLog(@"Failed to subscribe to the broadcast channel.");
@@ -158,9 +209,26 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
     }];
 }
 
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err 
+{  
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+//                                                    message:[NSString stringWithFormat:@"Error in registration. Error: %@", err]
+//                                                   delegate:nil
+//                                          cancelButtonTitle:@"确定"
+//                                          otherButtonTitles:nil];
+//    [alert show];
+    CCLOG(@"didFailToRegisterForRemoteNotificationsWithError failed!\n");
+}
+
 - (void)application:(UIApplication *)application 
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
+    for (id key in userInfo) {
+        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
+    } 
+    
+
+
 }
 
 //add by lyp just for pause

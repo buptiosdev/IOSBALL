@@ -19,6 +19,7 @@ typedef enum
 {   
     CandyCacheTag = 1,
     FlyEntityTag,
+    FlyEntityPlay2Tag,
     PropCacheTag,
 
     
@@ -37,6 +38,7 @@ typedef enum
 +(CGRect) screenRect;
 +(BodyObjectsLayer *)sharedBodyObjectsLayer;
 -(FlyEntity*) flyAnimal;
+-(FlyEntity*) flyAnimalPlay2;
 -(PropertyCache*) getPropertyCache;
 -(CandyCache*) getCandyCache;
 @end

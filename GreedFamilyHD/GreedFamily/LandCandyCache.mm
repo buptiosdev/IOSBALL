@@ -235,9 +235,9 @@ static LandCandyCache *instanceOfLandCandyCache;
                 }
                 [self landAnimalEat:landanimal FoodType:landcandy.ballType Play:playID];
                 //烟雾球改变现在方向
-                if (7 == landcandy.ballType) {
-                    direction = -direction;
-                }
+//                if (7 == landcandy.ballType) {
+//                    direction = -direction;
+//                }
             }
             else
             {

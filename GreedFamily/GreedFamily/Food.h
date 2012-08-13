@@ -35,5 +35,5 @@ typedef enum
 @property(assign, nonatomic) Storage * theStorage;
 @property(assign, nonatomic) int foodType;
 
--(id) initWithStorage:(Storage*)storage Type:(int)foodType Count:(int)count;
+-(id) initWithStorage:(Storage*)storage Type:(int)foodType Count:(int)count StorageID:(int)storageID;
 @end

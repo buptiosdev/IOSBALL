@@ -289,26 +289,23 @@
         [landAnimal getCrystal];
         [bag addCrystal];       
     }
+    //反向球
     else if (7 == foodType)
     {
-        //烟雾特效
-        CCParticleSystem* system;
-        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"smoke2.plist"];
-        system.positionType = kCCPositionTypeGrouped;
-        system.autoRemoveOnFinish = YES;
-        //system.position = self.sprite.position;
-        [self addChild:system];
-        
-        LandAnimal *landAnimal = nil;
+        Bag *bag = nil;
+	LandAnimal *landAnimal = nil;
+        CCLOG(@"cool!!!!!!!\n");
         if (1 == storageID) 
         {
             landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimal];
+            bag = [[TouchCatchLayer sharedTouchCatchLayer] getBag];
         }
         else
         {
             landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimalPlay2];
+            bag = [[TouchCatchLayer sharedTouchCatchLayer] getBagPlay2];
         }
-        [landAnimal reverseDirection];
+        [bag addSmoke];
     }
 }
 

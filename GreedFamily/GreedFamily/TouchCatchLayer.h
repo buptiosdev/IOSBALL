@@ -14,7 +14,9 @@ typedef enum
 {   
     GameSkyTag = 1,
     GamePauseTag,
+    BagPlay2Tag,
     BagTag,
+    StoragePlay2Tag,
     StorageTag,
     GameScoreTag
     
@@ -26,5 +28,7 @@ typedef enum
 +(id)CreateTouchCatchLayer;
 +(TouchCatchLayer *)sharedTouchCatchLayer;
 -(Storage*) getStorage;
+-(Storage*) getStoragePlay2;
 -(Bag*) getBag;
+-(Bag*) getBagPlay2;
 @end

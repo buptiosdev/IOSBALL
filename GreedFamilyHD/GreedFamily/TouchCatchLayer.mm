@@ -56,7 +56,7 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
     Storage *storage = [Storage createStorage:temCapacity Play:1];
     [self addChild:storage z:-3 tag:StorageTag];
     
-    //单人的bag位置为play2处 tag为BagTag
+
     Bag *bag = [Bag createBag:1];
     [self addChild:bag z:-3 tag:BagTag];
 

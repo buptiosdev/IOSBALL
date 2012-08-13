@@ -234,7 +234,7 @@
             bodyDef.type = b2_dynamicBody;
             
             //阻力
-            bodyDef.linearDamping = 0.5f;
+            bodyDef.linearDamping = 0.3f;
             bodyDef.angularDamping = 100.0f;
             //不旋转
             bodyDef.fixedRotation = true;
@@ -245,7 +245,7 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.8f;
+            fixtureDef.density = 0.5f;
             fixtureDef.friction = 0.5f;
             fixtureDef.restitution = 0.7f;
 
@@ -257,7 +257,7 @@
             bodyDef.type = b2_dynamicBody;
             
             //阻力
-            bodyDef.linearDamping = 0.4f;
+            bodyDef.linearDamping = 0.35f;
             bodyDef.angularDamping = 100.0f;
             //不旋转
             bodyDef.fixedRotation = true;
@@ -268,9 +268,9 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.7f;
-            fixtureDef.friction = 0.5f;
-            fixtureDef.restitution = 0.8f;
+            fixtureDef.density = 0.6f;
+            fixtureDef.friction = 0.6f;
+            fixtureDef.restitution = 0.5f;
 
         }
 				

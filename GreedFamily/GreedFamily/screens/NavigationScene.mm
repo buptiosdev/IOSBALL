@@ -13,6 +13,8 @@
 #import "GameScore.h"
 #import "GameShopScene.h"
 #import "CCRadioMenu.h"
+#import "GameMainScene.h"
+#import "LevelScenePair.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -77,6 +79,7 @@
         CCLabelTTF *leaderboardLabel=[CCLabelTTF labelWithString:@"LeaderBoard" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *archievementsLabel=[CCLabelTTF labelWithString:@"Achievements" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *gameShopLabel=[CCLabelTTF labelWithString:@"Shop" fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF *pairPlayLabel=[CCLabelTTF labelWithString:@"Pair Play" fontName:@"Marker Felt" fontSize:30];
 		
 		[newgameLabel setColor:ccRED];
 		[optionsLabel setColor:ccRED];
@@ -88,8 +91,8 @@
         CCMenuItemLabel * leaderboard = [CCMenuItemLabel itemWithLabel:leaderboardLabel target:self selector:@selector(showGameLeaderboard:)];
 		CCMenuItemLabel * archievements = [CCMenuItemLabel itemWithLabel:archievementsLabel target:self selector:@selector(showGameAchievements:)];
         CCMenuItemLabel * gameShop = [CCMenuItemLabel itemWithLabel:gameShopLabel target:self selector:@selector(connectGameShop:)];
-		
-		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,gamecenter,gameShop,nil];
+		CCMenuItemLabel * pairPlay = [CCMenuItemLabel itemWithLabel:pairPlayLabel target:self selector:@selector(pairGame:)];
+		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,pairPlay,gamecenter,gameShop, nil];
 		[menu alignItemsVerticallyWithPadding:10];
 		[self addChild:menu];
 		[menu setPosition:ccp(size.width,size.height/2)];
@@ -117,6 +120,9 @@
         [gameShop runAction:[CCSequence actions:
                                [CCDelayTime actionWithDuration:1.5],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
                                [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
+        [pairPlay runAction:[CCSequence actions:
+                             [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+                             [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
         
         
         //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
@@ -278,6 +284,13 @@
 {
     //connect to game center
     [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+}
+
+-(void)pairGame:(id)sender
+{
+    //connect to game center
+    //[[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneINVALID]];
+	[[CCDirector sharedDirector] replaceScene:[LevelScenePair scene]];
 }
 
 +(id)scene

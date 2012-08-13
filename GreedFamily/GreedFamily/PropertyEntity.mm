@@ -17,7 +17,6 @@
 
 
 @synthesize sprite = _sprite;
-
 @synthesize propertyType = _propertyType;
 
 static CCArray* spawnFrequency;
@@ -312,9 +311,10 @@ static CCArray* spawnFrequency;
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:propertyParamDef.spriteFrameName];
         //按照像素设定图片大小
+        //change size by diff version manual
         self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
         self.sprite.scaleY=(35)/[self.sprite contentSize].height;
-        [batch addChild:self.sprite];     
+        [batch addChild:self.sprite];       
         
         CCSpriteBatchNode* batch2 = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         self.cover = [CCSprite spriteWithSpriteFrameName:@"pic_6.png"];

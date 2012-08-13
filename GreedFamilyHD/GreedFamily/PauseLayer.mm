@@ -12,6 +12,7 @@
 #import "LevelScene.h"
 #import "OptionsScene.h"
 #import "LoadingScene.h"
+#import "CDAudioManager.h"
 
 @implementation PauseLayer
 
@@ -30,10 +31,15 @@
 {
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
-	if(sender.selectedIndex ==1)
-		[usrDef setBool:YES forKey:@"sound"];
-	if(sender.selectedIndex ==0)
-		[usrDef setBool:NO forKey:@"sound"];
+	if(sender.selectedIndex ==1){
+        [usrDef setBool:YES forKey:@"sound"];
+        //[CDAudioManager sharedManager].mute=NO;
+    }
+		
+	if(sender.selectedIndex ==0){
+        [usrDef setBool:NO forKey:@"sound"];
+    }
+		
 }
 
 //-(void)showOption
@@ -87,7 +93,9 @@
                                                           selectedSprite:play 
                                                                   target:self 
                                                                 selector:@selector(returnGame)];
-        //[playItem setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
+        CCMenu * playMenu = [CCMenu menuWithItems:playItem,nil];
+        [playMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
+        [self addChild:playMenu];
         
         CCSprite *level = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
         //change size by diff version manual
@@ -101,7 +109,9 @@
                                                              selectedSprite:level1 
                                                                      target:self 
                                                                    selector:@selector(returnLevel)];
-        //[levelItem setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*2/6)];
+        CCMenu * levelMenu = [CCMenu menuWithItems:levelItem,nil];
+        [levelMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*2/6)];
+        [self addChild:levelMenu];
         
 //        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:30];
 //        [returnLabel setColor:ccRED];
@@ -137,8 +147,9 @@
 //                                                            selectedImage:@"options_check.png" ];
 		
 		CCMenuItemToggle * sound = [CCMenuItemToggle itemWithTarget:self selector:@selector(changeSound:) items:checked,unchecked,nil];
-        //[sound setPosition:ccp((screenSize.width)*0.3f,(screenSize.height)*2/6)];
-        
+        CCMenu * soundMenu = [CCMenu menuWithItems:sound,nil];
+        [soundMenu setPosition:ccp((screenSize.width)*0.3f,(screenSize.height)*2/6)];
+        [self addChild:soundMenu];
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"sound"] == YES)
 			sound.selectedIndex = 1;
@@ -156,12 +167,14 @@
                                                                       target:self 
                                                                     selector:@selector(retryGame:)];
         [retryItem setTag:sceneNum];
-        //[retryItem setPosition:ccp((screenSize.width)*0.7f,(screenSize.height)*2/6)];
+        CCMenu * retryMenu = [CCMenu menuWithItems:retryItem,nil];
+        [retryMenu setPosition:ccp((screenSize.width)*0.7f,(screenSize.height)*2/6)];
         
-        CCMenu * dMenu = [CCMenu menuWithItems:playItem,levelItem,sound,retryItem,nil];
+        
+        //dMenu.anchorPoint=CGPointMake(0, 0);
         //[dMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
-        [dMenu alignItemsHorizontallyWithPadding:30];
-        [self addChild:dMenu];
+        //[dMenu alignItemsHorizontallyWithPadding:30];
+        [self addChild:retryMenu];
     }
     return self;
 }

@@ -14,7 +14,7 @@
 @interface FlyEntity (PrivateMethods)
 -(id) initWithShipImage;
 -(void)createBallInWorld:(b2World*)world;
--(id)initWithWorld:(b2World *)world;
+-(id)initWithWorld:(b2World *)world RoleType:(int)roleType;
 @end
 
 @implementation FlyEntity
@@ -22,9 +22,9 @@
 @synthesize flyActionArray = _flyActionArray;
 @synthesize sprite = _sprite;
 
-+(id) flyAnimal:(b2World *)world
++(id) flyAnimal:(b2World *)world RoleType:(int)roleType
 {
-	return [[[self alloc] initWithWorld:world] autorelease];
+	return [[[self alloc] initWithWorld:world RoleType:roleType] autorelease];
 }
 
 
@@ -170,15 +170,14 @@
     
 }
 
--(id)initWithWorld:(b2World *)world
+-(id)initWithWorld:(b2World *)world RoleType:(int)roleType
 {
     if ((self = [super init]))
 	{
 		CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
         //指定是猪还是鸟。1。小鸟 2。小猪
-        familyType = [[GameMainScene sharedMainScene] roleType];
-
+        familyType = roleType;
         directionBefore = 0;
         directionCurrent = 0;
         //CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];
@@ -233,7 +232,7 @@
             bodyDef.type = b2_dynamicBody;
             
             //阻力
-            bodyDef.linearDamping = 0.5f;
+            bodyDef.linearDamping = 0.3f;
             bodyDef.angularDamping = 100.0f;
             //不旋转
             bodyDef.fixedRotation = true;
@@ -244,7 +243,7 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.8f;
+            fixtureDef.density = 0.5f;
             fixtureDef.friction = 0.5f;
             fixtureDef.restitution = 0.7f;
 
@@ -256,7 +255,7 @@
             bodyDef.type = b2_dynamicBody;
             
             //阻力
-            bodyDef.linearDamping = 0.4f;
+            bodyDef.linearDamping = 0.35f;
             bodyDef.angularDamping = 100.0f;
             //不旋转
             bodyDef.fixedRotation = true;
@@ -267,9 +266,9 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.7f;
-            fixtureDef.friction = 0.5f;
-            fixtureDef.restitution = 0.8f;
+            fixtureDef.density = 0.6f;
+            fixtureDef.friction = 0.6f;
+            fixtureDef.restitution = 0.5f;
 
         }
 				

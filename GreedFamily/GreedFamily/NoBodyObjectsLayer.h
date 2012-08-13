@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "LandCandyCache.h"
-
+#import "LandAnimal.h"
 typedef enum
 {   
     LandAnimalTag = 1,
     CompetitorTag,
-    LandCandyTag
+    LandCandyTag,
+    LandAnimalPlay2Tag
     
 }NoBodyObjectsLayerTags;
 
@@ -35,4 +36,6 @@ typedef enum
 +(id)CreateNoBodyObjectsLayer;
 +(NoBodyObjectsLayer *)sharedNoBodyObjectsLayer;
 -(LandCandyCache*) getLandCandyCache;
+-(LandAnimal *) getLandAnimalPlay2;
+-(LandAnimal *) getLandAnimal;
 @end

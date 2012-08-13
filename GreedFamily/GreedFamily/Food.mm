@@ -21,7 +21,7 @@
 
 
 
--(id) initWithStorage:(Storage*)storage Type:(int)foodType Count:(int)count
+-(id) initWithStorage:(Storage*)storage Type:(int)foodType Count:(int)count StorageID:(int)storageID
 {
 	if ((self = [super init]))
 	{
@@ -48,14 +48,21 @@
         {
             strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
         }
-        int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-        if (temCapacity > 12 || temCapacity < 8) 
-        {
-            temCapacity = 8;
-        }
+//        int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
+//        if (temCapacity > 12 || temCapacity < 8) 
+//        {
+//            temCapacity = 8;
+//        }
+        int temCapacity = 11;
         //change size by diff version query
         CGPoint initPosition = CGPointMake((widthPer * temCapacity + widthPer * 0.5), highPer * 0.5);
         CGPoint moveToPosition = CGPointMake(count * widthPer + widthPer * 0.5, highPer * 0.5);
+        if (2 == storageID) 
+        {
+            CGPoint distance = CGPointMake(240, 0);
+            initPosition = ccpAdd(distance, initPosition);
+            moveToPosition = ccpAdd(distance, moveToPosition);
+        }
         _mySprite.position = initPosition;
 
 //        CCAction *moveAction = [CCSequence actions:

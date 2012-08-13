@@ -17,14 +17,14 @@
 
 
 @interface ResultLayer (PrivateMethods)
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum;
+-(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
 @end
 
 @implementation ResultLayer
 
-+(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore  StarNum:(int)starnum
++(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore  StarNum:(int)starnum Newrecord:(int)isnewrecord
 {
-    return [[[ResultLayer alloc] initWithResult:color Level:level Score:score AddScore:addscore StarNum:starnum] autorelease];
+    return [[[ResultLayer alloc] initWithResult:color Level:level Score:score AddScore:addscore StarNum:starnum Newrecord:isnewrecord] autorelease];
 }
 
 -(void)chooseLevel:(CCMenuItemImage *)btn
@@ -38,7 +38,7 @@
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
 
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum
+-(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord
 {
     if ((self = [super initWithColor:color]))
     {
@@ -63,6 +63,19 @@
 		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 2 / 5 );
         [labeltotalscore setColor:ccBLUE];
 		[self addChild:labeltotalscore];
+        
+        if(isnewrecord==1)
+        {
+            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:@"Great!" fontName:@"Marker Felt" fontSize:40];
+            [labelnewrecord setColor:ccRED];
+            labelnewrecord.position=CGPointMake(size.width *3/ 4, size.height *3/4  );;
+            [labelnewrecord runAction:[CCSequence actions:
+                                [CCDelayTime actionWithDuration:0.5],
+                                [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+                                nil]];
+            [self addChild:labelnewrecord];
+        }
+        
         
 
         for(int i=0;i<3;i++)
@@ -91,27 +104,67 @@
             //[self addChild:star];
         }
         
-        CCLabelTTF *retryLabel=[CCLabelTTF labelWithString:@"Retry" fontName:@"Marker Felt" fontSize:30];
-        [retryLabel setColor:ccRED];
-        CCMenuItemLabel * retryBtn = [CCMenuItemLabel itemWithLabel:retryLabel target:self selector:@selector(chooseLevel:)];
+//        CCLabelTTF *retryLabel=[CCLabelTTF labelWithString:@"Retry" fontName:@"Marker Felt" fontSize:30];
+//        [retryLabel setColor:ccRED];
+//        CCMenuItemLabel * retryBtn = [CCMenuItemLabel itemWithLabel:retryLabel target:self selector:@selector(chooseLevel:)];
+//        [retryBtn setTag:level];
+        CCSprite *retry = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
+        retry.scaleX=(40)/[retry contentSize].width; //按照像素定制图片宽高是控制像素的。
+        retry.scaleY=(40)/[retry contentSize].height;
+        CCSprite *retry1 = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
+        retry1.scaleX=(40)/[retry1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        retry1.scaleY=(40)/[retry1 contentSize].height;
+        CCMenuItemSprite *retryItem = [CCMenuItemSprite itemFromNormalSprite:retry 
+                                                              selectedSprite:retry1 
+                                                                      target:self 
+                                                                    selector:@selector(chooseLevel:)];
+        [retryItem setTag:level];
         
-        CCLabelTTF *LevelLabel=[CCLabelTTF labelWithString:@"Level" fontName:@"Marker Felt" fontSize:30];
-        [LevelLabel setColor:ccRED];
-        CCMenuItemLabel * LevelBtn = [CCMenuItemLabel itemWithLabel:LevelLabel target:self selector:@selector(returnLevel)];
         
-        CCLabelTTF *nextLabel=[CCLabelTTF labelWithString:@"Next" fontName:@"Marker Felt" fontSize:30];
-        [nextLabel setColor:ccRED];
-        CCMenuItemLabel * nextBtn = [CCMenuItemLabel itemWithLabel:nextLabel target:self selector:@selector(chooseLevel:)];
+        CCSprite *level0 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
+        level0.scaleX=(40)/[level0 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        level0.scaleY=(40)/[level0 contentSize].height;
+        CCSprite *level1 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
+        level1.scaleX=(40)/[level1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        level1.scaleY=(40)/[level1 contentSize].height;
+        CCMenuItemSprite *levelItem = [CCMenuItemSprite itemFromNormalSprite:level0 
+                                                              selectedSprite:level1 
+                                                                      target:self 
+                                                                    selector:@selector(returnLevel)];
         
-        [retryBtn setTag:level];
-        [nextBtn setTag:level+1];
+//        CCLabelTTF *LevelLabel=[CCLabelTTF labelWithString:@"Level" fontName:@"Marker Felt" fontSize:30];
+//        [LevelLabel setColor:ccRED];
+//        CCMenuItemLabel * LevelBtn = [CCMenuItemLabel itemWithLabel:LevelLabel target:self selector:@selector(returnLevel)];
+        
+//        CCLabelTTF *nextLabel=[CCLabelTTF labelWithString:@"Next" fontName:@"Marker Felt" fontSize:30];
+//        [nextLabel setColor:ccRED];
+//        CCMenuItemLabel * nextBtn = [CCMenuItemLabel itemWithLabel:nextLabel target:self selector:@selector(chooseLevel:)];
+//        [nextBtn setTag:level+1];
+//        if(starnum==0)
+//        {
+//            [nextBtn setIsEnabled:NO];
+//            [nextLabel setColor:ccBLACK];
+//        }
+        
+        CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"next.png"];
+        next.scaleX=(40)/[next contentSize].width; //按照像素定制图片宽高是控制像素的。
+        next.scaleY=(40)/[next contentSize].height;
+        CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"next.png"];
+        next1.scaleX=(40)/[next1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        next1.scaleY=(40)/[next1 contentSize].height;
+        CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
+                                                              selectedSprite:next1 
+                                                                      target:self 
+                                                                   selector:@selector(chooseLevel:)];
+        [nextItem setTag:level+1];
         if(starnum==0)
         {
-            [nextBtn setIsEnabled:NO];
-            [nextLabel setColor:ccBLACK];
+            [nextItem setIsEnabled:NO];
+            [nextItem setColor:ccBLACK];
         }
         
-        CCMenu * dMenu = [CCMenu menuWithItems:retryBtn,LevelBtn,nextBtn,nil];
+        
+        CCMenu * dMenu = [CCMenu menuWithItems:retryItem,levelItem,nextItem,nil];
         [dMenu alignItemsHorizontallyWithPadding:40];
         [dMenu setPosition:ccp((size.width)*0.5f,(size.height)*1/5)];
         [self addChild:dMenu];

@@ -79,10 +79,10 @@ struct  struct_gameScore{
 }
 
 +(GameScore *)sharedgameScore;
-
++(id)createGameScore:(int)playID;
 //初始化得分规则
 -(void)setScoreSetRules;
-
+-(id)initWithPlayID:(int)playID;
 //获取当前关卡得分
 //-(int)getGameNowScore:(int)level HighestScore:(int)highestscore NowScore:(int)nowScore;
 //-(int)getGameNowScore:(int)level;

@@ -83,6 +83,7 @@
         [self addChild:levelLabel];
         
         CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"play2.png"];
+        //change size by diff version manual
         play1.scaleX=(60)/[play1 contentSize].width; //按照像素定制图片宽高是控制像素的。
         play1.scaleY=(60)/[play1 contentSize].height;
         CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"play.png"];
@@ -152,6 +153,7 @@
 			sound.selectedIndex = 1;
         
         //retry
+        //change size by diff version manual
         CCSprite *retry = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
         retry.scaleX=(40)/[retry contentSize].width; //按照像素定制图片宽高是控制像素的。
         retry.scaleY=(40)/[retry contentSize].height;

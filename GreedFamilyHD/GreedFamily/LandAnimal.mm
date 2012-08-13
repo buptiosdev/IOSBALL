@@ -131,7 +131,11 @@ static LandAnimal *instanceOfLandAnimal;
         self.sprite.position=startPos;
         [self addChild:self.sprite]; 
         [self scheduleUpdate];
-
+        isSmoke = NO;
+        isPepper = NO;
+        isIce = NO;
+        isCrystal = NO;
+        isSpeedfast = NO;
         speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
         if (speed > 0.6) 
         {
@@ -201,6 +205,16 @@ static LandAnimal *instanceOfLandAnimal;
     isCrystal = NO;
 }
 
+-(void)removeTheSomke: (ccTime) dt
+{
+    [self unschedule:@selector(cmd_)];   
+    //消除特效
+    [self removeChildByTag:SmokeType cleanup:YES];
+    isSmoke = NO;
+}
+
+
+
 -(void)increaseSpeed
 {
     [self unschedule:@selector(recoverSpeedForIn:)];   
@@ -264,6 +278,20 @@ static LandAnimal *instanceOfLandAnimal;
     system.autoRemoveOnFinish = YES;
     system.position = self.sprite.position;
     [self addChild:system];
+}
+
+-(void)reverseDirection
+{
+    directionBefore = directionCurrent;
+    directionCurrent = -directionBefore;
+    [self schedule:@selector(removeTheSomke:) interval:5];
+    isSmoke = YES;
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"besmoked.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = self.sprite.position;
+    [self addChild:system z:1 tag:SmokeType];
 }
 
 -(void)update:(ccTime)delta
@@ -330,16 +358,22 @@ static LandAnimal *instanceOfLandAnimal;
         CCNode* node = [self getChildByTag:SpeedfastType];
         node.position = pos;
     }
-
+    if (isSmoke) 
+    {
+        CCNode* node = [self getChildByTag:SmokeType];
+        node.position = pos;
+        
+    }
     return;
 }
--(void)reverseDirection
-{
-    directionBefore = directionCurrent;
-    directionCurrent = -directionBefore;
-}
+
 -(void)setCurDirection
 {
+    if (isSmoke) 
+    {
+        return;
+    }
+    
     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
     int dirction = 0;
     
