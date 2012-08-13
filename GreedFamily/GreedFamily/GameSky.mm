@@ -74,24 +74,117 @@
     }
     else
     {
-        bool isTouchPlay1 = [self isTouchForPlay1:fingerLocation];
-        bool isTouchPlay2 = [self isTouchForPlay2:fingerLocation];
-        if (isTouchPlay1) 
+        NSSet *allTouches = [event allTouches];//获得所有触摸点  
+        int count = [[allTouches allObjects] count];//当前触摸点数量，单点触摸为1. 
+        
+        int i = count;
+        while (i > 0) 
         {
-            [flyEntity ccTouchBeganForSky2:touch withEvent:event];
-            isTouchHandled = YES;
-            isMovePlay1 = YES;
+
+            
+            UITouch *touch1 = [[allTouches allObjects] objectAtIndex:count - i];
+            int type = [touch1 tapCount];
+            NSLog(@"%d\n",type); 
+            fingerLocation = [Helper locationFromTouch:touch1];
+            bool isTouchPlay1 = [self isTouchForPlay1:fingerLocation];
+            bool isTouchPlay2 = [self isTouchForPlay2:fingerLocation];
+            if (isTouchPlay1) 
+            {
+                [flyEntity ccTouchBeganForSky2:touch1 withEvent:event];
+                isTouchHandled = YES;
+                isMovePlay1 = YES;
+            }
+            else if (isTouchPlay2)
+            {
+                [flyEntityPlay2 ccTouchBeganForSky2:touch1 withEvent:event];
+                isTouchHandled = YES;
+                isMovePlay2 = YES;
+            }
+            
+            i--;
         }
-        else if (isTouchPlay2)
-        {
-            [flyEntityPlay2 ccTouchBeganForSky2:touch withEvent:event];
-            isTouchHandled = YES;
-            isMovePlay2 = YES;
-        }
+        
+        
+        
+//        //多点触摸 例子代码
+//        if (count == 1) {//单点触摸  
+//            UITouch *touch1 = [[allTouches allObjects] objectAtIndex:0];//获得第一个触摸点  
+//            switch ([touch1 tapCount]) {//判断是单击还是双击  
+//                case 1:  
+//                    NSLog(@"单击\n");  
+//                    break;  
+//                case 2:  
+//                    NSLog(@"双击\n");  
+//                    break;  
+//            }  
+//        }else if (count == 2) {//多点触摸  
+//            //  
+//        }
+
         
     }
 	return isTouchHandled;
 }
+
+//- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    int count = [[touches allObjects] count];//当前触摸点数量，单点触摸为1. 
+//    int i = count;
+//    while (i > 0) 
+//    {
+//        bool isTouchHandled = NO;
+//        UITouch *touch1 = [[touches allObjects] objectAtIndex:count - i];
+//        int type = [touch1 tapCount];
+//        NSLog(@"%d\n",type); 
+//        CGPoint fingerLocation = [Helper locationFromTouch:touch1];
+//        bool isTouchPlay1 = [self isTouchForPlay1:fingerLocation];
+//        bool isTouchPlay2 = [self isTouchForPlay2:fingerLocation];
+//        if (isTouchPlay1) 
+//        {
+//            [flyEntity ccTouchBeganForSky2:touch1 withEvent:event];
+//            isTouchHandled = YES;
+//            isMovePlay1 = YES;
+//        }
+//        else if (isTouchPlay2)
+//        {
+//            [flyEntityPlay2 ccTouchBeganForSky2:touch1 withEvent:event];
+//            isTouchHandled = YES;
+//            isMovePlay2 = YES;
+//        }
+//        
+//        i--;
+//    }
+//}
+
+//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    int count = [[touches allObjects] count];//当前触摸点数量，单点触摸为1. 
+//    int i = count;
+//    while (i > 0) 
+//    {
+//        bool isTouchHandled = NO;
+//        UITouch *touch1 = [[touches allObjects] objectAtIndex:count - i];
+//        int type = [touch1 tapCount];
+//        NSLog(@"%d\n",type); 
+//        CGPoint fingerLocation = [Helper locationFromTouch:touch1];
+//        bool isTouchPlay1 = [self isTouchForPlay1:fingerLocation];
+//        bool isTouchPlay2 = [self isTouchForPlay2:fingerLocation];
+//        if (isTouchPlay1) 
+//        {
+//            [flyEntity ccTouchEndedForSky:touch1 withEvent:event];
+//            //isTouchHandled = YES;
+//            isMovePlay1 = NO;
+//        }
+//        else if (isTouchPlay2)
+//        {
+//            [flyEntityPlay2 ccTouchEndedForSky:touch1 withEvent:event];
+//            //isTouchHandled = YES;
+//            isMovePlay2 = NO;
+//        }
+//        
+//        i--;
+//    }
+//}
 
 //触发移动方案2：触摸小鸟触发移动
 //-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -101,30 +194,46 @@
 
 -(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (isMovePlay1) 
+    NSSet *allTouches = [event allTouches];//获得所有触摸点  
+    int count = [[allTouches allObjects] count];//当前触摸点数量，单点触摸为1. 
+    
+    int i = count;
+    while (i > 0) 
     {
-        [flyEntity ccTouchMovedForSky:touch withEvent:event];
+        UITouch *touch1 = [[allTouches allObjects] objectAtIndex:count - i];
+        if (isMovePlay1) 
+        {
+            [flyEntity ccTouchMovedForSky:touch1 withEvent:event];
+        }
+        if (isMovePlay2) 
+        {
+            [flyEntityPlay2 ccTouchMovedForSky:touch1 withEvent:event];
+        }
+        i--;
     }
-    if (isMovePlay2) 
-    {
-        [flyEntityPlay2 ccTouchMovedForSky:touch withEvent:event];
-    }
-
      
 }
 
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (isMovePlay1) 
+    NSSet *allTouches = [event allTouches];//获得所有触摸点  
+    int count = [[allTouches allObjects] count];//当前触摸点数量，单点触摸为1. 
+    
+    int i = count;
+    while (i > 0) 
     {
-	
-        [flyEntity ccTouchEndedForSky:touch withEvent:event];
-        isMovePlay1 = NO;
-    }
-    else
-    {
-        [flyEntityPlay2 ccTouchEndedForSky:touch withEvent:event];
-        isMovePlay2 = NO;
+        UITouch *touch1 = [[allTouches allObjects] objectAtIndex:count - i];
+        if (isMovePlay1) 
+        {
+        
+            [flyEntity ccTouchEndedForSky:touch1 withEvent:event];
+            isMovePlay1 = NO;
+        }
+        else
+        {
+            [flyEntityPlay2 ccTouchEndedForSky:touch1 withEvent:event];
+            isMovePlay2 = NO;
+        }
     }
 }
 

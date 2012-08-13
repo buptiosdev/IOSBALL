@@ -406,7 +406,8 @@
         CGPoint moveToPosition = CGPointMake(i * widthPer + widthPer * 0.5, highPer * 0.5);
         if (2 == storageID) 
         {   
-            CGPoint distance = CGPointMake(512, 0);
+            //change size by diff version query
+            CGPoint distance = CGPointMake(240, 0);
             moveToPosition = ccpAdd(distance, moveToPosition);
         }
        
