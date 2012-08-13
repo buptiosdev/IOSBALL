@@ -225,6 +225,9 @@
         crystalMenu = [CCMenu menuWithItems:crystalPropMenu,nil];
         //change size by diff version
         CGPoint distance = CGPointMake(0, 45);
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) {
+            distance = CGPointMake(40, 0);
+        }
         crystalMenu.position = ccpAdd(distance, pepperMenu.position);
         crystalMenu.visible = NO;
         [self addChild:crystalMenu z:-2];
@@ -251,6 +254,9 @@
         smokeMenu = [CCMenu menuWithItems:smokePropMenu,nil];
         //change size by diff version
         CGPoint distance2 = CGPointMake(0, 90);
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) {
+            distance2 = CGPointMake(90, 0);
+        }
         smokeMenu.position = ccpAdd(distance2, pepperMenu.position);
 
         smokeMenu.visible = NO;
@@ -274,17 +280,24 @@
         //change size by diff version
         CGPoint moveToPosition;
         CGPoint distance;
-        if (1 == bagID) 
-        {
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) {
+
             moveToPosition = [GameMainScene sharedMainScene].pepperMenuPos;
-            distance = CGPointMake(-50, 0);
+            distance = CGPointMake(0, -30);
         }
         else
         {
-            moveToPosition = [GameMainScene sharedMainScene].pepperMenuPlay2Pos;
-            distance = CGPointMake(50, 0);
+            if (1 == bagID) 
+            {
+                moveToPosition = [GameMainScene sharedMainScene].pepperMenuPos;
+                distance = CGPointMake(-50, 0);
+            }
+            else
+            {
+                moveToPosition = [GameMainScene sharedMainScene].pepperMenuPlay2Pos;
+                distance = CGPointMake(50, 0);
+            }
         }
-        
         pepperMenu.position = ccpAdd(moveToPosition, distance);
         pepperMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
@@ -305,17 +318,24 @@
         CGPoint distance1 = CGPointMake(0, 45);
         CGPoint distance2;
         CGPoint moveToPosition;
-        if (1 == bagID) 
-        {
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) {
+            distance1 = CGPointMake(45, 0);
             moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
-            distance2 = CGPointMake(-50, 0);
+            distance2 = CGPointMake(0, -30);
         }
         else
         {
-            moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPlay2Pos);
-            distance2 = CGPointMake(50, 0);
-        }
-        
+            if (1 == bagID) 
+            {
+                moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
+                distance2 = CGPointMake(-50, 0);
+            }
+            else
+            {
+                moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPlay2Pos);
+                distance2 = CGPointMake(50, 0);
+            }
+        }        
         crystalMenu.position = ccpAdd(moveToPosition, distance2);
         crystalMenu.visible = YES;
         CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
@@ -336,15 +356,23 @@
         CGPoint distance1 = CGPointMake(0, 90);
         CGPoint distance2;
         CGPoint moveToPosition;
-        if (1 == bagID) 
-        {
+        if (NO == [GameMainScene sharedMainScene].isPairPlay) {
+            distance1 = CGPointMake(90, 0);
             moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
-            distance2 = CGPointMake(-50, 0);
+            distance2 = CGPointMake(0, -30);
         }
         else
         {
-            moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPlay2Pos);
-            distance2 = CGPointMake(50, 0);
+            if (1 == bagID) 
+            {
+                moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPos);
+                distance2 = CGPointMake(-50, 0);
+            }
+            else
+            {
+                moveToPosition = ccpAdd(distance1, [GameMainScene sharedMainScene].pepperMenuPlay2Pos);
+                distance2 = CGPointMake(50, 0);
+            }
         }
         smokeMenu.position = ccpAdd(distance2, moveToPosition);
         smokeMenu.visible = YES;

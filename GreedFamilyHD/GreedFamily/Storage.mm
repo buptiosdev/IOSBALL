@@ -92,7 +92,7 @@
         
         //计算两次消球的时间间隔
         [self schedule:@selector(gameTimeUpdate:) interval:1];
-        [self schedule:@selector(getScoreUpdate:) interval:1];
+        [self schedule:@selector(getScoreUpdate:) interval:0.1];
 
         
     }
