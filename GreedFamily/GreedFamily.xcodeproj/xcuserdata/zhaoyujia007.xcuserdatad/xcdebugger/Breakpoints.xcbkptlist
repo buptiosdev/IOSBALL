@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/GameMainScene.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
          landmarkName = "+sharedMainScene"
          landmarkType = "5">
       </FileBreakpoint>
@@ -149,11 +149,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameBackgroundLayer.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -233,11 +233,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/GameMainScene.mm"
-         timestampString = "366126797.025633"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "496"
-         endingLineNumber = "496"
+         startingLineNumber = "497"
+         endingLineNumber = "497"
          landmarkName = "-initSceneParam:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -247,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/GameMainScene.mm"
-         timestampString = "366126797.025633"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "491"
-         endingLineNumber = "491"
+         startingLineNumber = "492"
+         endingLineNumber = "492"
          landmarkName = "-initSceneParam:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -275,11 +275,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/GameMainScene.mm"
-         timestampString = "366126797.025633"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "504"
-         endingLineNumber = "504"
+         startingLineNumber = "505"
+         endingLineNumber = "505"
          landmarkName = "-initSceneParam:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -317,12 +317,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameBackgroundLayer.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
-         landmarkName = "-getSpriteBatch"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
+         landmarkName = "-getAnimationBatch"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -359,11 +359,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Bag.mm"
-         timestampString = "366563815.130167"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "409"
-         endingLineNumber = "409"
+         startingLineNumber = "412"
+         endingLineNumber = "412"
          landmarkName = "@implementation Bag"
          landmarkType = "3">
       </FileBreakpoint>
@@ -779,11 +779,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "365615552.254529"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "-chooseBall:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -798,7 +798,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "179"
          endingLineNumber = "179"
-         landmarkName = "-CheckforCandyCollision:Type:"
+         landmarkName = "-getCurDirection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -840,7 +840,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "191"
          endingLineNumber = "191"
-         landmarkName = "-CheckforCandyCollision:Type:"
+         landmarkName = "-CheckforCandyCollision:Type:Play:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -863,21 +863,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "365615552.254529"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "137"
-         endingLineNumber = "137"
-         landmarkName = "-initLandCandy:Pos:BodyVelocity:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "365615552.254529"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "138"
@@ -891,11 +877,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "365615552.254529"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "142"
-         endingLineNumber = "142"
+         startingLineNumber = "139"
+         endingLineNumber = "139"
          landmarkName = "-initLandCandy:Pos:BodyVelocity:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -905,11 +891,25 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "365615552.254529"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "128"
-         endingLineNumber = "128"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
+         landmarkName = "-initLandCandy:Pos:BodyVelocity:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/LandCandyEntity.mm"
+         timestampString = "366727998.999926"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
          landmarkName = "-initLandCandy:Pos:BodyVelocity:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1003,11 +1003,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandAnimal.mm"
-         timestampString = "366454892.025332"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "254"
-         endingLineNumber = "254"
+         startingLineNumber = "271"
+         endingLineNumber = "271"
          landmarkName = "-decreaseSpeed"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1059,11 +1059,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Storage.mm"
-         timestampString = "366566349.866012"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "631"
-         endingLineNumber = "631"
+         startingLineNumber = "629"
+         endingLineNumber = "629"
          landmarkName = "-combineBallNew"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1274,7 +1274,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "183"
          endingLineNumber = "183"
-         landmarkName = "-CheckforCandyCollision:Type:"
+         landmarkName = "-getCurDirection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1297,11 +1297,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "365615552.254529"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "176"
-         endingLineNumber = "176"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1311,11 +1311,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "365615552.254529"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
          landmarkName = "-initLandCandy:Pos:BodyVelocity:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1423,7 +1423,21 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "364405323.385605"
+         timestampString = "366727998.999926"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
+         landmarkName = "-chooseBall:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/LandCandyEntity.mm"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "59"
@@ -1437,25 +1451,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "364405323.385605"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "-chooseBall:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "364405323.385605"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
          landmarkName = "-chooseBall:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1507,11 +1507,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandCandyEntity.mm"
-         timestampString = "364405323.385605"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
+         startingLineNumber = "41"
+         endingLineNumber = "41"
          landmarkName = "-chooseBall:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1540,7 +1540,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "108"
          endingLineNumber = "108"
-         landmarkName = "-competitorEat:"
+         landmarkName = "-addToLandCandies:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1549,11 +1549,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "204"
-         endingLineNumber = "204"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1563,11 +1563,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "244"
-         endingLineNumber = "244"
+         startingLineNumber = "261"
+         endingLineNumber = "261"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1577,11 +1577,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "246"
-         endingLineNumber = "246"
+         startingLineNumber = "263"
+         endingLineNumber = "263"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1591,11 +1591,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "251"
-         endingLineNumber = "251"
+         startingLineNumber = "268"
+         endingLineNumber = "268"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1605,11 +1605,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "257"
-         endingLineNumber = "257"
+         startingLineNumber = "274"
+         endingLineNumber = "274"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1619,11 +1619,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
+         startingLineNumber = "138"
+         endingLineNumber = "138"
          landmarkName = "-recoverSpeedForIn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1633,11 +1633,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "130"
-         endingLineNumber = "130"
+         startingLineNumber = "147"
+         endingLineNumber = "147"
          landmarkName = "-reduceCrystal:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1647,11 +1647,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Competitor.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
          landmarkName = "-recoverSpeedForde:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1694,7 +1694,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "157"
          endingLineNumber = "157"
-         landmarkName = "-eatAction"
+         landmarkName = "-eatAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1703,11 +1703,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandAnimal.mm"
-         timestampString = "366454892.025332"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "296"
-         endingLineNumber = "296"
+         startingLineNumber = "313"
+         endingLineNumber = "313"
          landmarkName = "@implementation LandAnimal"
          landmarkType = "3">
       </FileBreakpoint>
@@ -1717,11 +1717,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandAnimal.mm"
-         timestampString = "366454892.025332"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "301"
-         endingLineNumber = "301"
+         startingLineNumber = "318"
+         endingLineNumber = "318"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1731,11 +1731,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandAnimal.mm"
-         timestampString = "366454892.025332"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "307"
-         endingLineNumber = "307"
+         startingLineNumber = "324"
+         endingLineNumber = "324"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2205,11 +2205,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameScore.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "513"
-         endingLineNumber = "513"
+         startingLineNumber = "516"
+         endingLineNumber = "516"
          landmarkName = "-calculateScoreWhenGameIsOver:timestamp:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2303,11 +2303,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameScore.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "538"
-         endingLineNumber = "538"
+         startingLineNumber = "544"
+         endingLineNumber = "544"
          landmarkName = "-calculateScoreWhenGameIsOver:timestamp:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2317,11 +2317,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameScore.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "535"
-         endingLineNumber = "535"
+         startingLineNumber = "541"
+         endingLineNumber = "541"
          landmarkName = "-calculateScoreWhenGameIsOver:timestamp:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2331,11 +2331,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/TouchSwallowLayer.m"
-         timestampString = "365668971.483449"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "350"
-         endingLineNumber = "350"
+         startingLineNumber = "361"
+         endingLineNumber = "361"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2345,39 +2345,39 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/TouchSwallowLayer.m"
-         timestampString = "365668971.483449"
+         timestampString = "366727998.999926"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "148"
+         endingLineNumber = "148"
+         landmarkName = "-yesAddSpeedOnce:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/TouchSwallowLayer.m"
+         timestampString = "366727998.999926"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
+         landmarkName = "-yesAddSpeedOnce:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/TouchSwallowLayer.m"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "146"
          endingLineNumber = "146"
-         landmarkName = "-yesAddSpeedOnce:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "GreedFamily/TouchSwallowLayer.m"
-         timestampString = "365668971.483449"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
-         landmarkName = "-yesAddSpeedOnce:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "GreedFamily/TouchSwallowLayer.m"
-         timestampString = "365668971.483449"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "144"
-         endingLineNumber = "144"
          landmarkName = "-yesAddSpeedOnce:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2387,11 +2387,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/GameMainScene.mm"
-         timestampString = "366126797.025633"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "478"
-         endingLineNumber = "478"
+         startingLineNumber = "479"
+         endingLineNumber = "479"
          landmarkName = "-initSceneParam:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2401,11 +2401,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/GameMainScene.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
+         startingLineNumber = "90"
+         endingLineNumber = "90"
          landmarkName = "-initNomalGame:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2471,11 +2471,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/LandAnimal.mm"
-         timestampString = "366454892.025332"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "342"
-         endingLineNumber = "342"
+         startingLineNumber = "359"
+         endingLineNumber = "359"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2490,7 +2490,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "143"
          endingLineNumber = "143"
-         landmarkName = "-getCurDirection:"
+         landmarkName = "-landAnimalEat:FoodType:Play:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2499,11 +2499,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameScore.mm"
-         timestampString = "366124884.840025"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "556"
-         endingLineNumber = "556"
+         startingLineNumber = "562"
+         endingLineNumber = "562"
          landmarkName = "-calculateScoreWhenGameIsOver:timestamp:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2518,7 +2518,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "215"
          endingLineNumber = "215"
-         landmarkName = "-CheckforCandyCollision:Type:"
+         landmarkName = "-CheckforCandyCollision:Type:Play:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2611,11 +2611,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Bag.mm"
-         timestampString = "366563614.170078"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "253"
-         endingLineNumber = "253"
+         startingLineNumber = "256"
+         endingLineNumber = "256"
          landmarkName = "-initWithPlayID:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2625,11 +2625,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Bag.mm"
-         timestampString = "366563614.170078"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "277"
-         endingLineNumber = "277"
+         startingLineNumber = "280"
+         endingLineNumber = "280"
          landmarkName = "-addPepper"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2709,11 +2709,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Bag.mm"
-         timestampString = "366563614.170078"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "285"
-         endingLineNumber = "285"
+         startingLineNumber = "288"
+         endingLineNumber = "288"
          landmarkName = "-addPepper"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2723,11 +2723,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Bag.mm"
-         timestampString = "366563815.130167"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "314"
-         endingLineNumber = "314"
+         startingLineNumber = "317"
+         endingLineNumber = "317"
          landmarkName = "-addCrystal"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2737,11 +2737,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/Bag.mm"
-         timestampString = "366563815.130167"
+         timestampString = "366727998.999926"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "352"
-         endingLineNumber = "352"
+         startingLineNumber = "355"
+         endingLineNumber = "355"
          landmarkName = "-addSmoke"
          landmarkType = "5">
       </FileBreakpoint>

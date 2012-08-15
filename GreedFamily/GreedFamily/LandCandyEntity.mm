@@ -11,6 +11,7 @@
 #import "LandCandyCache.h"
 #import "GameBackgroundLayer.h"
 #import "CCAnimationHelper.h"
+#import "GameMainScene.h"
 
 @interface LandCandyEntity (PrivateMethods)
 -(id)initLandCandy:(int)balltype Pos:(CGPoint)pos BodyVelocity:(CGPoint)bodyVelocity;
@@ -187,6 +188,7 @@
         system.positionType = kCCPositionTypeGrouped;
         system.autoRemoveOnFinish = YES;
         system.position = self.sprite.position;
+        [[GameMainScene sharedMainScene] playAudio:Droping];
         [self addChild:system];
     }
 }

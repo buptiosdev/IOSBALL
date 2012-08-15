@@ -8,6 +8,7 @@
 
 #import "TouchSwallowLayer.h"
 #import "GameShopScene.h"
+#import "GameMainScene.h"
 
 @interface TouchSwallowLayer (PrivateMethods)
 -(id)initwithType:(int)goodsType RoleType:(int)roalType;
@@ -132,6 +133,7 @@
     if (SPEED1 > rolaTotalScore) 
     {
         //购买失败音效
+//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -150,6 +152,7 @@
     //提交数据
     [self updateScore];
     //购买成功音效
+//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
     [self.parent removeChild:self cleanup:YES];
 }
 -(void)yesAddSpeedTwice:(id)sender
@@ -175,6 +178,7 @@
     if (SPEED2 > rolaTotalScore) 
     {
         //购买失败音效
+//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -192,6 +196,7 @@
     //提交数据
     [self updateScore];
     //购买成功音效
+//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
     [self.parent removeChild:self cleanup:YES];
 }
 
@@ -218,6 +223,7 @@
     if (SPEED3 > rolaTotalScore) 
     {
         //购买失败音效
+//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -235,6 +241,7 @@
     //提交数据
     [self updateScore];
     //购买成功音效
+//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
     [self.parent removeChild:self cleanup:YES];
 }
 
@@ -260,6 +267,7 @@
     if (STORAGE1 > rolaTotalScore) 
     {
         //购买失败音效
+//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -277,6 +285,7 @@
     //提交数据
     [self updateScore];
     //购买成功音效
+//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
     [self.parent removeChild:self cleanup:YES];
 }
 
@@ -302,6 +311,7 @@
     if (STORAGE2 > rolaTotalScore) 
     {
         //购买失败音效
+//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -319,6 +329,7 @@
     //提交数据
     [self updateScore];
     //购买成功音效
+//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
     [self.parent removeChild:self cleanup:YES];
 }
 #pragma mark Layer - Callbacks

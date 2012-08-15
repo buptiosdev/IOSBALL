@@ -37,26 +37,27 @@ void ContactListener::BeginContact(b2Contact* contact)
     
 	if (bodyEntityA != NULL && bodyEntityB != NULL) 
     {
-        
-        
-//        bodyEntityA.sprite.color = ccMAGENTA; 
-//        bodyEntityB.sprite.color = ccMAGENTA;
-        NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
-        BOOL sound = [usrDef boolForKey:@"sound"];
+
         if ([bodyEntityA isKindOfClass:[FlyEntity class]])
         {
 
             if (![bodyEntityB isKindOfClass:[FlyEntity class]])
             {
-                if(sound)
-                {
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
-                }
                 bodyEntityB.hitPoints--;
+                if(0 == bodyEntityB.hitPoints)
+                {
+                    [[GameMainScene sharedMainScene] playAudio:BubbleBreak];
+                }
+                else
+                {
+                    [[GameMainScene sharedMainScene] playAudio:BubbleHit];
+                }
+                
             }
             else
             {
                 //对手相碰的音效
+                [[GameMainScene sharedMainScene] playAudio:BubbleHit];
             }
 
         }
@@ -66,12 +67,17 @@ void ContactListener::BeginContact(b2Contact* contact)
             
             if (![bodyEntityA isKindOfClass:[FlyEntity class]])
             {
-                if(sound)
-                {
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
-                }
                 bodyEntityA.hitPoints--;
+                if(0 == bodyEntityA.hitPoints)
+                {
+                    [[GameMainScene sharedMainScene] playAudio:BubbleBreak];
+                }
+                else
+                {
+                    [[GameMainScene sharedMainScene] playAudio:BubbleHit];
+                }
             }
+            
 
         }
 

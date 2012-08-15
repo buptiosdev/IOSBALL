@@ -150,7 +150,7 @@
             currentCount--;      
             temp++;
             //得分音效
-            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+            [[GameMainScene sharedMainScene] playAudio:GetScore];
 
             
             break;
@@ -557,7 +557,7 @@
                         }
                         
                         //得分音效
-                        [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+                        [[GameMainScene sharedMainScene] playAudio:GetScore];
 
                     }
                     break;
@@ -610,9 +610,7 @@
                     }
                     
                     //得分音效
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
-
-                    
+                    [[GameMainScene sharedMainScene] playAudio:GetScore];
                     break;
                 }
                 left_index--;
@@ -701,14 +699,14 @@
 -(bool) isTouchForPlay1:(CGPoint)touchLocation
 {
     //change size by diff version manual
-    CGRect rec = CGRectMake(0, 0, 150, 30);
+    CGRect rec = CGRectMake(0, 0, 200, 30);
     return CGRectContainsPoint(rec, touchLocation);
 }
 
 -(bool) isTouchForPlay2:(CGPoint)touchLocation
 {
     //change size by diff version manual
-    CGRect rec = CGRectMake(240, 0, 150, 30);
+    CGRect rec = CGRectMake(240, 0, 200, 30);
     return CGRectContainsPoint(rec, touchLocation);
 }
 

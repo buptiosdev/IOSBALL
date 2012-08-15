@@ -29,6 +29,25 @@ typedef enum
     
 }MainSceneLayerTags;
 
+typedef enum
+{   
+    NeedTouch= 1,
+    GetScore,
+    EatCandy,
+    EatGood,
+    EatBad,
+    Droping,
+    BubbleBreak,
+    BubbleHit,
+    SelectOK,
+    SelectNo,
+    Bombing,
+    NewHighScore,
+    Laugh1,
+    Laugh2
+    
+}AudioType;
+
 
 typedef enum
 {   
@@ -98,4 +117,5 @@ struct SceneParam
 
 -(void)pauseGame;
 -(void)resumeGame;
+-(void)playAudio:(int)audioType;
 @end

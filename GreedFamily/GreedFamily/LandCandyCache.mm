@@ -134,7 +134,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     {
         [[Competitor sharedCompetitor] reverseDirection];
     }
-    [[Competitor sharedCompetitor]eatAction];
+    [[Competitor sharedCompetitor]eatAction:foodType];
 }
 
 -(void)landAnimalEat:(CCSprite *)landanimal FoodType:(int)foodType Play:(int)playID
@@ -152,7 +152,7 @@ static LandCandyCache *instanceOfLandCandyCache;
     [storage addFoodToStorage:foodType];
     
     
-    [(LandAnimal *)[landanimal parent] eatAction];
+    [(LandAnimal *)[landanimal parent] eatAction:foodType];
 }
 
 -(int)getCurDirection:(CCSprite *)landanimal

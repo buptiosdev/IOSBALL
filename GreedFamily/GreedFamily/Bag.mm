@@ -100,6 +100,9 @@
 
 -(void)onCrystal:(id)sender
 {
+    //音效
+    [[GameMainScene sharedMainScene] playAudio:Laugh1];
+    
     if (0 >= crystalNum)
     {
         return;

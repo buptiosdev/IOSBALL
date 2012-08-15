@@ -14,6 +14,7 @@
 #import "PauseLayer.h"
 #import "AppDelegate.h"
 #import "ResultLayer.h"
+#import "SimpleAudioEngine.h"
 
 @interface GameMainScene (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
@@ -438,10 +439,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = NoTime;
-            _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.crystalFrequency = OneTime;
             _mainscenParam.pepperFrequency = NoTime;
-            _mainscenParam.iceFrequency = OneTime;
+            _mainscenParam.iceFrequency = TwoTime;
             //_mainscenParam.invisibaleNum = 1;
             _mainscenParam.smokeFrequency = NoTime;
             break;
@@ -586,6 +587,69 @@ static GameMainScene *instanceOfMainScene;
     //加上商店购买道具    
     _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
 
+}
+
+-(void)playAudio:(int)audioType
+{
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    BOOL sound = [usrDef boolForKey:@"sound"];
+    if (NO == sound) 
+    {
+        return;
+    }
+    
+    switch (audioType) {
+        case NeedTouch:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+            break; 
+            
+        case GetScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+            break;            
+
+        case EatCandy:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"der.caf"];
+            break;            
+            
+        case EatGood:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"good.caf"];
+            break;    
+            
+        case EatBad:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"toll.caf"];
+            break;
+            
+        case Droping:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drop.caf"];
+            break;            
+
+        case BubbleBreak:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblebreak.caf"];
+            break;            
+
+        case BubbleHit:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblehit.caf"];
+            break;            
+
+        case SelectOK:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"select.caf"];
+            break;            
+
+        case SelectNo:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"failwarning.caf"];
+            break;            
+
+        case Bombing:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bomb.caf"];
+            break;   
+            
+        case NewHighScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drum.caf"];
+            break;   
+  
+        default:
+            break;
+    }
 }
 
 -(void)endGame

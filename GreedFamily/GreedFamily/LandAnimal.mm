@@ -154,9 +154,26 @@ static LandAnimal *instanceOfLandAnimal;
     return self;
 }
 
--(void)eatAction
+-(void)eatAction:(int)foodType
 {
     waitinterval += 60;
+    if (7 == foodType || 6 == foodType || 3 == foodType) 
+    {
+        [[GameMainScene sharedMainScene] playAudio:EatGood];
+    }
+    else if (4 == foodType)
+    {
+        //音效
+        [[GameMainScene sharedMainScene] playAudio:Bombing];
+    }
+    else if (5 == foodType)
+    {
+        [[GameMainScene sharedMainScene] playAudio:EatBad];
+    }
+    else
+    {
+        [[GameMainScene sharedMainScene] playAudio:EatCandy];
+    }
     CCAction* action = [CCBlink actionWithDuration:1 blinks:5];
     [self runAction:action];
 }

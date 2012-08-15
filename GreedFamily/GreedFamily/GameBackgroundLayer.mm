@@ -69,17 +69,35 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 //        [self addChild:ground z:-3];
         
         // Play the background music in an endless loop.
-        
-        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.caf"];    
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
+        [self preloadAudio];
+
         
         //加载瓷砖地图层
         //TileMapLayer *tileMapLayer = [TileMapLayer node];
         //[self addChild:tileMapLayer z:-2 tag:TileMapLayerTag];
     }
     return self;
+}
+
+-(void)preloadAudio
+{
+    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bite.caf"];    
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bomb.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bubblebreak.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bubblehit.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"der.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"ding.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"dorp.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"drum.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"failwarning.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"good.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"laugh1.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"laugh2.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"select.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"toll.caf"]; 
 }
 
 -(CCSpriteBatchNode*) getSpriteBatch

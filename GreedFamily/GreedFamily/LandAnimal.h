@@ -36,7 +36,7 @@
 -(void)decreaseSpeed;
 -(void)increaseSpeed;
 -(void)bombed;
--(void)eatAction;
+-(void)eatAction:(int)foodType;
 -(void)getCrystal;
 -(void)reverseDirection;
 -(void)setCurDirection;

@@ -16,4 +16,5 @@
 +(GameBackgroundLayer *)sharedGameBackgroundLayer;
 -(CCSpriteBatchNode*) getSpriteBatch;
 -(CCSpriteBatchNode*) getAnimationBatch;
+-(void)preloadAudio;
 @end

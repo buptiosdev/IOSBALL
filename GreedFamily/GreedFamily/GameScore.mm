@@ -246,6 +246,7 @@ static GameScore  *instanceOfgameScore;
     [self addChild:system];
     
     //得分音效
+    [[GameMainScene sharedMainScene] playAudio:GetScore];
     //得分特效
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
         
@@ -336,6 +337,7 @@ static GameScore  *instanceOfgameScore;
 
     [self addChild:system];
     //得分音效
+    [[GameMainScene sharedMainScene] playAudio:GetScore];
     //得分特效
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
     
@@ -387,6 +389,7 @@ static GameScore  *instanceOfgameScore;
     system2.position = getAwardScore.position;
     [self addChild:system2];
     //得分音效
+    [[GameMainScene sharedMainScene] playAudio:GetScore];
     //得分特效
     [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
 }
@@ -515,6 +518,9 @@ static GameScore  *instanceOfgameScore;
     if (my_nowlevelscore > temphighestscore)
     {
         //新纪录音效
+
+        [[GameMainScene sharedMainScene] playAudio:NewHighScore];
+
         //新纪录特效
         //直接将int 装成string  当做关卡的值传进去        
         NSString *str_gamelevel = [NSString stringWithFormat:@"%d",level];
