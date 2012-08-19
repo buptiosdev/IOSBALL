@@ -15,6 +15,7 @@
 #import "CCRadioMenu.h"
 #import "GameMainScene.h"
 #import "LevelScenePair.h"
+#import "RoleScene.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -125,40 +126,40 @@
                              [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
         
         
-        //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
-        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
-                                                       selectedImage:@"options_check_d.png" target:self selector:@selector(button1Tapped:)];
-        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
-                                                       selectedImage:@"options_check_d.png" target:self selector:@selector(button2Tapped:)];
-//        CCMenuItem *menuItem3 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
-//                                selectedImage:@"options_check_d.png" target:self selector:@selector(button3Tapped:)];
-        CCRadioMenu *radioMenu =
-        [CCRadioMenu menuWithItems:menuItem1, menuItem2, nil];
-        radioMenu.position = ccp(50, 180);
-        //[radioMenu alignItemsHorizontally];
-        [radioMenu alignItemsVerticallyWithPadding:10];
-        
-        //默认要写一次文件，设置为小鸟
-        NSString *strName = [NSString stringWithFormat:@"RoleType"];
-        int roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
-        if (roleType > 2 || roleType < 1) 
-        {
-            roleType = 1;
-            [[NSUserDefaults standardUserDefaults] setInteger:roleType forKey:strName];
-        }
-        
-        if (1 == roleType) 
-        {
-            [radioMenu setSelectedItem_:menuItem1];
-            [menuItem1 selected];
-        }
-        else if (2 == roleType)
-        {
-            [radioMenu setSelectedItem_:menuItem2];
-            [menuItem2 selected];
-        }
-        
-        [self addChild:radioMenu];
+//        //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
+//        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
+//                                                       selectedImage:@"options_check_d.png" target:self selector:@selector(button1Tapped:)];
+//        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
+//                                                       selectedImage:@"options_check_d.png" target:self selector:@selector(button2Tapped:)];
+////        CCMenuItem *menuItem3 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"
+////                                selectedImage:@"options_check_d.png" target:self selector:@selector(button3Tapped:)];
+//        CCRadioMenu *radioMenu =
+//        [CCRadioMenu menuWithItems:menuItem1, menuItem2, nil];
+//        radioMenu.position = ccp(50, 180);
+//        //[radioMenu alignItemsHorizontally];
+//        [radioMenu alignItemsVerticallyWithPadding:10];
+//        
+//        //默认要写一次文件，设置为小鸟
+//        NSString *strName = [NSString stringWithFormat:@"RoleType"];
+//        int roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
+//        if (roleType > 2 || roleType < 1) 
+//        {
+//            roleType = 1;
+//            [[NSUserDefaults standardUserDefaults] setInteger:roleType forKey:strName];
+//        }
+//        
+//        if (1 == roleType) 
+//        {
+//            [radioMenu setSelectedItem_:menuItem1];
+//            [menuItem1 selected];
+//        }
+//        else if (2 == roleType)
+//        {
+//            [radioMenu setSelectedItem_:menuItem2];
+//            [menuItem2 selected];
+//        }
+//        
+//        [self addChild:radioMenu];
 		
     }    
     
@@ -166,16 +167,16 @@
 }
 
 //角色选择回调函数，把角色类型写入文件
-- (void)button1Tapped:(id)sender 
-{
-    NSString *strName = [NSString stringWithFormat:@"RoleType"];
-    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:strName];
-}
-- (void)button2Tapped:(id)sender 
-{
-    NSString *strName = [NSString stringWithFormat:@"RoleType"];
-    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:strName];
-}
+//- (void)button1Tapped:(id)sender 
+//{
+//    NSString *strName = [NSString stringWithFormat:@"RoleType"];
+//    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:strName];
+//}
+//- (void)button2Tapped:(id)sender 
+//{
+//    NSString *strName = [NSString stringWithFormat:@"RoleType"];
+//    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:strName];
+//}
 //- (void)button3Tapped:(id)sender 
 //{
 //    [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"RoleType"];
@@ -186,10 +187,12 @@
 	//start a new game
     //[self showDifficultySelection];
     //数据提交
-    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
-
-    [[NSUserDefaults standardUserDefaults] synchronize];
-	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+//    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+//
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
+    
 }
 
 -(void)options:(id)sender

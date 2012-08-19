@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A78F4EA15E0C25600CA1C8A /* RoleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A78F4E915E0C25600CA1C8A /* RoleScene.m */; };
 		4A78F87A1546D8B5001811B1 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A78F8791546D8B5001811B1 /* PauseLayer.mm */; };
 		4A78F87F1546D9EB001811B1 /* paused.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A78F87E1546D9EB001811B1 /* paused.png */; };
 		4A7A83FD156A882900841572 /* LandCandyCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A83FA156A882900841572 /* LandCandyCache.mm */; };
@@ -266,6 +267,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A78F4E815E0C25600CA1C8A /* RoleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoleScene.h; path = screens/RoleScene.h; sourceTree = "<group>"; };
+		4A78F4E915E0C25600CA1C8A /* RoleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoleScene.m; path = screens/RoleScene.m; sourceTree = "<group>"; };
 		4A78F8781546D8B5001811B1 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
 		4A78F8791546D8B5001811B1 /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
 		4A78F87E1546D9EB001811B1 /* paused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paused.png; path = Resources/paused.png; sourceTree = "<group>"; };
@@ -1330,6 +1333,8 @@
 		70081FDD153F9902003F042A /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				4A78F4E815E0C25600CA1C8A /* RoleScene.h */,
+				4A78F4E915E0C25600CA1C8A /* RoleScene.m */,
 				4A7F130B15A3465F0073E99E /* OptionsScene.h */,
 				4A7F130C15A3465F0073E99E /* OptionsScene.m */,
 				706EA99C153F9AE90003C4B2 /* LoadingScene.h */,
@@ -1753,6 +1758,7 @@
 				702FC0EB15C7B6E700B39D2A /* CCRadioMenu.m in Sources */,
 				702FC0F615C902FB00B39D2A /* TouchSwallowLayer.mm in Sources */,
 				707FE5A915D8E4F100C9456C /* LevelScenePair.m in Sources */,
+				4A78F4EA15E0C25600CA1C8A /* RoleScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

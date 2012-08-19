@@ -8,7 +8,7 @@
 
 #import "LevelScene.h"
 #import "LoadingScene.h"
-#import "NavigationScene.h"
+#import "RoleScene.h"
 #import "CCScrollLayer.h"
 //#import "GameScore.h"
 
@@ -23,7 +23,7 @@
 
 -(void)returnMain
 {
-    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
 }
 
 -(int)getGameStarNumber:(int)level
@@ -281,7 +281,7 @@
 //        [LevelBtn19 setTag:TargetScene19thScene];
 //        [LevelBtn20 setTag:TargetScene20thScene];
         
-        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:25];
+        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];
         [returnLabel setColor:ccRED];
         CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
 
@@ -304,7 +304,7 @@
         
         CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
         [returnMenu alignItemsHorizontallyWithPadding:0];
-        [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/7)];
+        [returnMenu setPosition:ccp((screenSize.width)*0.1f,(screenSize.height)*1/7)];
         [self addChild:returnMenu];
         
         //test
