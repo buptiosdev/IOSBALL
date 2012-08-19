@@ -64,9 +64,34 @@
         [labeltotalscore setColor:ccBLUE];
 		[self addChild:labeltotalscore];
         
-        if(isnewrecord==1)
+        //if(isnewrecord==1 && starnum==3)
+        //{
+        NSString *words=nil;
+        if(starnum==0)
         {
-            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:@"Great!" fontName:@"Marker Felt" fontSize:40];
+            words = @"Failed!";
+        }
+        else if(starnum==1)
+        {
+            words = @"Passed!";
+        }
+        else if(starnum==2)
+        {
+            words = @"Good!";
+        }
+        else if(starnum == 3)
+        {
+            if(isnewrecord==1)
+            {
+                words = @"New Record!!!";
+            }
+            else
+            {
+                words = @"Great!";
+            }
+        }
+        
+            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Marker Felt" fontSize:40];
             [labelnewrecord setColor:ccRED];
             labelnewrecord.position=CGPointMake(size.width *3/ 4, size.height *3/4  );;
             [labelnewrecord runAction:[CCSequence actions:
@@ -74,7 +99,7 @@
                                 [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
                                 nil]];
             [self addChild:labelnewrecord];
-        }
+        
         
         
 
