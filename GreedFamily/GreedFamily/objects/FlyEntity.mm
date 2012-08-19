@@ -408,6 +408,11 @@
             [self.sprite runAction:_flyAction];
             directionBefore = directionCurrent;
         }
+        else
+        {
+            CCLOG(@"flyaction error");
+            assert("action error");
+        }
     }
 
     //根据飞行速度调节动画速率
