@@ -8,7 +8,7 @@
 
 #import "TouchSwallowLayer.h"
 #import "GameShopScene.h"
-#import "GameMainScene.h"
+//#import "GameMainScene.h"
 
 @interface TouchSwallowLayer (PrivateMethods)
 -(id)initwithType:(int)goodsType RoleType:(int)roalType;
