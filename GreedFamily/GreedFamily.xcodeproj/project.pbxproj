@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A76902715E27C41002F61DB /* drop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4A76902615E27C41002F61DB /* drop.caf */; };
 		4A78F4EA15E0C25600CA1C8A /* RoleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A78F4E915E0C25600CA1C8A /* RoleScene.m */; };
 		4A78F87A1546D8B5001811B1 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A78F8791546D8B5001811B1 /* PauseLayer.mm */; };
 		4A78F87F1546D9EB001811B1 /* paused.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A78F87E1546D9EB001811B1 /* paused.png */; };
@@ -197,7 +198,6 @@
 		7032FD0515DB939800E5E108 /* bubblehit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7032FCF415DB939800E5E108 /* bubblehit.caf */; };
 		7032FD0615DB939800E5E108 /* der.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7032FCF515DB939800E5E108 /* der.caf */; };
 		7032FD0715DB939800E5E108 /* ding.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7032FCF615DB939800E5E108 /* ding.caf */; };
-		7032FD0815DB939800E5E108 /* dorp.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7032FCF715DB939800E5E108 /* dorp.caf */; };
 		7032FD0915DB939800E5E108 /* drum.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7032FCF815DB939800E5E108 /* drum.caf */; };
 		7032FD0A15DB939800E5E108 /* failwarning.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7032FCF915DB939800E5E108 /* failwarning.caf */; };
 		7032FD0B15DB939800E5E108 /* getscore.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7032FCFA15DB939800E5E108 /* getscore.caf */; };
@@ -267,6 +267,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A76902615E27C41002F61DB /* drop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = drop.caf; sourceTree = "<group>"; };
 		4A78F4E815E0C25600CA1C8A /* RoleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoleScene.h; path = screens/RoleScene.h; sourceTree = "<group>"; };
 		4A78F4E915E0C25600CA1C8A /* RoleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoleScene.m; path = screens/RoleScene.m; sourceTree = "<group>"; };
 		4A78F8781546D8B5001811B1 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
@@ -636,7 +637,6 @@
 		7032FCF415DB939800E5E108 /* bubblehit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bubblehit.caf; sourceTree = "<group>"; };
 		7032FCF515DB939800E5E108 /* der.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = der.caf; sourceTree = "<group>"; };
 		7032FCF615DB939800E5E108 /* ding.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ding.caf; sourceTree = "<group>"; };
-		7032FCF715DB939800E5E108 /* dorp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dorp.caf; sourceTree = "<group>"; };
 		7032FCF815DB939800E5E108 /* drum.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = drum.caf; sourceTree = "<group>"; };
 		7032FCF915DB939800E5E108 /* failwarning.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = failwarning.caf; sourceTree = "<group>"; };
 		7032FCFA15DB939800E5E108 /* getscore.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = getscore.caf; sourceTree = "<group>"; };
@@ -1381,6 +1381,7 @@
 		7032FCEF15DB939800E5E108 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				4A76902615E27C41002F61DB /* drop.caf */,
 				7032FCF015DB939800E5E108 /* bite.caf */,
 				7032FCF115DB939800E5E108 /* blues.mp3 */,
 				7032FCF215DB939800E5E108 /* bomb.caf */,
@@ -1388,7 +1389,6 @@
 				7032FCF415DB939800E5E108 /* bubblehit.caf */,
 				7032FCF515DB939800E5E108 /* der.caf */,
 				7032FCF615DB939800E5E108 /* ding.caf */,
-				7032FCF715DB939800E5E108 /* dorp.caf */,
 				7032FCF815DB939800E5E108 /* drum.caf */,
 				7032FCF915DB939800E5E108 /* failwarning.caf */,
 				7032FCFA15DB939800E5E108 /* getscore.caf */,
@@ -1545,7 +1545,6 @@
 				7032FD0515DB939800E5E108 /* bubblehit.caf in Resources */,
 				7032FD0615DB939800E5E108 /* der.caf in Resources */,
 				7032FD0715DB939800E5E108 /* ding.caf in Resources */,
-				7032FD0815DB939800E5E108 /* dorp.caf in Resources */,
 				7032FD0915DB939800E5E108 /* drum.caf in Resources */,
 				7032FD0A15DB939800E5E108 /* failwarning.caf in Resources */,
 				7032FD0B15DB939800E5E108 /* getscore.caf in Resources */,
@@ -1574,6 +1573,7 @@
 				7032FD3615DB941C00E5E108 /* sparkle.plist in Resources */,
 				7032FD3715DB941C00E5E108 /* speedfast.plist in Resources */,
 				7032FD3815DB941C00E5E108 /* speedfast2.plist in Resources */,
+				4A76902715E27C41002F61DB /* drop.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
