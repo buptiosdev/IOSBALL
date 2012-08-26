@@ -123,37 +123,6 @@ static GameScore  *instanceOfgameScore;
     my_struct_gameScore_rules.Once6circle = 20;
 }
 
-//获取当前关卡得分
-/*
--(int )getGameNowScore:(int)level
-{
-    if (level == 1)
-    {
-        return my_struct_gameScore.level1NowScore;
-    }
-    if(level == 2)
-    {
-        return my_struct_gameScore.level2NowScore;
-    }    
-    if(level == 3)
-    {
-        return my_struct_gameScore.level3NowScore;
-    }  
-    if(level == 4)
-    {
-        return my_struct_gameScore.level4NowScore;
-    }  
-    if(level == 5)
-    {
-        return my_struct_gameScore.level5NowScore;
-    }  
-    
-    CCLOG(@"Into getGameNowScore ERROR/n");
-    return 0;
-    
-}
- */
-
 //获得当前关卡最高得分
 //Get The Score From gameScore.m
 -(int)getGameHighestScore:(int)level;
@@ -164,36 +133,6 @@ static GameScore  *instanceOfgameScore;
     NSInteger highestscore = [standardUserDefaults integerForKey:str_game_level];    
     
     return highestscore;
-    /*    
-     if (level == 1)
-     {
-     NSInteger level1 = [standardUserDefaults integerForKey:@"level1HighestScore"];
-     return level1;
-     }
-     if(level == 2)
-     {
-     NSInteger level2 = [standardUserDefaults integerForKey:@"level2HighestScore"];        
-     return level2;
-     }    
-     if(level == 3)
-     {
-     NSInteger level3 = [standardUserDefaults integerForKey:@"level3HighestScore"];        
-     return level3;
-     }  
-     if(level == 4)
-     {
-     NSInteger level4 = [standardUserDefaults integerForKey:@"level4HighestScore"];        
-     return level4;
-     }  
-     if(level == 5)
-     {
-     NSInteger level5 = [standardUserDefaults integerForKey:@"level5HighestScore"];        
-     return level5;
-     }  
-     
-     CCLOG(@"Into getGameHighestScore ERROR\n");
-     return 0;
-     */
 }
 
 
@@ -208,11 +147,11 @@ static GameScore  *instanceOfgameScore;
 }
 
 
-//连续消球得分
+//连续消球奖励得分
 -(void)calculateContinuousCombineAward:(int)continuousflag 
                                myLevel:(int)gameLevel
 {
-    CCLOG(@"INTO calculateContinuousCombineAward\n\n");
+    //CCLOG(@"INTO calculateContinuousCombineAward\n\n");
     int tempnowscore = (continuousflag-1)*2;
     
     if (continuousflag <= 1) 
@@ -229,7 +168,7 @@ static GameScore  *instanceOfgameScore;
     getContinuousAward.scale = 0.5;
     getContinuousAward.color = ccBLUE;
 
-    //将5个劢作组合为一个序列，注意丌要忘了用nil结尾。 
+    //将5个动作组合为一个序列，注意不要忘了用nil结尾。 
     id ac0_ = [CCToggleVisibility action]; 
     id ac1_ = [CCMoveTo actionWithDuration:2 position:ccp(50,300)]; 
     id ac3_ = [CCDelayTime actionWithDuration:3];
@@ -247,8 +186,12 @@ static GameScore  *instanceOfgameScore;
     
     //得分音效
     [[GameMainScene sharedMainScene] playAudio:GetScore];
-    //得分特效
-    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
+
+    
+    //更新得分
+    //延迟奖励得分调用更改    
+    [self schedule:@selector(setScoreLabel:) interval:6];    
+    //[totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
         
     
 }
@@ -269,12 +212,22 @@ static GameScore  *instanceOfgameScore;
 
 }
 
+
+-(void)setScoreLabel:(ccTime) dt 
+{
+    [self unschedule:@selector(setScoreLabel:)];
+    //更新得分
+    //CCLOG(@"Into setScoreLable\n\n");
+    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];    
+}
+
+
 -(void)removeAwardScore: (ccTime) dt
 {
     [self unschedule:@selector(removeAwardScore:)];   
     //消除特效
     [self removeChildByTag:AwardScoreTag cleanup:YES];
-    
+
 }
 
 
@@ -338,8 +291,11 @@ static GameScore  *instanceOfgameScore;
     [self addChild:system];
     //得分音效
     [[GameMainScene sharedMainScene] playAudio:GetScore];
+    
     //得分特效
-    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
+    //延迟得分效果 
+    [self schedule:@selector(setScoreLabel:) interval:4];
+    //[totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
     
     
     if (oneTimeScoreNum <= 3) 
@@ -390,8 +346,11 @@ static GameScore  *instanceOfgameScore;
     [self addChild:system2];
     //得分音效
     [[GameMainScene sharedMainScene] playAudio:GetScore];
-    //得分特效
-    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
+
+    
+    //延迟得分
+    [self schedule:@selector(setScoreLabel:) interval:5];
+    //[totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
 }
 
 //update 与  [self scheduleUpdate] 对应
