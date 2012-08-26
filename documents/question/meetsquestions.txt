@@ -1,0 +1,13 @@
+add by rauljin at 2012.8.26
+回来后 报机调试一直会出现 Code Sign error: Provisioning profile ‘XXXX’ can't be found。开始怀疑是profiles的问题，弄了半天没有成功。
+后来发现原来是由于更新过证书导致的 ，处理的方法是：
+
+  1.关闭你的项目，找到项目文件XXXX.xcodeproj，在文件上点击右键，选择“显示包内容”（Show Package Contents）。会新打开一个Finder。注：其实XXXX.xcodeproj就是一个文件夹，这里新打开的一个Finder里面的三个文件就是该XXXX.xcodeproj文件夹里面的文件。
+
+  2.在新打开的Finder中找到project.pbxproj，并且打开。在这之中找到你之前的证书的编码信息。我之前报的错误信息是
+
+    Code Sign error: Provisioning profile '37D44E7F-0339-4277-9A82-C146A944CD46'，所以我用查找的方式找到了所有包括37D44E7F-0339-4277-9A82-C146A944CD46的行，并且删除。
+
+ 3.保存，重新启动你的项目，再编译。就OK了。
+
+
