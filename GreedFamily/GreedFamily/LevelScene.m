@@ -10,7 +10,7 @@
 #import "LoadingScene.h"
 #import "RoleScene.h"
 #import "CCScrollLayer.h"
-//#import "GameScore.h"
+#import "GameShopScene.h"
 
 @implementation LevelScene
 
@@ -24,6 +24,12 @@
 -(void)returnMain
 {
     [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
+}
+
+-(void)connectGameShop:(id)sender
+{
+    //connect to game center
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
 }
 
 -(int)getGameStarNumber:(int)level
@@ -283,8 +289,11 @@
         
         CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];
         [returnLabel setColor:ccRED];
+        
         CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
-
+        CCLabelTTF *gameShopLabel=[CCLabelTTF labelWithString:@"Shop" fontName:@"Marker Felt" fontSize:30];
+        CCMenuItemLabel * gameShop = [CCMenuItemLabel itemWithLabel:gameShopLabel target:self selector:@selector(connectGameShop:)];
+        
         CCMenu * easyMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:0],[levelarray objectAtIndex:1],[levelarray objectAtIndex:2],[levelarray objectAtIndex:3],[levelarray objectAtIndex:4],nil];
         [easyMenu alignItemsHorizontallyWithPadding:-15];
         [easyMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*5/6)];
@@ -302,9 +311,9 @@
         [extremeMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*1/2)];
         
         
-        CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
-        [returnMenu alignItemsHorizontallyWithPadding:0];
-        [returnMenu setPosition:ccp((screenSize.width)*0.1f,(screenSize.height)*1/7)];
+        CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, gameShop, nil];
+        [returnMenu alignItemsHorizontallyWithPadding:300];
+        [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/7)];
         [self addChild:returnMenu];
         
         //test

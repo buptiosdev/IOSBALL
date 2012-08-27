@@ -149,11 +149,14 @@
     {
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
+    //购买成功音效
+    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    //跳过这一个物品，显示下一个 个位表示陆地动物速度
+    ((GameShopScene *)self.parent).buyedList += 1;
     //提交数据
     [self updateScore];
-    //购买成功音效
-//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
-    [self.parent removeChild:self cleanup:YES];
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+    //[self.parent removeChild:self cleanup:YES];
 }
 -(void)yesAddSpeedTwice:(id)sender
 {
@@ -193,11 +196,14 @@
     {
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
+    //购买成功音效
+    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    //跳过这一个物品，显示下一个 个位表示陆地动物速度
+    ((GameShopScene *)self.parent).buyedList += 1;
     //提交数据
     [self updateScore];
-    //购买成功音效
-//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
-    [self.parent removeChild:self cleanup:YES];
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+    //[self.parent removeChild:self cleanup:YES];
 }
 
 -(void)yesAddSpeedThird:(id)sender
@@ -238,11 +244,14 @@
     {
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
+    //购买成功音效
+    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    //跳过这一个物品，显示下一个 个位表示陆地动物速度
+    ((GameShopScene *)self.parent).buyedList += 1;
     //提交数据
     [self updateScore];
-    //购买成功音效
-//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
-    [self.parent removeChild:self cleanup:YES];
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+    //[self.parent removeChild:self cleanup:YES];
 }
 
 -(void)yesAddStorageOnce:(id)sender
@@ -282,11 +291,16 @@
     {
         [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
     }
-    //提交数据
-    [self updateScore];
+
     //购买成功音效
 //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
-    [self.parent removeChild:self cleanup:YES];
+    //跳过这一个物品，显示下一个 十位表示仓库
+    ((GameShopScene *)self.parent).buyedList += 10;
+    //提交数据
+    [self updateScore];
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+
+    //[self.parent removeChild:self cleanup:YES];
 }
 
 -(void)yesAddStorageTwice:(id)sender
@@ -326,11 +340,14 @@
     {
         [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
     }
+    //购买成功音效
+    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    //跳过这一个物品，显示下一个 十位表示仓库
+    ((GameShopScene *)self.parent).buyedList += 10;
     //提交数据
     [self updateScore];
-    //购买成功音效
-//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
-    [self.parent removeChild:self cleanup:YES];
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+    //[self.parent removeChild:self cleanup:YES];
 }
 #pragma mark Layer - Callbacks
 -(void) onEnter
