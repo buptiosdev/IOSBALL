@@ -260,6 +260,9 @@
 		7094910A15EF1539005ADBD8 /* destinationshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910415EF1539005ADBD8 /* destinationshort.mp3 */; };
 		7094910B15EF1539005ADBD8 /* huanqinshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910515EF1539005ADBD8 /* huanqinshort.mp3 */; };
 		7094910C15EF1539005ADBD8 /* morningmusicshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910615EF1539005ADBD8 /* morningmusicshort.mp3 */; };
+		7094911115EF5282005ADBD8 /* background_begin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7094910E15EF5282005ADBD8 /* background_begin.jpg */; };
+		7094911215EF5282005ADBD8 /* beginscene_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7094910F15EF5282005ADBD8 /* beginscene_default.plist */; };
+		7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7094911015EF5282005ADBD8 /* beginscene_default.png */; };
 		70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C015A9D670007D35B5 /* Parse.framework */; };
 		70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C415A9D69C007D35B5 /* Security.framework */; };
 		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
@@ -721,6 +724,9 @@
 		7094910415EF1539005ADBD8 /* destinationshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = destinationshort.mp3; sourceTree = "<group>"; };
 		7094910515EF1539005ADBD8 /* huanqinshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = huanqinshort.mp3; sourceTree = "<group>"; };
 		7094910615EF1539005ADBD8 /* morningmusicshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morningmusicshort.mp3; sourceTree = "<group>"; };
+		7094910E15EF5282005ADBD8 /* background_begin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_begin.jpg; path = Resources/pic/background_begin.jpg; sourceTree = "<group>"; };
+		7094910F15EF5282005ADBD8 /* beginscene_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = beginscene_default.plist; path = Resources/pic/beginscene_default.plist; sourceTree = "<group>"; };
+		7094911015EF5282005ADBD8 /* beginscene_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beginscene_default.png; path = Resources/pic/beginscene_default.png; sourceTree = "<group>"; };
 		70C7C3C015A9D670007D35B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		70C7C3C415A9D69C007D35B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -821,6 +827,7 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7094910D15EF5255005ADBD8 /* picture */,
 				7094910015EF1539005ADBD8 /* music */,
 				7032FD1215DB941C00E5E108 /* specialist */,
 				7032FCEF15DB939800E5E108 /* audio */,
@@ -1479,6 +1486,16 @@
 			path = Resources/music;
 			sourceTree = "<group>";
 		};
+		7094910D15EF5255005ADBD8 /* picture */ = {
+			isa = PBXGroup;
+			children = (
+				7094910E15EF5282005ADBD8 /* background_begin.jpg */,
+				7094910F15EF5282005ADBD8 /* beginscene_default.plist */,
+				7094911015EF5282005ADBD8 /* beginscene_default.png */,
+			);
+			name = picture;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1603,6 +1620,9 @@
 				7094910A15EF1539005ADBD8 /* destinationshort.mp3 in Resources */,
 				7094910B15EF1539005ADBD8 /* huanqinshort.mp3 in Resources */,
 				7094910C15EF1539005ADBD8 /* morningmusicshort.mp3 in Resources */,
+				7094911115EF5282005ADBD8 /* background_begin.jpg in Resources */,
+				7094911215EF5282005ADBD8 /* beginscene_default.plist in Resources */,
+				7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
