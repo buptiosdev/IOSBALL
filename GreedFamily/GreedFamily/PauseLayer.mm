@@ -13,6 +13,7 @@
 #import "OptionsScene.h"
 #import "LoadingScene.h"
 #import "CDAudioManager.h"
+#import "SimpleAudioEngine.h"
 
 @implementation PauseLayer
 
@@ -42,6 +43,41 @@
 		
 }
 
+-(void)changeMusic:(CCMenuItemToggle *)sender
+{
+	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+	
+	if(sender.selectedIndex ==1)
+    {
+        int order = [GameMainScene sharedMainScene].sceneNum;
+        
+        if (order > 0 && order <= 10) 
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"huanqinshort.mp3" loop:YES];
+        }
+        else if (order > 0 && order <= 15) 
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morningmusicshort.mp3" loop:YES];
+        }
+        else if (order > 0 && order <= 18)
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
+        }
+        else
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
+            
+        }
+        
+		[usrDef setBool:YES forKey:@"music"];
+    }
+	if(sender.selectedIndex ==0)
+    {
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+		[usrDef setBool:NO forKey:@"music"];
+    }
+}
+
 //-(void)showOption
 //{
 //    OptionsScene * gs = [OptionsScene node];
@@ -60,6 +96,23 @@
 	//start a new game
     [[GameMainScene sharedMainScene] resumeGame];
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+    //播放背景音乐
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    BOOL sound = [usrDef boolForKey:@"music"];
+    if (YES == sound) 
+    {
+        int randomNum = random()%2;
+        
+        if (0 == randomNum) 
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+        }
+        else
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+            
+        }
+    }
 }
 
 -(void)retryGame:(CCMenuItemSprite *)btn
@@ -151,6 +204,34 @@
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"sound"] == YES)
 			sound.selectedIndex = 1;
+        
+        
+        CCSprite *musicoff = [CCSprite spriteWithSpriteFrameName:@"sound.png"];
+        musicoff.scaleX=(40)/[soundoff contentSize].width; //按照像素定制图片宽高是控制像素的。
+        musicoff.scaleY=(40)/[soundoff contentSize].height;
+        CCSprite *musicon = [CCSprite spriteWithSpriteFrameName:@"sound2.png"];
+        musicon.scaleX=(40)/[soundon contentSize].width; //按照像素定制图片宽高是控制像素的。
+        musicon.scaleY=(40)/[soundon contentSize].height;
+        
+        CCSprite *musicoff1 = [CCSprite spriteWithSpriteFrameName:@"sound.png"];
+        musicoff1.scaleX=(40)/[soundoff1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        musicoff1.scaleY=(40)/[soundoff1 contentSize].height;
+        CCSprite *musicon1 = [CCSprite spriteWithSpriteFrameName:@"sound2.png"];
+        musicon1.scaleX=(40)/[soundon1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        musicon1.scaleY=(40)/[soundon1 contentSize].height;
+        
+        
+        
+        CCMenuItemSprite *uncheckedmusic=[CCMenuItemSprite itemFromNormalSprite:musicoff selectedSprite:musicon];
+        CCMenuItemSprite *checkedmusic=[CCMenuItemSprite itemFromNormalSprite:musicon1 selectedSprite:musicoff1];
+		
+		CCMenuItemToggle * music = [CCMenuItemToggle itemWithTarget:self selector:@selector(changeMusic:) items:checkedmusic,uncheckedmusic,nil];
+        CCMenu * musicMenu = [CCMenu menuWithItems:music,nil];
+        [musicMenu setPosition:ccp((screenSize.width)*0.3f,(screenSize.height)*4/7)];
+        [self addChild:musicMenu];
+        //NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+		if([usrDef boolForKey:@"music"] == YES)
+			music.selectedIndex = 1;
         
         //retry
         //change size by diff version manual

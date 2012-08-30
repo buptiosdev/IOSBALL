@@ -1,5 +1,6 @@
 #import "OptionsScene.h"
 #import "NavigationScene.h"
+#import "SimpleAudioEngine.h"
 
 @implementation OptionsScene
 
@@ -131,9 +132,26 @@
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
 	if(sender.selectedIndex ==1)
+    {
+        int randomNum = random()%2;
+        
+        if (0 == randomNum) 
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+        }
+        else
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+
+        }
+        
 		[usrDef setBool:YES forKey:@"music"];
+    }
 	if(sender.selectedIndex ==0)
+    {
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 		[usrDef setBool:NO forKey:@"music"];
+    }
 }
 
 

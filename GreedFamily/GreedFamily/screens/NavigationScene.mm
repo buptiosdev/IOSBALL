@@ -15,6 +15,7 @@
 #import "GameMainScene.h"
 #import "LevelScenePair.h"
 #import "RoleScene.h"
+#import "SimpleAudioEngine.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -121,6 +122,25 @@
                              [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
                              [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
         
+        //播放背景音乐
+        NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+        BOOL sound = [usrDef boolForKey:@"music"];
+        if (YES == sound) 
+        {
+            int randomNum = random()%2;
+            
+            if (0 == randomNum) 
+            {
+                [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+            }
+            else
+            {
+                [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+                
+            }
+        }
+        
+
         
 //        //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
 //        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"options_check.png"

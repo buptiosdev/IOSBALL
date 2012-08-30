@@ -362,7 +362,8 @@
     {
         if (!canCombine)
         {
-            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+            //[[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+            [[GameMainScene sharedMainScene] playAudio:NeedTouch];
             
         }
         canCombine = YES;

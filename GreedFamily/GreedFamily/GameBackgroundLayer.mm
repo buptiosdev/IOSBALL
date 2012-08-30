@@ -47,12 +47,6 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
         [self addChild:batch2 z:-1 tag:AnimationTag];
         
-
-    //    // a bright background is desireable for this pinball table
-    //    CCColorLayer* colorLayer = [CCColorLayer layerWithColor:ccc4(0, 0, 255, 200)];
-    //    [self addChild:colorLayer z:100];
-        
-
         // IMPORTANT: filenames are case sensitive on iOS devices!
         CCSprite* background = [CCSprite spriteWithFile:@"background_1.jpg"];
         //change size by diff version manual
@@ -62,26 +56,50 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         //change size by diff version
         background.position = [GameMainScene sharedMainScene].backgroundPos;
         [self addChild:background z:-3];
-//        
-//        CCSprite* ground = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
-//        
-//        ground.position = CGPointMake(screenSize.width / 2, 50);
-//        [self addChild:ground z:-3];
+
         
         // Play the background music in an endless loop.
         [self preloadAudio];
 
-        
-        //加载瓷砖地图层
-        //TileMapLayer *tileMapLayer = [TileMapLayer node];
-        //[self addChild:tileMapLayer z:-2 tag:TileMapLayerTag];
     }
     return self;
 }
 
+-(void)playBackMusic
+{
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    BOOL sound = [usrDef boolForKey:@"music"];
+    if (NO == sound) 
+    {
+        return;
+    }
+        
+    int order = [GameMainScene sharedMainScene].sceneNum;
+    
+    if (order > 0 && order <= 10) 
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"huanqinshort.mp3" loop:YES];
+    }
+    else if (order > 0 && order <= 15) 
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morningmusicshort.mp3" loop:YES];
+    }
+    else if (order > 0 && order <= 18)
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
+    }
+    else
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
+
+    }
+    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
+}
+
 -(void)preloadAudio
 {
-    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
+    [self playBackMusic];
+
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"bite.caf"];    
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
