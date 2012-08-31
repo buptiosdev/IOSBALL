@@ -10,6 +10,7 @@
 #import "NavigationScene.h"
 #import "TouchSwallowLayer.h"
 #import "LevelScene.h"
+#import "SimpleAudioEngine.h"
 
 @implementation GameShopScene
 
@@ -32,6 +33,69 @@
 +(id)createGameShopScene
 {
     return [[[GameShopScene alloc] init] autorelease];
+}
+
+-(void)playAudio:(int)audioType
+{
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    BOOL sound = [usrDef boolForKey:@"sound"];
+    if (NO == sound) 
+    {
+        return;
+    }
+    
+    switch (audioType) {
+        case NeedTouch:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+            break; 
+            
+        case GetScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+            break;            
+            
+        case EatCandy:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"der.caf"];
+            break;            
+            
+        case EatGood:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"good.caf"];
+            break;    
+            
+        case EatBad:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"toll.caf"];
+            break;
+            
+        case Droping:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drop.caf"];
+            break;            
+            
+        case BubbleBreak:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblebreak.caf"];
+            break;            
+            
+        case BubbleHit:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblehit.caf"];
+            break;            
+            
+        case SelectOK:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"select.caf"];
+            break;            
+            
+        case SelectNo:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"failwarning.caf"];
+            break;            
+            
+        case Bombing:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bomb.caf"];
+            break;   
+            
+        case NewHighScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drum.caf"];
+            break;   
+            
+        default:
+            break;
+    }
 }
 
 -(void)initRoleAndScore
@@ -249,32 +313,38 @@
 
 -(void)verifyAddSpeedOnce:(id)sender
 {
+    [self playAudio:SelectOK];
     TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:1 RoleType:roalType];
     [self addChild:myTouchSwallowLayer];
 }
 -(void)verifyAddSpeedTwice:(id)sender
 {
+    [self playAudio:SelectOK];
     TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:2 RoleType:roalType];
     [self addChild:myTouchSwallowLayer];
 }
 -(void)verifyAddSpeedThird:(id)sender
 {
+    [self playAudio:SelectOK];
     TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:3 RoleType:roalType];
     [self addChild:myTouchSwallowLayer];
 }
 -(void)verifyAddStorageOnce:(id)sender
 {
+    [self playAudio:SelectOK];
     TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:4 RoleType:roalType];
     [self addChild:myTouchSwallowLayer];
 }
 -(void)verifyAddStorageTwice:(id)sender
 {
+    [self playAudio:SelectOK];
     TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:5 RoleType:roalType];
     [self addChild:myTouchSwallowLayer];
 }
 
 -(void)goBack:(id)sender
 {
+    [self playAudio:SelectOK];
     //[[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];  
 }

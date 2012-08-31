@@ -21,6 +21,7 @@
 -(void)newGame:(id)sender;
 -(void)options:(id)sender;
 -(void)gamecenter:(id)sender;
+-(void)playAudio:(int)audioType;
 @end
 
 
@@ -198,6 +199,70 @@
 //    [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"RoleType"];
 //}
 
+
+-(void)playAudio:(int)audioType
+{
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    BOOL sound = [usrDef boolForKey:@"sound"];
+    if (NO == sound) 
+    {
+        return;
+    }
+    
+    switch (audioType) {
+        case NeedTouch:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+            break; 
+            
+        case GetScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+            break;            
+            
+        case EatCandy:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"der.caf"];
+            break;            
+            
+        case EatGood:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"good.caf"];
+            break;    
+            
+        case EatBad:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"toll.caf"];
+            break;
+            
+        case Droping:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drop.caf"];
+            break;            
+            
+        case BubbleBreak:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblebreak.caf"];
+            break;            
+            
+        case BubbleHit:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblehit.caf"];
+            break;            
+            
+        case SelectOK:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"select.caf"];
+            break;            
+            
+        case SelectNo:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"failwarning.caf"];
+            break;            
+            
+        case Bombing:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bomb.caf"];
+            break;   
+            
+        case NewHighScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drum.caf"];
+            break;   
+            
+        default:
+            break;
+    }
+}
+
 -(void)newGame:(id)sender
 {
 	//start a new game
@@ -207,12 +272,14 @@
 //
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 //	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+    [self playAudio:SelectOK];
     [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
     
 }
 
 -(void)options:(id)sender
 {
+    [self playAudio:SelectOK];
 	//show the options of the game
     OptionsScene * gs = [OptionsScene node];
 	//[[CCDirector sharedDirector]replaceScene:gs];
@@ -261,6 +328,7 @@
 
 -(void)showGameLeaderboard:(id)sender
 {
+    [self playAudio:SelectOK];
 	//connect to game center
     GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
     gkHelper.delegate = self;
@@ -278,6 +346,7 @@
 
 -(void)showGameAchievements:(id)sender
 {
+    [self playAudio:SelectOK];
 	//connect to game center
     //[[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
     GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
@@ -295,12 +364,14 @@
                                
 -(void)connectGameCenter:(id)sender
 {
+    [self playAudio:SelectOK];
     //connect to game center
     [[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
 }
 
 -(void)pairGame:(id)sender
 {
+    [self playAudio:SelectOK];
     //connect to game center
     //[[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneINVALID]];
 	[[CCDirector sharedDirector] replaceScene:[LevelScenePair scene]];

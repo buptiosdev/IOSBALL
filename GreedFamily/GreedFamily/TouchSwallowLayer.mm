@@ -133,7 +133,7 @@
     if (SPEED1 > rolaTotalScore) 
     {
         //购买失败音效
-//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
+        [(GameShopScene *)self.parent playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -150,7 +150,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
     //购买成功音效
-    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [(GameShopScene *)self.parent playAudio:EatGood];
     //跳过这一个物品，显示下一个 个位表示陆地动物速度
     ((GameShopScene *)self.parent).buyedList += 1;
     //提交数据
@@ -181,7 +181,7 @@
     if (SPEED2 > rolaTotalScore) 
     {
         //购买失败音效
-//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
+        [(GameShopScene *)self.parent playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -197,7 +197,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
     //购买成功音效
-    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [(GameShopScene *)self.parent playAudio:EatGood];
     //跳过这一个物品，显示下一个 个位表示陆地动物速度
     ((GameShopScene *)self.parent).buyedList += 1;
     //提交数据
@@ -229,7 +229,7 @@
     if (SPEED3 > rolaTotalScore) 
     {
         //购买失败音效
-//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
+        [(GameShopScene *)self.parent playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -245,7 +245,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     }
     //购买成功音效
-    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [(GameShopScene *)self.parent playAudio:EatGood];
     //跳过这一个物品，显示下一个 个位表示陆地动物速度
     ((GameShopScene *)self.parent).buyedList += 1;
     //提交数据
@@ -276,7 +276,7 @@
     if (STORAGE1 > rolaTotalScore) 
     {
         //购买失败音效
-//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
+        [(GameShopScene *)self.parent playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -293,7 +293,7 @@
     }
 
     //购买成功音效
-//    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [(GameShopScene *)self.parent playAudio:EatGood];
     //跳过这一个物品，显示下一个 十位表示仓库
     ((GameShopScene *)self.parent).buyedList += 10;
     //提交数据
@@ -325,7 +325,7 @@
     if (STORAGE2 > rolaTotalScore) 
     {
         //购买失败音效
-//        [[GameMainScene sharedMainScene] playAudio:SelectNo];
+        [(GameShopScene *)self.parent playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -341,7 +341,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
     }
     //购买成功音效
-    //    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [(GameShopScene *)self.parent playAudio:EatGood];
     //跳过这一个物品，显示下一个 十位表示仓库
     ((GameShopScene *)self.parent).buyedList += 10;
     //提交数据

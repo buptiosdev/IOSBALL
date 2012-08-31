@@ -24,12 +24,14 @@
 
 -(void)returnGame
 {
+    [[GameMainScene sharedMainScene] playAudio:SelectOK];
     [[GameMainScene sharedMainScene] resumeGame];
     [self.parent removeChild:self cleanup:YES];
 }
 
 -(void)changeSound:(CCMenuItemToggle *)sender
 {
+    [[GameMainScene sharedMainScene] playAudio:SelectOK];
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
 	if(sender.selectedIndex ==1){
@@ -45,6 +47,7 @@
 
 -(void)changeMusic:(CCMenuItemToggle *)sender
 {
+    [[GameMainScene sharedMainScene] playAudio:SelectOK];
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
 	if(sender.selectedIndex ==1)
@@ -93,6 +96,7 @@
 
 -(void)returnLevel
 {
+    [[GameMainScene sharedMainScene] playAudio:SelectOK];
 	//start a new game
     [[GameMainScene sharedMainScene] resumeGame];
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
@@ -117,6 +121,7 @@
 
 -(void)retryGame:(CCMenuItemSprite *)btn
 {
+    [[GameMainScene sharedMainScene] playAudio:SelectOK];
     [[GameMainScene sharedMainScene] resumeGame];
     int level=btn.tag;
     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)level]];

@@ -21,8 +21,10 @@
 //    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-3 swallowsTouches:YES];
 //}
 
-- (void)onPause:(id)sender{
-        [[GameMainScene sharedMainScene] pauseGame];
+- (void)onPause:(id)sender
+{
+    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [[GameMainScene sharedMainScene] pauseGame];
 }
 
 -(id)init

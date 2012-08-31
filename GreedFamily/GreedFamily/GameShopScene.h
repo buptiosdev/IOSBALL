@@ -13,6 +13,26 @@
 #define SPEED3 1000
 #define STORAGE1 200
 #define STORAGE2 400
+
+typedef enum
+{   
+    NeedTouch= 1,
+    GetScore,
+    EatCandy,
+    EatGood,
+    EatBad,
+    Droping,
+    BubbleBreak,
+    BubbleHit,
+    SelectOK,
+    SelectNo,
+    Bombing,
+    NewHighScore,
+    Laugh1,
+    Laugh2
+    
+}AudioType;
+
 @interface GameShopScene : CCLayer 
 {
     CCSpriteBatchNode* batch;    
@@ -23,4 +43,6 @@
 +(id)createGameShopScene;
 +(CCScene *) gameShopScene;
 -(void)updateScore;
+
+-(void)playAudio:(int)audioType;
 @end
