@@ -31,50 +31,66 @@
 
 -(id)initWithNavigationScene
 {
-//delete by lyp 20120412
-//    if (self = [super init])
-//    {
-//        self.isTouchEnabled = YES;
-//        
-//        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:NO];
-//        
-//       //CGRect labelRect1 = CGRectMake(20, 20, 50, 30);
-//            
-//        label1 = [CCLabelTTF labelWithString:@"关卡：1" fontName:@"Marker Felt" fontSize:64];
-//        CGSize size = [[CCDirector sharedDirector] winSize]; 
-//        label1.position = CGPointMake(size.width / 2, size.height - 30);
-//        //[label1 drawTextInRect:labelRect1];
-//        [self addChild:label1];
-//        
-//        //###########################################
-//        label2 = [CCLabelTTF labelWithString:@"关卡：2" fontName:@"Marker Felt" fontSize:64];
-//        label2.position = CGPointMake(size.width / 2, size.height / 2);
-//        [self addChild:label2];
-//        
-//        label3 = [CCLabelTTF labelWithString:@"关卡：3" fontName:@"Marker Felt" fontSize:64];
-//        label3.position = CGPointMake(size.width / 2, 30);
-//        [self addChild:label3];
-//        
-//               
-//        sleep(2);
-//        
-//        [self scheduleUpdate];
-//    }
-    
-//
     if ((self = [super init])) {
-		
 		self.isTouchEnabled = YES;
-		
         CGSize size = [[CCDirector sharedDirector] winSize];
-		/*CCSprite * background = [CCSprite spriteWithFile:@"menubackground.png"];
-        NSAssert( background != nil, @"background must be non-nil");
+
+//        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+//        [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
+//        //set the background pic
+//		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+//        background.scaleX=(size.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        background.scaleY=(size.height)/[background contentSize].height;
+//        NSAssert( background != nil, @"background must be non-nil");
+//		[background setPosition:ccp(size.width / 2, size.height/2)];
+//		[self addChild:background];
+//		
+//        //set logo
+//        CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logopic.png"];
+//        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
+//        [self addChild:logo];
+//        logo.position=CGPointMake(size.width / 2, size.height * 2 / 3 );
+//        
+//        //set play 
+//        CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
+////        play.scaleX=(size.width*3/4)/[play contentSize].width; //按照像素定制图片宽高是控制像素的。
+////        play.scaleY=(size.height*3/4)/[play contentSize].height;
+//        CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
+////        play1.scaleX=(size.width*3/4)/[play1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+////        play1.scaleY=(size.height*3/4)/[play1 contentSize].height;
+//        CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
+//                                                              selectedSprite:play1 
+//                                                                      target:self 
+//                                                                    selector:@selector(newGame:)];
+//        CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
+//        [playmenu setPosition:ccp(size.width/2,size.height/2)];
+//        [self addChild:playmenu];
+//        
+//        //set option
+//        
+//        CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
+//        option.scaleX=(40)/[option contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        option.scaleY=(40)/[option contentSize].height;
+//        CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
+//        option1.scaleX=(40)/[option1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        option1.scaleY=(40)/[option1 contentSize].height;
+//        CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
+//                                                              selectedSprite:option1 
+//                                                                      target:self 
+//                                                                    selector:@selector(options:)];
+//        
+//        CCMenu * optionmenu = [CCMenu menuWithItems:optionItem, nil];
+//        [optionmenu setPosition:ccp(40,size.height/2)];
+//        [self addChild:optionmenu];
         
         
-		[background setPosition:ccp(size.width / 2, size.height/2)];
-		[self addChild:background];*/
-		
-		//CCBitmapFontAtlas * newgameLabel = [CCBitmapFontAtlas labelWithString:@"NEW GAME" fntFile:@"hud_font.fnt"];
+        
+        
+        
+        
+        
+// delete by lyp 2012-9-2        
         CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *optionsLabel=[CCLabelTTF labelWithString:@"OPTIONS" fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"Multi Play" fontName:@"Marker Felt" fontSize:30];
@@ -97,31 +113,32 @@
 		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,pairPlay,gamecenter, nil];
 		[menu alignItemsVerticallyWithPadding:10];
 		[self addChild:menu];
-		[menu setPosition:ccp(size.width,size.height/2)];
-		
-		[newgame runAction:[CCSequence actions:
-							[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-							nil]];
-		[options runAction:[CCSequence actions:
-							[CCDelayTime actionWithDuration:0.5],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-							nil]];
-		[leaderboard runAction:[CCSequence actions:
-                          [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-                          [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-                          nil]];
-        
-        [archievements runAction:[CCSequence actions:
-                               [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-                               [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-                               nil]];
-        [gamecenter runAction:[CCSequence actions:
-                                [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-                                [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
-        [pairPlay runAction:[CCSequence actions:
-                             [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-                             [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
+		[menu setPosition:ccp(size.width/2,size.height/2)];
+
+//  set play action
+//		[newgame runAction:[CCSequence actions:
+//							[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+//							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+//							nil]];
+//		[options runAction:[CCSequence actions:
+//							[CCDelayTime actionWithDuration:0.5],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+//							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+//							nil]];
+//		[leaderboard runAction:[CCSequence actions:
+//                          [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+//                          [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+//                          nil]];
+//        
+//        [archievements runAction:[CCSequence actions:
+//                               [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+//                               [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+//                               nil]];
+//        [gamecenter runAction:[CCSequence actions:
+//                                [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+//                                [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
+//        [pairPlay runAction:[CCSequence actions:
+//                             [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+//                             [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
         
         //播放背景音乐
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
