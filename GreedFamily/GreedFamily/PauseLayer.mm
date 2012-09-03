@@ -24,7 +24,7 @@
 
 -(void)returnGame
 {
-    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    //[[GameMainScene sharedMainScene] playAudio:SelectOK];
     [[GameMainScene sharedMainScene] resumeGame];
     [self.parent removeChild:self cleanup:YES];
 }
@@ -121,7 +121,7 @@
 
 -(void)retryGame:(CCMenuItemSprite *)btn
 {
-    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    //[[GameMainScene sharedMainScene] playAudio:SelectOK];
     [[GameMainScene sharedMainScene] resumeGame];
     int level=btn.tag;
     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)level]];

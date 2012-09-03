@@ -344,7 +344,6 @@
 
 -(void)goBack:(id)sender
 {
-    [self playAudio:SelectOK];
     //[[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];  
 }
