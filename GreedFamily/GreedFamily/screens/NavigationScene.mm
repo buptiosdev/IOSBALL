@@ -35,54 +35,54 @@
 		self.isTouchEnabled = YES;
         CGSize size = [[CCDirector sharedDirector] winSize];
 
-//        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-//        [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
-//        //set the background pic
-//		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
-//        background.scaleX=(size.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        background.scaleY=(size.height)/[background contentSize].height;
-//        NSAssert( background != nil, @"background must be non-nil");
-//		[background setPosition:ccp(size.width / 2, size.height/2)];
-//		[self addChild:background];
-//		
-//        //set logo
-//        CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logopic.png"];
-//        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
-//        [self addChild:logo];
-//        logo.position=CGPointMake(size.width / 2, size.height * 2 / 3 );
-//        
-//        //set play 
-//        CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
-////        play.scaleX=(size.width*3/4)/[play contentSize].width; //按照像素定制图片宽高是控制像素的。
-////        play.scaleY=(size.height*3/4)/[play contentSize].height;
-//        CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
-////        play1.scaleX=(size.width*3/4)/[play1 contentSize].width; //按照像素定制图片宽高是控制像素的。
-////        play1.scaleY=(size.height*3/4)/[play1 contentSize].height;
-//        CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
-//                                                              selectedSprite:play1 
-//                                                                      target:self 
-//                                                                    selector:@selector(newGame:)];
-//        CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
-//        [playmenu setPosition:ccp(size.width/2,size.height/2)];
-//        [self addChild:playmenu];
-//        
-//        //set option
-//        
-//        CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
-//        option.scaleX=(40)/[option contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        option.scaleY=(40)/[option contentSize].height;
-//        CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
-//        option1.scaleX=(40)/[option1 contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        option1.scaleY=(40)/[option1 contentSize].height;
-//        CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
-//                                                              selectedSprite:option1 
-//                                                                      target:self 
-//                                                                    selector:@selector(options:)];
-//        
-//        CCMenu * optionmenu = [CCMenu menuWithItems:optionItem, nil];
-//        [optionmenu setPosition:ccp(40,size.height/2)];
-//        [self addChild:optionmenu];
+        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
+        //set the background pic
+		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+        background.scaleX=(size.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+        background.scaleY=(size.height)/[background contentSize].height;
+        NSAssert( background != nil, @"background must be non-nil");
+		[background setPosition:ccp(size.width / 2, size.height/2)];
+		[self addChild:background];
+		
+        //set logo
+        CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logopic.png"];
+        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
+        logo.scaleY=(size.height*1/2)/[logo contentSize].height;
+        [self addChild:logo];
+        logo.position=CGPointMake(size.width / 2, size.height * 2 / 3 );
+        
+        //set play 
+        CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
+        play.scaleX=(size.width*1/4)/[play contentSize].width; //按照像素定制图片宽高是控制像素的。
+        play.scaleY=(size.height*1/4)/[play contentSize].height;
+        CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
+        play1.scaleX=(size.width*0.5)/[play1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        play1.scaleY=(size.height*0.5)/[play1 contentSize].height;
+        CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
+                                                              selectedSprite:play1 
+                                                                      target:self 
+                                                                    selector:@selector(newGame:)];
+        CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
+        [playmenu setPosition:ccp(size.width/2,size.height/2)];
+        [self addChild:playmenu];
+        
+        //set option
+        
+        CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
+        option.scaleX=(40)/[option contentSize].width; //按照像素定制图片宽高是控制像素的。
+        option.scaleY=(40)/[option contentSize].height;
+        CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
+        option1.scaleX=(40)/[option1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+        option1.scaleY=(40)/[option1 contentSize].height;
+        CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
+                                                              selectedSprite:option1 
+                                                                      target:self 
+                                                                    selector:@selector(options:)];
+        
+        CCMenu * optionmenu = [CCMenu menuWithItems:optionItem, nil];
+        [optionmenu setPosition:ccp(40,size.height/2)];
+        [self addChild:optionmenu];
         
         
         
@@ -91,29 +91,29 @@
         
         
 // delete by lyp 2012-9-2        
-        CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];
-        CCLabelTTF *optionsLabel=[CCLabelTTF labelWithString:@"OPTIONS" fontName:@"Marker Felt" fontSize:30];
-        CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"Multi Play" fontName:@"Marker Felt" fontSize:30];
-        CCLabelTTF *leaderboardLabel=[CCLabelTTF labelWithString:@"LeaderBoard" fontName:@"Marker Felt" fontSize:30];
-        CCLabelTTF *archievementsLabel=[CCLabelTTF labelWithString:@"Achievements" fontName:@"Marker Felt" fontSize:30];
-
-        CCLabelTTF *pairPlayLabel=[CCLabelTTF labelWithString:@"Pair Play" fontName:@"Marker Felt" fontSize:30];
-		
-		[newgameLabel setColor:ccRED];
-		[optionsLabel setColor:ccRED];
-		[gamecenterLabel setColor:ccRED];
-		
-		CCMenuItemLabel * newgame = [CCMenuItemLabel itemWithLabel:newgameLabel target:self selector:@selector(newGame:)];
-		CCMenuItemLabel * options = [CCMenuItemLabel itemWithLabel:optionsLabel target:self selector:@selector(options:)];
-		CCMenuItemLabel * gamecenter = [CCMenuItemLabel itemWithLabel:gamecenterLabel target:self selector:@selector(connectGameCenter:)];
-        CCMenuItemLabel * leaderboard = [CCMenuItemLabel itemWithLabel:leaderboardLabel target:self selector:@selector(showGameLeaderboard:)];
-		CCMenuItemLabel * archievements = [CCMenuItemLabel itemWithLabel:archievementsLabel target:self selector:@selector(showGameAchievements:)];
- 
-		CCMenuItemLabel * pairPlay = [CCMenuItemLabel itemWithLabel:pairPlayLabel target:self selector:@selector(pairGame:)];
-		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,pairPlay,gamecenter, nil];
-		[menu alignItemsVerticallyWithPadding:10];
-		[self addChild:menu];
-		[menu setPosition:ccp(size.width/2,size.height/2)];
+//        CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];
+//        CCLabelTTF *optionsLabel=[CCLabelTTF labelWithString:@"OPTIONS" fontName:@"Marker Felt" fontSize:30];
+//        CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"Multi Play" fontName:@"Marker Felt" fontSize:30];
+//        CCLabelTTF *leaderboardLabel=[CCLabelTTF labelWithString:@"LeaderBoard" fontName:@"Marker Felt" fontSize:30];
+//        CCLabelTTF *archievementsLabel=[CCLabelTTF labelWithString:@"Achievements" fontName:@"Marker Felt" fontSize:30];
+//
+//        CCLabelTTF *pairPlayLabel=[CCLabelTTF labelWithString:@"Pair Play" fontName:@"Marker Felt" fontSize:30];
+//		
+//		[newgameLabel setColor:ccRED];
+//		[optionsLabel setColor:ccRED];
+//		[gamecenterLabel setColor:ccRED];
+//		
+//		CCMenuItemLabel * newgame = [CCMenuItemLabel itemWithLabel:newgameLabel target:self selector:@selector(newGame:)];
+//		CCMenuItemLabel * options = [CCMenuItemLabel itemWithLabel:optionsLabel target:self selector:@selector(options:)];
+//		CCMenuItemLabel * gamecenter = [CCMenuItemLabel itemWithLabel:gamecenterLabel target:self selector:@selector(connectGameCenter:)];
+//        CCMenuItemLabel * leaderboard = [CCMenuItemLabel itemWithLabel:leaderboardLabel target:self selector:@selector(showGameLeaderboard:)];
+//		CCMenuItemLabel * archievements = [CCMenuItemLabel itemWithLabel:archievementsLabel target:self selector:@selector(showGameAchievements:)];
+// 
+//		CCMenuItemLabel * pairPlay = [CCMenuItemLabel itemWithLabel:pairPlayLabel target:self selector:@selector(pairGame:)];
+//		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,pairPlay,gamecenter, nil];
+//		[menu alignItemsVerticallyWithPadding:10];
+//		[self addChild:menu];
+//		[menu setPosition:ccp(size.width/2,size.height/2)];
 
 //  set play action
 //		[newgame runAction:[CCSequence actions:

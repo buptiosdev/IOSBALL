@@ -210,7 +210,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "517"
          endingLineNumber = "517"
-         landmarkName = "-update:"
+         landmarkName = "-getFlySpeed"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -966,7 +966,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "569"
          endingLineNumber = "569"
-         landmarkName = "-ccTouchBeganForSky:withEvent:"
+         landmarkName = "-ccTouchBeganForSky2:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -980,7 +980,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "601"
          endingLineNumber = "601"
-         landmarkName = "-ccTouchEndedForSky:withEvent:"
+         landmarkName = "-ccTouchMovedForSky:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1834,7 +1834,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "323"
          endingLineNumber = "323"
-         landmarkName = "-updateScoreAndShowAchievements"
+         landmarkName = "-updateScoreAndShowLeaderBoard"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1848,7 +1848,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "463"
          endingLineNumber = "463"
-         landmarkName = "-onScoresSubmitted:"
+         landmarkName = "-onPlayerInfoReceived:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1876,8 +1876,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "445"
          endingLineNumber = "445"
-         landmarkName = "-onPlayerInfoReceived:"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2028,7 +2028,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "459"
          endingLineNumber = "459"
-         landmarkName = "-onScoresSubmitted:"
+         landmarkName = "-onPlayerInfoReceived:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2042,8 +2042,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "395"
          endingLineNumber = "395"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-pairGame:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2056,7 +2056,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "342"
          endingLineNumber = "342"
-         landmarkName = "-showGameLeaderboard:"
+         landmarkName = "-updateScoreAndShowAchievements"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2084,8 +2084,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "328"
          endingLineNumber = "328"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-updateScoreAndShowAchievements"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2154,7 +2154,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "456"
          endingLineNumber = "456"
-         landmarkName = "-onScoresSubmitted:"
+         landmarkName = "-onPlayerInfoReceived:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2168,7 +2168,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "455"
          endingLineNumber = "455"
-         landmarkName = "-onScoresSubmitted:"
+         landmarkName = "-onPlayerInfoReceived:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2182,7 +2182,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "454"
          endingLineNumber = "454"
-         landmarkName = "-onScoresSubmitted:"
+         landmarkName = "-onPlayerInfoReceived:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2210,7 +2210,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "329"
          endingLineNumber = "329"
-         landmarkName = "-showGameLeaderboard:"
+         landmarkName = "-updateScoreAndShowAchievements"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2224,7 +2224,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "348"
          endingLineNumber = "348"
-         landmarkName = "-showGameAchievements:"
+         landmarkName = "-showGameLeaderboard:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2238,7 +2238,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "290"
          endingLineNumber = "290"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkName = "-newGame:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2266,8 +2266,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "188"
          endingLineNumber = "188"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-initWithNavigationScene"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
