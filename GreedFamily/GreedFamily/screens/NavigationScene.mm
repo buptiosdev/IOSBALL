@@ -56,11 +56,11 @@
         
         //set play 
         CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
-//        play.scaleX=0.75;
-//        play.scaleY=0.75;
+        //play.scaleX=1.1;
+        play.scaleY=1.05;
         CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
 //        play1.scaleX=0.75; //按照像素定制图片宽高是控制像素的。
-//        play1.scaleY=0.75;
+//        play1.scaleY=0.9;
         CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
                                                               selectedSprite:play1 
                                                                       target:self 
@@ -74,8 +74,8 @@
         option.scaleX=0.5;
         option.scaleY=0.5;
         CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
-        option1.scaleX=0.5;
-        option1.scaleY=0.5;
+        option1.scaleX=0.55;
+        option1.scaleY=0.55;
         CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
                                                               selectedSprite:option1 
                                                                       target:self 
@@ -90,25 +90,25 @@
         info.scaleX=0.5;
         info.scaleY=0.5;
         CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-        info1.scaleX=0.5;
-        info1.scaleY=0.5;
+        info1.scaleX=0.55;
+        info1.scaleY=0.55;
         CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
                                                                selectedSprite:info1 
                                                                        target:self 
                                                                      selector:@selector(displayInfo:)];
         
         CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
-        [infomenu setPosition:ccp(size.width,[info contentSize].height/2)];
+        [infomenu setPosition:ccp(size.width*0.99,[info contentSize].height/2)];
         [self addChild:infomenu];
         
         
         //set leadership
         CCSprite *leader = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-        leader.scaleX=0.7;
-        leader.scaleY=0.7;
+        leader.scaleX=0.4;
+        leader.scaleY=0.4;
         CCSprite *leader1 = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-        leader1.scaleX=0.7;
-        leader1.scaleY=0.7;
+        leader1.scaleX=0.45;
+        leader1.scaleY=0.45;
         CCMenuItemSprite *leaderItem = [CCMenuItemSprite itemFromNormalSprite:leader 
                                                              selectedSprite:leader1 
                                                                      target:self 
@@ -117,19 +117,20 @@
         
         //set achivement
         CCSprite * achivement= [CCSprite spriteWithSpriteFrameName:@"achievementspic.png"];
-        achivement.scaleX=0.7;
-        achivement.scaleY=0.7;
+        achivement.scaleX=0.4;
+        achivement.scaleY=0.4;
         CCSprite *achivement1 = [CCSprite spriteWithSpriteFrameName:@"achievementspic.png"];
-        achivement1.scaleX=0.7;
-        achivement1.scaleY=0.7;
+        achivement1.scaleX=0.45;
+        achivement1.scaleY=0.45;
         CCMenuItemSprite *achivementItem = [CCMenuItemSprite itemFromNormalSprite:achivement 
                                                                selectedSprite:achivement1 
                                                                        target:self 
                                                                      selector:@selector(showGameAchievements:)];
         
         CCMenu * leadermenu = [CCMenu menuWithItems:leaderItem, achivementItem, nil];
-        [leadermenu setPosition:ccp(size.width/2+[achivement contentSize].width*0.15,size.height/4)];
-        [leadermenu alignItemsHorizontallyWithPadding:40];
+        [leadermenu setPosition:ccp(size.width/2+[achivement contentSize].width*0.15,size.height/6)];
+        //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
+        [leadermenu alignItemsHorizontallyWithPadding:0.1];
         [self addChild:leadermenu];
         
         
