@@ -225,6 +225,9 @@
 		7032FD3615DB941C00E5E108 /* sparkle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD2315DB941C00E5E108 /* sparkle.plist */; };
 		7032FD3715DB941C00E5E108 /* speedfast.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD2415DB941C00E5E108 /* speedfast.plist */; };
 		7032FD3815DB941C00E5E108 /* speedfast2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD2515DB941C00E5E108 /* speedfast2.plist */; };
+		7044453315FC490800FDA2EB /* levlescene_default_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7044453115FC490800FDA2EB /* levlescene_default_default.plist */; };
+		7044453415FC490800FDA2EB /* levlescene_default_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7044453215FC490800FDA2EB /* levlescene_default_default.png */; };
+		7044453715FC49D900FDA2EB /* background_level.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7044453615FC49D900FDA2EB /* background_level.jpg */; };
 		705807861583CEF200C66EDE /* background_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705807851583CEF200C66EDE /* background_1.jpg */; };
 		706EA9A2153F9AE90003C4B2 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99D153F9AE90003C4B2 /* LoadingScene.mm */; };
 		706EA9A3153F9AE90003C4B2 /* GameMainScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 706EA99F153F9AE90003C4B2 /* GameMainScene.mm */; };
@@ -674,6 +677,9 @@
 		7032FD2315DB941C00E5E108 /* sparkle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sparkle.plist; sourceTree = "<group>"; };
 		7032FD2415DB941C00E5E108 /* speedfast.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = speedfast.plist; sourceTree = "<group>"; };
 		7032FD2515DB941C00E5E108 /* speedfast2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = speedfast2.plist; sourceTree = "<group>"; };
+		7044453115FC490800FDA2EB /* levlescene_default_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = levlescene_default_default.plist; path = Resources/pic/levlescene_default_default.plist; sourceTree = "<group>"; };
+		7044453215FC490800FDA2EB /* levlescene_default_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = levlescene_default_default.png; path = Resources/pic/levlescene_default_default.png; sourceTree = "<group>"; };
+		7044453615FC49D900FDA2EB /* background_level.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_level.jpg; path = Resources/pic/background_level.jpg; sourceTree = "<group>"; };
 		705807851583CEF200C66EDE /* background_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_1.jpg; path = Resources/background_1.jpg; sourceTree = "<group>"; };
 		706EA99C153F9AE90003C4B2 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = screens/LoadingScene.h; sourceTree = "<group>"; };
 		706EA99D153F9AE90003C4B2 /* LoadingScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LoadingScene.mm; path = screens/LoadingScene.mm; sourceTree = "<group>"; };
@@ -1498,8 +1504,11 @@
 			isa = PBXGroup;
 			children = (
 				7094910E15EF5282005ADBD8 /* background_begin.jpg */,
+				7044453615FC49D900FDA2EB /* background_level.jpg */,
 				7094910F15EF5282005ADBD8 /* beginscene_default.plist */,
 				7094911015EF5282005ADBD8 /* beginscene_default.png */,
+				7044453115FC490800FDA2EB /* levlescene_default_default.plist */,
+				7044453215FC490800FDA2EB /* levlescene_default_default.png */,
 			);
 			name = picture;
 			sourceTree = "<group>";
@@ -1632,6 +1641,9 @@
 				7094911215EF5282005ADBD8 /* beginscene_default.plist in Resources */,
 				7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */,
 				70C5745A15F727DD004F48FE /* DeveloperInfo.xib in Resources */,
+				7044453315FC490800FDA2EB /* levlescene_default_default.plist in Resources */,
+				7044453415FC490800FDA2EB /* levlescene_default_default.png in Resources */,
+				7044453715FC49D900FDA2EB /* background_level.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
