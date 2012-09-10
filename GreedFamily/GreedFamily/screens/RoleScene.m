@@ -51,7 +51,16 @@
 {
     if ((self = [super init])) {
 		self.isTouchEnabled = YES;
+        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        //set the background pic
+		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+        background.scaleY=(screenSize.height)/[background contentSize].height;
+        NSAssert( background != nil, @"background must be non-nil");
+		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+		[self addChild:background];
         //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
         CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"easy_dis.png"
                                                        selectedImage:@"easy_dwn.png" target:self selector:@selector(chooseRole:)];
@@ -93,21 +102,38 @@
             [menuItem3 selected];
         }
         [self addChild:radioMenu];
+//delete by lyp 20120910
+//        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];
+//        [returnLabel setColor:ccRED];
+//        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
+//        CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
+//        [returnMenu alignItemsHorizontallyWithPadding:0];
+//        [returnMenu setPosition:ccp((screenSize.width)*0.1f,(screenSize.height)*0.125)];
+//        [self addChild:returnMenu];
+        //set return in the left-down corner
+        float returnscale=0.3f;
+        float clickreturnscale=0.35f;
+        CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        returnBtn.scaleX=returnscale;
+        returnBtn.scaleY=returnscale;
+        CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        returnBtn1.scaleX=clickreturnscale;
+        returnBtn1.scaleY=clickreturnscale;
+        CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
+                                                               selectedSprite:returnBtn1 
+                                                                       target:self 
+                                                                     selector:@selector(returnMain)];
         
-        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];
-        [returnLabel setColor:ccRED];
-        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
-        CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
-        [returnMenu alignItemsHorizontallyWithPadding:0];
-        [returnMenu setPosition:ccp((screenSize.width)*0.1f,(screenSize.height)*0.125)];
-        [self addChild:returnMenu];
+        CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
+        [returnmenu setPosition:ccp([returnBtn contentSize].width/2,[returnBtn contentSize].height/2)];
+        [self addChild:returnmenu];
         
         CCLabelTTF *nextLabel=[CCLabelTTF labelWithString:@"Next" fontName:@"Marker Felt" fontSize:25];
         [nextLabel setColor:ccRED];
         CCMenuItemLabel * nextBtn = [CCMenuItemLabel itemWithLabel:nextLabel target:self selector:@selector(levelScene)];
         CCMenu * nextMenu = [CCMenu menuWithItems:nextBtn, nil];
         [nextMenu alignItemsHorizontallyWithPadding:0];
-        [nextMenu setPosition:ccp((screenSize.width)*0.9f,(screenSize.height)*0.125)];
+        [nextMenu setPosition:ccp((screenSize.width)*0.9f,(screenSize.height)*0.1)];
         [self addChild:nextMenu];
     }
     return self;
