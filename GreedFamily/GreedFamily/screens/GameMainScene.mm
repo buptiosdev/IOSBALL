@@ -169,6 +169,7 @@ static GameMainScene *instanceOfMainScene;
         [self addChild:touchCatchLayer z:1 tag:TouchCatchLayerTag];
         
         //[[GameMainScene sharedMainScene] addTeacheGame];
+        [self schedule:@selector(sleepForTeach:) interval:0.1];
         
         [self scheduleUpdate];
         
@@ -730,19 +731,19 @@ static GameMainScene *instanceOfMainScene;
 }
 
 
--(void)addTeacheGame
+-(void)addTeachGame
 {
     [self onPauseExit];
     PauseLayer * p = [TeachGame createTeachGame];
-    [self.parent addChild:p z:-10]; 
-
+    [self.parent addChild:p z:11]; 
+    
     //   test for resultlayer    
     //    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)100 AddScore:(int)50];
     //    [self.parent addChild:p z:10]; 
 }
 
 
--(void)endTeacheGame
+-(void)endTeachGame
 {
 	if(![AppDelegate getAppDelegate].paused)
 	{
@@ -757,6 +758,13 @@ static GameMainScene *instanceOfMainScene;
     [self unschedule:@selector(sleepForEndGame:)]; 
     [self endGame];
 }
+
+-(void)sleepForTeach: (ccTime) dt
+{
+    [self unschedule:@selector(sleepForTeach:)]; 
+    [[GameMainScene sharedMainScene] addTeachGame];
+}
+
 
 -(void) update:(ccTime)delta
 {
