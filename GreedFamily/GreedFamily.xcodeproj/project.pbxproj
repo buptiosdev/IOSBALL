@@ -186,10 +186,9 @@
 		701AD0EA15C4E2260017C064 /* GKMatchmakerViewController-LandscapeOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 701AD0E915C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.m */; };
 		701B2EA9155831270035335F /* bitmapfont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA7155831270035335F /* bitmapfont.fnt */; };
 		701B2EAA155831270035335F /* bitmapfont.png in Resources */ = {isa = PBXBuildFile; fileRef = 701B2EA8155831270035335F /* bitmapfont.png */; };
-		7029287F1605AE2D00877FF2 /* teach1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7029287A1605AE2D00877FF2 /* teach1.jpg */; };
-		702928801605AE2D00877FF2 /* teach2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7029287B1605AE2D00877FF2 /* teach2.jpg */; };
-		702928811605AE2D00877FF2 /* teach3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7029287C1605AE2D00877FF2 /* teach3.jpg */; };
-		702928821605AE2D00877FF2 /* teach4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7029287D1605AE2D00877FF2 /* teach4.jpg */; };
+		7029287F1605AE2D00877FF2 /* teach1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287A1605AE2D00877FF2 /* teach1.png */; };
+		702928801605AE2D00877FF2 /* teach2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287B1605AE2D00877FF2 /* teach2.png */; };
+		702928811605AE2D00877FF2 /* teach3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287C1605AE2D00877FF2 /* teach3.png */; };
 		702928831605AE2D00877FF2 /* unfoldpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287E1605AE2D00877FF2 /* unfoldpic.png */; };
 		702928871605D4D700877FF2 /* TeachGameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 702928861605D4D100877FF2 /* TeachGameLayer.mm */; };
 		702D72941598C4F700F44A18 /* elements_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 702D72921598C4F600F44A18 /* elements_default.plist */; };
@@ -643,12 +642,11 @@
 		701AD0E915C4E2250017C064 /* GKMatchmakerViewController-LandscapeOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GKMatchmakerViewController-LandscapeOnly.m"; sourceTree = "<group>"; };
 		701B2EA7155831270035335F /* bitmapfont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapfont.fnt; path = Resources/bitmapfont.fnt; sourceTree = "<group>"; };
 		701B2EA8155831270035335F /* bitmapfont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapfont.png; path = Resources/bitmapfont.png; sourceTree = "<group>"; };
-		7029287A1605AE2D00877FF2 /* teach1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teach1.jpg; path = Resources/pic/teach1.jpg; sourceTree = "<group>"; };
-		7029287B1605AE2D00877FF2 /* teach2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teach2.jpg; path = Resources/pic/teach2.jpg; sourceTree = "<group>"; };
-		7029287C1605AE2D00877FF2 /* teach3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teach3.jpg; path = Resources/pic/teach3.jpg; sourceTree = "<group>"; };
-		7029287D1605AE2D00877FF2 /* teach4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teach4.jpg; path = Resources/pic/teach4.jpg; sourceTree = "<group>"; };
+		7029287A1605AE2D00877FF2 /* teach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach1.png; path = Resources/pic/teach1.png; sourceTree = "<group>"; };
+		7029287B1605AE2D00877FF2 /* teach2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach2.png; path = Resources/pic/teach2.png; sourceTree = "<group>"; };
+		7029287C1605AE2D00877FF2 /* teach3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach3.png; path = Resources/pic/teach3.png; sourceTree = "<group>"; };
 		7029287E1605AE2D00877FF2 /* unfoldpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unfoldpic.png; path = Resources/pic/unfoldpic.png; sourceTree = "<group>"; };
-		702928851605D4D100877FF2 /* TeachGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TeachGameLayer.h; sourceTree = "<group>"; };
+		702928851605D4D100877FF2 /* TeachGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachGameLayer.h; sourceTree = "<group>"; };
 		702928861605D4D100877FF2 /* TeachGameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TeachGameLayer.mm; sourceTree = "<group>"; };
 		702D72921598C4F600F44A18 /* elements_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = elements_default.plist; path = Resources/elements_default.plist; sourceTree = "<group>"; };
 		702D72931598C4F700F44A18 /* elements_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = elements_default.png; path = Resources/elements_default.png; sourceTree = "<group>"; };
@@ -1522,10 +1520,9 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
-				7029287A1605AE2D00877FF2 /* teach1.jpg */,
-				7029287B1605AE2D00877FF2 /* teach2.jpg */,
-				7029287C1605AE2D00877FF2 /* teach3.jpg */,
-				7029287D1605AE2D00877FF2 /* teach4.jpg */,
+				7029287A1605AE2D00877FF2 /* teach1.png */,
+				7029287B1605AE2D00877FF2 /* teach2.png */,
+				7029287C1605AE2D00877FF2 /* teach3.png */,
 				7029287E1605AE2D00877FF2 /* unfoldpic.png */,
 				7094910E15EF5282005ADBD8 /* background_begin.jpg */,
 				7044453615FC49D900FDA2EB /* background_level.jpg */,
@@ -1670,10 +1667,9 @@
 				7044453315FC490800FDA2EB /* levlescene_default_default.plist in Resources */,
 				7044453415FC490800FDA2EB /* levlescene_default_default.png in Resources */,
 				7044453715FC49D900FDA2EB /* background_level.jpg in Resources */,
-				7029287F1605AE2D00877FF2 /* teach1.jpg in Resources */,
-				702928801605AE2D00877FF2 /* teach2.jpg in Resources */,
-				702928811605AE2D00877FF2 /* teach3.jpg in Resources */,
-				702928821605AE2D00877FF2 /* teach4.jpg in Resources */,
+				7029287F1605AE2D00877FF2 /* teach1.png in Resources */,
+				702928801605AE2D00877FF2 /* teach2.png in Resources */,
+				702928811605AE2D00877FF2 /* teach3.png in Resources */,
 				702928831605AE2D00877FF2 /* unfoldpic.png in Resources */,
 				70C3D7421606080900F376A0 /* button_default_default.plist in Resources */,
 				70C3D7431606080900F376A0 /* button_default_default.png in Resources */,

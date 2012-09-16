@@ -1,5 +1,5 @@
 //
-//  TeachGame.h
+//  TeachGameLayer.h
 //  GreedFamily
 //
 //  Created by 赵 苹果 on 12-9-16.
@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface TeachGame : CCLayer {
+@interface TeachGameLayer : CCLayer {
     
 }
-+(id)createTeachGame;
++(id)createTeachGameLayer;
 @end
