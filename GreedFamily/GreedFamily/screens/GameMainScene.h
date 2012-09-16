@@ -115,8 +115,8 @@ struct SceneParam
 @property (nonatomic) CGPoint scorePlay2Pos;
 @property (nonatomic) SceneParam mainscenParam;
 
--(void)addTeacheGame;
--(void)endTeacheGame;
+-(void)addTeachGame;
+-(void)endTeachGame;
 -(void)pauseGame;
 -(void)resumeGame;
 -(void)playAudio:(int)audioType;

@@ -191,7 +191,7 @@
 		702928811605AE2D00877FF2 /* teach3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7029287C1605AE2D00877FF2 /* teach3.jpg */; };
 		702928821605AE2D00877FF2 /* teach4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7029287D1605AE2D00877FF2 /* teach4.jpg */; };
 		702928831605AE2D00877FF2 /* unfoldpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287E1605AE2D00877FF2 /* unfoldpic.png */; };
-		702928871605D4D700877FF2 /* TeachGame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 702928861605D4D100877FF2 /* TeachGame.mm */; };
+		702928871605D4D700877FF2 /* TeachGameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 702928861605D4D100877FF2 /* TeachGameLayer.mm */; };
 		702D72941598C4F700F44A18 /* elements_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 702D72921598C4F600F44A18 /* elements_default.plist */; };
 		702D72951598C4F700F44A18 /* elements_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 702D72931598C4F700F44A18 /* elements_default.png */; };
 		702FC0E715C7B13E00B39D2A /* GameShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 702FC0E615C7B13E00B39D2A /* GameShopScene.m */; };
@@ -648,8 +648,8 @@
 		7029287C1605AE2D00877FF2 /* teach3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teach3.jpg; path = Resources/pic/teach3.jpg; sourceTree = "<group>"; };
 		7029287D1605AE2D00877FF2 /* teach4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teach4.jpg; path = Resources/pic/teach4.jpg; sourceTree = "<group>"; };
 		7029287E1605AE2D00877FF2 /* unfoldpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unfoldpic.png; path = Resources/pic/unfoldpic.png; sourceTree = "<group>"; };
-		702928851605D4D100877FF2 /* TeachGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachGame.h; sourceTree = "<group>"; };
-		702928861605D4D100877FF2 /* TeachGame.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TeachGame.mm; sourceTree = "<group>"; };
+		702928851605D4D100877FF2 /* TeachGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TeachGameLayer.h; sourceTree = "<group>"; };
+		702928861605D4D100877FF2 /* TeachGameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TeachGameLayer.mm; sourceTree = "<group>"; };
 		702D72921598C4F600F44A18 /* elements_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = elements_default.plist; path = Resources/elements_default.plist; sourceTree = "<group>"; };
 		702D72931598C4F700F44A18 /* elements_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = elements_default.png; path = Resources/elements_default.png; sourceTree = "<group>"; };
 		702FC0E515C7B13E00B39D2A /* GameShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameShopScene.h; sourceTree = "<group>"; };
@@ -1480,8 +1480,8 @@
 			children = (
 				4A78F8781546D8B5001811B1 /* PauseLayer.h */,
 				4A78F8791546D8B5001811B1 /* PauseLayer.mm */,
-				702928851605D4D100877FF2 /* TeachGame.h */,
-				702928861605D4D100877FF2 /* TeachGame.mm */,
+				702928851605D4D100877FF2 /* TeachGameLayer.h */,
+				702928861605D4D100877FF2 /* TeachGameLayer.mm */,
 				706EAB3C153FA3590003C4B2 /* TouchCatchLayer.h */,
 				706EAB3D153FA3590003C4B2 /* TouchCatchLayer.mm */,
 				706EAB3F153FA3FD0003C4B2 /* ObjectsLayer.h */,
@@ -1863,7 +1863,7 @@
 				707FE5A915D8E4F100C9456C /* LevelScenePair.m in Sources */,
 				4A78F4EA15E0C25600CA1C8A /* RoleScene.m in Sources */,
 				70C5745915F727DD004F48FE /* DeveloperInfo.m in Sources */,
-				702928871605D4D700877FF2 /* TeachGame.mm in Sources */,
+				702928871605D4D700877FF2 /* TeachGameLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

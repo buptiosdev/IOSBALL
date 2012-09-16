@@ -16,23 +16,24 @@
     if (self = [super init]) 
     {
         self.isTouchEnabled = YES;
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Tap to start!" fontName:@"Marker Felt" fontSize:64];
         label.scale = 0.4;  
         CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
         [label runAction: action]; 
         
-        [self addChild:label z:-10];
+        [self addChild:label z:100];
         
         // IMPORTANT: filenames are case sensitive on iOS devices!
         CCSprite* background = [CCSprite spriteWithFile:@"teach1.jpg"];
         //change size by diff version manual
-        background.scaleX=(480)/[background contentSize].width; //按照像素定制图片宽高
-        background.scaleY=(360)/[background contentSize].height;
+        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
+        background.scaleY=(screenSize.height)/[background contentSize].height;
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         //change size by diff version
         background.position = [GameMainScene sharedMainScene].backgroundPos;
         
-        [self addChild:background z:-10];
+        [self addChild:background z:100];
     }
     return self;
 }
