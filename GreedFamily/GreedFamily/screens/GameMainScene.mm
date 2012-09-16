@@ -736,9 +736,6 @@ static GameMainScene *instanceOfMainScene;
     PauseLayer * p = [TeachGame createTeachGame];
     [self.parent addChild:p z:-10]; 
 
-    //   test for resultlayer    
-    //    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)100 AddScore:(int)50];
-    //    [self.parent addChild:p z:10]; 
 }
 
 
