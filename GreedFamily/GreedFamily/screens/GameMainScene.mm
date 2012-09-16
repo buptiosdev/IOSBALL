@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 #import "ResultLayer.h"
 #import "SimpleAudioEngine.h"
-
+#import "TeachGame.h"
 @interface GameMainScene (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
 -initWithOrder:(int)order;
@@ -168,7 +168,11 @@ static GameMainScene *instanceOfMainScene;
         TouchCatchLayer *touchCatchLayer = [TouchCatchLayer CreateTouchCatchLayer];
         [self addChild:touchCatchLayer z:1 tag:TouchCatchLayerTag];
         
+        //[[GameMainScene sharedMainScene] addTeacheGame];
+        
         [self scheduleUpdate];
+        
+
     }
     
     return self;
@@ -716,6 +720,29 @@ static GameMainScene *instanceOfMainScene;
 
 
 - (void) resumeGame
+{
+	if(![AppDelegate getAppDelegate].paused)
+	{
+		return;
+	}
+	[AppDelegate getAppDelegate].paused = NO;
+	[super onEnter];
+}
+
+
+-(void)addTeacheGame
+{
+    [self onPauseExit];
+    PauseLayer * p = [TeachGame createTeachGame];
+    [self.parent addChild:p z:-10]; 
+
+    //   test for resultlayer    
+    //    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)100 AddScore:(int)50];
+    //    [self.parent addChild:p z:10]; 
+}
+
+
+-(void)endTeacheGame
 {
 	if(![AppDelegate getAppDelegate].paused)
 	{

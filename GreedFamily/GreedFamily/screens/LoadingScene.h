@@ -42,6 +42,9 @@ typedef enum
 @interface LoadingScene : CCScene
 {
 	TargetScenes targetScene_;
+    UIActivityIndicatorView *activityIndicatorView;
+    BOOL gameIsReady;
+    //UIView *battleView;
 }
 
 +(id) sceneWithTargetScene:(TargetScenes)targetScene;
