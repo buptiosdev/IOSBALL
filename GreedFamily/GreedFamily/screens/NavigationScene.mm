@@ -46,7 +46,7 @@
 		[self addChild:background];
 		
         //set logo
-        CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logopic.png"];
+        CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logoword.png"];
 //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
 //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
         logo.scaleX=0.5;

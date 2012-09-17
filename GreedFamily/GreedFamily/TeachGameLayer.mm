@@ -1,17 +1,17 @@
 //
-//  TeachGame.m
+//  TeachGameLayer.m
 //  GreedFamily
 //
 //  Created by 赵 苹果 on 12-9-16.
 //  Copyright 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "TeachGame.h"
+#import "TeachGameLayer.h"
 #import "GameMainScene.h"
 
-@implementation TeachGame
+@implementation TeachGameLayer
 
--(id)initTeachGame
+-(id)initTeachGameLayer
 {
     if (self = [super init]) 
     {
@@ -39,9 +39,9 @@
 }
 
 
-+(id)createTeachGame
++(id)createTeachGameLayer
 {
-    return [[[TeachGame alloc] initTeachGame] autorelease];
+    return [[[TeachGameLayer alloc] initTeachGameLayer] autorelease];
 }
 
 -(void)returnGame
