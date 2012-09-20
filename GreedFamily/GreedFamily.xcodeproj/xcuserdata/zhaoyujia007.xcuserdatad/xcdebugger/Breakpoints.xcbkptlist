@@ -289,11 +289,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameBackgroundLayer.mm"
-         timestampString = "368000328.205419"
+         timestampString = "369848013.311353"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "128"
-         endingLineNumber = "128"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
          landmarkName = "-getAnimationBatch"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2872,7 +2872,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -2925,6 +2925,20 @@
          startingLineNumber = "49"
          endingLineNumber = "49"
          landmarkName = "-returnGame"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/TeachGameLayer.mm"
+         timestampString = "369840154.616619"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "18"
+         endingLineNumber = "18"
+         landmarkName = "-initTeachGameLayer"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

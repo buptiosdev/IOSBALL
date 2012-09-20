@@ -263,7 +263,7 @@ static GameMainScene *instanceOfMainScene;
     _appear3rdPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
     _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
-    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
+    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2);
     _storagePos = CGPointMake(screenSize.width / 4, 20);
     _scorePos = CGPointMake(25, screenSize.height - 16);
     _scorePlay2Pos = CGPointMake(100 + 25, screenSize.height - 16);
@@ -284,7 +284,7 @@ static GameMainScene *instanceOfMainScene;
     _appear3rdPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
     _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
-    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
+    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 );
     _storagePos = CGPointMake(screenSize.width / 4, 20);
     _scorePos = CGPointMake(25, screenSize.height - 16);
 }

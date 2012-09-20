@@ -81,6 +81,93 @@
     }
 }
 
+-(void)getTeachInfo:(CCMenuItemToggle *)sender
+{
+    //CCLayer *teachLayer = [[CCLayer node] autorelease];
+    
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    
+    CCSprite *nextPic = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"];
+    CCSprite *nextPic2 = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"];
+    CCSprite *lastPic = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"];
+    CCSprite *lastPic2 = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"]; 
+    [lastPic setFlipY:YES];//Y轴镜像反转
+    [lastPic2 setFlipY:YES];//Y轴镜像反转
+    CCSprite *returnBackPic = [CCSprite spriteWithSpriteFrameName:@"returnback.png"];
+    CCSprite *returnBackPic2 = [CCSprite spriteWithSpriteFrameName:@"returnback.png"];
+    
+    CCMenuItemSprite *nextMenu = [CCMenuItemSprite itemFromNormalSprite:nextPic 
+                                              selectedSprite:nextPic2 
+                                                      target:self 
+                                                    selector:@selector(onNextPic:)];
+    CCMenuItemSprite *lastMenu = [CCMenuItemSprite itemFromNormalSprite:lastPic 
+                                                         selectedSprite:lastPic2 
+                                                                 target:self 
+                                                               selector:@selector(onLastPic:)];
+    CCMenuItemSprite *returnBackMenu = [CCMenuItemSprite itemFromNormalSprite:returnBackPic 
+                                                         selectedSprite:returnBackPic2 
+                                                                 target:self 
+                                                               selector:@selector(onReturnBackPic:)];
+    
+    nextMenu.scaleX=(30)/[nextPic contentSize].width; //按照像素定制图片宽高
+    nextMenu.scaleY=(30)/[nextPic contentSize].height;
+    lastMenu.scaleX=(30)/[lastPic contentSize].width; //按照像素定制图片宽高
+    lastMenu.scaleY=(30)/[lastPic contentSize].height;
+    returnBackMenu.scaleX=(30)/[returnBackPic contentSize].width; //按照像素定制图片宽高
+    returnBackMenu.scaleY=(30)/[returnBackPic contentSize].height;
+    
+
+    CCMenu *controlMenu = [CCMenu menuWithItems:lastMenu, nextMenu, returnBackMenu,nil];
+    
+
+    
+    //change size by diff version
+    controlMenu.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
+
+    [self addChild:controlMenu z:20 tag:101];
+    
+    teachPicCount = 0;
+    NSString* teachStr = [NSString stringWithFormat:@"teach"];
+    NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, teachPicCount+1];
+    
+    teachSprite = [CCSprite spriteWithFile:teachPic];
+    teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
+    teachSprite.scaleX=(480)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(320)/[teachSprite contentSize].height;
+    [self addChild:teachSprite z:1 tag:100];
+    
+    
+    //[self addChild:teachLayer z:1 tag:100];
+}
+
+-(void)onNextPic:(CCMenuItemToggle *)sender
+{
+    teachPicCount++;
+    teachPicCount = teachPicCount % 3;
+    
+    NSString* teachStr = [NSString stringWithFormat:@"teach"];
+    NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, teachPicCount+1];
+    
+    teachSprite = [CCSprite spriteWithFile:teachPic];
+    
+}
+-(void)onLastPic:(CCMenuItemToggle *)sender
+{
+    teachPicCount--;
+    teachPicCount = teachPicCount % 3;
+    
+    NSString* teachStr = [NSString stringWithFormat:@"teach"];
+    NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, teachPicCount+1];
+
+    teachSprite = [CCSprite spriteWithFile:teachPic];
+    
+}
+-(void)onReturnBackPic:(CCMenuItemToggle *)sender
+{
+    [self removeChildByTag:(NSInteger)100 cleanup:YES];
+}
+
+
 //-(void)showOption
 //{
 //    OptionsScene * gs = [OptionsScene node];
@@ -169,6 +256,7 @@
         [levelMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*2/6)];
         [self addChild:levelMenu];
         
+        
 //        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:30];
 //        [returnLabel setColor:ccRED];
 //        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
@@ -254,11 +342,26 @@
         CCMenu * retryMenu = [CCMenu menuWithItems:retryItem,nil];
         [retryMenu setPosition:ccp((screenSize.width)*0.7f,(screenSize.height)*2/6)];
         
-        
+    
         //dMenu.anchorPoint=CGPointMake(0, 0);
         //[dMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*4/6)];
         //[dMenu alignItemsHorizontallyWithPadding:30];
         [self addChild:retryMenu];
+        
+        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"info.png"];
+        CCSprite *info2 = [CCSprite spriteWithSpriteFrameName:@"info.png"];
+                
+        CCMenuItemSprite *infoMenu = [CCMenuItemSprite itemFromNormalSprite:info 
+                                                             selectedSprite:info2 
+                                                                     target:self 
+                                                                   selector:@selector(getTeachInfo:)];
+        infoMenu.scaleX=(40)/[info contentSize].width; //按照像素定制图片宽高是控制像素的。
+        infoMenu.scaleY=(40)/[info contentSize].height;
+
+        CCMenu *menu = [CCMenu menuWithItems: infoMenu, nil];
+        [menu setPosition:ccp(screenSize.width * 0.8 , screenSize.height * 0.8)];
+        
+        [self addChild:menu];
     }
     return self;
 }

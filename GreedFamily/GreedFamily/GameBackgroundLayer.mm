@@ -38,6 +38,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         [frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
         [frameCache addSpriteFramesWithFile:@"elements_default.plist"];
         [frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
+        [frameCache addSpriteFramesWithFile:@"button_default_default.plist"];
         
         // batch node for all dynamic elements
         CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
@@ -51,7 +52,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         CCSprite* background = [CCSprite spriteWithFile:@"background_1.jpg"];
         //change size by diff version manual
         background.scaleX=(480)/[background contentSize].width; //按照像素定制图片宽高
-        background.scaleY=(360)/[background contentSize].height;
+        background.scaleY=(320)/[background contentSize].height;
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         //change size by diff version
         background.position = [GameMainScene sharedMainScene].backgroundPos;
