@@ -169,7 +169,7 @@ static GameMainScene *instanceOfMainScene;
         [self addChild:touchCatchLayer z:1 tag:TouchCatchLayerTag];
         
         //[[GameMainScene sharedMainScene] addTeacheGame];
-        [self schedule:@selector(sleepForTeach:) interval:0.01];
+        [self schedule:@selector(sleepForTeach:) interval:0.1];
         
         [self scheduleUpdate];
         
