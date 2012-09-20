@@ -54,6 +54,30 @@
         [self addChild:logo];
         logo.position=CGPointMake(size.width / 2, size.height * 3 / 4 );
         
+        CCSprite *logopanda = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
+        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
+        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
+        logopanda.scale=0.4;
+        [self addChild:logopanda];
+        logopanda.position=CGPointMake(size.width / 6, size.height * 2 / 3 );
+        
+        [logopanda runAction:[CCSequence actions:
+        							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.4],[CCScaleTo actionWithDuration:1 scale:0.45],nil] times:9000],
+        							nil]];        
+        
+        
+        CCSprite *logopig = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
+        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
+        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
+        logopig.scale=0.4;
+        [self addChild:logopig];
+        logopig.position=CGPointMake(size.width *5 / 6, size.height * 2 / 3 );
+        
+        [logopig runAction:[CCSequence actions:
+                              [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.45],[CCScaleTo actionWithDuration:1 scale:0.4],nil] times:9000],
+                              nil]];    
+        
+        
         //set play 
         CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
         //play.scaleX=1.1;
@@ -66,7 +90,7 @@
                                                                       target:self 
                                                                     selector:@selector(newGame:)];
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height/2)];
+        [playmenu setPosition:ccp(size.width/2,size.height*2/5)];
         [self addChild:playmenu];
         
         //set option in the left-down corner

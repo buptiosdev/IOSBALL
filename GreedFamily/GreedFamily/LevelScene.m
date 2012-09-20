@@ -194,6 +194,17 @@
             CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:starname];
             defaultstar.scaleX=(scale)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
             defaultstar.scaleY=(scale)/[defaultstar contentSize].height;
+            CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
+            if(i<9)
+            {
+                Labelnum1.anchorPoint=CGPointMake(-2.1, -1.5);
+            }
+            else
+            {
+                Labelnum1.anchorPoint=CGPointMake(-0.8, -1.5);
+            }
+            
+            [defaultstar addChild:Labelnum1];
             CCMenuItemSprite *level = [CCMenuItemSprite itemFromNormalSprite:levelpic 
                                                               selectedSprite:defaultstar 
                                                                       target:self 
@@ -208,6 +219,7 @@
             {
                 [level setIsEnabled:YES];
                 [Labelnum setColor:ccRED];
+                [Labelnum1 setColor:ccYELLOW];
             }
             
             if(star==0)
