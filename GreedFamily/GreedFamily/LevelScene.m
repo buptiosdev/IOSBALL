@@ -270,52 +270,43 @@
         
         //set return and shop
         //set return in the left-down corner
-        float returnscale=0.3f;
-        float clickreturnscale=0.35f;
+
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        returnBtn.scaleX=returnscale;
-        returnBtn.scaleY=returnscale;
+
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        returnBtn1.scaleX=clickreturnscale;
-        returnBtn1.scaleY=clickreturnscale;
+        returnBtn1.scaleX=1.1;
+        returnBtn1.scaleY=1.1;
         CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
                                                                selectedSprite:returnBtn1 
                                                                        target:self 
                                                                      selector:@selector(returnMain)];
-        
+        returnItem.scaleX=(45)/[returnBtn contentSize].width; //按照像素定制图片宽高
+        returnItem.scaleY=(45)/[returnBtn contentSize].height;
         CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
-        [returnmenu setPosition:ccp([returnBtn contentSize].width/2,[returnBtn contentSize].height/2)];
+        [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scaleX * 0.5,
+                                    [returnBtn contentSize].height * returnItem.scaleY * 0.5)];
         [self addChild:returnmenu];
         
         //set shop in the right-down corner
-        float shopscale=0.8f;
-        float clickshopscale=0.85f;
-        CCSprite *shop = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
-        shop.scaleX=shopscale;
-        shop.scaleY=shopscale;
-        CCSprite *shop1 = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
-        shop1.scaleX=clickshopscale;
-        shop1.scaleY=clickshopscale;
+        CCSprite *shop = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
+        CCSprite *shop1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
+        shop1.scaleX=1.1; //按照像素定制图片宽高
+        shop1.scaleY=1.1;
         CCMenuItemSprite *shopItem = [CCMenuItemSprite itemFromNormalSprite:shop 
                                                              selectedSprite:shop1 
                                                                      target:self 
                                                                    selector:@selector(connectGameShop:)];
+
+        shopItem.scaleX=(45)/[shop contentSize].width; //按照像素定制图片宽高
+        shopItem.scaleY=(45)/[shop contentSize].height;
+        
         
         CCMenu * shopmenu = [CCMenu menuWithItems:shopItem, nil];
         //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
-        [shopmenu setPosition:ccp(screenSize.width-[shop contentSize].width*(shopscale-0.5),[shop contentSize].height/2)];
+        [shopmenu setPosition:ccp(screenSize.width-[shop contentSize].width*shopItem.scaleX*0.6,
+                                  [shop contentSize].height * shopItem.scaleX * 0.5)];
         [self addChild:shopmenu];
-//        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];
-//        [returnLabel setColor:ccRED];
-//        
-//        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
-//        CCLabelTTF *gameShopLabel=[CCLabelTTF labelWithString:@"Shop" fontName:@"Marker Felt" fontSize:30];
-//        CCMenuItemLabel * gameShop = [CCMenuItemLabel itemWithLabel:gameShopLabel target:self selector:@selector(connectGameShop:)];
-//        
-//        CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, gameShop, nil];
-//        [returnMenu alignItemsHorizontallyWithPadding:300];
-//        [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/7)];
-//        [self addChild:returnMenu];
+
         
     }
     return self;

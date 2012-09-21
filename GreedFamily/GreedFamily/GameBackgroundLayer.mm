@@ -37,7 +37,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
         [frameCache addSpriteFramesWithFile:@"elements_default.plist"];
-        [frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
+        //[frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
         [frameCache addSpriteFramesWithFile:@"button_default_default.plist"];
         
         // batch node for all dynamic elements

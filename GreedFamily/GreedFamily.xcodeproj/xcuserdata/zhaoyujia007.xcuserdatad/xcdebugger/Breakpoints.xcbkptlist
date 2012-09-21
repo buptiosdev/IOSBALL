@@ -1806,7 +1806,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "350"
          endingLineNumber = "350"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1820,8 +1820,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "347"
          endingLineNumber = "347"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1834,7 +1834,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "487"
          endingLineNumber = "487"
-         landmarkName = "-onPlayerInfoReceived:"
+         landmarkName = "-getViewType"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1862,7 +1862,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "469"
          endingLineNumber = "469"
-         landmarkName = "-onLocalPlayerAuthenticationChanged"
+         landmarkName = "+scene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2014,8 +2014,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "483"
          endingLineNumber = "483"
-         landmarkName = "-onFriendListReceived:"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2028,7 +2028,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "419"
          endingLineNumber = "419"
-         landmarkName = "-showGameAchievements:"
+         landmarkName = "-showGameLeaderboard:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2042,8 +2042,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "366"
          endingLineNumber = "366"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-displayInfo:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2070,7 +2070,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "352"
          endingLineNumber = "352"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2140,7 +2140,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "480"
          endingLineNumber = "480"
-         landmarkName = "-onFriendListReceived:"
+         landmarkName = "+sceneWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2154,8 +2154,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "479"
          endingLineNumber = "479"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "+sceneWithNavigationScene"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2168,7 +2168,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "478"
          endingLineNumber = "478"
-         landmarkName = "-onLocalPlayerAuthenticationChanged"
+         landmarkName = "+sceneWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2196,7 +2196,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "353"
          endingLineNumber = "353"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2210,7 +2210,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "372"
          endingLineNumber = "372"
-         landmarkName = "-updateScoreAndShowAchievements"
+         landmarkName = "-updateScoreAndShowLeaderBoard"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2224,7 +2224,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "300"
          endingLineNumber = "300"
-         landmarkName = "-viewAddPointY"
+         landmarkName = "-playAudio:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2939,6 +2939,20 @@
          startingLineNumber = "18"
          endingLineNumber = "18"
          landmarkName = "-initTeachGameLayer"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/screens/RoleScene.m"
+         timestampString = "369937971.206051"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
+         landmarkName = "-initWithRoleScene"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

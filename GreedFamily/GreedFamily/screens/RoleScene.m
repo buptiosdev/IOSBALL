@@ -111,30 +111,54 @@
 //        [returnMenu setPosition:ccp((screenSize.width)*0.1f,(screenSize.height)*0.125)];
 //        [self addChild:returnMenu];
         //set return in the left-down corner
-        float returnscale=0.3f;
-        float clickreturnscale=0.35f;
+ 
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        returnBtn.scaleX=returnscale;
-        returnBtn.scaleY=returnscale;
+
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        returnBtn1.scaleX=clickreturnscale;
-        returnBtn1.scaleY=clickreturnscale;
+        returnBtn1.scaleX=1.1;
+        returnBtn1.scaleY=1.1;
         CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
                                                                selectedSprite:returnBtn1 
                                                                        target:self 
                                                                      selector:@selector(returnMain)];
-        
+        returnItem.scaleX=(45)/[returnBtn contentSize].width; //按照像素定制图片宽高
+        returnItem.scaleY=(45)/[returnBtn contentSize].height;
         CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
-        [returnmenu setPosition:ccp([returnBtn contentSize].width/2,[returnBtn contentSize].height/2)];
+        [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scaleX * 0.5,
+                                    [returnBtn contentSize].height * returnItem.scaleY * 0.5)];
+
         [self addChild:returnmenu];
         
-        CCLabelTTF *nextLabel=[CCLabelTTF labelWithString:@"Next" fontName:@"Marker Felt" fontSize:25];
-        [nextLabel setColor:ccRED];
-        CCMenuItemLabel * nextBtn = [CCMenuItemLabel itemWithLabel:nextLabel target:self selector:@selector(levelScene)];
-        CCMenu * nextMenu = [CCMenu menuWithItems:nextBtn, nil];
-        [nextMenu alignItemsHorizontallyWithPadding:0];
-        [nextMenu setPosition:ccp((screenSize.width)*0.9f,(screenSize.height)*0.1)];
+        
+        //set shop in the right-down corner
+        CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        [next setFlipX:YES];//Y轴镜像反转
+        [next1 setFlipX:YES];//Y轴镜像反转
+        next1.scaleX=1.1; //按照像素定制图片宽高
+        next1.scaleY=1.1;
+        CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
+                                                             selectedSprite:next1 
+                                                                     target:self 
+                                                                   selector:@selector(levelScene)];
+        
+        nextItem.scaleX=(45)/[next contentSize].width; //按照像素定制图片宽高
+        nextItem.scaleY=(45)/[next contentSize].height;
+        
+        
+        CCMenu * nextMenu = [CCMenu menuWithItems:nextItem, nil];
+        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
+        [nextMenu setPosition:ccp(screenSize.width-[next contentSize].width*nextItem.scaleX*0.6,
+                                  [next contentSize].height * nextItem.scaleX * 0.5)];
         [self addChild:nextMenu];
+        
+//        CCLabelTTF *nextLabel=[CCLabelTTF labelWithString:@"Next" fontName:@"Marker Felt" fontSize:25];
+//        [nextLabel setColor:ccRED];
+//        CCMenuItemLabel * nextBtn = [CCMenuItemLabel itemWithLabel:nextLabel target:self selector:@selector(levelScene)];
+//        CCMenu * nextMenu = [CCMenu menuWithItems:nextBtn, nil];
+//        [nextMenu alignItemsHorizontallyWithPadding:0];
+//        [nextMenu setPosition:ccp((screenSize.width)*0.9f,(screenSize.height)*0.1)];
+//        [self addChild:nextMenu];
     }
     return self;
 }
