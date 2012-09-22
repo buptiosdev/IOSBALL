@@ -65,21 +65,21 @@
 		CGSize size = [[CCDirector sharedDirector] winSize];
         //change size by diff version query
 		labelscore.position = CGPointMake(size.width / 3, size.height * 4 / 5 );
-        [labelscore setColor:ccBLUE];
+        [labelscore setColor:ccYELLOW];
 		[self addChild:labelscore];
         
         temp=[@"added score: " stringByAppendingFormat:@" %d",addscore];
         CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
         //change size by diff version query
 		labeladdscore.position = CGPointMake(size.width / 3, size.height * 3 / 5 );
-        [labeladdscore setColor:ccBLUE];
+        [labeladdscore setColor:ccYELLOW];
 		[self addChild:labeladdscore];
         
         temp=[@"total score: " stringByAppendingFormat:@" %d",score+addscore];
         CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
         //change size by diff version query
 		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 2 / 5 );
-        [labeltotalscore setColor:ccBLUE];
+        [labeltotalscore setColor:ccYELLOW];
 		[self addChild:labeltotalscore];
         
         //if(isnewrecord==1 && starnum==3)
@@ -152,28 +152,31 @@
 //        CCMenuItemLabel * retryBtn = [CCMenuItemLabel itemWithLabel:retryLabel target:self selector:@selector(chooseLevel:)];
 //        [retryBtn setTag:level];
         CCSprite *retry = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
-        retry.scaleX=(40)/[retry contentSize].width; //按照像素定制图片宽高是控制像素的。
-        retry.scaleY=(40)/[retry contentSize].height;
+//        retry.scaleX=(40)/[retry contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        retry.scaleY=(40)/[retry contentSize].height;
         CCSprite *retry1 = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
-        retry1.scaleX=(40)/[retry1 contentSize].width; //按照像素定制图片宽高是控制像素的。
-        retry1.scaleY=(40)/[retry1 contentSize].height;
+//        retry1.scaleX=(40)/[retry1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        retry1.scaleY=(40)/[retry1 contentSize].height;
         CCMenuItemSprite *retryItem = [CCMenuItemSprite itemFromNormalSprite:retry 
                                                               selectedSprite:retry1 
                                                                       target:self 
                                                                     selector:@selector(chooseLevel:)];
+        float labelscale=(40)/[retry1 contentSize].width;
+        retryItem.scale=labelscale;
         [retryItem setTag:level];
         
         
         CCSprite *level0 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
-        level0.scaleX=(40)/[level0 contentSize].width; //按照像素定制图片宽高是控制像素的。
-        level0.scaleY=(40)/[level0 contentSize].height;
+//        level0.scaleX=(40)/[level0 contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        level0.scaleY=(40)/[level0 contentSize].height;
         CCSprite *level1 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
-        level1.scaleX=(40)/[level1 contentSize].width; //按照像素定制图片宽高是控制像素的。
-        level1.scaleY=(40)/[level1 contentSize].height;
+//        level1.scaleX=(40)/[level1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        level1.scaleY=(40)/[level1 contentSize].height;
         CCMenuItemSprite *levelItem = [CCMenuItemSprite itemFromNormalSprite:level0 
                                                               selectedSprite:level1 
                                                                       target:self 
                                                                     selector:@selector(returnLevel)];
+        levelItem.scale=labelscale;
         
 //        CCLabelTTF *LevelLabel=[CCLabelTTF labelWithString:@"Level" fontName:@"Marker Felt" fontSize:30];
 //        [LevelLabel setColor:ccRED];
@@ -190,20 +193,21 @@
 //        }
         
         CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"next.png"];
-        next.scaleX=(40)/[next contentSize].width; //按照像素定制图片宽高是控制像素的。
-        next.scaleY=(40)/[next contentSize].height;
+//        next.scaleX=(40)/[next contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        next.scaleY=(40)/[next contentSize].height;
         CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"next.png"];
-        next1.scaleX=(40)/[next1 contentSize].width; //按照像素定制图片宽高是控制像素的。
-        next1.scaleY=(40)/[next1 contentSize].height;
+//        next1.scaleX=(40)/[next1 contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        next1.scaleY=(40)/[next1 contentSize].height;
         CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
                                                               selectedSprite:next1 
                                                                       target:self 
                                                                    selector:@selector(chooseLevel:)];
+        nextItem.scale=labelscale;
         [nextItem setTag:level+1];
         if(starnum==0)
         {
             [nextItem setIsEnabled:NO];
-            [nextItem setColor:ccBLACK];
+            [nextItem setColor:ccGRAY];
         }
         
         
