@@ -7,6 +7,7 @@
 //
 
 #import "DeveloperInfo.h"
+#import "NavigationScene.h"
 
 @implementation DeveloperInfo
 @synthesize goBack;
@@ -17,6 +18,24 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        //teach
+//        CCSprite *close = [CCSprite spriteWithSpriteFrameName:@"close.png"];
+//        CCSprite *close2 = [CCSprite spriteWithSpriteFrameName:@"close.png"];
+//        close2.scaleX = 1.1;
+//        close2.scaleY = 1.1;
+//        CCMenuItemSprite *closeItem = [CCMenuItemSprite itemFromNormalSprite:close 
+//                                           selectedSprite:close2 
+//                                                   target:self 
+//                                                 selector:@selector(goBack:)];
+//        closeItem.scaleX=(40)/[close contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        closeItem.scaleY=(40)/[close contentSize].height;
+//        
+//        CCMenu *closeMenu = [CCMenu menuWithItems: closeItem, nil];
+//        
+//        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+//        [closeMenu setPosition:ccp(screenSize.width * 0.9 , screenSize.height * 0.8)];
+//        
+//        [self addChild:closeMenu];
     }
     return self;
 }
