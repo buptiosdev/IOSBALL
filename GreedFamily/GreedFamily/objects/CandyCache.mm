@@ -28,6 +28,8 @@
 @synthesize isFinish = _isFinish;
 @synthesize aliveCandy = _aliveCandy;
 
+
+
 +(id) cache:(b2World *)world
 {
 	return [[[self alloc] initWithWorld:world] autorelease];

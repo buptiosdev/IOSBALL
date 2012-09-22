@@ -325,9 +325,11 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     bodyNode.hitPoints = -1;
                 
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
+                    PropertyCache* propCache = (PropertyCache *)[self getChildByTag:PropCacheTag];
                     if (candyCache != NULL)
                     {
                         candyCache.aliveCandy--;
+                        propCache.aliveProp--;
                     }
                     
                 }

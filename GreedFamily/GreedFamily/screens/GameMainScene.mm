@@ -253,8 +253,8 @@ static GameMainScene *instanceOfMainScene;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     
     _initPos = CGPointMake(-100, -100);
-    _remainBallPos = CGPointMake(screenSize.width -70, screenSize.height - 20);
-    _remainBallLabelPos = CGPointMake(screenSize.width-45, screenSize.height - 5);
+    _remainBallPos = CGPointMake(screenSize.width -100, screenSize.height - 20);
+    _remainBallLabelPos = CGPointMake(screenSize.width-75, screenSize.height - 5);
     _pepperMenuPlay2Pos = CGPointMake(screenSize.width - 25, 50);
     _pepperMenuPos = CGPointMake(25, 50);
     _initMenuPos = CGPointMake(screenSize.width + 40, 15);
@@ -274,8 +274,8 @@ static GameMainScene *instanceOfMainScene;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     
     _initPos = CGPointMake(-100, -100);
-    _remainBallPos = CGPointMake(screenSize.width -70, screenSize.height - 20);
-    _remainBallLabelPos = CGPointMake(screenSize.width - 45, screenSize.height - 5);
+    _remainBallPos = CGPointMake(screenSize.width -100, screenSize.height - 20);
+    _remainBallLabelPos = CGPointMake(screenSize.width - 75, screenSize.height - 5);
     _pepperMenuPos = CGPointMake(screenSize.width - 120, 15);
     //_crystalMenuPos = CGPointMake(screenSize.width - 60, 25);
     _initMenuPos = CGPointMake(screenSize.width + 40, 15);
@@ -367,7 +367,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene6thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 5;
             _mainscenParam.candyType = 1;
             _mainscenParam.candyFrequency = 3;
@@ -381,7 +381,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene7thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 10;
             _mainscenParam.candyType = 2;
             _mainscenParam.candyFrequency = 3;
@@ -395,8 +395,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene8thScene:
-            _mainscenParam.maxVisibaleNum = 4;
-            _mainscenParam.candyCount = 13;
+            _mainscenParam.maxVisibaleNum = 3;
+            _mainscenParam.candyCount = 15;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -409,7 +409,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene9thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 18;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
@@ -423,7 +423,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene10thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 20;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
@@ -468,7 +468,7 @@ static GameMainScene *instanceOfMainScene;
             break;
         case TargetScene13thScene:
             _mainscenParam.maxVisibaleNum = 4;
-            _mainscenParam.candyCount = 30;
+            _mainscenParam.candyCount = 25;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -483,7 +483,7 @@ static GameMainScene *instanceOfMainScene;
             break;
         case TargetScene14thScene:
             _mainscenParam.maxVisibaleNum = 4;
-            _mainscenParam.candyCount = 35;
+            _mainscenParam.candyCount = 25;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -498,7 +498,7 @@ static GameMainScene *instanceOfMainScene;
             break;
         case TargetScene15thScene:
             _mainscenParam.maxVisibaleNum = 4;
-            _mainscenParam.candyCount = 35;
+            _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -512,8 +512,8 @@ static GameMainScene *instanceOfMainScene;
             //_mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene16thScene:
-            _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 40;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -527,8 +527,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene17thScene:
-            _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 45;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -542,8 +542,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 2;
             break;
         case TargetScene18thScene:
-            _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 45;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 35;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -557,8 +557,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene19thScene:
-            _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 50;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 35;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -572,8 +572,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 4;
             break;
         case TargetScene20thScene:
-            _mainscenParam.maxVisibaleNum = 6;
-            _mainscenParam.candyCount = 50;
+            _mainscenParam.maxVisibaleNum = 5;
+            _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 2;
             _mainscenParam.landCompetitorExist = YES;

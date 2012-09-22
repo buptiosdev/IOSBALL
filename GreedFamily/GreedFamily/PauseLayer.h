@@ -13,6 +13,7 @@
 @interface PauseLayer : CCLayerColor {
     int teachPicCount;
     CCSprite *teachSprite;
+    CCMenuItemSprite *infoMenu;
 	
 }
 +(id)createPauseLayer:(ccColor4B)color Level:(int)sceneNum;

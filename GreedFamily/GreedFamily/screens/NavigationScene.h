@@ -21,6 +21,8 @@
     BOOL isTouch;
      */
     DeveloperInfo *view;
+    UIActivityIndicatorView *activityIndicatorView;
+    BOOL isCreateIndicatorView;
 }
 +(id)sceneWithNavigationScene;
 +(id)scene;

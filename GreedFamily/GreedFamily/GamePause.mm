@@ -47,14 +47,15 @@
 //        _spriteout.visible = YES;
 //        [batch addChild:_spriteout z:1];
         
-        CCSprite *in = [CCSprite spriteWithSpriteFrameName:@"pausein.png"];
-        CCSprite *out = [CCSprite spriteWithSpriteFrameName:@"pauseout.png"];
+        CCSprite *in = [CCSprite spriteWithSpriteFrameName:@"pause1.png"];
+        CCSprite *out = [CCSprite spriteWithSpriteFrameName:@"pause2.png"];
         CCMenuItemSprite *touchPause = [CCMenuItemSprite itemFromNormalSprite:in 
                                                              selectedSprite:out 
                                                                      target:self 
                                                                    selector:@selector(onPause:)];
         
-        
+        touchPause.scaleX = (40)/[in contentSize].width;
+        touchPause.scaleY = (40)/[in contentSize].height;
         CCMenu *menu = [CCMenu menuWithItems:touchPause, nil];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         menu.position = ccp(screenSize.width - 20, screenSize.height - 20);

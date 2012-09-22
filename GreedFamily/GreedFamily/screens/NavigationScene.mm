@@ -16,6 +16,7 @@
 #import "LevelScenePair.h"
 #import "RoleScene.h"
 #import "SimpleAudioEngine.h"
+#import "AppDelegate.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -341,6 +342,11 @@
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 //	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
     [self playAudio:SelectOK];
+    if (isCreateIndicatorView)
+    {
+        [activityIndicatorView stopAnimating ];  //停止  
+        isCreateIndicatorView = NO;
+    }
     [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
     
 }
@@ -348,6 +354,12 @@
 -(void)options:(id)sender
 {
     [self playAudio:SelectOK];
+    
+    if (isCreateIndicatorView)
+    {
+        [activityIndicatorView stopAnimating ];  //停止  
+        isCreateIndicatorView = NO;
+    }
 	//show the options of the game
     OptionsScene * gs = [OptionsScene node];
 	//[[CCDirector sharedDirector]replaceScene:gs];
@@ -357,10 +369,17 @@
 -(void)displayInfo:(id)sender
 {
     [self playAudio:SelectOK];
+    
+     if (isCreateIndicatorView)
+     {
+         [activityIndicatorView stopAnimating ];  //停止  
+         isCreateIndicatorView = NO;
+     }
+         
 	//show the options of the game
 //    infoView = [[DeveloperInfo alloc] initWithNibName:@"Info View" bundle:nil];
 //    [[[CCDirector sharedDirector] openGLView] addSubview:infoView.view];
-    view= [[DeveloperInfo alloc] initWithNibName:@"DeveloperInfo" bundle:nil];
+    view = [[DeveloperInfo alloc] initWithNibName:@"DeveloperInfo" bundle:nil];
     [[[CCDirector sharedDirector] openGLView] addSubview:view.view];
     //[view release];
     [self schedule:@selector(viewAddPointY) interval:0.03];
@@ -386,6 +405,7 @@
     [gkHelper submitScore:temTotalScore category:strTotalScore];
     
     [gkHelper showLeaderboard];
+    
 }
 
 -(void) updateScoreAndShowAchievements
@@ -406,11 +426,39 @@
     [gkHelper submitScore:temTotalScore category:strTotalScore];
     
     [gkHelper showAchievements];
+    
 }
 
 -(void)showGameLeaderboard:(id)sender
 {
     [self playAudio:SelectOK];
+    
+    //启动load图标
+    if (!isCreateIndicatorView)
+    {
+        
+        if (!activityIndicatorView)
+        {
+            activityIndicatorView = [[[UIActivityIndicatorView alloc]   
+                                      initWithActivityIndicatorStyle:   
+                                      UIActivityIndicatorViewStyleWhiteLarge] autorelease];  
+            
+            activityIndicatorView.center = CGPointMake(70,240);  
+            
+            [activityIndicatorView startAnimating]; 
+            //activityIndicatorView.activityIndicatorViewStyle= UIActivityIndicatorViewStyleGray;
+            //[self.view addSubview:activityIndicatorView ];   
+            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;  
+            [delegate.window addSubview:activityIndicatorView];
+        }
+        else
+        {
+            [activityIndicatorView startAnimating];
+        }
+        [self schedule:@selector(stopAnimating:) interval:5];
+        isCreateIndicatorView = YES;
+    }
+    
 	//connect to game center
     GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
     gkHelper.delegate = self;
@@ -425,10 +473,34 @@
 
 }
 
-
 -(void)showGameAchievements:(id)sender
 {
     [self playAudio:SelectOK];
+    
+    //启动load图标
+    if (!isCreateIndicatorView)
+    {
+        if (!activityIndicatorView)
+        {
+            activityIndicatorView = [[[UIActivityIndicatorView alloc]   
+                                      initWithActivityIndicatorStyle:   
+                                      UIActivityIndicatorViewStyleWhiteLarge] autorelease];  
+            
+            activityIndicatorView.center = CGPointMake(70,240);  
+            
+            [activityIndicatorView startAnimating]; 
+            //activityIndicatorView.activityIndicatorViewStyle= UIActivityIndicatorViewStyleGray;
+            //[self.view addSubview:activityIndicatorView ];   
+            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;  
+            [delegate.window addSubview:activityIndicatorView];
+        }
+        else
+        {
+            [activityIndicatorView startAnimating];
+        }
+        [self schedule:@selector(stopAnimating:) interval:5];
+        isCreateIndicatorView = YES;
+    }
 	//connect to game center
     //[[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
     GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
@@ -442,6 +514,16 @@
         [self updateScoreAndShowAchievements];
     }
     
+}
+
+-(void)stopAnimating: (ccTime) dt
+{
+    [self unschedule:@selector(stopAnimating:)];   
+    if (isCreateIndicatorView)
+    {
+        [activityIndicatorView stopAnimating ];  //停止  
+        isCreateIndicatorView = NO;
+    }
 }
                                
 -(void)connectGameCenter:(id)sender

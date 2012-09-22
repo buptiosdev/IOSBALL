@@ -40,4 +40,5 @@ typedef enum
 +(id)cache:(b2World *)world;
 @property (assign, nonatomic)BOOL isFinish;
 @property (assign, nonatomic)int aliveCandy;
+
 @end
