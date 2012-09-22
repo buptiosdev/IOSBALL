@@ -139,19 +139,19 @@ int directionCurrent;
         
         CCMenu * easyMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:0],[levelarray objectAtIndex:1],[levelarray objectAtIndex:2],[levelarray objectAtIndex:3],[levelarray objectAtIndex:4],nil];
         [easyMenu alignItemsHorizontallyWithPadding:levelpadding];
-        [easyMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*4/5)];
+        [easyMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.8)];
         
         CCMenu * normalMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:5],[levelarray objectAtIndex:6],[levelarray objectAtIndex:7],[levelarray objectAtIndex:8],[levelarray objectAtIndex:9], nil];
         [normalMenu alignItemsHorizontallyWithPadding:levelpadding];
-        [normalMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)/2)];
+        [normalMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.45)];
         
         CCMenu * hardMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:10],[levelarray objectAtIndex:11],[levelarray objectAtIndex:12],[levelarray objectAtIndex:13],[levelarray objectAtIndex:14], nil];
         [hardMenu alignItemsHorizontallyWithPadding:levelpadding];
-        [hardMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*4/5)];
+        [hardMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.8)];
         
         CCMenu * extremeMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:15],[levelarray objectAtIndex:16],[levelarray objectAtIndex:17],[levelarray objectAtIndex:18],[levelarray objectAtIndex:19], nil];
         [extremeMenu alignItemsHorizontallyWithPadding:levelpadding];
-        [extremeMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)/2)];
+        [extremeMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.45)];
         
         //page 1
         CCLayer *pageOne = [[CCLayer alloc] init];
@@ -211,8 +211,8 @@ int directionCurrent;
         //add the snake
         sprite= [CCSprite spriteWithSpriteFrameName:@"snake_1.png"];
         //按照像素设定图片大小
-        sprite.scaleX=(50)/[sprite contentSize].width; //按照像素定制图片宽高
-        sprite.scaleY=(50)/[sprite contentSize].height;
+        sprite.scaleX=(70)/[sprite contentSize].width; //按照像素定制图片宽高
+        sprite.scaleY=(70)/[sprite contentSize].height;
         CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, 40+[sprite contentSize].height * sprite.scaleY/2);
         sprite.position = startPos;
         CCAnimation* animation = [CCAnimation animationWithFrame:@"snake_" frameCount:4 delay:0.2f];
