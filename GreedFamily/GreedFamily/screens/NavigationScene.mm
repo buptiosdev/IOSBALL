@@ -95,71 +95,75 @@
         [self addChild:playmenu];
         
         //set option in the left-down corner
-        float optscale=0.5f;
-        float clickoptscale=0.55f;
+
         CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
-        option.scaleX=optscale;
-        option.scaleY=optscale;
+//        option.scaleX=optscale;
+//        option.scaleY=optscale;
         CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
-        option1.scaleX=clickoptscale;
-        option1.scaleY=clickoptscale;
+//        option1.scaleX=clickoptscale;
+//        option1.scaleY=clickoptscale;
         CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
                                                               selectedSprite:option1 
                                                                       target:self 
                                                                     selector:@selector(options:)];
+        float optscale=50/[option contentSize].width;
+        float clickoptscale=optscale*1.1f;
+        optionItem.scale=optscale;
         
         CCMenu * optionmenu = [CCMenu menuWithItems:optionItem, nil];
-        [optionmenu setPosition:ccp([option contentSize].width/2,[option contentSize].height/2)];
+        [optionmenu setPosition:ccp([option contentSize].width*optscale/2,[option contentSize].height*optscale/2)];
         [self addChild:optionmenu];
         
         //set info in the right-down corner
         CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-        info.scaleX=optscale;
-        info.scaleY=optscale;
+//        info.scaleX=optscale;
+//        info.scaleY=optscale;
         CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-        info1.scaleX=clickoptscale;
-        info1.scaleY=clickoptscale;
+//        info1.scaleX=clickoptscale;
+//        info1.scaleY=clickoptscale;
         CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
                                                                selectedSprite:info1 
                                                                        target:self 
                                                                      selector:@selector(displayInfo:)];
-        
+        infoItem.scale=optscale;
         CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
-        [infomenu setPosition:ccp(size.width-[info contentSize].width*(optscale-0.5),[info contentSize].height/2)];
+        [infomenu setPosition:ccp(size.width-[info contentSize].width*optscale/2,[info contentSize].height*optscale/2)];
         [self addChild:infomenu];
         
-        float leaderscale=0.4f;
-        float clickleaderscale=0.45f;
+
         //set leadership
         CCSprite *leader = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-        leader.scaleX=leaderscale;
-        leader.scaleY=leaderscale;
+//        leader.scaleX=leaderscale;
+//        leader.scaleY=leaderscale;
         CCSprite *leader1 = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-        leader1.scaleX=clickleaderscale;
-        leader1.scaleY=clickleaderscale;
+//        leader1.scaleX=clickleaderscale;
+//        leader1.scaleY=clickleaderscale;
         CCMenuItemSprite *leaderItem = [CCMenuItemSprite itemFromNormalSprite:leader 
                                                              selectedSprite:leader1 
                                                                      target:self 
                                                                    selector:@selector(showGameLeaderboard:)];
-        
+        float leaderscale=40/[leader contentSize].width;
+        float clickleaderscale=leaderscale*1.1f;
+        leaderItem.scale=leaderscale;
         
         //set achivement
         CCSprite * achivement= [CCSprite spriteWithSpriteFrameName:@"achievementspic.png"];
-        achivement.scaleX=leaderscale;
-        achivement.scaleY=leaderscale;
+//        achivement.scaleX=leaderscale;
+//        achivement.scaleY=leaderscale;
         CCSprite *achivement1 = [CCSprite spriteWithSpriteFrameName:@"achievementspic.png"];
-        achivement1.scaleX=clickleaderscale;
-        achivement1.scaleY=clickleaderscale;
+//        achivement1.scaleX=clickleaderscale;
+//        achivement1.scaleY=clickleaderscale;
         CCMenuItemSprite *achivementItem = [CCMenuItemSprite itemFromNormalSprite:achivement 
                                                                selectedSprite:achivement1 
                                                                        target:self 
                                                                      selector:@selector(showGameAchievements:)];
-        
+        achivementItem.scale=leaderscale;
         CCMenu * leadermenu = [CCMenu menuWithItems:leaderItem, achivementItem, nil];
         // center= size.width/2+[achivement contentSize].width*(0.5-leaderscale/2)
-        [leadermenu setPosition:ccp(size.width/2+[achivement contentSize].width*(0.5-leaderscale/2),size.height/6)];
+        [leadermenu setPosition:ccp(size.width/2,[leader contentSize].height*optscale/2)];
         //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
-        [leadermenu alignItemsHorizontallyWithPadding:0];
+        //set the distance to be the 1.5times of the label
+        [leadermenu alignItemsHorizontallyWithPadding:[leader contentSize].width*optscale*1.5];
         [self addChild:leadermenu];
         
         
