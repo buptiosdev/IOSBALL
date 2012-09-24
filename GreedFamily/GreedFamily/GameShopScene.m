@@ -161,6 +161,8 @@
                                                      fontName:@"Marker Felt" fontSize:10];
             CCLabelTTF *LabelSpend1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED1] 
                                                        fontName:@"Marker Felt" fontSize:10];
+            [Labelnum1 setColor:ccYELLOW];
+            [LabelSpend1 setColor:ccYELLOW];
             [addSpeedOnceMenu addChild:Labelnum1];
             [addSpeedOnceMenu addChild:LabelSpend1];
             LabelSpend1.anchorPoint=CGPointMake(0, 2);
@@ -184,6 +186,8 @@
                                                      fontName:@"Marker Felt" fontSize:10];
             CCLabelTTF *LabelSpend2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED2] 
                                                        fontName:@"Marker Felt" fontSize:10];
+            [Labelnum2 setColor:ccYELLOW];
+            [LabelSpend2 setColor:ccYELLOW];
             [addSpeedTwiceMenu addChild:LabelSpend2];
             [addSpeedTwiceMenu addChild:Labelnum2];
             LabelSpend2.anchorPoint=CGPointMake(0, 2);
@@ -207,6 +211,8 @@
                                                      fontName:@"Marker Felt" fontSize:10];
             CCLabelTTF *LabelSpend3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED3] 
                                                        fontName:@"Marker Felt" fontSize:10];
+            [Labelnum3 setColor:ccYELLOW];
+            [LabelSpend3 setColor:ccYELLOW];
             [addSpeedThirdMenu addChild:LabelSpend3];
             [addSpeedThirdMenu addChild:Labelnum3];
             LabelSpend3.anchorPoint=CGPointMake(0, 2);
@@ -237,6 +243,8 @@
                                                      fontName:@"Marker Felt" fontSize:10];
             CCLabelTTF *LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",STORAGE1] 
                                                        fontName:@"Marker Felt" fontSize:10];
+            [Labelnum4 setColor:ccYELLOW];
+            [LabelSpend4 setColor:ccYELLOW];
             [addStorageOnceMenu addChild:LabelSpend4];
             [addStorageOnceMenu addChild:Labelnum4];
             LabelSpend4.anchorPoint=CGPointMake(0, 2);
@@ -259,6 +267,8 @@
                                                      fontName:@"Marker Felt" fontSize:10];
             CCLabelTTF *LabelSpend5=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",STORAGE2] 
                                                        fontName:@"Marker Felt" fontSize:10]; 
+            [Labelnum5 setColor:ccYELLOW];
+            [LabelSpend5 setColor:ccYELLOW];
             [addStorageTwiceMenu addChild:LabelSpend5];
             [addStorageTwiceMenu addChild:Labelnum5];
             LabelSpend5.anchorPoint=CGPointMake(0, 2);
@@ -292,14 +302,37 @@
 		self.isTouchEnabled = YES;
         
         screenSize = [[CCDirector sharedDirector] winSize];
+        //set the background pic
+		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+        background.scaleY=(screenSize.height)/[background contentSize].height;
+        NSAssert( background != nil, @"background must be non-nil");
+		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+		[self addChild:background z:-3];
+        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
         
-        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"GO Back" fontName:@"Marker Felt" fontSize:25];
-        [returnLabel setColor:ccRED];
-        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(goBack:)];
-        [returnBtn setPosition:ccp((screenSize.width)/2,(screenSize.height)/4)];
-        CCMenu * menu = [CCMenu menuWithItems:returnBtn,nil];
-		[self addChild:menu];
-		[menu setPosition:ccp(0,0)];
+//        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"GO Back" fontName:@"Marker Felt" fontSize:25];
+//        [returnLabel setColor:ccRED];
+//        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(goBack:)];
+//        [returnBtn setPosition:ccp((screenSize.width)/2,(screenSize.height)/4)];
+//        CCMenu * menu = [CCMenu menuWithItems:returnBtn,nil];
+//		[self addChild:menu];
+//		[menu setPosition:ccp(0,0)];
+        
+        CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        returnBtn1.scale=1.1;
+        CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
+                                                               selectedSprite:returnBtn1 
+                                                                       target:self 
+                                                                     selector:@selector(returnMain)];
+        returnItem.scale=(45)/[returnBtn contentSize].width; //按照像素定制图片宽高
+        CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
+        [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scale * 0.5,
+                                    [returnBtn contentSize].height * returnItem.scale * 0.5)];
+        
+        [self addChild:returnmenu];
         
         [self initRoleAndScore];
         [self initShopList];
@@ -342,7 +375,7 @@
     [self addChild:myTouchSwallowLayer];
 }
 
--(void)goBack:(id)sender
+-(void)returnMain
 {
     //[[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];  

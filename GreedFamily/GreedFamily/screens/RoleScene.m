@@ -53,6 +53,8 @@
 		self.isTouchEnabled = YES;
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
+        //add by liuyunpeng 20120924
+        [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         //set the background pic
 		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
@@ -62,20 +64,36 @@
 		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
 		[self addChild:background];
         //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
-        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"easy_dis.png"
-                                                       selectedImage:@"easy_dwn.png" target:self selector:@selector(chooseRole:)];
-        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"normal_dis.png"
-                                                       selectedImage:@"normal_dwn.png" target:self selector:@selector(chooseRole:)];
-        CCMenuItem *menuItem3 = [CCMenuItemImage itemFromNormalImage:@"extreme_dis.png"
-                                                       selectedImage:@"extreme_dwn.png" target:self selector:@selector(chooseRole:)];
+//        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"easy_dis.png"
+//                                                       selectedImage:@"easy_dwn.png" target:self selector:@selector(chooseRole:)];
+//        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"normal_dis.png"
+//                                                       selectedImage:@"normal_dwn.png" target:self selector:@selector(chooseRole:)];
         
-        //CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems:menuItem1, menuItem2, menuItem3, nil];
+        CCSprite * panda= [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
+        [panda setColor:ccGRAY];
+        CCSprite *panda1 = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
+        panda1.scale=1.1;
+        CCMenuItemSprite *menuItem1 = [CCMenuItemSprite itemFromNormalSprite:panda 
+                                                                   selectedSprite:panda1 
+                                                                           target:self 
+                                                                         selector:@selector(chooseRole:)];
+        float spritescale=100/[panda contentSize].width;
+        menuItem1.scale=spritescale;
+        
+        CCSprite * pig= [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
+        [pig setColor:ccGRAY];
+        CCSprite *pig1 = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
+        pig1.scale=1.1;
+        CCMenuItemSprite *menuItem2 = [CCMenuItemSprite itemFromNormalSprite:pig 
+                                                              selectedSprite:pig1 
+                                                                      target:self 
+                                                                    selector:@selector(chooseRole:)];
+        menuItem2.scale=spritescale;
+        
         CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems:menuItem1, menuItem2, nil];
-        [radioMenu alignItemsHorizontally];
-        //[radioMenu alignItemsVerticallyWithPadding:10];
+        [radioMenu alignItemsHorizontallyWithPadding:[panda contentSize].width*spritescale];
         [menuItem1 setTag:1];
         [menuItem2 setTag:2];
-        [menuItem3 setTag:3];
         
         //默认要写一次文件，设置为小鸟
         NSString *strName = [NSString stringWithFormat:@"RoleType"];
@@ -96,11 +114,11 @@
             [radioMenu setSelectedItem_:menuItem2];
             [menuItem2 selected];
         }
-        else if (3 == roleType)
-        {
-            [radioMenu setSelectedItem_:menuItem3];
-            [menuItem3 selected];
-        }
+//        else if (3 == roleType)
+//        {
+//            [radioMenu setSelectedItem_:menuItem3];
+//            [menuItem3 selected];
+//        }
         [self addChild:radioMenu];
 //delete by lyp 20120910
 //        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];
