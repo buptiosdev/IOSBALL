@@ -253,8 +253,8 @@ static GameMainScene *instanceOfMainScene;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     
     _initPos = CGPointMake(-100, -100);
-    _remainBallPos = CGPointMake(screenSize.width -100, screenSize.height - 20);
-    _remainBallLabelPos = CGPointMake(screenSize.width-75, screenSize.height - 5);
+    _remainBallPos = CGPointMake(screenSize.width -85, screenSize.height - 20);
+    _remainBallLabelPos = CGPointMake(screenSize.width-60, screenSize.height - 5);
     _pepperMenuPlay2Pos = CGPointMake(screenSize.width - 25, 50);
     _pepperMenuPos = CGPointMake(25, 50);
     _initMenuPos = CGPointMake(screenSize.width + 40, 15);
@@ -274,8 +274,8 @@ static GameMainScene *instanceOfMainScene;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     
     _initPos = CGPointMake(-100, -100);
-    _remainBallPos = CGPointMake(screenSize.width -100, screenSize.height - 20);
-    _remainBallLabelPos = CGPointMake(screenSize.width - 75, screenSize.height - 5);
+    _remainBallPos = CGPointMake(screenSize.width -85, screenSize.height - 20);
+    _remainBallLabelPos = CGPointMake(screenSize.width - 60, screenSize.height - 5);
     _pepperMenuPos = CGPointMake(screenSize.width - 120, 15);
     //_crystalMenuPos = CGPointMake(screenSize.width - 60, 25);
     _initMenuPos = CGPointMake(screenSize.width + 40, 15);

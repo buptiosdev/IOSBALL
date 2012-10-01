@@ -331,7 +331,7 @@
         [batch addChild:self.sprite];       
         
 
-        self.cover = [CCSprite spriteWithSpriteFrameName:@"pic_6.png"];
+        self.cover = [CCSprite spriteWithSpriteFrameName:@"pack.png"];
         //按照像素设定图片大小
         self.cover.scaleX=(35)/[self.cover contentSize].width; //按照像素定制图片宽高
         self.cover.scaleY=(35)/[self.cover contentSize].height;

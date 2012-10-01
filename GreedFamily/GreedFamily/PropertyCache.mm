@@ -131,8 +131,8 @@
     }
     
     CandyCache *candyCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache];
-    //界面上最多存在maxVisibalNum个球
-    if (candyCache.aliveCandy > maxVisibalNum || self.aliveProp > MAX_PROP_NUM)
+    //界面上最多存在maxVisibalNum个球,属性球可以多一个
+    if ((candyCache.aliveCandy > maxVisibalNum && self.aliveProp > 0) || self.aliveProp > MAX_PROP_NUM)
     {
         return;
     }

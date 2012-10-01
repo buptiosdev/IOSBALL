@@ -110,7 +110,7 @@
 
     [self initScenecache:world];
     
-    CCSprite *remainBallScore = [CCSprite spriteWithSpriteFrameName:@"pic_4.png"];
+    CCSprite *remainBallScore = [CCSprite spriteWithSpriteFrameName:@"pack.png"];
     
     //按照像素设定图片大小
     remainBallScore.scaleX=(20)/[remainBallScore contentSize].width;//按照像素定制图片宽高

@@ -151,8 +151,8 @@
     {
         case 0:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
             CCMenuItemSprite *addSpeedOnceMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                                          selectedSprite:addSpeedOnce2 
                                                                                  target:self 
@@ -176,8 +176,8 @@
         }
         case 1:
         {
-            CCSprite *addSpeedTwice1 = [CCSprite spriteWithSpriteFrameName:@"blackbomb.png"];
-            CCSprite *addSpeedTwice2 = [CCSprite spriteWithSpriteFrameName:@"blackbomb.png"];    
+            CCSprite *addSpeedTwice1 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
+            CCSprite *addSpeedTwice2 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];    
             CCMenuItemSprite *addSpeedTwiceMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedTwice1 
                                                                           selectedSprite:addSpeedTwice2 
                                                                                   target:self 

@@ -12,7 +12,7 @@
 
 #define PROPS_TYPE_COUNT 5
 #define DELAY_TIME 5
-#define MAX_PROP_NUM 3
+#define MAX_PROP_NUM 2
 @interface PropertyCache : CCNode 
 {
   	//CCSpriteBatchNode* batch;

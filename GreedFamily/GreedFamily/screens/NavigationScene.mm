@@ -119,8 +119,8 @@
 //        info.scaleX=optscale;
 //        info.scaleY=optscale;
         CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-//        info1.scaleX=clickoptscale;
-//        info1.scaleY=clickoptscale;
+        info1.scaleX=clickoptscale;
+        info1.scaleY=clickoptscale;
         CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
                                                                selectedSprite:info1 
                                                                        target:self 
@@ -136,14 +136,15 @@
 //        leader.scaleX=leaderscale;
 //        leader.scaleY=leaderscale;
         CCSprite *leader1 = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-//        leader1.scaleX=clickleaderscale;
-//        leader1.scaleY=clickleaderscale;
+        float leaderscale=40/[leader contentSize].width;
+        float clickleaderscale=leaderscale*1.1f;
+        leader1.scaleX=clickleaderscale;
+        leader1.scaleY=clickleaderscale;
         CCMenuItemSprite *leaderItem = [CCMenuItemSprite itemFromNormalSprite:leader 
                                                              selectedSprite:leader1 
                                                                      target:self 
                                                                    selector:@selector(showGameLeaderboard:)];
-        float leaderscale=40/[leader contentSize].width;
-        float clickleaderscale=leaderscale*1.1f;
+
         leaderItem.scale=leaderscale;
         
         //set achivement
@@ -151,8 +152,8 @@
 //        achivement.scaleX=leaderscale;
 //        achivement.scaleY=leaderscale;
         CCSprite *achivement1 = [CCSprite spriteWithSpriteFrameName:@"achievementspic.png"];
-//        achivement1.scaleX=clickleaderscale;
-//        achivement1.scaleY=clickleaderscale;
+        achivement1.scaleX=clickleaderscale;
+        achivement1.scaleY=clickleaderscale;
         CCMenuItemSprite *achivementItem = [CCMenuItemSprite itemFromNormalSprite:achivement 
                                                                selectedSprite:achivement1 
                                                                        target:self 

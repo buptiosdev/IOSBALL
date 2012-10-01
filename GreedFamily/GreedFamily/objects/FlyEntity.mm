@@ -60,7 +60,7 @@
                     animation = [CCAnimation animationWithFrame:@"boybird_9_" frameCount:5 delay:0.1f];
                     break;
                     
-                    
+
                 default:
                     break;
             }
@@ -182,12 +182,13 @@
         directionCurrent = 0;
         //CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];
         //初始化动态效果
+        //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+        //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         [self initFlyAction];
-        
         
         //CCSpriteFrame *frame1 = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 75, 70) ];
         
-        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
+
         if (1 == familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
@@ -202,8 +203,9 @@
             self.sprite.scaleX=(70)/[self.sprite contentSize].width; //按照像素定制图片宽高
             self.sprite.scaleY=(70)/[self.sprite contentSize].height;
         }
-        //按照像素设定图片大小
-        [batch addChild:self.sprite z:-1]; 
+        //按照像素设定图片大小//为什么batch不能用？？
+        //[batch addChild:self.sprite z:-1]; 
+        [self addChild:self.sprite z:-1]; 
         //self.sprite = [CCSprite spriteWithSpriteFrame:frame1];
         // batch node for all dynamic elements
         //CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"dragon.png" capacity:100];
@@ -215,7 +217,7 @@
         
         //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         //[batch addChild:self.sprite];
-        
+        self.sprite.visible = YES;
         self.flyAction = [_flyActionArray objectAtIndex:0];
         [self.sprite runAction:_flyAction];
         //change size by diff version query
@@ -425,7 +427,7 @@
     {
         [self.flyAction setSpeed:1.3];
     }
-    else if (flySpeed > 40000)
+    else if (flySpeed > 50000)
     {
         [self.flyAction setSpeed:3];
         //加入炸弹特效

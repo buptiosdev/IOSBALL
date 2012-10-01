@@ -119,32 +119,34 @@
             [self addChild:labelnewrecord];
         
         
-        
+        //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
 
         for(int i=0;i<3;i++)
         {
-            CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+            
+            
             CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
             //change size by diff version query
             star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
             //change size by diff version manual
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;
-            [batch addChild:star z:1];
+            [self addChild:star z:1];
+            //[batch addChild:star z:1];
             //[self addChild:star];
         }
         
         for(int i=0;i<starnum;i++)
         {
-            CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+            //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
             CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star_magic.png"];
             //change size by diff version query
             star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
             //change size by diff version manual
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;
-            [batch addChild:star z:2];
-            //[self addChild:star];
+            //[batch addChild:star z:2];
+            [self addChild:star z:2];
         }
         
 //        CCLabelTTF *retryLabel=[CCLabelTTF labelWithString:@"Retry" fontName:@"Marker Felt" fontSize:30];

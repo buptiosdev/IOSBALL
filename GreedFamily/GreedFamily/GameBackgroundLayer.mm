@@ -35,18 +35,19 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         instanceOfGameBackgroundLayer = self;
         //加载所有的图片列表
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-        [frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
-        [frameCache addSpriteFramesWithFile:@"elements_default.plist"];
+        //[frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
+        //[frameCache addSpriteFramesWithFile:@"elements_default.plist"];
         //[frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
         [frameCache addSpriteFramesWithFile:@"button_default_default.plist"];
-        
+        [frameCache addSpriteFramesWithFile:@"gamemain01_default.plist"];
         // batch node for all dynamic elements
-        CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
-        [self addChild:batch z:0 tag:BatchTag];
+        //CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
+        CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"gamemain01_default.png" capacity:100];
+        [self addChild:batch z:1 tag:BatchTag];
         
         // batch node for all animation elements
-        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
-        [self addChild:batch2 z:-1 tag:AnimationTag];
+//        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
+//        [self addChild:batch2 z:-1 tag:AnimationTag];
         
         // IMPORTANT: filenames are case sensitive on iOS devices!
         CCSprite* background = [CCSprite spriteWithFile:@"background_1.jpg"];
@@ -124,10 +125,10 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 	return (CCSpriteBatchNode*)[self getChildByTag:BatchTag];
 }
 
--(CCSpriteBatchNode*) getAnimationBatch
-{
-	return (CCSpriteBatchNode*)[self getChildByTag:AnimationTag];
-}
+//-(CCSpriteBatchNode*) getAnimationBatch
+//{
+//	return (CCSpriteBatchNode*)[self getChildByTag:AnimationTag];
+//}
 
 -(void) dealloc
 {

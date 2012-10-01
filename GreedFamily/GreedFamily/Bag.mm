@@ -186,12 +186,12 @@
                                                                    selectedSprite:pepperProp2 
                                                                            target:self 
                                                                          selector:@selector(onPepper:)];
-        pepperPropMenu.scaleX=(25)/[pepperProp1 contentSize].width; //按照像素定制图片宽高
-        pepperPropMenu.scaleY=(25)/[pepperProp1 contentSize].height;
+        pepperPropMenu.scaleX=(40)/[pepperProp1 contentSize].width; //按照像素定制图片宽高
+        pepperPropMenu.scaleY=(40)/[pepperProp1 contentSize].height;
         pepperLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         
-        pepperLabel.anchorPoint = CGPointMake(-3, 0.2);
-        pepperLabel.scale = 0.4;
+        pepperLabel.anchorPoint = CGPointMake(1, -1);
+        pepperLabel.scale = 1;
         [pepperPropMenu addChild:pepperLabel z:1];
         pepperMenu = [CCMenu menuWithItems:pepperPropMenu,nil];
         //change size by diff version
@@ -212,18 +212,18 @@
         timePepper.position = pepperMenu.position; 
         [self addChild:timePepper z:-1 tag:pepperTimeTag];
         
-        CCSprite *crystalProp1 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];
-        CCSprite *crystalProp2 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];    
+        CCSprite *crystalProp1 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
+        CCSprite *crystalProp2 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];    
         crystalPropMenu = [CCMenuItemSprite itemFromNormalSprite:crystalProp1 
                                                                    selectedSprite:crystalProp2 
                                                                            target:self 
                                                                          selector:@selector(onCrystal:)];
-        crystalPropMenu.scaleX=(25)/[crystalProp1 contentSize].width; //按照像素定制图片宽高
-        crystalPropMenu.scaleY=(25)/[crystalProp1 contentSize].height;
+        crystalPropMenu.scaleX=(40)/[crystalProp1 contentSize].width; //按照像素定制图片宽高
+        crystalPropMenu.scaleY=(40)/[crystalProp1 contentSize].height;
 
         crystalLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
-        crystalLabel.anchorPoint = CGPointMake(-3, 0.2);
-        crystalLabel.scale = 0.4;
+        crystalLabel.anchorPoint = CGPointMake(1, -1);
+        crystalLabel.scale = 1;
         [crystalPropMenu addChild:crystalLabel z:1];
         crystalMenu = [CCMenu menuWithItems:crystalPropMenu,nil];
         //change size by diff version
@@ -241,18 +241,18 @@
         [self addChild:timeCrystal z:-1 tag:crystalTimeTag];
         
         
-        CCSprite *smokeProp1 = [CCSprite spriteWithSpriteFrameName:@"cake.png"];
-        CCSprite *smokeProp2 = [CCSprite spriteWithSpriteFrameName:@"cake.png"];    
+        CCSprite *smokeProp1 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
+        CCSprite *smokeProp2 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];    
         smokePropMenu = [CCMenuItemSprite itemFromNormalSprite:smokeProp1 
                                                   selectedSprite:smokeProp2 
                                                           target:self 
                                                         selector:@selector(onSmoke:)];
-        smokePropMenu.scaleX=(25)/[smokeProp1 contentSize].width; //按照像素定制图片宽高
-        smokePropMenu.scaleY=(25)/[smokeProp1 contentSize].height;
+        smokePropMenu.scaleX=(40)/[smokeProp1 contentSize].width; //按照像素定制图片宽高
+        smokePropMenu.scaleY=(40)/[smokeProp1 contentSize].height;
         
         smokeLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
-        smokeLabel.anchorPoint = CGPointMake(-3, 0.2);
-        smokeLabel.scale = 0.25;
+        smokeLabel.anchorPoint = CGPointMake(1, -1);
+        smokeLabel.scale = 1;
         [smokePropMenu addChild:smokeLabel z:1];
         smokeMenu = [CCMenu menuWithItems:smokePropMenu,nil];
         //change size by diff version
