@@ -147,7 +147,6 @@
 
         [self addChild:returnmenu];
         
-        
         //set shop in the right-down corner
         CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
@@ -162,7 +161,6 @@
         
         nextItem.scaleX=(45)/[next contentSize].width; //按照像素定制图片宽高
         nextItem.scaleY=(45)/[next contentSize].height;
-        
         
         CCMenu * nextMenu = [CCMenu menuWithItems:nextItem, nil];
         //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
