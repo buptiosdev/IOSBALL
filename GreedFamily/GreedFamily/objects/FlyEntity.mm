@@ -49,7 +49,7 @@
         
         
         //小鸟
-        if (1 == familyType) 
+        if (3 == familyType) 
         {
             switch (i) 
             {
@@ -143,6 +143,23 @@
 //                    break;
 //            }
         }
+        //小猪
+        else if (1 == familyType)
+        {
+            switch (i) 
+            {
+                case 0:
+                    animation = [CCAnimation animationWithFrame:@"pandaboy_3_" frameCount:5 delay:0.1f];
+                    break;
+                case 1:
+                    animation = [CCAnimation animationWithFrame:@"pandaboy_9_" frameCount:5 delay:0.1f];
+                    break;
+                    
+                    
+                default:
+                    break;
+            }
+        }
                
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,
@@ -191,7 +208,7 @@
 
         if (1 == familyType)
         {
-            self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"pandaboy_3_1.png"];
             //按照像素设定图片大小
             self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
             self.sprite.scaleY=(50)/[self.sprite contentSize].height;
@@ -202,6 +219,13 @@
             //按照像素设定图片大小
             self.sprite.scaleX=(70)/[self.sprite contentSize].width; //按照像素定制图片宽高
             self.sprite.scaleY=(70)/[self.sprite contentSize].height;
+        }
+        else if (3 == familyType)
+        {
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+            //按照像素设定图片大小
+            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
         }
         //按照像素设定图片大小//为什么batch不能用？？
         //[batch addChild:self.sprite z:-1]; 
@@ -234,7 +258,7 @@
             bodyDef.type = b2_dynamicBody;
             
             //阻力
-            bodyDef.linearDamping = 0.3f;
+            bodyDef.linearDamping = 0.25f;
             bodyDef.angularDamping = 100.0f;
             //不旋转
             bodyDef.fixedRotation = true;
@@ -247,7 +271,7 @@
             fixtureDef.shape = &circleShape;
             fixtureDef.density = 0.5f;
             fixtureDef.friction = 0.5f;
-            fixtureDef.restitution = 0.7f;
+            fixtureDef.restitution = 0.4f;
 
         }
         else if (2 == familyType)
@@ -268,10 +292,32 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.6f;
+            fixtureDef.density = 0.7f;
             fixtureDef.friction = 0.6f;
             fixtureDef.restitution = 0.5f;
 
+        }
+        else if (3 == familyType)
+        {
+            bodyDef.position = [Helper toMeters:startPos];
+            bodyDef.type = b2_dynamicBody;
+            
+            //阻力
+            bodyDef.linearDamping = 0.3f;
+            bodyDef.angularDamping = 100.0f;
+            //不旋转
+            bodyDef.fixedRotation = true;
+            
+            b2CircleShape circleShape;
+            float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 10) / PTM_RATIO) * 0.5f;
+            circleShape.m_radius = radiusInMeters;
+            
+            // Define the dynamic body fixture.
+            fixtureDef.shape = &circleShape;
+            fixtureDef.density = 0.5f;
+            fixtureDef.friction = 0.5f;
+            fixtureDef.restitution = 0.7f;
+            
         }
 				
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef];

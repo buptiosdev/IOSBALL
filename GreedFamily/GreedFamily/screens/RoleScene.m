@@ -25,6 +25,12 @@
     [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:strName];
 }
 
+- (void)button3Tapped:(id)sender 
+{
+    NSString *strName = [NSString stringWithFormat:@"RoleType"];
+    [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:strName];
+}
+
 - (void) chooseRole:(CCMenuItemImage *)btn
 {
     int role=btn.tag;
@@ -63,7 +69,7 @@
         NSAssert( background != nil, @"background must be non-nil");
 		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
 		[self addChild:background];
-        //角色选择：0:总得分 1：小鸟 2：小猪 3：待定 
+        //角色选择：0:总得分 1：熊猫 2：小猪 3：小鸟 
 //        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"easy_dis.png"
 //                                                       selectedImage:@"easy_dwn.png" target:self selector:@selector(chooseRole:)];
 //        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"normal_dis.png"
@@ -90,10 +96,22 @@
                                                                     selector:@selector(chooseRole:)];
         menuItem2.scale=spritescale;
         
-        CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems:menuItem1, menuItem2, nil];
+        CCSprite * bird= [CCSprite spriteWithSpriteFrameName:@"logobird.png"];
+        [bird setColor:ccGRAY];
+        CCSprite *bird1 = [CCSprite spriteWithSpriteFrameName:@"logobird.png"];
+        bird1.scale=1.1;
+        CCMenuItemSprite *menuItem3 = [CCMenuItemSprite itemFromNormalSprite:bird 
+                                                              selectedSprite:bird1 
+                                                                      target:self 
+                                                                    selector:@selector(chooseRole:)];
+        
+        menuItem3.scale=spritescale;
+        
+        CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems:menuItem3, menuItem1, menuItem2, nil];
         [radioMenu alignItemsHorizontallyWithPadding:[panda contentSize].width*spritescale];
         [menuItem1 setTag:1];
         [menuItem2 setTag:2];
+        [menuItem3 setTag:3];
         
         //默认要写一次文件，设置为小鸟
         NSString *strName = [NSString stringWithFormat:@"RoleType"];
@@ -114,11 +132,11 @@
             [radioMenu setSelectedItem_:menuItem2];
             [menuItem2 selected];
         }
-//        else if (3 == roleType)
-//        {
-//            [radioMenu setSelectedItem_:menuItem3];
-//            [menuItem3 selected];
-//        }
+        else if (3 == roleType)
+        {
+            [radioMenu setSelectedItem_:menuItem3];
+            [menuItem3 selected];
+        }
         [self addChild:radioMenu];
 //delete by lyp 20120910
 //        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];

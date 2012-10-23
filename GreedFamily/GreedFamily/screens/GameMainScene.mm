@@ -92,13 +92,17 @@ static GameMainScene *instanceOfMainScene;
     NSString *strName = [NSString stringWithFormat:@"RoleType"];
     _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
     NSString *strName2 = nil;
-    if (1 == _roleType) 
+    if (3 == _roleType) 
     {
         strName2 = [NSString stringWithFormat:@"Acceleration_Bird"];
     }
     else if (2 == _roleType) 
     {
         strName2 = [NSString stringWithFormat:@"Acceleration_Pig"];
+    }
+    else if (1 == _roleType) 
+    {
+        strName2 = [NSString stringWithFormat:@"Acceleration_Panda"];
     }
     _acceleration = [[NSUserDefaults standardUserDefaults]  integerForKey:strName2];
     if (_acceleration > 50 || _acceleration < 10) 
