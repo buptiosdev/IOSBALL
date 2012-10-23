@@ -13,27 +13,21 @@
 
 @implementation RoleScene
 
+CCLabelTTF *showLabel;
+
+
+//add by lyp 2012-10-23
+-(void)changeParameter:(int)roletype
+{
+    NSString *showParameter=[NSString stringWithFormat:@"the choose role is %d",roletype];
+    [showLabel setString:showParameter];
+}
+
 //角色选择回调函数，把角色类型写入文件
-- (void)button1Tapped:(id)sender 
-{
-    NSString *strName = [NSString stringWithFormat:@"RoleType"];
-    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:strName];
-}
-- (void)button2Tapped:(id)sender 
-{
-    NSString *strName = [NSString stringWithFormat:@"RoleType"];
-    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:strName];
-}
-
-- (void)button3Tapped:(id)sender 
-{
-    NSString *strName = [NSString stringWithFormat:@"RoleType"];
-    [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:strName];
-}
-
 - (void) chooseRole:(CCMenuItemImage *)btn
 {
     int role=btn.tag;
+    [self changeParameter:role];
     NSString *strName = [NSString stringWithFormat:@"RoleType"];
     [[NSUserDefaults standardUserDefaults] setInteger:role forKey:strName];
 }
@@ -109,6 +103,7 @@
         
         CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems:menuItem3, menuItem1, menuItem2, nil];
         [radioMenu alignItemsHorizontallyWithPadding:[panda contentSize].width*spritescale];
+        [radioMenu setPosition:ccp(screenSize.width/2,screenSize.height*3/4)];
         [menuItem1 setTag:1];
         [menuItem2 setTag:2];
         [menuItem3 setTag:3];
@@ -147,9 +142,15 @@
 //        [returnMenu setPosition:ccp((screenSize.width)*0.1f,(screenSize.height)*0.125)];
 //        [self addChild:returnMenu];
         //set return in the left-down corner
- 
+        //add by lyp 2012-10-23
+        showLabel=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:40];
+        [showLabel setColor:ccRED];
+        [self changeParameter:roleType];
+        [self addChild:showLabel];
+        [showLabel setPosition:ccp(screenSize.width/2, screenSize.height * 0.3)];
+        
+        
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         returnBtn1.scaleX=1.1;
         returnBtn1.scaleY=1.1;
