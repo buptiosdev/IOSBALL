@@ -105,21 +105,21 @@
     
     //角色
     CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    [frameCache addSpriteFramesWithFile:@"elements_default.plist"];
+    [frameCache addSpriteFramesWithFile:@"gamemain01_default.plist"];
     // batch node for all dynamic elements
-    batch = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
+    batch = [CCSpriteBatchNode batchNodeWithFile:@"gamemain01_default.png" capacity:100];
     [self addChild:batch z:0 tag:1];
     NSString *strTotalScore = nil;
     NSString *strBuyedList = nil;
     CCSprite *roleSprite = nil;
     if (1 == roalType)
     {
-        strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Bird"];
-        roleSprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
+        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Panda"];
+        roleSprite = [CCSprite spriteWithSpriteFrameName:@"pandaboy_3_1.png"];
         //按照像素设定图片大小
-        roleSprite.scaleX=(50)/[roleSprite contentSize].width; //按照像素定制图片宽高
-        roleSprite.scaleY=(50)/[roleSprite contentSize].height;
+        roleSprite.scaleX=(70)/[roleSprite contentSize].width; //按照像素定制图片宽高
+        roleSprite.scaleY=(70)/[roleSprite contentSize].height;
     }
     else if (2 == roalType)
     {
@@ -129,6 +129,15 @@
         //按照像素设定图片大小
         roleSprite.scaleX=(70)/[roleSprite contentSize].width; //按照像素定制图片宽高
         roleSprite.scaleY=(70)/[roleSprite contentSize].height;
+    }
+    else if (3 == roalType)
+    {
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Bird"];
+        roleSprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+        //按照像素设定图片大小
+        roleSprite.scaleX=(50)/[roleSprite contentSize].width; //按照像素定制图片宽高
+        roleSprite.scaleY=(50)/[roleSprite contentSize].height;
     }
     roleSprite.position = CGPointMake(20, screenSize.height - 100);
     [batch addChild:roleSprite z:-1 tag:2]; 
@@ -387,13 +396,18 @@
     NSString *strBuyedList = nil;
     if (1 == roalType) 
     {
-        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Bird"];
-        strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Panda"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
     }
-    else 
+    else if (2 == roalType) 
     {
         strBuyedList = [NSString stringWithFormat:@"Buyedlist_Pig"];
         strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+    }
+    else 
+    {
+        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Bird"];
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     }
     int  totalRoleScore = [[NSUserDefaults standardUserDefaults] integerForKey:strTotalScore]; 
     

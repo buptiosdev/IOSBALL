@@ -422,13 +422,17 @@ static GameScore  *instanceOfgameScore;
     //初始化2个元素
     int roalType = [GameMainScene sharedMainScene].roleType;
     NSString *strTotalScore = nil;
-    if (1 == roalType) 
+    if (3 == roalType) 
     {
         strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     }
-    else 
+    else if (2 == roalType) 
     {
         strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+    }
+    else 
+    {
+        strTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
     }
     int  totalRoleScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore]; 
 

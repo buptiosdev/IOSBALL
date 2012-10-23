@@ -399,6 +399,8 @@
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
     temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    strTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
+    temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
     NSString *strTotalTime = [NSString stringWithFormat:@"Playtime"];
     int temTotalTime = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalTime];  
@@ -419,6 +421,8 @@
     NSString *strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+    temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    strTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
     temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
     NSString *strTotalTime = [NSString stringWithFormat:@"Playtime"];
@@ -608,6 +612,8 @@
     NSString *strTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
     int temTotalScore = [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     strTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+    temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
+    strTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
     temTotalScore += [[[MyGameScore sharedScore] standardUserDefaults] integerForKey:strTotalScore];
     //更新累计总时间
     NSString *strTotalTime = [NSString stringWithFormat:@"Playtime"];
