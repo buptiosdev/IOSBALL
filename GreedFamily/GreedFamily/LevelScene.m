@@ -209,13 +209,13 @@ int directionCurrent;
         [self addChild:shopmenu];
 
         //add the snake
-        sprite= [CCSprite spriteWithSpriteFrameName:@"snake_1.png"];
+        sprite= [CCSprite spriteWithSpriteFrameName:@"snake_9_1.png"];
         //按照像素设定图片大小
         sprite.scaleX=(70)/[sprite contentSize].width; //按照像素定制图片宽高
         sprite.scaleY=(70)/[sprite contentSize].height;
         CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, 40+[sprite contentSize].height * sprite.scaleY/2);
         sprite.position = startPos;
-        CCAnimation* animation = [CCAnimation animationWithFrame:@"snake_" frameCount:4 delay:0.2f];
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"snake_9_" frameCount:4 delay:0.2f];
         
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,nil];
