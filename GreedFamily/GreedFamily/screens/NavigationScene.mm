@@ -17,6 +17,7 @@
 #import "RoleScene.h"
 #import "SimpleAudioEngine.h"
 #import "AppDelegate.h"
+#import "CCAnimationHelper.h"
 
 @interface Navigation
 -(void)newGame:(id)sender;
@@ -55,28 +56,56 @@
         [self addChild:logo];
         logo.position=CGPointMake(size.width / 2, size.height * 3 / 4 );
         
-        CCSprite *logopanda = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
-        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
-        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
-        logopanda.scale=0.4;
+//        CCSprite *logopanda = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
+//        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
+//        logopanda.scale=0.4;
+//        [self addChild:logopanda];
+//        logopanda.position=CGPointMake(size.width / 6, size.height * 2 / 3 );
+//        
+//        [logopanda runAction:[CCSequence actions:
+//        							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.4],[CCScaleTo actionWithDuration:1 scale:0.45],nil] times:9000],
+//        							nil]];        
+        
+        
+//        CCSprite *logopig = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
+//        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
+//        logopig.scale=0.4;
+//        [self addChild:logopig];
+//        logopig.position=CGPointMake(size.width *5 / 6, size.height * 2 / 3 );
+//        
+//        [logopig runAction:[CCSequence actions:
+//                              [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.45],[CCScaleTo actionWithDuration:1 scale:0.4],nil] times:9000],
+//                              nil]];    
+        
+        //add panda action by lyp 20121029
+        CCSprite *logopanda= [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
+        //按照像素设定图片大小
+        logopanda.scale=0.75; //按照像素定制图片宽高
+        logopanda.position = CGPointMake(size.width / 7, size.height * 2 / 3 );;
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.2f];
+        
+        CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
+        CCSequence *seq = [CCSequence actions: animate,nil];
+        
+        CCAction *moveAction = [CCRepeatForever actionWithAction: seq ];
+        [logopanda runAction:moveAction];
         [self addChild:logopanda];
-        logopanda.position=CGPointMake(size.width / 6, size.height * 2 / 3 );
-        
-        [logopanda runAction:[CCSequence actions:
-        							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.4],[CCScaleTo actionWithDuration:1 scale:0.45],nil] times:9000],
-        							nil]];        
         
         
-        CCSprite *logopig = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
-        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
-        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
-        logopig.scale=0.4;
+        CCSprite *logopig= [CCSprite spriteWithSpriteFrameName:@"logopig_1.png"];
+        //按照像素设定图片大小
+        logopig.scale=0.75; //按照像素定制图片宽高
+        logopig.position = CGPointMake(size.width *6 / 7, size.height * 2 / 3 );
+        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.3f];
+        
+        CCAnimate *animatelogopig = [CCAnimate actionWithAnimation:animationlogopig restoreOriginalFrame:NO];
+        CCSequence *seqlogopig = [CCSequence actions: animatelogopig,nil];
+        
+        CCAction *moveActionlogopig = [CCRepeatForever actionWithAction: seqlogopig ];
+        [logopig runAction:moveActionlogopig];
         [self addChild:logopig];
-        logopig.position=CGPointMake(size.width *5 / 6, size.height * 2 / 3 );
-        
-        [logopig runAction:[CCSequence actions:
-                              [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.45],[CCScaleTo actionWithDuration:1 scale:0.4],nil] times:9000],
-                              nil]];    
         
         
         //set play 

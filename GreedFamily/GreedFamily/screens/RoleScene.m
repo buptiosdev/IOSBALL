@@ -13,14 +13,20 @@
 
 @implementation RoleScene
 
-CCLabelTTF *showLabel;
+CCLabelTTF *landanimalspeed;
+CCLabelTTF *flyanimalspeed;
+CCLabelTTF *storagecapacity;
 
 
 //add by lyp 2012-10-23
 -(void)changeParameter:(int)roletype
 {
-    NSString *showParameter=[NSString stringWithFormat:@"the choose role is %d",roletype];
-    [showLabel setString:showParameter];
+    NSString *landspeed=[NSString stringWithFormat:@"land animal speed is : %d",roletype];
+    NSString *flyspeed=[NSString stringWithFormat:@"fly animal speed is : %d",roletype];
+    NSString *storagesize=[NSString stringWithFormat:@"storage capacity is : %d",roletype];
+    [landanimalspeed setString:landspeed];
+    [flyanimalspeed setString:flyspeed];
+    [storagecapacity setString:storagesize];
 }
 
 //角色选择回调函数，把角色类型写入文件
@@ -101,7 +107,7 @@ CCLabelTTF *showLabel;
         
         menuItem3.scale=spritescale;
         
-        CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems:menuItem3, menuItem1, menuItem2, nil];
+        CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems: menuItem1, menuItem2, menuItem3, nil];
         [radioMenu alignItemsHorizontallyWithPadding:[panda contentSize].width*spritescale];
         [radioMenu setPosition:ccp(screenSize.width/2,screenSize.height*3/4)];
         [menuItem1 setTag:1];
@@ -143,11 +149,21 @@ CCLabelTTF *showLabel;
 //        [self addChild:returnMenu];
         //set return in the left-down corner
         //add by lyp 2012-10-23
-        showLabel=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:40];
-        [showLabel setColor:ccRED];
+        landanimalspeed=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:35];
+        [landanimalspeed setColor:ccRED];
+        [self addChild:landanimalspeed];
+        [landanimalspeed setPosition:ccp(screenSize.width/2, screenSize.height * 0.45)];
+        flyanimalspeed=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:35];
+        [flyanimalspeed setColor:ccRED];
+        [self addChild:flyanimalspeed];
+        [flyanimalspeed setPosition:ccp(screenSize.width/2, screenSize.height * 0.3)];
+        storagecapacity=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:35];
+        [storagecapacity setColor:ccRED];
+        [self addChild:storagecapacity];
+        [storagecapacity setPosition:ccp(screenSize.width/2, screenSize.height * 0.15)];
+        
         [self changeParameter:roleType];
-        [self addChild:showLabel];
-        [showLabel setPosition:ccp(screenSize.width/2, screenSize.height * 0.3)];
+
         
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
