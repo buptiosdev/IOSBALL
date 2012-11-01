@@ -16,6 +16,7 @@
 #import "TouchCatchLayer.h"
 #import "GameMainScene.h"
 #import "NoBodyObjectsLayer.h"
+#import "SimpleAudioEngine.h"
 @implementation Bag
 @synthesize sprite = _sprite;
 //-(void) registerWithTouchDispatcher
@@ -74,6 +75,9 @@
     {
         return;
     }
+    
+
+    [[GameMainScene sharedMainScene] playAudio:Speedup];
     CCLOG(@"hot!!!!!!!!\n");
     if (1 == bagID) 
     {

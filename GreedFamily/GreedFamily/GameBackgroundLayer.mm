@@ -78,9 +78,14 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         
     int order = [GameMainScene sharedMainScene].sceneNum;
     
-    if (order > 0 && order <= 10) 
+    if (order > 0 && order <= 5) 
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"huanqinshort.mp3" loop:YES];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
+    }
+    else if (order > 0 && order <= 10)
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
+
     }
     else if (order > 0 && order <= 15) 
     {
@@ -118,6 +123,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"laugh2.caf"]; 
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"select.caf"]; 
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"toll.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"speedup.caf"];
 }
 
 -(CCSpriteBatchNode*) getSpriteBatch

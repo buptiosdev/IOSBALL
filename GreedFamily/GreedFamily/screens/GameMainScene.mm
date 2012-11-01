@@ -655,7 +655,10 @@ static GameMainScene *instanceOfMainScene;
         case NewHighScore:
             [[SimpleAudioEngine sharedEngine] playEffect:@"drum.caf"];
             break;   
-  
+        case Speedup:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"speedup.caf"];
+            break;
+            
         default:
             break;
     }

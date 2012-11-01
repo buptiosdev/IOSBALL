@@ -44,7 +44,8 @@ typedef enum
     Bombing,
     NewHighScore,
     Laugh1,
-    Laugh2
+    Laugh2,
+    Speedup
     
 }AudioType;
 

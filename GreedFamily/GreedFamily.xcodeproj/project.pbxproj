@@ -277,6 +277,10 @@
 		70C7C3FD15AA7965007D35B5 /* GameCenterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C3FC15AA7965007D35B5 /* GameCenterScene.m */; };
 		70C7C40415AA7FF2007D35B5 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C40315AA7FF2007D35B5 /* GCHelper.m */; };
 		70C7C40615AA86A2007D35B5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C40515AA86A2007D35B5 /* GameKit.framework */; };
+		70D06CCB163D603600466162 /* speedup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CC9163D603600466162 /* speedup.caf */; };
+		70D06CCC163D603600466162 /* speedupqipao.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CCA163D603600466162 /* speedupqipao.caf */; };
+		70D06CD1163D774700466162 /* Animal Farm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD0163D774700466162 /* Animal Farm.mp3 */; };
+		70D06CD3163D77C200466162 /* I'm In Trouble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */; };
 		C6C56C351579DA9C00F60F33 /* GameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* GameScore.mm */; };
 		C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6D634BC157CF3030074818D /* MyGameScore.mm */; };
 /* End PBXBuildFile section */
@@ -752,6 +756,10 @@
 		70C7C40215AA7FF2007D35B5 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCHelper.h; path = tools/GCHelper.h; sourceTree = "<group>"; };
 		70C7C40315AA7FF2007D35B5 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GCHelper.m; path = tools/GCHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		70C7C40515AA86A2007D35B5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		70D06CC9163D603600466162 /* speedup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedup.caf; sourceTree = "<group>"; };
+		70D06CCA163D603600466162 /* speedupqipao.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedupqipao.caf; sourceTree = "<group>"; };
+		70D06CD0163D774700466162 /* Animal Farm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animal Farm.mp3"; sourceTree = "<group>"; };
+		70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I'm In Trouble.mp3"; sourceTree = "<group>"; };
 		C6C56C331579DA9B00F60F33 /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScore.h; sourceTree = "<group>"; };
 		C6C56C341579DA9C00F60F33 /* GameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScore.mm; sourceTree = "<group>"; };
 		C6D634BB157CF3030074818D /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
@@ -1405,6 +1413,8 @@
 		7032FCEF15DB939800E5E108 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				70D06CC9163D603600466162 /* speedup.caf */,
+				70D06CCA163D603600466162 /* speedupqipao.caf */,
 				4A76902615E27C41002F61DB /* drop.caf */,
 				7032FCF015DB939800E5E108 /* bite.caf */,
 				7032FCF215DB939800E5E108 /* bomb.caf */,
@@ -1486,6 +1496,8 @@
 		7094910015EF1539005ADBD8 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */,
+				70D06CD0163D774700466162 /* Animal Farm.mp3 */,
 				7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */,
 				7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */,
 				7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */,
@@ -1653,6 +1665,10 @@
 				70C3D7431606080900F376A0 /* button_default_default.png in Resources */,
 				7043002C16198392008926AB /* gamemain01_default.plist in Resources */,
 				7043002D16198392008926AB /* gamemain01_default.png in Resources */,
+				70D06CCB163D603600466162 /* speedup.caf in Resources */,
+				70D06CCC163D603600466162 /* speedupqipao.caf in Resources */,
+				70D06CD1163D774700466162 /* Animal Farm.mp3 in Resources */,
+				70D06CD3163D77C200466162 /* I'm In Trouble.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
