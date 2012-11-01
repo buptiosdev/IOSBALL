@@ -21,6 +21,7 @@
 		4A7F131015A346790073E99E /* options_check_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7F130E15A346790073E99E /* options_check_d.png */; };
 		4A7F131115A346790073E99E /* options_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7F130F15A346790073E99E /* options_check.png */; };
 		4A7FA06F1580F4B7009A0001 /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7FA06E1580F4B7009A0001 /* LevelScene.m */; };
+		4A7FAAA21642BE9C003CCE3E /* progress.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A7FAAA11642BE98003CCE3E /* progress.jpg */; };
 		70018D9B1541B144001FBF35 /* Bag.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9A1541B144001FBF35 /* Bag.mm */; };
 		70018D9E1541B167001FBF35 /* GamePause.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018D9D1541B166001FBF35 /* GamePause.mm */; };
 		70018DA11541B19D001FBF35 /* GameSky.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70018DA01541B19C001FBF35 /* GameSky.mm */; };
@@ -304,6 +305,7 @@
 		4A7F130F15A346790073E99E /* options_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = options_check.png; path = Resources/options_check.png; sourceTree = "<group>"; };
 		4A7FA06D1580F4B7009A0001 /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 		4A7FA06E1580F4B7009A0001 /* LevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScene.m; sourceTree = "<group>"; };
+		4A7FAAA11642BE98003CCE3E /* progress.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = progress.jpg; sourceTree = "<group>"; };
 		70018D991541B144001FBF35 /* Bag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bag.h; sourceTree = "<group>"; };
 		70018D9A1541B144001FBF35 /* Bag.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bag.mm; sourceTree = "<group>"; };
 		70018D9C1541B166001FBF35 /* GamePause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePause.h; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 				701B2EA8155831270035335F /* bitmapfont.png */,
 				4A78F87E1546D9EB001811B1 /* paused.png */,
 				707FE64715D9459F00C9456C /* cd.png */,
+				4A7FAAA11642BE98003CCE3E /* progress.jpg */,
 				706EAB4B153FBE320003C4B2 /* easy_dis.png */,
 				706EAB4C153FBE320003C4B2 /* easy_dwn.png */,
 				706EAB4D153FBE320003C4B2 /* easy.png */,
@@ -1653,6 +1656,7 @@
 				70C3D7431606080900F376A0 /* button_default_default.png in Resources */,
 				7043002C16198392008926AB /* gamemain01_default.plist in Resources */,
 				7043002D16198392008926AB /* gamemain01_default.png in Resources */,
+				4A7FAAA21642BE9C003CCE3E /* progress.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
