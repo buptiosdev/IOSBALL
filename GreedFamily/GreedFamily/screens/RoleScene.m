@@ -21,9 +21,31 @@ CCLabelTTF *storagecapacity;
 //add by lyp 2012-10-23
 -(void)changeParameter:(int)roletype
 {
-    NSString *landspeed=[NSString stringWithFormat:@"land animal speed is : %d",roletype];
+    NSString *strSpeed=nil;
+    NSString *strCapacity=nil;
+    if(roletype == 1){
+        strSpeed=@"Acceleration_Panda";
+        strCapacity=@"Capacity_Panda";
+        CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
+        ct.percentage=30;
+    }else if(roletype == 2){
+        strSpeed=@"Acceleration_Pig";
+        strCapacity=@"Capacity_Pig";
+        CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
+        ct.percentage=50;
+    }else if(roletype == 3){
+        strSpeed=@"Acceleration_Bird";
+        strCapacity=@"Capacity_Bird";
+        CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
+        ct.percentage=70;
+    }else{
+        return;
+    }
+    int speed= [[NSUserDefaults standardUserDefaults] integerForKey:strSpeed];
+    int capacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity];
+    NSString *landspeed=[NSString stringWithFormat:@"land animal speed is : %d",speed];
     NSString *flyspeed=[NSString stringWithFormat:@"fly animal speed is : %d",roletype];
-    NSString *storagesize=[NSString stringWithFormat:@"storage capacity is : %d",roletype];
+    NSString *storagesize=[NSString stringWithFormat:@"storage capacity is : %d",capacity];
     [landanimalspeed setString:landspeed];
     [flyanimalspeed setString:flyspeed];
     [storagecapacity setString:storagesize];
@@ -162,6 +184,16 @@ CCLabelTTF *storagecapacity;
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(screenSize.width/2, screenSize.height * 0.15)];
         
+        //set progess
+        CCProgressTimer *ct=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        ct.position=ccp( screenSize.width /2 , screenSize.height/2);
+        //ct.position=ccp( 0 , screenSize.height);
+        ct.percentage = 90; //当前进度  
+        ct.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        [self addChild:ct z:0 tag:90]; 
+        
+        
+        
         [self changeParameter:roleType];
 
         
@@ -210,6 +242,7 @@ CCLabelTTF *storagecapacity;
 //        [nextMenu alignItemsHorizontallyWithPadding:0];
 //        [nextMenu setPosition:ccp((screenSize.width)*0.9f,(screenSize.height)*0.1)];
 //        [self addChild:nextMenu];
+        [self scheduleUpdate];
     }
     return self;
 }
@@ -228,6 +261,16 @@ CCLabelTTF *storagecapacity;
     
 	return scene;
     
+}
+
+-(void)update:(ccTime)himi{  
+    CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
+    ct.percentage=50;
+    [self unscheduleUpdate];
+//    ct.percentage++;  
+//    if(ct.percentage>=100){  
+//        ct.percentage=0;  
+//    }  
 }
 
 +(id)sceneWithRoleScene
