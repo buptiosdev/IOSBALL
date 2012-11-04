@@ -120,7 +120,7 @@
         
         
         //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-
+        CCSpriteBatchNode* buttonBatch = [[GameBackgroundLayer sharedGameBackgroundLayer] getButtonBatch];
         for(int i=0;i<3;i++)
         {
             
@@ -131,7 +131,7 @@
             //change size by diff version manual
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;
-            [self addChild:star z:1];
+            [buttonBatch addChild:star z:1];
             //[batch addChild:star z:1];
             //[self addChild:star];
         }
@@ -146,7 +146,7 @@
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;
             //[batch addChild:star z:2];
-            [self addChild:star z:2];
+            [buttonBatch addChild:star z:2];
         }
         
 //        CCLabelTTF *retryLabel=[CCLabelTTF labelWithString:@"Retry" fontName:@"Marker Felt" fontSize:30];

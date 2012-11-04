@@ -26,6 +26,7 @@ typedef enum
     TouchCatchLayerTag,
     ObjectsLayerTag,
     BackGroundLayerTag,
+    ButtonTag,
     
 }MainSceneLayerTags;
 

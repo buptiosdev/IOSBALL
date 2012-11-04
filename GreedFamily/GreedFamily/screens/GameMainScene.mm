@@ -159,7 +159,7 @@ static GameMainScene *instanceOfMainScene;
         }
         
         GameBackgroundLayer *gameBackgroundLayer = [GameBackgroundLayer CreateGameBackgroundLayer];
-        [self addChild:gameBackgroundLayer z:-1 tag:BackGroundLayerTag];
+        [self addChild:gameBackgroundLayer z:1 tag:BackGroundLayerTag];
         
 //        CCSprite* background = [CCSprite spriteWithSpriteFrameName:@"background.png"];
 //        CGSize screenSize = [[CCDirector sharedDirector] winSize];
@@ -289,7 +289,7 @@ static GameMainScene *instanceOfMainScene;
     _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
     _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 );
-    _storagePos = CGPointMake(screenSize.width / 4, 20);
+    _storagePos = CGPointMake(25/2, 25/2);
     _scorePos = CGPointMake(25, screenSize.height - 16);
 }
 

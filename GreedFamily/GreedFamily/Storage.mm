@@ -59,6 +59,38 @@
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         //change size by diff version by manue
         _sprite.position = [GameMainScene sharedMainScene].storagePos;
+        
+        CCSpriteBatchNode* buttonBatch = [[GameBackgroundLayer sharedGameBackgroundLayer] getButtonBatch];
+        //显示仓库大小，最大12
+        for(int i=0;i<12;i++)
+        {
+            
+            
+            CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
+            //change size by diff version query
+            star.position=CGPointMake([GameMainScene sharedMainScene].storagePos.x + 25*i, [GameMainScene sharedMainScene].storagePos.y);
+            //change size by diff version manual
+            star.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
+            star.scaleY=(25)/[star contentSize].height;
+            [buttonBatch addChild:star z:-2];
+            //[batch addChild:star z:1];
+            //[self addChild:star];
+        }
+        
+        for(int i=0;i<capacity;i++)
+        {
+            //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+            CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star_magic.png"];
+            //change size by diff version query
+            star.position=CGPointMake([GameMainScene sharedMainScene].storagePos.x + 25*i, [GameMainScene sharedMainScene].storagePos.y);
+            //change size by diff version manual
+            star.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
+            star.scaleY=(25)/[star contentSize].height;
+            //[batch addChild:star z:2];
+ 
+            [buttonBatch addChild:star z:-1];
+        }
+
         if (2 == playID) 
         {
             CGPoint distance = CGPointMake(240, 0);
@@ -209,7 +241,8 @@
 
 -(void)addFoodToStorage:(int)foodType
 {
-    if (currentCount >= storageCapacity) 
+    //大于时出错了
+    if (currentCount > storageCapacity+1) 
     {
         CCLOG(@"storage is alread full!\n");
         return;
@@ -671,7 +704,7 @@
 
 -(void)checkMax
 {
-    if (currentCount == storageCapacity)
+    if (currentCount == storageCapacity+1)
     {
         id actionScale = [CCScaleBy actionWithDuration:2];    
         [[[foodArray objectAtIndex:0] mySprite] runAction:actionScale];

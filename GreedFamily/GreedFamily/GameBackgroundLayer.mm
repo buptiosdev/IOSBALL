@@ -43,7 +43,10 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         // batch node for all dynamic elements
         //CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
         CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"gamemain01_default.png" capacity:100];
-        [self addChild:batch z:1 tag:BatchTag];
+        [self addChild:batch z:2 tag:BatchTag];
+        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"button_default_default.png" capacity:100];
+        [self addChild:batch2 z:1 tag:ButtonTag];
+
         
         // batch node for all animation elements
 //        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
@@ -80,11 +83,11 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
     
     if (order > 0 && order <= 5) 
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
     }
     else if (order > 0 && order <= 10)
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
 
     }
     else if (order > 0 && order <= 15) 
@@ -129,6 +132,10 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 -(CCSpriteBatchNode*) getSpriteBatch
 {
 	return (CCSpriteBatchNode*)[self getChildByTag:BatchTag];
+}
+-(CCSpriteBatchNode*) getButtonBatch
+{
+	return (CCSpriteBatchNode*)[self getChildByTag:ButtonTag];
 }
 
 //-(CCSpriteBatchNode*) getAnimationBatch
