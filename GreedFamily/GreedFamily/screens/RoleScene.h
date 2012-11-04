@@ -10,7 +10,10 @@
 #import "cocos2d.h"
 
 @interface RoleScene : CCLayer {
-    
+    CCLabelTTF *landanimalspeed;
+    CCLabelTTF *flyanimalspeed;
+    CCLabelTTF *storagecapacity;
+    int roleType;
 }
 +(id)sceneWithRoleScene;
 +(id)scene;

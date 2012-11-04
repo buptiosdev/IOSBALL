@@ -84,7 +84,7 @@
         //按照像素设定图片大小
         logopanda.scale=0.75; //按照像素定制图片宽高
         logopanda.position = CGPointMake(size.width / 7, size.height * 2 / 3 );;
-        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.2f];
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.15f];
         
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,nil];
@@ -98,7 +98,7 @@
         //按照像素设定图片大小
         logopig.scale=0.75; //按照像素定制图片宽高
         logopig.position = CGPointMake(size.width *6 / 7, size.height * 2 / 3 );
-        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.3f];
+        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.20f];
         
         CCAnimate *animatelogopig = [CCAnimate actionWithAnimation:animationlogopig restoreOriginalFrame:NO];
         CCSequence *seqlogopig = [CCSequence actions: animatelogopig,nil];

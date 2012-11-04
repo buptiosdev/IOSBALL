@@ -11,11 +11,12 @@
 #import "NavigationScene.h"
 #import "LevelScene.h"
 
-@implementation RoleScene
+#define LAND_SPEED_TAG 10
+#define FLY_SPEED_TAG 11
+#define STORAGE_CAPACITY_TAG 12
 
-CCLabelTTF *landanimalspeed;
-CCLabelTTF *flyanimalspeed;
-CCLabelTTF *storagecapacity;
+
+@implementation RoleScene
 
 
 //add by lyp 2012-10-23
@@ -26,29 +27,33 @@ CCLabelTTF *storagecapacity;
     if(roletype == 1){
         strSpeed=@"Acceleration_Panda";
         strCapacity=@"Capacity_Panda";
-        CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
-        ct.percentage=30;
     }else if(roletype == 2){
         strSpeed=@"Acceleration_Pig";
         strCapacity=@"Capacity_Pig";
-        CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
-        ct.percentage=50;
     }else if(roletype == 3){
         strSpeed=@"Acceleration_Bird";
         strCapacity=@"Capacity_Bird";
-        CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
-        ct.percentage=70;
     }else{
         return;
     }
-    int speed= [[NSUserDefaults standardUserDefaults] integerForKey:strSpeed];
+    int landspeed= [[NSUserDefaults standardUserDefaults] integerForKey:strSpeed];
     int capacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity];
-    NSString *landspeed=[NSString stringWithFormat:@"land animal speed is : %d",speed];
-    NSString *flyspeed=[NSString stringWithFormat:@"fly animal speed is : %d",roletype];
-    NSString *storagesize=[NSString stringWithFormat:@"storage capacity is : %d",capacity];
-    [landanimalspeed setString:landspeed];
-    [flyanimalspeed setString:flyspeed];
-    [storagecapacity setString:storagesize];
+    if(capacity==0){
+        capacity=8;
+    }
+    CCProgressTimer *ctlandanimal=(CCProgressTimer*)[self getChildByTag:LAND_SPEED_TAG];
+    ctlandanimal.percentage=landspeed*100/12;
+    CCProgressTimer *ctflyanimal=(CCProgressTimer*)[self getChildByTag:FLY_SPEED_TAG];
+    ctflyanimal.percentage=roletype*100/3;
+    CCProgressTimer *ctstorage=(CCProgressTimer*)[self getChildByTag:STORAGE_CAPACITY_TAG];
+    ctstorage.percentage=capacity*100/10;
+    
+//    NSString *landspeed=[NSString stringWithFormat:@"land animal speed is : %d",speed];
+//    NSString *flyspeed=[NSString stringWithFormat:@"fly animal speed is : %d",roletype];
+//    NSString *storagesize=[NSString stringWithFormat:@"storage capacity is : %d",capacity];
+//    [landanimalspeed setString:landspeed];
+//    [flyanimalspeed setString:flyspeed];
+//    [storagecapacity setString:storagesize];
 }
 
 //角色选择回调函数，把角色类型写入文件
@@ -105,7 +110,7 @@ CCLabelTTF *storagecapacity;
                                                                    selectedSprite:panda1 
                                                                            target:self 
                                                                          selector:@selector(chooseRole:)];
-        float spritescale=100/[panda contentSize].width;
+        float spritescale=80/[panda contentSize].width;
         menuItem1.scale=spritescale;
         
         CCSprite * pig= [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
@@ -116,7 +121,7 @@ CCLabelTTF *storagecapacity;
                                                               selectedSprite:pig1 
                                                                       target:self 
                                                                     selector:@selector(chooseRole:)];
-        menuItem2.scale=spritescale;
+        menuItem2.scale=80/[pig contentSize].width;
         
         CCSprite * bird= [CCSprite spriteWithSpriteFrameName:@"logobird.png"];
         [bird setColor:ccGRAY];
@@ -127,10 +132,10 @@ CCLabelTTF *storagecapacity;
                                                                       target:self 
                                                                     selector:@selector(chooseRole:)];
         
-        menuItem3.scale=spritescale;
+        menuItem3.scale=80/[bird contentSize].width;
         
         CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems: menuItem1, menuItem2, menuItem3, nil];
-        [radioMenu alignItemsHorizontallyWithPadding:[panda contentSize].width*spritescale];
+        [radioMenu alignItemsHorizontallyWithPadding:100*0.75];
         [radioMenu setPosition:ccp(screenSize.width/2,screenSize.height*3/4)];
         [menuItem1 setTag:1];
         [menuItem2 setTag:2];
@@ -138,7 +143,7 @@ CCLabelTTF *storagecapacity;
         
         //默认要写一次文件，设置为小鸟
         NSString *strName = [NSString stringWithFormat:@"RoleType"];
-        int roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
+        roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
         if (roleType > 3 || roleType < 1) 
         {
             roleType = 1;
@@ -171,32 +176,36 @@ CCLabelTTF *storagecapacity;
 //        [self addChild:returnMenu];
         //set return in the left-down corner
         //add by lyp 2012-10-23
-        landanimalspeed=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:35];
+        landanimalspeed=[CCLabelTTF labelWithString:@" land-speed: " fontName:@"Marker Felt" fontSize:30];
         [landanimalspeed setColor:ccRED];
         [self addChild:landanimalspeed];
-        [landanimalspeed setPosition:ccp(screenSize.width/2, screenSize.height * 0.45)];
-        flyanimalspeed=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:35];
+        int labelpos=landanimalspeed.contentSize.width/2;
+        [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
+        flyanimalspeed=[CCLabelTTF labelWithString:@" fly-speed : " fontName:@"Marker Felt" fontSize:30];
         [flyanimalspeed setColor:ccRED];
         [self addChild:flyanimalspeed];
-        [flyanimalspeed setPosition:ccp(screenSize.width/2, screenSize.height * 0.3)];
-        storagecapacity=[CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:35];
+        [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.35)];
+        storagecapacity=[CCLabelTTF labelWithString:@" store-size: " fontName:@"Marker Felt" fontSize:30];
         [storagecapacity setColor:ccRED];
         [self addChild:storagecapacity];
-        [storagecapacity setPosition:ccp(screenSize.width/2, screenSize.height * 0.15)];
+        [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.2)];
         
         //set progess
-        CCProgressTimer *ct=[CCProgressTimer progressWithFile:@"progress.jpg"];
-        ct.position=ccp( screenSize.width /2 , screenSize.height/2);
-        //ct.position=ccp( 0 , screenSize.height);
-        ct.percentage = 90; //当前进度  
-        ct.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
-        [self addChild:ct z:0 tag:90]; 
+        CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        int progresspos=ctlandanimal.contentSize.width/2+landanimalspeed.contentSize.width;
+        ctlandanimal.position=ccp( progresspos , screenSize.height * 0.5);
+        ctlandanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        [self addChild:ctlandanimal z:0 tag:LAND_SPEED_TAG]; 
         
+        CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        ctflyanimal.position=ccp( progresspos, screenSize.height * 0.35);
+        ctflyanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        [self addChild:ctflyanimal z:0 tag:FLY_SPEED_TAG]; 
         
-        
-        [self changeParameter:roleType];
-
-        
+        CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        ctstorage.position=ccp( progresspos , screenSize.height * 0.2);
+        ctstorage.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        [self addChild:ctstorage z:0 tag:STORAGE_CAPACITY_TAG]; 
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
@@ -264,9 +273,8 @@ CCLabelTTF *storagecapacity;
 }
 
 -(void)update:(ccTime)himi{  
-    CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:90]; 
-    ct.percentage=50;
     [self unscheduleUpdate];
+    [self changeParameter:roleType];
 //    ct.percentage++;  
 //    if(ct.percentage>=100){  
 //        ct.percentage=0;  
