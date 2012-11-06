@@ -459,7 +459,7 @@
         else
         {
             CCLOG(@"flyaction error");
-            assert("action error");
+            assert(0);
         }
     }
 

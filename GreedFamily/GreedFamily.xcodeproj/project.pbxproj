@@ -282,6 +282,10 @@
 		70D06CCC163D603600466162 /* speedupqipao.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CCA163D603600466162 /* speedupqipao.caf */; };
 		70D06CD1163D774700466162 /* Animal Farm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD0163D774700466162 /* Animal Farm.mp3 */; };
 		70D06CD3163D77C200466162 /* I'm In Trouble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */; };
+		70F7841E16496ADC00A77FD4 /* bitmapRed.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70F7841C16496ADB00A77FD4 /* bitmapRed.fnt */; };
+		70F7841F16496ADC00A77FD4 /* bitmapRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7841D16496ADC00A77FD4 /* bitmapRed.png */; };
+		70F7842216496CAC00A77FD4 /* bitmapBlue.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70F7842016496CAB00A77FD4 /* bitmapBlue.fnt */; };
+		70F7842316496CAC00A77FD4 /* bitmapBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7842116496CAB00A77FD4 /* bitmapBlue.png */; };
 		C6C56C351579DA9C00F60F33 /* GameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6C56C341579DA9C00F60F33 /* GameScore.mm */; };
 		C6D634BD157CF3030074818D /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6D634BC157CF3030074818D /* MyGameScore.mm */; };
 /* End PBXBuildFile section */
@@ -762,6 +766,10 @@
 		70D06CCA163D603600466162 /* speedupqipao.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedupqipao.caf; sourceTree = "<group>"; };
 		70D06CD0163D774700466162 /* Animal Farm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animal Farm.mp3"; sourceTree = "<group>"; };
 		70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I'm In Trouble.mp3"; sourceTree = "<group>"; };
+		70F7841C16496ADB00A77FD4 /* bitmapRed.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapRed.fnt; path = Resources/bitmapRed.fnt; sourceTree = "<group>"; };
+		70F7841D16496ADC00A77FD4 /* bitmapRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapRed.png; path = Resources/bitmapRed.png; sourceTree = "<group>"; };
+		70F7842016496CAB00A77FD4 /* bitmapBlue.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapBlue.fnt; path = Resources/bitmapBlue.fnt; sourceTree = "<group>"; };
+		70F7842116496CAB00A77FD4 /* bitmapBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapBlue.png; path = Resources/bitmapBlue.png; sourceTree = "<group>"; };
 		C6C56C331579DA9B00F60F33 /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScore.h; sourceTree = "<group>"; };
 		C6C56C341579DA9C00F60F33 /* GameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScore.mm; sourceTree = "<group>"; };
 		C6D634BB157CF3030074818D /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
@@ -853,12 +861,11 @@
 		70081E03153F987C003F042A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				70F784031649673D00A77FD4 /* font */,
 				7094910D15EF5255005ADBD8 /* picture */,
 				7094910015EF1539005ADBD8 /* music */,
 				7032FD1215DB941C00E5E108 /* specialist */,
 				7032FCEF15DB939800E5E108 /* audio */,
-				701B2EA7155831270035335F /* bitmapfont.fnt */,
-				701B2EA8155831270035335F /* bitmapfont.png */,
 				4A78F87E1546D9EB001811B1 /* paused.png */,
 				707FE64715D9459F00C9456C /* cd.png */,
 				4A7FAAA11642BE98003CCE3E /* progress.jpg */,
@@ -1536,6 +1543,19 @@
 			name = picture;
 			sourceTree = "<group>";
 		};
+		70F784031649673D00A77FD4 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				70F7842016496CAB00A77FD4 /* bitmapBlue.fnt */,
+				70F7842116496CAB00A77FD4 /* bitmapBlue.png */,
+				70F7841C16496ADB00A77FD4 /* bitmapRed.fnt */,
+				70F7841D16496ADC00A77FD4 /* bitmapRed.png */,
+				701B2EA7155831270035335F /* bitmapfont.fnt */,
+				701B2EA8155831270035335F /* bitmapfont.png */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1673,6 +1693,10 @@
 				70D06CD1163D774700466162 /* Animal Farm.mp3 in Resources */,
 				70D06CD3163D77C200466162 /* I'm In Trouble.mp3 in Resources */,
 				4A7FAAA21642BE9C003CCE3E /* progress.jpg in Resources */,
+				70F7841E16496ADC00A77FD4 /* bitmapRed.fnt in Resources */,
+				70F7841F16496ADC00A77FD4 /* bitmapRed.png in Resources */,
+				70F7842216496CAC00A77FD4 /* bitmapBlue.fnt in Resources */,
+				70F7842316496CAC00A77FD4 /* bitmapBlue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

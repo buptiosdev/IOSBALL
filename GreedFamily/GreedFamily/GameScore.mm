@@ -89,21 +89,23 @@ static GameScore  *instanceOfgameScore;
         //初始化得分
         my_nowlevelscore = 0;
         
-        totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        //totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapRed.fnt"];
         //change size by diff version
         totalScoreLabel.position = ccpAdd(my_score.position, distance2);
         totalScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
-        totalScoreLabel.scale = 0.3;
+        totalScoreLabel.scale = 0.5;
         [self addChild:totalScoreLabel z:-2];
         
         int temp_hightestscore;
         temp_hightestscore = [self getGameHighestScore:gamelevel];
-        hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt" ];
+        //hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt" ];
+        hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapBlue.fnt" ];
         [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_hightestscore]];
         //change size by diff version
         hightestTotalScoreLabel.position = ccpAdd([GameMainScene sharedMainScene].scorePos, distance3);
         hightestTotalScoreLabel.anchorPoint = CGPointMake(0.5, 2.0f);
-        hightestTotalScoreLabel.scale = 0.3;
+        //hightestTotalScoreLabel.scale = 0.3;
         [self addChild:hightestTotalScoreLabel z:-2];
         
     
