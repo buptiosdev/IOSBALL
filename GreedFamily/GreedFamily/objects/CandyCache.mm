@@ -125,12 +125,12 @@
     [batch addChild:remainBallScore];
 
     //剩余球数
-    remainBallLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    remainBallLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum.fnt"];
     [remainBallLabel setString:[NSString stringWithFormat:@"x%i", [GameMainScene sharedMainScene].mainscenParam.candyCount]];
     //change size by diff version
     remainBallLabel.position = [GameMainScene sharedMainScene].remainBallLabelPos; 
     remainBallLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
-    remainBallLabel.scale = 0.4;
+    remainBallLabel.scale = 0.6;
     [self addChild:remainBallLabel z:-2];
 }
 

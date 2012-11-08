@@ -279,7 +279,7 @@ static GameMainScene *instanceOfMainScene;
     
     _initPos = CGPointMake(-100, -100);
     _remainBallPos = CGPointMake(screenSize.width -85, screenSize.height - 20);
-    _remainBallLabelPos = CGPointMake(screenSize.width - 60, screenSize.height - 5);
+    _remainBallLabelPos = CGPointMake(screenSize.width - 60, screenSize.height);
     _pepperMenuPos = CGPointMake(screenSize.width - 120, 15);
     //_crystalMenuPos = CGPointMake(screenSize.width - 60, 25);
     _initMenuPos = CGPointMake(screenSize.width + 40, 15);

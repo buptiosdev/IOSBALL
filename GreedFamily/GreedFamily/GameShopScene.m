@@ -144,11 +144,11 @@
     int  totalRoleScore = [[NSUserDefaults standardUserDefaults] integerForKey:strTotalScore]; 
     _buyedList = [[NSUserDefaults standardUserDefaults] integerForKey:strBuyedList];
     //得分
-    CCLabelBMFont*  getTotalScore = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
-    [getTotalScore setString:[NSString stringWithFormat:@"x%i", totalRoleScore]];
-    getTotalScore.position = CGPointMake(20, screenSize.height - 200);
+    CCLabelBMFont*  getTotalScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum.fnt"];
+    [getTotalScore setString:[NSString stringWithFormat:@"%i", totalRoleScore]];
+    getTotalScore.position = CGPointMake(30, screenSize.height - 150);
     getTotalScore.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getTotalScore.scale = 0.4;
+    getTotalScore.scale = 1.2;
     [self addChild:getTotalScore z:-2 tag:3];
     
 }
@@ -167,11 +167,11 @@
                                                                                  target:self 
                                                                                selector:@selector(verifyAddSpeedOnce:)];
             CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速10％"] 
-                                                     fontName:@"Marker Felt" fontSize:10];
+                                                     fontName:@"Marker Felt" fontSize:15];
             CCLabelTTF *LabelSpend1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED1] 
-                                                       fontName:@"Marker Felt" fontSize:10];
-            [Labelnum1 setColor:ccYELLOW];
-            [LabelSpend1 setColor:ccYELLOW];
+                                                       fontName:@"Marker Felt" fontSize:15];
+            [Labelnum1 setColor:ccRED];
+            [LabelSpend1 setColor:ccRED];
             [addSpeedOnceMenu addChild:Labelnum1];
             [addSpeedOnceMenu addChild:LabelSpend1];
             LabelSpend1.anchorPoint=CGPointMake(0, 2);
@@ -192,11 +192,11 @@
                                                                                   target:self 
                                                                                 selector:@selector(verifyAddSpeedTwice:)];
             CCLabelTTF *Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速20％"] 
-                                                     fontName:@"Marker Felt" fontSize:10];
+                                                     fontName:@"Marker Felt" fontSize:15];
             CCLabelTTF *LabelSpend2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED2] 
-                                                       fontName:@"Marker Felt" fontSize:10];
-            [Labelnum2 setColor:ccYELLOW];
-            [LabelSpend2 setColor:ccYELLOW];
+                                                       fontName:@"Marker Felt" fontSize:15];
+            [Labelnum2 setColor:ccRED];
+            [LabelSpend2 setColor:ccRED];
             [addSpeedTwiceMenu addChild:LabelSpend2];
             [addSpeedTwiceMenu addChild:Labelnum2];
             LabelSpend2.anchorPoint=CGPointMake(0, 2);
@@ -217,11 +217,11 @@
                                                                                   target:self 
                                                                                 selector:@selector(verifyAddSpeedThird:)];
             CCLabelTTF *Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"加速30％"] 
-                                                     fontName:@"Marker Felt" fontSize:10];
+                                                     fontName:@"Marker Felt" fontSize:15];
             CCLabelTTF *LabelSpend3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SPEED3] 
-                                                       fontName:@"Marker Felt" fontSize:10];
-            [Labelnum3 setColor:ccYELLOW];
-            [LabelSpend3 setColor:ccYELLOW];
+                                                       fontName:@"Marker Felt" fontSize:15];
+            [Labelnum3 setColor:ccRED];
+            [LabelSpend3 setColor:ccRED];
             [addSpeedThirdMenu addChild:LabelSpend3];
             [addSpeedThirdMenu addChild:Labelnum3];
             LabelSpend3.anchorPoint=CGPointMake(0, 2);
@@ -249,11 +249,11 @@
                                                                                    target:self 
                                                                                  selector:@selector(verifyAddStorageOnce:)];
             CCLabelTTF *Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库加1"] 
-                                                     fontName:@"Marker Felt" fontSize:10];
+                                                     fontName:@"Marker Felt" fontSize:15];
             CCLabelTTF *LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",STORAGE1] 
-                                                       fontName:@"Marker Felt" fontSize:10];
-            [Labelnum4 setColor:ccYELLOW];
-            [LabelSpend4 setColor:ccYELLOW];
+                                                       fontName:@"Marker Felt" fontSize:15];
+            [Labelnum4 setColor:ccRED];
+            [LabelSpend4 setColor:ccRED];
             [addStorageOnceMenu addChild:LabelSpend4];
             [addStorageOnceMenu addChild:Labelnum4];
             LabelSpend4.anchorPoint=CGPointMake(0, 2);
@@ -273,11 +273,11 @@
                                                                                     target:self 
                                                                                   selector:@selector(verifyAddStorageTwice:)];
             CCLabelTTF *Labelnum5=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库加2"] 
-                                                     fontName:@"Marker Felt" fontSize:10];
+                                                     fontName:@"Marker Felt" fontSize:15];
             CCLabelTTF *LabelSpend5=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",STORAGE2] 
-                                                       fontName:@"Marker Felt" fontSize:10]; 
-            [Labelnum5 setColor:ccYELLOW];
-            [LabelSpend5 setColor:ccYELLOW];
+                                                       fontName:@"Marker Felt" fontSize:15]; 
+            [Labelnum5 setColor:ccRED];
+            [LabelSpend5 setColor:ccRED];
             [addStorageTwiceMenu addChild:LabelSpend5];
             [addStorageTwiceMenu addChild:Labelnum5];
             LabelSpend5.anchorPoint=CGPointMake(0, 2);

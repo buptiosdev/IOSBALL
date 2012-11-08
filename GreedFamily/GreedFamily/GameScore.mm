@@ -82,30 +82,28 @@ static GameScore  *instanceOfgameScore;
         my_highestscore.color = ccc3(255,0,0);
         //change size by diff version
         CGPoint distance1 = CGPointMake(0, -30);
-        CGPoint distance2 = CGPointMake(48, 11);
-        CGPoint distance3 = CGPointMake(48, 1);
+        CGPoint distance2 = CGPointMake(48, 20);
+        CGPoint distance3 = CGPointMake(48, 25);
         my_highestscore.position =  ccpAdd([GameMainScene sharedMainScene].scorePos, distance1);     
         [self addChild:my_highestscore];
         //初始化得分
         my_nowlevelscore = 0;
         
-        //totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
-        totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapRed.fnt"];
+        totalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum.fnt"];
         //change size by diff version
         totalScoreLabel.position = ccpAdd(my_score.position, distance2);
         totalScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
-        totalScoreLabel.scale = 0.5;
+        totalScoreLabel.scale = 0.6;
         [self addChild:totalScoreLabel z:-2];
         
         int temp_hightestscore;
         temp_hightestscore = [self getGameHighestScore:gamelevel];
-        //hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt" ];
-        hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapBlue.fnt" ];
+        hightestTotalScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum.fnt" ];
         [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_hightestscore]];
         //change size by diff version
         hightestTotalScoreLabel.position = ccpAdd([GameMainScene sharedMainScene].scorePos, distance3);
         hightestTotalScoreLabel.anchorPoint = CGPointMake(0.5, 2.0f);
-        //hightestTotalScoreLabel.scale = 0.3;
+        hightestTotalScoreLabel.scale = 0.6;
         [self addChild:hightestTotalScoreLabel z:-2];
         
     
@@ -162,12 +160,12 @@ static GameScore  *instanceOfgameScore;
     }
     my_nowlevelscore += (continuousflag-1)*2;
     
-    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
-    [getContinuousAward setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapRed.fnt"];
+    [getContinuousAward setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     
     getContinuousAward.position = CGPointMake(random()%20 + 10, 80);
     getContinuousAward.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getContinuousAward.scale = 0.5;
+    getContinuousAward.scale = 0.6;
     getContinuousAward.color = ccBLUE;
 
     //将5个动作组合为一个序列，注意不要忘了用nil结尾。 
@@ -220,7 +218,7 @@ static GameScore  *instanceOfgameScore;
     [self unschedule:@selector(setScoreLabel:)];
     //更新得分
     //CCLOG(@"Into setScoreLable\n\n");
-    [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];    
+    [totalScoreLabel setString:[NSString stringWithFormat:@"%i", my_nowlevelscore]];    
 }
 
 
@@ -267,12 +265,12 @@ static GameScore  *instanceOfgameScore;
     my_nowlevelscore += tempnowscore;
     //接特效
     //加分特效
-    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
-    [getBaseScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum3.fnt"];
+    [getBaseScore setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     
     getBaseScore.position = CGPointMake(random()%20 + 10, 80);
     getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getBaseScore.scale = 0.5;
+    getBaseScore.scale = 0.6;
     getBaseScore.color = ccYELLOW;
     [self addChild:getBaseScore z:-2 tag:BaseScoreTag];
     [self schedule:@selector(removeBaseScore:) interval:10];
@@ -324,11 +322,11 @@ static GameScore  *instanceOfgameScore;
     //接特效
     //加分特效
 
-    CCLabelBMFont*  getAwardScore = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
-    [getAwardScore setString:[NSString stringWithFormat:@"x%i", tempnowscore]];
+    CCLabelBMFont*  getAwardScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum3.fnt"];
+    [getAwardScore setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     getAwardScore.position = CGPointMake(random()%20 + 20, 80);
     getAwardScore.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getAwardScore.scale = 0.5;
+    getAwardScore.scale = 0.6;
     getAwardScore.color = ccRED;
 
     //将5个劢作组合为一个序列，注意丌要忘了用nil结尾。 
@@ -373,7 +371,7 @@ static GameScore  *instanceOfgameScore;
     temp_highestscore = [self getGameHighestScore:gamelevel];
     
     //[totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
-    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",temp_highestscore]];
+    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_highestscore]];
     
 }
 
@@ -383,7 +381,7 @@ static GameScore  *instanceOfgameScore;
     CCLOG(@"Into updateScoreLabel  哈哈哈哈\n");
     
     //[totalScoreLabel setString:[NSString stringWithFormat:@"x%i",now_level_score]];
-    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",highest_level_score]];
+    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",highest_level_score]];
     return 0;
 }
 
@@ -493,13 +491,13 @@ static GameScore  *instanceOfgameScore;
         
         //更新左上角关卡的值 
         
-        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"x%i",my_nowlevelscore]];        
-        [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]]; 
+        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",my_nowlevelscore]];        
+        [totalScoreLabel setString:[NSString stringWithFormat:@"%i", my_nowlevelscore]]; 
         isnewrecord=1;
     }
     else
     {
-        [totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
+        [totalScoreLabel setString:[NSString stringWithFormat:@"%i", my_nowlevelscore]];
     }
     
     //返回的星级评定
