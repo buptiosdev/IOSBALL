@@ -102,9 +102,9 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
 	CGSize screenSize = [CCDirector sharedDirector].winSize;
 	float widthInMeters = (screenSize.width) / PTM_RATIO;
 	float heightInMeters = screenSize.height / PTM_RATIO;
-    //change size by diff version manual
-	b2Vec2 lowerLeftCorner = b2Vec2(0, 120/PTM_RATIO);
-	b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 120/PTM_RATIO);
+    //change size by diff version query
+	b2Vec2 lowerLeftCorner = b2Vec2(0, 60/PTM_RATIO);
+	b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 60/PTM_RATIO);
 	b2Vec2 upperLeftCorner = b2Vec2(0, heightInMeters);
 	b2Vec2 upperRightCorner = b2Vec2(widthInMeters, heightInMeters);
 	
@@ -266,7 +266,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    CGPoint flyVelocity = bodyNode.otherLineSpeed;
+                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, 0.5);
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
                     bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
@@ -307,7 +307,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    CGPoint flyVelocity = bodyNode.otherLineSpeed;
+                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, 0.5);
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
@@ -325,9 +325,11 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     bodyNode.hitPoints = -1;
                 
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
+                    PropertyCache* propCache = (PropertyCache *)[self getChildByTag:PropCacheTag];
                     if (candyCache != NULL)
                     {
                         candyCache.aliveCandy--;
+                        propCache.aliveProp--;
                     }
                     
                 }

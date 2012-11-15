@@ -11,6 +11,7 @@
 #import "LandCandyCache.h"
 #import "GameBackgroundLayer.h"
 #import "CCAnimationHelper.h"
+#import "GameMainScene.h"
 
 @interface LandCandyEntity (PrivateMethods)
 -(id)initLandCandy:(int)balltype Pos:(CGPoint)pos BodyVelocity:(CGPoint)bodyVelocity;
@@ -47,10 +48,10 @@
             spriteName=@"candy-_1.png";
             break;
         case 3:
-            spriteName=@"crystallball.png";
+            spriteName=@"magic-.png";
             break;
         case 4:
-            spriteName=@"blackbomb.png";
+            spriteName=@"bomb-.png";
             break;
         case 5:
             spriteName=@"ice-.png";
@@ -59,7 +60,7 @@
             spriteName=@"pepper-.png";
             break;
         case 7:
-            spriteName=@"cake.png";
+            spriteName=@"garlic-.png";
             break;
         default:
             break;
@@ -115,13 +116,21 @@
 //        self.sprite.position = pos;
 //        [self addChild:self.sprite];
         
-        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
+        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
 
         //按照像素设定图片大小
-        //change size by diff version manual
-        self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(40)/[self.sprite contentSize].height;
+        if (balltype > 2)
+        {
+            self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(35)/[self.sprite contentSize].height;
+        }
+        else
+        {
+            self.sprite.scaleX=(30)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(30)/[self.sprite contentSize].height;
+
+        }
         [batch addChild:self.sprite];
         self.sprite.position = pos;
         
@@ -190,6 +199,7 @@
         system.positionType = kCCPositionTypeGrouped;
         system.autoRemoveOnFinish = YES;
         system.position = self.sprite.position;
+        [[GameMainScene sharedMainScene] playAudio:Droping];
         [self addChild:system];
     }
 }

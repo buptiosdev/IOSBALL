@@ -1,5 +1,6 @@
 #import "OptionsScene.h"
 #import "NavigationScene.h"
+#import "SimpleAudioEngine.h"
 
 @implementation OptionsScene
 
@@ -26,24 +27,25 @@
 		
 		self.isTouchEnabled = YES;
 		CGSize screenSize = [[CCDirector sharedDirector] winSize];
-//		CCSprite * background = [CCSprite spriteWithFile:@"background_1.png"];
-//		[background setPosition:ccp(160,240)];
-//		[self addChild:background];
-		
-//		CCBitmapFontAtlas * difficultyLabel = [CCBitmapFontAtlas labelWithString:@"DIFFICULTY" fntFile:@"hud_font.fnt"];
-//		[difficultyLabel setColor:ccRED];
-//		[self addChild:difficultyLabel];
-//		[difficultyLabel setPosition:ccp(80,350)];
-		
+        //set the background pic
+		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+        background.scaleY=(screenSize.height)/[background contentSize].height;
+        NSAssert( background != nil, @"background must be non-nil");
+		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+		[self addChild:background];
+        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
+        
 		//CCBitmapFontAtlas * musicLabel = [CCBitmapFontAtlas labelWithString:@"MUSIC" fntFile:@"hud_font.fnt"];
         CCLabelTTF *musicLabel=[CCLabelTTF labelWithString:@"MUSIC" fontName:@"Marker Felt" fontSize:30];
-		[musicLabel setColor:ccRED];
+		[musicLabel setColor:ccYELLOW];
 		[self addChild:musicLabel];
 		[musicLabel setPosition:ccp((screenSize.width)/3,(screenSize.height)*3/4)];
 		
 		//CCBitmapFontAtlas * soundLabel = [CCBitmapFontAtlas labelWithString:@"SOUND" fntFile:@"hud_font.fnt"];
         CCLabelTTF *soundLabel=[CCLabelTTF labelWithString:@"SOUND" fontName:@"Marker Felt" fontSize:30];
-		[soundLabel setColor:ccRED];
+		[soundLabel setColor:ccYELLOW];
 		[self addChild:soundLabel];
 		[soundLabel setPosition:ccp((screenSize.width)/3,(screenSize.height)/2)];
 		
@@ -74,21 +76,15 @@
 		CCMenuItemToggle * sound = [CCMenuItemToggle itemWithTarget:self selector:@selector(changeSound:) items:unchecked2,checked2,nil];
 		
 		
-//		CCMenuItemImage * goback = [CCMenuItemImage itemFromNormalImage:@"options_goback.png"
-//														   selectedImage:@"options_goback.png" 
-//														   disabledImage:@"options_goback.png"
-//																  target:self
-//																selector:@selector(goBack:)];
-        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"GO Back" fontName:@"Marker Felt" fontSize:25];
-        [returnLabel setColor:ccRED];
-        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(goBack:)];
-        
+
+//        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"GO Back" fontName:@"Marker Felt" fontSize:25];
+//        [returnLabel setColor:ccRED];
+//        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(goBack:)];
 //		[difficulty setPosition:ccp(220,350)];
 		[music setPosition:ccp((screenSize.width)*2/3,(screenSize.height)*3/4+10)];
 		[sound setPosition:ccp((screenSize.width)*2/3,(screenSize.height)/2+10)];
-		[returnBtn setPosition:ccp((screenSize.width)/2,(screenSize.height)/4)];
 		
-		CCMenu * menu = [CCMenu menuWithItems:music,sound,returnBtn,nil];
+		CCMenu * menu = [CCMenu menuWithItems:music,sound,nil];
 		[self addChild:menu];
 		[menu setPosition:ccp(0,0)];
 		//[menu alignItemsHorizontallyWithPadding:23];
@@ -101,6 +97,20 @@
 //			difficulty.selectedIndex =0;
 //		else if([usrDef integerForKey:@"difficulty"] == 1)
 //			difficulty.selectedIndex =1;
+        
+        CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        returnBtn1.scale=1.1;
+        CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
+                                                               selectedSprite:returnBtn1 
+                                                                       target:self 
+                                                                     selector:@selector(returnMain)];
+        returnItem.scale=(45)/[returnBtn contentSize].width; //按照像素定制图片宽高
+        CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
+        [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scale * 0.5,
+                                    [returnBtn contentSize].height * returnItem.scale * 0.5)];
+        
+        [self addChild:returnmenu];
 		
     }
     return self;
@@ -131,13 +141,30 @@
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
 	if(sender.selectedIndex ==1)
+    {
+        int randomNum = random()%2;
+        
+        if (0 == randomNum) 
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+        }
+        else
+        {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+
+        }
+        
 		[usrDef setBool:YES forKey:@"music"];
+    }
 	if(sender.selectedIndex ==0)
+    {
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 		[usrDef setBool:NO forKey:@"music"];
+    }
 }
 
 
--(void)goBack:(id)sender
+-(void)returnMain
 {
     //[[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
     [[CCDirector sharedDirector] popScene];

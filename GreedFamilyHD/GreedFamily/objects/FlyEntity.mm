@@ -49,7 +49,7 @@
         
         
         //小鸟
-        if (1 == familyType) 
+        if (3 == familyType) 
         {
             switch (i) 
             {
@@ -60,7 +60,7 @@
                     animation = [CCAnimation animationWithFrame:@"boybird_9_" frameCount:5 delay:0.1f];
                     break;
                     
-                    
+
                 default:
                     break;
             }
@@ -143,6 +143,23 @@
 //                    break;
 //            }
         }
+        //小猪
+        else if (1 == familyType)
+        {
+            switch (i) 
+            {
+                case 0:
+                    animation = [CCAnimation animationWithFrame:@"pandaboy_3_" frameCount:5 delay:0.1f];
+                    break;
+                case 1:
+                    animation = [CCAnimation animationWithFrame:@"pandaboy_9_" frameCount:5 delay:0.1f];
+                    break;
+                    
+                    
+                default:
+                    break;
+            }
+        }
                
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,
@@ -182,15 +199,16 @@
         directionCurrent = 0;
         //CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];
         //初始化动态效果
+        //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
+        //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         [self initFlyAction];
-        
         
         //CCSpriteFrame *frame1 = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 75, 70) ];
         
-        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
+
         if (1 == familyType)
         {
-            self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"pandaboy_3_1.png"];
             //按照像素设定图片大小
             //change size by diff version manual
             self.sprite.scaleX=(60)/[self.sprite contentSize].width; //按照像素定制图片宽高
@@ -204,8 +222,16 @@
             self.sprite.scaleX=(80)/[self.sprite contentSize].width; //按照像素定制图片宽高
             self.sprite.scaleY=(80)/[self.sprite contentSize].height;
         }
-        //按照像素设定图片大小
-        [batch addChild:self.sprite z:-1]; 
+        else if (3 == familyType)
+        {
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
+            //按照像素设定图片大小
+            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+        }
+        //按照像素设定图片大小//为什么batch不能用？？
+        //[batch addChild:self.sprite z:-1]; 
+        [self addChild:self.sprite z:-1]; 
         //self.sprite = [CCSprite spriteWithSpriteFrame:frame1];
         // batch node for all dynamic elements
         //CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"dragon.png" capacity:100];
@@ -217,7 +243,7 @@
         
         //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         //[batch addChild:self.sprite];
-        
+        self.sprite.visible = YES;
         self.flyAction = [_flyActionArray objectAtIndex:0];
         [self.sprite runAction:_flyAction];
         //change size by diff version query
@@ -234,7 +260,7 @@
             bodyDef.type = b2_dynamicBody;
             
             //阻力
-            bodyDef.linearDamping = 0.3f;
+            bodyDef.linearDamping = 0.25f;
             bodyDef.angularDamping = 100.0f;
             //不旋转
             bodyDef.fixedRotation = true;
@@ -247,7 +273,7 @@
             fixtureDef.shape = &circleShape;
             fixtureDef.density = 0.5f;
             fixtureDef.friction = 0.5f;
-            fixtureDef.restitution = 0.7f;
+            fixtureDef.restitution = 0.4f;
 
         }
         else if (2 == familyType)
@@ -268,10 +294,32 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.6f;
+            fixtureDef.density = 0.7f;
             fixtureDef.friction = 0.6f;
             fixtureDef.restitution = 0.5f;
 
+        }
+        else if (3 == familyType)
+        {
+            bodyDef.position = [Helper toMeters:startPos];
+            bodyDef.type = b2_dynamicBody;
+            
+            //阻力
+            bodyDef.linearDamping = 0.3f;
+            bodyDef.angularDamping = 100.0f;
+            //不旋转
+            bodyDef.fixedRotation = true;
+            
+            b2CircleShape circleShape;
+            float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 10) / PTM_RATIO) * 0.5f;
+            circleShape.m_radius = radiusInMeters;
+            
+            // Define the dynamic body fixture.
+            fixtureDef.shape = &circleShape;
+            fixtureDef.density = 0.5f;
+            fixtureDef.friction = 0.5f;
+            fixtureDef.restitution = 0.7f;
+            
         }
 				
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef];
@@ -410,6 +458,11 @@
             [self.sprite runAction:_flyAction];
             directionBefore = directionCurrent;
         }
+        else
+        {
+            CCLOG(@"flyaction error");
+            assert(0);
+        }
     }
 
     //根据飞行速度调节动画速率
@@ -422,7 +475,7 @@
     {
         [self.flyAction setSpeed:1.3];
     }
-    else if (flySpeed > 40000)
+    else if (flySpeed > 50000)
     {
         [self.flyAction setSpeed:3];
         //加入炸弹特效

@@ -18,7 +18,7 @@
 @end
 
 @implementation PropertyCache
-
+@synthesize aliveProp = _aliveProp;
 +(id) propCache:(b2World *)world
 {
 	return [[[self alloc] initWithWorld:world] autorelease];
@@ -33,6 +33,7 @@
 		maxVisibalNum = [GameMainScene sharedMainScene].mainscenParam.maxVisibaleNum;
         memset(propNum, 0, sizeof(propNum));
         memset(propCount, 0, sizeof(propCount));
+        self.aliveProp = 0;
 		//[self preInitPropWithWorld:world];
         [self initPropsFrequency];
 	}
@@ -43,10 +44,10 @@
 -(void)createPropTimes
 {
     int totalProps = 0;
+    //int gameLevel = [GameMainScene sharedMainScene].mainscenParam.order;
     
     int maxTime = [GameMainScene sharedMainScene].mainscenParam.candyCount 
-                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency
-                    - DELAY_TIME;
+        * [GameMainScene sharedMainScene].mainscenParam.candyFrequency;
     
     for (int i = 0; i < PROPS_TYPE_COUNT; i++)
     {
@@ -58,7 +59,7 @@
         return;
     }
     
-    int gapTime = random() % 3;
+    int gapTime = random() % 5;
     int intervalTime = maxTime/(totalProps + 1) - gapTime;
     if (0 >= intervalTime) 
     {
@@ -87,82 +88,6 @@
     propNum[4] = [GameMainScene sharedMainScene].mainscenParam.smokeFrequency;
     //propNum[4] = 2;
     [self createPropTimes];
-//    bombNum = 0;
-//    crystalNum = 0;
-//    
-//    switch (bombFrequency) 
-//    {
-//        case NoTime:
-//            break;
-//        case OneTime:
-//            bombNum = 1;
-//            [self createBombTimes];
-//            break;
-//        case TwoTime:
-//            bombNum = 2;
-//            [self createBombTimes];
-//            break;
-//        case FiveTime:
-//            bombNum = 5;
-//            [self createBombTimes];
-//            break;    
-//        case OneTimePer5s:
-//            bombNum = 5;
-//            [self schedule:@selector(bombFrequency:) interval:5];
-//            break;
-//        case OneTimePer10s:
-//            bombNum = 5;
-//            [self schedule:@selector(bombFrequency:) interval:10];
-//            break;
-//        case OneTimePer20s:
-//            bombNum = 5;
-//            [self schedule:@selector(bombFrequency:) interval:20];
-//            break;
-//        case OneTimePer30s:
-//            bombNum = 5;
-//            [self schedule:@selector(bombFrequency:) interval:30];
-//            break;
-//        default:
-//            break;
-//    }
-//    
-//    switch (crystalFrequency) 
-//    {
-//        case NoTime:
-//            break;
-//        case OneTime:
-//            crystalNum = 1;
-//            [self createCrystalTimes];
-//            break;
-//        case TwoTime:
-//            crystalNum = 2;
-//            [self createCrystalTimes];
-//            break;
-//        case FiveTime:
-//            crystalNum = 5;
-//            [self createCrystalTimes];
-//            break;    
-//        case OneTimePer5s:
-//            crystalNum = 5;
-//            [self schedule:@selector(crystalFrequency:) interval:5];
-//            break;
-//        case OneTimePer10s:
-//            crystalNum = 5;
-//            [self schedule:@selector(crystalFrequency:) interval:10];
-//            break;
-//        case OneTimePer20s:
-//            crystalNum = 5;
-//            [self schedule:@selector(crystalFrequency:) interval:20];
-//            break;
-//        case OneTimePer30s:
-//            crystalNum = 5;
-//            [self schedule:@selector(crystalFrequency:) interval:30];
-//            break;
-//        default:
-//            break;
-//    }
-
-
 }
 
 -(void)addOneProToArr:(NSInteger)type World:(b2World *)world  Array:(CCArray *)array Tag:(int)taget 
@@ -206,8 +131,8 @@
     }
     
     CandyCache *candyCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getCandyCache];
-    //界面上最多存在maxVisibalNum个球
-    if (candyCache.aliveCandy > maxVisibalNum)
+    //界面上最多存在maxVisibalNum个球,属性球可以多一个
+    if ((candyCache.aliveCandy > maxVisibalNum && self.aliveProp > 0) || self.aliveProp > MAX_PROP_NUM)
     {
         return;
     }
@@ -229,6 +154,7 @@
 
     propCount[propType]++;
     candyCache.aliveCandy++;
+    self.aliveProp++;
 
     
     return;

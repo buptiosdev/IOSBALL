@@ -14,7 +14,8 @@
 #import "PauseLayer.h"
 #import "AppDelegate.h"
 #import "ResultLayer.h"
-
+#import "SimpleAudioEngine.h"
+#import "TeachGameLayer.h"
 @interface GameMainScene (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
 -initWithOrder:(int)order;
@@ -91,13 +92,17 @@ static GameMainScene *instanceOfMainScene;
     NSString *strName = [NSString stringWithFormat:@"RoleType"];
     _roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
     NSString *strName2 = nil;
-    if (1 == _roleType) 
+    if (3 == _roleType) 
     {
         strName2 = [NSString stringWithFormat:@"Acceleration_Bird"];
     }
     else if (2 == _roleType) 
     {
         strName2 = [NSString stringWithFormat:@"Acceleration_Pig"];
+    }
+    else if (1 == _roleType) 
+    {
+        strName2 = [NSString stringWithFormat:@"Acceleration_Panda"];
     }
     _acceleration = [[NSUserDefaults standardUserDefaults]  integerForKey:strName2];
     if (_acceleration > 50 || _acceleration < 10) 
@@ -154,7 +159,7 @@ static GameMainScene *instanceOfMainScene;
         }
         
         GameBackgroundLayer *gameBackgroundLayer = [GameBackgroundLayer CreateGameBackgroundLayer];
-        [self addChild:gameBackgroundLayer z:-1 tag:BackGroundLayerTag];
+        [self addChild:gameBackgroundLayer z:1 tag:BackGroundLayerTag];
         
 //        CCSprite* background = [CCSprite spriteWithSpriteFrameName:@"background.png"];
 //        CGSize screenSize = [[CCDirector sharedDirector] winSize];
@@ -167,7 +172,12 @@ static GameMainScene *instanceOfMainScene;
         TouchCatchLayer *touchCatchLayer = [TouchCatchLayer CreateTouchCatchLayer];
         [self addChild:touchCatchLayer z:1 tag:TouchCatchLayerTag];
         
+        //[[GameMainScene sharedMainScene] addTeacheGame];
+        [self schedule:@selector(sleepForTeach:) interval:0.1];
+        
         [self scheduleUpdate];
+        
+
     }
     
     return self;
@@ -291,7 +301,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 3;
             _mainscenParam.candyType = 1;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -306,7 +316,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 7;
             _mainscenParam.candyType = 2;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -321,7 +331,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 10;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -361,10 +371,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene6thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 5;
             _mainscenParam.candyType = 1;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -375,10 +385,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene7thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 10;
             _mainscenParam.candyType = 2;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -389,10 +399,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene8thScene:
-            _mainscenParam.maxVisibaleNum = 4;
-            _mainscenParam.candyCount = 13;
+            _mainscenParam.maxVisibaleNum = 3;
+            _mainscenParam.candyCount = 15;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -403,10 +413,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene9thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 18;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -417,10 +427,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene10thScene:
-            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 20;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -431,25 +441,25 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene11thScene:
-            _mainscenParam.maxVisibaleNum = 5;
+            _mainscenParam.maxVisibaleNum = 4;
             _mainscenParam.candyCount = 20;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = NoTime;
-            _mainscenParam.crystalFrequency = TwoTime;
+            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.crystalFrequency = OneTime;
             _mainscenParam.pepperFrequency = NoTime;
-            _mainscenParam.iceFrequency = OneTime;
+            _mainscenParam.iceFrequency = TwoTime;
             //_mainscenParam.invisibaleNum = 1;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene12thScene:
-            _mainscenParam.maxVisibaleNum = 5;
+            _mainscenParam.maxVisibaleNum = 4;
             _mainscenParam.candyCount = 20;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -461,10 +471,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene13thScene:
-            _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 30;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 25;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.55f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -476,10 +486,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = TwoTime;
             break;
         case TargetScene14thScene:
-            _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 35;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 25;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.6f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -491,10 +501,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = TwoTime;
             break;
         case TargetScene15thScene:
-            _mainscenParam.maxVisibaleNum = 5;
-            _mainscenParam.candyCount = 35;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.65f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -506,10 +516,10 @@ static GameMainScene *instanceOfMainScene;
             //_mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene16thScene:
-            _mainscenParam.maxVisibaleNum = 6;
-            _mainscenParam.candyCount = 40;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.7f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -521,10 +531,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 1;
             break;
         case TargetScene17thScene:
-            _mainscenParam.maxVisibaleNum = 6;
-            _mainscenParam.candyCount = 45;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.75f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -536,8 +546,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 2;
             break;
         case TargetScene18thScene:
-            _mainscenParam.maxVisibaleNum = 6;
-            _mainscenParam.candyCount = 45;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 35;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -551,8 +561,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 3;
             break;
         case TargetScene19thScene:
-            _mainscenParam.maxVisibaleNum = 6;
-            _mainscenParam.candyCount = 50;
+            _mainscenParam.maxVisibaleNum = 4;
+            _mainscenParam.candyCount = 35;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
@@ -566,10 +576,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 4;
             break;
         case TargetScene20thScene:
-            _mainscenParam.maxVisibaleNum = 7;
-            _mainscenParam.candyCount = 50;
+            _mainscenParam.maxVisibaleNum = 5;
+            _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 3;
+            _mainscenParam.candyFrequency = 2;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 1.0f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -586,6 +596,72 @@ static GameMainScene *instanceOfMainScene;
     //加上商店购买道具    
     _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
 
+}
+
+-(void)playAudio:(int)audioType
+{
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    BOOL sound = [usrDef boolForKey:@"sound"];
+    if (NO == sound) 
+    {
+        return;
+    }
+    
+    switch (audioType) {
+        case NeedTouch:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+            break; 
+            
+        case GetScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
+            break;            
+
+        case EatCandy:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"der.caf"];
+            break;            
+            
+        case EatGood:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"good.caf"];
+            break;    
+            
+        case EatBad:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"toll.caf"];
+            break;
+            
+        case Droping:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drop.caf"];
+            break;            
+
+        case BubbleBreak:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblebreak.caf"];
+            break;            
+
+        case BubbleHit:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblehit.caf"];
+            break;            
+
+        case SelectOK:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"select.caf"];
+            break;            
+
+        case SelectNo:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"failwarning.caf"];
+            break;            
+
+        case Bombing:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"bomb.caf"];
+            break;   
+            
+        case NewHighScore:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"drum.caf"];
+            break;   
+        case Speedup:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"speedup.caf"];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 -(void)endGame
@@ -661,11 +737,38 @@ static GameMainScene *instanceOfMainScene;
 	[super onEnter];
 }
 
+
+-(void)addTeachGameLayer
+{
+    [self onPauseExit];
+    PauseLayer * p = [TeachGameLayer createTeachGameLayer];
+    [self.parent addChild:p z:11]; 
+    
+}
+
+
+//-(void)endTeachGameLayer
+//{
+//	if(![AppDelegate getAppDelegate].paused)
+//	{
+//		return;
+//	}
+//	[AppDelegate getAppDelegate].paused = NO;
+//	[super onEnter];
+//}
+
 -(void)sleepForEndGame: (ccTime) dt
 {
     [self unschedule:@selector(sleepForEndGame:)]; 
     [self endGame];
 }
+
+-(void)sleepForTeach: (ccTime) dt
+{
+    [self unschedule:@selector(sleepForTeach:)]; 
+    [[GameMainScene sharedMainScene] addTeachGameLayer];
+}
+
 
 -(void) update:(ccTime)delta
 {

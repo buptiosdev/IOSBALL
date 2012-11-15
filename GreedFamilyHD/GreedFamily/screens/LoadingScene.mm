@@ -9,7 +9,7 @@
 #import "LoadingScene.h"
 #import "GameMainScene.h"
 #import "NavigationScene.h"
-
+#import "AppDelegate.h"
 
 @interface LoadingScene (PrivateMethods)
 -(void) update:(ccTime)delta;
@@ -21,7 +21,7 @@
 {
 	CCLOG(@"===========================================");
 	CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);
-
+    
 	// This creates an autorelease object of self (the current class: LoadingScene)
 	return [[[self alloc] initWithTargetScene:targetScene] autorelease];
 	
@@ -34,15 +34,45 @@
 	if ((self = [super init]))
 	{
 		targetScene_ = targetScene;
-
+        
 		CCLabelTTF* label = [CCLabelTTF labelWithString:@"Loading ..." fontName:@"Marker Felt" fontSize:64];
+        label.scale = 0.4;
 		CGSize size = [[CCDirector sharedDirector] winSize];
-		label.position = CGPointMake(size.width / 2, size.height / 2);
-		[self addChild:label];
-		
-		// Must wait one frame before loading the target scene!
-		// Two reasons: first, it would crash if not. Second, the Loading label wouldn't be displayed.
+		label.position = CGPointMake(size.width * 0.8, size.height * 0.2);
+		[self addChild:label z:-2 tag:100];
+        
+        
+        activityIndicatorView = [[[UIActivityIndicatorView alloc]   
+                                               initWithActivityIndicatorStyle:   
+                                               UIActivityIndicatorViewStyleWhiteLarge] autorelease];  
+                
+        activityIndicatorView.center = CGPointMake(190,240);  
+                
+        [activityIndicatorView startAnimating]; 
+        //activityIndicatorView.activityIndicatorViewStyle= UIActivityIndicatorViewStyleGray;
+        //[self.view addSubview:activityIndicatorView ];   
+		AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;  
+        [delegate.window addSubview:activityIndicatorView];
+//		// Must wait one frame before loading the target scene!
+//		// Two reasons: first, it would crash if not. Second, the Loading label wouldn't be displayed.
 		[self scheduleUpdate];
+        
+        
+        // Add the UIActivityIndicatorView (in UIKit universe)  
+        
+//        activityIndicatorView = [[[UIActivityIndicatorView alloc]   
+//                                       initWithActivityIndicatorStyle:   
+//                                       UIActivityIndicatorViewStyleWhiteLarge] autorelease];  
+//        
+//        activityIndicatorView.center = ccp(190,240);  
+//        
+//        [activityIndicatorView startAnimating];  
+        
+        //[[self battleView] addSubview: activityIndicatorView]; 
+        //[[[CCDirector sharedDirector] openGLView] addSubview:activityIndicatorView];
+        
+        //[[AppDelegate getAppDelegate].window  addSubview:activityIndicatorView];
+        
 	}
 	
 	return self;
@@ -55,29 +85,6 @@
 	
 	// Decide which scene to load based on the TargetScenes enum.
 	// You could also use TargetScene to load the same with using a variety of transitions.
-//	switch (targetScene_)
-//	{
-//        case TargetNavigationScen:
-//            //[[CCDirector sharedDirector] replaceScene:[NavigationScene sceneWithNavigationScene]];
-//            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
-//            break;
-//            
-//		case TargetScene1stScene:
-//		case TargetScene2ndScene:
-//        case TargetScene3rdScene:
-//			//[[CCDirector sharedDirector] replaceScene:[GameMainScene createMainLayer:targetScene_]];
-//            [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
-//			break;
-//
-//			
-//		default:
-//			// Always warn if an unspecified enum value was used. It's a reminder for yourself to update the switch
-//			// whenever you add more enum values.
-//			NSAssert2(nil, @"%@: unsupported TargetScene %i", NSStringFromSelector(_cmd), targetScene_);
-//            [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
-//			break;
-//	}
-    //if(targetScene_>=TargetNavigationScen||targetScene_<=TargetSceneINVALID)
     if(targetScene_>=TargetNavigationScen)
     {
         [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
@@ -86,8 +93,12 @@
     {
         [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
     }
+    [activityIndicatorView stopAnimating ];  //ֹͣ   
 	
 }
+
+
+ 
 
 -(void) dealloc
 {

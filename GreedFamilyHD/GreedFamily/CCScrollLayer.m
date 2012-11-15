@@ -142,7 +142,10 @@ enum
 		
 		// Draw White Point for Selected Page
 		//glColor4ub(0xFF,0xFF,0xFF,0xFF);
-        glColor4ub(0xFF,0,0,0xFF);
+        //Draw Red Point for Selected Page
+        //glColor4ub(0xFF,0,0,0xFF);
+        //Draw Yellow Point
+        glColor4ub(0xFF,0xFF,0,0xFF);
 		ccDrawPoint(points[currentScreen_ - 1]);
 		
 		// Restore GL Values

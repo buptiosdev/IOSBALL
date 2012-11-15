@@ -189,7 +189,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeCrystalBall;
-    propertyParamDef.spriteFrameName = @"crystallball.png";
+    propertyParamDef.spriteFrameName = @"magic+.png";
     propertyParamDef.density = 0.5;
     propertyParamDef.restitution = 0.8;
     propertyParamDef.linearDamping = 0.2;
@@ -243,7 +243,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropTypeBlackBomb;
-    propertyParamDef.spriteFrameName = @"blackbomb.png";
+    propertyParamDef.spriteFrameName = @"bomb+.png";
     propertyParamDef.density = 0.7;
     propertyParamDef.restitution = 0.7;
     propertyParamDef.linearDamping = 0.2;
@@ -261,7 +261,7 @@ static CCArray* spawnFrequency;
     propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
     propertyParamDef.isDynamicBody = YES;
     propertyParamDef.ballType = PropSmoke;
-    propertyParamDef.spriteFrameName = @"cake.png";
+    propertyParamDef.spriteFrameName = @"garlic+.png";
     propertyParamDef.density = 0.3;
     propertyParamDef.restitution = 0.7;
     propertyParamDef.linearDamping = 0.2;
@@ -308,7 +308,7 @@ static CCArray* spawnFrequency;
         }
             
         
-        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getAnimationBatch];
+        CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:propertyParamDef.spriteFrameName];
         //按照像素设定图片大小
         //change size by diff version manual
@@ -316,13 +316,13 @@ static CCArray* spawnFrequency;
         self.sprite.scaleY=(40)/[self.sprite contentSize].height;
         [batch addChild:self.sprite];       
         
-        CCSpriteBatchNode* batch2 = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-        self.cover = [CCSprite spriteWithSpriteFrameName:@"pic_6.png"];
+
+        self.cover = [CCSprite spriteWithSpriteFrameName:@"pack.png"];
         //按照像素设定图片大小
         self.cover.scaleX=(40)/[self.cover contentSize].width; //按照像素定制图片宽高
         self.cover.scaleY=(40)/[self.cover contentSize].height;
         self.cover.visible = NO;
-        [batch2 addChild:self.cover z:2];
+        [batch addChild:self.cover z:2];
         
         //初始化为－1
         hitPoints = -1;

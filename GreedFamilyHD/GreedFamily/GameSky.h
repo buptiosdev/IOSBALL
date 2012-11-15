@@ -11,6 +11,7 @@
 #import "FlyEntity.h"
 
 @interface GameSky : CCNode <CCTargetedTouchDelegate>
+//@interface GameSky : CCLayer <CCStandardTouchDelegate>
 {
     FlyEntity *flyEntity;
     FlyEntity *flyEntityPlay2;

@@ -8,12 +8,15 @@
 
 #import "LevelScene.h"
 #import "LoadingScene.h"
-#import "NavigationScene.h"
+#import "RoleScene.h"
 #import "CCScrollLayer.h"
-//#import "GameScore.h"
+#import "GameShopScene.h"
+#import "CCAnimationHelper.h"
+
 
 @implementation LevelScene
-
+CCSprite* sprite;
+int directionCurrent;
 
 -(void)selectMode:(CCMenuItemImage *)btn
 {
@@ -23,7 +26,13 @@
 
 -(void)returnMain
 {
-    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
+}
+
+-(void)connectGameShop:(id)sender
+{
+    //connect to game center
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
 }
 
 -(int)getGameStarNumber:(int)level
@@ -40,69 +49,68 @@
 {
     if ((self = [super init])) {
 		self.isTouchEnabled = YES;
-        //ccColor4B c = {0,0,0,180};
-        //CCLayerColor * difficulty=[CCLayerColor layerWithColor:c];
-        //[self addChild:difficulty z:0 tag:TargetNavigationScen];
-        
-//        CCMenuItemImage * easyBtn = [CCMenuItemImage itemFromNormalImage:@"easy.png"
-//                                                           selectedImage:@"easy_dwn.png" 
-//                                                           disabledImage:@"easy_dis.png"
-//                                                                  target:self
-//                                                                selector:@selector(selectMode:)];
-//        
-//        
-//        
-//        CCMenuItemImage * normalBtn = [CCMenuItemImage itemFromNormalImage:@"normal.png"
-//                                                             selectedImage:@"normal_dwn.png" 
-//                                                             disabledImage:@"normal_dis.png"
-//                                                                    target:self
-//                                                                  selector:@selector(selectMode:)];
-//        
-//        CCMenuItemImage * extremeBtn = [CCMenuItemImage itemFromNormalImage:@"extreme.png"
-//                                                              selectedImage:@"extreme_dwn.png" 
-//                                                              disabledImage:@"extreme_dis.png"
-//                                                                     target:self
-//                                                                   selector:@selector(selectMode:)];
         
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-        [frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
+        [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        //set the background pic
+		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+        background.scaleY=(screenSize.height)/[background contentSize].height;
+        NSAssert( background != nil, @"background must be non-nil");
+		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+		[self addChild:background];
         int number=20;
         CCArray * levelarray = [[CCArray alloc]initWithCapacity:number];
         bool isZero=NO;
+        float viewsize=75;
         for(int i=0;i<20;i++)
         {
             int star=[self getGameStarNumber:i+1];
+            NSString *starname;
             if(isZero==YES)
             {
-                star=0;
+                starname = @"level4.png";
+            }else
+            {
+                starname = [NSString stringWithFormat:@"level%i.png", star];
             }
-            NSString *starname = [NSString stringWithFormat:@"get%istart.png", star];
+            
             CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
-            //change size by diff version manual
-            levelpic.scaleX=(100)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
-            levelpic.scaleY=(100)/[levelpic contentSize].height;
+//            levelpic.scaleX=(scale)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
+//            levelpic.scaleY=(scale)/[levelpic contentSize].height;
             CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
             if(i<9)
             {
-                Labelnum.anchorPoint=CGPointMake(-1.2, -0.6);
+                Labelnum.anchorPoint=CGPointMake(-2.1, -1.5);
             }
             else
             {
-                Labelnum.anchorPoint=CGPointMake(-0.5, -0.6);
+                Labelnum.anchorPoint=CGPointMake(-0.8, -1.5);
             }
             
             [levelpic addChild:Labelnum];
             CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:starname];
-            //change size by diff version manual
-            defaultstar.scaleX=(100)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
-            defaultstar.scaleY=(100)/[defaultstar contentSize].height;
+//            defaultstar.scaleX=(scale)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
+//            defaultstar.scaleY=(scale)/[defaultstar contentSize].height;
+            CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
+            if(i<9)
+            {
+                Labelnum1.anchorPoint=CGPointMake(-2.1, -1.5);
+            }
+            else
+            {
+                Labelnum1.anchorPoint=CGPointMake(-0.8, -1.5);
+            }
+            
+            [defaultstar addChild:Labelnum1];
             CCMenuItemSprite *level = [CCMenuItemSprite itemFromNormalSprite:levelpic 
-                                                               selectedSprite:defaultstar 
-                                                                       target:self 
-                                                                     selector:@selector(selectMode:)];
+                                                              selectedSprite:defaultstar 
+                                                                      target:self 
+                                                                    selector:@selector(selectMode:)];
+            level.scale=(viewsize)/[defaultstar contentSize].width;
             [level setTag:i+1];
-
+            
             if(isZero==YES)
             {
                 [level setIsEnabled:NO];
@@ -111,6 +119,7 @@
             {
                 [level setIsEnabled:YES];
                 [Labelnum setColor:ccRED];
+                [Labelnum1 setColor:ccYELLOW];
             }
             
             if(star==0)
@@ -123,193 +132,28 @@
             [levelarray addObject:level];
         }
         
+        float levelpadding=(screenSize.width-viewsize*5)/6;
+        //CCSprite *temp = [CCSprite spriteWithSpriteFrameName:@"level4.png"];
+        //float horizon=[temp contentSize].width/2 - viewsize/2;
+        float horizon=0;
         
-// 用锁图片代替没玩过得关卡
-//        for(int i=0;i<20;i++)
-//        {
-//            int star=[self getGameStarNumber:i+1];
-//            NSString *starname;
-//            if(isZero==YES)
-//            {
-//                starname = @"locked.png";
-//            }else
-//            {
-//                starname = [NSString stringWithFormat:@"get%istart.png", star];
-//            }
-//            
-//            CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
-//            levelpic.scaleX=(60)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
-//            levelpic.scaleY=(60)/[levelpic contentSize].height;
-//            CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
-//            if(i<9)
-//            {
-//                Labelnum.anchorPoint=CGPointMake(-1.2, -0.6);
-//            }
-//            else
-//            {
-//                Labelnum.anchorPoint=CGPointMake(-0.5, -0.6);
-//            }
-//            
-//            [levelpic addChild:Labelnum];
-//            CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:starname];
-//            defaultstar.scaleX=(60)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
-//            defaultstar.scaleY=(60)/[defaultstar contentSize].height;
-//            CCMenuItemSprite *level = [CCMenuItemSprite itemFromNormalSprite:levelpic 
-//                                                              selectedSprite:defaultstar 
-//                                                                      target:self 
-//                                                                    selector:@selector(selectMode:)];
-//            [level setTag:i+1];
-//            
-//            if(isZero==YES)
-//            {
-//                [level setIsEnabled:NO];
-//            }
-//            else
-//            {
-//                [level setIsEnabled:YES];
-//                [Labelnum setColor:ccRED];
-//            }
-//            
-//            if(star==0)
-//            {
-//                if(isZero==NO)
-//                {
-//                    isZero=YES;
-//                }
-//            }
-//            [levelarray addObject:level];
-//        }
-        
-        
-//        CCLabelTTF *Label1=[CCLabelTTF labelWithString:@"Level 1" fontName:@"Marker Felt" fontSize:25];
-//        [Label1 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn1 = [CCMenuItemLabel itemWithLabel:Label1 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label2=[CCLabelTTF labelWithString:@"Level 2" fontName:@"Marker Felt" fontSize:25];
-//        [Label2 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn2 = [CCMenuItemLabel itemWithLabel:Label2 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label3=[CCLabelTTF labelWithString:@"Level 3" fontName:@"Marker Felt" fontSize:25];
-//        [Label3 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn3 = [CCMenuItemLabel itemWithLabel:Label3 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label4=[CCLabelTTF labelWithString:@"Level 4" fontName:@"Marker Felt" fontSize:25];
-//        [Label4 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn4 = [CCMenuItemLabel itemWithLabel:Label4 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label5=[CCLabelTTF labelWithString:@"Level 5" fontName:@"Marker Felt" fontSize:25];
-//        [Label5 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn5 = [CCMenuItemLabel itemWithLabel:Label5 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label6=[CCLabelTTF labelWithString:@"Level 6" fontName:@"Marker Felt" fontSize:25];
-//        [Label6 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn6 = [CCMenuItemLabel itemWithLabel:Label6 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label7=[CCLabelTTF labelWithString:@"Level 7" fontName:@"Marker Felt" fontSize:25];
-//        [Label7 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn7 = [CCMenuItemLabel itemWithLabel:Label7 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label8=[CCLabelTTF labelWithString:@"Level 8" fontName:@"Marker Felt" fontSize:25];
-//        [Label8 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn8 = [CCMenuItemLabel itemWithLabel:Label8 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label9=[CCLabelTTF labelWithString:@"Level 9" fontName:@"Marker Felt" fontSize:25];
-//        [Label9 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn9 = [CCMenuItemLabel itemWithLabel:Label9 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label10=[CCLabelTTF labelWithString:@"Level 10" fontName:@"Marker Felt" fontSize:25];
-//        [Label10 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn10 = [CCMenuItemLabel itemWithLabel:Label10 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label11=[CCLabelTTF labelWithString:@"Level 11" fontName:@"Marker Felt" fontSize:25];
-//        [Label11 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn11 = [CCMenuItemLabel itemWithLabel:Label11 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label12=[CCLabelTTF labelWithString:@"Level 12" fontName:@"Marker Felt" fontSize:25];
-//        [Label12 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn12 = [CCMenuItemLabel itemWithLabel:Label12 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label13=[CCLabelTTF labelWithString:@"Level 13" fontName:@"Marker Felt" fontSize:25];
-//        [Label13 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn13 = [CCMenuItemLabel itemWithLabel:Label13 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label14=[CCLabelTTF labelWithString:@"Level 14" fontName:@"Marker Felt" fontSize:25];
-//        [Label14 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn14 = [CCMenuItemLabel itemWithLabel:Label14 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label15=[CCLabelTTF labelWithString:@"Level 15" fontName:@"Marker Felt" fontSize:25];
-//        [Label15 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn15 = [CCMenuItemLabel itemWithLabel:Label15 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label16=[CCLabelTTF labelWithString:@"Level 16" fontName:@"Marker Felt" fontSize:25];
-//        [Label16 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn16 = [CCMenuItemLabel itemWithLabel:Label16 target:self selector:@selector(selectMode:)];
-//
-//        CCLabelTTF *Label17=[CCLabelTTF labelWithString:@"Level 17" fontName:@"Marker Felt" fontSize:25];
-//        [Label17 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn17 = [CCMenuItemLabel itemWithLabel:Label17 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label18=[CCLabelTTF labelWithString:@"Level 18" fontName:@"Marker Felt" fontSize:25];
-//        [Label18 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn18 = [CCMenuItemLabel itemWithLabel:Label18 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label19=[CCLabelTTF labelWithString:@"Level 19" fontName:@"Marker Felt" fontSize:25];
-//        [Label19 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn19 = [CCMenuItemLabel itemWithLabel:Label19 target:self selector:@selector(selectMode:)];
-//        
-//        CCLabelTTF *Label20=[CCLabelTTF labelWithString:@"Level 20" fontName:@"Marker Felt" fontSize:25];
-//        [Label20 setColor:ccRED];
-//        CCMenuItemLabel * LevelBtn20 = [CCMenuItemLabel itemWithLabel:Label20 target:self selector:@selector(selectMode:)];
-//        
-//        
-//        [LevelBtn1 setTag:TargetScene1stScene];
-//        [LevelBtn2 setTag:TargetScene2ndScene];
-//        [LevelBtn3 setTag:TargetScene3rdScene];
-//        [LevelBtn4 setTag:TargetScene4thScene];
-//        [LevelBtn5 setTag:TargetScene5thScene];
-//        [LevelBtn6 setTag:TargetScene6thScene];
-//        [LevelBtn7 setTag:TargetScene7thScene];
-//        [LevelBtn8 setTag:TargetScene8thScene];
-//        [LevelBtn9 setTag:TargetScene9thScene];
-//        [LevelBtn10 setTag:TargetScene10thScene];
-//        [LevelBtn11 setTag:TargetScene11thScene];
-//        [LevelBtn12 setTag:TargetScene12thScene];
-//        [LevelBtn13 setTag:TargetScene13thScene];
-//        [LevelBtn14 setTag:TargetScene14thScene];
-//        [LevelBtn15 setTag:TargetScene15thScene];
-//        [LevelBtn16 setTag:TargetScene16thScene];
-//        [LevelBtn17 setTag:TargetScene17thScene];
-//        [LevelBtn18 setTag:TargetScene18thScene];
-//        [LevelBtn19 setTag:TargetScene19thScene];
-//        [LevelBtn20 setTag:TargetScene20thScene];
-        
-        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Marker Felt" fontSize:25];
-        [returnLabel setColor:ccRED];
-        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
-
         CCMenu * easyMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:0],[levelarray objectAtIndex:1],[levelarray objectAtIndex:2],[levelarray objectAtIndex:3],[levelarray objectAtIndex:4],nil];
-        [easyMenu alignItemsHorizontallyWithPadding:-15];
-        [easyMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*5/6)];
+        [easyMenu alignItemsHorizontallyWithPadding:levelpadding];
+        [easyMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.8)];
         
         CCMenu * normalMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:5],[levelarray objectAtIndex:6],[levelarray objectAtIndex:7],[levelarray objectAtIndex:8],[levelarray objectAtIndex:9], nil];
-        [normalMenu alignItemsHorizontallyWithPadding:-15];
-        [normalMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*1/2)];
+        [normalMenu alignItemsHorizontallyWithPadding:levelpadding];
+        [normalMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.45)];
         
         CCMenu * hardMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:10],[levelarray objectAtIndex:11],[levelarray objectAtIndex:12],[levelarray objectAtIndex:13],[levelarray objectAtIndex:14], nil];
-        [hardMenu alignItemsHorizontallyWithPadding:-15];
-        [hardMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*5/6)];
+        [hardMenu alignItemsHorizontallyWithPadding:levelpadding];
+        [hardMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.8)];
         
         CCMenu * extremeMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:15],[levelarray objectAtIndex:16],[levelarray objectAtIndex:17],[levelarray objectAtIndex:18],[levelarray objectAtIndex:19], nil];
-        [extremeMenu alignItemsHorizontallyWithPadding:-15];
-        [extremeMenu setPosition:ccp((screenSize.width)*0.5f+25,(screenSize.height)*1/2)];
+        [extremeMenu alignItemsHorizontallyWithPadding:levelpadding];
+        [extremeMenu setPosition:ccp((screenSize.width)*0.5f+horizon,(screenSize.height)*0.45)];
         
-        
-        CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
-        [returnMenu alignItemsHorizontallyWithPadding:0];
-        [returnMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)*1/7)];
-        [self addChild:returnMenu];
-        
-        //test
+        //page 1
         CCLayer *pageOne = [[CCLayer alloc] init];
         [pageOne addChild:easyMenu];
         [pageOne addChild:normalMenu];
@@ -325,9 +169,89 @@
         // finally add the scroller to your scene
         [self addChild:scroller];
         
+        //set return and shop
+        //set return in the left-down corner
+
+        CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+
+        CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        returnBtn1.scaleX=1.1;
+        returnBtn1.scaleY=1.1;
+        CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
+                                                               selectedSprite:returnBtn1 
+                                                                       target:self 
+                                                                     selector:@selector(returnMain)];
+        returnItem.scaleX=(45)/[returnBtn contentSize].width; //按照像素定制图片宽高
+        returnItem.scaleY=(45)/[returnBtn contentSize].height;
+        CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
+        [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scaleX * 0.5,
+                                    [returnBtn contentSize].height * returnItem.scaleY * 0.5)];
+        [self addChild:returnmenu];
+        
+        //set shop in the right-down corner
+        CCSprite *shop = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
+        CCSprite *shop1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
+        shop1.scaleX=1.1; //按照像素定制图片宽高
+        shop1.scaleY=1.1;
+        CCMenuItemSprite *shopItem = [CCMenuItemSprite itemFromNormalSprite:shop 
+                                                             selectedSprite:shop1 
+                                                                     target:self 
+                                                                   selector:@selector(connectGameShop:)];
+
+        shopItem.scaleX=(45)/[shop contentSize].width; //按照像素定制图片宽高
+        shopItem.scaleY=(45)/[shop contentSize].height;
+        
+        
+        CCMenu * shopmenu = [CCMenu menuWithItems:shopItem, nil];
+        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
+        [shopmenu setPosition:ccp(screenSize.width-[shop contentSize].width*shopItem.scaleX*0.6,
+                                  [shop contentSize].height * shopItem.scaleX * 0.5)];
+        [self addChild:shopmenu];
+
+        //add the snake
+        sprite= [CCSprite spriteWithSpriteFrameName:@"snake_9_1.png"];
+        //按照像素设定图片大小
+        sprite.scaleX=(70)/[sprite contentSize].width; //按照像素定制图片宽高
+        sprite.scaleY=(70)/[sprite contentSize].height;
+        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, 40+[sprite contentSize].height * sprite.scaleY/2);
+        sprite.position = startPos;
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"snake_9_" frameCount:4 delay:0.2f];
+        
+        CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
+        CCSequence *seq = [CCSequence actions: animate,nil];
+        
+        CCAction *moveAction = [CCRepeatForever actionWithAction: seq ];
+        [sprite runAction:moveAction];
+        directionCurrent=-1;
+        [self addChild:sprite]; 
+        [self scheduleUpdate];
+        
     }
     return self;
 }
+
+-(void)update:(ccTime)delta
+{
+    CGPoint pos=sprite.position;
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    float imageWidthHalved = [sprite contentSize].width * sprite.scaleX * 0.5f; 
+    float leftBorderLimit = imageWidthHalved;
+    float rightBorderLimit = screenSize.width - imageWidthHalved;
+    
+    if(pos.x>rightBorderLimit){
+        directionCurrent = -1;
+        [sprite setFlipX:NO];
+    }else if(pos.x<leftBorderLimit)
+    {
+        directionCurrent = 1;
+        [sprite setFlipX:YES];
+    }
+    
+    pos.x+=directionCurrent*0.4;
+    sprite.position=pos;
+    return;
+}
+
 
 +(id)scene
 {

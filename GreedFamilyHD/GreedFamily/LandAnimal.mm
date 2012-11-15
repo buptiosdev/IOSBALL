@@ -42,7 +42,7 @@ static LandAnimal *instanceOfLandAnimal;
         
         CCAnimation* animation = nil;
         //小鸟
-        if (1 == familyType) 
+        if (3 == familyType) 
         {
             switch (i) {
                 case 0:
@@ -61,6 +61,20 @@ static LandAnimal *instanceOfLandAnimal;
         {
             switch (i) {
                 case 0:
+                    animation = [CCAnimation animationWithFrame:@"piggirl_3_" frameCount:3 delay:0.2f];
+                    break;
+                case 1:
+                    animation = [CCAnimation animationWithFrame:@"piggirl_9_" frameCount:3 delay:0.2f];
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if (1 == familyType)
+        {
+            switch (i) {
+                case 0:
                     animation = [CCAnimation animationWithFrame:@"girlbird_3_" frameCount:3 delay:0.2f];
                     break;
                 case 1:
@@ -71,7 +85,6 @@ static LandAnimal *instanceOfLandAnimal;
                     break;
             }
         }
-        
         
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,
@@ -98,23 +111,38 @@ static LandAnimal *instanceOfLandAnimal;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CGPoint startPos;
         //小鸟
-        if (1 == familyType)
+        if (3 == familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
             //按照像素设定图片大小
             //change size by diff version manual
-            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+            self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(40)/[self.sprite contentSize].height;
             //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
             //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
             //change size by diff version manual
-            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 25);
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 5);
             directionCurrent = 1;
             directionBefore = -1;
         }
        
         //小猪
         else if (2 == familyType)
+        {
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"piggirl_3_1.png"];
+            //按照像素设定图片大小
+            //change size by diff version manual
+            self.sprite.scaleX=(45)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(45)/[self.sprite contentSize].height;
+            //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
+            //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
+            //change size by diff version manual
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 5);
+            directionCurrent = 1;
+            directionBefore = -1;
+        }
+        //熊猫
+        else if (1 == familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
             //按照像素设定图片大小
@@ -137,7 +165,8 @@ static LandAnimal *instanceOfLandAnimal;
         isCrystal = NO;
         isSpeedfast = NO;
         speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
-        if (speed > 0.6) 
+        //if (speed > 0.6) 
+        if (0)
         {
             //加入加速特效
             CCParticleSystem* system;
@@ -154,9 +183,26 @@ static LandAnimal *instanceOfLandAnimal;
     return self;
 }
 
--(void)eatAction
+-(void)eatAction:(int)foodType
 {
     waitinterval += 60;
+    if (7 == foodType || 6 == foodType || 3 == foodType) 
+    {
+        [[GameMainScene sharedMainScene] playAudio:EatGood];
+    }
+    else if (4 == foodType)
+    {
+        //音效
+        [[GameMainScene sharedMainScene] playAudio:Bombing];
+    }
+    else if (5 == foodType)
+    {
+        [[GameMainScene sharedMainScene] playAudio:EatBad];
+    }
+    else
+    {
+        [[GameMainScene sharedMainScene] playAudio:EatCandy];
+    }
     CCAction* action = [CCBlink actionWithDuration:1 blinks:5];
     [self runAction:action];
 }

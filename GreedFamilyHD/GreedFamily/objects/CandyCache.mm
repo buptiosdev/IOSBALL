@@ -28,6 +28,8 @@
 @synthesize isFinish = _isFinish;
 @synthesize aliveCandy = _aliveCandy;
 
+
+
 +(id) cache:(b2World *)world
 {
 	return [[[self alloc] initWithWorld:world] autorelease];
@@ -108,7 +110,7 @@
 
     [self initScenecache:world];
     
-    CCSprite *remainBallScore = [CCSprite spriteWithSpriteFrameName:@"pic_4.png"];
+    CCSprite *remainBallScore = [CCSprite spriteWithSpriteFrameName:@"pack.png"];
     
     //按照像素设定图片大小
     //change size by diff version manual
@@ -122,12 +124,12 @@
     [batch addChild:remainBallScore];
 
     //剩余球数
-    remainBallLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapfont.fnt"];
+    remainBallLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum.fnt"];
     [remainBallLabel setString:[NSString stringWithFormat:@"x%i", [GameMainScene sharedMainScene].mainscenParam.candyCount]];
     //change size by diff version
     remainBallLabel.position = [GameMainScene sharedMainScene].remainBallLabelPos; 
     remainBallLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
-    remainBallLabel.scale = 0.4;
+    remainBallLabel.scale = 0.6;
     [self addChild:remainBallLabel z:-2];
 }
 

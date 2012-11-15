@@ -21,8 +21,10 @@
 //    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-3 swallowsTouches:YES];
 //}
 
-- (void)onPause:(id)sender{
-        [[GameMainScene sharedMainScene] pauseGame];
+- (void)onPause:(id)sender
+{
+    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [[GameMainScene sharedMainScene] pauseGame];
 }
 
 -(id)init
@@ -45,14 +47,15 @@
 //        _spriteout.visible = YES;
 //        [batch addChild:_spriteout z:1];
         
-        CCSprite *in = [CCSprite spriteWithSpriteFrameName:@"pausein.png"];
-        CCSprite *out = [CCSprite spriteWithSpriteFrameName:@"pauseout.png"];
+        CCSprite *in = [CCSprite spriteWithSpriteFrameName:@"pause01.png"];
+        CCSprite *out = [CCSprite spriteWithSpriteFrameName:@"pause02.png"];
         CCMenuItemSprite *touchPause = [CCMenuItemSprite itemFromNormalSprite:in 
                                                              selectedSprite:out 
                                                                      target:self 
                                                                    selector:@selector(onPause:)];
         
-        
+        touchPause.scaleX = (30)/[in contentSize].width;
+        touchPause.scaleY = (30)/[in contentSize].height;
         CCMenu *menu = [CCMenu menuWithItems:touchPause, nil];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         menu.position = ccp(screenSize.width - 20, screenSize.height - 20);

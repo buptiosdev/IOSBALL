@@ -11,8 +11,8 @@
 #import "Box2D.h"
 
 #define PROPS_TYPE_COUNT 5
-#define DELAY_TIME 15
-
+#define DELAY_TIME 5
+#define MAX_PROP_NUM 2
 @interface PropertyCache : CCNode 
 {
   	//CCSpriteBatchNode* batch;
@@ -27,4 +27,6 @@
 
 +(id)propCache:(b2World *)world;
 -(void)addOneProperty:(NSInteger)type World:(b2World *)world Tag:(int)taget;
+
+@property (assign, nonatomic)int aliveProp;
 @end

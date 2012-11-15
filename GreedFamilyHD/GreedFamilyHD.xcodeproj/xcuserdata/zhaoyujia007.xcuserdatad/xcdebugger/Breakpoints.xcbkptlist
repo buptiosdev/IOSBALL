@@ -224,7 +224,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "604"
          endingLineNumber = "604"
-         landmarkName = "-endGame"
+         landmarkName = "-playAudio:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -238,7 +238,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "599"
          endingLineNumber = "599"
-         landmarkName = "-endGame"
+         landmarkName = "-initSceneParam:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -266,7 +266,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "612"
          endingLineNumber = "612"
-         landmarkName = "-endGame"
+         landmarkName = "-playAudio:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -308,7 +308,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "88"
          endingLineNumber = "88"
-         landmarkName = "-getSpriteBatch"
+         landmarkName = "-playBackMusic"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -588,7 +588,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "105"
          endingLineNumber = "105"
-         landmarkName = "-bombStorage"
+         landmarkName = "-initWithCapacity:Play:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -616,7 +616,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "219"
          endingLineNumber = "219"
-         landmarkName = "-addFoodToStorage:"
+         landmarkName = "-combinTheSameTypeNew"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -630,7 +630,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "345"
          endingLineNumber = "345"
-         landmarkName = "-checkLastCombineFood"
+         landmarkName = "-addFoodToStorage:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -672,7 +672,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "352"
          endingLineNumber = "352"
-         landmarkName = "-checkLastCombineFood"
+         landmarkName = "-reduceFood:Turn:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1064,7 +1064,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "646"
          endingLineNumber = "646"
-         landmarkName = "-getScoreByLevel:"
+         landmarkName = "-combineBallNew"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1834,7 +1834,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "249"
          endingLineNumber = "249"
-         landmarkName = "-showGameLeaderboard:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1848,7 +1848,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "246"
          endingLineNumber = "246"
-         landmarkName = "-showGameLeaderboard:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1862,7 +1862,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "389"
          endingLineNumber = "389"
-         landmarkName = "-onScoresReceived:"
+         landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1890,7 +1890,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "371"
          endingLineNumber = "371"
-         landmarkName = "-onScoresSubmitted:"
+         landmarkName = "-newGame:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2042,7 +2042,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "385"
          endingLineNumber = "385"
-         landmarkName = "-onScoresReceived:"
+         landmarkName = "-newGame:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2056,7 +2056,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "321"
          endingLineNumber = "321"
-         landmarkName = "-getViewType"
+         landmarkName = "-playAudio:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2070,7 +2070,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "264"
          endingLineNumber = "264"
-         landmarkName = "-showGameAchievements:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2098,7 +2098,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "251"
          endingLineNumber = "251"
-         landmarkName = "-showGameLeaderboard:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2168,7 +2168,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "382"
          endingLineNumber = "382"
-         landmarkName = "-onScoresReceived:"
+         landmarkName = "-newGame:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2182,8 +2182,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "381"
          endingLineNumber = "381"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-newGame:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2196,7 +2196,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "380"
          endingLineNumber = "380"
-         landmarkName = "-onScoresSubmitted:"
+         landmarkName = "-newGame:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2224,7 +2224,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "252"
          endingLineNumber = "252"
-         landmarkName = "-showGameLeaderboard:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2238,7 +2238,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "270"
          endingLineNumber = "270"
-         landmarkName = "-showGameAchievements:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2252,7 +2252,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "213"
          endingLineNumber = "213"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2266,7 +2266,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "172"
          endingLineNumber = "172"
-         landmarkName = "-button1Tapped:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2280,7 +2280,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "177"
          endingLineNumber = "177"
-         landmarkName = "-button2Tapped:"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2518,7 +2518,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "224"
          endingLineNumber = "224"
-         landmarkName = "-addFoodToStorage:"
+         landmarkName = "-combinTheSameTypeNew"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

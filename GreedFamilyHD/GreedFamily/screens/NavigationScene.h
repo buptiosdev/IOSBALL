@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "GameKitHelper.h"
+#import "DeveloperInfo.h"
 
 @interface NavigationScene : CCLayer <GameKitHelperProtocol>
 {
@@ -19,7 +20,9 @@
     CCLabelTTF *label3;
     BOOL isTouch;
      */
-    
+    DeveloperInfo *view;
+    UIActivityIndicatorView *activityIndicatorView;
+    BOOL isCreateIndicatorView;
 }
 +(id)sceneWithNavigationScene;
 +(id)scene;

@@ -35,24 +35,23 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         instanceOfGameBackgroundLayer = self;
         //加载所有的图片列表
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-        [frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
-        [frameCache addSpriteFramesWithFile:@"elements_default.plist"];
-        [frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
-        
+        //[frameCache addSpriteFramesWithFile:@"magicball_default.plist"];
+        //[frameCache addSpriteFramesWithFile:@"elements_default.plist"];
+        //[frameCache addSpriteFramesWithFile:@"level_default_default.plist"];
+        [frameCache addSpriteFramesWithFile:@"button_default_default.plist"];
+        [frameCache addSpriteFramesWithFile:@"gamemain01_default.plist"];
         // batch node for all dynamic elements
-        CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
-        [self addChild:batch z:0 tag:BatchTag];
+        //CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
+        CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"gamemain01_default.png" capacity:100];
+        [self addChild:batch z:2 tag:BatchTag];
+        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"button_default_default.png" capacity:100];
+        [self addChild:batch2 z:1 tag:ButtonTag];
+
         
         // batch node for all animation elements
-        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
-        [self addChild:batch2 z:-1 tag:AnimationTag];
+//        CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"elements_default.png" capacity:100];
+//        [self addChild:batch2 z:-1 tag:AnimationTag];
         
-
-    //    // a bright background is desireable for this pinball table
-    //    CCColorLayer* colorLayer = [CCColorLayer layerWithColor:ccc4(0, 0, 255, 200)];
-    //    [self addChild:colorLayer z:100];
-        
-
         // IMPORTANT: filenames are case sensitive on iOS devices!
         //CCSprite* background = [CCSprite spriteWithFile:@"background_1.jpg"];
         ////change size by diff version manual
@@ -69,28 +68,84 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 //        [self addChild:ground z:-3];
         
         // Play the background music in an endless loop.
-        
-        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.caf"];    
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
-        
-        //加载瓷砖地图层
-        //TileMapLayer *tileMapLayer = [TileMapLayer node];
-        //[self addChild:tileMapLayer z:-2 tag:TileMapLayerTag];
+        [self preloadAudio];
+
     }
     return self;
+}
+
+-(void)playBackMusic
+{
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    BOOL sound = [usrDef boolForKey:@"music"];
+    if (NO == sound) 
+    {
+        return;
+    }
+        
+    int order = [GameMainScene sharedMainScene].sceneNum;
+    
+    if (order > 0 && order <= 5) 
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
+    }
+    else if (order > 0 && order <= 10)
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
+
+    }
+    else if (order > 0 && order <= 15) 
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morningmusicshort.mp3" loop:YES];
+    }
+    else if (order > 0 && order <= 18)
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
+    }
+    else
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
+
+    }
+    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
+}
+
+-(void)preloadAudio
+{
+    [self playBackMusic];
+
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bite.caf"];    
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bomb.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bubblebreak.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bubblehit.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"der.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"ding.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"dorp.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"drum.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"failwarning.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"good.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"laugh1.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"laugh2.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"select.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"toll.caf"]; 
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"speedup.caf"];
 }
 
 -(CCSpriteBatchNode*) getSpriteBatch
 {
 	return (CCSpriteBatchNode*)[self getChildByTag:BatchTag];
 }
-
--(CCSpriteBatchNode*) getAnimationBatch
+-(CCSpriteBatchNode*) getButtonBatch
 {
-	return (CCSpriteBatchNode*)[self getChildByTag:AnimationTag];
+	return (CCSpriteBatchNode*)[self getChildByTag:ButtonTag];
 }
+
+//-(CCSpriteBatchNode*) getAnimationBatch
+//{
+//	return (CCSpriteBatchNode*)[self getChildByTag:AnimationTag];
+//}
 
 -(void) dealloc
 {

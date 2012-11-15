@@ -16,6 +16,7 @@
 #import "TouchCatchLayer.h"
 #import "GameMainScene.h"
 #import "NoBodyObjectsLayer.h"
+#import "SimpleAudioEngine.h"
 @implementation Bag
 @synthesize sprite = _sprite;
 //-(void) registerWithTouchDispatcher
@@ -74,6 +75,9 @@
     {
         return;
     }
+    
+
+    [[GameMainScene sharedMainScene] playAudio:Speedup];
     CCLOG(@"hot!!!!!!!!\n");
     if (1 == bagID) 
     {
@@ -100,6 +104,9 @@
 
 -(void)onCrystal:(id)sender
 {
+    //音效
+    [[GameMainScene sharedMainScene] playAudio:Laugh1];
+    
     if (0 >= crystalNum)
     {
         return;
@@ -201,7 +208,17 @@
         {
             pepperMenu.position = [GameMainScene sharedMainScene].pepperMenuPlay2Pos;
         }
-
+        CCSpriteBatchNode* buttonBatch = [[GameBackgroundLayer sharedGameBackgroundLayer] getButtonBatch];
+        //显示背包背景
+        CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
+        //change size by diff version query
+        star.position=pepperMenu.position;
+        //change size by diff version manual
+        star.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
+        star.scaleY=(25)/[star contentSize].height;
+        [buttonBatch addChild:star z:-2];
+            
+            
         pepperMenu.visible = NO;
         [self addChild:pepperMenu z:-2 ];
         CCProgressTimer *timePepper = [CCProgressTimer progressWithFile:@"cd.png"];
@@ -210,8 +227,8 @@
         timePepper.position = pepperMenu.position; 
         [self addChild:timePepper z:-1 tag:pepperTimeTag];
         
-        CCSprite *crystalProp1 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];
-        CCSprite *crystalProp2 = [CCSprite spriteWithSpriteFrameName:@"crystallball.png"];    
+        CCSprite *crystalProp1 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
+        CCSprite *crystalProp2 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];    
         crystalPropMenu = [CCMenuItemSprite itemFromNormalSprite:crystalProp1 
                                                                    selectedSprite:crystalProp2 
                                                                            target:self 
@@ -227,6 +244,14 @@
         //change size by diff version
         CGPoint distance = CGPointMake(45, 0);
         crystalMenu.position = ccpAdd(distance, [GameMainScene sharedMainScene].pepperMenuPos);
+ //显示背包背景
+        CCSprite *star2 = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
+        //change size by diff version query
+        star2.position=crystalMenu.position;
+        //change size by diff version manual
+        star2.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
+        star2.scaleY=(25)/[star contentSize].height;
+        [buttonBatch addChild:star2 z:-2];
         crystalMenu.visible = NO;
         [self addChild:crystalMenu z:-2];
         CCProgressTimer *timeCrystal = [CCProgressTimer progressWithFile:@"cd.png"];
@@ -236,8 +261,8 @@
         [self addChild:timeCrystal z:-1 tag:crystalTimeTag];
         
         
-        CCSprite *smokeProp1 = [CCSprite spriteWithSpriteFrameName:@"cake.png"];
-        CCSprite *smokeProp2 = [CCSprite spriteWithSpriteFrameName:@"cake.png"];    
+        CCSprite *smokeProp1 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
+        CCSprite *smokeProp2 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];    
         smokePropMenu = [CCMenuItemSprite itemFromNormalSprite:smokeProp1 
                                                   selectedSprite:smokeProp2 
                                                           target:self 
@@ -253,7 +278,15 @@
         //change size by diff version
         CGPoint distance2 = CGPointMake(90, 0);
         smokeMenu.position = ccpAdd(distance2, [GameMainScene sharedMainScene].pepperMenuPos);
-
+//显示背包背景
+        CCSprite *star3 = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
+        //change size by diff version query
+        star3.position=smokeMenu.position;
+        //change size by diff version manual
+        star3.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
+        star3.scaleY=(25)/[star contentSize].height;
+        [buttonBatch addChild:star3 z:-2];
+        
         smokeMenu.visible = NO;
         [self addChild:smokeMenu z:-2];
         CCProgressTimer *timeSmoke = [CCProgressTimer progressWithFile:@"cd.png"];
