@@ -155,7 +155,7 @@
     while(1)
     {
         right_index = [foodArray count]-1;
-        if (right_index < 1)
+        if (right_index < 0)
         {
             return;
         }
