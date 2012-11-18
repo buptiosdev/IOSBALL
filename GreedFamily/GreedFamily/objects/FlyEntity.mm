@@ -18,6 +18,7 @@
 @end
 
 @implementation FlyEntity
+@synthesize body = _body;
 @synthesize flyAction = _flyAction;
 @synthesize flyActionArray = _flyActionArray;
 @synthesize sprite = _sprite;
@@ -541,18 +542,14 @@
     BOOL yOverflow = NO;
     
     playerVelocity = [Helper toPixels:self.body->GetLinearVelocity()];
+    CCLOG(@"before playervelocity is %f , %f",playerVelocity.x,playerVelocity.y);
     playerVelocity.x = playerVelocity.x * deceleration + acceleration.x * sensitivity;
     //playerVelocity.y = playerVelocity.y * deceleration + acceleration.y * sensitivity;
-    // 我们必须在两个方向上都限制主角精灵的最大速度值 
-    if (playerVelocity.x > maxVelocity) 
-    {
-        playerVelocity.x = maxVelocity;
-    } 
-    else if (playerVelocity.x < - maxVelocity) 
-    {
-        playerVelocity.x = - maxVelocity;
+    CCLOG(@"acceleration is %f , %f",acceleration.x,acceleration.y);
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!必须检查是否为0,否则会发生除0错误。modify by liuyunpeng 2012-11-18
+    if(acceleration.x==0||acceleration.y==0){
+        return;
     }
-    
     playerVelocity.y = playerVelocity.x * acceleration.y / acceleration.x;  
     if (playerVelocity.y > maxVelocity) 
     {
@@ -568,7 +565,17 @@
     {
         playerVelocity.x = playerVelocity.y * acceleration.x / acceleration.y;
     }
-
+    //modify by liuyunpeng 2012-11-18
+    // 我们必须在两个方向上都限制主角精灵的最大速度值 
+    if (playerVelocity.x > maxVelocity) 
+    {
+        playerVelocity.x = maxVelocity;
+    } 
+    else if (playerVelocity.x < - maxVelocity) 
+    {
+        playerVelocity.x = - maxVelocity;
+    }
+    CCLOG(@"after playervelocity is %f , %f",playerVelocity.x,playerVelocity.y);
     b2Vec2 force = [Helper toMeters:playerVelocity];
     
 	self.body->ApplyForce(force, self.body->GetWorldCenter());
@@ -653,14 +660,6 @@
 {
 	fingerLocation = [Helper locationFromTouch:touch];
     fingerLocationEnd = [Helper locationFromTouch:touch];
-//    time2 = CFAbsoluteTimeGetCurrent();
-//    float distance = ccpDistance(fingerLocationBegin, fingerLocationEnd);
-//    if (distance > 1) 
-//    {
-//        moveToFinger = YES;
-//    }
-    
-    
 }
 
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event
@@ -668,9 +667,13 @@
     fingerLocationEnd = [Helper locationFromTouch:touch];
     time2 = CFAbsoluteTimeGetCurrent();
     float distance = ccpDistance(fingerLocationBegin, fingerLocationEnd);
-    if (distance > 1) 
+    double interval=time2-time1;
+    if (distance > 1 && interval > 0.01) 
     {
         moveToFinger = YES;
+    }else
+    {
+        CCLOG(@"distance is %f , interval is %f",distance,interval);
     }
 }
 
