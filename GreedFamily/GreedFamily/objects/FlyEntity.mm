@@ -21,7 +21,7 @@
 @synthesize flyAction = _flyAction;
 @synthesize flyActionArray = _flyActionArray;
 @synthesize sprite = _sprite;
-
+@synthesize familyType = _familyType;
 +(id) flyAnimal:(b2World *)world RoleType:(int)roleType
 {
 	return [[[self alloc] initWithWorld:world RoleType:roleType] autorelease];
@@ -49,7 +49,7 @@
         
         
         //小鸟
-        if (3 == familyType) 
+        if (3 == _familyType) 
         {
             switch (i) 
             {
@@ -96,7 +96,7 @@
 //            }
         }
         //小猪
-        else if (2 == familyType)
+        else if (2 == _familyType)
         {
             switch (i) 
             {
@@ -144,7 +144,7 @@
 //            }
         }
         //小猪
-        else if (1 == familyType)
+        else if (1 == _familyType)
         {
             switch (i) 
             {
@@ -194,7 +194,7 @@
 		CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
         //指定是猪还是鸟。1。小鸟 2。小猪
-        familyType = roleType;
+        _familyType = roleType;
         directionBefore = 0;
         directionCurrent = 0;
         //CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"dragon.png"];
@@ -206,21 +206,21 @@
         //CCSpriteFrame *frame1 = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 75, 70) ];
         
 
-        if (1 == familyType)
+        if (1 == _familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"pandaboy_3_1.png"];
             //按照像素设定图片大小
             self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
             self.sprite.scaleY=(50)/[self.sprite contentSize].height;
         }
-        else if (2 == familyType)
+        else if (2 == _familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"boypig_3_1.png"];
             //按照像素设定图片大小
             self.sprite.scaleX=(70)/[self.sprite contentSize].width; //按照像素定制图片宽高
             self.sprite.scaleY=(70)/[self.sprite contentSize].height;
         }
-        else if (3 == familyType)
+        else if (3 == _familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
             //按照像素设定图片大小
@@ -249,19 +249,19 @@
                                        (screenSize.height ) * 0.5f);
 		
 		// Create a body definition, it's a static body (bumpers don't move)
-        //小鸟
+        //小熊
         b2BodyDef bodyDef;
         b2FixtureDef fixtureDef;
-        if (1 == familyType)
+        if (1 == _familyType)
         {
-            bodyDef.position = [Helper toMeters:startPos];
-            bodyDef.type = b2_dynamicBody;
-            
-            //阻力
-            bodyDef.linearDamping = 0.25f;
-            bodyDef.angularDamping = 100.0f;
-            //不旋转
-            bodyDef.fixedRotation = true;
+//            bodyDef.position = [Helper toMeters:startPos];
+//            bodyDef.type = b2_dynamicBody;
+//            
+//            //阻力
+//            bodyDef.linearDamping = 0.25f;
+//            bodyDef.angularDamping = 100.0f;
+//            //不旋转
+//            bodyDef.fixedRotation = true;
             
             b2CircleShape circleShape;
             float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 10) / PTM_RATIO) * 0.5f;
@@ -269,22 +269,23 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.5f;
-            fixtureDef.friction = 0.5f;
-            fixtureDef.restitution = 0.4f;
+//            fixtureDef.density = 0.5f;
+//            fixtureDef.friction = 0.5f;
+//            fixtureDef.restitution = 0.4f;
 
         }
-        else if (2 == familyType)
+        //小猪
+        else if (2 == _familyType)
         {
             
-            bodyDef.position = [Helper toMeters:startPos];
-            bodyDef.type = b2_dynamicBody;
-            
-            //阻力
-            bodyDef.linearDamping = 0.35f;
-            bodyDef.angularDamping = 100.0f;
-            //不旋转
-            bodyDef.fixedRotation = true;
+//            bodyDef.position = [Helper toMeters:startPos];
+//            bodyDef.type = b2_dynamicBody;
+//            
+//            //阻力
+//            bodyDef.linearDamping = 0.35f;
+//            bodyDef.angularDamping = 100.0f;
+//            //不旋转
+//            bodyDef.fixedRotation = true;
             
             b2CircleShape circleShape;
             float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 15) / PTM_RATIO) * 0.5f;
@@ -292,33 +293,46 @@
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.7f;
-            fixtureDef.friction = 0.6f;
-            fixtureDef.restitution = 0.5f;
+//            fixtureDef.density = 0.7f;
+//            fixtureDef.friction = 0.6f;
+//            fixtureDef.restitution = 0.5f;
 
         }
-        else if (3 == familyType)
+        //小鸟
+        else if (3 == _familyType)
         {
-            bodyDef.position = [Helper toMeters:startPos];
-            bodyDef.type = b2_dynamicBody;
-            
-            //阻力
-            bodyDef.linearDamping = 0.3f;
-            bodyDef.angularDamping = 100.0f;
-            //不旋转
-            bodyDef.fixedRotation = true;
-            
+//            bodyDef.position = [Helper toMeters:startPos];
+//            bodyDef.type = b2_dynamicBody;
+//            
+//            //阻力
+//            bodyDef.linearDamping = 0.3f;
+//            bodyDef.angularDamping = 100.0f;
+//            //不旋转
+//            bodyDef.fixedRotation = true;
+//            
             b2CircleShape circleShape;
             float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 10) / PTM_RATIO) * 0.5f;
             circleShape.m_radius = radiusInMeters;
             
             // Define the dynamic body fixture.
             fixtureDef.shape = &circleShape;
-            fixtureDef.density = 0.5f;
-            fixtureDef.friction = 0.5f;
-            fixtureDef.restitution = 0.7f;
+//            fixtureDef.density = 0.5f;
+//            fixtureDef.friction = 0.5f;
+//            fixtureDef.restitution = 0.7f;
             
         }
+        
+        bodyDef.position = [Helper toMeters:startPos];
+        bodyDef.type = b2_dynamicBody;
+        //阻力
+        bodyDef.linearDamping = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].linearDamping;
+        bodyDef.angularDamping = 100.0f;
+        //不旋转
+        bodyDef.fixedRotation = true;
+        fixtureDef.density = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].density;
+        fixtureDef.friction = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].friction;
+        fixtureDef.restitution = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].restitution;
+
 				
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef];
         self.sprite.position = startPos;
@@ -376,9 +390,9 @@
 	// of sensitivity is reduced.
 	
 	// this controls how quickly the velocity decelerates (lower = quicker to change direction)
-	float deceleration = 0.4f;
+	float deceleration = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].deceleration;
 	// this determines how sensitive the accelerometer reacts (higher = more sensitive)
-	float sensitivity = 6.0f;
+	float sensitivity = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].sensitivity;
 	// how fast the velocity can be at most
 	float maxVelocity = 100;
     

@@ -93,7 +93,7 @@
     {
         [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
     }
-    [activityIndicatorView stopAnimating ];  //ֹͣ   
+    [activityIndicatorView stopAnimating ];  //停止   
 	
 }
 

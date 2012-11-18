@@ -53,10 +53,11 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
         strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
     }
     int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-    if (temCapacity > 12 || temCapacity < 8) 
-    {
-        temCapacity = 8;
-    }
+//    if (temCapacity > 12 || temCapacity < 8) 
+//    {
+//        temCapacity = 8;
+//    }
+    temCapacity = [[GameMainScene sharedMainScene] roleParamArray][[[GameMainScene sharedMainScene] roleType] - 1].storageCapacity + temCapacity;
     Storage *storage = [Storage createStorage:temCapacity Play:1];
     [self addChild:storage z:-3 tag:StorageTag];
     
@@ -82,16 +83,18 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
     NSString *strCapacityPlay2 = [NSString stringWithFormat:@"Capacity_Pig"];
 
     int temCapacityPlay1 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay1]; 
-    if (temCapacityPlay1 > 12 || temCapacityPlay1 < 8) 
-    {
-        temCapacityPlay1 = 8;
-    }
+//    if (temCapacityPlay1 > 12 || temCapacityPlay1 < 8) 
+//    { 
+//        temCapacityPlay1 = 8;
+//    }
     int temCapacityPlay2 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay2]; 
     if (temCapacityPlay2 > 12 || temCapacityPlay2 < 8) 
-    {
-        temCapacityPlay2 = 8;
-    }
+//    {
+//        temCapacityPlay2 = 8;
+//    }
     
+    temCapacityPlay1 = [[GameMainScene sharedMainScene] roleParamArray][0].storageCapacity + temCapacityPlay1;
+    temCapacityPlay2 = [[GameMainScene sharedMainScene] roleParamArray][0].storageCapacity + temCapacityPlay2;
     Storage *storagePlay1 = [Storage createStorage:temCapacityPlay1 Play:1];
     [self addChild:storagePlay1 z:-3 tag:StorageTag];
     

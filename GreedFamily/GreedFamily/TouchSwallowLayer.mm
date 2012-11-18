@@ -70,11 +70,21 @@
             yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddStorageOnce:)];
             str = [NSString stringWithFormat:@"您将花去%d分",STORAGE1];
         }
-        else
+        else if (5 == goodsType)
         {
             yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddStorageTwice:)];
             str = [NSString stringWithFormat:@"您将花去%d分",STORAGE2];
         }
+        else if (6 == goodsType)
+        {
+            yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddStorageThird:)];
+            str = [NSString stringWithFormat:@"您将花去%d分",STORAGE3];
+        }
+        else
+        {
+            assert(YES);
+        }
+        
                 
         myMenu = [CCMenu menuWithItems:yesMenu,noMenu,nil];
         
@@ -271,7 +281,7 @@
 
 -(void)yesAddStorageOnce:(id)sender
 {
-    int capacity = 9;
+    int capacity = 1;
     //读取得分
     //更新累计得分,算两个role的总分
     NSString *strRolaTotalScore = nil;
@@ -325,7 +335,7 @@
 
 -(void)yesAddStorageTwice:(id)sender
 {
-    int capacity = 10;
+    int capacity = 2;
     //读取得分
     //更新累计得分,算两个role的总分
     NSString *strRolaTotalScore = nil;
@@ -374,6 +384,59 @@
     [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
     //[self.parent removeChild:self cleanup:YES];
 }
+
+-(void)yesAddStorageThird:(id)sender
+{
+    int capacity = 3;
+    //读取得分
+    //更新累计得分,算两个role的总分
+    NSString *strRolaTotalScore = nil;
+    NSString *strCapacity = nil;
+    if (1 == curRoleType) 
+    {
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
+        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
+    }
+    else if (2 == curRoleType)
+    {
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
+        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
+    }
+    else
+    {
+        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
+        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
+    }
+    int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
+    
+    if (STORAGE3 > rolaTotalScore) 
+    {
+        //购买失败音效
+        [(GameShopScene *)self.parent playAudio:SelectNo];
+        [self.parent removeChild:self cleanup:YES];
+        return;
+    }
+    
+    //修改得分
+    rolaTotalScore -= STORAGE3;
+    [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
+    
+    //修改游戏参数
+    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
+    if (capacity > temCapacity)
+    {
+        [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
+    }
+    //购买成功音效
+    [(GameShopScene *)self.parent playAudio:EatGood];
+    //跳过这一个物品，显示下一个 十位表示仓库
+    ((GameShopScene *)self.parent).buyedList += 10;
+    //提交数据
+    [self updateScore];
+    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+    //[self.parent removeChild:self cleanup:YES];
+}
+
 #pragma mark Layer - Callbacks
 -(void) onEnter
 {

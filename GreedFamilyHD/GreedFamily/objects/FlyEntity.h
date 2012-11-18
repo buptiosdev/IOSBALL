@@ -30,7 +30,7 @@ typedef enum
     //NSMutableArray *_flyActionArray;
     int directionBefore;
     int directionCurrent;
-    int familyType; /*1.小鸟 2.小猪*/
+//    int familyType; /*1.小鸟 2.小猪*/
     double time1;
     double time2;
 
@@ -46,4 +46,5 @@ typedef enum
 @property (assign, nonatomic) CCSprite* sprite;
 @property (nonatomic, retain) NSMutableArray *flyActionArray;
 @property (assign, nonatomic)  CCSpeed *flyAction;
+@property (assign, nonatomic) int familyType;
 @end

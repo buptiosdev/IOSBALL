@@ -13,6 +13,7 @@
 #define ROLE_TYPE_COUNT 3     //角色种类,最后一个为总得分
 #define PTM_RATIO 32
 
+
 typedef enum
 {
     TileMapNode = 1,
@@ -83,6 +84,18 @@ struct SceneParam
     float landAnimalSpeedPlay2;
 };
 
+struct RoleParam {
+    float density;
+    float restitution;
+    float friction;
+    float linearDamping;
+    float sensitivity;
+    float deceleration;
+    float hitEffect;
+    float landSpend;
+    int storageCapacity;
+};
+
 
 
 @interface GameMainScene : CCLayer 
@@ -116,7 +129,7 @@ struct SceneParam
 @property (nonatomic) CGPoint scorePos;
 @property (nonatomic) CGPoint scorePlay2Pos;
 @property (nonatomic) SceneParam mainscenParam;
-
+@property (nonatomic) RoleParam *roleParamArray;
 -(void)addTeachGameLayer;
 -(void)pauseGame;
 -(void)resumeGame;

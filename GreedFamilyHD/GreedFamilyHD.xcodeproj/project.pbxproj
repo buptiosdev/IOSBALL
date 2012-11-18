@@ -190,7 +190,7 @@
 		702D72951598C4F700F44A18 /* elements_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 702D72931598C4F700F44A18 /* elements_default.png */; };
 		702FC0E715C7B13E00B39D2A /* GameShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 702FC0E615C7B13E00B39D2A /* GameShopScene.m */; };
 		702FC0EB15C7B6E700B39D2A /* CCRadioMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 702FC0EA15C7B6E700B39D2A /* CCRadioMenu.m */; };
-		702FC0F615C902FB00B39D2A /* TouchSwallowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 702FC0F515C902FA00B39D2A /* TouchSwallowLayer.m */; };
+		702FC0F615C902FB00B39D2A /* TouchSwallowLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 702FC0F515C902FA00B39D2A /* TouchSwallowLayer.mm */; };
 		705807861583CEF200C66EDE /* background_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705807851583CEF200C66EDE /* background_1.jpg */; };
 		705FD2631655281C00FB4364 /* bite.caf in Resources */ = {isa = PBXBuildFile; fileRef = 705FD2511655281C00FB4364 /* bite.caf */; };
 		705FD2641655281C00FB4364 /* bomb.caf in Resources */ = {isa = PBXBuildFile; fileRef = 705FD2521655281C00FB4364 /* bomb.caf */; };
@@ -671,7 +671,7 @@
 		702FC0E915C7B6E700B39D2A /* CCRadioMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRadioMenu.h; sourceTree = "<group>"; };
 		702FC0EA15C7B6E700B39D2A /* CCRadioMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRadioMenu.m; sourceTree = "<group>"; };
 		702FC0F415C902FA00B39D2A /* TouchSwallowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchSwallowLayer.h; sourceTree = "<group>"; };
-		702FC0F515C902FA00B39D2A /* TouchSwallowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchSwallowLayer.m; sourceTree = "<group>"; };
+		702FC0F515C902FA00B39D2A /* TouchSwallowLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchSwallowLayer.mm; sourceTree = "<group>"; };
 		705807851583CEF200C66EDE /* background_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_1.jpg; path = Resources/background_1.jpg; sourceTree = "<group>"; };
 		705FD2511655281C00FB4364 /* bite.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bite.caf; sourceTree = "<group>"; };
 		705FD2521655281C00FB4364 /* bomb.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bomb.caf; sourceTree = "<group>"; };
@@ -1600,7 +1600,7 @@
 				4A7E716C159217E9008A4148 /* ResultLayer.h */,
 				4A7E716D159217E9008A4148 /* ResultLayer.m */,
 				702FC0F415C902FA00B39D2A /* TouchSwallowLayer.h */,
-				702FC0F515C902FA00B39D2A /* TouchSwallowLayer.m */,
+				702FC0F515C902FA00B39D2A /* TouchSwallowLayer.mm */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1947,7 +1947,7 @@
 				701AD0EA15C4E2260017C064 /* GKMatchmakerViewController-LandscapeOnly.m in Sources */,
 				702FC0E715C7B13E00B39D2A /* GameShopScene.m in Sources */,
 				702FC0EB15C7B6E700B39D2A /* CCRadioMenu.m in Sources */,
-				702FC0F615C902FB00B39D2A /* TouchSwallowLayer.m in Sources */,
+				702FC0F615C902FB00B39D2A /* TouchSwallowLayer.mm in Sources */,
 				7077635615D5666C0085E8DA /* LevelScenePair.m in Sources */,
 				705FD42516552A1F00FB4364 /* DeveloperInfo.m in Sources */,
 				705FD42916552A4500FB4364 /* TeachGameLayer.mm in Sources */,

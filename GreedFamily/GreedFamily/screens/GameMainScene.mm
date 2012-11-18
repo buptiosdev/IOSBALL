@@ -51,6 +51,7 @@
 @synthesize scorePos = _scorePos;
 @synthesize scorePlay2Pos = _scorePlay2Pos;
 @synthesize isPairPlay = _isPairPlay;
+@synthesize roleParamArray = _roleParamArray;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static GameMainScene *instanceOfMainScene;
@@ -140,6 +141,46 @@ static GameMainScene *instanceOfMainScene;
     [self initPairPointParam];
 }
 
+//角色的属性设置
+-(void)initRoleParam
+{
+//    self.roleParamArray = [[CCArray alloc] initWithCapacity:ROLE_TYPE_COUNT];
+    self.roleParamArray = (RoleParam *)malloc(sizeof(RoleParam)*ROLE_TYPE_COUNT);
+//    RoleParam *pandaRole = self.roleParamArray[0];
+//    RoleParam pigRole = self.roleParamArray[1];
+//    RoleParam birdRole = self.roleParamArray[2];
+    //panda
+    self.roleParamArray[0].density = 0.6f;
+    self.roleParamArray[0].restitution = 0.5f;
+    self.roleParamArray[0].friction = 0.5f;
+    self.roleParamArray[0].linearDamping = 0.3f;
+    self.roleParamArray[0].sensitivity = 5.0f;
+    self.roleParamArray[0].deceleration = 0.45f;
+    self.roleParamArray[0].hitEffect = 0.4f;
+    self.roleParamArray[0].landSpend = 0.55f;
+    self.roleParamArray[0].storageCapacity = 7;
+    //pig
+    self.roleParamArray[1].density = 0.7f;
+    self.roleParamArray[1].restitution = 0.4f;
+    self.roleParamArray[1].friction = 0.6f;
+    self.roleParamArray[1].linearDamping = 0.35f;
+    self.roleParamArray[1].sensitivity = 6.5f;
+    self.roleParamArray[1].deceleration = 0.5f;
+    self.roleParamArray[1].hitEffect = 0.5f;
+    self.roleParamArray[1].landSpend = 0.5f;
+    self.roleParamArray[1].storageCapacity = 8;
+    //bird
+    self.roleParamArray[2].density = 0.5f;
+    self.roleParamArray[2].restitution = 0.7f;
+    self.roleParamArray[2].friction = 0.4f;
+    self.roleParamArray[2].linearDamping = 0.25f;
+    self.roleParamArray[2].sensitivity = 6.0f;
+    self.roleParamArray[2].deceleration = 0.4f;
+    self.roleParamArray[2].hitEffect = 0.2f;
+    self.roleParamArray[2].landSpend = 0.4f;
+    self.roleParamArray[2].storageCapacity = 6;
+}
+
 -(id)initWithOrder:(int)order
 {
     if (self = [super init]) 
@@ -148,6 +189,8 @@ static GameMainScene *instanceOfMainScene;
         //初始化一开始，给半单例赋值
         instanceOfMainScene = self;
         _sceneNum = order;
+        //初始化角色参数
+        [self initRoleParam];
         //双人游戏 order为0
         if (0 >= order) 
         {
@@ -245,6 +288,9 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 5;
             break;
     }
+    //根据角色不同速度不同，暂时双人只能角色1 和 角色2
+    _mainscenParam.landAnimalSpeed = _roleParamArray[0].landSpend;
+    _mainscenParam.landAnimalSpeedPlay2 = _roleParamArray[1].landSpend;
     //加上商店购买道具    
     _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
     _mainscenParam.landAnimalSpeedPlay2 =  _mainscenParam.landAnimalSpeedPlay2 * _accelerationPlay2 / 10;
@@ -593,6 +639,8 @@ static GameMainScene *instanceOfMainScene;
         default:
             break;
     }
+    //不同动物，初始速度不同
+    _mainscenParam.landAnimalSpeed = _roleParamArray[_roleType - 1].landSpend;
     //加上商店购买道具    
     _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
 
@@ -798,7 +846,7 @@ static GameMainScene *instanceOfMainScene;
 -(void) dealloc
 {
     instanceOfMainScene = nil; 
-	
+	free(self.roleParamArray);
     [super dealloc];
 }
 

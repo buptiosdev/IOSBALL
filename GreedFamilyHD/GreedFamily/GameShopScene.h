@@ -13,6 +13,7 @@
 #define SPEED3 1000
 #define STORAGE1 200
 #define STORAGE2 400
+#define STORAGE3 1000
 
 typedef enum
 {   

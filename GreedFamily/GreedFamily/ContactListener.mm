@@ -89,6 +89,8 @@ void ContactListener::BeginContact(b2Contact* contact)
             if ([bodyEntityB isKindOfClass:[FlyEntity class]])
             {
                 bodyEntityA.otherLineSpeed = [Helper toPixels:bodyEntityB.body->GetLinearVelocity()];
+                bodyEntityA.flyFamilyType = ((FlyEntity *)bodyEntityB).familyType;
+                
             }
         }
         if (0 >= bodyEntityB.hitPoints 
@@ -96,6 +98,7 @@ void ContactListener::BeginContact(b2Contact* contact)
             if ([bodyEntityA isKindOfClass:[FlyEntity class]])
             {
                 bodyEntityB.otherLineSpeed = [Helper toPixels:bodyEntityA.body->GetLinearVelocity()];
+                bodyEntityB.flyFamilyType = ((FlyEntity *)bodyEntityA).familyType;
             }
         }
     }

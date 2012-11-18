@@ -289,6 +289,32 @@
             [self addChild:menu z: -2 tag:4];
             break;
         }
+        case 2:
+        {
+            CCSprite *addStorageThird1 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
+            CCSprite *addStorageThird2 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
+            CCMenuItemSprite *addStorageThirdMenu = [CCMenuItemSprite itemFromNormalSprite:addStorageThird1 
+                                                                            selectedSprite:addStorageThird2 
+                                                                                    target:self 
+                                                                                  selector:@selector(verifyAddStorageThird:)];
+            CCLabelTTF *Labelnum6=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库加3"] 
+                                                     fontName:@"Marker Felt" fontSize:15];
+            CCLabelTTF *LabelSpend6=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",STORAGE3] 
+                                                       fontName:@"Marker Felt" fontSize:15]; 
+            [Labelnum6 setColor:ccRED];
+            [LabelSpend6 setColor:ccRED];
+            [addStorageThirdMenu addChild:LabelSpend6];
+            [addStorageThirdMenu addChild:Labelnum6];
+            LabelSpend6.anchorPoint=CGPointMake(0, 2);
+            Labelnum6.anchorPoint=CGPointMake(0, 1);
+            
+            CCMenu *menu = [CCMenu menuWithItems: addStorageThirdMenu, nil];
+            [menu setPosition:ccp(screenSize.width * 0.8 , screenSize.height * 0.5)];
+            [menu alignItemsHorizontallyWithPadding:30];
+            [self addChild:menu z: -2 tag:4];
+            break;
+        }
+
         default:
             break;
     }
@@ -381,6 +407,13 @@
 {
     [self playAudio:SelectOK];
     TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:5 RoleType:roalType];
+    [self addChild:myTouchSwallowLayer];
+}
+
+-(void)verifyAddStorageThird:(id)sender
+{
+    [self playAudio:SelectOK];
+    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:6 RoleType:roalType];
     [self addChild:myTouchSwallowLayer];
 }
 

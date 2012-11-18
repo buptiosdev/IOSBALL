@@ -266,7 +266,9 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, 0.5);
+//                    int a = bodyNode.flyFamilyType;
+                    float hitEffect =[[GameMainScene sharedMainScene] roleParamArray][bodyNode.flyFamilyType - 1].hitEffect;
+                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
                     bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
@@ -307,7 +309,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, 0.5);
+                    int hitEffect =[[GameMainScene sharedMainScene] roleParamArray][bodyNode.flyFamilyType - 1].hitEffect;
+                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     

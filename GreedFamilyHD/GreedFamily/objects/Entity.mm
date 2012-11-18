@@ -15,6 +15,7 @@
 @synthesize initialHitPoints;
 @synthesize hitPoints;
 @synthesize otherLineSpeed = _otherLineSpeed;
+@synthesize flyFamilyType = _flyFamilyType;
 @synthesize cover =  _cover;
 //-(CCSprite *)sprite
 //{
