@@ -42,8 +42,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "64"
          endingLineNumber = "64"
-         landmarkName = "+scene:"
-         landmarkType = "5">
+         landmarkName = "@implementation GameMainScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -224,7 +224,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "604"
          endingLineNumber = "604"
-         landmarkName = "-playAudio:"
+         landmarkName = "-initSceneParam:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -266,7 +266,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "612"
          endingLineNumber = "612"
-         landmarkName = "-playAudio:"
+         landmarkName = "-initSceneParam:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2406,8 +2406,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "144"
          endingLineNumber = "144"
-         landmarkName = "-initWithOrder:"
-         landmarkType = "5">
+         landmarkName = "@implementation GameMainScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2672,7 +2672,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "156"
          endingLineNumber = "156"
-         landmarkName = "-initWithOrder:"
+         landmarkName = "-initRoleParam"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2686,7 +2686,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "164"
          endingLineNumber = "164"
-         landmarkName = "-initWithOrder:"
+         landmarkName = "-initRoleParam"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2700,7 +2700,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "167"
          endingLineNumber = "167"
-         landmarkName = "-initWithOrder:"
+         landmarkName = "-initRoleParam"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2756,7 +2756,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "168"
          endingLineNumber = "168"
-         landmarkName = "-initWithOrder:"
+         landmarkName = "-initRoleParam"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
