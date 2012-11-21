@@ -15,8 +15,12 @@
 {
     FlyEntity *flyEntity;
     FlyEntity *flyEntityPlay2;
+    int waitinterval;
     bool isMovePlay1;
     bool isMovePlay2;
+    bool turned;//YES.turn A  NO. turn B
+    CCSprite *spriteA;
+    CCSprite *spriteB;
 }
 
 @end

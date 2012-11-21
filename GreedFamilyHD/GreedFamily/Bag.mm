@@ -155,7 +155,16 @@
 //    //system.position = self.sprite.position;
 //    [self addChild:system];
 
-    [[LandAnimal sharedLandAnimal] reverseDirection];
+//    [[LandAnimal sharedLandAnimal] reverseDirection];
+    if (1 == bagID) 
+    {
+        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimal] reverseDirection];
+    }
+    else
+    {
+        [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimalPlay2] reverseDirection];
+    }
+
     smokeNum--;
     if (0 == smokeNum) 
     {

@@ -317,7 +317,7 @@ static GameMainScene *instanceOfMainScene;
     _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
     _storagePos = CGPointMake(175, 25);
     _scorePos = CGPointMake(25, screenSize.height - 16);
-    _scorePlay2Pos = CGPointMake(100 + 25, screenSize.height - 16);
+    _scorePlay2Pos = CGPointMake(600 + 25, screenSize.height - 16);
 }
 
 -(void)initPointParam

@@ -25,7 +25,45 @@
         flyEntity = [[BodyObjectsLayer sharedBodyObjectsLayer] flyAnimal];
         if (YES == [GameMainScene sharedMainScene].isPairPlay)
         {
+            CGSize screenSize = [[CCDirector sharedDirector] winSize];
+            
             flyEntityPlay2 = [[BodyObjectsLayer sharedBodyObjectsLayer] flyAnimalPlay2];
+            turned = NO;
+            [self scheduleUpdate];
+            waitinterval = 6000;
+
+            spriteA = [CCSprite spriteWithSpriteFrameName:@"panda.png"];
+            //按照像素设定图片大小
+            //change size by diff version manual
+            spriteA.scaleX=(60)/[spriteA contentSize].width; //按照像素定制图片宽高
+            spriteA.scaleY=(60)/[spriteA contentSize].height;
+            spriteA.position = CGPointMake(screenSize.width * 0.25 ,screenSize.height * 0.95);
+            
+            CCProgressTimer *timeA = [CCProgressTimer progressWithFile:@"cd.png"];
+            timeA.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
+            timeA.percentage = 0; //当前进度       
+            timeA.position = spriteA.position; 
+            timeA.scaleX=(60)/[timeA contentSize].width; //按照像素定制图片宽高
+            timeA.scaleY=(60)/[timeA contentSize].height;
+            [self addChild:timeA z:-1 tag:21];
+            
+            spriteB = [CCSprite spriteWithSpriteFrameName:@"boypig_3_1.png"];
+            //按照像素设定图片大小
+            //change size by diff version manual
+            spriteB.scaleX=(80)/[spriteB contentSize].width; //按照像素定制图片宽高
+            spriteB.scaleY=(80)/[spriteB contentSize].height;
+            spriteB.position = CGPointMake(screenSize.width * 0.75 ,screenSize.height * 0.95);
+            
+            CCProgressTimer *timeB = [CCProgressTimer progressWithFile:@"cd.png"];
+            timeB.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
+            timeB.percentage = waitinterval/60; //当前进度       
+            timeB.position = spriteB.position; 
+            timeB.scaleX=(60)/[timeB contentSize].width; //按照像素定制图片宽高
+            timeB.scaleY=(60)/[timeB contentSize].height;
+            [self addChild:timeB z:-1 tag:22];
+            
+            [self addChild:spriteA z:-2];
+            [self addChild:spriteB z:-2];
         }
         isMovePlay1 = NO;
         isMovePlay2 = NO;
@@ -77,17 +115,25 @@
     {
         bool isTouchPlay1 = [self isTouchForPlay1:fingerLocation];
         bool isTouchPlay2 = [self isTouchForPlay2:fingerLocation];
-        if (isTouchPlay1) 
+        if (turned)
         {
-            [flyEntity ccTouchBeganForSky2:touch withEvent:event];
-            isTouchHandled = YES;
-            isMovePlay1 = YES;
+            if (isTouchPlay1) 
+            {
+                waitinterval -= 50;
+                [flyEntity ccTouchBeganForSky2:touch withEvent:event];
+                isTouchHandled = YES;
+                isMovePlay1 = YES;
+            }
         }
-        else if (isTouchPlay2)
+        else
         {
-            [flyEntityPlay2 ccTouchBeganForSky2:touch withEvent:event];
-            isTouchHandled = YES;
-            isMovePlay2 = YES;
+            if (isTouchPlay2)
+            {
+                waitinterval -= 50;
+                [flyEntityPlay2 ccTouchBeganForSky2:touch withEvent:event];
+                isTouchHandled = YES;
+                isMovePlay2 = YES;
+            }
         }
         
     }
@@ -153,6 +199,33 @@
     [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
 	
 	[super onExit];
+}
+
+-(void)update:(ccTime)delta
+{
+    CCProgressTimer*timeTmp;
+    if (turned)
+    {
+        timeTmp=(CCProgressTimer*)[self getChildByTag:21];
+     
+    }
+    else
+    {
+        timeTmp=(CCProgressTimer*)[self getChildByTag:22];
+    }
+    timeTmp.percentage = waitinterval/60; 
+    
+    if(waitinterval>0)
+    {
+        waitinterval--;
+        return;
+    }
+    else
+    {
+        turned = !turned;
+        waitinterval = 6000;
+        [[GameMainScene sharedMainScene] playAudio:SelectNo];
+    }
 }
 
 -(void) dealloc
