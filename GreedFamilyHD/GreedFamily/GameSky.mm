@@ -41,7 +41,7 @@
             
             CCProgressTimer *timeA = [CCProgressTimer progressWithFile:@"cd.png"];
             timeA.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
-            timeA.percentage = 0; //当前进度       
+            timeA.percentage = 100; //当前进度       
             timeA.position = spriteA.position; 
             timeA.scaleX=(60)/[timeA contentSize].width; //按照像素定制图片宽高
             timeA.scaleY=(60)/[timeA contentSize].height;
@@ -56,7 +56,7 @@
             
             CCProgressTimer *timeB = [CCProgressTimer progressWithFile:@"cd.png"];
             timeB.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式  
-            timeB.percentage = waitinterval/60; //当前进度       
+            timeB.percentage = 100; //当前进度       
             timeB.position = spriteB.position; 
             timeB.scaleX=(60)/[timeB contentSize].width; //按照像素定制图片宽高
             timeB.scaleY=(60)/[timeB contentSize].height;
@@ -175,6 +175,99 @@
     }
 }
 
+////方案1：触摸天空触发小鸟移动
+//-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    CGPoint fingerLocation = [Helper locationFromTouch:touch];
+//    bool isTouchHandled = NO;
+//    if (NO == [GameMainScene sharedMainScene].isPairPlay)
+//    {
+//        isTouchHandled = [self isTouchForMe:fingerLocation];
+//        if (isTouchHandled) 
+//        {
+//            [flyEntity ccTouchBeganForSky2:touch withEvent:event];
+//            isMovePlay1 = YES;
+//        }
+//    }
+//    else
+//    {
+//        NSSet *allTouches = [event allTouches];//获得所有触摸点  
+//        int count = [[allTouches allObjects] count];//当前触摸点数量，单点触摸为1. 
+//        
+//        int i = count;
+//        while (i > 0) 
+//        {
+//            UITouch *touch1 = [[allTouches allObjects] objectAtIndex:count - i];
+//            int type = [touch1 tapCount];
+//            NSLog(@"%d\n",type); 
+//            fingerLocation = [Helper locationFromTouch:touch1];
+//            bool isTouchPlay1 = [self isTouchForPlay1:fingerLocation];
+//            bool isTouchPlay2 = [self isTouchForPlay2:fingerLocation];
+//            if (isTouchPlay1) 
+//            {
+//                [flyEntity ccTouchBeganForSky2:touch1 withEvent:event];
+//                isTouchHandled = YES;
+//                isMovePlay1 = YES;
+//            }
+//            else if (isTouchPlay2)
+//            {
+//                [flyEntityPlay2 ccTouchBeganForSky2:touch1 withEvent:event];
+//                isTouchHandled = YES;
+//                isMovePlay2 = YES;
+//            }
+//            
+//            i--;
+//        }
+//    }
+//	return isTouchHandled;
+//}
+//
+//
+//-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    NSSet *allTouches = [event allTouches];//获得所有触摸点  
+//    int count = [[allTouches allObjects] count];//当前触摸点数量，单点触摸为1. 
+//    
+//    int i = count;
+//    while (i > 0) 
+//    {
+//        UITouch *touch1 = [[allTouches allObjects] objectAtIndex:count - i];
+//        if (isMovePlay1) 
+//        {
+//            [flyEntity ccTouchMovedForSky:touch1 withEvent:event];
+//        }
+//        if (isMovePlay2) 
+//        {
+//            [flyEntityPlay2 ccTouchMovedForSky:touch1 withEvent:event];
+//        }
+//        i--;
+//    }
+//     
+//}
+//
+//-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    NSSet *allTouches = [event allTouches];//获得所有触摸点  
+//    int count = [[allTouches allObjects] count];//当前触摸点数量，单点触摸为1. 
+//    
+//    int i = count;
+//    while (i > 0) 
+//    {
+//        UITouch *touch1 = [[allTouches allObjects] objectAtIndex:count - i];
+//        if (isMovePlay1) 
+//        {
+//        
+//            [flyEntity ccTouchEndedForSky:touch1 withEvent:event];
+//            isMovePlay1 = NO;
+//        }
+//        else
+//        {
+//            [flyEntityPlay2 ccTouchEndedForSky:touch1 withEvent:event];
+//            isMovePlay2 = NO;
+//        }
+//    }
+//}
+//
 
 
 #pragma mark Layer - Callbacks
@@ -203,25 +296,36 @@
 
 -(void)update:(ccTime)delta
 {
+
     CCProgressTimer*timeTmp;
-    if (turned)
-    {
-        timeTmp=(CCProgressTimer*)[self getChildByTag:21];
-     
-    }
-    else
-    {
-        timeTmp=(CCProgressTimer*)[self getChildByTag:22];
-    }
-    timeTmp.percentage = waitinterval/60; 
-    
     if(waitinterval>0)
     {
         waitinterval--;
+        
+        if (turned)
+        {
+            timeTmp=(CCProgressTimer*)[self getChildByTag:21];
+            
+        }
+        else
+        {
+            timeTmp=(CCProgressTimer*)[self getChildByTag:22];
+        }
+        timeTmp.percentage = (waitinterval)/60 ; 
         return;
     }
     else
     {
+        if (turned)
+        {
+            timeTmp=(CCProgressTimer*)[self getChildByTag:21];
+            
+        }
+        else
+        {
+            timeTmp=(CCProgressTimer*)[self getChildByTag:22];
+        }
+        timeTmp.percentage = 100;
         turned = !turned;
         waitinterval = 6000;
         [[GameMainScene sharedMainScene] playAudio:SelectNo];

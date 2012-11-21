@@ -16,7 +16,6 @@
 @implementation TouchSwallowLayer
 
 
-
 -(void) registerWithTouchDispatcher 
 {
     [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate: self priority:kCCMenuTouchPriority-1 swallowsTouches:YES ];

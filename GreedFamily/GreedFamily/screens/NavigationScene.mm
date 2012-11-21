@@ -98,6 +98,25 @@
         [playmenu setPosition:ccp(size.width/2,size.height*2/5)];
         [self addChild:playmenu];
         
+        
+        
+        
+        //set pair play 
+        CCSprite *pairplay = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
+        //play.scaleX=1.1;
+        pairplay.scaleY=1.05;
+        CCSprite *pairplay1 = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
+        //        play1.scaleX=0.75; //按照像素定制图片宽高是控制像素的。
+        //        play1.scaleY=0.9;
+        CCMenuItemSprite *pairplayitem = [CCMenuItemSprite itemFromNormalSprite:pairplay 
+                                                             selectedSprite:pairplay1 
+                                                                     target:self 
+                                                                   selector:@selector(pairGame:)];
+        CCMenu * plairplaymenu = [CCMenu menuWithItems:pairplayitem, nil];
+        [playmenu setPosition:ccp(size.width/2,size.height*2/5)];
+        [self addChild:plairplaymenu];
+        
+        
         //set option in the left-down corner
 
         CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];

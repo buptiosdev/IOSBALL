@@ -206,8 +206,23 @@
                                                                selectedSprite:achivement1 
                                                                        target:self 
                                                                      selector:@selector(showGameAchievements:)];
-        achivementItem.scale=leaderscale;
-        CCMenu * leadermenu = [CCMenu menuWithItems:leaderItem, achivementItem, nil];
+        achivementItem.scale=leaderscale;        
+        
+        //add by liuyunpeng 2012-11-18  user review
+        CCSprite * userreview= [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
+        CCSprite *userreview1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
+        userreview1.scaleX=1.1;
+        userreview1.scaleY=1.1;
+        CCMenuItemSprite *userreviewItem = [CCMenuItemSprite itemFromNormalSprite:userreview 
+                                                                   selectedSprite:userreview1 
+                                                                           target:self 
+                                                                         selector:@selector(showGameUserReview:)];
+        userreviewItem.scale=leaderscale;        
+        
+        
+        
+        
+        CCMenu * leadermenu = [CCMenu menuWithItems:leaderItem, achivementItem, userreviewItem, nil];
         // center= size.width/2+[achivement contentSize].width*(0.5-leaderscale/2)
         [leadermenu setPosition:ccp(size.width/2,[leader contentSize].height*optscale/2)];
         //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
@@ -570,6 +585,15 @@
     {
         [self updateScoreAndShowAchievements];
     }
+}
+
+-(void)showGameUserReview:(id)sender
+{ 
+//    NSString *str = [NSString stringWithFormat: 
+//                   @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
+//                   1234 ]; 
+    NSString * str =@"http://www.sina.com.cn";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
 }
 

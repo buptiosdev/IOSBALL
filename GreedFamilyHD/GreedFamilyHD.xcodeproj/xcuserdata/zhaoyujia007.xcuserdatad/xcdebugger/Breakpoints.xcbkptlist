@@ -359,13 +359,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/GameSky.mm"
-         timestampString = "375202813.102079"
+         timestampString = "375204263.416121"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "233"
-         endingLineNumber = "233"
-         landmarkName = "-dealloc"
-         landmarkType = "5">
+         startingLineNumber = "244"
+         endingLineNumber = "244"
+         landmarkName = "@implementation GameSky"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1792,7 +1792,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "435"
          endingLineNumber = "435"
-         landmarkName = "-applyForceWichAccelar"
+         landmarkName = "-accelerometer:didAccelerate:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1862,7 +1862,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "408"
          endingLineNumber = "408"
-         landmarkName = "-options:"
+         landmarkName = "-newGame:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1890,7 +1890,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "390"
          endingLineNumber = "390"
-         landmarkName = "-newGame:"
+         landmarkName = "-playAudio:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2168,8 +2168,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "401"
          endingLineNumber = "401"
-         landmarkName = "-newGame:"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2182,7 +2182,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "400"
          endingLineNumber = "400"
-         landmarkName = "-newGame:"
+         landmarkName = "-viewAddPointY"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2196,7 +2196,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "399"
          endingLineNumber = "399"
-         landmarkName = "-newGame:"
+         landmarkName = "-viewAddPointY"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2868,7 +2868,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "668"
          endingLineNumber = "668"
-         landmarkName = "-ccTouchEndedForSky:withEvent:"
+         landmarkName = "-ccTouchMovedForSky:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

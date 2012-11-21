@@ -179,7 +179,6 @@ static GameMainScene *instanceOfMainScene;
     self.roleParamArray[2].hitEffect = 0.2f;
     self.roleParamArray[2].landSpend = 0.4f;
     self.roleParamArray[2].storageCapacity = 6;
-    
 }
 
 -(id)initWithOrder:(int)order

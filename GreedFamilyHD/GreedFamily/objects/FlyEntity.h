@@ -42,7 +42,7 @@ typedef enum
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchBeganForSky2:(UITouch *)touch withEvent:(UIEvent *)event;
 -(CGPoint)getFlySpeed;
-
+@property (nonatomic) b2Body* body;
 @property (assign, nonatomic) CCSprite* sprite;
 @property (nonatomic, retain) NSMutableArray *flyActionArray;
 @property (assign, nonatomic)  CCSpeed *flyAction;
