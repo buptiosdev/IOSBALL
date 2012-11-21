@@ -150,30 +150,30 @@ static GameMainScene *instanceOfMainScene;
 //    RoleParam pigRole = self.roleParamArray[1];
 //    RoleParam birdRole = self.roleParamArray[2];
     //panda
-    self.roleParamArray[0].density = 0.6f;
+    self.roleParamArray[0].density = 0.75f;
     self.roleParamArray[0].restitution = 0.5f;
     self.roleParamArray[0].friction = 0.5f;
-    self.roleParamArray[0].linearDamping = 0.3f;
+    self.roleParamArray[0].linearDamping = 0.45f;
     self.roleParamArray[0].sensitivity = 5.0f;
     self.roleParamArray[0].deceleration = 0.45f;
     self.roleParamArray[0].hitEffect = 0.4f;
     self.roleParamArray[0].landSpend = 0.55f;
     self.roleParamArray[0].storageCapacity = 7;
     //pig
-    self.roleParamArray[1].density = 0.7f;
+    self.roleParamArray[1].density = 0.8f;
     self.roleParamArray[1].restitution = 0.4f;
     self.roleParamArray[1].friction = 0.6f;
-    self.roleParamArray[1].linearDamping = 0.35f;
+    self.roleParamArray[1].linearDamping = 0.5f;
     self.roleParamArray[1].sensitivity = 6.5f;
     self.roleParamArray[1].deceleration = 0.5f;
     self.roleParamArray[1].hitEffect = 0.5f;
     self.roleParamArray[1].landSpend = 0.5f;
     self.roleParamArray[1].storageCapacity = 8;
     //bird
-    self.roleParamArray[2].density = 0.5f;
+    self.roleParamArray[2].density = 0.6f;
     self.roleParamArray[2].restitution = 0.7f;
     self.roleParamArray[2].friction = 0.4f;
-    self.roleParamArray[2].linearDamping = 0.25f;
+    self.roleParamArray[2].linearDamping = 0.3f;
     self.roleParamArray[2].sensitivity = 6.0f;
     self.roleParamArray[2].deceleration = 0.4f;
     self.roleParamArray[2].hitEffect = 0.2f;
@@ -257,7 +257,7 @@ static GameMainScene *instanceOfMainScene;
     _mainscenParam.order = order;
     switch (order) {
         case TargetScenesPairEasy:
-            _mainscenParam.maxVisibaleNum = 6;
+            _mainscenParam.maxVisibaleNum = 4;
             _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -272,8 +272,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = ThreeTime;
             break;
         case TargetScenesPairHard:
-            _mainscenParam.maxVisibaleNum = 8;
-            _mainscenParam.candyCount = 50;
+            _mainscenParam.maxVisibaleNum = 5;
+            _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
             _mainscenParam.landCompetitorExist = NO;
