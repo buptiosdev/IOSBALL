@@ -157,7 +157,7 @@ static GameMainScene *instanceOfMainScene;
     self.roleParamArray[0].sensitivity = 5.0f;
     self.roleParamArray[0].deceleration = 0.45f;
     self.roleParamArray[0].hitEffect = 0.4f;
-    self.roleParamArray[0].landSpend = 0.55f;
+    self.roleParamArray[0].landSpeed = 0.55f;
     self.roleParamArray[0].storageCapacity = 7;
     //pig
     self.roleParamArray[1].density = 0.8f;
@@ -167,7 +167,7 @@ static GameMainScene *instanceOfMainScene;
     self.roleParamArray[1].sensitivity = 6.5f;
     self.roleParamArray[1].deceleration = 0.5f;
     self.roleParamArray[1].hitEffect = 0.5f;
-    self.roleParamArray[1].landSpend = 0.5f;
+    self.roleParamArray[1].landSpeed = 0.5f;
     self.roleParamArray[1].storageCapacity = 8;
     //bird
     self.roleParamArray[2].density = 0.6f;
@@ -177,8 +177,73 @@ static GameMainScene *instanceOfMainScene;
     self.roleParamArray[2].sensitivity = 6.0f;
     self.roleParamArray[2].deceleration = 0.4f;
     self.roleParamArray[2].hitEffect = 0.2f;
-    self.roleParamArray[2].landSpend = 0.4f;
+    self.roleParamArray[2].landSpeed = 0.4f;
     self.roleParamArray[2].storageCapacity = 6;
+}
+
+-(float)getRoleParam:(int)roleType ParamType:(int)paramType
+{
+    int count = roleType -1;
+    int baseValue;
+    
+    NSString *strBuyedList = nil;
+    if (1 == roleType)
+    {
+        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Panda"];
+    }
+    else if (2 == roleType)
+    {
+        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Pig"];
+    }
+    else if (3 == roleType)
+    {
+        strBuyedList = [NSString stringWithFormat:@"Buyedlist_Bird"];
+    }
+    else
+    {
+        assert(NO);
+    }
+    int buyedList = [[NSUserDefaults standardUserDefaults] integerForKey:strBuyedList];
+    
+    
+    
+    
+    if (paramType == LANDSPEED) 
+    {
+        baseValue = self.roleParamArray[count].landSpeed;
+        
+        int level = (buyedList%10);
+        
+        return baseValue + level * baseValue * 0.1;
+    }
+    if (paramType == STORAGECAPACITY) 
+    {
+        baseValue = self.roleParamArray[count].storageCapacity;
+        
+        int level = ((buyedList/10)%10);
+        
+        return baseValue + level * baseValue;
+    }
+    if (paramType == AIRSPEED) 
+    {
+        baseValue = self.roleParamArray[count].sensitivity;
+        
+        int level = ((buyedList/100)%10);
+        
+        return baseValue + level * baseValue * 0.1;
+    }
+    if (paramType == AIRSENSIT) 
+    {
+        baseValue = self.roleParamArray[count].deceleration;
+        
+        int level = (buyedList%10);
+        
+        return baseValue + level * baseValue * 0.1;
+    }
+    
+    assert(0);
+    return 0;
+    
 }
 
 -(id)initWithOrder:(int)order
@@ -289,8 +354,8 @@ static GameMainScene *instanceOfMainScene;
             break;
     }
     //根据角色不同速度不同，暂时双人只能角色1 和 角色2
-    _mainscenParam.landAnimalSpeed = _roleParamArray[0].landSpend;
-    _mainscenParam.landAnimalSpeedPlay2 = _roleParamArray[1].landSpend;
+    _mainscenParam.landAnimalSpeed = _roleParamArray[0].landSpeed;
+    _mainscenParam.landAnimalSpeedPlay2 = _roleParamArray[1].landSpeed;
     //加上商店购买道具    
     _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
     _mainscenParam.landAnimalSpeedPlay2 =  _mainscenParam.landAnimalSpeedPlay2 * _accelerationPlay2 / 10;
@@ -640,7 +705,7 @@ static GameMainScene *instanceOfMainScene;
             break;
     }
     //不同动物，初始速度不同
-    _mainscenParam.landAnimalSpeed = _roleParamArray[_roleType - 1].landSpend;
+    _mainscenParam.landAnimalSpeed = _roleParamArray[_roleType - 1].landSpeed;
     //加上商店购买道具    
     _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
 
