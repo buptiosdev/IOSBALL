@@ -92,7 +92,7 @@ struct RoleParam {
     float friction;
     float linearDamping;
     float sensitivity;
-    float deceleration;
+    float airspeed;
     float hitEffect;
     float landSpeed;
     float storageCapacity;

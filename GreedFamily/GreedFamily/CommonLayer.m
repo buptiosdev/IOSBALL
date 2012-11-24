@@ -56,8 +56,8 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[0].restitution = 0.5f;
     self.roleParamArray[0].friction = 0.5f;
     self.roleParamArray[0].linearDamping = 0.45f;
-    self.roleParamArray[0].sensitivity = 5.0f;
-    self.roleParamArray[0].deceleration = 0.45f;
+    self.roleParamArray[0].sensitivity = 0.45f;
+    self.roleParamArray[0].airspeed = 5.0f;
     self.roleParamArray[0].hitEffect = 0.4f;
     self.roleParamArray[0].landSpeed = 0.55f;
     self.roleParamArray[0].storageCapacity = 7;
@@ -66,8 +66,8 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[1].restitution = 0.4f;
     self.roleParamArray[1].friction = 0.6f;
     self.roleParamArray[1].linearDamping = 0.5f;
-    self.roleParamArray[1].sensitivity = 6.5f;
-    self.roleParamArray[1].deceleration = 0.5f;
+    self.roleParamArray[1].sensitivity = 0.5f;
+    self.roleParamArray[1].airspeed = 6.5f;
     self.roleParamArray[1].hitEffect = 0.5f;
     self.roleParamArray[1].landSpeed = 0.5f;
     self.roleParamArray[1].storageCapacity = 8;
@@ -76,8 +76,8 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[2].restitution = 0.7f;
     self.roleParamArray[2].friction = 0.4f;
     self.roleParamArray[2].linearDamping = 0.3f;
-    self.roleParamArray[2].sensitivity = 6.0f;
-    self.roleParamArray[2].deceleration = 0.4f;
+    self.roleParamArray[2].sensitivity = 0.4f;
+    self.roleParamArray[2].airspeed = 6.0f;
     self.roleParamArray[2].hitEffect = 0.2f;
     self.roleParamArray[2].landSpeed = 0.4f;
     self.roleParamArray[2].storageCapacity = 6;
@@ -87,7 +87,7 @@ static CommonLayer *instanceOfCommonLayer;
 -(float)getRoleParam:(int)roleType ParamType:(int)paramType
 {
     int count = roleType -1;
-    int baseValue;
+    float baseValue;
     
     NSString *strBuyedList = nil;
     if (1 == roleType)
@@ -129,7 +129,7 @@ static CommonLayer *instanceOfCommonLayer;
     }
     else if (paramType == ROLEAIRSPEED) 
     {
-        baseValue = self.roleParamArray[count].sensitivity;
+        baseValue = self.roleParamArray[count].airspeed;
         
         int level = ((buyedList/100)%10);
         
@@ -137,11 +137,11 @@ static CommonLayer *instanceOfCommonLayer;
     }
     else if (paramType == ROLEAIRSENSIT) 
     {
-        baseValue = self.roleParamArray[count].deceleration;
+        baseValue = self.roleParamArray[count].sensitivity;
         
         int level = (buyedList%10);
         
-        return baseValue + level * baseValue * 0.1;
+        return baseValue - level * baseValue * 0.1;
     }
     else if (paramType == ROLELINEARDAMP) 
     {

@@ -392,15 +392,15 @@
 	// of sensitivity is reduced.
 	
 	// this controls how quickly the velocity decelerates (lower = quicker to change direction)
-    float deceleration = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEAIRSPEED];
-    // this determines how sensitive the accelerometer reacts (higher = more sensitive)
     float sensitivity = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEDENSITY];
+    // this determines how sensitive the accelerometer reacts (higher = more sensitive)
+    float airspeed = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEAIRSPEED];
     
 	// how fast the velocity can be at most
 	float maxVelocity = 100;
     
 	// adjust velocity based on current accelerometer acceleration
-	playerVelocity.x = playerVelocity.x * deceleration + acceleration.x * sensitivity;
+	playerVelocity.x = playerVelocity.x * sensitivity + acceleration.x * airspeed;
     
     BOOL yOverflow = NO;
 	// we must limit the maximum velocity of the player sprite, in both directions (positive & negative values)

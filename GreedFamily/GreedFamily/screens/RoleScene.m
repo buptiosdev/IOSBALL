@@ -15,6 +15,7 @@
 #define LAND_SPEED_TAG 10
 #define FLY_SPEED_TAG 11
 #define STORAGE_CAPACITY_TAG 12
+#define FLY_SENSITIVE_TAG 13
 
 
 @implementation RoleScene
@@ -22,41 +23,20 @@
 
 //add by lyp 2012-10-23
 -(void)changeParameter:(int)roletype
-{
-    NSString *strSpeed=nil;
-    NSString *strCapacity=nil;
-    if(roletype == 1){
-        strSpeed=@"Acceleration_Panda";
-        strCapacity=@"Capacity_Panda";
-    }else if(roletype == 2){
-        strSpeed=@"Acceleration_Pig";
-        strCapacity=@"Capacity_Pig";
-    }else if(roletype == 3){
-        strSpeed=@"Acceleration_Bird";
-        strCapacity=@"Capacity_Bird";
-    }else{
-        return;
-    }
-    int temCapacity = [[CommonLayer sharedCommonLayer] getRoleParam:roleType ParamType:ROLESTORAGECAPACITY];
-    
-    int landspeed= [[NSUserDefaults standardUserDefaults] integerForKey:strSpeed];
-    int capacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity];
-    if(capacity==0){
-        capacity=8;
-    }
+{    
+    float capacity = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLESTORAGECAPACITY];
+    float flyspeed = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLEAIRSPEED];
+    float flysensit = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLEAIRSENSIT];
+    float landspeed = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLELANDSPEED];
+
     CCProgressTimer *ctlandanimal=(CCProgressTimer*)[self getChildByTag:LAND_SPEED_TAG];
-    ctlandanimal.percentage=landspeed*100/12;
+    ctlandanimal.percentage=landspeed*100;
     CCProgressTimer *ctflyanimal=(CCProgressTimer*)[self getChildByTag:FLY_SPEED_TAG];
-    ctflyanimal.percentage=roletype*100/3;
+    ctflyanimal.percentage=flyspeed*100/10;
     CCProgressTimer *ctstorage=(CCProgressTimer*)[self getChildByTag:STORAGE_CAPACITY_TAG];
-    ctstorage.percentage=capacity*100/10;
-    
-//    NSString *landspeed=[NSString stringWithFormat:@"land animal speed is : %d",speed];
-//    NSString *flyspeed=[NSString stringWithFormat:@"fly animal speed is : %d",roletype];
-//    NSString *storagesize=[NSString stringWithFormat:@"storage capacity is : %d",capacity];
-//    [landanimalspeed setString:landspeed];
-//    [flyanimalspeed setString:flyspeed];
-//    [storagecapacity setString:storagesize];
+    ctstorage.percentage=capacity*100/12;
+    CCProgressTimer *ctsensitive=(CCProgressTimer*)[self getChildByTag:FLY_SENSITIVE_TAG];
+    ctsensitive.percentage=(1-flysensit)*100;
 }
 
 //角色选择回调函数，把角色类型写入文件
@@ -179,20 +159,20 @@
 //        [self addChild:returnMenu];
         //set return in the left-down corner
         //add by lyp 2012-10-23
-        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Marker Felt" fontSize:30];
+        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Marker Felt" fontSize:25];
         [landanimalspeed setColor:ccRED];
         [self addChild:landanimalspeed];
         int labelpos=landanimalspeed.contentSize.width/2;
         [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
-        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Marker Felt" fontSize:30];
+        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Marker Felt" fontSize:25];
         [flyanimalspeed setColor:ccRED];
         [self addChild:flyanimalspeed];
-        [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.35)];
-        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Marker Felt" fontSize:30];
+        [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.4)];
+        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Marker Felt" fontSize:25];
         [storagecapacity setColor:ccRED];
         [self addChild:storagecapacity];
-        [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.2)];
-        flyanimalsensit=[CCLabelTTF labelWithString:@" sensit: " fontName:@"Marker Felt" fontSize:30];
+        [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.3)];
+        flyanimalsensit=[CCLabelTTF labelWithString:@" sensitive: " fontName:@"Marker Felt" fontSize:25];
         [flyanimalsensit setColor:ccRED];
         [self addChild:flyanimalsensit];
         [flyanimalsensit setPosition:ccp(labelpos, screenSize.height * 0.2)];
@@ -205,14 +185,19 @@
         [self addChild:ctlandanimal z:0 tag:LAND_SPEED_TAG]; 
         
         CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
-        ctflyanimal.position=ccp( progresspos, screenSize.height * 0.35);
+        ctflyanimal.position=ccp( progresspos, screenSize.height * 0.4);
         ctflyanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
         [self addChild:ctflyanimal z:0 tag:FLY_SPEED_TAG]; 
         
         CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progress.jpg"];
-        ctstorage.position=ccp( progresspos , screenSize.height * 0.2);
+        ctstorage.position=ccp( progresspos , screenSize.height * 0.3);
         ctstorage.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
         [self addChild:ctstorage z:0 tag:STORAGE_CAPACITY_TAG]; 
+        
+        CCProgressTimer *ctsensitive=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        ctsensitive.position=ccp( progresspos , screenSize.height * 0.2);
+        ctsensitive.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        [self addChild:ctsensitive z:0 tag:FLY_SENSITIVE_TAG]; 
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
