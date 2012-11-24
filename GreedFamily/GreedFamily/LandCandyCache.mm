@@ -77,7 +77,9 @@ static LandCandyCache *instanceOfLandCandyCache;
                 landcandy.sprite.visible = YES;
                 landcandy.sprite.position = position;
                 landcandy.waitinterval = 15;
-                landcandy.candyVelocity = CGPointMake(bodyVelocity.x/100, -1);
+                //设置物体初始的速度，由动量守恒，考虑到气球的缓冲作用，将下落物体的初始速度设置为flyanimal的初始
+                //速度的1／100,之后X方向为匀速运动，Y方向为自由落体，加速度值参见LandCandEntity
+                landcandy.candyVelocity = CGPointMake(bodyVelocity.x/100, bodyVelocity.y/100);
                 _airnum++;
                 return;
                 //return landcandy;
