@@ -37,6 +37,8 @@
     }else{
         return;
     }
+    int temCapacity = [[CommonLayer sharedCommonLayer] getRoleParam:roleType ParamType:ROLESTORAGECAPACITY];
+    
     int landspeed= [[NSUserDefaults standardUserDefaults] integerForKey:strSpeed];
     int capacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity];
     if(capacity==0){
@@ -177,19 +179,23 @@
 //        [self addChild:returnMenu];
         //set return in the left-down corner
         //add by lyp 2012-10-23
-        landanimalspeed=[CCLabelTTF labelWithString:@" land-speed: " fontName:@"Marker Felt" fontSize:30];
+        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Marker Felt" fontSize:30];
         [landanimalspeed setColor:ccRED];
         [self addChild:landanimalspeed];
         int labelpos=landanimalspeed.contentSize.width/2;
         [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
-        flyanimalspeed=[CCLabelTTF labelWithString:@" fly-speed : " fontName:@"Marker Felt" fontSize:30];
+        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Marker Felt" fontSize:30];
         [flyanimalspeed setColor:ccRED];
         [self addChild:flyanimalspeed];
         [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.35)];
-        storagecapacity=[CCLabelTTF labelWithString:@" store-size: " fontName:@"Marker Felt" fontSize:30];
+        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Marker Felt" fontSize:30];
         [storagecapacity setColor:ccRED];
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.2)];
+        flyanimalsensit=[CCLabelTTF labelWithString:@" sensit: " fontName:@"Marker Felt" fontSize:30];
+        [flyanimalsensit setColor:ccRED];
+        [self addChild:flyanimalsensit];
+        [flyanimalsensit setPosition:ccp(labelpos, screenSize.height * 0.2)];
         
         //set progess
         CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];

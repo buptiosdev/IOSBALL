@@ -125,7 +125,7 @@ static CommonLayer *instanceOfCommonLayer;
         
         int level = ((buyedList/10)%10);
         
-        return baseValue + level * baseValue;
+        return baseValue + level;
     }
     else if (paramType == ROLEAIRSPEED) 
     {
