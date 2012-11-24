@@ -10,6 +10,7 @@
 #import "CCAnimationHelper.h"
 #import "GameBackgroundLayer.h"
 #import "GameMainScene.h"
+#import "CommonLayer.h"
 
 @interface FlyEntity (PrivateMethods)
 -(id) initWithShipImage;
@@ -326,15 +327,15 @@
         bodyDef.position = [Helper toMeters:startPos];
         bodyDef.type = b2_dynamicBody;
         //阻力
-        bodyDef.linearDamping = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].linearDamping;
+//        bodyDef.linearDamping = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].linearDamping;
+        bodyDef.linearDamping = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLELINEARDAMP];
         bodyDef.angularDamping = 100.0f;
         //不旋转
         bodyDef.fixedRotation = true;
-        fixtureDef.density = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].density;
-        fixtureDef.friction = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].friction;
-        fixtureDef.restitution = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].restitution;
-
-				
+        fixtureDef.density = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEDENSITY];
+        fixtureDef.friction = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEFRICION];
+        fixtureDef.restitution = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLERESTITUTION];
+        		
 		[super createBodyInWorld:world bodyDef:&bodyDef fixtureDef:&fixtureDef];
         self.sprite.position = startPos;
         initialHitPoints = 6;
@@ -391,9 +392,10 @@
 	// of sensitivity is reduced.
 	
 	// this controls how quickly the velocity decelerates (lower = quicker to change direction)
-	float deceleration = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].deceleration;
-	// this determines how sensitive the accelerometer reacts (higher = more sensitive)
-	float sensitivity = [[GameMainScene sharedMainScene] roleParamArray][_familyType - 1].sensitivity;
+    float deceleration = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEAIRSPEED];
+    // this determines how sensitive the accelerometer reacts (higher = more sensitive)
+    float sensitivity = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEDENSITY];
+    
 	// how fast the velocity can be at most
 	float maxVelocity = 100;
     

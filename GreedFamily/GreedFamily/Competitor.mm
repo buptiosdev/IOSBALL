@@ -11,6 +11,7 @@
 #import "NoBodyObjectsLayer.h"
 #import "GameMainScene.h"
 #import "CCAnimationHelper.h"
+#import "CommonLayer.h"
 
 @implementation Competitor
 
@@ -97,20 +98,20 @@ static Competitor *instanceOfCompetitor;
     waitinterval += 60;
     if (7 == foodType || 6 == foodType || 3 == foodType) 
     {
-        [[GameMainScene sharedMainScene] playAudio:EatGood];
+        [CommonLayer playAudio:EatGood];
     }
     else if (4 == foodType)
     {
         //音效
-        [[GameMainScene sharedMainScene] playAudio:Bombing];
+        [CommonLayer playAudio:Bombing];
     }
     else if (5 == foodType)
     {
-        [[GameMainScene sharedMainScene] playAudio:EatBad];
+        [CommonLayer playAudio:EatBad];
     }
     else
     {
-        [[GameMainScene sharedMainScene] playAudio:EatCandy];
+        [CommonLayer playAudio:EatCandy];
     }
     CCAction* action = [CCBlink actionWithDuration:1 blinks:3];
     [self runAction:action];

@@ -9,6 +9,7 @@
 #import "GameScore.h"
 #import "GameMainScene.h"
 #import "GameKitHelper.h"
+#import "CommonLayer.h"
 /*
  @interface gameScore (PrivateMethods)
  -(void)updateLabelOfTotalScore:(ccTime)delta;
@@ -185,7 +186,7 @@ static GameScore  *instanceOfgameScore;
     [self addChild:system];
     
     //得分音效
-    [[GameMainScene sharedMainScene] playAudio:GetScore];
+    [CommonLayer playAudio:GetScore];
 
     
     //更新得分
@@ -290,7 +291,7 @@ static GameScore  *instanceOfgameScore;
 
     [self addChild:system];
     //得分音效
-    [[GameMainScene sharedMainScene] playAudio:GetScore];
+    [CommonLayer playAudio:GetScore];
     
     //得分特效
     //延迟得分效果 
@@ -345,7 +346,7 @@ static GameScore  *instanceOfgameScore;
     system2.position = getAwardScore.position;
     [self addChild:system2];
     //得分音效
-    [[GameMainScene sharedMainScene] playAudio:GetScore];
+    [CommonLayer playAudio:GetScore];
 
     
     //延迟得分
@@ -482,7 +483,7 @@ static GameScore  *instanceOfgameScore;
     {
         //新纪录音效
 
-        [[GameMainScene sharedMainScene] playAudio:NewHighScore];
+        [CommonLayer playAudio:NewHighScore];
 
         //新纪录特效
         //直接将int 装成string  当做关卡的值传进去        

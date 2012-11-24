@@ -8,7 +8,7 @@
 
 #import "GameBackgroundLayer.h"
 #import "GameMainScene.h"
-#import "SimpleAudioEngine.h"
+#import "CommonLayer.h"
 #import "GameScore.h"
 
 @implementation GameBackgroundLayer
@@ -83,24 +83,23 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
     
     if (order > 0 && order <= 5) 
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
+        [CommonLayer playBackMusic:GameMusic5];
     }
     else if (order > 0 && order <= 10)
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
-
+        [CommonLayer playBackMusic:GameMusic6];
     }
     else if (order > 0 && order <= 15) 
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morningmusicshort.mp3" loop:YES];
+        [CommonLayer playBackMusic:GameMusic2];
     }
     else if (order > 0 && order <= 18)
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
+       [CommonLayer playBackMusic:GameMusic3];
     }
     else
     {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
+       [CommonLayer playBackMusic:GameMusic4];
 
     }
     //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
@@ -109,24 +108,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 -(void)preloadAudio
 {
     [self playBackMusic];
-
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bite.caf"];    
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"needtouch.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"getscore.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bomb.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bubblebreak.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"bubblehit.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"der.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"ding.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"dorp.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"drum.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"failwarning.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"good.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"laugh1.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"laugh2.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"select.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"toll.caf"]; 
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"speedup.caf"];
+    [CommonLayer preloadAudio];
 }
 
 -(CCSpriteBatchNode*) getSpriteBatch

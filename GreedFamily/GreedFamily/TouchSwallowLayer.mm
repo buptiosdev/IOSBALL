@@ -8,7 +8,7 @@
 
 #import "TouchSwallowLayer.h"
 #import "GameShopScene.h"
-//#import "GameMainScene.h"
+#import "CommonLayer.h"
 
 @interface TouchSwallowLayer (PrivateMethods)
 -(id)initwithType:(int)goodsType RoleType:(int)roalType;
@@ -203,7 +203,7 @@
     if (spend > rolaTotalScore) 
     {
         //购买失败音效
-        [(GameShopScene *)self.parent playAudio:SelectNo];
+        [CommonLayer playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -219,7 +219,7 @@
     //        [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
     //    }
     //购买成功音效
-    [(GameShopScene *)self.parent playAudio:EatGood];
+    [CommonLayer playAudio:EatGood];
     //跳过这一个物品，显示下一个 个位表示陆地动物速度
     ((GameShopScene *)self.parent).buyedList += 1;
     //提交数据
@@ -256,7 +256,7 @@
     if (spend > rolaTotalScore) 
     {
         //购买失败音效
-        [(GameShopScene *)self.parent playAudio:SelectNo];
+        [CommonLayer playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -274,7 +274,7 @@
     //    }
     
     //购买成功音效
-    [(GameShopScene *)self.parent playAudio:EatGood];
+    [CommonLayer playAudio:EatGood];
     //跳过这一个物品，显示下一个 十位表示仓库
     ((GameShopScene *)self.parent).buyedList += 10;
     //提交数据
@@ -312,7 +312,7 @@
     if (spend > rolaTotalScore) 
     {
         //购买失败音效
-        [(GameShopScene *)self.parent playAudio:SelectNo];
+        [CommonLayer playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -330,7 +330,7 @@
     //    }
     
     //购买成功音效
-    [(GameShopScene *)self.parent playAudio:EatGood];
+    [CommonLayer playAudio:EatGood];
     //跳过这一个物品，显示下一个 十位表示仓库
     ((GameShopScene *)self.parent).buyedList += 100;
     //提交数据
@@ -367,7 +367,7 @@
     if (spend > rolaTotalScore) 
     {
         //购买失败音效
-        [(GameShopScene *)self.parent playAudio:SelectNo];
+        [CommonLayer playAudio:SelectNo];
         [self.parent removeChild:self cleanup:YES];
         return;
     }
@@ -385,7 +385,7 @@
     //    }
     
     //购买成功音效
-    [(GameShopScene *)self.parent playAudio:EatGood];
+    [CommonLayer playAudio:EatGood];
     //跳过这一个物品，显示下一个 十位表示仓库
     ((GameShopScene *)self.parent).buyedList += 1000;
     //提交数据

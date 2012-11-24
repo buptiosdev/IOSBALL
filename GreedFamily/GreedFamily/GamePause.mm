@@ -10,6 +10,7 @@
 #import "GameBackgroundLayer.h"
 #import "Helper.h"
 #import "GameMainScene.h"
+#import "CommonLayer.h"
 
 @implementation GamePause
 
@@ -23,7 +24,7 @@
 
 - (void)onPause:(id)sender
 {
-    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     [[GameMainScene sharedMainScene] pauseGame];
 }
 

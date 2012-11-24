@@ -271,6 +271,7 @@
 		70C3D7431606080900F376A0 /* button_default_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C3D7411606080900F376A0 /* button_default_default.png */; };
 		70C5745915F727DD004F48FE /* DeveloperInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C5745715F727DD004F48FE /* DeveloperInfo.m */; };
 		70C5745A15F727DD004F48FE /* DeveloperInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C5745815F727DD004F48FE /* DeveloperInfo.xib */; };
+		70C65E1316606E4A00E49FD5 /* CommonLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C65E1216606E4A00E49FD5 /* CommonLayer.m */; };
 		70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C015A9D670007D35B5 /* Parse.framework */; };
 		70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C415A9D69C007D35B5 /* Security.framework */; };
 		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
@@ -763,6 +764,8 @@
 		70C5745615F727DD004F48FE /* DeveloperInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeveloperInfo.h; sourceTree = "<group>"; };
 		70C5745715F727DD004F48FE /* DeveloperInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeveloperInfo.m; sourceTree = "<group>"; };
 		70C5745815F727DD004F48FE /* DeveloperInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeveloperInfo.xib; sourceTree = "<group>"; };
+		70C65E1116606E4A00E49FD5 /* CommonLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLayer.h; sourceTree = "<group>"; };
+		70C65E1216606E4A00E49FD5 /* CommonLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLayer.m; sourceTree = "<group>"; };
 		70C7C3C015A9D670007D35B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		70C7C3C415A9D69C007D35B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1519,6 +1522,8 @@
 				70C5745615F727DD004F48FE /* DeveloperInfo.h */,
 				70C5745715F727DD004F48FE /* DeveloperInfo.m */,
 				70C5745815F727DD004F48FE /* DeveloperInfo.xib */,
+				70C65E1116606E4A00E49FD5 /* CommonLayer.h */,
+				70C65E1216606E4A00E49FD5 /* CommonLayer.m */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1924,6 +1929,7 @@
 				4A78F4EA15E0C25600CA1C8A /* RoleScene.m in Sources */,
 				70C5745915F727DD004F48FE /* DeveloperInfo.m in Sources */,
 				702928871605D4D700877FF2 /* TeachGameLayer.mm in Sources */,
+				70C65E1316606E4A00E49FD5 /* CommonLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

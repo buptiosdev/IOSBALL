@@ -12,7 +12,7 @@
 #import "CCScrollLayer.h"
 #import "GameShopScene.h"
 #import "CCAnimationHelper.h"
-
+#import "CommonLayer.h"
 
 @implementation LevelScene
 CCSprite* sprite;
@@ -21,17 +21,20 @@ int directionCurrent;
 -(void)selectMode:(CCMenuItemImage *)btn
 {
 	int mode = btn.tag;
+    [CommonLayer playAudio:SelectOK];
     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)mode]];
 }
 
 -(void)returnMain
 {
+    [CommonLayer playAudio:SelectOK];
     [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
 }
 
 -(void)connectGameShop:(id)sender
 {
     //connect to game center
+    [CommonLayer playAudio:SelectOK];
     [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
 }
 

@@ -15,7 +15,7 @@
 #import "PropertyCache.h"
 #import "LandCandyCache.h"
 #import "PropertyEntity.h"
-
+#import "CommonLayer.h"
 
 @interface BodyObjectsLayer (PrivateMethods)
 -(void) initBox2dWorld;
@@ -267,7 +267,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     //CGPoint flyVelocity = [self getFlySpeed];
 //                    int a = bodyNode.flyFamilyType;
-                    float hitEffect =[[GameMainScene sharedMainScene] roleParamArray][bodyNode.flyFamilyType - 1].hitEffect;
+                    float hitEffect = [[CommonLayer sharedCommonLayer] getRoleParam:bodyNode.flyFamilyType ParamType:ROLEHITEFFECT];
                     CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
@@ -309,8 +309,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    int hitEffect =[[GameMainScene sharedMainScene] roleParamArray][bodyNode.flyFamilyType - 1].hitEffect;
-                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
+                    float hitEffect = [[CommonLayer sharedCommonLayer] getRoleParam:bodyNode.flyFamilyType ParamType:ROLEHITEFFECT];                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     

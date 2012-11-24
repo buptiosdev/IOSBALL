@@ -16,7 +16,8 @@
 #import "TouchCatchLayer.h"
 #import "GameMainScene.h"
 #import "NoBodyObjectsLayer.h"
-#import "SimpleAudioEngine.h"
+#import "CommonLayer.h"
+
 @implementation Bag
 @synthesize sprite = _sprite;
 //-(void) registerWithTouchDispatcher
@@ -77,7 +78,7 @@
     }
     
 
-    [[GameMainScene sharedMainScene] playAudio:Speedup];
+    [CommonLayer playAudio:Speedup];
     CCLOG(@"hot!!!!!!!!\n");
     if (1 == bagID) 
     {
@@ -105,7 +106,7 @@
 -(void)onCrystal:(id)sender
 {
     //音效
-    [[GameMainScene sharedMainScene] playAudio:Laugh1];
+    [CommonLayer playAudio:Laugh1];
     
     if (0 >= crystalNum)
     {

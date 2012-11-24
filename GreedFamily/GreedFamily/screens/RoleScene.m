@@ -10,6 +10,7 @@
 #import "CCRadioMenu.h"
 #import "NavigationScene.h"
 #import "LevelScene.h"
+#import "CommonLayer.h"
 
 #define LAND_SPEED_TAG 10
 #define FLY_SPEED_TAG 11
