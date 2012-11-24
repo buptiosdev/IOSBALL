@@ -63,6 +63,21 @@ typedef enum
     
 }PropertyFrequency;
 
+typedef enum
+{   
+    DENSITY,
+    RESTITUTION,
+    FRICTION,
+    LINEARDAMPING,
+    SENSITIVITY,
+    DECELERATION,
+    HITEFFENT,
+    LANDSPEED,
+    STORAGECAPACITY,
+    AIRSPEED,
+    AIRSENSIT,
+}RoleParamType;
+
 
 struct SceneParam 
 {
@@ -92,8 +107,8 @@ struct RoleParam {
     float sensitivity;
     float deceleration;
     float hitEffect;
-    float landSpend;
-    int storageCapacity;
+    float landSpeed;
+    float storageCapacity;
 };
 
 
