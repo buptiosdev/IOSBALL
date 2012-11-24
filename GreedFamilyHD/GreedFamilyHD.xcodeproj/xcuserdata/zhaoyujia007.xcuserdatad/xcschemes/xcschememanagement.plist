@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>GreedFamily.xcscheme</key>
+		<key>GreedFamilyHD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>70081DED153F987C003F042A</key>
+		<key>70C65E1E1660A46F00E49FD5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
