@@ -25,18 +25,18 @@
 -(void)changeParameter:(int)roletype
 {    
     float capacity = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLESTORAGECAPACITY];
-    float flyspeed = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLEAIRSPEED];
-    float flysensit = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLEAIRSENSIT];
+    float flyspeed = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLEDENSITY];
+    //float flysensit = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLEAIRSENSIT];
     float landspeed = [[CommonLayer sharedCommonLayer] getRoleParam:roletype ParamType:ROLELANDSPEED];
 
     CCProgressTimer *ctlandanimal=(CCProgressTimer*)[self getChildByTag:LAND_SPEED_TAG];
     ctlandanimal.percentage=landspeed*100;
     CCProgressTimer *ctflyanimal=(CCProgressTimer*)[self getChildByTag:FLY_SPEED_TAG];
-    ctflyanimal.percentage=flyspeed*100/10;
+    ctflyanimal.percentage=(1-flyspeed)*100/0.8;
     CCProgressTimer *ctstorage=(CCProgressTimer*)[self getChildByTag:STORAGE_CAPACITY_TAG];
     ctstorage.percentage=capacity*100/12;
-    CCProgressTimer *ctsensitive=(CCProgressTimer*)[self getChildByTag:FLY_SENSITIVE_TAG];
-    ctsensitive.percentage=(1-flysensit)*100;
+//    CCProgressTimer *ctsensitive=(CCProgressTimer*)[self getChildByTag:FLY_SENSITIVE_TAG];
+//    ctsensitive.percentage=(1-flysensit)*100;
 }
 
 //角色选择回调函数，把角色类型写入文件
@@ -172,10 +172,10 @@
         [storagecapacity setColor:ccRED];
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.3)];
-        flyanimalsensit=[CCLabelTTF labelWithString:@" sensitive: " fontName:@"Marker Felt" fontSize:25];
-        [flyanimalsensit setColor:ccRED];
-        [self addChild:flyanimalsensit];
-        [flyanimalsensit setPosition:ccp(labelpos, screenSize.height * 0.2)];
+//        flyanimalsensit=[CCLabelTTF labelWithString:@" sensitive: " fontName:@"Marker Felt" fontSize:25];
+//        [flyanimalsensit setColor:ccRED];
+//        [self addChild:flyanimalsensit];
+//        [flyanimalsensit setPosition:ccp(labelpos, screenSize.height * 0.2)];
         
         //set progess
         CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
@@ -194,10 +194,10 @@
         ctstorage.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
         [self addChild:ctstorage z:0 tag:STORAGE_CAPACITY_TAG]; 
         
-        CCProgressTimer *ctsensitive=[CCProgressTimer progressWithFile:@"progress.jpg"];
-        ctsensitive.position=ccp( progresspos , screenSize.height * 0.2);
-        ctsensitive.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
-        [self addChild:ctsensitive z:0 tag:FLY_SENSITIVE_TAG]; 
+//        CCProgressTimer *ctsensitive=[CCProgressTimer progressWithFile:@"progress.jpg"];
+//        ctsensitive.position=ccp( progresspos , screenSize.height * 0.2);
+//        ctsensitive.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+//        [self addChild:ctsensitive z:0 tag:FLY_SENSITIVE_TAG]; 
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];

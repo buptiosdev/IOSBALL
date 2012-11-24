@@ -480,7 +480,7 @@
 
     
     
-    CCMenu *menu = [CCMenu menuWithItems: addLandSpeeMenu, addStorageMenu, addAirSpeedMenu, addAirSencitMenu, nil];
+    CCMenu *menu = [CCMenu menuWithItems: addLandSpeeMenu, addStorageMenu, addAirSpeedMenu, nil];
     [menu setPosition:ccp(screenSize.width * 0.5 , screenSize.height * 0.5)];
     [menu alignItemsHorizontallyWithPadding:10];
     [self addChild:menu z: -2 tag:4];
