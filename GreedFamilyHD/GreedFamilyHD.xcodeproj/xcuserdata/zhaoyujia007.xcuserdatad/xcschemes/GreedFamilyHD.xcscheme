@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70C65E1E1660A46F00E49FD5"
+               BlueprintIdentifier = "70C6628C1660B1A200E49FD5"
                BuildableName = "GreedFamilyHD.app"
                BlueprintName = "GreedFamilyHD"
                ReferencedContainer = "container:GreedFamilyHD.xcodeproj">
@@ -31,7 +31,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "70C65E1E1660A46F00E49FD5"
+            BlueprintIdentifier = "70C6628C1660B1A200E49FD5"
             BuildableName = "GreedFamilyHD.app"
             BlueprintName = "GreedFamilyHD"
             ReferencedContainer = "container:GreedFamilyHD.xcodeproj">
@@ -49,7 +49,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "70C65E1E1660A46F00E49FD5"
+            BlueprintIdentifier = "70C6628C1660B1A200E49FD5"
             BuildableName = "GreedFamilyHD.app"
             BlueprintName = "GreedFamilyHD"
             ReferencedContainer = "container:GreedFamilyHD.xcodeproj">
@@ -67,7 +67,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "70C65E1E1660A46F00E49FD5"
+            BlueprintIdentifier = "70C6628C1660B1A200E49FD5"
             BuildableName = "GreedFamilyHD.app"
             BlueprintName = "GreedFamilyHD"
             ReferencedContainer = "container:GreedFamilyHD.xcodeproj">

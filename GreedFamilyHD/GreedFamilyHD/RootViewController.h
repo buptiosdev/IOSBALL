@@ -1,8 +1,8 @@
 //
 //  RootViewController.h
-//  GreedFamilyHD
+//  GreedFamily
 //
-//  Created by 赵 苹果 on 12-11-24.
+//  Created by 赵 苹果 on 12-4-19.
 //  Copyright __MyCompanyName__ 2012年. All rights reserved.
 //
 
