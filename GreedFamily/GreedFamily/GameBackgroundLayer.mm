@@ -55,8 +55,9 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         // IMPORTANT: filenames are case sensitive on iOS devices!
         CCSprite* background = [CCSprite spriteWithFile:@"background_level.jpg"];
         //change size by diff version manual
-        background.scaleX=(480)/[background contentSize].width; //按照像素定制图片宽高
-        background.scaleY=(335)/[background contentSize].height;
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        background.scaleX=((screenSize.width))/[background contentSize].width; //按照像素定制图片宽高
+        background.scaleY=((screenSize.height))/[background contentSize].height;
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
         //change size by diff version
         background.position = [GameMainScene sharedMainScene].backgroundPos;
