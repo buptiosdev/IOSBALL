@@ -10,7 +10,7 @@
 #import "GameMainScene.h"
 #import "NavigationScene.h"
 #import "AppDelegate.h"
-
+#import "TeachGameLayer.h"
 @interface LoadingScene (PrivateMethods)
 -(void) update:(ccTime)delta;
 @end
@@ -55,7 +55,16 @@
         [delegate.window addSubview:activityIndicatorView];
 //		// Must wait one frame before loading the target scene!
 //		// Two reasons: first, it would crash if not. Second, the Loading label wouldn't be displayed.
-		[self scheduleUpdate];
+        //广告或说明 
+        TeachGameLayer *p = [TeachGameLayer createTeachGameLayer:targetScene_];
+        [self addChild:p];
+        
+//        [self schedule:<#(SEL)#> interval:<#(ccTime)#>];
+        int waitTime = 5;
+        if (1 == targetScene) {
+            waitTime = 16;
+        }
+        [self schedule:@selector(waitAWhile:) interval:waitTime];
         
         
         // Add the UIActivityIndicatorView (in UIKit universe)  
@@ -78,7 +87,7 @@
 	return self;
 }
 
--(void) update:(ccTime)delta
+-(void) waitAWhile:(ccTime)delta
 {
 	// It's not strictly necessary, as we're changing the scene anyway. But just to be safe.
 	[self unscheduleAllSelectors];

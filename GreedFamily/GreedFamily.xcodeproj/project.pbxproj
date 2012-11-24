@@ -272,6 +272,17 @@
 		70C5745915F727DD004F48FE /* DeveloperInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C5745715F727DD004F48FE /* DeveloperInfo.m */; };
 		70C5745A15F727DD004F48FE /* DeveloperInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C5745815F727DD004F48FE /* DeveloperInfo.xib */; };
 		70C65E1316606E4A00E49FD5 /* CommonLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C65E1216606E4A00E49FD5 /* CommonLayer.m */; };
+		70C670D01661528500E49FD5 /* teachbomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670C61661527500E49FD5 /* teachbomb.jpg */; };
+		70C670D11661528500E49FD5 /* teachdetail1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670C71661527600E49FD5 /* teachdetail1.jpg */; };
+		70C670D21661528500E49FD5 /* teachdetail2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670C81661527700E49FD5 /* teachdetail2.jpg */; };
+		70C670D31661528500E49FD5 /* teachdetail3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670C91661527900E49FD5 /* teachdetail3.jpg */; };
+		70C670D41661528500E49FD5 /* teachdetail4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CA1661527B00E49FD5 /* teachdetail4.jpg */; };
+		70C670D51661528500E49FD5 /* teachdetail5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CB1661527C00E49FD5 /* teachdetail5.jpg */; };
+		70C670D61661528500E49FD5 /* teachgalic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CC1661527D00E49FD5 /* teachgalic.jpg */; };
+		70C670D71661528500E49FD5 /* teachice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CD1661527F00E49FD5 /* teachice.jpg */; };
+		70C670D81661528500E49FD5 /* teachmagic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CE1661528100E49FD5 /* teachmagic.jpg */; };
+		70C670D91661528500E49FD5 /* teachpepper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CF1661528200E49FD5 /* teachpepper.jpg */; };
+		70C670DB166152ED00E49FD5 /* rolepic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670DA166152ED00E49FD5 /* rolepic.jpg */; };
 		70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C015A9D670007D35B5 /* Parse.framework */; };
 		70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C415A9D69C007D35B5 /* Security.framework */; };
 		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
@@ -766,6 +777,17 @@
 		70C5745815F727DD004F48FE /* DeveloperInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeveloperInfo.xib; sourceTree = "<group>"; };
 		70C65E1116606E4A00E49FD5 /* CommonLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLayer.h; sourceTree = "<group>"; };
 		70C65E1216606E4A00E49FD5 /* CommonLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLayer.m; sourceTree = "<group>"; };
+		70C670C61661527500E49FD5 /* teachbomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachbomb.jpg; path = Resources/pic/teachbomb.jpg; sourceTree = "<group>"; };
+		70C670C71661527600E49FD5 /* teachdetail1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail1.jpg; path = Resources/pic/teachdetail1.jpg; sourceTree = "<group>"; };
+		70C670C81661527700E49FD5 /* teachdetail2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail2.jpg; path = Resources/pic/teachdetail2.jpg; sourceTree = "<group>"; };
+		70C670C91661527900E49FD5 /* teachdetail3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail3.jpg; path = Resources/pic/teachdetail3.jpg; sourceTree = "<group>"; };
+		70C670CA1661527B00E49FD5 /* teachdetail4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail4.jpg; path = Resources/pic/teachdetail4.jpg; sourceTree = "<group>"; };
+		70C670CB1661527C00E49FD5 /* teachdetail5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail5.jpg; path = Resources/pic/teachdetail5.jpg; sourceTree = "<group>"; };
+		70C670CC1661527D00E49FD5 /* teachgalic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachgalic.jpg; path = Resources/pic/teachgalic.jpg; sourceTree = "<group>"; };
+		70C670CD1661527F00E49FD5 /* teachice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachice.jpg; path = Resources/pic/teachice.jpg; sourceTree = "<group>"; };
+		70C670CE1661528100E49FD5 /* teachmagic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachmagic.jpg; path = Resources/pic/teachmagic.jpg; sourceTree = "<group>"; };
+		70C670CF1661528200E49FD5 /* teachpepper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachpepper.jpg; path = Resources/pic/teachpepper.jpg; sourceTree = "<group>"; };
+		70C670DA166152ED00E49FD5 /* rolepic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rolepic.jpg; path = Resources/pic/rolepic.jpg; sourceTree = "<group>"; };
 		70C7C3C015A9D670007D35B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		70C7C3C415A9D69C007D35B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1547,6 +1569,17 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				70C670DA166152ED00E49FD5 /* rolepic.jpg */,
+				70C670C61661527500E49FD5 /* teachbomb.jpg */,
+				70C670C71661527600E49FD5 /* teachdetail1.jpg */,
+				70C670C81661527700E49FD5 /* teachdetail2.jpg */,
+				70C670C91661527900E49FD5 /* teachdetail3.jpg */,
+				70C670CA1661527B00E49FD5 /* teachdetail4.jpg */,
+				70C670CB1661527C00E49FD5 /* teachdetail5.jpg */,
+				70C670CC1661527D00E49FD5 /* teachgalic.jpg */,
+				70C670CD1661527F00E49FD5 /* teachice.jpg */,
+				70C670CE1661528100E49FD5 /* teachmagic.jpg */,
+				70C670CF1661528200E49FD5 /* teachpepper.jpg */,
 				7043002A16198392008926AB /* gamemain01_default.plist */,
 				7043002B16198392008926AB /* gamemain01_default.png */,
 				7029287A1605AE2D00877FF2 /* teach1.png */,
@@ -1742,6 +1775,17 @@
 				70F78433164C031700A77FD4 /* bitmapNum3.png in Resources */,
 				70F78436164C061300A77FD4 /* bitmapNum4.fnt in Resources */,
 				70F78437164C061300A77FD4 /* bitmapNum4.png in Resources */,
+				70C670D01661528500E49FD5 /* teachbomb.jpg in Resources */,
+				70C670D11661528500E49FD5 /* teachdetail1.jpg in Resources */,
+				70C670D21661528500E49FD5 /* teachdetail2.jpg in Resources */,
+				70C670D31661528500E49FD5 /* teachdetail3.jpg in Resources */,
+				70C670D41661528500E49FD5 /* teachdetail4.jpg in Resources */,
+				70C670D51661528500E49FD5 /* teachdetail5.jpg in Resources */,
+				70C670D61661528500E49FD5 /* teachgalic.jpg in Resources */,
+				70C670D71661528500E49FD5 /* teachice.jpg in Resources */,
+				70C670D81661528500E49FD5 /* teachmagic.jpg in Resources */,
+				70C670D91661528500E49FD5 /* teachpepper.jpg in Resources */,
+				70C670DB166152ED00E49FD5 /* rolepic.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

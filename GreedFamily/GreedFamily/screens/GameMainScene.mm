@@ -175,7 +175,7 @@ static GameMainScene *instanceOfMainScene;
         [self addChild:touchCatchLayer z:1 tag:TouchCatchLayerTag];
         
         //[[GameMainScene sharedMainScene] addTeacheGame];
-        [self schedule:@selector(sleepForTeach:) interval:0.1];
+//        [self schedule:@selector(sleepForTeach:) interval:0.1];
         
         [self scheduleUpdate];
         
@@ -674,13 +674,13 @@ static GameMainScene *instanceOfMainScene;
 }
 
 
--(void)addTeachGameLayer
-{
-    [self onPauseExit];
-    PauseLayer * p = [TeachGameLayer createTeachGameLayer];
-    [self.parent addChild:p z:11]; 
-    
-}
+//-(void)addTeachGameLayer
+//{
+//    [self onPauseExit];
+//    PauseLayer * p = [TeachGameLayer createTeachGameLayer:1];
+//    [self.parent addChild:p z:11]; 
+//    
+//}
 
 
 //-(void)endTeachGameLayer
@@ -699,11 +699,11 @@ static GameMainScene *instanceOfMainScene;
     [self endGame];
 }
 
--(void)sleepForTeach: (ccTime) dt
-{
-    [self unschedule:@selector(sleepForTeach:)]; 
-    [[GameMainScene sharedMainScene] addTeachGameLayer];
-}
+//-(void)sleepForTeach: (ccTime) dt
+//{
+//    [self unschedule:@selector(sleepForTeach:)]; 
+//    [[GameMainScene sharedMainScene] addTeachGameLayer];
+//}
 
 
 -(void) update:(ccTime)delta
