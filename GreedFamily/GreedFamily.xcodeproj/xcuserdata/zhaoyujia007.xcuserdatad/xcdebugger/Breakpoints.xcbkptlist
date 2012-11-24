@@ -167,9 +167,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "657"
-         endingLineNumber = "657"
-         landmarkName = "-ccTouchBeganForSky:withEvent:"
-         landmarkType = "5">
+         endingLineNumber = "657">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -181,9 +179,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "524"
-         endingLineNumber = "524"
-         landmarkName = "-applyForceTowardsFinger"
-         landmarkType = "5">
+         endingLineNumber = "524">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -195,9 +191,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "581"
-         endingLineNumber = "581"
-         landmarkName = "-applyForceTowardsFinger"
-         landmarkType = "5">
+         endingLineNumber = "581">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -364,7 +358,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "252"
          endingLineNumber = "252"
-         landmarkName = "-initWithWorld:RoleType:"
+         landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -392,7 +386,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "242"
          endingLineNumber = "242"
-         landmarkName = "-initWithWorld:RoleType:"
+         landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -406,7 +400,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "241"
          endingLineNumber = "241"
-         landmarkName = "-initWithWorld:RoleType:"
+         landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -419,9 +413,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "466"
-         endingLineNumber = "466"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "466">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -433,9 +425,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "471"
-         endingLineNumber = "471"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "471">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -447,9 +437,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "465"
-         endingLineNumber = "465"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "465">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -461,9 +449,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "539"
-         endingLineNumber = "539"
-         landmarkName = "-applyForceTowardsFinger"
-         landmarkType = "5">
+         endingLineNumber = "539">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -475,9 +461,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "611"
-         endingLineNumber = "611"
-         landmarkName = "-update:"
-         landmarkType = "5">
+         endingLineNumber = "611">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -657,9 +641,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "526"
-         endingLineNumber = "526"
-         landmarkName = "-applyForceTowardsFinger"
-         landmarkType = "5">
+         endingLineNumber = "526">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -923,9 +905,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "633"
-         endingLineNumber = "633"
-         landmarkName = "-ccTouchBeganForSky2:withEvent:"
-         landmarkType = "5">
+         endingLineNumber = "633">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -937,9 +917,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "665"
-         endingLineNumber = "665"
-         landmarkName = "-ccTouchMovedForSky:withEvent:"
-         landmarkType = "5">
+         endingLineNumber = "665">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1693,9 +1671,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "457"
-         endingLineNumber = "457"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "457">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1707,9 +1683,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "481"
-         endingLineNumber = "481"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "481">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1721,9 +1695,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "487"
-         endingLineNumber = "487"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "487">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1735,9 +1707,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "498"
-         endingLineNumber = "498"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "498">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1749,9 +1719,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "483"
-         endingLineNumber = "483"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "483">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2952,7 +2920,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "209"
          endingLineNumber = "209"
-         landmarkName = "-initWithWorld:RoleType:"
+         landmarkName = "-applyForceWichAccelar"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3007,9 +2975,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "469"
-         endingLineNumber = "469"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "469">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -3021,9 +2987,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "468"
-         endingLineNumber = "468"
-         landmarkName = "-playFlyAction:"
-         landmarkType = "5">
+         endingLineNumber = "468">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -3036,7 +3000,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "247"
          endingLineNumber = "247"
-         landmarkName = "-initWithWorld:RoleType:"
+         landmarkName = "-playFlyAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3190,7 +3154,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "326"
          endingLineNumber = "326"
-         landmarkName = "-initWithWorld:RoleType:"
+         landmarkName = "-applyForceTowardsFinger"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

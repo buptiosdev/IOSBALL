@@ -76,10 +76,10 @@ static LandAnimal *instanceOfLandAnimal;
         {
             switch (i) {
                 case 0:
-                    animation = [CCAnimation animationWithFrame:@"girlbird_3_" frameCount:3 delay:0.2f];
+                    animation = [CCAnimation animationWithFrame:@"pandagirl_3_" frameCount:3 delay:0.2f];
                     break;
                 case 1:
-                    animation = [CCAnimation animationWithFrame:@"girlbird_9_" frameCount:3 delay:0.2f];
+                    animation = [CCAnimation animationWithFrame:@"pandagirl_9_" frameCount:3 delay:0.2f];
                     break;
                     
                 default:
@@ -117,12 +117,12 @@ static LandAnimal *instanceOfLandAnimal;
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
             //按照像素设定图片大小
             //change size by diff version manual
-            self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(40)/[self.sprite contentSize].height;
+            self.sprite.scaleX=(34)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(34)/[self.sprite contentSize].height;
             //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
             //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
             //change size by diff version manual
-            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 5);
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 10);
             directionCurrent = 1;
             directionBefore = -1;
         }
@@ -133,12 +133,12 @@ static LandAnimal *instanceOfLandAnimal;
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"piggirl_3_1.png"];
             //按照像素设定图片大小
             //change size by diff version manual
-            self.sprite.scaleX=(45)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(45)/[self.sprite contentSize].height;
+            self.sprite.scaleX=(42)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(38)/[self.sprite contentSize].height;
             //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
             //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
             //change size by diff version manual
-            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 5);
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 8);
             directionCurrent = 1;
             directionBefore = -1;
         }

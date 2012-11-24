@@ -126,15 +126,15 @@
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"boypig_3_1.png"];
             //按照像素设定图片大小
-            self.sprite.scaleX=(70)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(70)/[self.sprite contentSize].height;
+            self.sprite.scaleX=(75)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(75)/[self.sprite contentSize].height;
         }
         else if (3 == _familyType)
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"boybird_3_1.png"];
             //按照像素设定图片大小
-            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+            self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
+            self.sprite.scaleY=(40)/[self.sprite contentSize].height;
         }
         //按照像素设定图片大小//为什么batch不能用？？
         //[batch addChild:self.sprite z:-1]; 
@@ -163,7 +163,7 @@
         {
             
             b2CircleShape circleShape;
-            float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 15) / PTM_RATIO) * 0.5f;
+            float radiusInMeters = (((self.sprite.contentSize.width * self.sprite.scaleX) - 20) / PTM_RATIO) * 0.5f;
             circleShape.m_radius = radiusInMeters;
             
             // Define the dynamic body fixture.
