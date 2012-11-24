@@ -197,13 +197,7 @@ const char kProgressTextureCoords = 0x1e;
 	//	Grab the midpoint
 	CGPoint midpoint = ccpCompMult(self.anchorPoint, tMax);
 	
-    
 	float alpha = percentage_ / 100.f;
-    //add by zyj
-    if(alpha != 0.f && alpha !=1.f)  
-    {  
-        alpha = 1.f-alpha;  
-    }
 	
 	//	Otherwise we can get the angle from the alpha
 	float angle = 2.f*((float)M_PI) * ( type_ == kCCProgressTimerTypeRadialCW? alpha : 1.f - alpha);

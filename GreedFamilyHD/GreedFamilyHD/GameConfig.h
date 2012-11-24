@@ -1,8 +1,8 @@
 //
 //  GameConfig.h
-//  GreedFamily
+//  GreedFamilyHD
 //
-//  Created by 赵 苹果 on 12-4-19.
+//  Created by 赵 苹果 on 12-11-24.
 //  Copyright __MyCompanyName__ 2012年. All rights reserved.
 //
 

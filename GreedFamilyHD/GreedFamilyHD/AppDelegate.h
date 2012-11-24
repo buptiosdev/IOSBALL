@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  GreedFamily
+//  GreedFamilyHD
 //
-//  Created by 赵 苹果 on 12-4-19.
+//  Created by 赵 苹果 on 12-11-24.
 //  Copyright __MyCompanyName__ 2012年. All rights reserved.
 //
 
@@ -13,11 +13,8 @@
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow			*window;
 	RootViewController	*viewController;
-    bool paused;
 }
-+(AppDelegate *) getAppDelegate;
 
-@property(readwrite,nonatomic) bool paused;
 @property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) RootViewController *viewController;
+
 @end
