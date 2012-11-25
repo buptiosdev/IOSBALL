@@ -84,6 +84,8 @@ enum {
 -(void) alignItemsInRows: (NSNumber *) rows, ... NS_REQUIRES_NIL_TERMINATION;
 -(void) alignItemsInRows: (NSNumber *) rows vaList: (va_list) args;
 
+//add by zyj
+-(CCMenuItem *) itemForTouch: (UITouch *) touch;
 
 /** conforms to CCRGBAProtocol protocol */
 @property (nonatomic,readonly) GLubyte opacity;

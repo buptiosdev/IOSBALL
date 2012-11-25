@@ -12,7 +12,7 @@
 #import "GamePause.h"
 #import "Bag.h"
 #import "GameMainScene.h"
-
+#import "CommonLayer.h"
 @implementation TouchCatchLayer
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
@@ -39,25 +39,26 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
     [self addChild:gamePause z:2 tag:GamePauseTag];
     
     //修改游戏参数
-    NSString *strCapacity = nil;
-    if (1 == [[GameMainScene sharedMainScene] roleType]) 
-    {
-        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
-    }
-    else if (2 == [[GameMainScene sharedMainScene] roleType]) 
-    {
-        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
-    }
-    else if (3 == [[GameMainScene sharedMainScene] roleType]) 
-    {
-        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
-    }
-    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
+//    NSString *strCapacity = nil;
+//    if (1 == [[GameMainScene sharedMainScene] roleType]) 
+//    {
+//        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
+//    }
+//    else if (2 == [[GameMainScene sharedMainScene] roleType]) 
+//    {
+//        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
+//    }
+//    else if (3 == [[GameMainScene sharedMainScene] roleType]) 
+//    {
+//        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
+//    }
+//    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
 //    if (temCapacity > 12 || temCapacity < 8) 
 //    {
 //        temCapacity = 8;
 //    }
-    temCapacity = [[GameMainScene sharedMainScene] roleParamArray][[[GameMainScene sharedMainScene] roleType] - 1].storageCapacity + temCapacity;
+//    temCapacity = [[GameMainScene sharedMainScene] roleParamArray][[[GameMainScene sharedMainScene] roleType] - 1].storageCapacity + temCapacity;
+    int temCapacity = [[CommonLayer sharedCommonLayer] getRoleParam:[[GameMainScene sharedMainScene]roleType] ParamType:ROLESTORAGECAPACITY];
     Storage *storage = [Storage createStorage:temCapacity Play:1];
     [self addChild:storage z:-3 tag:StorageTag];
     
@@ -78,23 +79,25 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
     [self addChild:gamePause z:2 tag:GamePauseTag];
     
     
-    //修改游戏参数
-    NSString *strCapacityPlay1 = [NSString stringWithFormat:@"Capacity_Bird"];
-    NSString *strCapacityPlay2 = [NSString stringWithFormat:@"Capacity_Pig"];
+//    //修改游戏参数
+//    NSString *strCapacityPlay1 = [NSString stringWithFormat:@"Capacity_Bird"];
+//    NSString *strCapacityPlay2 = [NSString stringWithFormat:@"Capacity_Pig"];
+//
+//    int temCapacityPlay1 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay1]; 
+////    if (temCapacityPlay1 > 12 || temCapacityPlay1 < 8) 
+////    { 
+////        temCapacityPlay1 = 8;
+////    }
+//    int temCapacityPlay2 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay2]; 
+//    if (temCapacityPlay2 > 12 || temCapacityPlay2 < 8) 
+////    {
+////        temCapacityPlay2 = 8;
+////    }
+//    temCapacityPlay1 = [[GameMainScene sharedMainScene] roleParamArray][0].storageCapacity + temCapacityPlay1;
+//    temCapacityPlay2 = [[GameMainScene sharedMainScene] roleParamArray][0].storageCapacity + temCapacityPlay2;
+    int temCapacityPlay1 = [[CommonLayer sharedCommonLayer] getRoleParam:1 ParamType:ROLESTORAGECAPACITY];
+    int temCapacityPlay2 = [[CommonLayer sharedCommonLayer] getRoleParam:2 ParamType:ROLESTORAGECAPACITY];
 
-    int temCapacityPlay1 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay1]; 
-//    if (temCapacityPlay1 > 12 || temCapacityPlay1 < 8) 
-//    { 
-//        temCapacityPlay1 = 8;
-//    }
-    int temCapacityPlay2 = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacityPlay2]; 
-    if (temCapacityPlay2 > 12 || temCapacityPlay2 < 8) 
-//    {
-//        temCapacityPlay2 = 8;
-//    }
-    
-    temCapacityPlay1 = [[GameMainScene sharedMainScene] roleParamArray][0].storageCapacity + temCapacityPlay1;
-    temCapacityPlay2 = [[GameMainScene sharedMainScene] roleParamArray][0].storageCapacity + temCapacityPlay2;
     Storage *storagePlay1 = [Storage createStorage:temCapacityPlay1 Play:1];
     [self addChild:storagePlay1 z:-3 tag:StorageTag];
     

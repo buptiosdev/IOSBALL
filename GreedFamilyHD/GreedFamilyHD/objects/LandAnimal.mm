@@ -12,6 +12,7 @@
 #import "NoBodyObjectsLayer.h"
 #import "GameMainScene.h"
 #import "CCAnimationHelper.h"
+#import "CommonLayer.h"
 
 @implementation LandAnimal
 
@@ -75,10 +76,10 @@ static LandAnimal *instanceOfLandAnimal;
         {
             switch (i) {
                 case 0:
-                    animation = [CCAnimation animationWithFrame:@"girlbird_3_" frameCount:3 delay:0.2f];
+                    animation = [CCAnimation animationWithFrame:@"pandagirl_3_" frameCount:3 delay:0.2f];
                     break;
                 case 1:
-                    animation = [CCAnimation animationWithFrame:@"girlbird_9_" frameCount:3 delay:0.2f];
+                    animation = [CCAnimation animationWithFrame:@"pandagirl_9_" frameCount:3 delay:0.2f];
                     break;
                     
                 default:
@@ -188,20 +189,20 @@ static LandAnimal *instanceOfLandAnimal;
     waitinterval += 60;
     if (7 == foodType || 6 == foodType || 3 == foodType) 
     {
-        [[GameMainScene sharedMainScene] playAudio:EatGood];
+        [CommonLayer playAudio:EatGood];
     }
     else if (4 == foodType)
     {
         //音效
-        [[GameMainScene sharedMainScene] playAudio:Bombing];
+        [CommonLayer playAudio:Bombing];
     }
     else if (5 == foodType)
     {
-        [[GameMainScene sharedMainScene] playAudio:EatBad];
+        [CommonLayer playAudio:EatBad];
     }
     else
     {
-        [[GameMainScene sharedMainScene] playAudio:EatCandy];
+        [CommonLayer playAudio:EatCandy];
     }
     CCAction* action = [CCBlink actionWithDuration:1 blinks:5];
     [self runAction:action];

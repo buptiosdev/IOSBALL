@@ -12,5 +12,5 @@
 @interface TeachGameLayer : CCLayer {
     
 }
-+(id)createTeachGameLayer;
++(id)createTeachGameLayer:(int)type;
 @end

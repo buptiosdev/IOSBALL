@@ -156,7 +156,6 @@
 		70C664651660B1A600E49FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C664641660B1A600E49FD5 /* main.m */; };
 		70C664681660B1A600E49FD5 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C664671660B1A600E49FD5 /* AppDelegate.mm */; };
 		70C6646B1660B1A600E49FD5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C6646A1660B1A600E49FD5 /* RootViewController.m */; };
-		70C6646E1660B1A600E49FD5 /* HelloWorldLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6646D1660B1A600E49FD5 /* HelloWorldLayer.mm */; };
 		70C664711660B1A600E49FD5 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C664701660B1A600E49FD5 /* GLES-Render.mm */; };
 		70C664741660B1A600E49FD5 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C664731660B1A600E49FD5 /* blocks.png */; };
 		70C664E31660B31000E49FD5 /* Bag.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C664941660B31000E49FD5 /* Bag.mm */; };
@@ -281,6 +280,19 @@
 		70C66C211660D10000E49FD5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C66C1C1660D09000E49FD5 /* CFNetwork.framework */; };
 		70C66C241660D11F00E49FD5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C66C221660D11000E49FD5 /* MobileCoreServices.framework */; };
 		70C66C281660D88C00E49FD5 /* progress.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C66C271660D88B00E49FD5 /* progress.jpg */; };
+		70C671BA1662224400E49FD5 /* teach1.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C671AD1662224400E49FD5 /* teach1.png */; };
+		70C671BB1662224500E49FD5 /* teach2.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C671AE1662224400E49FD5 /* teach2.png */; };
+		70C671BC1662224500E49FD5 /* teach3.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C671AF1662224400E49FD5 /* teach3.png */; };
+		70C671BD1662224500E49FD5 /* teachbomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B01662224400E49FD5 /* teachbomb.jpg */; };
+		70C671BE1662224500E49FD5 /* teachdetail1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B11662224400E49FD5 /* teachdetail1.jpg */; };
+		70C671BF1662224500E49FD5 /* teachdetail2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B21662224400E49FD5 /* teachdetail2.jpg */; };
+		70C671C01662224500E49FD5 /* teachdetail3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B31662224400E49FD5 /* teachdetail3.jpg */; };
+		70C671C11662224500E49FD5 /* teachdetail4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B41662224400E49FD5 /* teachdetail4.jpg */; };
+		70C671C21662224500E49FD5 /* teachdetail5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B51662224400E49FD5 /* teachdetail5.jpg */; };
+		70C671C31662224500E49FD5 /* teachgalic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B61662224400E49FD5 /* teachgalic.jpg */; };
+		70C671C41662224500E49FD5 /* teachice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B71662224400E49FD5 /* teachice.jpg */; };
+		70C671C51662224500E49FD5 /* teachmagic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B81662224400E49FD5 /* teachmagic.jpg */; };
+		70C671C61662224500E49FD5 /* teachpepper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C671B91662224400E49FD5 /* teachpepper.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -589,8 +601,6 @@
 		70C664671660B1A600E49FD5 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		70C664691660B1A600E49FD5 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		70C6646A1660B1A600E49FD5 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		70C6646C1660B1A600E49FD5 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		70C6646D1660B1A600E49FD5 /* HelloWorldLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HelloWorldLayer.mm; sourceTree = "<group>"; };
 		70C6646F1660B1A600E49FD5 /* GLES-Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		70C664701660B1A600E49FD5 /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		70C664721660B1A600E49FD5 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
@@ -762,6 +772,19 @@
 		70C66C1E1660D0DD00E49FD5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		70C66C221660D11000E49FD5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		70C66C271660D88B00E49FD5 /* progress.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = progress.jpg; sourceTree = "<group>"; };
+		70C671AD1662224400E49FD5 /* teach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teach1.png; sourceTree = "<group>"; };
+		70C671AE1662224400E49FD5 /* teach2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teach2.png; sourceTree = "<group>"; };
+		70C671AF1662224400E49FD5 /* teach3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teach3.png; sourceTree = "<group>"; };
+		70C671B01662224400E49FD5 /* teachbomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachbomb.jpg; sourceTree = "<group>"; };
+		70C671B11662224400E49FD5 /* teachdetail1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachdetail1.jpg; sourceTree = "<group>"; };
+		70C671B21662224400E49FD5 /* teachdetail2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachdetail2.jpg; sourceTree = "<group>"; };
+		70C671B31662224400E49FD5 /* teachdetail3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachdetail3.jpg; sourceTree = "<group>"; };
+		70C671B41662224400E49FD5 /* teachdetail4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachdetail4.jpg; sourceTree = "<group>"; };
+		70C671B51662224400E49FD5 /* teachdetail5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachdetail5.jpg; sourceTree = "<group>"; };
+		70C671B61662224400E49FD5 /* teachgalic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachgalic.jpg; sourceTree = "<group>"; };
+		70C671B71662224400E49FD5 /* teachice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachice.jpg; sourceTree = "<group>"; };
+		70C671B81662224400E49FD5 /* teachmagic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachmagic.jpg; sourceTree = "<group>"; };
+		70C671B91662224400E49FD5 /* teachpepper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teachpepper.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -832,8 +855,6 @@
 				70C664671660B1A600E49FD5 /* AppDelegate.mm */,
 				70C664691660B1A600E49FD5 /* RootViewController.h */,
 				70C6646A1660B1A600E49FD5 /* RootViewController.m */,
-				70C6646C1660B1A600E49FD5 /* HelloWorldLayer.h */,
-				70C6646D1660B1A600E49FD5 /* HelloWorldLayer.mm */,
 				70C6646F1660B1A600E49FD5 /* GLES-Render.h */,
 				70C664701660B1A600E49FD5 /* GLES-Render.mm */,
 				70C664721660B1A600E49FD5 /* GameConfig.h */,
@@ -1465,6 +1486,19 @@
 		70C665531660B54900E49FD5 /* pic */ = {
 			isa = PBXGroup;
 			children = (
+				70C671AD1662224400E49FD5 /* teach1.png */,
+				70C671AE1662224400E49FD5 /* teach2.png */,
+				70C671AF1662224400E49FD5 /* teach3.png */,
+				70C671B01662224400E49FD5 /* teachbomb.jpg */,
+				70C671B11662224400E49FD5 /* teachdetail1.jpg */,
+				70C671B21662224400E49FD5 /* teachdetail2.jpg */,
+				70C671B31662224400E49FD5 /* teachdetail3.jpg */,
+				70C671B41662224400E49FD5 /* teachdetail4.jpg */,
+				70C671B51662224400E49FD5 /* teachdetail5.jpg */,
+				70C671B61662224400E49FD5 /* teachgalic.jpg */,
+				70C671B71662224400E49FD5 /* teachice.jpg */,
+				70C671B81662224400E49FD5 /* teachmagic.jpg */,
+				70C671B91662224400E49FD5 /* teachpepper.jpg */,
 				70C66C271660D88B00E49FD5 /* progress.jpg */,
 				70C6655C1660B54900E49FD5 /* background_begin.jpg */,
 				70C6655D1660B54900E49FD5 /* background_level.jpg */,
@@ -1673,6 +1707,19 @@
 				70C667001660B54900E49FD5 /* speedfast2.plist in Resources */,
 				70C66BF81660B81500E49FD5 /* DeveloperInfo.xib in Resources */,
 				70C66C281660D88C00E49FD5 /* progress.jpg in Resources */,
+				70C671BA1662224400E49FD5 /* teach1.png in Resources */,
+				70C671BB1662224500E49FD5 /* teach2.png in Resources */,
+				70C671BC1662224500E49FD5 /* teach3.png in Resources */,
+				70C671BD1662224500E49FD5 /* teachbomb.jpg in Resources */,
+				70C671BE1662224500E49FD5 /* teachdetail1.jpg in Resources */,
+				70C671BF1662224500E49FD5 /* teachdetail2.jpg in Resources */,
+				70C671C01662224500E49FD5 /* teachdetail3.jpg in Resources */,
+				70C671C11662224500E49FD5 /* teachdetail4.jpg in Resources */,
+				70C671C21662224500E49FD5 /* teachdetail5.jpg in Resources */,
+				70C671C31662224500E49FD5 /* teachgalic.jpg in Resources */,
+				70C671C41662224500E49FD5 /* teachice.jpg in Resources */,
+				70C671C51662224500E49FD5 /* teachmagic.jpg in Resources */,
+				70C671C61662224500E49FD5 /* teachpepper.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1815,7 +1862,6 @@
 				70C664651660B1A600E49FD5 /* main.m in Sources */,
 				70C664681660B1A600E49FD5 /* AppDelegate.mm in Sources */,
 				70C6646B1660B1A600E49FD5 /* RootViewController.m in Sources */,
-				70C6646E1660B1A600E49FD5 /* HelloWorldLayer.mm in Sources */,
 				70C664711660B1A600E49FD5 /* GLES-Render.mm in Sources */,
 				70C664E31660B31000E49FD5 /* Bag.mm in Sources */,
 				70C664E41660B31000E49FD5 /* CandyCache.mm in Sources */,
@@ -1979,6 +2025,7 @@
 				70C664791660B1A600E49FD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

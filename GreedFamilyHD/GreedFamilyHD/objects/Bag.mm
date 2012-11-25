@@ -16,7 +16,8 @@
 #import "TouchCatchLayer.h"
 #import "GameMainScene.h"
 #import "NoBodyObjectsLayer.h"
-#import "SimpleAudioEngine.h"
+#import "CommonLayer.h"
+
 @implementation Bag
 @synthesize sprite = _sprite;
 //-(void) registerWithTouchDispatcher
@@ -77,7 +78,7 @@
     }
     
 
-    [[GameMainScene sharedMainScene] playAudio:Speedup];
+    [CommonLayer playAudio:Speedup];
     CCLOG(@"hot!!!!!!!!\n");
     if (1 == bagID) 
     {
@@ -105,7 +106,7 @@
 -(void)onCrystal:(id)sender
 {
     //音效
-    [[GameMainScene sharedMainScene] playAudio:Laugh1];
+    [CommonLayer playAudio:Laugh1];
     
     if (0 >= crystalNum)
     {
@@ -202,7 +203,7 @@
         //change size by diff version manual
         pepperPropMenu.scaleX=(30)/[pepperProp1 contentSize].width; //按照像素定制图片宽高
         pepperPropMenu.scaleY=(30)/[pepperProp1 contentSize].height;
-        pepperLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        pepperLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt"];        pepperLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
         
         pepperLabel.anchorPoint = CGPointMake(-3, 0.2);
         pepperLabel.scale = 0.4;
@@ -245,7 +246,7 @@
         crystalPropMenu.scaleX=(30)/[crystalProp1 contentSize].width; //按照像素定制图片宽高
         crystalPropMenu.scaleY=(30)/[crystalProp1 contentSize].height;
 
-        crystalLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        crystalLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt"];
         crystalLabel.anchorPoint = CGPointMake(-3, 0.2);
         crystalLabel.scale = 0.4;
         [crystalPropMenu addChild:crystalLabel z:1];
@@ -279,7 +280,7 @@
         smokePropMenu.scaleX=(30)/[smokeProp1 contentSize].width; //按照像素定制图片宽高
         smokePropMenu.scaleY=(30)/[smokeProp1 contentSize].height;
         
-        smokeLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        smokeLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt"];
         smokeLabel.anchorPoint = CGPointMake(-3, 0.2);
         smokeLabel.scale = 0.25;
         [smokePropMenu addChild:smokeLabel z:1];

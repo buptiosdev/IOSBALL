@@ -14,8 +14,8 @@
 #import "PauseLayer.h"
 #import "AppDelegate.h"
 #import "ResultLayer.h"
-#import "SimpleAudioEngine.h"
 #import "TeachGameLayer.h"
+#import "CommonLayer.h"
 @interface GameMainScene (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
 -initWithOrder:(int)order;
@@ -51,7 +51,7 @@
 @synthesize scorePos = _scorePos;
 @synthesize scorePlay2Pos = _scorePlay2Pos;
 @synthesize isPairPlay = _isPairPlay;
-@synthesize roleParamArray = _roleParamArray;
+
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static GameMainScene *instanceOfMainScene;
@@ -141,46 +141,6 @@ static GameMainScene *instanceOfMainScene;
     [self initPairPointParam];
 }
 
-//角色的属性设置
--(void)initRoleParam
-{
-//    self.roleParamArray = [[CCArray alloc] initWithCapacity:ROLE_TYPE_COUNT];
-    self.roleParamArray = (RoleParam *)malloc(sizeof(RoleParam)*ROLE_TYPE_COUNT);
-//    RoleParam *pandaRole = self.roleParamArray[0];
-//    RoleParam pigRole = self.roleParamArray[1];
-//    RoleParam birdRole = self.roleParamArray[2];
-    //panda
-    self.roleParamArray[0].density = 0.6f;
-    self.roleParamArray[0].restitution = 0.5f;
-    self.roleParamArray[0].friction = 0.5f;
-    self.roleParamArray[0].linearDamping = 0.3f;
-    self.roleParamArray[0].sensitivity = 5.0f;
-    self.roleParamArray[0].deceleration = 0.45f;
-    self.roleParamArray[0].hitEffect = 0.4f;
-    self.roleParamArray[0].landSpend = 0.55f;
-    self.roleParamArray[0].storageCapacity = 7;
-    //pig
-    self.roleParamArray[1].density = 0.7f;
-    self.roleParamArray[1].restitution = 0.4f;
-    self.roleParamArray[1].friction = 0.6f;
-    self.roleParamArray[1].linearDamping = 0.35f;
-    self.roleParamArray[1].sensitivity = 6.5f;
-    self.roleParamArray[1].deceleration = 0.5f;
-    self.roleParamArray[1].hitEffect = 0.5f;
-    self.roleParamArray[1].landSpend = 0.5f;
-    self.roleParamArray[1].storageCapacity = 8;
-    //bird
-    self.roleParamArray[2].density = 0.5f;
-    self.roleParamArray[2].restitution = 0.7f;
-    self.roleParamArray[2].friction = 0.4f;
-    self.roleParamArray[2].linearDamping = 0.25f;
-    self.roleParamArray[2].sensitivity = 6.0f;
-    self.roleParamArray[2].deceleration = 0.4f;
-    self.roleParamArray[2].hitEffect = 0.2f;
-    self.roleParamArray[2].landSpend = 0.4f;
-    self.roleParamArray[2].storageCapacity = 6;
-}
-
 -(id)initWithOrder:(int)order
 {
     if (self = [super init]) 
@@ -189,8 +149,7 @@ static GameMainScene *instanceOfMainScene;
         //初始化一开始，给半单例赋值
         instanceOfMainScene = self;
         _sceneNum = order;
-        //初始化角色参数
-        [self initRoleParam];
+
         //双人游戏 order为0
         if (0 >= order) 
         {
@@ -216,7 +175,7 @@ static GameMainScene *instanceOfMainScene;
         [self addChild:touchCatchLayer z:1 tag:TouchCatchLayerTag];
         
         //[[GameMainScene sharedMainScene] addTeacheGame];
-        [self schedule:@selector(sleepForTeach:) interval:0.1];
+//        [self schedule:@selector(sleepForTeach:) interval:0.1];
         
         [self scheduleUpdate];
         
@@ -257,7 +216,7 @@ static GameMainScene *instanceOfMainScene;
     _mainscenParam.order = order;
     switch (order) {
         case TargetScenesPairEasy:
-            _mainscenParam.maxVisibaleNum = 6;
+            _mainscenParam.maxVisibaleNum = 4;
             _mainscenParam.candyCount = 30;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
@@ -272,8 +231,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.smokeFrequency = ThreeTime;
             break;
         case TargetScenesPairHard:
-            _mainscenParam.maxVisibaleNum = 8;
-            _mainscenParam.candyCount = 50;
+            _mainscenParam.maxVisibaleNum = 5;
+            _mainscenParam.candyCount = 40;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 5;
             _mainscenParam.landCompetitorExist = NO;
@@ -288,14 +247,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.invisibaleNum = 5;
             break;
     }
-    //根据角色不同速度不同，暂时双人只能角色1 和 角色2
-    _mainscenParam.landAnimalSpeed = _roleParamArray[0].landSpend;
-    _mainscenParam.landAnimalSpeedPlay2 = _roleParamArray[1].landSpend;
-    //加上商店购买道具    
-    _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
-    _mainscenParam.landAnimalSpeedPlay2 =  _mainscenParam.landAnimalSpeedPlay2 * _accelerationPlay2 / 10;
-
-
+    //根据角色不同速度不同，暂时双人只能角色1 和 角色2    
+    _mainscenParam.landAnimalSpeed = [[CommonLayer sharedCommonLayer] getRoleParam:1 ParamType:ROLELANDSPEED];
+    _mainscenParam.landAnimalSpeedPlay2 = [[CommonLayer sharedCommonLayer] getRoleParam:2 ParamType:ROLELANDSPEED];
+    
 }
 
 -(void)initPairPointParam
@@ -639,77 +594,10 @@ static GameMainScene *instanceOfMainScene;
         default:
             break;
     }
-    //不同动物，初始速度不同
-    _mainscenParam.landAnimalSpeed = _roleParamArray[_roleType - 1].landSpend;
-    //加上商店购买道具    
-    _mainscenParam.landAnimalSpeed =  _mainscenParam.landAnimalSpeed * _acceleration / 10;
+    //不同动物，初始速度不同    
+    _mainscenParam.landAnimalSpeed = [[CommonLayer sharedCommonLayer] getRoleParam:_roleType ParamType:ROLELANDSPEED];
 
-}
 
--(void)playAudio:(int)audioType
-{
-    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
-    BOOL sound = [usrDef boolForKey:@"sound"];
-    if (NO == sound) 
-    {
-        return;
-    }
-    
-    switch (audioType) {
-        case NeedTouch:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
-            break; 
-            
-        case GetScore:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
-            break;            
-
-        case EatCandy:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"der.caf"];
-            break;            
-            
-        case EatGood:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"good.caf"];
-            break;    
-            
-        case EatBad:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"toll.caf"];
-            break;
-            
-        case Droping:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"drop.caf"];
-            break;            
-
-        case BubbleBreak:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblebreak.caf"];
-            break;            
-
-        case BubbleHit:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblehit.caf"];
-            break;            
-
-        case SelectOK:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"select.caf"];
-            break;            
-
-        case SelectNo:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"failwarning.caf"];
-            break;            
-
-        case Bombing:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"bomb.caf"];
-            break;   
-            
-        case NewHighScore:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"drum.caf"];
-            break;   
-        case Speedup:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"speedup.caf"];
-            break;
-            
-        default:
-            break;
-    }
 }
 
 -(void)endGame
@@ -786,13 +674,13 @@ static GameMainScene *instanceOfMainScene;
 }
 
 
--(void)addTeachGameLayer
-{
-    [self onPauseExit];
-    PauseLayer * p = [TeachGameLayer createTeachGameLayer];
-    [self.parent addChild:p z:11]; 
-    
-}
+//-(void)addTeachGameLayer
+//{
+//    [self onPauseExit];
+//    PauseLayer * p = [TeachGameLayer createTeachGameLayer:1];
+//    [self.parent addChild:p z:11]; 
+//    
+//}
 
 
 //-(void)endTeachGameLayer
@@ -811,11 +699,11 @@ static GameMainScene *instanceOfMainScene;
     [self endGame];
 }
 
--(void)sleepForTeach: (ccTime) dt
-{
-    [self unschedule:@selector(sleepForTeach:)]; 
-    [[GameMainScene sharedMainScene] addTeachGameLayer];
-}
+//-(void)sleepForTeach: (ccTime) dt
+//{
+//    [self unschedule:@selector(sleepForTeach:)]; 
+//    [[GameMainScene sharedMainScene] addTeachGameLayer];
+//}
 
 
 -(void) update:(ccTime)delta
@@ -846,7 +734,7 @@ static GameMainScene *instanceOfMainScene;
 -(void) dealloc
 {
     instanceOfMainScene = nil; 
-	free(self.roleParamArray);
+	
     [super dealloc];
 }
 

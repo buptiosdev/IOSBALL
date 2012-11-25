@@ -21,9 +21,8 @@
 #import "CandyEntity.h"
 #import "PropertyEntity.h"
 #import "FlyEntity.h"
-#import "SimpleAudioEngine.h"
 #import "GameMainScene.h"
-
+#import "CommonLayer.h"
 
 void ContactListener::BeginContact(b2Contact* contact)
 {
@@ -46,18 +45,18 @@ void ContactListener::BeginContact(b2Contact* contact)
                 bodyEntityB.hitPoints--;
                 if(0 == bodyEntityB.hitPoints)
                 {
-                    [[GameMainScene sharedMainScene] playAudio:BubbleBreak];
+                    [CommonLayer playAudio:BubbleBreak];
                 }
                 else
                 {
-                    [[GameMainScene sharedMainScene] playAudio:BubbleHit];
+                    [CommonLayer playAudio:BubbleHit];
                 }
                 
             }
             else
             {
                 //对手相碰的音效
-                [[GameMainScene sharedMainScene] playAudio:BubbleHit];
+                [CommonLayer playAudio:BubbleHit];
             }
 
         }
@@ -70,11 +69,11 @@ void ContactListener::BeginContact(b2Contact* contact)
                 bodyEntityA.hitPoints--;
                 if(0 == bodyEntityA.hitPoints)
                 {
-                    [[GameMainScene sharedMainScene] playAudio:BubbleBreak];
+                    [CommonLayer playAudio:BubbleBreak];
                 }
                 else
                 {
-                    [[GameMainScene sharedMainScene] playAudio:BubbleHit];
+                    [CommonLayer playAudio:BubbleHit];
                 }
             }
             

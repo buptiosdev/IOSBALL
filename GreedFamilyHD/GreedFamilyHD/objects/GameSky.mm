@@ -10,6 +10,7 @@
 #import "FlyEntity.h"
 #import "BodyObjectsLayer.h"
 #import "GameMainScene.h"
+#import "CommonLayer.h"
 @implementation GameSky
 
 -(void) registerWithTouchDispatcher
@@ -328,7 +329,7 @@
         timeTmp.percentage = 100;
         turned = !turned;
         waitinterval = 6000;
-        [[GameMainScene sharedMainScene] playAudio:SelectNo];
+        [CommonLayer playAudio:SelectNo];
     }
 }
 
