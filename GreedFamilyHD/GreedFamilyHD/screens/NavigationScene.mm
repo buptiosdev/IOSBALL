@@ -49,40 +49,18 @@
 		
         //set logo
         CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logoword.png"];
-//        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
-        logo.scaleX=0.5;
-        logo.scaleY=0.5;
+        // BEGIN liuyunpeng modify logoscale  2012-11-25
+        logo.scale=1;
+        // END
         [self addChild:logo];
         logo.position=CGPointMake(size.width / 2, size.height * 3 / 4 );
-        
-//        CCSprite *logopanda = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
-//        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
-//        logopanda.scale=0.4;
-//        [self addChild:logopanda];
-//        logopanda.position=CGPointMake(size.width / 6, size.height * 2 / 3 );
-//        
-//        [logopanda runAction:[CCSequence actions:
-//        							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.4],[CCScaleTo actionWithDuration:1 scale:0.45],nil] times:9000],
-//        							nil]];        
-        
-        
-//        CCSprite *logopig = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
-//        //        logo.scaleX=(size.width*3/4)/[logo contentSize].width; //按照像素定制图片宽高是控制像素的。
-//        //        logo.scaleY=(size.height*3/4)/[logo contentSize].height;
-//        logopig.scale=0.4;
-//        [self addChild:logopig];
-//        logopig.position=CGPointMake(size.width *5 / 6, size.height * 2 / 3 );
-//        
-//        [logopig runAction:[CCSequence actions:
-//                              [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.8 scale:0.45],[CCScaleTo actionWithDuration:1 scale:0.4],nil] times:9000],
-//                              nil]];    
-        
+    
         //add panda action by lyp 20121029
         CCSprite *logopanda= [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
         //按照像素设定图片大小
-        logopanda.scale=0.75; //按照像素定制图片宽高
+        // BEGIN liuyunpeng modify logoscale  2012-11-25
+        logopanda.scale=1.2; //按照像素定制图片宽高
+        
         logopanda.position = CGPointMake(size.width / 7, size.height * 2 / 3 );;
         CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.15f];
         
@@ -96,7 +74,9 @@
         
         CCSprite *logopig= [CCSprite spriteWithSpriteFrameName:@"logopig_1.png"];
         //按照像素设定图片大小
-        logopig.scale=0.75; //按照像素定制图片宽高
+        // BEGIN liuyunpeng modify logoscale  2012-11-25
+        logopig.scale=1.2; //按照像素定制图片宽高
+        
         logopig.position = CGPointMake(size.width *6 / 7, size.height * 2 / 3 );
         CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.20f];
         
@@ -110,17 +90,17 @@
         
         //set play 
         CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
-        //play.scaleX=1.1;
         play.scaleY=1.05;
         CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
-//        play1.scaleX=0.75; //按照像素定制图片宽高是控制像素的。
-//        play1.scaleY=0.9;
         CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
                                                               selectedSprite:play1 
                                                                       target:self 
                                                                     selector:@selector(newGame:)];
+        
+        // BEGIN liuyunpeng modify logoscale  2012-11-25
+        playitem.scale=130/[play contentSize].height;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height*2/5)];
+        [playmenu setPosition:ccp(size.width/2,size.height/2)];
         [self addChild:playmenu];
         
         
@@ -137,8 +117,10 @@
                                                              selectedSprite:pairplay1 
                                                                      target:self 
                                                                    selector:@selector(pairGame:)];
+        // BEGIN liuyunpeng modify logoscale  2012-11-25
+        pairplayitem.scale=110/[pairplay contentSize].height;
         CCMenu * plairplaymenu = [CCMenu menuWithItems:pairplayitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height*2/5)];
+        [plairplaymenu setPosition:ccp(size.width/2,size.height/3)];
         [self addChild:plairplaymenu];
         
         
@@ -154,7 +136,7 @@
                                                               selectedSprite:option1 
                                                                       target:self 
                                                                     selector:@selector(options:)];
-        float optscale=50/[option contentSize].width;
+        float optscale=100/[option contentSize].width;
         //float clickoptscale=optscale*1.1f;
         optionItem.scale=optscale;
         
@@ -184,7 +166,8 @@
 //        leader.scaleX=leaderscale;
 //        leader.scaleY=leaderscale;
         CCSprite *leader1 = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-        float leaderscale=40/[leader contentSize].width;
+        // BEGIN liuyunpeng modify logoscale  2012-11-25
+        float leaderscale=80/[leader contentSize].width;
         //float clickleaderscale=leaderscale*1.1f;
         leader1.scaleX=1.1;
         leader1.scaleY=1.1;
