@@ -33,27 +33,6 @@ typedef enum
 
 typedef enum
 {   
-    NeedTouch= 1,
-    GetScore,
-    EatCandy,
-    EatGood,
-    EatBad,
-    Droping,
-    BubbleBreak,
-    BubbleHit,
-    SelectOK,
-    SelectNo,
-    Bombing,
-    NewHighScore,
-    Laugh1,
-    Laugh2,
-    Speedup
-    
-}AudioType;
-
-
-typedef enum
-{   
     NoTime = 0,
     OneTime,
     TwoTime,
@@ -62,7 +41,6 @@ typedef enum
     FiveTime,
     
 }PropertyFrequency;
-
 
 struct SceneParam 
 {
@@ -82,18 +60,6 @@ struct SceneParam
     float landCompetSpeed;
     float landAnimalSpeed;
     float landAnimalSpeedPlay2;
-};
-
-struct RoleParam {
-    float density;
-    float restitution;
-    float friction;
-    float linearDamping;
-    float sensitivity;
-    float deceleration;
-    float hitEffect;
-    float landSpend;
-    int storageCapacity;
 };
 
 
@@ -129,9 +95,8 @@ struct RoleParam {
 @property (nonatomic) CGPoint scorePos;
 @property (nonatomic) CGPoint scorePlay2Pos;
 @property (nonatomic) SceneParam mainscenParam;
-@property (nonatomic) RoleParam *roleParamArray;
--(void)addTeachGameLayer;
+
+
 -(void)pauseGame;
 -(void)resumeGame;
--(void)playAudio:(int)audioType;
 @end

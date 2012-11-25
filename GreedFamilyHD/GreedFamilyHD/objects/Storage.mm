@@ -16,6 +16,7 @@
 #import "Bag.h"
 #import "TouchCatchLayer.h"
 #import "NoBodyObjectsLayer.h"
+#import "CommonLayer.h"
 
 @interface Storage (PrivateMethods)
 -(id)initWithCapacity:(int)capacity Play:(int)PlayID;
@@ -182,7 +183,7 @@
             currentCount--;      
             temp++;
             //得分音效
-            [[GameMainScene sharedMainScene] playAudio:GetScore];
+            [CommonLayer playAudio:GetScore];
 
             
             break;
@@ -396,7 +397,7 @@
         if (!canCombine)
         {
             //[[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
-            [[GameMainScene sharedMainScene] playAudio:NeedTouch];
+            [CommonLayer playAudio:NeedTouch];
             
         }
         canCombine = YES;
@@ -590,7 +591,7 @@
                         }
                         
                         //得分音效
-                        [[GameMainScene sharedMainScene] playAudio:GetScore];
+                        [CommonLayer playAudio:GetScore];
 
                     }
                     break;
@@ -643,7 +644,7 @@
                     }
                     
                     //得分音效
-                    [[GameMainScene sharedMainScene] playAudio:GetScore];
+                    [CommonLayer playAudio:GetScore];
                     break;
                 }
                 left_index--;

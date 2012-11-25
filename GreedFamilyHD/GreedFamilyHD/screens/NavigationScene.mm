@@ -15,10 +15,10 @@
 #import "GameMainScene.h"
 #import "LevelScenePair.h"
 #import "RoleScene.h"
-#import "SimpleAudioEngine.h"
+//#import "SimpleAudioEngine.h"
 #import "AppDelegate.h"
 #import "CCAnimationHelper.h"
-
+#import "CommonLayer.h"
 @interface Navigation
 -(void)newGame:(id)sender;
 -(void)options:(id)sender;
@@ -278,12 +278,11 @@
             
             if (0 == randomNum) 
             {
-                [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+                [CommonLayer playBackMusic:UnGameMusic1];
             }
             else
             {
-                [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
-                
+                [CommonLayer playBackMusic:UnGameMusic2];
             }
         }
 		
@@ -292,85 +291,6 @@
     return self;
 }
 
-//角色选择回调函数，把角色类型写入文件
-//- (void)button1Tapped:(id)sender 
-//{
-//    NSString *strName = [NSString stringWithFormat:@"RoleType"];
-//    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:strName];
-//}
-//- (void)button2Tapped:(id)sender 
-//{
-//    NSString *strName = [NSString stringWithFormat:@"RoleType"];
-//    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:strName];
-//}
-//- (void)button3Tapped:(id)sender 
-//{
-//    [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"RoleType"];
-//}
-
-
--(void)playAudio:(int)audioType
-{
-    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
-    BOOL sound = [usrDef boolForKey:@"sound"];
-    if (NO == sound) 
-    {
-        return;
-    }
-    
-    switch (audioType) {
-        case NeedTouch:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
-            break; 
-            
-        case GetScore:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"getscore.caf"];
-            break;            
-            
-        case EatCandy:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"der.caf"];
-            break;            
-            
-        case EatGood:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"good.caf"];
-            break;    
-            
-        case EatBad:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"toll.caf"];
-            break;
-            
-        case Droping:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"drop.caf"];
-            break;            
-            
-        case BubbleBreak:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblebreak.caf"];
-            break;            
-            
-        case BubbleHit:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"bubblehit.caf"];
-            break;            
-            
-        case SelectOK:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"select.caf"];
-            break;            
-            
-        case SelectNo:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"failwarning.caf"];
-            break;            
-            
-        case Bombing:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"bomb.caf"];
-            break;   
-            
-        case NewHighScore:
-            [[SimpleAudioEngine sharedEngine] playEffect:@"drum.caf"];
-            break;   
-            
-        default:
-            break;
-    }
-}
 
 //滚动
 -(void)viewAddPointY{
@@ -392,7 +312,7 @@
 //
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 //	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
-    [self playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     if (isCreateIndicatorView)
     {
         [activityIndicatorView stopAnimating ];  //停止  
@@ -404,7 +324,7 @@
 
 -(void)options:(id)sender
 {
-    [self playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     
     if (isCreateIndicatorView)
     {
@@ -419,7 +339,7 @@
 
 -(void)displayInfo:(id)sender
 {
-    [self playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     
      if (isCreateIndicatorView)
      {
@@ -486,7 +406,7 @@
 
 -(void)showGameLeaderboard:(id)sender
 {
-    [self playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     
     //启动load图标
     if (!isCreateIndicatorView)
@@ -530,7 +450,7 @@
 
 -(void)showGameAchievements:(id)sender
 {
-    [self playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     
     //启动load图标
     if (!isCreateIndicatorView)
@@ -592,14 +512,14 @@
                                
 -(void)connectGameCenter:(id)sender
 {
-    [self playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     //connect to game center
     [[CCDirector sharedDirector] replaceScene:[GameCenterScene gamecenterScene]];
 }
 
 -(void)pairGame:(id)sender
 {
-    [self playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     //connect to game center
     //[[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneINVALID]];
 	[[CCDirector sharedDirector] replaceScene:[LevelScenePair scene]];

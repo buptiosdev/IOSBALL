@@ -13,7 +13,7 @@
 #import "OptionsScene.h"
 #import "LoadingScene.h"
 #import "CDAudioManager.h"
-#import "SimpleAudioEngine.h"
+#import "CommonLayer.h"
 
 @implementation PauseLayer
 
@@ -31,7 +31,7 @@
 
 -(void)changeSound:(CCMenuItemToggle *)sender
 {
-    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
 	if(sender.selectedIndex ==1){
@@ -47,28 +47,33 @@
 
 -(void)changeMusic:(CCMenuItemToggle *)sender
 {
-    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
 	NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 	
 	if(sender.selectedIndex ==1)
     {
+        [usrDef setBool:YES forKey:@"music"];
         int order = [GameMainScene sharedMainScene].sceneNum;
         
-        if (order > 0 && order <= 10) 
+        if (order > 0 && order <= 5) 
         {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"huanqinshort.mp3" loop:YES];
+            [CommonLayer playBackMusic:GameMusic5];
+        }
+        else if (order > 0 && order <= 10)
+        {
+            [CommonLayer playBackMusic:GameMusic6];
         }
         else if (order > 0 && order <= 15) 
         {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morningmusicshort.mp3" loop:YES];
+            [CommonLayer playBackMusic:GameMusic2];
         }
         else if (order > 0 && order <= 18)
         {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
+            [CommonLayer playBackMusic:GameMusic3];
         }
         else
         {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
+            [CommonLayer playBackMusic:GameMusic4];
             
         }
         
@@ -76,8 +81,9 @@
     }
 	if(sender.selectedIndex ==0)
     {
-        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-		[usrDef setBool:NO forKey:@"music"];
+        [usrDef setBool:NO forKey:@"music"];
+        [CommonLayer playBackMusic:StopGameMusic];  
+
     }
 }
 
@@ -210,7 +216,7 @@
 
 -(void)returnLevel
 {
-    [[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
 	//start a new game
     [[GameMainScene sharedMainScene] resumeGame];
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
@@ -223,14 +229,17 @@
         
         if (0 == randomNum) 
         {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+            [CommonLayer playBackMusic:UnGameMusic1];
         }
         else
         {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+            [CommonLayer playBackMusic:UnGameMusic2];
             
         }
     }
+    
 }
 
 -(void)retryGame:(CCMenuItemSprite *)btn

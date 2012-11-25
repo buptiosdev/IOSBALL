@@ -13,6 +13,7 @@
     CCLabelTTF *landanimalspeed;
     CCLabelTTF *flyanimalspeed;
     CCLabelTTF *storagecapacity;
+    CCLabelTTF *flyanimalsensit;
     int roleType;
 }
 +(id)sceneWithRoleScene;

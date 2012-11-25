@@ -15,7 +15,7 @@
 #import "PropertyCache.h"
 #import "LandCandyCache.h"
 #import "PropertyEntity.h"
-
+#import "CommonLayer.h"
 
 @interface BodyObjectsLayer (PrivateMethods)
 -(void) initBox2dWorld;
@@ -67,8 +67,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
             FlyEntity* flyAnimalPlay2 = [FlyEntity flyAnimal:self.world RoleType:2];
             [self addChild:flyAnimalPlay2 z:-1 tag:FlyEntityPlay2Tag];
         }
-        
-        
+
+
         CandyCache* candyCache = [CandyCache cache:self.world];
         [self addChild:candyCache z:-1 tag:CandyCacheTag];
         
@@ -116,7 +116,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
     fixtureDef.density = 0.3; //密度 
     fixtureDef.friction = 0.6    ; //摩擦力
     fixtureDef.restitution = 0.5 ;  //弹性系数 复原
-    
+	    
     // bottom
     screenBoxShape.SetAsEdge(lowerLeftCorner, lowerRightCorner);
     containerBody->CreateFixture(&screenBoxShape, density);
@@ -236,14 +236,14 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CCLOG(@"haha");
                     // add the labels shown during game over
                     /*    
-                     CGSize screenSize = [[CCDirector sharedDirector] winSize];
-                     
-                     CCLabelTTF *gameOver = [CCLabelTTF labelWithString:@"GAME OVER!" fontName:@"Marker Felt" fontSize:60];
-                     gameOver.position = CGPointMake(screenSize.width / 2, screenSize.height / 3);
-                     [self addChild:gameOver z:100 tag:100];
-                     [GameMainScene sharedMainScene].isGameOver = YES;
-                     
-                     return;
+                    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+                    
+                    CCLabelTTF *gameOver = [CCLabelTTF labelWithString:@"GAME OVER!" fontName:@"Marker Felt" fontSize:60];
+                    gameOver.position = CGPointMake(screenSize.width / 2, screenSize.height / 3);
+                    [self addChild:gameOver z:100 tag:100];
+                    [GameMainScene sharedMainScene].isGameOver = YES;
+                    
+                    return;
                      */
                 }
                 //add by jin at 5.27
@@ -252,7 +252,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     //持续的给Candy加向下的力
                     
                     CCLOG(@"Into here ！糖果的血为0");
-                    
+
                     CCLOG(@"调用精灵切换");
                     //气泡破裂特效
                     CCParticleSystem* system;
@@ -266,8 +266,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    //                    int a = bodyNode.flyFamilyType;
-                    float hitEffect =[[GameMainScene sharedMainScene] roleParamArray][bodyNode.flyFamilyType - 1].hitEffect;
+//                    int a = bodyNode.flyFamilyType;
+                    float hitEffect = [[CommonLayer sharedCommonLayer] getRoleParam:bodyNode.flyFamilyType ParamType:ROLEHITEFFECT];
                     CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
@@ -309,15 +309,14 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    int hitEffect =[[GameMainScene sharedMainScene] roleParamArray][bodyNode.flyFamilyType - 1].hitEffect;
-                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
+                    float hitEffect = [[CommonLayer sharedCommonLayer] getRoleParam:bodyNode.flyFamilyType ParamType:ROLEHITEFFECT];                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     
                     bodyVelocity = ccpAdd(bodyVelocity, flyVelocity);
                     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
                     //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
-                    
+    
                     [instanceOfLandCandyCache CreateLandCandy:(PropertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
                     
                     //消失
@@ -326,7 +325,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
                     bodyNode.sprite.visible = NO;
                     bodyNode.hitPoints = -1;
-                    
+                
                     CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
                     PropertyCache* propCache = (PropertyCache *)[self getChildByTag:PropCacheTag];
                     if (candyCache != NULL)
@@ -336,7 +335,7 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     }
                     
                 }
-                
+
             } 
 		}
 	}

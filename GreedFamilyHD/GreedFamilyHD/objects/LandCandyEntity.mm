@@ -12,6 +12,7 @@
 #import "GameBackgroundLayer.h"
 #import "CCAnimationHelper.h"
 #import "GameMainScene.h"
+#import "CommonLayer.h"
 
 @interface LandCandyEntity (PrivateMethods)
 -(id)initLandCandy:(int)balltype Pos:(CGPoint)pos BodyVelocity:(CGPoint)bodyVelocity;
@@ -136,12 +137,13 @@
         
         //change size by diff version manual
         if (2 == balltype || 5 == balltype) {
-            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -0.6);
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, bodyVelocity.y/200);
         }
         else
         {
-            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1.2);
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, bodyVelocity.y/100);
         }
+        //self.candyVelocity =  CGPointMake(bodyVelocity.x/100, bodyVelocity.y/100);
         _isDowning = YES;
         
         //动画
@@ -168,7 +170,11 @@
         _waitinterval--;
         return;
     }
-
+    //重力加速度
+    float g=0.008;
+    //update self.candyVelocity.y
+    self.candyVelocity=CGPointMake(self.candyVelocity.x, self.candyVelocity.y-g);
+    
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     float imageWidthHalved = [self.sprite contentSize].width * self.sprite.scaleX * 0.5f; 
     float leftBorderLimit = imageWidthHalved;
@@ -199,7 +205,7 @@
         system.positionType = kCCPositionTypeGrouped;
         system.autoRemoveOnFinish = YES;
         system.position = self.sprite.position;
-        [[GameMainScene sharedMainScene] playAudio:Droping];
+        [CommonLayer playAudio:Droping];
         [self addChild:system];
     }
 }
