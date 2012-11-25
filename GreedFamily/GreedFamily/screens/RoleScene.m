@@ -89,10 +89,14 @@
         [panda setColor:ccGRAY];
         CCSprite *panda1 = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
         panda1.scale=1.1;
+        //add disable menu by liuyunpeng 2012-11-25
+        CCSprite *panda2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
+        panda2.scale=1.5;
         CCMenuItemSprite *menuItem1 = [CCMenuItemSprite itemFromNormalSprite:panda 
-                                                                   selectedSprite:panda1 
-                                                                           target:self 
-                                                                         selector:@selector(chooseRole:)];
+                                                               selectedSprite:panda1 
+                                                              disabledSprite:panda2
+                                                                      target:self 
+                                                                    selector:@selector(chooseRole:)];
         float spritescale=80/[panda contentSize].width;
         menuItem1.scale=spritescale;
         
@@ -100,8 +104,11 @@
         [pig setColor:ccGRAY];
         CCSprite *pig1 = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
         pig1.scale=1.1;
+        CCSprite *pig2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
+        pig2.scale=1.5;
         CCMenuItemSprite *menuItem2 = [CCMenuItemSprite itemFromNormalSprite:pig 
-                                                              selectedSprite:pig1 
+                                                              selectedSprite:pig1
+                                                              disabledSprite:pig2
                                                                       target:self 
                                                                     selector:@selector(chooseRole:)];
         menuItem2.scale=80/[pig contentSize].width;
@@ -110,19 +117,36 @@
         [bird setColor:ccGRAY];
         CCSprite *bird1 = [CCSprite spriteWithSpriteFrameName:@"logobird.png"];
         bird1.scale=1.1;
+        CCSprite *bird2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
+        bird1.scale=1.5;
         CCMenuItemSprite *menuItem3 = [CCMenuItemSprite itemFromNormalSprite:bird 
-                                                              selectedSprite:bird1 
+                                                              selectedSprite:bird1
+                                                              disabledSprite:bird2
                                                                       target:self 
                                                                     selector:@selector(chooseRole:)];
         
         menuItem3.scale=80/[bird contentSize].width;
-        
         CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems: menuItem1, menuItem2, menuItem3, nil];
         [radioMenu alignItemsHorizontallyWithPadding:100*0.75];
         [radioMenu setPosition:ccp(screenSize.width/2,screenSize.height*3/4)];
         [menuItem1 setTag:1];
         [menuItem2 setTag:2];
         [menuItem3 setTag:3];
+        
+        //增加隐藏角色的判断 by liuyunpeng 2012-11-25  
+        NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+        NSInteger starNum = [usrDef integerForKey:@"5starNum"];
+        if(starNum>0){
+            menuItem1.isEnabled=YES;
+        }else{
+            menuItem1.isEnabled=NO;
+        }
+        starNum = [usrDef integerForKey:@"20starNum"];
+        if(starNum>0){
+            menuItem3.isEnabled=YES;
+        }else{
+            menuItem3.isEnabled=NO;
+        }
         
         //默认要写一次文件，设置为小鸟
         NSString *strName = [NSString stringWithFormat:@"RoleType"];
