@@ -135,14 +135,14 @@
         [batch addChild:self.sprite];
         self.sprite.position = pos;
         
-//        if (2 == balltype || 5 == balltype) {
-//            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -0.5);
-//        }
-//        else
-//        {
-//            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, -1.0);
-//        }
-        self.candyVelocity =  CGPointMake(bodyVelocity.x/100, bodyVelocity.y/100);
+        if (2 == balltype || 5 == balltype) {
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, bodyVelocity.y/200);
+        }
+        else
+        {
+            self.candyVelocity =  CGPointMake(bodyVelocity.x/100, bodyVelocity.y/100);
+        }
+        //self.candyVelocity =  CGPointMake(bodyVelocity.x/100, bodyVelocity.y/100);
         _isDowning = YES;
         
         //动画
