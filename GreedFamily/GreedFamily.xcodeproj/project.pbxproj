@@ -246,7 +246,6 @@
 		70C6715B16620D5600E49FD5 /* Food.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6711116620D5600E49FD5 /* Food.mm */; };
 		70C6715C16620D5600E49FD5 /* GamePause.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6711316620D5600E49FD5 /* GamePause.mm */; };
 		70C6715D16620D5600E49FD5 /* GameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6711516620D5600E49FD5 /* GameScore.mm */; };
-		70C6715E16620D5600E49FD5 /* GameShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C6711716620D5600E49FD5 /* GameShopScene.m */; };
 		70C6715F16620D5600E49FD5 /* GameSky.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6711916620D5600E49FD5 /* GameSky.mm */; };
 		70C6716016620D5600E49FD5 /* LandAnimal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6711B16620D5600E49FD5 /* LandAnimal.mm */; };
 		70C6716116620D5600E49FD5 /* LandCandyCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6711D16620D5600E49FD5 /* LandCandyCache.mm */; };
@@ -288,6 +287,7 @@
 		70C6719D1662117000E49FD5 /* bitmapRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C6718D1662117000E49FD5 /* bitmapRed.png */; };
 		70C6719E1662117000E49FD5 /* pink.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70C6718E1662117000E49FD5 /* pink.fnt */; };
 		70C6719F1662117000E49FD5 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C6718F1662117000E49FD5 /* pink.png */; };
+		70C671A716621B8F00E49FD5 /* GameShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C671A616621B8F00E49FD5 /* GameShopScene.m */; };
 		70C7C3C115A9D670007D35B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C015A9D670007D35B5 /* Parse.framework */; };
 		70C7C3C515A9D69C007D35B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C415A9D69C007D35B5 /* Security.framework */; };
 		70C7C3C715A9D6AD007D35B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */; };
@@ -718,8 +718,6 @@
 		70C6711316620D5600E49FD5 /* GamePause.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GamePause.mm; sourceTree = "<group>"; };
 		70C6711416620D5600E49FD5 /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScore.h; sourceTree = "<group>"; };
 		70C6711516620D5600E49FD5 /* GameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScore.mm; sourceTree = "<group>"; };
-		70C6711616620D5600E49FD5 /* GameShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameShopScene.h; sourceTree = "<group>"; };
-		70C6711716620D5600E49FD5 /* GameShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameShopScene.m; sourceTree = "<group>"; };
 		70C6711816620D5600E49FD5 /* GameSky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSky.h; sourceTree = "<group>"; };
 		70C6711916620D5600E49FD5 /* GameSky.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameSky.mm; sourceTree = "<group>"; };
 		70C6711A16620D5600E49FD5 /* LandAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandAnimal.h; sourceTree = "<group>"; };
@@ -784,6 +782,8 @@
 		70C6718D1662117000E49FD5 /* bitmapRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapRed.png; sourceTree = "<group>"; };
 		70C6718E1662117000E49FD5 /* pink.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pink.fnt; sourceTree = "<group>"; };
 		70C6718F1662117000E49FD5 /* pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink.png; sourceTree = "<group>"; };
+		70C671A516621B8F00E49FD5 /* GameShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameShopScene.h; sourceTree = "<group>"; };
+		70C671A616621B8F00E49FD5 /* GameShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameShopScene.m; sourceTree = "<group>"; };
 		70C7C3C015A9D670007D35B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		70C7C3C415A9D69C007D35B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		70C7C3C615A9D6AD007D35B5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1496,8 +1496,6 @@
 				70C6711316620D5600E49FD5 /* GamePause.mm */,
 				70C6711416620D5600E49FD5 /* GameScore.h */,
 				70C6711516620D5600E49FD5 /* GameScore.mm */,
-				70C6711616620D5600E49FD5 /* GameShopScene.h */,
-				70C6711716620D5600E49FD5 /* GameShopScene.m */,
 				70C6711816620D5600E49FD5 /* GameSky.h */,
 				70C6711916620D5600E49FD5 /* GameSky.mm */,
 				70C6711A16620D5600E49FD5 /* LandAnimal.h */,
@@ -1519,6 +1517,8 @@
 		70C6712616620D5600E49FD5 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				70C671A516621B8F00E49FD5 /* GameShopScene.h */,
+				70C671A616621B8F00E49FD5 /* GameShopScene.m */,
 				70C6712716620D5600E49FD5 /* GameCenterScene.h */,
 				70C6712816620D5600E49FD5 /* GameCenterScene.m */,
 				70C6712916620D5600E49FD5 /* GameMainScene.h */,
@@ -1899,7 +1899,6 @@
 				70C6715B16620D5600E49FD5 /* Food.mm in Sources */,
 				70C6715C16620D5600E49FD5 /* GamePause.mm in Sources */,
 				70C6715D16620D5600E49FD5 /* GameScore.mm in Sources */,
-				70C6715E16620D5600E49FD5 /* GameShopScene.m in Sources */,
 				70C6715F16620D5600E49FD5 /* GameSky.mm in Sources */,
 				70C6716016620D5600E49FD5 /* LandAnimal.mm in Sources */,
 				70C6716116620D5600E49FD5 /* LandCandyCache.mm in Sources */,
@@ -1923,6 +1922,7 @@
 				70C6717316620D5600E49FD5 /* GKMatchmakerViewController-LandscapeOnly.m in Sources */,
 				70C6717416620D5600E49FD5 /* Helper.mm in Sources */,
 				70C6717516620D5600E49FD5 /* MyGameScore.mm in Sources */,
+				70C671A716621B8F00E49FD5 /* GameShopScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
