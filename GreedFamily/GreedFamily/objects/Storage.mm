@@ -19,7 +19,7 @@
 #import "CommonLayer.h"
 
 @interface Storage (PrivateMethods)
--(id)initWithCapacity:(int)capacity Play:(int)PlayID;
+-(id)initWithCapacity:(int)capacity Play:(int)playID StorageType:(int)type;
 -(void)moveFood;
 -(void)reduceFood:(int)count Turn:(int)turn;
 -(void)oneSecondCheckMax:(ccTime)delta;
@@ -28,6 +28,7 @@
 -(void)checkLastCombineFood;
 -(int)doCombineFoodLoop;
 -(void)checkMax;
+-(void)combineBallSimple:(int)type;
 @end
 
 @implementation Storage
@@ -38,15 +39,16 @@
     [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-2 swallowsTouches:YES];
 }
 
-+(id)createStorage:(int)storageCapacity Play:(int)playID
++(id)createStorage:(int)storageCapacity Play:(int)playID StorageType:(int)type
 {
-    return [[[self alloc] initWithCapacity:storageCapacity Play:playID] autorelease];
+    return [[[self alloc] initWithCapacity:storageCapacity Play:playID StorageType:type] autorelease];
 }
 
--(id)initWithCapacity:(int)capacity Play:(int)playID
+-(id)initWithCapacity:(int)capacity Play:(int)playID StorageType:(int)type
 {
     if ((self = [super init]))
     {
+        storageType = type;
         storageID = playID;
         myGameScore = [GameScore createGameScore:playID];
         [self addChild:myGameScore z:1 tag:-3 ];  
@@ -423,6 +425,54 @@
     return;
 }
 
+//简单模式，检测加如的球是否和仓库同类，自动消求
+-(void)checkLastAddFood
+{
+    int n = [foodArray count];
+    
+    if (n < 2) 
+    {
+//        self.sprite.visible = NO;
+//        canCombine = NO;
+        return;
+    }
+    
+    Food * curFood = nil;
+    Food * leftFood = nil;
+    leftFood = [foodArray objectAtIndex:n-2];
+    curFood = [foodArray objectAtIndex:n-1];
+    if (curFood.foodType != leftFood.foodType) 
+    {
+//        if (!canCombine)
+//        {
+//            //[[SimpleAudioEngine sharedEngine] playEffect:@"needtouch.caf"];
+//            [CommonLayer playAudio:NeedTouch];
+//            
+//        }
+//        canCombine = YES;
+//        CCParticleSystem* system;
+//        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"sparkle.plist"];
+//        system.positionType = kCCPositionTypeFree;
+//        system.autoRemoveOnFinish = YES;
+//        system.position = self.sprite.position;
+//        [self addChild:system];
+        
+        //如果仓库类型为自动消求，则直接调用
+        if (1 == storageType)
+        {
+            [self combineBallSimple:1];
+        }
+    }
+//    else
+//    {
+//        self.sprite.visible = NO;
+//        canCombine = NO;
+//    }
+    
+    return;
+}
+
+
 -(void)moveFood
 {
     Food *curFood = nil;
@@ -499,10 +549,88 @@
     
 }
 
+//没有三个相同球限制的消求函数
+//type：0为最后一次调用，1为自动判断调用
+-(void)combineBallSimple:(int)type
+{
+    int nowcount = [foodArray count];
+    int delayTime = 0;
+    int consisFlag = 0;
+    while (nowcount > type) 
+    {
+        
+        delayTime += 2;
+        consisFlag++;
+        int tmpCount = 0;
+        Food *curBall = (Food *)[foodArray objectAtIndex:0];
+        
+        do {
+            tmpCount++;
+            if (tmpCount >= nowcount) {
+                break;
+            }
+        } while (curBall.foodType 
+                 == ((Food *)[foodArray objectAtIndex:tmpCount]).foodType);
+        
+        //作一次结算：
+        foodInStorage[((Food *)[foodArray objectAtIndex:0]).foodType] += tmpCount;
+        [myGameScore calculateConsistentCombineScore:gamelevel
+                                  oneTimeScoreNumber:tmpCount
+                                            foodType:((Food *)[foodArray objectAtIndex:0]).foodType
+                                              Cheese:foodInStorage[2]
+                                               Candy:foodInStorage[1]
+                                               Apple:foodInStorage[0]
+                                           DelayTime:delayTime];
+        
+        while (tmpCount>0)
+        { 
+            id ac1 = [CCScaleBy actionWithDuration:0.5 scale:1.5*((Food *)[foodArray objectAtIndex:nowcount-1]).scaleX]; 
+            id ac2 = [CCScaleBy actionWithDuration:2];
+            [[[foodArray objectAtIndex:0] mySprite] 
+             runAction:[CCSequence actions:ac1, ac2, nil]]; 
+            //                            [[[foodArray objectAtIndex:left_index] mySprite] runAction:actionScale];
+            //闪烁特效
+            CCParticleSystem* system;
+            system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"shootingstars.plist"];
+            system.positionType = kCCPositionTypeFree;
+            system.autoRemoveOnFinish = YES;
+            system.position = [[foodArray objectAtIndex:0] mySprite].position;
+            [self addChild:system];
+            //[[foodArray objectAtIndex:left_index] mySprite].visible = NO;
+            [foodArray removeObjectAtIndex:0];
+            tmpCount --;
+            nowcount--;
+            currentCount--;
+            [self moveFood];
+        }
+        
+        //得分音效
+        [CommonLayer playAudio:GetScore];
+    }
+    //这里是否可以去掉？去掉
+    CCLOG(@"consisFlag is %d",consisFlag);
+//    if (consisFlag>0)
+//    {    
+//        //调用连续消球 得分函数         
+//        //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+//        [myGameScore calculateContinuousCombineAward:consisFlag myLevel:gamelevel];            
+//    }
+    
+    [self moveFood];
+}
+
+
 //触摸引发的消球
 //added by rauljin at 7.17
 -(void)combineBallNew
 {
+    //前两种都没有3个球限制，调用简单模式
+    if (storageType < 3)
+    {
+        //最后一次传0
+        [self combineBallSimple:0];
+        return;
+    }
     int counter_flag = 0;
     CCLOG(@"Into combineBallNew\n\n");
     
@@ -683,23 +811,33 @@
     return LevelScore;
 }
 
--(void)updateScores
-{
-    [cheeseScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[2]]];
-    [candyScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[1]]];
-    [appleScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[0]]];
-    
-}
+//-(void)updateScores
+//{
+//    [cheeseScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[2]]];
+//    [candyScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[1]]];
+//    [appleScoreLabel setString:[NSString stringWithFormat:@"x%i", foodInStorage[0]]];
+//    
+//}
 
 -(void)getScoreUpdate:(ccTime)delta
 {
-    [self checkLastCombineFood];
-    
-    if (needUpdateScore)
+    //hard模式仓库 需要判断
+    if (3 == storageType)
     {
-        [self updateScores];
-        needUpdateScore = NO;
+        [self checkLastCombineFood];
     }
+    //自动模式需要判断
+    else if (1 == storageType)
+    {
+        [self checkLastAddFood];
+    }
+    //手动，无三球限制完全靠触摸，不需判断
+    
+//    if (needUpdateScore)
+//    {
+//        [self updateScores];
+//        needUpdateScore = NO;
+//    }
     
 }
 
@@ -747,6 +885,11 @@
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    //简单模式没有触摸触发功能，自动触发
+    if (storageType == 1) 
+    {
+        return NO;
+    }
     CGPoint location = [Helper locationFromTouch:touch];
     bool isTouchHandled = NO;
     if (1 == storageID) 
@@ -764,7 +907,12 @@
         _sprite.color = ccRED;
         
         //judge time reward by manual opetation
-        if(canCombine) 
+        //第2种仓库模式不需要判断
+        if (storageType == 2)
+        {
+            [self combineBallNew]; 
+        }
+        else if(canCombine) 
         {
             //first time score
             if (lastScoreTime == 0) 

@@ -23,6 +23,8 @@
 //#define SENSIT1 200
 //#define SENSIT2 400
 //#define SENSIT3 1000
+//#define STORAGETYPE1 1000
+//#define STORAGETYPE2 1000
 
 #define LANDSPEED1 1
 #define LANDSPEED2 2
@@ -38,6 +40,10 @@
 #define SENSIT1 1
 #define SENSIT2 2
 #define SENSIT3 6
+
+#define STORAGETYPE1 1
+#define STORAGETYPE2 1
+
 typedef enum
 {   
     NeedTouch= 1,
@@ -84,6 +90,7 @@ typedef enum
     ROLEFRICION,
     ROLERESTITUTION,
     ROLEHITEFFECT,
+    ROLESTORAGETYPE,
 }RoleParamType;
 
 struct RoleParam {

@@ -131,17 +131,20 @@ static CommonLayer *instanceOfCommonLayer;
     {
         baseValue = self.roleParamArray[count].airspeed;
         
-        int level = ((buyedList/100)%10);
-        
-        return baseValue + level * baseValue * 0.1;
+//        int level = ((buyedList/100)%10);
+//        
+//        return baseValue + level * baseValue * 0.1;
+        return baseValue;
     }
     else if (paramType == ROLEAIRSENSIT) 
     {
         baseValue = self.roleParamArray[count].sensitivity;
         
-        int level = (buyedList%10);
-        
-        return baseValue - level * baseValue * 0.1;
+//        int level = (buyedList/1000%10);
+//        
+//        return baseValue - level * baseValue * 0.1;
+
+        return baseValue;
     }
     else if (paramType == ROLELINEARDAMP) 
     {
@@ -168,6 +171,11 @@ static CommonLayer *instanceOfCommonLayer;
     {
         baseValue = self.roleParamArray[count].hitEffect;
         return baseValue;
+    }
+    else if (paramType == ROLESTORAGETYPE) 
+    {
+        int level = ((buyedList/1000)%10);
+        return level+1;
     }
     else
     {

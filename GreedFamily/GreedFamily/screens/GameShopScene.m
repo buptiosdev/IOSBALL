@@ -314,7 +314,7 @@
         }
     }
     
-    //千位代表空中敏捷度
+    //千位代表仓库种类
     switch ((_buyedList/1000)%10) {
         case 0:
         {
@@ -325,9 +325,9 @@
                                                               target:self 
                                                             selector:@selector(verifyAdd:)];
             [addAirSencitMenu setTag:10];
-            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行敏捷加10％"] 
+            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"标准仓库"] 
                                          fontName:@"Marker Felt" fontSize:15];
-            LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SENSIT1] 
+            LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",STORAGETYPE1] 
                                            fontName:@"Marker Felt" fontSize:15];
             break;
         } 
@@ -340,24 +340,9 @@
                                                               target:self 
                                                             selector:@selector(verifyAdd:)];
             [addAirSencitMenu setTag:11];
-            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行敏捷加20％"] 
+            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"困难仓库"] 
                                          fontName:@"Marker Felt" fontSize:15];
-            LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SENSIT2] 
-                                           fontName:@"Marker Felt" fontSize:15];
-            break;
-        } 
-        case 2:
-        {
-            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
-            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
-            addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
-                                                      selectedSprite:addAirSpeed2
-                                                              target:self 
-                                                            selector:@selector(verifyAdd:)];
-            [addAirSencitMenu setTag:12];
-            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行敏捷加30％"] 
-                                         fontName:@"Marker Felt" fontSize:15];
-            LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",SENSIT3] 
+            LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",STORAGETYPE2] 
                                            fontName:@"Marker Felt" fontSize:15];
             break;
         } 
@@ -370,7 +355,7 @@
                                                               target:self 
                                                             selector:@selector(saleout:)];
 
-            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"已售完"] 
+            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"升级完成"] 
                                          fontName:@"Marker Felt" fontSize:15];
             LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"最高级",LANDSPEED1] 
                                            fontName:@"Marker Felt" fontSize:15];
@@ -418,7 +403,7 @@
 
     
     
-    CCMenu *menu = [CCMenu menuWithItems: addLandSpeeMenu, addStorageMenu, addAirSpeedMenu, nil];
+    CCMenu *menu = [CCMenu menuWithItems: addLandSpeeMenu, addStorageMenu, addAirSpeedMenu, addAirSencitMenu, nil];
     [menu setPosition:ccp(screenSize.width * 0.5 , screenSize.height * 0.5)];
     [menu alignItemsHorizontallyWithPadding:10];
     [self addChild:menu z: -2 tag:4];
@@ -489,43 +474,43 @@
 
 
 
--(void)verifyAddSpeedOnce:(id)sender
-{
-    [CommonLayer playAudio:SelectOK];
-    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:1 RoleType:roalType];
-    [self addChild:myTouchSwallowLayer];
-}
--(void)verifyAddSpeedTwice:(id)sender
-{
-    [CommonLayer playAudio:SelectOK];
-    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:2 RoleType:roalType];
-    [self addChild:myTouchSwallowLayer];
-}
--(void)verifyAddSpeedThird:(id)sender
-{
-    [CommonLayer playAudio:SelectOK];
-    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:3 RoleType:roalType];
-    [self addChild:myTouchSwallowLayer];
-}
--(void)verifyAddStorageOnce:(id)sender
-{
-    [CommonLayer playAudio:SelectOK];
-    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:4 RoleType:roalType];
-    [self addChild:myTouchSwallowLayer];
-}
--(void)verifyAddStorageTwice:(id)sender
-{
-    [CommonLayer playAudio:SelectOK];
-    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:5 RoleType:roalType];
-    [self addChild:myTouchSwallowLayer];
-}
-
--(void)verifyAddStorageThird:(id)sender
-{
-    [CommonLayer playAudio:SelectOK];
-    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:6 RoleType:roalType];
-    [self addChild:myTouchSwallowLayer];
-}
+//-(void)verifyAddSpeedOnce:(id)sender
+//{
+//    [CommonLayer playAudio:SelectOK];
+//    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:1 RoleType:roalType];
+//    [self addChild:myTouchSwallowLayer];
+//}
+//-(void)verifyAddSpeedTwice:(id)sender
+//{
+//    [CommonLayer playAudio:SelectOK];
+//    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:2 RoleType:roalType];
+//    [self addChild:myTouchSwallowLayer];
+//}
+//-(void)verifyAddSpeedThird:(id)sender
+//{
+//    [CommonLayer playAudio:SelectOK];
+//    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:3 RoleType:roalType];
+//    [self addChild:myTouchSwallowLayer];
+//}
+//-(void)verifyAddStorageOnce:(id)sender
+//{
+//    [CommonLayer playAudio:SelectOK];
+//    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:4 RoleType:roalType];
+//    [self addChild:myTouchSwallowLayer];
+//}
+//-(void)verifyAddStorageTwice:(id)sender
+//{
+//    [CommonLayer playAudio:SelectOK];
+//    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:5 RoleType:roalType];
+//    [self addChild:myTouchSwallowLayer];
+//}
+//
+//-(void)verifyAddStorageThird:(id)sender
+//{
+//    [CommonLayer playAudio:SelectOK];
+//    TouchSwallowLayer *myTouchSwallowLayer = [TouchSwallowLayer createTouchSwallowLayer:6 RoleType:roalType];
+//    [self addChild:myTouchSwallowLayer];
+//}
 
 -(void)returnMain
 {

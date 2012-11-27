@@ -117,23 +117,16 @@
         else if (10 == goodsType)
         {
             yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddAirSensit:)];
-            str = [NSString stringWithFormat:@"您将花去%d分",SENSIT1];
+            str = [NSString stringWithFormat:@"您将花去%d分",STORAGETYPE1];
             
-            [yesMenu setTag:SENSIT1];
+            [yesMenu setTag:STORAGETYPE1];
         }
         else if (11 == goodsType)
         {
             yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddAirSensit:)];
-            str = [NSString stringWithFormat:@"您将花去%d分",SENSIT2];
+            str = [NSString stringWithFormat:@"您将花去%d分",STORAGETYPE2];
             
-            [yesMenu setTag:SENSIT2];
-        }
-        else if (12 == goodsType)
-        {
-            yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddAirSensit:)];
-            str = [NSString stringWithFormat:@"您将花去%d分",SENSIT3];
-            
-            [yesMenu setTag:SENSIT3];
+            [yesMenu setTag:STORAGETYPE2];
         }
         else
         {

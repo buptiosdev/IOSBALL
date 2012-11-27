@@ -138,13 +138,45 @@ static GameScore  *instanceOfgameScore;
 
 
 
-//时间奖励得分函数
+//叠加奖励得分函数：2次消求间隔小于5s
 -(void)calculateTimeAward:(int)gameLevel
 {
     CCLOG(@"Into calculateTimeAward\n\n");
     
     CCLOG(@"之前的my_nowlevelscore %d",my_nowlevelscore);
     award_nowlevelscore = award_nowlevelscore + 1;
+    my_nowlevelscore += award_nowlevelscore;
+    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapBlue.fnt"];
+    [getContinuousAward setString:[NSString stringWithFormat:@"%i", award_nowlevelscore]];
+    
+    getContinuousAward.position = CGPointMake(random()%20 + 10, 80);
+    getContinuousAward.anchorPoint = CGPointMake(0.5f, 1.0f);
+    getContinuousAward.scale = 0.6;
+    getContinuousAward.color = ccBLUE;
+    
+    //将5个动作组合为一个序列，注意不要忘了用nil结尾。 
+    id ac0_ = [CCToggleVisibility action]; 
+    id ac1_ = [CCMoveTo actionWithDuration:2 position:ccp(50,300)]; 
+    id ac3_ = [CCDelayTime actionWithDuration:3];
+    [getContinuousAward runAction:[CCSequence actions:ac3_,ac1_, ac0_,nil]]; 
+    
+    [self addChild:getContinuousAward z:-1 tag:ContinuousAwardScoreTag];
+    [self schedule:@selector(removeContinuousAwardScore:) interval:6];
+    //加入特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bluescore.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = getContinuousAward.position;
+    [self addChild:system];
+    
+    //叠加得分音效
+    [CommonLayer playAudio:GetScore];
+    
+    
+    //更新得分
+    //延迟奖励得分调用更改    
+    [self schedule:@selector(setScoreLabel:) interval:6];   
 }
 
 
@@ -266,7 +298,7 @@ static GameScore  *instanceOfgameScore;
     my_nowlevelscore += tempnowscore;
     //接特效
     //加分特效
-    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum3.fnt"];
+    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum2.fnt"];
     [getBaseScore setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     
     getBaseScore.position = CGPointMake(random()%20 + 10, 80);
@@ -323,7 +355,7 @@ static GameScore  *instanceOfgameScore;
     //接特效
     //加分特效
 
-    CCLabelBMFont*  getAwardScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum3.fnt"];
+    CCLabelBMFont*  getAwardScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum4.fnt"];
     [getAwardScore setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     getAwardScore.position = CGPointMake(random()%20 + 20, 80);
     getAwardScore.anchorPoint = CGPointMake(0.5f, 1.0f);
