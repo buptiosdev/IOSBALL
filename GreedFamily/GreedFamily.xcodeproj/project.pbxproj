@@ -159,6 +159,7 @@
 		70081FCC153F9881003F042A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70081FCB153F9881003F042A /* RootViewController.m */; };
 		70081FD2153F9881003F042A /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70081FD1153F9881003F042A /* GLES-Render.mm */; };
 		70081FD5153F9881003F042A /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 70081FD4153F9881003F042A /* blocks.png */; };
+		701B37AC1668FBAB001B5F22 /* teachdetail4-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */; };
 		7029287F1605AE2D00877FF2 /* teach1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287A1605AE2D00877FF2 /* teach1.png */; };
 		702928801605AE2D00877FF2 /* teach2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287B1605AE2D00877FF2 /* teach2.png */; };
 		702928811605AE2D00877FF2 /* teach3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287C1605AE2D00877FF2 /* teach3.png */; };
@@ -610,6 +611,7 @@
 		70081FD1153F9881003F042A /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		70081FD3153F9881003F042A /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		70081FD4153F9881003F042A /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "teachdetail4-2.jpg"; path = "Resources/pic/teachdetail4-2.jpg"; sourceTree = "<group>"; };
 		7029287A1605AE2D00877FF2 /* teach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach1.png; path = Resources/pic/teach1.png; sourceTree = "<group>"; };
 		7029287B1605AE2D00877FF2 /* teach2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach2.png; path = Resources/pic/teach2.png; sourceTree = "<group>"; };
 		7029287C1605AE2D00877FF2 /* teach3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach3.png; path = Resources/pic/teach3.png; sourceTree = "<group>"; };
@@ -1412,6 +1414,7 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */,
 				70C6717816620F3B00E49FD5 /* cd.png */,
 				70C6717616620ED300E49FD5 /* progress.jpg */,
 				70C670DA166152ED00E49FD5 /* rolepic.jpg */,
@@ -1482,6 +1485,7 @@
 				70C6710516620D5600E49FD5 /* Bag.mm */,
 				70C6710616620D5600E49FD5 /* CandyCache.h */,
 				70C6710716620D5600E49FD5 /* CandyCache.mm */,
+				70C6711016620D5600E49FD5 /* Food.h */,
 				70C6710816620D5600E49FD5 /* CandyEntity.h */,
 				70C6710916620D5600E49FD5 /* CandyEntity.mm */,
 				70C6710A16620D5600E49FD5 /* Competitor.h */,
@@ -1490,7 +1494,6 @@
 				70C6710D16620D5600E49FD5 /* Entity.mm */,
 				70C6710E16620D5600E49FD5 /* FlyEntity.h */,
 				70C6710F16620D5600E49FD5 /* FlyEntity.mm */,
-				70C6711016620D5600E49FD5 /* Food.h */,
 				70C6711116620D5600E49FD5 /* Food.mm */,
 				70C6711216620D5600E49FD5 /* GamePause.h */,
 				70C6711316620D5600E49FD5 /* GamePause.mm */,
@@ -1735,6 +1738,7 @@
 				70C6719D1662117000E49FD5 /* bitmapRed.png in Resources */,
 				70C6719E1662117000E49FD5 /* pink.fnt in Resources */,
 				70C6719F1662117000E49FD5 /* pink.png in Resources */,
+				701B37AC1668FBAB001B5F22 /* teachdetail4-2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,14 +42,14 @@
             [self addChild:background1 z:98 tag:98];
             [self addChild:background2 z:99 tag:99];
             [self addChild:background3 z:100 tag:100];
-            [self schedule:@selector(visibleScdPic:) interval:5];
+            [self schedule:@selector(visibleScdPic:) interval:3];
 
             break;
         }
 
         case 2:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachdetail4.jpg"];
+            NSString* teachPic = [NSString stringWithFormat:@"teachdetail4-2.jpg"];
 //            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
             CCSprite* background = [CCSprite spriteWithFile:teachPic];
             
@@ -204,7 +204,7 @@
 
     CCNode* node = [self getChildByTag:99];
     node.visible = YES;
-    [self schedule:@selector(visibleTrdPic:) interval:5];
+    [self schedule:@selector(visibleTrdPic:) interval:4];
     [self unschedule:_cmd];
 }
 

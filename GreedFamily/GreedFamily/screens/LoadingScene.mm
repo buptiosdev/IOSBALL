@@ -60,9 +60,9 @@
         [self addChild:p];
         
 //        [self schedule:<#(SEL)#> interval:<#(ccTime)#>];
-        int waitTime = 5;
+        int waitTime = 3;
         if (1 == targetScene) {
-            waitTime = 16;
+            waitTime = 12;
         }
         [self schedule:@selector(waitAWhile:) interval:waitTime];
         
@@ -91,7 +91,7 @@
 {
 	// It's not strictly necessary, as we're changing the scene anyway. But just to be safe.
 	[self unscheduleAllSelectors];
-	
+	[activityIndicatorView stopAnimating ];  //停止  
 	// Decide which scene to load based on the TargetScenes enum.
 	// You could also use TargetScene to load the same with using a variety of transitions.
     if(targetScene_>=TargetNavigationScen)
@@ -102,7 +102,7 @@
     {
         [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
     }
-    [activityIndicatorView stopAnimating ];  //停止   
+     
 	
 }
 
