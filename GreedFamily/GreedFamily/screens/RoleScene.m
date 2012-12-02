@@ -17,6 +17,15 @@
 #define STORAGE_CAPACITY_TAG 12
 #define FLY_SENSITIVE_TAG 13
 
+//BEGIN item scale  默认为相对于X的比例
+float logorolescale=0.18;
+float logoroledistance=0.25;
+float rolefontscaleY=0.08;
+float progressscale=0.6;
+
+float logoreturnscaleY=0.14;
+//END
+
 
 @implementation RoleScene
 
@@ -85,49 +94,51 @@
 //        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"normal_dis.png"
 //                                                       selectedImage:@"normal_dwn.png" target:self selector:@selector(chooseRole:)];
         
+        
         CCSprite * panda= [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
         [panda setColor:ccGRAY];
         CCSprite *panda1 = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
         panda1.scale=1.1;
         //add disable menu by liuyunpeng 2012-11-25
         CCSprite *panda2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
-        panda2.scale=1.5;
+        float lockscale=screenSize.width*logorolescale/[panda2 contentSize].width;
+        panda2.scale=lockscale;
         CCMenuItemSprite *menuItem1 = [CCMenuItemSprite itemFromNormalSprite:panda 
                                                                selectedSprite:panda1 
                                                               disabledSprite:panda2
                                                                       target:self 
                                                                     selector:@selector(chooseRole:)];
-        float spritescale=80/[panda contentSize].width;
-        menuItem1.scale=spritescale;
+        //float spritescale=80/[panda contentSize].width;
+        menuItem1.scale=screenSize.width*logorolescale/[panda contentSize].width;
         
         CCSprite * pig= [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
         [pig setColor:ccGRAY];
         CCSprite *pig1 = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
         pig1.scale=1.1;
         CCSprite *pig2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
-        pig2.scale=1.5;
+        pig2.scale=lockscale;
         CCMenuItemSprite *menuItem2 = [CCMenuItemSprite itemFromNormalSprite:pig 
                                                               selectedSprite:pig1
                                                               disabledSprite:pig2
                                                                       target:self 
                                                                     selector:@selector(chooseRole:)];
-        menuItem2.scale=80/[pig contentSize].width;
+        menuItem2.scale=screenSize.width*logorolescale/[pig contentSize].width;
         
         CCSprite * bird= [CCSprite spriteWithSpriteFrameName:@"logobird.png"];
         [bird setColor:ccGRAY];
         CCSprite *bird1 = [CCSprite spriteWithSpriteFrameName:@"logobird.png"];
         bird1.scale=1.1;
         CCSprite *bird2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
-        bird1.scale=1.5;
+        bird1.scale=lockscale;
         CCMenuItemSprite *menuItem3 = [CCMenuItemSprite itemFromNormalSprite:bird 
                                                               selectedSprite:bird1
                                                               disabledSprite:bird2
                                                                       target:self 
                                                                     selector:@selector(chooseRole:)];
         
-        menuItem3.scale=80/[bird contentSize].width;
+        menuItem3.scale=screenSize.width*logorolescale/[bird contentSize].width;
         CCRadioMenu *radioMenu =[CCRadioMenu menuWithItems: menuItem1, menuItem2, menuItem3, nil];
-        [radioMenu alignItemsHorizontallyWithPadding:100*0.75];
+        [radioMenu alignItemsHorizontallyWithPadding:screenSize.width*logoroledistance-[panda2 contentSize].width*lockscale/2];
         [radioMenu setPosition:ccp(screenSize.width/2,screenSize.height*3/4)];
         [menuItem1 setTag:1];
         [menuItem2 setTag:2];
@@ -183,16 +194,17 @@
 //        [self addChild:returnMenu];
         //set return in the left-down corner
         //add by lyp 2012-10-23
-        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Marker Felt" fontSize:25];
+        int rolefontsize=screenSize.height*rolefontscaleY;
+        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Marker Felt" fontSize:rolefontsize];
         [landanimalspeed setColor:ccRED];
         [self addChild:landanimalspeed];
         int labelpos=landanimalspeed.contentSize.width/2;
         [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
-        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Marker Felt" fontSize:25];
+        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Marker Felt" fontSize:rolefontsize];
         [flyanimalspeed setColor:ccRED];
         [self addChild:flyanimalspeed];
         [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.4)];
-        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Marker Felt" fontSize:25];
+        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Marker Felt" fontSize:rolefontsize];
         [storagecapacity setColor:ccRED];
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.3)];
@@ -203,19 +215,23 @@
         
         //set progess
         CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
-        int progresspos=ctlandanimal.contentSize.width/2+landanimalspeed.contentSize.width;
+        float progcale=screenSize.width*progressscale/[ctlandanimal contentSize].width;
+        int progresspos=ctlandanimal.contentSize.width*progcale/2+landanimalspeed.contentSize.width;
         ctlandanimal.position=ccp( progresspos , screenSize.height * 0.5);
         ctlandanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        ctlandanimal.scale=progcale;
         [self addChild:ctlandanimal z:0 tag:LAND_SPEED_TAG]; 
         
         CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
         ctflyanimal.position=ccp( progresspos, screenSize.height * 0.4);
         ctflyanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        ctflyanimal.scale=progcale;
         [self addChild:ctflyanimal z:0 tag:FLY_SPEED_TAG]; 
         
         CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progress.jpg"];
         ctstorage.position=ccp( progresspos , screenSize.height * 0.3);
         ctstorage.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        ctstorage.scale=progcale;
         [self addChild:ctstorage z:0 tag:STORAGE_CAPACITY_TAG]; 
         
 //        CCProgressTimer *ctsensitive=[CCProgressTimer progressWithFile:@"progress.jpg"];
@@ -231,8 +247,7 @@
                                                                selectedSprite:returnBtn1 
                                                                        target:self 
                                                                      selector:@selector(returnMain)];
-        returnItem.scaleX=(45)/[returnBtn contentSize].width; //按照像素定制图片宽高
-        returnItem.scaleY=(45)/[returnBtn contentSize].height;
+        returnItem.scale=screenSize.height*logoreturnscaleY/[returnBtn contentSize].height; //按照像素定制图片宽高
         CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
         [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scaleX * 0.5,
                                     [returnBtn contentSize].height * returnItem.scaleY * 0.5)];
@@ -251,8 +266,7 @@
                                                                      target:self 
                                                                    selector:@selector(levelScene)];
         
-        nextItem.scaleX=(45)/[next contentSize].width; //按照像素定制图片宽高
-        nextItem.scaleY=(45)/[next contentSize].height;
+        nextItem.scale=screenSize.height*logoreturnscaleY/[next contentSize].height;
         
         CCMenu * nextMenu = [CCMenu menuWithItems:nextItem, nil];
         //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)

@@ -15,7 +15,6 @@
 #import "GameMainScene.h"
 #import "LevelScenePair.h"
 #import "RoleScene.h"
-//#import "SimpleAudioEngine.h"
 #import "AppDelegate.h"
 #import "CCAnimationHelper.h"
 #import "CommonLayer.h"
@@ -26,6 +25,16 @@
 -(void)playAudio:(int)audioType;
 @end
 
+//BEGIN item scale  默认为相对于X的比例
+float logowordscale=0.45;
+float logoanimalscale=0.2;
+float logoplayscale=0.3;
+float logopairplayscale=0.2;
+float logooptionscaleY=0.15;
+float logoleaderscaleY=0.13;
+float logoleaderdistance=0.2;
+Boolean showPair=YES;
+//END
 
 @implementation NavigationScene
 
@@ -49,8 +58,7 @@
 		
         //set logo
         CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logoword.png"];
-        logo.scaleX=0.5;
-        logo.scaleY=0.5;
+        logo.scale=(size.width*logowordscale)/[logo contentSize].width;
         [self addChild:logo];
         logo.position=CGPointMake(size.width / 2, size.height * 3 / 4 );
         
@@ -59,7 +67,7 @@
         //add panda action by lyp 20121029
         CCSprite *logopanda= [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
         //按照像素设定图片大小
-        logopanda.scale=0.75; //按照像素定制图片宽高
+        logopanda.scale=(size.width*logoanimalscale)/[logopanda contentSize].width; //按照像素定制图片宽高
         logopanda.position = CGPointMake(size.width / 7, size.height * 2 / 3 );;
         CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.15f];
         
@@ -73,9 +81,9 @@
         
         CCSprite *logopig= [CCSprite spriteWithSpriteFrameName:@"logopig_1.png"];
         //按照像素设定图片大小
-        logopig.scale=0.75; //按照像素定制图片宽高
+        logopig.scale=(size.width*logoanimalscale)/[logopig contentSize].width; //按照像素定制图片宽高
         logopig.position = CGPointMake(size.width *6 / 7, size.height * 2 / 3 );
-        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.20f];
+        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.17f];
         
         CCAnimate *animatelogopig = [CCAnimate actionWithAnimation:animationlogopig restoreOriginalFrame:NO];
         CCSequence *seqlogopig = [CCSequence actions: animatelogopig,nil];
@@ -88,17 +96,16 @@
         //set play 
         CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
         //play.scaleX=1.1;
-        play.scaleY=1.05;
+        play.scaleY=1.01;
         CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
         CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
                                                               selectedSprite:play1 
                                                                       target:self 
                                                                     selector:@selector(newGame:)];
+        playitem.scale=(size.width*logoplayscale)/[play contentSize].width;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height*2/5)];
+        [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
         [self addChild:playmenu];
-        
-        
         
         
         //set pair play 
@@ -112,9 +119,14 @@
                                                              selectedSprite:pairplay1 
                                                                      target:self 
                                                                    selector:@selector(pairGame:)];
+        pairplayitem.scale=(size.width*logopairplayscale)/[pairplay contentSize].width;
         CCMenu * plairplaymenu = [CCMenu menuWithItems:pairplayitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height*2/5)];
-        [self addChild:plairplaymenu];
+        
+        if(showPair){
+            [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
+            [plairplaymenu setPosition:ccp(size.width/2,size.height*2/7)];
+            [self addChild:plairplaymenu];
+        }
         
         
         //set option in the left-down corner
@@ -127,8 +139,7 @@
                                                               selectedSprite:option1 
                                                                       target:self 
                                                                     selector:@selector(options:)];
-        float optscale=50/[option contentSize].width;
-        //float clickoptscale=optscale*1.1f;
+        float optscale=(size.height*logooptionscaleY)/[option contentSize].height;
         optionItem.scale=optscale;
         
         CCMenu * optionmenu = [CCMenu menuWithItems:optionItem, nil];
@@ -153,7 +164,7 @@
         //set leadership
         CCSprite *leader = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
         CCSprite *leader1 = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-        float leaderscale=40/[leader contentSize].width;
+        float leaderscale=size.height*logoleaderscaleY/[leader contentSize].height;
         leader1.scaleX=1.1;
         leader1.scaleY=1.1;
         CCMenuItemSprite *leaderItem = [CCMenuItemSprite itemFromNormalSprite:leader 
@@ -193,7 +204,7 @@
         [leadermenu setPosition:ccp(size.width/2,[leader contentSize].height*optscale/2)];
         //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
         //set the distance to be the 1.5times of the label
-        [leadermenu alignItemsHorizontallyWithPadding:[leader contentSize].width*optscale*1.5];
+        [leadermenu alignItemsHorizontallyWithPadding:size.width*logoleaderdistance-[leader contentSize].width*leaderscale];
         [self addChild:leadermenu];
         
         
