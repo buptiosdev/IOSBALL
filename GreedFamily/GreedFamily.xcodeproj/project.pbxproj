@@ -206,6 +206,7 @@
 		7044453415FC490800FDA2EB /* levlescene_default_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7044453215FC490800FDA2EB /* levlescene_default_default.png */; };
 		7044453715FC49D900FDA2EB /* background_level.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7044453615FC49D900FDA2EB /* background_level.jpg */; };
 		706F2566166B26B6008AE1E8 /* resultback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 706F2565166B26B6008AE1E8 /* resultback.jpg */; };
+		706F2569166B44EC008AE1E8 /* progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 706F2568166B44EC008AE1E8 /* progress.png */; };
 		7094910715EF1539005ADBD8 /* barnbeatshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */; };
 		7094910815EF1539005ADBD8 /* caribbeanblueshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */; };
 		7094910915EF1539005ADBD8 /* cautiouspathshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */; };
@@ -273,7 +274,6 @@
 		70C6717316620D5600E49FD5 /* GKMatchmakerViewController-LandscapeOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C6714316620D5600E49FD5 /* GKMatchmakerViewController-LandscapeOnly.m */; };
 		70C6717416620D5600E49FD5 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6714516620D5600E49FD5 /* Helper.mm */; };
 		70C6717516620D5600E49FD5 /* MyGameScore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C6714716620D5600E49FD5 /* MyGameScore.mm */; };
-		70C6717716620ED300E49FD5 /* progress.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C6717616620ED300E49FD5 /* progress.jpg */; };
 		70C6717916620F3B00E49FD5 /* cd.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C6717816620F3B00E49FD5 /* cd.png */; };
 		70C671901662117000E49FD5 /* bitmapBlue.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70C671801662117000E49FD5 /* bitmapBlue.fnt */; };
 		70C671911662117000E49FD5 /* bitmapBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C671811662117000E49FD5 /* bitmapBlue.png */; };
@@ -661,6 +661,7 @@
 		7044453215FC490800FDA2EB /* levlescene_default_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = levlescene_default_default.png; path = Resources/pic/levlescene_default_default.png; sourceTree = "<group>"; };
 		7044453615FC49D900FDA2EB /* background_level.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_level.jpg; path = Resources/pic/background_level.jpg; sourceTree = "<group>"; };
 		706F2565166B26B6008AE1E8 /* resultback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = resultback.jpg; path = Resources/pic/resultback.jpg; sourceTree = "<group>"; };
+		706F2568166B44EC008AE1E8 /* progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress.png; path = Resources/pic/progress.png; sourceTree = "<group>"; };
 		7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = barnbeatshort.mp3; sourceTree = "<group>"; };
 		7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = caribbeanblueshort.mp3; sourceTree = "<group>"; };
 		7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cautiouspathshort.mp3; sourceTree = "<group>"; };
@@ -772,7 +773,6 @@
 		70C6714516620D5600E49FD5 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Helper.mm; sourceTree = "<group>"; };
 		70C6714616620D5600E49FD5 /* MyGameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScore.h; sourceTree = "<group>"; };
 		70C6714716620D5600E49FD5 /* MyGameScore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyGameScore.mm; sourceTree = "<group>"; };
-		70C6717616620ED300E49FD5 /* progress.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = progress.jpg; path = Resources/pic/progress.jpg; sourceTree = "<group>"; };
 		70C6717816620F3B00E49FD5 /* cd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cd.png; path = Resources/pic/cd.png; sourceTree = "<group>"; };
 		70C671801662117000E49FD5 /* bitmapBlue.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmapBlue.fnt; sourceTree = "<group>"; };
 		70C671811662117000E49FD5 /* bitmapBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapBlue.png; sourceTree = "<group>"; };
@@ -1422,10 +1422,10 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				706F2568166B44EC008AE1E8 /* progress.png */,
 				706F2565166B26B6008AE1E8 /* resultback.jpg */,
 				701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */,
 				70C6717816620F3B00E49FD5 /* cd.png */,
-				70C6717616620ED300E49FD5 /* progress.jpg */,
 				70C670DA166152ED00E49FD5 /* rolepic.jpg */,
 				70C670C61661527500E49FD5 /* teachbomb.jpg */,
 				70C670C71661527600E49FD5 /* teachdetail1.jpg */,
@@ -1729,7 +1729,6 @@
 				70C670D91661528500E49FD5 /* teachpepper.jpg in Resources */,
 				70C670DB166152ED00E49FD5 /* rolepic.jpg in Resources */,
 				70C6714C16620D5600E49FD5 /* DeveloperInfo.xib in Resources */,
-				70C6717716620ED300E49FD5 /* progress.jpg in Resources */,
 				70C6717916620F3B00E49FD5 /* cd.png in Resources */,
 				70C671901662117000E49FD5 /* bitmapBlue.fnt in Resources */,
 				70C671911662117000E49FD5 /* bitmapBlue.png in Resources */,
@@ -1751,6 +1750,7 @@
 				701B37AF1669254D001B5F22 /* get_score_01.plist in Resources */,
 				701B37B01669254D001B5F22 /* get_score_02.plist in Resources */,
 				706F2566166B26B6008AE1E8 /* resultback.jpg in Resources */,
+				706F2569166B44EC008AE1E8 /* progress.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

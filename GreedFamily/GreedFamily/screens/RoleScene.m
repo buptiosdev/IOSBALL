@@ -214,7 +214,7 @@ float logoreturnscaleY=0.14;
 
         
         //set progess
-        CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.png"];
         float progcale=screenSize.width*progressscale/[ctlandanimal contentSize].width;
         int progresspos=ctlandanimal.contentSize.width*progcale/2+landanimalspeed.contentSize.width;
         ctlandanimal.position=ccp( progresspos , screenSize.height * 0.5);
@@ -222,13 +222,13 @@ float logoreturnscaleY=0.14;
         ctlandanimal.scale=progcale;
         [self addChild:ctlandanimal z:0 tag:LAND_SPEED_TAG]; 
         
-        CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progress.png"];
         ctflyanimal.position=ccp( progresspos, screenSize.height * 0.4);
         ctflyanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
         ctflyanimal.scale=progcale;
         [self addChild:ctflyanimal z:0 tag:FLY_SPEED_TAG]; 
         
-        CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progress.jpg"];
+        CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progress.png"];
         ctstorage.position=ccp( progresspos , screenSize.height * 0.3);
         ctstorage.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
         ctstorage.scale=progcale;
