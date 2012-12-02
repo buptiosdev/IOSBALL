@@ -53,31 +53,31 @@
 	if(sender.selectedIndex ==1)
     {
         [usrDef setBool:YES forKey:@"music"];
-        int order = [GameMainScene sharedMainScene].sceneNum;
+//        int order = [GameMainScene sharedMainScene].sceneNum;
         
-        if (order > 0 && order <= 5) 
-        {
-            [CommonLayer playBackMusic:GameMusic5];
-        }
-        else if (order > 0 && order <= 10)
-        {
-            [CommonLayer playBackMusic:GameMusic6];
-        }
-        else if (order > 0 && order <= 15) 
-        {
-            [CommonLayer playBackMusic:GameMusic2];
-        }
-        else if (order > 0 && order <= 18)
-        {
-            [CommonLayer playBackMusic:GameMusic3];
-        }
-        else
-        {
-            [CommonLayer playBackMusic:GameMusic4];
-            
-        }
+//        if (order > 0 && order <= 5) 
+//        {
+//            [CommonLayer playBackMusic:GameMusic5];
+//        }
+//        else if (order > 0 && order <= 10)
+//        {
+//            [CommonLayer playBackMusic:GameMusic6];
+//        }
+//        else if (order > 0 && order <= 15) 
+//        {
+//            [CommonLayer playBackMusic:GameMusic2];
+//        }
+//        else if (order > 0 && order <= 18)
+//        {
+//            [CommonLayer playBackMusic:GameMusic3];
+//        }
+//        else
+//        {
+//            [CommonLayer playBackMusic:GameMusic4];
+//            
+//        }
         
-		[usrDef setBool:YES forKey:@"music"];
+        [CommonLayer playBackMusic:GameMusic2];
     }
 	if(sender.selectedIndex ==0)
     {

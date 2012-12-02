@@ -605,7 +605,7 @@ static GameMainScene *instanceOfMainScene;
     //1.调用一次消球接口 
     Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
     //[storage doMyCombineFood];
-    [storage combineBallNew];
+    //[storage combineBallNew];
     
     //2.调用算分接口
     CCArray * levelscore=[storage getScoreByLevel:(int)_sceneNum];
@@ -626,11 +626,6 @@ static GameMainScene *instanceOfMainScene;
     id temp4 = [levelscore objectAtIndex:3];
     int isnewrecord=[temp4 intValue];
     
-    CCLOG(@"score is %d",score);
-    
-    CCLOG(@"addscore is %d",addscore);
-
-    CCLOG(@"starNum is %d",starNum);
 
     //3.生成关卡结束显示层
     ResultLayer *p=[ResultLayer createResultLayer:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum Newrecord:(int)isnewrecord];
@@ -674,36 +669,21 @@ static GameMainScene *instanceOfMainScene;
 }
 
 
-//-(void)addTeachGameLayer
-//{
-//    [self onPauseExit];
-//    PauseLayer * p = [TeachGameLayer createTeachGameLayer:1];
-//    [self.parent addChild:p z:11]; 
-//    
-//}
-
-
-//-(void)endTeachGameLayer
-//{
-//	if(![AppDelegate getAppDelegate].paused)
-//	{
-//		return;
-//	}
-//	[AppDelegate getAppDelegate].paused = NO;
-//	[super onEnter];
-//}
-
 -(void)sleepForEndGame: (ccTime) dt
 {
     [self unschedule:@selector(sleepForEndGame:)]; 
     [self endGame];
 }
 
-//-(void)sleepForTeach: (ccTime) dt
-//{
-//    [self unschedule:@selector(sleepForTeach:)]; 
-//    [[GameMainScene sharedMainScene] addTeachGameLayer];
-//}
+-(void)sleepForCombine: (ccTime) dt
+{
+    [self unschedule:@selector(sleepForCombine:)];
+    //1.调用一次消球接口 
+    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+    //[storage doMyCombineFood];
+    [storage combineBallNew];
+    [self schedule:@selector(sleepForEndGame:) interval:5];
+}
 
 
 -(void) update:(ccTime)delta
@@ -725,7 +705,7 @@ static GameMainScene *instanceOfMainScene;
     {
         //防止多次调用
         [self unscheduleAllSelectors];
-        [self schedule:@selector(sleepForEndGame:) interval:5];
+        [self schedule:@selector(sleepForCombine:) interval:2];
     }
 }
 
