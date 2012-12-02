@@ -309,7 +309,8 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     
                     PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
                     //CGPoint flyVelocity = [self getFlySpeed];
-                    float hitEffect = [[CommonLayer sharedCommonLayer] getRoleParam:bodyNode.flyFamilyType ParamType:ROLEHITEFFECT];                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
+                    float hitEffect = [[CommonLayer sharedCommonLayer] getRoleParam:bodyNode.flyFamilyType ParamType:ROLEHITEFFECT];                    
+                    CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
                     CGPoint bodyVelocity = [Helper toPixels:bodyNode.body->GetLinearVelocity()];
                     bodyVelocity = ccpMult(bodyVelocity, 0.1);
                     

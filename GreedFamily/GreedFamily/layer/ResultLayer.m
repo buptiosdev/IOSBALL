@@ -61,25 +61,26 @@
     if ((self = [super initWithColor:color]))
     {
         NSString* temp=[@"level score: " stringByAppendingFormat:@" %d",score];
-        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
+//        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
 		CGSize size = [[CCDirector sharedDirector] winSize];
         //change size by diff version query
 		labelscore.position = CGPointMake(size.width / 3, size.height * 4 / 5 );
-        [labelscore setColor:ccYELLOW];
+        [labelscore setColor:ccWHITE];
 		[self addChild:labelscore];
         
         temp=[@"added score: " stringByAppendingFormat:@" %d",addscore];
-        CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
         //change size by diff version query
 		labeladdscore.position = CGPointMake(size.width / 3, size.height * 3 / 5 );
-        [labeladdscore setColor:ccYELLOW];
+        [labeladdscore setColor:ccWHITE];
 		[self addChild:labeladdscore];
         
         temp=[@"total score: " stringByAppendingFormat:@" %d",score+addscore];
-        CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
         //change size by diff version query
 		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 2 / 5 );
-        [labeltotalscore setColor:ccYELLOW];
+        [labeltotalscore setColor:ccWHITE];
 		[self addChild:labeltotalscore];
         
         //if(isnewrecord==1 && starnum==3)

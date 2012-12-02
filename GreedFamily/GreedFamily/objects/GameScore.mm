@@ -65,26 +65,26 @@ static GameScore  *instanceOfgameScore;
         //change size by diff version
         if (1 == playID) 
         {
-            my_score = [CCLabelTTF labelWithString:@" SCORE:" fontName:@"Marker Felt" fontSize:20];
+            my_score = [CCLabelTTF labelWithString:@" SCORE:" fontName:@"Georgia-Bold" fontSize:20];
             my_score.position = [GameMainScene sharedMainScene].scorePos;
         }
         //play2
         else
         {
-            my_score = [CCLabelTTF labelWithString:@"P2SCORE:" fontName:@"Marker Felt" fontSize:20];
+            my_score = [CCLabelTTF labelWithString:@"P2SCORE:" fontName:@"Georgia-Bold" fontSize:20];
             my_score.position = [GameMainScene sharedMainScene].scorePlay2Pos;
         }
         my_score.color = ccc3(255,0,0);
         [self addChild:my_score]; 
         //and HighestScore
         
-        CCLabelTTF* my_highestscore = [CCLabelTTF labelWithString:@"BEST:" fontName:@"Marker Felt" fontSize:20];
+        CCLabelTTF* my_highestscore = [CCLabelTTF labelWithString:@"BEST:" fontName:@"Georgia-Bold" fontSize:20];
         
         my_highestscore.color = ccc3(255,0,0);
         //change size by diff version
         CGPoint distance1 = CGPointMake(0, -30);
-        CGPoint distance2 = CGPointMake(48, 20);
-        CGPoint distance3 = CGPointMake(48, 25);
+        CGPoint distance2 = CGPointMake(55, 17);
+        CGPoint distance3 = CGPointMake(55, 19);
         my_highestscore.position =  ccpAdd([GameMainScene sharedMainScene].scorePos, distance1);     
         [self addChild:my_highestscore];
         //初始化得分
@@ -94,7 +94,7 @@ static GameScore  *instanceOfgameScore;
         //change size by diff version
         totalScoreLabel.position = ccpAdd(my_score.position, distance2);
         totalScoreLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
-        totalScoreLabel.scale = 0.6;
+        totalScoreLabel.scale = 0.55;
         [self addChild:totalScoreLabel z:-2];
         
         int temp_hightestscore;
@@ -104,7 +104,7 @@ static GameScore  *instanceOfgameScore;
         //change size by diff version
         hightestTotalScoreLabel.position = ccpAdd([GameMainScene sharedMainScene].scorePos, distance3);
         hightestTotalScoreLabel.anchorPoint = CGPointMake(0.5, 2.0f);
-        hightestTotalScoreLabel.scale = 0.6;
+        hightestTotalScoreLabel.scale = 0.55;
         [self addChild:hightestTotalScoreLabel z:-2];
         
     

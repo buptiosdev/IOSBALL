@@ -291,7 +291,7 @@ static GameMainScene *instanceOfMainScene;
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
     _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2);
     _storagePos = CGPointMake(25/2, 25/2);
-    _scorePos = CGPointMake(25, screenSize.height - 16);
+    _scorePos = CGPointMake(40, screenSize.height - 16);
 }
 
 -(void)initSceneParam:(int)order
@@ -347,7 +347,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 15;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
@@ -361,7 +361,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 15;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
