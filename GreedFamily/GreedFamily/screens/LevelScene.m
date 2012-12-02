@@ -130,8 +130,8 @@ int directionCurrent;
             else
             {
                 [level setIsEnabled:YES];
-                //[Labelnum setColor:ccRED];
-                //[Labelnum1 setColor:ccYELLOW];
+                [Labelnum setColor:ccWHITE];
+                [Labelnum1 setColor:ccRED];
             }
             
             if(star==0)

@@ -208,6 +208,7 @@
 		7044453715FC49D900FDA2EB /* background_level.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7044453615FC49D900FDA2EB /* background_level.jpg */; };
 		706F2566166B26B6008AE1E8 /* resultback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 706F2565166B26B6008AE1E8 /* resultback.jpg */; };
 		706F2569166B44EC008AE1E8 /* progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 706F2568166B44EC008AE1E8 /* progress.png */; };
+		706F2573166B5169008AE1E8 /* box02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 706F2572166B5169008AE1E8 /* box02.plist */; };
 		7094910715EF1539005ADBD8 /* barnbeatshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */; };
 		7094910815EF1539005ADBD8 /* caribbeanblueshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */; };
 		7094910915EF1539005ADBD8 /* cautiouspathshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */; };
@@ -664,6 +665,7 @@
 		7044453615FC49D900FDA2EB /* background_level.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_level.jpg; path = Resources/pic/background_level.jpg; sourceTree = "<group>"; };
 		706F2565166B26B6008AE1E8 /* resultback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = resultback.jpg; path = Resources/pic/resultback.jpg; sourceTree = "<group>"; };
 		706F2568166B44EC008AE1E8 /* progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress.png; path = Resources/pic/progress.png; sourceTree = "<group>"; };
+		706F2572166B5169008AE1E8 /* box02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = box02.plist; sourceTree = "<group>"; };
 		7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = barnbeatshort.mp3; sourceTree = "<group>"; };
 		7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = caribbeanblueshort.mp3; sourceTree = "<group>"; };
 		7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cautiouspathshort.mp3; sourceTree = "<group>"; };
@@ -1379,6 +1381,7 @@
 		7032FD1215DB941C00E5E108 /* specialist */ = {
 			isa = PBXGroup;
 			children = (
+				706F2572166B5169008AE1E8 /* box02.plist */,
 				701B37AD1669254D001B5F22 /* get_score_01.plist */,
 				701B37AE1669254D001B5F22 /* get_score_02.plist */,
 				7032FD1315DB941C00E5E108 /* besmoked.plist */,
@@ -1755,6 +1758,7 @@
 				706F2566166B26B6008AE1E8 /* resultback.jpg in Resources */,
 				706F2569166B44EC008AE1E8 /* progress.png in Resources */,
 				4A80383E166B490A00277D8A /* progressback.png in Resources */,
+				706F2573166B5169008AE1E8 /* box02.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
