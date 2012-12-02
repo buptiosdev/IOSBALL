@@ -16,7 +16,8 @@
 
 //BEGIN item scale  默认为相对于X的比例
 float levelstarscale=75.0/480;
-float levelfontscale=50.0/480;
+float levelfontscaleY=50.0/320;
+int levelfontsize=50;
 float levelsnakescaleY=65.0/320;
 float levelspeedscale=0.4/480;
 
@@ -78,7 +79,7 @@ int directionCurrent;
         CCArray * levelarray = [[CCArray alloc]initWithCapacity:number];
         bool isZero=NO;
         float viewsize=screenSize.width*levelstarscale;
-        int fontsize=screenSize.width*levelfontscale;
+        
         for(int i=0;i<20;i++)
         {
             int star=[self getGameStarNumber:i+1];
@@ -92,9 +93,7 @@ int directionCurrent;
             }
             
             CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
-//            levelpic.scaleX=(scale)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
-//            levelpic.scaleY=(scale)/[levelpic contentSize].height;
-            CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:fontsize];
+            CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:levelfontsize];
             if(i<9)
             {
                 Labelnum.anchorPoint=CGPointMake(-2.1, -1.5);
@@ -106,9 +105,7 @@ int directionCurrent;
             
             [levelpic addChild:Labelnum];
             CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:starname];
-//            defaultstar.scaleX=(scale)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
-//            defaultstar.scaleY=(scale)/[defaultstar contentSize].height;
-            CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:fontsize];
+            CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:levelfontsize];
             if(i<9)
             {
                 Labelnum1.anchorPoint=CGPointMake(-2.1, -1.5);
@@ -133,8 +130,8 @@ int directionCurrent;
             else
             {
                 [level setIsEnabled:YES];
-                [Labelnum setColor:ccRED];
-                [Labelnum1 setColor:ccYELLOW];
+                //[Labelnum setColor:ccRED];
+                //[Labelnum1 setColor:ccYELLOW];
             }
             
             if(star==0)
@@ -148,8 +145,6 @@ int directionCurrent;
         }
         
         float levelpadding=(screenSize.width-viewsize*5)/6;
-        //CCSprite *temp = [CCSprite spriteWithSpriteFrameName:@"level4.png"];
-        //float horizon=[temp contentSize].width/2 - viewsize/2;
         float horizon=0;
         
         CCMenu * easyMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:0],[levelarray objectAtIndex:1],[levelarray objectAtIndex:2],[levelarray objectAtIndex:3],[levelarray objectAtIndex:4],nil];

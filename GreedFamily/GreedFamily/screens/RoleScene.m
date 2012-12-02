@@ -11,6 +11,7 @@
 #import "NavigationScene.h"
 #import "LevelScene.h"
 #import "CommonLayer.h"
+#import "CCAnimationHelper.h"
 
 #define LAND_SPEED_TAG 10
 #define FLY_SPEED_TAG 11
@@ -18,7 +19,7 @@
 #define FLY_SENSITIVE_TAG 13
 
 //BEGIN item scale  默认为相对于X的比例
-float logorolescale=0.18;
+float logorolescale=0.2;
 float logoroledistance=0.25;
 float rolefontscaleY=0.08;
 float progressscale=0.6;
@@ -67,7 +68,6 @@ float logoreturnscaleY=0.14;
 {
     //数据提交
         CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
-    
         [[NSUserDefaults standardUserDefaults] synchronize];
     	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];    
 }
@@ -88,17 +88,21 @@ float logoreturnscaleY=0.14;
         NSAssert( background != nil, @"background must be non-nil");
 		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
 		[self addChild:background];
-        //角色选择：0:总得分 1：熊猫 2：小猪 3：小鸟 
-//        CCMenuItem *menuItem1 = [CCMenuItemImage itemFromNormalImage:@"easy_dis.png"
-//                                                       selectedImage:@"easy_dwn.png" target:self selector:@selector(chooseRole:)];
-//        CCMenuItem *menuItem2 = [CCMenuItemImage itemFromNormalImage:@"normal_dis.png"
-//                                                       selectedImage:@"normal_dwn.png" target:self selector:@selector(chooseRole:)];
         
         
-        CCSprite * panda= [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
+        CCSprite * panda= [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
         [panda setColor:ccGRAY];
-        CCSprite *panda1 = [CCSprite spriteWithSpriteFrameName:@"logopanda.png"];
+        CCSprite *panda1 = [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
         panda1.scale=1.1;
+        
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.13f];
+        CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
+        CCSequence *seq = [CCSequence actions: animate,nil];
+        CCAction *moveAction = [CCRepeatForever actionWithAction: seq ];
+        [panda1 runAction:moveAction];
+        
+        
+        
         //add disable menu by liuyunpeng 2012-11-25
         CCSprite *panda2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
         float lockscale=screenSize.width*logorolescale/[panda2 contentSize].width;
@@ -111,10 +115,17 @@ float logoreturnscaleY=0.14;
         //float spritescale=80/[panda contentSize].width;
         menuItem1.scale=screenSize.width*logorolescale/[panda contentSize].width;
         
-        CCSprite * pig= [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
+        CCSprite * pig= [CCSprite spriteWithSpriteFrameName:@"logopig_1.png"];
         [pig setColor:ccGRAY];
-        CCSprite *pig1 = [CCSprite spriteWithSpriteFrameName:@"logopig.png"];
+        CCSprite *pig1 = [CCSprite spriteWithSpriteFrameName:@"logopig_1.png"];
         pig1.scale=1.1;
+        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.15f];
+        
+        CCAnimate *animatelogopig = [CCAnimate actionWithAnimation:animationlogopig restoreOriginalFrame:NO];
+        CCSequence *seqlogopig = [CCSequence actions: animatelogopig,nil];
+        
+        CCAction *moveActionlogopig = [CCRepeatForever actionWithAction: seqlogopig ];
+        [pig1 runAction:moveActionlogopig];
         CCSprite *pig2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
         pig2.scale=lockscale;
         CCMenuItemSprite *menuItem2 = [CCMenuItemSprite itemFromNormalSprite:pig 
@@ -184,14 +195,6 @@ float logoreturnscaleY=0.14;
             [menuItem3 selected];
         }
         [self addChild:radioMenu];
-//delete by lyp 20120910
-//        CCLabelTTF *returnLabel=[CCLabelTTF labelWithString:@"Return" fontName:@"Marker Felt" fontSize:25];
-//        [returnLabel setColor:ccRED];
-//        CCMenuItemLabel * returnBtn = [CCMenuItemLabel itemWithLabel:returnLabel target:self selector:@selector(returnMain)];
-//        CCMenu * returnMenu = [CCMenu menuWithItems:returnBtn, nil];
-//        [returnMenu alignItemsHorizontallyWithPadding:0];
-//        [returnMenu setPosition:ccp((screenSize.width)*0.1f,(screenSize.height)*0.125)];
-//        [self addChild:returnMenu];
         //set return in the left-down corner
         //add by lyp 2012-10-23
         int rolefontsize=screenSize.height*rolefontscaleY;
@@ -208,10 +211,7 @@ float logoreturnscaleY=0.14;
         [storagecapacity setColor:ccRED];
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.3)];
-//        flyanimalsensit=[CCLabelTTF labelWithString:@" sensitive: " fontName:@"Marker Felt" fontSize:25];
-//        [flyanimalsensit setColor:ccRED];
-//        [self addChild:flyanimalsensit];
-//        [flyanimalsensit setPosition:ccp(labelpos, screenSize.height * 0.2)];
+
         
         //set progess
         CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.jpg"];
@@ -234,10 +234,6 @@ float logoreturnscaleY=0.14;
         ctstorage.scale=progcale;
         [self addChild:ctstorage z:0 tag:STORAGE_CAPACITY_TAG]; 
         
-//        CCProgressTimer *ctsensitive=[CCProgressTimer progressWithFile:@"progress.jpg"];
-//        ctsensitive.position=ccp( progresspos , screenSize.height * 0.2);
-//        ctsensitive.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
-//        [self addChild:ctsensitive z:0 tag:FLY_SENSITIVE_TAG]; 
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
@@ -274,13 +270,7 @@ float logoreturnscaleY=0.14;
                                   [next contentSize].height * nextItem.scaleX * 0.5)];
         [self addChild:nextMenu];
         
-//        CCLabelTTF *nextLabel=[CCLabelTTF labelWithString:@"Next" fontName:@"Marker Felt" fontSize:25];
-//        [nextLabel setColor:ccRED];
-//        CCMenuItemLabel * nextBtn = [CCMenuItemLabel itemWithLabel:nextLabel target:self selector:@selector(levelScene)];
-//        CCMenu * nextMenu = [CCMenu menuWithItems:nextBtn, nil];
-//        [nextMenu alignItemsHorizontallyWithPadding:0];
-//        [nextMenu setPosition:ccp((screenSize.width)*0.9f,(screenSize.height)*0.1)];
-//        [self addChild:nextMenu];
+
         [self scheduleUpdate];
     }
     return self;
@@ -305,10 +295,6 @@ float logoreturnscaleY=0.14;
 -(void)update:(ccTime)himi{  
     [self unscheduleUpdate];
     [self changeParameter:roleType];
-//    ct.percentage++;  
-//    if(ct.percentage>=100){  
-//        ct.percentage=0;  
-//    }  
 }
 
 +(id)sceneWithRoleScene
