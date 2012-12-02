@@ -303,6 +303,7 @@
 		70D06CCC163D603600466162 /* speedupqipao.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CCA163D603600466162 /* speedupqipao.caf */; };
 		70D06CD1163D774700466162 /* Animal Farm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD0163D774700466162 /* Animal Farm.mp3 */; };
 		70D06CD3163D77C200466162 /* I'm In Trouble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */; };
+		C674C666166B572800774FD4 /* star.plist in Resources */ = {isa = PBXBuildFile; fileRef = C674C665166B572800774FD4 /* star.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -805,6 +806,7 @@
 		70D06CCA163D603600466162 /* speedupqipao.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedupqipao.caf; sourceTree = "<group>"; };
 		70D06CD0163D774700466162 /* Animal Farm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animal Farm.mp3"; sourceTree = "<group>"; };
 		70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I'm In Trouble.mp3"; sourceTree = "<group>"; };
+		C674C665166B572800774FD4 /* star.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = star.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1381,6 +1383,7 @@
 		7032FD1215DB941C00E5E108 /* specialist */ = {
 			isa = PBXGroup;
 			children = (
+				C674C665166B572800774FD4 /* star.plist */,
 				706F2572166B5169008AE1E8 /* box02.plist */,
 				701B37AD1669254D001B5F22 /* get_score_01.plist */,
 				701B37AE1669254D001B5F22 /* get_score_02.plist */,
@@ -1759,6 +1762,7 @@
 				706F2569166B44EC008AE1E8 /* progress.png in Resources */,
 				4A80383E166B490A00277D8A /* progressback.png in Resources */,
 				706F2573166B5169008AE1E8 /* box02.plist in Resources */,
+				C674C666166B572800774FD4 /* star.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

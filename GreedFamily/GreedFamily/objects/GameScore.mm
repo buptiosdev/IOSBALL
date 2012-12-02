@@ -348,7 +348,7 @@ static GameScore  *instanceOfgameScore;
     [getBaseScore runAction:[CCSequence actions:ac3, ac1, ac0,nil]]; 
     //加入特效
     CCParticleSystem* system;
-    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"box02.plist"];
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"star.plist"];
     system.positionType = kCCPositionTypeFree;
     system.autoRemoveOnFinish = YES;
     system.position = getBaseScore.position;
@@ -403,8 +403,8 @@ static GameScore  *instanceOfgameScore;
     [self schedule:@selector(removeAwardScore:) interval:0.05];
     //加入特效
     CCParticleSystem* system2;
-    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"get_score_02.plist"];
-//    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"box02.plist"];
+    //system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"get_score_02.plist"];
+    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"get_score02.plist"];
     system2.positionType = kCCPositionTypeFree;
     system2.autoRemoveOnFinish = YES;
     system2.position = getAwardScore.position;
