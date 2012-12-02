@@ -213,16 +213,17 @@ Boolean showPair=YES;
         BOOL sound = [usrDef boolForKey:@"music"];
         if (YES == sound) 
         {
-            int randomNum = random()%2;
-            
-            if (0 == randomNum) 
-            {
-                [CommonLayer playBackMusic:UnGameMusic1];
-            }
-            else
-            {
-                [CommonLayer playBackMusic:UnGameMusic2];
-            }
+//            int randomNum = random()%2;
+//            
+//            if (0 == randomNum) 
+//            {
+//                [CommonLayer playBackMusic:UnGameMusic1];
+//            }
+//            else
+//            {
+//                [CommonLayer playBackMusic:UnGameMusic2];
+//            }
+            [CommonLayer playBackMusic:UnGameMusic1];
         }
 		
     }    
