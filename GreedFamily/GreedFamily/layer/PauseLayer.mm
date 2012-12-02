@@ -255,9 +255,9 @@
         
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         NSString *levelNum = [NSString stringWithFormat:@"Level %d",sceneNum];
-        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Marker Felt" fontSize:20];
-        
-        [levelLabel setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)* 0.9)];
+        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Zapfino" fontSize:25];
+        [levelLabel setColor:ccYELLOW];
+        [levelLabel setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)* 0.8)];
         [self addChild:levelLabel];
         
         

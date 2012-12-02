@@ -43,9 +43,9 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         // batch node for all dynamic elements
         //CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
         CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"gamemain01_default.png" capacity:100];
-        [self addChild:batch z:2 tag:BatchTag];
+        [self addChild:batch z:3 tag:BatchTag];
         CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"button_default_default.png" capacity:100];
-        [self addChild:batch2 z:1 tag:ButtonTag];
+        [self addChild:batch2 z:2 tag:ButtonTag];
 
         
         // batch node for all animation elements

@@ -11,21 +11,21 @@
 #import "LoadingScene.h"
 #import "GameBackgroundLayer.h"
 #import "SimpleAudioEngine.h"
-
+#import "GameMainScene.h"
 // 该类在GameMainScene中关卡结束时被调用，用于显示分数／关卡等信息
 // 使用方法参见 GameMainScene:pauseGame中注释的部分
 // 可供测试使用，点击暂停按钮，即可进行测试
 
 
 @interface ResultLayer (PrivateMethods)
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
+-(id) initWithResult:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
 @end
 
 @implementation ResultLayer
 
-+(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore  StarNum:(int)starnum Newrecord:(int)isnewrecord
++(id)createResultLayer:(int)level Score:(int)score AddScore:(int)addscore  StarNum:(int)starnum Newrecord:(int)isnewrecord
 {
-    return [[[ResultLayer alloc] initWithResult:color Level:level Score:score AddScore:addscore StarNum:starnum Newrecord:isnewrecord] autorelease];
+    return [[[ResultLayer alloc] initWithResult:level Score:score AddScore:addscore StarNum:starnum Newrecord:isnewrecord] autorelease];
 }
 
 -(void)chooseLevel:(CCMenuItemImage *)btn
@@ -56,61 +56,78 @@
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }
 
--(id) initWithResult:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord
+-(id) initWithResult:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord
 {
-    if ((self = [super initWithColor:color]))
-    {
-        NSString* temp=[@"level score: " stringByAppendingFormat:@" %d",score];
+    if ((self = [super init]))
+    {   
+        CCSprite* background = [CCSprite spriteWithFile:@"resultback.jpg"];
+        //change size by diff version manual
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        background.scaleX=((screenSize.width))/[background contentSize].width; //按照像素定制图片宽高
+        background.scaleY=((screenSize.height))/[background contentSize].height;
+        //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        //change size by diff version
+        background.position = [GameMainScene sharedMainScene].backgroundPos;
+        [self addChild:background z:-3];
+    
+//        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        NSString *levelNum = [NSString stringWithFormat:@"LeveL %d",[[GameMainScene sharedMainScene] mainscenParam].order];
+        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Georgia-Bold" fontSize:25];
+        [levelLabel setColor:ccBLACK];
+        [levelLabel setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)* 0.9)];
+        [self addChild:levelLabel];
+        
+        NSString* temp=[@"base score: " stringByAppendingFormat:@" %d",score];
 //        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
         CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
 		CGSize size = [[CCDirector sharedDirector] winSize];
         //change size by diff version query
-		labelscore.position = CGPointMake(size.width / 3, size.height * 4 / 5 );
-        [labelscore setColor:ccWHITE];
+		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
+        [labelscore setColor:ccBLACK];
 		[self addChild:labelscore];
         
-        temp=[@"added score: " stringByAppendingFormat:@" %d",addscore];
+        temp=[@"time award: " stringByAppendingFormat:@" %d",addscore];
         CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
         //change size by diff version query
-		labeladdscore.position = CGPointMake(size.width / 3, size.height * 3 / 5 );
-        [labeladdscore setColor:ccWHITE];
+		labeladdscore.position = CGPointMake(size.width / 3, size.height * 5 / 9 );
+        [labeladdscore setColor:ccBLACK];
 		[self addChild:labeladdscore];
         
         temp=[@"total score: " stringByAppendingFormat:@" %d",score+addscore];
         CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
         //change size by diff version query
-		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 2 / 5 );
-        [labeltotalscore setColor:ccWHITE];
+		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 3 / 9 );
+        [labeltotalscore setColor:ccBLACK];
 		[self addChild:labeltotalscore];
         
         //if(isnewrecord==1 && starnum==3)
         //{
         NSString *words=nil;
+
         if(starnum==0)
         {
             words = @"Failed!";
         }
-        else if(starnum==1)
+        else if(isnewrecord==1)
         {
-            words = @"Passed!";
+            words = @"New Record!!!";
         }
-        else if(starnum==2)
+        else if(starnum==1)
         {
             words = @"Good!";
         }
+        else if(starnum==2)
+        {
+            words = @"Great!";
+        }
         else if(starnum == 3)
         {
-            if(isnewrecord==1)
-            {
-                words = @"New Record!!!";
-            }
-            else
-            {
-                words = @"Great!";
-            }
+
+            words = @"Perfect!";
+ 
         }
         
-            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Marker Felt" fontSize:40];
+            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Zapfino" fontSize:30];
             [labelnewrecord setColor:ccRED];
             labelnewrecord.position=CGPointMake(size.width *3/ 4, size.height *3/4  );;
             [labelnewrecord runAction:[CCSequence actions:
@@ -121,7 +138,7 @@
         
         
         //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
-        CCSpriteBatchNode* buttonBatch = [[GameBackgroundLayer sharedGameBackgroundLayer] getButtonBatch];
+//        CCSpriteBatchNode* buttonBatch = [[GameBackgroundLayer sharedGameBackgroundLayer] getButtonBatch];
         for(int i=0;i<3;i++)
         {
             
@@ -132,9 +149,8 @@
             //change size by diff version manual
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;
-            [buttonBatch addChild:star z:1];
-            //[batch addChild:star z:1];
-            //[self addChild:star];
+            [self addChild:star z:1];
+            //[buttonBatch addChild:star z:1];
         }
         
         for(int i=0;i<starnum;i++)
@@ -146,8 +162,8 @@
             //change size by diff version manual
             star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             star.scaleY=(50)/[star contentSize].height;
-            //[batch addChild:star z:2];
-            [buttonBatch addChild:star z:2];
+            [self addChild:star z:2];
+            //[buttonBatch addChild:star z:2];
         }
         
 //        CCLabelTTF *retryLabel=[CCLabelTTF labelWithString:@"Retry" fontName:@"Marker Felt" fontSize:30];
@@ -216,7 +232,7 @@
         
         CCMenu * dMenu = [CCMenu menuWithItems:retryItem,levelItem,nextItem,nil];
         [dMenu alignItemsHorizontallyWithPadding:40];
-        [dMenu setPosition:ccp((size.width)*0.5f,(size.height)*1/5)];
+        [dMenu setPosition:ccp((size.width)*0.5f,(size.height)*1/6)];
         [self addChild:dMenu];
         
     }

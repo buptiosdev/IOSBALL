@@ -633,9 +633,8 @@ static GameMainScene *instanceOfMainScene;
     CCLOG(@"starNum is %d",starNum);
 
     //3.生成关卡结束显示层
-    ccColor4B c = {255,255,0,100};
-    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum Newrecord:(int)isnewrecord];
-    [self.parent addChild:p z:10]; 
+    ResultLayer *p=[ResultLayer createResultLayer:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum Newrecord:(int)isnewrecord];
+    [self addChild:p z:1]; 
 }
 
 
@@ -653,7 +652,8 @@ static GameMainScene *instanceOfMainScene;
 
 -(void)pauseGame
 {
-	ccColor4B c = {200,200,0,150};
+	ccColor4B c = {166,166,166,166};
+    
     PauseLayer * p = [PauseLayer createPauseLayer:c Level:_sceneNum];
     [self.parent addChild:p z:10]; 
 	[self onPauseExit];

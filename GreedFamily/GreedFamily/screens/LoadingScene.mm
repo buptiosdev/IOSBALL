@@ -60,9 +60,9 @@
         [self addChild:p];
         
 //        [self schedule:<#(SEL)#> interval:<#(ccTime)#>];
-        int waitTime = 3;
+        int waitTime = 2;
         if (1 == targetScene) {
-            waitTime = 12;
+            waitTime = 10;
         }
         [self schedule:@selector(waitAWhile:) interval:waitTime];
         
