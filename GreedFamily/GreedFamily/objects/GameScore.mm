@@ -404,7 +404,7 @@ static GameScore  *instanceOfgameScore;
     //加入特效
     CCParticleSystem* system2;
     //system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"get_score_02.plist"];
-    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"star.plist"];
+    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"get_score02.plist"];
     system2.positionType = kCCPositionTypeFree;
     system2.autoRemoveOnFinish = YES;
     system2.position = getAwardScore.position;
