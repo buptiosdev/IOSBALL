@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A76902715E27C41002F61DB /* drop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4A76902615E27C41002F61DB /* drop.caf */; };
+		4A80383E166B490A00277D8A /* progressback.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A80383D166B490A00277D8A /* progressback.png */; };
 		70081DF3153F987C003F042A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70081DF2153F987C003F042A /* QuartzCore.framework */; };
 		70081DF5153F987C003F042A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70081DF4153F987C003F042A /* OpenGLES.framework */; };
 		70081DF7153F987C003F042A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70081DF6153F987C003F042A /* OpenAL.framework */; };
@@ -305,6 +306,7 @@
 
 /* Begin PBXFileReference section */
 		4A76902615E27C41002F61DB /* drop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = drop.caf; sourceTree = "<group>"; };
+		4A80383D166B490A00277D8A /* progressback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progressback.png; path = Resources/pic/progressback.png; sourceTree = "<group>"; };
 		70081DEE153F987C003F042A /* GreedFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreedFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70081DF2153F987C003F042A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		70081DF4153F987C003F042A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1423,6 +1425,7 @@
 			isa = PBXGroup;
 			children = (
 				706F2568166B44EC008AE1E8 /* progress.png */,
+				4A80383D166B490A00277D8A /* progressback.png */,
 				706F2565166B26B6008AE1E8 /* resultback.jpg */,
 				701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */,
 				70C6717816620F3B00E49FD5 /* cd.png */,
@@ -1751,6 +1754,7 @@
 				701B37B01669254D001B5F22 /* get_score_02.plist in Resources */,
 				706F2566166B26B6008AE1E8 /* resultback.jpg in Resources */,
 				706F2569166B44EC008AE1E8 /* progress.png in Resources */,
+				4A80383E166B490A00277D8A /* progressback.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

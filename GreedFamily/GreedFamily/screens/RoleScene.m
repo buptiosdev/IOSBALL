@@ -21,7 +21,7 @@
 //BEGIN item scale  默认为相对于X的比例
 float logorolescale=0.2;
 float logoroledistance=0.25;
-float rolefontscaleY=0.08;
+float rolefontscaleY=0.06;
 float progressscale=0.6;
 
 float logoreturnscaleY=0.14;
@@ -198,42 +198,55 @@ float logoreturnscaleY=0.14;
         //set return in the left-down corner
         //add by lyp 2012-10-23
         int rolefontsize=screenSize.height*rolefontscaleY;
-        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Marker Felt" fontSize:rolefontsize];
-        [landanimalspeed setColor:ccRED];
+        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Georgia-Bold" fontSize:rolefontsize];
+        ccColor3B color = {20,156,12};
+        [landanimalspeed setColor:color];
         [self addChild:landanimalspeed];
         int labelpos=landanimalspeed.contentSize.width/2;
         [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
-        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Marker Felt" fontSize:rolefontsize];
-        [flyanimalspeed setColor:ccRED];
+        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Georgia-Bold" fontSize:rolefontsize];
+        [flyanimalspeed setColor:color];
         [self addChild:flyanimalspeed];
         [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.4)];
-        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Marker Felt" fontSize:rolefontsize];
-        [storagecapacity setColor:ccRED];
+        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Georgia-Bold" fontSize:rolefontsize];
+        [storagecapacity setColor:color];
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.3)];
 
         
         //set progess
         CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress.png"];
-        float progcale=screenSize.width*progressscale/[ctlandanimal contentSize].width;
-        int progresspos=ctlandanimal.contentSize.width*progcale/2+landanimalspeed.contentSize.width;
+        float progscale=screenSize.width*progressscale/[ctlandanimal contentSize].width;
+        int progresspos=ctlandanimal.contentSize.width*progscale/2+landanimalspeed.contentSize.width;
+        CCSprite *progress1=[CCSprite spriteWithFile:@"progressback.png"];
+        progress1.scale=progscale;
+        progress1.position=ccp( progresspos , screenSize.height * 0.5);
+        [self addChild:progress1];
         ctlandanimal.position=ccp( progresspos , screenSize.height * 0.5);
         ctlandanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
-        ctlandanimal.scale=progcale;
+        ctlandanimal.scale=progscale;
         [self addChild:ctlandanimal z:0 tag:LAND_SPEED_TAG]; 
-        
+
+        CCSprite *progress2=[CCSprite spriteWithFile:@"progressback.png"];
+        progress2.scale=progscale;
+        progress2.position=ccp( progresspos , screenSize.height * 0.4);
+        [self addChild:progress2];
         CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progress.png"];
         ctflyanimal.position=ccp( progresspos, screenSize.height * 0.4);
         ctflyanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
-        ctflyanimal.scale=progcale;
+        ctflyanimal.scale=progscale;
         [self addChild:ctflyanimal z:0 tag:FLY_SPEED_TAG]; 
-        
+
+        CCSprite *progress3=[CCSprite spriteWithFile:@"progressback.png"];
+        progress3.scale=progscale;
+        progress3.position=ccp( progresspos , screenSize.height * 0.3);
+        [self addChild:progress3];
         CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progress.png"];
         ctstorage.position=ccp( progresspos , screenSize.height * 0.3);
         ctstorage.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
-        ctstorage.scale=progcale;
+        ctstorage.scale=progscale;
         [self addChild:ctstorage z:0 tag:STORAGE_CAPACITY_TAG]; 
-        
+
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
