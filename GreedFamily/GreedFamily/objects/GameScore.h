@@ -34,6 +34,7 @@ typedef enum
 	ContinuousAwardScoreTag,
     AwardScoreSpeciallyTag,
 	ScoreTags_MAX,
+    BaseScoreSpeciallyTag,
 } ScoreTags;
 
 struct  struct_gameScore_rules{
@@ -94,22 +95,6 @@ struct  struct_gameScore{
 -(int)getGameStarNumber:(int)level;
 
 
-
-//计算当前得分
-//一次消的次数 
-//int timesOfOneTouch;
-//一次消除的个数（所有类型）
-//int numbersOfOneTime;
-//一种类型消除个数
-//int theSameTypeNumOfOneTime;
-/*
--(void)calculateGameScore:(int)level TimesofOneTouch:(int)timesofonetouch 
-         NumbersOfOneTime:(int)numbersOfOneTime 
-  TheSameTypeNumOfOneTime:(int)theSameTypeNumOfOneTime
-                Chocolate:(int)choclolatenum
-                     Cake:(int)cakenum
-                   Circle:(int)circlenum;
-*/
 //一次性消球得分
 -(void)calculateConsistentCombineScore:(int)mygamelevel
                     oneTimeScoreNumber:(int)oneTimeScoreNum
@@ -120,12 +105,13 @@ struct  struct_gameScore{
                              DelayTime:(int)delayTime;
 
 
-//-(CCArray *)calculateScoreWhenGameIsOver:(int)level;
+
 -(CCArray *)calculateScoreWhenGameIsOver:(int)level timestamp:(int)mytimestamp;
 
 -(void)calculateContinuousCombineAward:(int)continuousflag 
                                myLevel:(int)gameLevel;
 
 -(void)calculateTimeAward:(int)gameLevel;
-//-(int)getGameStarNumber:(int)level;
+
+
 @end
