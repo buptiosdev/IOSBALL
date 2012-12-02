@@ -69,7 +69,7 @@ Boolean showPair=YES;
         //按照像素设定图片大小
         logopanda.scale=(size.width*logoanimalscale)/[logopanda contentSize].width; //按照像素定制图片宽高
         logopanda.position = CGPointMake(size.width / 7, size.height * 2 / 3 );;
-        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.15f];
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.13f];
         
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,nil];
@@ -83,7 +83,7 @@ Boolean showPair=YES;
         //按照像素设定图片大小
         logopig.scale=(size.width*logoanimalscale)/[logopig contentSize].width; //按照像素定制图片宽高
         logopig.position = CGPointMake(size.width *6 / 7, size.height * 2 / 3 );
-        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.17f];
+        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.15f];
         
         CCAnimate *animatelogopig = [CCAnimate actionWithAnimation:animationlogopig restoreOriginalFrame:NO];
         CCSequence *seqlogopig = [CCSequence actions: animatelogopig,nil];
