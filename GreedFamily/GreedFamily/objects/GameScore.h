@@ -32,6 +32,7 @@ typedef enum
 	BaseScoreTag = 0,
     AwardScoreTag,
 	ContinuousAwardScoreTag,
+    AwardScoreSpeciallyTag,
 	ScoreTags_MAX,
 } ScoreTags;
 

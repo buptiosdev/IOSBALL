@@ -257,10 +257,24 @@ static GameScore  *instanceOfgameScore;
 
 -(void)removeAwardScore: (ccTime) dt
 {
-    [self unschedule:@selector(removeAwardScore:)];   
-    //消除特效
-    [self removeChildByTag:AwardScoreTag cleanup:YES];
-
+    static int removeAwardScoreCount = 0;
+    removeAwardScoreCount++;
+    CCNode* awardScore = [self getChildByTag:AwardScoreTag];
+    CCNode* speciallySystem = [self getChildByTag:AwardScoreSpeciallyTag];
+    
+    speciallySystem.position = awardScore.position;
+    
+    //5s
+    if (removeAwardScoreCount >= 80)
+    {
+        removeAwardScoreCount = 0;
+        [self unschedule:@selector(removeAwardScore:)];   
+        //消除特效
+        [self removeChildByTag:AwardScoreTag cleanup:YES];
+        [self removeChildByTag:AwardScoreSpeciallyTag cleanup:YES];
+        
+        
+    }
 }
 
 
@@ -369,14 +383,14 @@ static GameScore  *instanceOfgameScore;
     [getAwardScore runAction:[CCSequence actions:ac3_,ac1_, ac0_,nil]]; 
     
     [self addChild:getAwardScore z:-1 tag:AwardScoreTag];
-    [self schedule:@selector(removeAwardScore:) interval:6];
+    [self schedule:@selector(removeAwardScore:) interval:0.05];
     //加入特效
     CCParticleSystem* system2;
-    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"redscore.plist"];
+    system2 = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"get_score_02.plist"];
     system2.positionType = kCCPositionTypeFree;
     system2.autoRemoveOnFinish = YES;
     system2.position = getAwardScore.position;
-    [self addChild:system2];
+    [self addChild:system2 z:-2 tag:AwardScoreSpeciallyTag];
     //得分音效
     [CommonLayer playAudio:GetScore];
 

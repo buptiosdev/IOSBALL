@@ -160,6 +160,8 @@
 		70081FD2153F9881003F042A /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70081FD1153F9881003F042A /* GLES-Render.mm */; };
 		70081FD5153F9881003F042A /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 70081FD4153F9881003F042A /* blocks.png */; };
 		701B37AC1668FBAB001B5F22 /* teachdetail4-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */; };
+		701B37AF1669254D001B5F22 /* get_score_01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AD1669254D001B5F22 /* get_score_01.plist */; };
+		701B37B01669254D001B5F22 /* get_score_02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AE1669254D001B5F22 /* get_score_02.plist */; };
 		7029287F1605AE2D00877FF2 /* teach1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287A1605AE2D00877FF2 /* teach1.png */; };
 		702928801605AE2D00877FF2 /* teach2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287B1605AE2D00877FF2 /* teach2.png */; };
 		702928811605AE2D00877FF2 /* teach3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287C1605AE2D00877FF2 /* teach3.png */; };
@@ -612,6 +614,8 @@
 		70081FD3153F9881003F042A /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		70081FD4153F9881003F042A /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "teachdetail4-2.jpg"; path = "Resources/pic/teachdetail4-2.jpg"; sourceTree = "<group>"; };
+		701B37AD1669254D001B5F22 /* get_score_01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = get_score_01.plist; sourceTree = "<group>"; };
+		701B37AE1669254D001B5F22 /* get_score_02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = get_score_02.plist; sourceTree = "<group>"; };
 		7029287A1605AE2D00877FF2 /* teach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach1.png; path = Resources/pic/teach1.png; sourceTree = "<group>"; };
 		7029287B1605AE2D00877FF2 /* teach2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach2.png; path = Resources/pic/teach2.png; sourceTree = "<group>"; };
 		7029287C1605AE2D00877FF2 /* teach3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach3.png; path = Resources/pic/teach3.png; sourceTree = "<group>"; };
@@ -1371,6 +1375,8 @@
 		7032FD1215DB941C00E5E108 /* specialist */ = {
 			isa = PBXGroup;
 			children = (
+				701B37AD1669254D001B5F22 /* get_score_01.plist */,
+				701B37AE1669254D001B5F22 /* get_score_02.plist */,
 				7032FD1315DB941C00E5E108 /* besmoked.plist */,
 				7032FD1415DB941C00E5E108 /* bluescore.plist */,
 				7032FD1515DB941C00E5E108 /* bublle_break.plist */,
@@ -1739,6 +1745,8 @@
 				70C6719E1662117000E49FD5 /* pink.fnt in Resources */,
 				70C6719F1662117000E49FD5 /* pink.png in Resources */,
 				701B37AC1668FBAB001B5F22 /* teachdetail4-2.jpg in Resources */,
+				701B37AF1669254D001B5F22 /* get_score_01.plist in Resources */,
+				701B37B01669254D001B5F22 /* get_score_02.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
