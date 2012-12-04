@@ -225,19 +225,20 @@
     BOOL sound = [usrDef boolForKey:@"music"];
     if (YES == sound) 
     {
-        int randomNum = random()%2;
-        
-        if (0 == randomNum) 
-        {
-//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
-            [CommonLayer playBackMusic:UnGameMusic1];
-        }
-        else
-        {
-//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
-            [CommonLayer playBackMusic:UnGameMusic2];
-            
-        }
+        [CommonLayer playBackMusic:UnGameMusic1];
+//        int randomNum = random()%2;
+//        
+//        if (0 == randomNum) 
+//        {
+////            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+//            [CommonLayer playBackMusic:UnGameMusic1];
+//        }
+//        else
+//        {
+////            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+//            [CommonLayer playBackMusic:UnGameMusic2];
+//            
+//        }
     }
     
 }

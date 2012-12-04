@@ -210,11 +210,7 @@
 		706F2569166B44EC008AE1E8 /* progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 706F2568166B44EC008AE1E8 /* progress.png */; };
 		706F2573166B5169008AE1E8 /* box02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 706F2572166B5169008AE1E8 /* box02.plist */; };
 		7094910715EF1539005ADBD8 /* barnbeatshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */; };
-		7094910815EF1539005ADBD8 /* caribbeanblueshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */; };
-		7094910915EF1539005ADBD8 /* cautiouspathshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */; };
 		7094910A15EF1539005ADBD8 /* destinationshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910415EF1539005ADBD8 /* destinationshort.mp3 */; };
-		7094910B15EF1539005ADBD8 /* huanqinshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910515EF1539005ADBD8 /* huanqinshort.mp3 */; };
-		7094910C15EF1539005ADBD8 /* morningmusicshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910615EF1539005ADBD8 /* morningmusicshort.mp3 */; };
 		7094911115EF5282005ADBD8 /* background_begin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7094910E15EF5282005ADBD8 /* background_begin.jpg */; };
 		7094911215EF5282005ADBD8 /* beginscene_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7094910F15EF5282005ADBD8 /* beginscene_default.plist */; };
 		7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7094911015EF5282005ADBD8 /* beginscene_default.png */; };
@@ -301,8 +297,10 @@
 		70C7C40615AA86A2007D35B5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C40515AA86A2007D35B5 /* GameKit.framework */; };
 		70D06CCB163D603600466162 /* speedup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CC9163D603600466162 /* speedup.caf */; };
 		70D06CCC163D603600466162 /* speedupqipao.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CCA163D603600466162 /* speedupqipao.caf */; };
-		70D06CD1163D774700466162 /* Animal Farm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD0163D774700466162 /* Animal Farm.mp3 */; };
-		70D06CD3163D77C200466162 /* I'm In Trouble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */; };
+		70DFE9DC166E42FC00C58849 /* progress2.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9DA166E42FC00C58849 /* progress2.png */; };
+		70DFE9DD166E42FC00C58849 /* progress3.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9DB166E42FC00C58849 /* progress3.png */; };
+		70DFE9E1166E505F00C58849 /* moning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9DF166E505F00C58849 /* moning.mp3 */; };
+		70DFE9E2166E505F00C58849 /* wildbird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E0166E505F00C58849 /* wildbird.mp3 */; };
 		C674C666166B572800774FD4 /* star.plist in Resources */ = {isa = PBXBuildFile; fileRef = C674C665166B572800774FD4 /* star.plist */; };
 /* End PBXBuildFile section */
 
@@ -668,11 +666,7 @@
 		706F2568166B44EC008AE1E8 /* progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress.png; path = Resources/pic/progress.png; sourceTree = "<group>"; };
 		706F2572166B5169008AE1E8 /* box02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = box02.plist; sourceTree = "<group>"; };
 		7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = barnbeatshort.mp3; sourceTree = "<group>"; };
-		7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = caribbeanblueshort.mp3; sourceTree = "<group>"; };
-		7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cautiouspathshort.mp3; sourceTree = "<group>"; };
 		7094910415EF1539005ADBD8 /* destinationshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = destinationshort.mp3; sourceTree = "<group>"; };
-		7094910515EF1539005ADBD8 /* huanqinshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = huanqinshort.mp3; sourceTree = "<group>"; };
-		7094910615EF1539005ADBD8 /* morningmusicshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morningmusicshort.mp3; sourceTree = "<group>"; };
 		7094910E15EF5282005ADBD8 /* background_begin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_begin.jpg; path = Resources/pic/background_begin.jpg; sourceTree = "<group>"; };
 		7094910F15EF5282005ADBD8 /* beginscene_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = beginscene_default.plist; path = Resources/pic/beginscene_default.plist; sourceTree = "<group>"; };
 		7094911015EF5282005ADBD8 /* beginscene_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beginscene_default.png; path = Resources/pic/beginscene_default.png; sourceTree = "<group>"; };
@@ -804,8 +798,10 @@
 		70C7C40515AA86A2007D35B5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		70D06CC9163D603600466162 /* speedup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedup.caf; sourceTree = "<group>"; };
 		70D06CCA163D603600466162 /* speedupqipao.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedupqipao.caf; sourceTree = "<group>"; };
-		70D06CD0163D774700466162 /* Animal Farm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animal Farm.mp3"; sourceTree = "<group>"; };
-		70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I'm In Trouble.mp3"; sourceTree = "<group>"; };
+		70DFE9DA166E42FC00C58849 /* progress2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress2.png; path = Resources/pic/progress2.png; sourceTree = "<group>"; };
+		70DFE9DB166E42FC00C58849 /* progress3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress3.png; path = Resources/pic/progress3.png; sourceTree = "<group>"; };
+		70DFE9DF166E505F00C58849 /* moning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moning.mp3; sourceTree = "<group>"; };
+		70DFE9E0166E505F00C58849 /* wildbird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wildbird.mp3; sourceTree = "<group>"; };
 		C674C665166B572800774FD4 /* star.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = star.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1414,14 +1410,10 @@
 		7094910015EF1539005ADBD8 /* music */ = {
 			isa = PBXGroup;
 			children = (
-				70D06CD2163D77C200466162 /* I'm In Trouble.mp3 */,
-				70D06CD0163D774700466162 /* Animal Farm.mp3 */,
+				70DFE9DF166E505F00C58849 /* moning.mp3 */,
+				70DFE9E0166E505F00C58849 /* wildbird.mp3 */,
 				7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */,
-				7094910215EF1539005ADBD8 /* caribbeanblueshort.mp3 */,
-				7094910315EF1539005ADBD8 /* cautiouspathshort.mp3 */,
 				7094910415EF1539005ADBD8 /* destinationshort.mp3 */,
-				7094910515EF1539005ADBD8 /* huanqinshort.mp3 */,
-				7094910615EF1539005ADBD8 /* morningmusicshort.mp3 */,
 			);
 			name = music;
 			path = Resources/music;
@@ -1430,6 +1422,8 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				70DFE9DA166E42FC00C58849 /* progress2.png */,
+				70DFE9DB166E42FC00C58849 /* progress3.png */,
 				706F2568166B44EC008AE1E8 /* progress.png */,
 				4A80383D166B490A00277D8A /* progressback.png */,
 				706F2565166B26B6008AE1E8 /* resultback.jpg */,
@@ -1703,11 +1697,7 @@
 				7032FD3815DB941C00E5E108 /* speedfast2.plist in Resources */,
 				4A76902715E27C41002F61DB /* drop.caf in Resources */,
 				7094910715EF1539005ADBD8 /* barnbeatshort.mp3 in Resources */,
-				7094910815EF1539005ADBD8 /* caribbeanblueshort.mp3 in Resources */,
-				7094910915EF1539005ADBD8 /* cautiouspathshort.mp3 in Resources */,
 				7094910A15EF1539005ADBD8 /* destinationshort.mp3 in Resources */,
-				7094910B15EF1539005ADBD8 /* huanqinshort.mp3 in Resources */,
-				7094910C15EF1539005ADBD8 /* morningmusicshort.mp3 in Resources */,
 				7094911115EF5282005ADBD8 /* background_begin.jpg in Resources */,
 				7094911215EF5282005ADBD8 /* beginscene_default.plist in Resources */,
 				7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */,
@@ -1724,8 +1714,6 @@
 				7043002D16198392008926AB /* gamemain01_default.png in Resources */,
 				70D06CCB163D603600466162 /* speedup.caf in Resources */,
 				70D06CCC163D603600466162 /* speedupqipao.caf in Resources */,
-				70D06CD1163D774700466162 /* Animal Farm.mp3 in Resources */,
-				70D06CD3163D77C200466162 /* I'm In Trouble.mp3 in Resources */,
 				70C670D01661528500E49FD5 /* teachbomb.jpg in Resources */,
 				70C670D11661528500E49FD5 /* teachdetail1.jpg in Resources */,
 				70C670D21661528500E49FD5 /* teachdetail2.jpg in Resources */,
@@ -1763,6 +1751,10 @@
 				4A80383E166B490A00277D8A /* progressback.png in Resources */,
 				706F2573166B5169008AE1E8 /* box02.plist in Resources */,
 				C674C666166B572800774FD4 /* star.plist in Resources */,
+				70DFE9DC166E42FC00C58849 /* progress2.png in Resources */,
+				70DFE9DD166E42FC00C58849 /* progress3.png in Resources */,
+				70DFE9E1166E505F00C58849 /* moning.mp3 in Resources */,
+				70DFE9E2166E505F00C58849 /* wildbird.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -200,7 +200,7 @@ float logoreturnscaleY=0.14;
         int rolefontsize=screenSize.height*rolefontscaleY;
         landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Georgia-Bold" fontSize:rolefontsize];
 //        ccColor3B color = {20,156,12};
-        ccColor3B color = {17,55,26};
+        ccColor3B color = {2,2,2};
         [landanimalspeed setColor:color];
         [self addChild:landanimalspeed];
         int labelpos=landanimalspeed.contentSize.width/2;
@@ -216,10 +216,10 @@ float logoreturnscaleY=0.14;
 
         
         //set progess
-        CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progressback.png"];
+        CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress3.png"];
         float progscale=screenSize.width*progressscale/[ctlandanimal contentSize].width;
         int progresspos=ctlandanimal.contentSize.width*progscale/2+landanimalspeed.contentSize.width;
-        CCSprite *progress1=[CCSprite spriteWithFile:@"progress.png"];
+        CCSprite *progress1=[CCSprite spriteWithFile:@"progress2.png"];
         progress1.scale=progscale;
         progress1.position=ccp( progresspos , screenSize.height * 0.5);
         [self addChild:progress1];
@@ -228,21 +228,21 @@ float logoreturnscaleY=0.14;
         ctlandanimal.scale=progscale;
         [self addChild:ctlandanimal z:0 tag:LAND_SPEED_TAG]; 
 
-        CCSprite *progress2=[CCSprite spriteWithFile:@"progress.png"];
+        CCSprite *progress2=[CCSprite spriteWithFile:@"progress2.png"];
         progress2.scale=progscale;
         progress2.position=ccp( progresspos , screenSize.height * 0.4);
         [self addChild:progress2];
-        CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progressback.png"];
+        CCProgressTimer *ctflyanimal=[CCProgressTimer progressWithFile:@"progress3.png"];
         ctflyanimal.position=ccp( progresspos, screenSize.height * 0.4);
         ctflyanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
         ctflyanimal.scale=progscale;
         [self addChild:ctflyanimal z:0 tag:FLY_SPEED_TAG]; 
 
-        CCSprite *progress3=[CCSprite spriteWithFile:@"progress.png"];
+        CCSprite *progress3=[CCSprite spriteWithFile:@"progress2.png"];
         progress3.scale=progscale;
         progress3.position=ccp( progresspos , screenSize.height * 0.3);
         [self addChild:progress3];
-        CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progressback.png"];
+        CCProgressTimer *ctstorage=[CCProgressTimer progressWithFile:@"progress3.png"];
         ctstorage.position=ccp( progresspos , screenSize.height * 0.3);
         ctstorage.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
         ctstorage.scale=progscale;

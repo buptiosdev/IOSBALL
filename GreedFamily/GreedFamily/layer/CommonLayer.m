@@ -279,23 +279,23 @@ static CommonLayer *instanceOfCommonLayer;
             break; 
         
         case GameMusic1:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"huanqinshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"wildbird.mp3" loop:YES];
             break; 
         case GameMusic2:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morningmusicshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morning.mp3" loop:YES];
             break; 
-        case GameMusic3:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
-            break;     
-        case GameMusic4:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
-            break;  
-        case GameMusic5:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
-            break;  
-        case GameMusic6:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
-            break;
+//        case GameMusic3:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
+//            break;     
+//        case GameMusic4:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
+//            break;  
+//        case GameMusic5:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
+//            break;  
+//        case GameMusic6:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
+//            break;
         default:
             break;
     }

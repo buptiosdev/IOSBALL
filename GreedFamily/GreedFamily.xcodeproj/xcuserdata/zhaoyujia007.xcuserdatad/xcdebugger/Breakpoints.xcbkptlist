@@ -1746,7 +1746,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "293"
          endingLineNumber = "293"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkName = "-displayInfo:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1760,7 +1760,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "290"
          endingLineNumber = "290"
-         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkName = "-displayInfo:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1774,7 +1774,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "510"
          endingLineNumber = "510"
-         landmarkName = "-onPlayerInfoReceived:"
+         landmarkName = "-onFriendListReceived:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1802,7 +1802,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "492"
          endingLineNumber = "492"
-         landmarkName = "-onLocalPlayerAuthenticationChanged"
+         landmarkName = "-getViewType"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1954,7 +1954,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "506"
          endingLineNumber = "506"
-         landmarkName = "-onPlayerInfoReceived:"
+         landmarkName = "-onLocalPlayerAuthenticationChanged"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1982,7 +1982,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "322"
          endingLineNumber = "322"
-         landmarkName = "-updateScoreAndShowAchievements"
+         landmarkName = "-updateScoreAndShowLeaderBoard"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2080,7 +2080,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "503"
          endingLineNumber = "503"
-         landmarkName = "-onFriendListReceived:"
+         landmarkName = "-onLocalPlayerAuthenticationChanged"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2094,7 +2094,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "502"
          endingLineNumber = "502"
-         landmarkName = "-onFriendListReceived:"
+         landmarkName = "-onLocalPlayerAuthenticationChanged"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2108,7 +2108,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "501"
          endingLineNumber = "501"
-         landmarkName = "-onFriendListReceived:"
+         landmarkName = "-onLocalPlayerAuthenticationChanged"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2164,7 +2164,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "238"
          endingLineNumber = "238"
-         landmarkName = "-newGame:"
+         landmarkName = "-viewAddPointY"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2766,7 +2766,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "226"
          endingLineNumber = "226"
-         landmarkName = "-viewAddPointY"
+         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2864,8 +2864,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "378"
          endingLineNumber = "378"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-showGameLeaderboard:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -2878,7 +2878,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "422"
          endingLineNumber = "422"
-         landmarkName = "-showGameUserReview:"
+         landmarkName = "-showGameAchievements:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
