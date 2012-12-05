@@ -94,7 +94,7 @@
 #endif
 	
 	[director setAnimationInterval:1.0/60];
-	[director setDisplayFPS:YES];
+	[director setDisplayFPS:NO];
 	
 	
 	// make the OpenGLView a child of the view controller
@@ -120,7 +120,7 @@
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
     
-    //add push notice function
+    //add push notice function推送服务器推送
     [Parse setApplicationId:@"w1rAzcRAdPuoX60nNy3fKewfZPYCvgJQdXZYEJ3r" clientKey:@"Rg9avoCht3xPnM8ZrM42rBBeMIijaxpQMcSmAImu"];
     [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
      (UIRemoteNotificationTypeSound|
@@ -130,7 +130,7 @@
     //添加本地通知 测试  
     //设置20秒之后 
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:20];
-    //chuagjian一个本地推送
+    //chuangjian一个本地推送
     UILocalNotification *noti = [[[UILocalNotification alloc] init] autorelease];
     if (noti) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
@@ -153,9 +153,46 @@
         //添加推送到uiapplication        
         UIApplication *app = [UIApplication sharedApplication];
         [app scheduleLocalNotification:noti];  
-        //[app presentLocalNotificationNow:noti];
+//        [app presentLocalNotificationNow:noti];
         //[noti release];
     }
+    //设置打分提示
+    NSDate *date2 = [NSDate dateWithTimeIntervalSinceNow:100];
+    UILocalNotification *notiPoint = [[[UILocalNotification alloc] init] autorelease];
+    if (notiPoint) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        //设置推送时间
+        notiPoint.fireDate = date2;
+        //设置时区
+        notiPoint.timeZone = [NSTimeZone defaultTimeZone];
+        //设置重复间隔
+        notiPoint.repeatInterval = kCFCalendarUnitWeek;
+        //推送声音
+        notiPoint.soundName = UILocalNotificationDefaultSoundName;
+        //内容
+        notiPoint.alertBody = @"如果感觉好玩去给个好评吧，亲";
+        notiPoint.alertAction = @"好的";
+        //显示在icon上的红色圈中的数子
+        notiPoint.applicationIconBadgeNumber = 1;
+        //设置userinfo 方便在之后需要撤销的时候使用
+        NSDictionary *infoDic = [NSDictionary dictionaryWithObject:@"point" forKey:@"key"];
+        notiPoint.userInfo = infoDic;
+        //添加推送到uiapplication        
+        UIApplication *app = [UIApplication sharedApplication];
+        [app scheduleLocalNotification:notiPoint];  
+        [app presentLocalNotificationNow:notiPoint];
+        //[noti release];
+    }
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{  
+    NSLog(@"Button %d pressed",buttonIndex);  
+    [alertView release];  
+    if (0 == buttonIndex) {
+        NSString * str =@"http://www.sina.com.cn";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
+
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
@@ -163,17 +200,34 @@
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateInactive)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"欢迎回来"
-                                                        message:@"快开始战斗吧!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
-        [alert show];
+
         //这里，你就可以通过notification的useinfo，干一些你想做的事情了
         application.applicationIconBadgeNumber -= 1;
         
         NSString *reminderText = [notification.userInfo
                                   objectForKey:@"key"];
+        NSString *point = @"point";
+        if (NSOrderedSame == [reminderText compare:(point)]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"进入评分"
+                                                            message:@"去给个好评吧，亲!"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:@"不用",nil];
+            alert.delegate =   self;  
+            [alert show];
+//            NSString * str =@"http://www.sina.com.cn";
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"欢迎回来"
+                                                            message:@"快开始战斗吧!"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
         NSLog(@"%@",reminderText);
     }
 }
