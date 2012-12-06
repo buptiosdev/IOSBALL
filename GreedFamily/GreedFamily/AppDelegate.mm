@@ -129,7 +129,7 @@
     
     //添加本地通知 测试  
     //设置20秒之后 
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:20];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:2000];
     //chuangjian一个本地推送
     UILocalNotification *noti = [[[UILocalNotification alloc] init] autorelease];
     if (noti) {
@@ -157,7 +157,7 @@
         //[noti release];
     }
     //设置打分提示
-    NSDate *date2 = [NSDate dateWithTimeIntervalSinceNow:100];
+    NSDate *date2 = [NSDate dateWithTimeIntervalSinceNow:1000];
     UILocalNotification *notiPoint = [[[UILocalNotification alloc] init] autorelease];
     if (notiPoint) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
@@ -180,7 +180,7 @@
         //添加推送到uiapplication        
         UIApplication *app = [UIApplication sharedApplication];
         [app scheduleLocalNotification:notiPoint];  
-        [app presentLocalNotificationNow:notiPoint];
+//        [app presentLocalNotificationNow:notiPoint];
         //[noti release];
     }
 }

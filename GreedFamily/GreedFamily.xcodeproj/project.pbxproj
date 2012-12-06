@@ -160,6 +160,7 @@
 		70081FCC153F9881003F042A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70081FCB153F9881003F042A /* RootViewController.m */; };
 		70081FD2153F9881003F042A /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70081FD1153F9881003F042A /* GLES-Render.mm */; };
 		70081FD5153F9881003F042A /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 70081FD4153F9881003F042A /* blocks.png */; };
+		7009AD951670E505008DAEED /* background_sunset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7009AD941670E505008DAEED /* background_sunset.jpg */; };
 		701B37AC1668FBAB001B5F22 /* teachdetail4-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */; };
 		701B37AF1669254D001B5F22 /* get_score_01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AD1669254D001B5F22 /* get_score_01.plist */; };
 		701B37B01669254D001B5F22 /* get_score_02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AE1669254D001B5F22 /* get_score_02.plist */; };
@@ -617,6 +618,7 @@
 		70081FD1153F9881003F042A /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		70081FD3153F9881003F042A /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		70081FD4153F9881003F042A /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		7009AD941670E505008DAEED /* background_sunset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_sunset.jpg; path = Resources/pic/background_sunset.jpg; sourceTree = "<group>"; };
 		701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "teachdetail4-2.jpg"; path = "Resources/pic/teachdetail4-2.jpg"; sourceTree = "<group>"; };
 		701B37AD1669254D001B5F22 /* get_score_01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = get_score_01.plist; sourceTree = "<group>"; };
 		701B37AE1669254D001B5F22 /* get_score_02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = get_score_02.plist; sourceTree = "<group>"; };
@@ -1424,6 +1426,7 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				7009AD941670E505008DAEED /* background_sunset.jpg */,
 				70DFE9E9166F794D00C58849 /* progress4.png */,
 				70DFE9DA166E42FC00C58849 /* progress2.png */,
 				70DFE9DB166E42FC00C58849 /* progress3.png */,
@@ -1759,6 +1762,7 @@
 				70DFE9E2166E505F00C58849 /* wildbird.mp3 in Resources */,
 				70DFE9E4166E5ED600C58849 /* morning.mp3 in Resources */,
 				70DFE9EA166F794D00C58849 /* progress4.png in Resources */,
+				7009AD951670E505008DAEED /* background_sunset.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

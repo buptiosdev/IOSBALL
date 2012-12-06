@@ -53,7 +53,18 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 //        [self addChild:batch2 z:-1 tag:AnimationTag];
         
         // IMPORTANT: filenames are case sensitive on iOS devices!
-        CCSprite* background = [CCSprite spriteWithFile:@"background_level.jpg"];
+        CCSprite* background = nil;
+        int order = [GameMainScene sharedMainScene].sceneNum;
+        
+        if (order > 0 && order <= 10) 
+        {
+            background = [CCSprite spriteWithFile:@"background_level.jpg"];    
+        }
+        else 
+        {
+            background = [CCSprite spriteWithFile:@"background_sunset.jpg"];      
+        }
+
         //change size by diff version manual
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         background.scaleX=((screenSize.width))/[background contentSize].width; //按照像素定制图片宽高
@@ -80,30 +91,17 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         return;
     }
         
-//    int order = [GameMainScene sharedMainScene].sceneNum;
-//    
-//    if (order > 0 && order <= 5) 
-//    {
-//        [CommonLayer playBackMusic:GameMusic5];
-//    }
-//    else if (order > 0 && order <= 10)
-//    {
-//        [CommonLayer playBackMusic:GameMusic6];
-//    }
-//    else if (order > 0 && order <= 15) 
-//    {
-//        [CommonLayer playBackMusic:GameMusic2];
-//    }
-//    else if (order > 0 && order <= 18)
-//    {
-//       [CommonLayer playBackMusic:GameMusic3];
-//    }
-//    else
-//    {
-//       [CommonLayer playBackMusic:GameMusic4];
-//
-//    }
-    [CommonLayer playBackMusic:GameMusic2];
+    int order = [GameMainScene sharedMainScene].sceneNum;
+    
+    if (order > 0 && order <= 10) 
+    {
+        [CommonLayer playBackMusic:GameMusic2];
+    }
+    else 
+    {
+        [CommonLayer playBackMusic:GameMusic1];
+    }
+
 }
 
 -(void)preloadAudio
