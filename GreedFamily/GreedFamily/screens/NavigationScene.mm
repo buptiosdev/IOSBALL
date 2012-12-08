@@ -206,6 +206,28 @@ Boolean showPair=YES;
         //set the distance to be the 1.5times of the label
         [leadermenu alignItemsHorizontallyWithPadding:size.width*logoleaderdistance-[leader contentSize].width*leaderscale];
         [self addChild:leadermenu];
+
+        
+        //add by liujin at 2012.12.8 
+        //加入特效
+        CCParticleSystem* system;
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"candy.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        //system.position = CGPointMake(random()%20 + 10, 80);
+        [self addChild:system z:0 tag:10];        
+        
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"apple.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        //system.position = CGPointMake(random()%20 + 10, 80);
+        [self addChild:system z:0 tag:11];         
+ 
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"cheese.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        //system.position = CGPointMake(random()%20 + 10, 80);
+        [self addChild:system z:0 tag:12];             
         
         
         //播放背景音乐
