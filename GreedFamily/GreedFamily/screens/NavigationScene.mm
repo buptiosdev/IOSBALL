@@ -54,12 +54,12 @@ Boolean showPair=YES;
         background.scaleY=(size.height)/[background contentSize].height;
         NSAssert( background != nil, @"background must be non-nil");
 		[background setPosition:ccp(size.width / 2, size.height/2)];
-		[self addChild:background];
+		[self addChild:background z:-3];
 		
         //set logo
         CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logoword.png"];
         logo.scale=(size.width*logowordscale)/[logo contentSize].width;
-        [self addChild:logo];
+        [self addChild:logo z:1];
         logo.position=CGPointMake(size.width / 2, size.height * 3 / 4 );
         
 
@@ -76,7 +76,7 @@ Boolean showPair=YES;
         
         CCAction *moveAction = [CCRepeatForever actionWithAction: seq ];
         [logopanda runAction:moveAction];
-        [self addChild:logopanda];
+        [self addChild:logopanda z:1];
         
         
         CCSprite *logopig= [CCSprite spriteWithSpriteFrameName:@"logopig_1.png"];
@@ -90,7 +90,7 @@ Boolean showPair=YES;
         
         CCAction *moveActionlogopig = [CCRepeatForever actionWithAction: seqlogopig ];
         [logopig runAction:moveActionlogopig];
-        [self addChild:logopig];
+        [self addChild:logopig z:1];
         
         
         //set play 
@@ -105,7 +105,7 @@ Boolean showPair=YES;
         playitem.scale=(size.width*logoplayscale)/[play contentSize].width;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
         [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
-        [self addChild:playmenu];
+        [self addChild:playmenu z:1];
         
         
         //set pair play 
@@ -125,7 +125,7 @@ Boolean showPair=YES;
         if(showPair){
             [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
             [plairplaymenu setPosition:ccp(size.width/2,size.height*2/7)];
-            [self addChild:plairplaymenu];
+            [self addChild:plairplaymenu z:1];
         }
         
         
@@ -144,7 +144,7 @@ Boolean showPair=YES;
         
         CCMenu * optionmenu = [CCMenu menuWithItems:optionItem, nil];
         [optionmenu setPosition:ccp([option contentSize].width*optscale/2,[option contentSize].height*optscale/2)];
-        [self addChild:optionmenu];
+        [self addChild:optionmenu z:1];
         
         //set info in the right-down corner
         CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
@@ -158,7 +158,7 @@ Boolean showPair=YES;
         infoItem.scale=optscale;
         CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
         [infomenu setPosition:ccp(size.width-[info contentSize].width*optscale/2,[info contentSize].height*optscale/2)];
-        [self addChild:infomenu];
+        [self addChild:infomenu z:1];
         
 
         //set leadership
@@ -205,7 +205,7 @@ Boolean showPair=YES;
         //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
         //set the distance to be the 1.5times of the label
         [leadermenu alignItemsHorizontallyWithPadding:size.width*logoleaderdistance-[leader contentSize].width*leaderscale];
-        [self addChild:leadermenu];
+        [self addChild:leadermenu z:1];
 
         
         //add by liujin at 2012.12.8 
@@ -221,13 +221,13 @@ Boolean showPair=YES;
         system.positionType = kCCPositionTypeFree;
         system.autoRemoveOnFinish = YES;
         //system.position = CGPointMake(random()%20 + 10, 80);
-        [self addChild:system z:0 tag:11];         
+        [self addChild:system z:-1 tag:11];         
  
         system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"cheese.plist"];
         system.positionType = kCCPositionTypeFree;
         system.autoRemoveOnFinish = YES;
         //system.position = CGPointMake(random()%20 + 10, 80);
-        [self addChild:system z:0 tag:12];             
+        [self addChild:system z:-2 tag:12];             
         
         
         //播放背景音乐

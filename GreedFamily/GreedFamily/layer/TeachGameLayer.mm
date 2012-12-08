@@ -63,7 +63,6 @@
             [self addChild:background z:100];
             break;
         }
-
         case 3:
         {
             NSString* teachPic = [NSString stringWithFormat:@"teachdetail5.jpg"];
@@ -81,18 +80,6 @@
         }
         case 4:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachmagic.jpg"];
-//            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
             break;
         }
         case 5:
@@ -111,9 +98,9 @@
             [self addChild:background z:100];
             break;
         }
-        case 12:
+        case 8:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachpepper.jpg"];
+            NSString* teachPic = [NSString stringWithFormat:@"teachmagic.jpg"];
             //            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
             CCSprite* background = [CCSprite spriteWithFile:teachPic];
             
@@ -125,6 +112,15 @@
             screenSize = [[CCDirector sharedDirector] winSize];
             background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
             [self addChild:background z:100];
+            break;
+        }
+        case 9:
+        {
+            break;
+        }
+        case 10:
+        {
+            
             break;
         }
         case 11:
@@ -143,7 +139,26 @@
             [self addChild:background z:100];
             break;
         }
+        case 12:
+        {
+            break;
+        }
         case 13:
+        {
+            NSString* teachPic = [NSString stringWithFormat:@"teachpepper.jpg"];
+            CCSprite* background = [CCSprite spriteWithFile:teachPic];
+            
+            //change size by diff version manual
+            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
+            background.scaleY=(screenSize.height)/[background contentSize].height;
+            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+            //change size by diff version
+            screenSize = [[CCDirector sharedDirector] winSize];
+            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
+            [self addChild:background z:100];
+            break;
+        }
+        case 14:
         {
             NSString* teachPic = [NSString stringWithFormat:@"teachgalic.jpg"];
             //            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
@@ -157,6 +172,18 @@
             screenSize = [[CCDirector sharedDirector] winSize];
             background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
             [self addChild:background z:100];
+            break;
+        }
+        case 15:
+        {
+            break;
+        }
+        case 16:
+        {
+            break;
+        }
+        case 17:
+        {
             break;
         }
         default:
