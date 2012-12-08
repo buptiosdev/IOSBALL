@@ -303,6 +303,9 @@
 		70DFE9E2166E505F00C58849 /* wildbird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E0166E505F00C58849 /* wildbird.mp3 */; };
 		70DFE9E4166E5ED600C58849 /* morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E3166E5ED600C58849 /* morning.mp3 */; };
 		70DFE9EA166F794D00C58849 /* progress4.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E9166F794D00C58849 /* progress4.png */; };
+		C653B2C516738FDE003005AB /* candy.plist in Resources */ = {isa = PBXBuildFile; fileRef = C653B2C416738FDE003005AB /* candy.plist */; };
+		C653B2C716739184003005AB /* apple.plist in Resources */ = {isa = PBXBuildFile; fileRef = C653B2C616739184003005AB /* apple.plist */; };
+		C653B2C916739344003005AB /* cheese.plist in Resources */ = {isa = PBXBuildFile; fileRef = C653B2C816739344003005AB /* cheese.plist */; };
 		C674C666166B572800774FD4 /* star.plist in Resources */ = {isa = PBXBuildFile; fileRef = C674C665166B572800774FD4 /* star.plist */; };
 /* End PBXBuildFile section */
 
@@ -806,6 +809,9 @@
 		70DFE9E0166E505F00C58849 /* wildbird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wildbird.mp3; sourceTree = "<group>"; };
 		70DFE9E3166E5ED600C58849 /* morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morning.mp3; sourceTree = "<group>"; };
 		70DFE9E9166F794D00C58849 /* progress4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress4.png; path = Resources/pic/progress4.png; sourceTree = "<group>"; };
+		C653B2C416738FDE003005AB /* candy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = candy.plist; sourceTree = "<group>"; };
+		C653B2C616739184003005AB /* apple.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = apple.plist; sourceTree = "<group>"; };
+		C653B2C816739344003005AB /* cheese.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cheese.plist; sourceTree = "<group>"; };
 		C674C665166B572800774FD4 /* star.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = star.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1383,6 +1389,9 @@
 		7032FD1215DB941C00E5E108 /* specialist */ = {
 			isa = PBXGroup;
 			children = (
+				C653B2C816739344003005AB /* cheese.plist */,
+				C653B2C616739184003005AB /* apple.plist */,
+				C653B2C416738FDE003005AB /* candy.plist */,
 				C674C665166B572800774FD4 /* star.plist */,
 				706F2572166B5169008AE1E8 /* box02.plist */,
 				701B37AD1669254D001B5F22 /* get_score_01.plist */,
@@ -1763,6 +1772,9 @@
 				70DFE9E4166E5ED600C58849 /* morning.mp3 in Resources */,
 				70DFE9EA166F794D00C58849 /* progress4.png in Resources */,
 				7009AD951670E505008DAEED /* background_sunset.jpg in Resources */,
+				C653B2C516738FDE003005AB /* candy.plist in Resources */,
+				C653B2C716739184003005AB /* apple.plist in Resources */,
+				C653B2C916739344003005AB /* cheese.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
