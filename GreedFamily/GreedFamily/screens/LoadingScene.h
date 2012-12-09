@@ -43,11 +43,11 @@ typedef enum
 @interface LoadingScene : CCScene
 {
 	TargetScenes targetScene_;
-    UIActivityIndicatorView *activityIndicatorView;
-    BOOL gameIsReady;
+//    UIActivityIndicatorView *activityIndicatorView;
+//    BOOL gameIsReady;
     //UIView *battleView;
 }
-
+@property(assign, nonatomic) int waitTime;
 +(id) sceneWithTargetScene:(TargetScenes)targetScene;
 -(id) initWithTargetScene:(TargetScenes)targetScene;
 
