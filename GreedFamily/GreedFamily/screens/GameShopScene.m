@@ -46,7 +46,7 @@ float shopitemscale=0.15;
 {
     NSString *strName = [NSString stringWithFormat:@"RoleType"];
     roalType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    CGSize size = [[CCDirector sharedDirector] winSize];
     //角色
     CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
     [frameCache addSpriteFramesWithFile:@"gamemain01_default.plist"];
@@ -56,7 +56,7 @@ float shopitemscale=0.15;
     NSString *strTotalScore = nil;
     NSString *strBuyedList = nil;
     CCSprite *roleSprite = nil;
-    float rolesizeX=(screenSize.width)*shoprolescale;
+    float rolesizeX=(size.width)*shoprolescale;
     if (1 == roalType)
     {
         strTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
@@ -362,7 +362,7 @@ float shopitemscale=0.15;
         }
     }
 
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    CGSize size = [[CCDirector sharedDirector] winSize];
 
     [Labelnum1 setColor:ccRED];
     [LabelSpend1 setColor:ccRED];
@@ -370,7 +370,7 @@ float shopitemscale=0.15;
     [addLandSpeeMenu addChild:LabelSpend1];
     LabelSpend1.anchorPoint=CGPointMake(0, 2);
     Labelnum1.anchorPoint=CGPointMake(0, 1);
-    addLandSpeeMenu.scale=screenSize.width*shopitemscale/[addLandSpeeMenu contentSize].width;
+    addLandSpeeMenu.scale=size.width*shopitemscale/[addLandSpeeMenu contentSize].width;
 
     [Labelnum2 setColor:ccRED];
     [LabelSpend2 setColor:ccRED];
@@ -378,7 +378,7 @@ float shopitemscale=0.15;
     [addStorageMenu addChild:Labelnum2];
     LabelSpend2.anchorPoint=CGPointMake(0, 2);
     Labelnum2.anchorPoint=CGPointMake(0, 1);
-    addStorageMenu.scale=screenSize.width*shopitemscale/[addStorageMenu contentSize].width;
+    addStorageMenu.scale=size.width*shopitemscale/[addStorageMenu contentSize].width;
 
     [Labelnum3 setColor:ccRED];
     [LabelSpend3 setColor:ccRED];
@@ -386,7 +386,7 @@ float shopitemscale=0.15;
     [addAirSpeedMenu addChild:Labelnum3];
     LabelSpend3.anchorPoint=CGPointMake(0, 2);
     Labelnum3.anchorPoint=CGPointMake(0, 1);
-    addAirSpeedMenu.scale=screenSize.width*shopitemscale/[addAirSpeedMenu contentSize].width;
+    addAirSpeedMenu.scale=size.width*shopitemscale/[addAirSpeedMenu contentSize].width;
 
     [Labelnum4 setColor:ccRED];
     [LabelSpend4 setColor:ccRED];
@@ -394,11 +394,11 @@ float shopitemscale=0.15;
     [addAirSencitMenu addChild:Labelnum4];
     LabelSpend4.anchorPoint=CGPointMake(0, 2);
     Labelnum4.anchorPoint=CGPointMake(0, 1);
-    addAirSencitMenu.scale=screenSize.width*shopitemscale/[addAirSencitMenu contentSize].width;
+    addAirSencitMenu.scale=size.width*shopitemscale/[addAirSencitMenu contentSize].width;
 
     CCMenu *menu = [CCMenu menuWithItems: addLandSpeeMenu, addStorageMenu, addAirSpeedMenu, addAirSencitMenu, nil];
-    [menu setPosition:ccp(screenSize.width * 0.5 , screenSize.height * 0.4)];
-    [menu alignItemsHorizontallyWithPadding:screenSize.width*shopitemscale/2];
+    [menu setPosition:ccp(size.width * 0.5 , size.height * 0.4)];
+    [menu alignItemsHorizontallyWithPadding:size.width*shopitemscale/2];
     [self addChild:menu z: -2 tag:4];
 
 }
