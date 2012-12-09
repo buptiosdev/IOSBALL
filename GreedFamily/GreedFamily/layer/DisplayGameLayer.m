@@ -45,7 +45,17 @@
         }
         default:
         {
-            displayPic = [NSString stringWithFormat:@"snake.jpg"];
+            int randomNum = random()%2;
+            
+            if (0 == randomNum) 
+            {
+                displayPic = [NSString stringWithFormat:@"display_pig.png"];
+            }
+            else
+            {
+                displayPic = [NSString stringWithFormat:@"display_snake.png"];
+            }
+            
             break;
         }
             
