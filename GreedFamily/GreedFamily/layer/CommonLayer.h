@@ -106,9 +106,10 @@ struct RoleParam {
 };
 
 @interface CommonLayer : CCLayer {
-    
+
 }
 @property (nonatomic) struct RoleParam *roleParamArray;
+//@property(assign, nonatomic) MusicType curMusic;
 +(CommonLayer *)sharedCommonLayer;
 +(void)playAudio:(int)audioType;
 

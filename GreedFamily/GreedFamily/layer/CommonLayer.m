@@ -13,8 +13,13 @@
 +(id)createCommonLayer;
 -(void)initRoleParam;
 @end
+
+//init the curMusic    modify by liuyunpeng 2012-12-9
+MusicType curMusic=0;
+
 @implementation CommonLayer
 @synthesize roleParamArray = _roleParamArray;
+//@synthesize curMusic = _curMusic;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static CommonLayer *instanceOfCommonLayer;
@@ -46,11 +51,7 @@ static CommonLayer *instanceOfCommonLayer;
 //角色的属性设置
 -(void)initRoleParam
 {
-    //    self.roleParamArray = [[CCArray alloc] initWithCapacity:ROLE_TYPE_COUNT];
     self.roleParamArray = (struct RoleParam *)malloc(sizeof(struct RoleParam)*ROLE_TYPE_COUNT);
-    //    RoleParam *pandaRole = self.roleParamArray[0];
-    //    RoleParam pigRole = self.roleParamArray[1];
-    //    RoleParam birdRole = self.roleParamArray[2];
     //panda
     self.roleParamArray[0].density = 0.65f;
     self.roleParamArray[0].restitution = 0.5f;
@@ -81,6 +82,7 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[2].hitEffect = 0.2f;
     self.roleParamArray[2].landSpeed = 0.4f;
     self.roleParamArray[2].storageCapacity = 6;
+    
 }
 
 
@@ -107,9 +109,6 @@ static CommonLayer *instanceOfCommonLayer;
         assert(NO);
     }
     int buyedList = [[NSUserDefaults standardUserDefaults] integerForKey:strBuyedList];
-    
-    
-    
     
     if (paramType == ROLELANDSPEED) 
     {
@@ -263,12 +262,21 @@ static CommonLayer *instanceOfCommonLayer;
         switch (musicType) {
             case StopGameMusic:
                 [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+                //add by liuyunpeng 2012-12-09
+                curMusic=0;
                 break; 
 
         }
         
         return;
     }
+    //add by liuyunpeng 2012-12-09
+    if(curMusic==musicType){
+        return;
+    }else{
+        curMusic=musicType;
+    }
+    
     switch (musicType) {
         case UnGameMusic1:
             [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
