@@ -18,6 +18,13 @@
 #import "NoBodyObjectsLayer.h"
 #import "CommonLayer.h"
 
+//BEGIN item scale  默认为相对于X的比例
+float storagestarscale=25.0/480;
+
+//END
+
+
+
 @interface Storage (PrivateMethods)
 -(id)initWithCapacity:(int)capacity Play:(int)playID StorageType:(int)type;
 -(void)moveFood;
@@ -48,6 +55,7 @@
 {
     if ((self = [super init]))
     {
+        CGSize size = [[CCDirector sharedDirector] winSize];
         storageType = type;
         storageID = playID;
         myGameScore = [GameScore createGameScore:playID];
@@ -68,16 +76,12 @@
         for(int i=0;i<12;i++)
         {
             
-            
             CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
             //change size by diff version query
-            star.position=CGPointMake([GameMainScene sharedMainScene].storagePos.x + 25*i, [GameMainScene sharedMainScene].storagePos.y);
+            star.position=CGPointMake([GameMainScene sharedMainScene].storagePos.x + size.width*storagestarscale*i, [GameMainScene sharedMainScene].storagePos.y);
             //change size by diff version manual
-            star.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
-            star.scaleY=(25)/[star contentSize].height;
+            star.scale=size.width*storagestarscale/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             [buttonBatch addChild:star z:-2];
-            //[batch addChild:star z:1];
-            //[self addChild:star];
         }
         
         for(int i=0;i<capacity;i++)
@@ -85,18 +89,15 @@
             //CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
             CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star_magic.png"];
             //change size by diff version query
-            star.position=CGPointMake([GameMainScene sharedMainScene].storagePos.x + 25*i, [GameMainScene sharedMainScene].storagePos.y);
+            star.position=CGPointMake([GameMainScene sharedMainScene].storagePos.x + size.width*storagestarscale*i, [GameMainScene sharedMainScene].storagePos.y);
             //change size by diff version manual
-            star.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
-            star.scaleY=(25)/[star contentSize].height;
-            //[batch addChild:star z:2];
- 
+            star.scale=size.width*storagestarscale/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
             [buttonBatch addChild:star z:-1];
         }
 
         if (2 == playID) 
         {
-            CGPoint distance = CGPointMake(240, 0);
+            CGPoint distance = CGPointMake(size.width/2, 0);
             _sprite.position = ccpAdd(_sprite.position, distance);
         }
         [batch addChild:_sprite];
@@ -476,6 +477,7 @@
 -(void)moveFood
 {
     Food *curFood = nil;
+    CGSize size = [[CCDirector sharedDirector] winSize];
     for (int i=0;i < storageCapacity; i++)
     {
         if ( i >= [foodArray count])
@@ -496,7 +498,7 @@
         if (2 == storageID) 
         {   
             //change size by diff version query
-            CGPoint distance = CGPointMake(240, 0);
+            CGPoint distance = CGPointMake(size.width/2, 0);
             moveToPosition = ccpAdd(distance, moveToPosition);
         }
        
