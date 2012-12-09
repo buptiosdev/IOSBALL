@@ -150,7 +150,7 @@ static GameScore  *instanceOfgameScore;
     
     getContinuousAward.position = CGPointMake(random()%20 + 10, 80);
     getContinuousAward.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getContinuousAward.scale = 0.6;
+    getContinuousAward.scale = 1.2;
     getContinuousAward.color = ccBLUE;
     
     //将5个动作组合为一个序列，注意不要忘了用nil结尾。 
@@ -197,7 +197,7 @@ static GameScore  *instanceOfgameScore;
     
     getContinuousAward.position = CGPointMake(random()%20 + 10, 80);
     getContinuousAward.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getContinuousAward.scale = 0.6;
+    getContinuousAward.scale = 1.1;
     getContinuousAward.color = ccBLUE;
 
     //将5个动作组合为一个序列，注意不要忘了用nil结尾。 
