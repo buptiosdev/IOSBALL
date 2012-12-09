@@ -134,8 +134,18 @@
         }
         default:
         {
-            teachPic = [NSString stringWithFormat:@"teachdetail5.jpg"];
-            break;
+            int randomNum = random()%2;
+            
+            if (0 == randomNum) 
+            {
+                teachPic = [NSString stringWithFormat:@"display_pig.png"];
+            }
+            else
+            {
+                teachPic = [NSString stringWithFormat:@"display_snake.png"];
+            }
+            
+            break;;
         }
     }
     CCSprite* background = [CCSprite spriteWithFile:teachPic];
