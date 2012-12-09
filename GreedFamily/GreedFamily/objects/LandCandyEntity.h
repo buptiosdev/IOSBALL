@@ -13,6 +13,8 @@
     //int Balltype;
     //CGPoint position;
     //CGPoint candyVelocity;
+    float xflutter;
+    int iterationTime;
     
 }
 @property (assign, nonatomic) CCSprite* sprite;

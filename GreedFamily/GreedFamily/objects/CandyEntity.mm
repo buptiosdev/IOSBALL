@@ -145,10 +145,10 @@
     candyParamDef.spriteFrameName = @"apple+.png";
     candyParamDef.density = (0 == param.density) ? 0.5 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.8 : param.restitution;
-    candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
-    candyParamDef.angularDamping = (0 == param.restitution) ? 0.1 : param.angularDamping;
+    candyParamDef.linearDamping = (0 == param.linearDamping) ? 0.2 : param.linearDamping;
+    candyParamDef.angularDamping = (0 == param.angularDamping) ? 0.1 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.5 : param.friction;
-    candyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
+    candyParamDef.radius = (0 == param.radius) ? 0.5 : param.radius;
     candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 1 : param.initialHitPoints;
 
 }
@@ -162,10 +162,10 @@
     candyParamDef.spriteFrameName = @"cheese+.png";
     candyParamDef.density = (0 == param.density) ? 0.6 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.8 : param.restitution;
-    candyParamDef.linearDamping = (0 == param.restitution) ? 0.1 : param.linearDamping;
-    candyParamDef.angularDamping = (0 == param.restitution) ? 0.1 : param.angularDamping;
+    candyParamDef.linearDamping = (0 == param.linearDamping) ? 0.1 : param.linearDamping;
+    candyParamDef.angularDamping = (0 == param.angularDamping) ? 0.1 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
-    candyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
+    candyParamDef.radius = (0 == param.radius) ? 0.5 : param.radius;
     candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 1 : param.initialHitPoints;
     
 }
@@ -179,10 +179,10 @@
     candyParamDef.spriteFrameName = @"candy+.png";
     candyParamDef.density = (0 == param.density) ? 0.2 : param.density;
     candyParamDef.restitution = (0 == param.restitution) ? 0.3 : param.restitution;
-    candyParamDef.linearDamping = (0 == param.restitution) ? 0.2 : param.linearDamping;
-    candyParamDef.angularDamping = (0 == param.restitution) ? 0.3 : param.angularDamping;
+    candyParamDef.linearDamping = (0 == param.linearDamping) ? 0.2 : param.linearDamping;
+    candyParamDef.angularDamping = (0 == param.angularDamping) ? 0.3 : param.angularDamping;
     candyParamDef.friction = (0 == param.friction) ? 0.2 : param.friction;
-    candyParamDef.radius = (0 == param.density) ? 0.5 : param.radius;
+    candyParamDef.radius = (0 == param.radius) ? 0.5 : param.radius;
     candyParamDef.initialHitPoints = (0 == param.initialHitPoints) ? 1 : param.initialHitPoints;
 
 }
