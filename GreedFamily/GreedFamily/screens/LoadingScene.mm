@@ -11,8 +11,10 @@
 #import "NavigationScene.h"
 #import "AppDelegate.h"
 #import "TeachGameLayer.h"
+#import "DisplayGameLayer.h"
 @interface LoadingScene (PrivateMethods)
 -(void) update:(ccTime)delta;
+-(int)getAndIncreaseLevelPlayTimes:(int)level;
 @end
 
 @implementation LoadingScene
@@ -39,9 +41,9 @@
         label.scale = 0.4;
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		label.position = CGPointMake(size.width * 0.8, size.height * 0.2);
-		[self addChild:label z:-2 tag:100];
+		[self addChild:label z:-1 tag:100];
         
-        
+        //添加load圆圈图标
         activityIndicatorView = [[[UIActivityIndicatorView alloc]   
                                                initWithActivityIndicatorStyle:   
                                                UIActivityIndicatorViewStyleWhiteLarge] autorelease];  
@@ -55,36 +57,47 @@
         [delegate.window addSubview:activityIndicatorView];
 //		// Must wait one frame before loading the target scene!
 //		// Two reasons: first, it would crash if not. Second, the Loading label wouldn't be displayed.
-        //广告或说明 
-        TeachGameLayer *p = [TeachGameLayer createTeachGameLayer:targetScene_];
-        [self addChild:p];
+        int levelPlayTimes = [self getAndIncreaseLevelPlayTimes:targetScene_];
         
-//        [self schedule:<#(SEL)#> interval:<#(ccTime)#>];
-        int waitTime = 2;
-        if (1 == targetScene) {
-            waitTime = 10;
+        int waitTime = 1;
+        if (levelPlayTimes >= TEACH_TIMES) {
+            //广告或宣传画或说明
+            DisplayGameLayer *p = [DisplayGameLayer createDisplayGameLayer:targetScene_];
+            [self addChild:p];
         }
+        else
+        {
+            //教学或评分 
+            TeachGameLayer *p = [TeachGameLayer createTeachGameLayer:targetScene_];
+            [self addChild:p];
+            //这几关信息量比较大
+            if (1 == targetScene || 4 == targetScene || 9 == targetScene) {
+                waitTime = 10;
+            }
+            else 
+            {
+                waitTime = 3;
+            }
+        }
+        
+
         [self schedule:@selector(waitAWhile:) interval:waitTime];
         
-        
-        // Add the UIActivityIndicatorView (in UIKit universe)  
-        
-//        activityIndicatorView = [[[UIActivityIndicatorView alloc]   
-//                                       initWithActivityIndicatorStyle:   
-//                                       UIActivityIndicatorViewStyleWhiteLarge] autorelease];  
-//        
-//        activityIndicatorView.center = ccp(190,240);  
-//        
-//        [activityIndicatorView startAnimating];  
-        
-        //[[self battleView] addSubview: activityIndicatorView]; 
-        //[[[CCDirector sharedDirector] openGLView] addSubview:activityIndicatorView];
-        
-        //[[AppDelegate getAppDelegate].window  addSubview:activityIndicatorView];
         
 	}
 	
 	return self;
+}
+  
+-(int)getAndIncreaseLevelPlayTimes:(int)level 
+{
+    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
+    str_starlevel = [str_starlevel stringByAppendingFormat:@"PlayTimes"];    
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    NSInteger playTimes = [usrDef integerForKey:str_starlevel];  
+    int nowPlayTime = playTimes+1;
+    [usrDef setInteger:nowPlayTime forKey:str_starlevel];
+    return playTimes;
 }
 
 -(void) waitAWhile:(ccTime)delta

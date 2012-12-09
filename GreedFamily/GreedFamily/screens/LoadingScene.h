@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#define TEACH_TIMES 10
 
 typedef enum
 {
