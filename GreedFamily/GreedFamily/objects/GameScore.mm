@@ -145,7 +145,7 @@ static GameScore  *instanceOfgameScore;
     CCLOG(@"之前的my_nowlevelscore %d",my_nowlevelscore);
     award_nowlevelscore = award_nowlevelscore + 1;
     my_nowlevelscore += award_nowlevelscore;
-    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapBlue.fnt"];
+    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"0" fntFile:@"blackcute.fnt"];
     [getContinuousAward setString:[NSString stringWithFormat:@"%i", award_nowlevelscore]];
     
     getContinuousAward.position = CGPointMake(random()%20 + 10, 80);
@@ -159,15 +159,15 @@ static GameScore  *instanceOfgameScore;
     id ac3_ = [CCDelayTime actionWithDuration:3];
     [getContinuousAward runAction:[CCSequence actions:ac3_,ac1_, ac0_,nil]]; 
     
-    [self addChild:getContinuousAward z:-1 tag:ContinuousAwardScoreTag];
-    [self schedule:@selector(removeContinuousAwardScore:) interval:6];
+    [self addChild:getContinuousAward z:-1 tag:AccumulateAwardScoreTag];
+    [self schedule:@selector(removeAccumulateAwardScore:) interval:6];
     //加入特效
     CCParticleSystem* system;
-    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bluescore.plist"];
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"redscore.plist"];
     system.positionType = kCCPositionTypeFree;
     system.autoRemoveOnFinish = YES;
     system.position = getContinuousAward.position;
-    [self addChild:system];
+    [self addChild:system z:-2 tag:AccumulateAwardScoreSpeciallyTag];
     
     //叠加得分音效
     [CommonLayer playAudio:GetScore];
@@ -184,15 +184,15 @@ static GameScore  *instanceOfgameScore;
                                myLevel:(int)gameLevel
 {
     //CCLOG(@"INTO calculateContinuousCombineAward\n\n");
-    int tempnowscore = (continuousflag-1)*2;
+    int tempnowscore = (continuousflag-1)*3;
     
     if (continuousflag <= 1) 
     {
         return;
     }
-    my_nowlevelscore += (continuousflag-1)*2;
+    my_nowlevelscore += (continuousflag-1)*3;
     
-    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapRed.fnt"];
+    CCLabelBMFont*  getContinuousAward = [CCLabelBMFont labelWithString:@"0" fntFile:@"bluecute.fnt"];
     [getContinuousAward setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     
     getContinuousAward.position = CGPointMake(random()%20 + 10, 80);
@@ -210,11 +210,11 @@ static GameScore  *instanceOfgameScore;
     [self schedule:@selector(removeContinuousAwardScore:) interval:6];
     //加入特效
     CCParticleSystem* system;
-    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"bluescore.plist"];
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"scoreblue.plist"];
     system.positionType = kCCPositionTypeFree;
     system.autoRemoveOnFinish = YES;
     system.position = getContinuousAward.position;
-    [self addChild:system];
+    [self addChild:system z:-2 tag:ContinuousAwardScoreSpeciallyTag];
     
     //得分音效
     [CommonLayer playAudio:GetScore];
@@ -229,23 +229,70 @@ static GameScore  *instanceOfgameScore;
 }
 
 
+
+
+
+
+
+-(void)setScoreLabel:(ccTime) dt 
+{
+    [self unschedule:@selector(setScoreLabel:)];
+    //更新得分
+    //CCLOG(@"Into setScoreLable\n\n");
+    [totalScoreLabel setString:[NSString stringWithFormat:@"%i", my_nowlevelscore]];    
+}
+
+
+-(void)removeAccumulateAwardScore: (ccTime) dt
+{
+    static int moveBaseScoreCount = 0;
+    moveBaseScoreCount++;
+    CCNode* baseScore = [self getChildByTag:AccumulateAwardScoreTag];
+    CCNode* speciallySystem = [self getChildByTag:AccumulateAwardScoreSpeciallyTag];
+    
+    speciallySystem.position = baseScore.position;    
+    
+    //5s
+    if (moveBaseScoreCount >= 100)
+    {
+        moveBaseScoreCount = 0;
+        [self unschedule:@selector(removeContinuousAwardScore:)];   
+        //消除特效
+        [self removeChildByTag:AccumulateAwardScoreTag cleanup:YES];
+        [self removeChildByTag:AccumulateAwardScoreSpeciallyTag cleanup:YES];
+    }   
+}
+
+
 -(void)removeContinuousAwardScore: (ccTime) dt
 {
-    [self unschedule:@selector(removeContinuousAwardScore:)];   
-    //消除特效
-    [self removeChildByTag:ContinuousAwardScoreTag cleanup:YES];
+    static int moveBaseScoreCount = 0;
+    moveBaseScoreCount++;
+    CCNode* baseScore = [self getChildByTag:ContinuousAwardScoreTag];
+    CCNode* speciallySystem = [self getChildByTag:ContinuousAwardScoreSpeciallyTag];
     
+    speciallySystem.position = baseScore.position;    
+    
+    //5s
+    if (moveBaseScoreCount >= 100)
+    {
+        moveBaseScoreCount = 0;
+        [self unschedule:@selector(removeContinuousAwardScore:)];   
+        //消除特效
+        [self removeChildByTag:ContinuousAwardScoreSpeciallyTag cleanup:YES];
+        [self removeChildByTag:ContinuousAwardScoreTag cleanup:YES];
+    }   
 }
 
 
 -(void)moveBaseScore: (ccTime) dt
 {
-
+    
     static int moveBaseScoreCount = 0;
     moveBaseScoreCount++;
     CCNode* baseScore = [self getChildByTag:BaseScoreTag];
     CCNode* speciallySystem = [self getChildByTag:BaseScoreSpeciallyTag];
-
+    
     speciallySystem.position = baseScore.position;    
     
     //5s
@@ -261,17 +308,6 @@ static GameScore  *instanceOfgameScore;
     }   
     
 }
-
-
--(void)setScoreLabel:(ccTime) dt 
-{
-    [self unschedule:@selector(setScoreLabel:)];
-    //更新得分
-    //CCLOG(@"Into setScoreLable\n\n");
-    [totalScoreLabel setString:[NSString stringWithFormat:@"%i", my_nowlevelscore]];    
-}
-
-
 -(void)removeAwardScore: (ccTime) dt
 {
     static int removeAwardScoreCount = 0;
@@ -329,12 +365,12 @@ static GameScore  *instanceOfgameScore;
     my_nowlevelscore += tempnowscore;
     //接特效
     //加分特效
-    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum2.fnt"];
+    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"yellowcute.fnt"];
     [getBaseScore setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     
     getBaseScore.position = CGPointMake(random()%20 + 10, 80);
     getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
-    getBaseScore.scale = 0.6;
+    getBaseScore.scale = 1;
     getBaseScore.color = ccYELLOW;
     [self addChild:getBaseScore z:-2 tag:BaseScoreTag];
     //加入得分特效
@@ -385,7 +421,7 @@ static GameScore  *instanceOfgameScore;
     //接特效
     //加分特效
 
-    CCLabelBMFont*  getAwardScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum4.fnt"];
+    CCLabelBMFont*  getAwardScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapRed.fnt"];
     [getAwardScore setString:[NSString stringWithFormat:@"%i", tempnowscore]];
     getAwardScore.position = CGPointMake(random()%20 + 20, 80);
     getAwardScore.anchorPoint = CGPointMake(0.5f, 1.0f);

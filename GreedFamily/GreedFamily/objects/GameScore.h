@@ -32,9 +32,12 @@ typedef enum
 	BaseScoreTag = 0,
     AwardScoreTag,
 	ContinuousAwardScoreTag,
-    AwardScoreSpeciallyTag,
-	ScoreTags_MAX,
+    AccumulateAwardScoreTag,
     BaseScoreSpeciallyTag,
+    AwardScoreSpeciallyTag,
+    ContinuousAwardScoreSpeciallyTag,
+    AccumulateAwardScoreSpeciallyTag,
+	ScoreTags_MAX,
 } ScoreTags;
 
 struct  struct_gameScore_rules{

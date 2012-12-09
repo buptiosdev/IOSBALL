@@ -72,7 +72,7 @@
     
 //        CGSize screenSize = [[CCDirector sharedDirector] winSize];
         NSString *levelNum = [NSString stringWithFormat:@"LeveL %d",[[GameMainScene sharedMainScene] mainscenParam].order];
-        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Georgia-Bold" fontSize:25];
+        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Dekers_Bold" fontSize:25];
         [levelLabel setColor:ccBLACK];
         [levelLabel setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)* 0.9)];
         [self addChild:levelLabel];
@@ -127,7 +127,7 @@
  
         }
         
-            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Sniglet" fontSize:40];
+            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"escuela" fontSize:50];
             [labelnewrecord setColor:ccRED];
             labelnewrecord.position=CGPointMake(size.width *4/5, size.height *3/4  );;
             [labelnewrecord runAction:[CCSequence actions:

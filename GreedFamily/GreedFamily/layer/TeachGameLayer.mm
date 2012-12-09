@@ -140,6 +140,10 @@
             {
                 teachPic = [NSString stringWithFormat:@"display_pig.png"];
             }
+            else if (1 == randomNum) 
+            {
+                teachPic = [NSString stringWithFormat:@"display_panda.png"];
+            }
             else
             {
                 teachPic = [NSString stringWithFormat:@"display_snake.png"];

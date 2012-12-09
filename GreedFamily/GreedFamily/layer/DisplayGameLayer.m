@@ -45,11 +45,15 @@
         }
         default:
         {
-            int randomNum = random()%2;
+            int randomNum = random()%3;
             
             if (0 == randomNum) 
             {
                 displayPic = [NSString stringWithFormat:@"display_pig.png"];
+            }
+            else if (1 == randomNum) 
+            {
+                displayPic = [NSString stringWithFormat:@"display_panda.png"];
             }
             else
             {

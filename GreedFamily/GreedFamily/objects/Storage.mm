@@ -562,7 +562,7 @@ float storagestarscale=25.0/480;
     {
         
         delayTime += 2;
-        consisFlag++;
+        
         int tmpCount = 0;
         Food *curBall = (Food *)[foodArray objectAtIndex:0];
         
@@ -583,7 +583,10 @@ float storagestarscale=25.0/480;
                                                Candy:foodInStorage[1]
                                                Apple:foodInStorage[0]
                                            DelayTime:delayTime];
-        
+        //超过3个球算一次额外加分
+        if (tmpCount >= 3) {
+            consisFlag++;
+        }
         while (tmpCount>0)
         { 
             id ac1 = [CCScaleBy actionWithDuration:0.5 scale:1.5*((Food *)[foodArray objectAtIndex:nowcount-1]).scaleX]; 
@@ -609,14 +612,14 @@ float storagestarscale=25.0/480;
         //得分音效
         [CommonLayer playAudio:GetScore];
     }
-    //这里是否可以去掉？去掉
+
     CCLOG(@"consisFlag is %d",consisFlag);
-//    if (consisFlag>0)
-//    {    
-//        //调用连续消球 得分函数         
-//        //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
-//        [myGameScore calculateContinuousCombineAward:consisFlag myLevel:gamelevel];            
-//    }
+    if (consisFlag>0)
+    {    
+        //调用连续消球 得分函数         
+        //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+        [myGameScore calculateContinuousCombineAward:consisFlag myLevel:gamelevel];            
+    }
     
     [self moveFood];
 }
