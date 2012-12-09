@@ -291,7 +291,7 @@ static GameMainScene *instanceOfMainScene;
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
     _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2);
     _storagePos = CGPointMake(25/2, 25/2);
-    _scorePos = CGPointMake(40, screenSize.height - 16);
+    _scorePos = CGPointMake(30, screenSize.height - 16);
 }
 
 -(void)initSceneParam:(int)order

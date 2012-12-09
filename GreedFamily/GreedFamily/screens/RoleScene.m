@@ -198,18 +198,18 @@ float logoreturnscaleY=0.15;
         //set return in the left-down corner
         //add by lyp 2012-10-23
         int rolefontsize=screenSize.height*rolefontscaleY;
-        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"Georgia-Bold" fontSize:rolefontsize];
+        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"ARIALN" fontSize:rolefontsize];
 //        ccColor3B color = {20,156,12};
         ccColor3B color = {2,2,2};
         [landanimalspeed setColor:color];
         [self addChild:landanimalspeed];
         int labelpos=landanimalspeed.contentSize.width/2;
         [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
-        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"Georgia-Bold" fontSize:rolefontsize];
+        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"ARIALN" fontSize:rolefontsize];
         [flyanimalspeed setColor:color];
         [self addChild:flyanimalspeed];
         [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.4)];
-        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"Georgia-Bold" fontSize:rolefontsize];
+        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"ARIALN" fontSize:rolefontsize];
         [storagecapacity setColor:color];
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.3)];

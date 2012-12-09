@@ -78,8 +78,8 @@
         [self addChild:levelLabel];
         
         NSString* temp=[@"base score: " stringByAppendingFormat:@" %d",score];
-//        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Marker Felt" fontSize:30];
-        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
+//        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
+        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Dekers_Bold" fontSize:30];
 		CGSize size = [[CCDirector sharedDirector] winSize];
         //change size by diff version query
 		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
@@ -87,14 +87,14 @@
 		[self addChild:labelscore];
         
         temp=[@"time award: " stringByAppendingFormat:@" %d",addscore];
-        CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
+        CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:temp fontName:@"Dekers_Bold" fontSize:30];
         //change size by diff version query
 		labeladdscore.position = CGPointMake(size.width / 3, size.height * 5 / 9 );
         [labeladdscore setColor:ccBLACK];
 		[self addChild:labeladdscore];
         
         temp=[@"total score: " stringByAppendingFormat:@" %d",score+addscore];
-        CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:temp fontName:@"Georgia-Bold" fontSize:30];
+        CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:temp fontName:@"Dekers_Bold" fontSize:30];
         //change size by diff version query
 		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 3 / 9 );
         [labeltotalscore setColor:ccBLACK];
@@ -127,9 +127,9 @@
  
         }
         
-            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Zapfino" fontSize:30];
+            CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Sniglet" fontSize:40];
             [labelnewrecord setColor:ccRED];
-            labelnewrecord.position=CGPointMake(size.width *3/ 4, size.height *3/4  );;
+            labelnewrecord.position=CGPointMake(size.width *4/5, size.height *3/4  );;
             [labelnewrecord runAction:[CCSequence actions:
                                 [CCDelayTime actionWithDuration:0.5],
                                 [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],

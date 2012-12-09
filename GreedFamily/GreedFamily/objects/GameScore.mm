@@ -65,26 +65,25 @@ static GameScore  *instanceOfgameScore;
         //change size by diff version
         if (1 == playID) 
         {
-            my_score = [CCLabelTTF labelWithString:@" SCORE:" fontName:@"Georgia-Bold" fontSize:20];
+            my_score = [CCLabelTTF labelWithString:@" SCORE:" fontName:@"lmgwtl" fontSize:22];
             my_score.position = [GameMainScene sharedMainScene].scorePos;
         }
         //play2
         else
         {
-            my_score = [CCLabelTTF labelWithString:@"P2SCORE:" fontName:@"Georgia-Bold" fontSize:20];
+            my_score = [CCLabelTTF labelWithString:@"P2SCORE:" fontName:@"lmgwtl" fontSize:22];
             my_score.position = [GameMainScene sharedMainScene].scorePlay2Pos;
         }
         my_score.color = ccc3(255,0,0);
         [self addChild:my_score]; 
         //and HighestScore
         
-        CCLabelTTF* my_highestscore = [CCLabelTTF labelWithString:@"BEST:" fontName:@"Georgia-Bold" fontSize:20];
-        
+        CCLabelTTF* my_highestscore = [CCLabelTTF labelWithString:@"BEST:" fontName:@"lmgwtl.ttf" fontSize:22];
         my_highestscore.color = ccc3(255,0,0);
         //change size by diff version
         CGPoint distance1 = CGPointMake(0, -30);
-        CGPoint distance2 = CGPointMake(55, 17);
-        CGPoint distance3 = CGPointMake(55, 19);
+        CGPoint distance2 = CGPointMake(40, 17);
+        CGPoint distance3 = CGPointMake(40, 19);
         my_highestscore.position =  ccpAdd([GameMainScene sharedMainScene].scorePos, distance1);     
         [self addChild:my_highestscore];
         //初始化得分
