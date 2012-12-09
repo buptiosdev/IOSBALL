@@ -21,7 +21,7 @@ int levelfontsize=50;
 float levelsnakescaleY=65.0/320;
 float levelspeedscale=0.4/480;
 
-float levelreturnscaleY=0.13;
+float levelreturnscaleY=0.15;
 //END
 
 

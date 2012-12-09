@@ -24,7 +24,7 @@ float logoroledistance=0.25;
 float rolefontscaleY=0.06;
 float progressscale=0.6;
 
-float logoreturnscaleY=0.14;
+float logoreturnscaleY=0.15;
 //END
 
 
