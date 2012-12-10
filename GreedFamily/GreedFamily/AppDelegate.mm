@@ -141,7 +141,7 @@
         //设置重复间隔
         
         noti.repeatInterval = kCFCalendarUnitWeek;
-        noti.repeatInterval = kCFCalendarUnitMinute;
+//        noti.repeatInterval = kCFCalendarUnitMinute;
         //推送声音
         noti.soundName = UILocalNotificationDefaultSoundName;
         //内容
