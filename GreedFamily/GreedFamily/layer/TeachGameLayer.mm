@@ -76,12 +76,12 @@
 
         case 2:
         {
-            teachPic = [NSString stringWithFormat:@"teachdetail4-2.jpg"];
+            teachPic = [NSString stringWithFormat:@"teachdetail4.jpg"];
             break;
         }
         case 3:
         {
-            teachPic = [NSString stringWithFormat:@"teachdetail5.jpg"];
+            teachPic = [NSString stringWithFormat:@"teachdetail7.jpg"];
             break;
 
         }

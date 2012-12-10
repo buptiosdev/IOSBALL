@@ -162,7 +162,7 @@
 		70081FD2153F9881003F042A /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70081FD1153F9881003F042A /* GLES-Render.mm */; };
 		70081FD5153F9881003F042A /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 70081FD4153F9881003F042A /* blocks.png */; };
 		7009AD951670E505008DAEED /* background_sunset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7009AD941670E505008DAEED /* background_sunset.jpg */; };
-		701B37AC1668FBAB001B5F22 /* teachdetail4-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */; };
+		701B37AC1668FBAB001B5F22 /* teachdetail4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AB1668FBAB001B5F22 /* teachdetail4.jpg */; };
 		701B37AF1669254D001B5F22 /* get_score_01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AD1669254D001B5F22 /* get_score_01.plist */; };
 		701B37B01669254D001B5F22 /* get_score_02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701B37AE1669254D001B5F22 /* get_score_02.plist */; };
 		7029287F1605AE2D00877FF2 /* teach1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7029287A1605AE2D00877FF2 /* teach1.png */; };
@@ -228,11 +228,13 @@
 		706746D71674EF3C000D7DB7 /* yellowcute.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 706746D51674EF3A000D7DB7 /* yellowcute.fnt */; };
 		706746D81674EF3C000D7DB7 /* yellowcute.png in Resources */ = {isa = PBXBuildFile; fileRef = 706746D61674EF3B000D7DB7 /* yellowcute.png */; };
 		706746DC1674FDF6000D7DB7 /* scoreblue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 706746DB1674FDF4000D7DB7 /* scoreblue.plist */; };
+		706746E316760F96000D7DB7 /* destination.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 706746E216760F96000D7DB7 /* destination.mp3 */; };
+		706746E516760FF2000D7DB7 /* barn-beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 706746E416760FF2000D7DB7 /* barn-beat.mp3 */; };
+		706746E8167618AF000D7DB7 /* teachdetail6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 706746E6167618A5000D7DB7 /* teachdetail6.jpg */; };
+		706746E9167618AF000D7DB7 /* teachdetail5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 706746E7167618A9000D7DB7 /* teachdetail5.jpg */; };
 		706F2566166B26B6008AE1E8 /* resultback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 706F2565166B26B6008AE1E8 /* resultback.jpg */; };
 		706F2569166B44EC008AE1E8 /* progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 706F2568166B44EC008AE1E8 /* progress.png */; };
 		706F2573166B5169008AE1E8 /* box02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 706F2572166B5169008AE1E8 /* box02.plist */; };
-		7094910715EF1539005ADBD8 /* barnbeatshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */; };
-		7094910A15EF1539005ADBD8 /* destinationshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7094910415EF1539005ADBD8 /* destinationshort.mp3 */; };
 		7094911115EF5282005ADBD8 /* background_begin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7094910E15EF5282005ADBD8 /* background_begin.jpg */; };
 		7094911215EF5282005ADBD8 /* beginscene_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7094910F15EF5282005ADBD8 /* beginscene_default.plist */; };
 		7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7094911015EF5282005ADBD8 /* beginscene_default.png */; };
@@ -242,8 +244,7 @@
 		70C670D11661528500E49FD5 /* teachdetail1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670C71661527600E49FD5 /* teachdetail1.jpg */; };
 		70C670D21661528500E49FD5 /* teachdetail2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670C81661527700E49FD5 /* teachdetail2.jpg */; };
 		70C670D31661528500E49FD5 /* teachdetail3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670C91661527900E49FD5 /* teachdetail3.jpg */; };
-		70C670D41661528500E49FD5 /* teachdetail4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CA1661527B00E49FD5 /* teachdetail4.jpg */; };
-		70C670D51661528500E49FD5 /* teachdetail5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CB1661527C00E49FD5 /* teachdetail5.jpg */; };
+		70C670D51661528500E49FD5 /* teachdetail7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CB1661527C00E49FD5 /* teachdetail7.jpg */; };
 		70C670D61661528500E49FD5 /* teachgalic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CC1661527D00E49FD5 /* teachgalic.jpg */; };
 		70C670D71661528500E49FD5 /* teachice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CD1661527F00E49FD5 /* teachice.jpg */; };
 		70C670D81661528500E49FD5 /* teachmagic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C670CE1661528100E49FD5 /* teachmagic.jpg */; };
@@ -634,7 +635,7 @@
 		70081FD3153F9881003F042A /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		70081FD4153F9881003F042A /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		7009AD941670E505008DAEED /* background_sunset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_sunset.jpg; path = Resources/pic/background_sunset.jpg; sourceTree = "<group>"; };
-		701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "teachdetail4-2.jpg"; path = "Resources/pic/teachdetail4-2.jpg"; sourceTree = "<group>"; };
+		701B37AB1668FBAB001B5F22 /* teachdetail4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail4.jpg; path = Resources/pic/teachdetail4.jpg; sourceTree = "<group>"; };
 		701B37AD1669254D001B5F22 /* get_score_01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = get_score_01.plist; sourceTree = "<group>"; };
 		701B37AE1669254D001B5F22 /* get_score_02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = get_score_02.plist; sourceTree = "<group>"; };
 		7029287A1605AE2D00877FF2 /* teach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teach1.png; path = Resources/pic/teach1.png; sourceTree = "<group>"; };
@@ -701,11 +702,13 @@
 		706746D51674EF3A000D7DB7 /* yellowcute.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = yellowcute.fnt; sourceTree = "<group>"; };
 		706746D61674EF3B000D7DB7 /* yellowcute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowcute.png; sourceTree = "<group>"; };
 		706746DB1674FDF4000D7DB7 /* scoreblue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = scoreblue.plist; sourceTree = "<group>"; };
+		706746E216760F96000D7DB7 /* destination.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = destination.mp3; sourceTree = "<group>"; };
+		706746E416760FF2000D7DB7 /* barn-beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "barn-beat.mp3"; sourceTree = "<group>"; };
+		706746E6167618A5000D7DB7 /* teachdetail6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail6.jpg; path = Resources/pic/teachdetail6.jpg; sourceTree = "<group>"; };
+		706746E7167618A9000D7DB7 /* teachdetail5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail5.jpg; path = Resources/pic/teachdetail5.jpg; sourceTree = "<group>"; };
 		706F2565166B26B6008AE1E8 /* resultback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = resultback.jpg; path = Resources/pic/resultback.jpg; sourceTree = "<group>"; };
 		706F2568166B44EC008AE1E8 /* progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress.png; path = Resources/pic/progress.png; sourceTree = "<group>"; };
 		706F2572166B5169008AE1E8 /* box02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = box02.plist; sourceTree = "<group>"; };
-		7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = barnbeatshort.mp3; sourceTree = "<group>"; };
-		7094910415EF1539005ADBD8 /* destinationshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = destinationshort.mp3; sourceTree = "<group>"; };
 		7094910E15EF5282005ADBD8 /* background_begin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_begin.jpg; path = Resources/pic/background_begin.jpg; sourceTree = "<group>"; };
 		7094910F15EF5282005ADBD8 /* beginscene_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = beginscene_default.plist; path = Resources/pic/beginscene_default.plist; sourceTree = "<group>"; };
 		7094911015EF5282005ADBD8 /* beginscene_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beginscene_default.png; path = Resources/pic/beginscene_default.png; sourceTree = "<group>"; };
@@ -715,8 +718,7 @@
 		70C670C71661527600E49FD5 /* teachdetail1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail1.jpg; path = Resources/pic/teachdetail1.jpg; sourceTree = "<group>"; };
 		70C670C81661527700E49FD5 /* teachdetail2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail2.jpg; path = Resources/pic/teachdetail2.jpg; sourceTree = "<group>"; };
 		70C670C91661527900E49FD5 /* teachdetail3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail3.jpg; path = Resources/pic/teachdetail3.jpg; sourceTree = "<group>"; };
-		70C670CA1661527B00E49FD5 /* teachdetail4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail4.jpg; path = Resources/pic/teachdetail4.jpg; sourceTree = "<group>"; };
-		70C670CB1661527C00E49FD5 /* teachdetail5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail5.jpg; path = Resources/pic/teachdetail5.jpg; sourceTree = "<group>"; };
+		70C670CB1661527C00E49FD5 /* teachdetail7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachdetail7.jpg; path = Resources/pic/teachdetail7.jpg; sourceTree = "<group>"; };
 		70C670CC1661527D00E49FD5 /* teachgalic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachgalic.jpg; path = Resources/pic/teachgalic.jpg; sourceTree = "<group>"; };
 		70C670CD1661527F00E49FD5 /* teachice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachice.jpg; path = Resources/pic/teachice.jpg; sourceTree = "<group>"; };
 		70C670CE1661528100E49FD5 /* teachmagic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = teachmagic.jpg; path = Resources/pic/teachmagic.jpg; sourceTree = "<group>"; };
@@ -1461,10 +1463,10 @@
 		7094910015EF1539005ADBD8 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				706746E416760FF2000D7DB7 /* barn-beat.mp3 */,
+				706746E216760F96000D7DB7 /* destination.mp3 */,
 				70DFE9E3166E5ED600C58849 /* morning.mp3 */,
 				70DFE9E0166E505F00C58849 /* wildbird.mp3 */,
-				7094910115EF1539005ADBD8 /* barnbeatshort.mp3 */,
-				7094910415EF1539005ADBD8 /* destinationshort.mp3 */,
 			);
 			name = music;
 			path = Resources/music;
@@ -1475,12 +1477,12 @@
 			children = (
 				706746C21674D675000D7DB7 /* display_panda.png */,
 				706746A61674A2D1000D7DB7 /* display_pig.png */,
-				4A7B48031674C0E80002C565 /* progressgrey.png */,
 				706746A71674A2D1000D7DB7 /* display_snake.png */,
+				4A7B48031674C0E80002C565 /* progressgrey.png */,
 				706746A41674941D000D7DB7 /* teachshop.png */,
+				7067469E167485B4000D7DB7 /* teachsnake.png */,
 				706746A016748E80000D7DB7 /* teachscore.png */,
 				706746A116748E80000D7DB7 /* teachstoragetype.png */,
-				7067469E167485B4000D7DB7 /* teachsnake.png */,
 				7009AD941670E505008DAEED /* background_sunset.jpg */,
 				70DFE9E9166F794D00C58849 /* progress4.png */,
 				70DFE9DA166E42FC00C58849 /* progress2.png */,
@@ -1488,15 +1490,16 @@
 				706F2568166B44EC008AE1E8 /* progress.png */,
 				4A80383D166B490A00277D8A /* progressback.png */,
 				706F2565166B26B6008AE1E8 /* resultback.jpg */,
-				701B37AB1668FBAB001B5F22 /* teachdetail4-2.jpg */,
 				70C6717816620F3B00E49FD5 /* cd.png */,
 				70C670DA166152ED00E49FD5 /* rolepic.jpg */,
 				70C670C61661527500E49FD5 /* teachbomb.jpg */,
 				70C670C71661527600E49FD5 /* teachdetail1.jpg */,
 				70C670C81661527700E49FD5 /* teachdetail2.jpg */,
 				70C670C91661527900E49FD5 /* teachdetail3.jpg */,
-				70C670CA1661527B00E49FD5 /* teachdetail4.jpg */,
-				70C670CB1661527C00E49FD5 /* teachdetail5.jpg */,
+				701B37AB1668FBAB001B5F22 /* teachdetail4.jpg */,
+				706746E7167618A9000D7DB7 /* teachdetail5.jpg */,
+				706746E6167618A5000D7DB7 /* teachdetail6.jpg */,
+				70C670CB1661527C00E49FD5 /* teachdetail7.jpg */,
 				70C670CC1661527D00E49FD5 /* teachgalic.jpg */,
 				70C670CD1661527F00E49FD5 /* teachice.jpg */,
 				70C670CE1661528100E49FD5 /* teachmagic.jpg */,
@@ -1755,8 +1758,6 @@
 				7032FD3715DB941C00E5E108 /* speedfast.plist in Resources */,
 				7032FD3815DB941C00E5E108 /* speedfast2.plist in Resources */,
 				4A76902715E27C41002F61DB /* drop.caf in Resources */,
-				7094910715EF1539005ADBD8 /* barnbeatshort.mp3 in Resources */,
-				7094910A15EF1539005ADBD8 /* destinationshort.mp3 in Resources */,
 				7094911115EF5282005ADBD8 /* background_begin.jpg in Resources */,
 				7094911215EF5282005ADBD8 /* beginscene_default.plist in Resources */,
 				7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */,
@@ -1777,8 +1778,7 @@
 				70C670D11661528500E49FD5 /* teachdetail1.jpg in Resources */,
 				70C670D21661528500E49FD5 /* teachdetail2.jpg in Resources */,
 				70C670D31661528500E49FD5 /* teachdetail3.jpg in Resources */,
-				70C670D41661528500E49FD5 /* teachdetail4.jpg in Resources */,
-				70C670D51661528500E49FD5 /* teachdetail5.jpg in Resources */,
+				70C670D51661528500E49FD5 /* teachdetail7.jpg in Resources */,
 				70C670D61661528500E49FD5 /* teachgalic.jpg in Resources */,
 				70C670D71661528500E49FD5 /* teachice.jpg in Resources */,
 				70C670D81661528500E49FD5 /* teachmagic.jpg in Resources */,
@@ -1792,7 +1792,7 @@
 				70C6719D1662117000E49FD5 /* bitmapRed.png in Resources */,
 				70C6719E1662117000E49FD5 /* pink.fnt in Resources */,
 				70C6719F1662117000E49FD5 /* pink.png in Resources */,
-				701B37AC1668FBAB001B5F22 /* teachdetail4-2.jpg in Resources */,
+				701B37AC1668FBAB001B5F22 /* teachdetail4.jpg in Resources */,
 				701B37AF1669254D001B5F22 /* get_score_01.plist in Resources */,
 				701B37B01669254D001B5F22 /* get_score_02.plist in Resources */,
 				706F2566166B26B6008AE1E8 /* resultback.jpg in Resources */,
@@ -1829,6 +1829,10 @@
 				706746D71674EF3C000D7DB7 /* yellowcute.fnt in Resources */,
 				706746D81674EF3C000D7DB7 /* yellowcute.png in Resources */,
 				706746DC1674FDF6000D7DB7 /* scoreblue.plist in Resources */,
+				706746E316760F96000D7DB7 /* destination.mp3 in Resources */,
+				706746E516760FF2000D7DB7 /* barn-beat.mp3 in Resources */,
+				706746E8167618AF000D7DB7 /* teachdetail6.jpg in Resources */,
+				706746E9167618AF000D7DB7 /* teachdetail5.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

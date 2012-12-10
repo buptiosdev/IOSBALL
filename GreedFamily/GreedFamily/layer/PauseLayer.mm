@@ -130,8 +130,8 @@
     
     teachSprite = [CCSprite spriteWithFile:teachPic];
     teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
-    teachSprite.scaleX=(480)/[teachSprite contentSize].width; //按照像素定制图片宽高
-    teachSprite.scaleY=(320)/[teachSprite contentSize].height;
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
     [self addChild:teachSprite z:2 tag:101];
     
     //[self addChild:teachLayer z:1 tag:100];
@@ -142,14 +142,14 @@
     [self removeChildByTag:(NSInteger)101 cleanup:YES];
     teachPicCount++;
     teachPicCount = teachPicCount % 3;
-    
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     NSString* teachStr = [NSString stringWithFormat:@"teach"];
     NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, teachPicCount+1];
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+//    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     teachSprite = [CCSprite spriteWithFile:teachPic];
     teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
-    teachSprite.scaleX=(480)/[teachSprite contentSize].width; //按照像素定制图片宽高
-    teachSprite.scaleY=(320)/[teachSprite contentSize].height;
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
     
     [self addChild:teachSprite z:20 tag:101];
 }
@@ -157,7 +157,7 @@
 -(void)onLastPic:(CCMenuItemToggle *)sender
 {
     [self removeChildByTag:(NSInteger)101 cleanup:YES];
-    
+//    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     teachPicCount--;
     if (teachPicCount == -1)
     {
@@ -171,8 +171,8 @@
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     teachSprite = [CCSprite spriteWithFile:teachPic];
     teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
-    teachSprite.scaleX=(480)/[teachSprite contentSize].width; //按照像素定制图片宽高
-    teachSprite.scaleY=(320)/[teachSprite contentSize].height;
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
 
     [self addChild:teachSprite z:20 tag:101];
     

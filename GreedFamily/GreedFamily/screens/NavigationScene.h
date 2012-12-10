@@ -23,6 +23,9 @@
     DeveloperInfo *view;
     UIActivityIndicatorView *activityIndicatorView;
     BOOL isCreateIndicatorView;
+    int teachPicCount;
+    CCSprite *teachSprite;
+    CCMenuItemSprite *teachInfoMenu;
 }
 +(id)sceneWithNavigationScene;
 +(id)scene;

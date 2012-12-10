@@ -256,7 +256,7 @@ static GameScore  *instanceOfgameScore;
     if (moveBaseScoreCount >= 100)
     {
         moveBaseScoreCount = 0;
-        [self unschedule:@selector(removeContinuousAwardScore:)];   
+        [self unschedule:@selector(removeAccumulateAwardScore:)];   
         //消除特效
         [self removeChildByTag:AccumulateAwardScoreTag cleanup:YES];
         [self removeChildByTag:AccumulateAwardScoreSpeciallyTag cleanup:YES];

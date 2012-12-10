@@ -279,11 +279,11 @@ static CommonLayer *instanceOfCommonLayer;
     
     switch (musicType) {
         case UnGameMusic1:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destination.mp3" loop:YES];
             break; 
             
         case UnGameMusic2:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barn-beat.mp3" loop:YES];
             break; 
         
         case GameMusic1:

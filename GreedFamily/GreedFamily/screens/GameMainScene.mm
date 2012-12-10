@@ -208,6 +208,9 @@ static GameMainScene *instanceOfMainScene;
     [self preloadParticleEffects:@"shootingstars.plist"];
     [self preloadParticleEffects:@"smoke2.plist"];
     [self preloadParticleEffects:@"besmoked.plist"];
+    [self preloadParticleEffects:@"star.plist"];
+    [self preloadParticleEffects:@"scoreblue.plist"];
+    [self preloadParticleEffects:@"get_score_02.plist"];
 }
 
 
@@ -366,7 +369,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = OneTime;
-            _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.crystalFrequency = NoTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
             _mainscenParam.smokeFrequency = NoTime;
