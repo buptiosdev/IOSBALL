@@ -12,6 +12,7 @@
 #import "GameBackgroundLayer.h"
 #import "SimpleAudioEngine.h"
 #import "GameMainScene.h"
+#import "CommonLayer.h"
 // 该类在GameMainScene中关卡结束时被调用，用于显示分数／关卡等信息
 // 使用方法参见 GameMainScene:pauseGame中注释的部分
 // 可供测试使用，点击暂停按钮，即可进行测试
@@ -41,17 +42,17 @@
     BOOL sound = [usrDef boolForKey:@"music"];
     if (YES == sound) 
     {
-        int randomNum = random()%2;
-        
-        if (0 == randomNum) 
-        {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
-        }
-        else
-        {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
-            
-        }
+//        int randomNum = random()%2;
+//        
+//        if (0 == randomNum) 
+//        {
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+//        }
+//        else
+//        {
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+//        }
+        [CommonLayer playBackMusic:UnGameMusic1];
     }
     [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
 }

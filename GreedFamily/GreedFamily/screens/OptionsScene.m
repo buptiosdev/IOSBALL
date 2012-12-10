@@ -171,24 +171,25 @@ DeveloperInfo *view;
 	
 	if(sender.selectedIndex ==1)
     {
-        int randomNum = random()%2;
-        
-        if (0 == randomNum) 
-        {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
-        }
-        else
-        {
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
-
-        }
-        
+//        int randomNum = random()%2;
+//        
+//        if (0 == randomNum) 
+//        {
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+//        }
+//        else
+//        {
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+//
+//        }
 		[usrDef setBool:YES forKey:@"music"];
+        [CommonLayer playBackMusic:UnGameMusic1];
     }
-	if(sender.selectedIndex ==0)
+    else if(sender.selectedIndex ==0)
     {
-        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+        //[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 		[usrDef setBool:NO forKey:@"music"];
+        [CommonLayer playBackMusic:StopGameMusic];
     }
 }
 
