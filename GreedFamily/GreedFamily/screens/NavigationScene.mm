@@ -185,8 +185,8 @@ Boolean showPair=YES;
         achivementItem.scale=leaderscale;        
         
         //add by liuyunpeng 2012-11-18  user review
-        CCSprite * userreview= [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
-        CCSprite *userreview1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
+        CCSprite * userreview= [CCSprite spriteWithSpriteFrameName:@"appscore.png"];
+        CCSprite *userreview1 = [CCSprite spriteWithSpriteFrameName:@"appscore.png"];
         userreview1.scaleX=1.1;
         userreview1.scaleY=1.1;
         CCMenuItemSprite *userreviewItem = [CCMenuItemSprite itemFromNormalSprite:userreview 
@@ -197,8 +197,8 @@ Boolean showPair=YES;
         
         
         //teach
-        CCSprite *teachInfo = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
-        CCSprite *teachInfo2 = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
+        CCSprite *teachInfo = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
+        CCSprite *teachInfo2 = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
         teachInfo2.scaleX = 1.1;
         teachInfo2.scaleY = 1.1;
         teachInfoMenu = [CCMenuItemSprite itemFromNormalSprite:teachInfo 

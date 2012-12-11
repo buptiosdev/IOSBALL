@@ -110,8 +110,8 @@ DeveloperInfo *view;
         [self addChild:returnmenu];
         
         //set info in the right-down corner
-        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-        CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
+        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"info.png"];
+        CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"info.png"];
         info1.scaleX=1.1;
         info1.scaleY=1.1;
         CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
