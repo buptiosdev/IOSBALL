@@ -22,6 +22,9 @@
     int curtotalscore;
     int starNum;
     int isNewrecord;
+    
+    bool isShow1;
+    bool isShow2;
 }
 +(id)createResultLayer:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
 @end

@@ -67,6 +67,8 @@
     }
     else if(isNewrecord==1)
     {
+        //新纪录音效
+        [CommonLayer playAudio:NewHighScore];
         words = @"New Record!!!";
     }
     else if(starNum==1)
@@ -84,7 +86,7 @@
         
     }
     CGSize size = [[CCDirector sharedDirector] winSize];
-    CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"escuela" fontSize:50];
+    CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"ARIALN" fontSize:40];
     [labelnewrecord setColor:ccRED];
     labelnewrecord.position=CGPointMake(size.width *4/5, size.height *3/4  );;
     [labelnewrecord runAction:[CCSequence actions:
@@ -141,15 +143,17 @@
 //		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
 //        [labelscore setColor:ccBLACK];
 //		[self addChild:labelscore];
-        curtotalscore=score;
-        curtimescore=0;
-        curbasescore=0;
+
         totalscore=addscore+score;
         timescore=addscore;
         basescore=score;
         starNum=starnum;
-        isNewrecord=isnewrecord;
-        
+        isNewrecord=basescore;
+        curtotalscore=score;
+        curtimescore=0;
+        curbasescore=0;
+        isShow1 = NO;
+        isShow2 = NO;
         CCLabelTTF* labelscore = [CCLabelTTF labelWithString:@"base score: " fontName:@"Dekers_Bold" fontSize:30];
 		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
         [labelscore setColor:ccBLACK];
@@ -164,31 +168,9 @@
 		[self addChild:basescorelabel];
         
         
-        CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:@"time award: " fontName:@"Dekers_Bold" fontSize:30];
-        //change size by diff version query
-		labeladdscore.position = CGPointMake(size.width / 3, size.height * 5 / 9 );
-        [labeladdscore setColor:ccBLACK];
-		[self addChild:labeladdscore];
+
         
-        //add by liuyunpeng
-        timescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:30];
-        //change size by diff version query
-		timescorelabel.position = CGPointMake(size.width *0.6, size.height * 5 / 9 );
-        [timescorelabel setColor:ccBLACK];
-		[self addChild:timescorelabel];
-        
-        CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:@"total score: " fontName:@"Dekers_Bold" fontSize:30];
-        //change size by diff version query
-		labeltotalscore.position = CGPointMake(size.width / 3, size.height * 3 / 9 );
-        [labeltotalscore setColor:ccBLACK];
-		[self addChild:labeltotalscore];
-        
-        //add by liuyunpeng
-        totalscorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:30];
-        //change size by diff version query
-		totalscorelabel.position = CGPointMake(size.width *0.6, size.height * 3 / 9 );
-        [totalscorelabel setColor:ccBLACK];
-		[self addChild:totalscorelabel];
+
         
 
         
@@ -240,16 +222,55 @@
 
 -(void) countScore:(ccTime)delta
 {
+    CGSize size = [[CCDirector sharedDirector] winSize];
     NSString* temp=nil;
     if(curbasescore<=basescore){
         temp=[NSString stringWithFormat:@"%d",curbasescore];
         [basescorelabel setString:temp];
         curbasescore++;
     }else if(curtimescore<=timescore){
+        if (NO == isShow1)
+        {
+            isShow1 = YES;
+            CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:@"time award: " fontName:@"Dekers_Bold" fontSize:30];
+            //change size by diff version query
+            labeladdscore.position = CGPointMake(size.width / 3, size.height * 5 / 9 );
+            [labeladdscore setColor:ccBLACK];
+            [self addChild:labeladdscore];
+            
+            //add by liuyunpeng
+            timescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:30];
+            //change size by diff version query
+            timescorelabel.position = CGPointMake(size.width *0.6, size.height * 5 / 9 );
+            [timescorelabel setColor:ccBLACK];
+            [self addChild:timescorelabel];
+            sleep(0.5);
+        }
+        
         temp=[NSString stringWithFormat:@"%d",curtimescore];
         [timescorelabel setString:temp];
         curtimescore++;
     }else if(curtotalscore<=totalscore){
+        
+        if (NO == isShow2)
+        {
+            isShow2 = YES;
+            CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:@"total score: " fontName:@"Dekers_Bold" fontSize:30];
+            //change size by diff version query
+            labeltotalscore.position = CGPointMake(size.width / 3, size.height * 3 / 9 );
+            [labeltotalscore setColor:ccBLACK];
+            [self addChild:labeltotalscore];
+            
+            //add by liuyunpeng
+            NSString* tempScore=[NSString stringWithFormat:@"%d",curtotalscore];
+            totalscorelabel = [CCLabelTTF labelWithString:tempScore fontName:@"Dekers_Bold" fontSize:30];
+            //change size by diff version query
+            totalscorelabel.position = CGPointMake(size.width *0.6, size.height * 3 / 9 );
+            [totalscorelabel setColor:ccBLACK];
+            [self addChild:totalscorelabel];
+            sleep(0.5);
+        }
+        
         temp=[NSString stringWithFormat:@"%d",curtotalscore];
         [totalscorelabel setString:temp];
         curtotalscore++;
