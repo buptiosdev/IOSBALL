@@ -52,6 +52,7 @@ float logoreturnscaleY=0.15;
 //角色选择回调函数，把角色类型写入文件
 - (void) chooseRole:(CCMenuItemImage *)btn
 {
+    [CommonLayer playAudio:SelectOK];
     int role=btn.tag;
     [self changeParameter:role];
     NSString *strName = [NSString stringWithFormat:@"RoleType"];
@@ -60,6 +61,7 @@ float logoreturnscaleY=0.15;
 
 -(void)returnMain
 {
+    [CommonLayer playAudio:SelectOK];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
 }
@@ -67,9 +69,10 @@ float logoreturnscaleY=0.15;
 -(void)levelScene
 {
     //数据提交
-        CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];    
+    [CommonLayer playAudio:SelectOK];
+    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];    
 }
 
 -(id)initWithRoleScene
