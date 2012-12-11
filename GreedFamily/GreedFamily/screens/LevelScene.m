@@ -179,6 +179,22 @@ int directionCurrent;
         // finally add the scroller to your scene
         [self addChild:scroller];
         
+        //add the snake
+        sprite= [CCSprite spriteWithSpriteFrameName:@"snake_9_1.png"];
+        //按照像素设定图片大小
+        sprite.scale=(screenSize.height*levelsnakescaleY)/[sprite contentSize].height;
+        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, screenSize.height*levelreturnscaleY+screenSize.height*levelsnakescaleY*0.3);
+        sprite.position = startPos;
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"snake_9_" frameCount:4 delay:0.2f];
+        
+        CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
+        CCSequence *seq = [CCSequence actions: animate,nil];
+        
+        CCAction *moveAction = [CCRepeatForever actionWithAction: seq ];
+        [sprite runAction:moveAction];
+        directionCurrent=-1;
+        [self addChild:sprite]; 
+        
         //set return and shop
         //set return in the left-down corner
 
@@ -214,21 +230,6 @@ int directionCurrent;
                                   [shop contentSize].height * shopItem.scaleX * 0.5)];
         [self addChild:shopmenu];
 
-        //add the snake
-        sprite= [CCSprite spriteWithSpriteFrameName:@"snake_9_1.png"];
-        //按照像素设定图片大小
-        sprite.scale=(screenSize.height*levelsnakescaleY)/[sprite contentSize].height;
-        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, screenSize.height*levelreturnscaleY+screenSize.height*levelsnakescaleY*2/5);
-        sprite.position = startPos;
-        CCAnimation* animation = [CCAnimation animationWithFrame:@"snake_9_" frameCount:4 delay:0.2f];
-        
-        CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
-        CCSequence *seq = [CCSequence actions: animate,nil];
-        
-        CCAction *moveAction = [CCRepeatForever actionWithAction: seq ];
-        [sprite runAction:moveAction];
-        directionCurrent=-1;
-        [self addChild:sprite]; 
         [self scheduleUpdate];
         
     }

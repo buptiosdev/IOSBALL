@@ -10,7 +10,18 @@
 #import "cocos2d.h"
 
 @interface ResultLayer : CCLayer {
+    CCLabelTTF *basescorelabel;
+    CCLabelTTF *timescorelabel;
+    CCLabelTTF *totalscorelabel;
     
+    int basescore;
+    int timescore;
+    int totalscore;
+    int curbasescore;
+    int curtimescore;
+    int curtotalscore;
+    int starNum;
+    int isNewrecord;
 }
 +(id)createResultLayer:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
 @end

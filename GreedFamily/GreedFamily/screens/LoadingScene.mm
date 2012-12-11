@@ -80,9 +80,11 @@
         //set progess
         CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progressgrey.png"];
         ctlandanimal.position=ccp( size.width*0.5 , size.height * 0.5);
-        ctlandanimal.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式 
+        ctlandanimal.type=kCCProgressTimerTypeHorizontalBarRL;//进度条的显示样式 
+        //ctlandanimal.type=kCCProgressTimerTypeRadialCW;//进度条的显示样式
         ctlandanimal.scaleX=size.width/[ctlandanimal contentSize].width;
         ctlandanimal.scaleY=size.height/[ctlandanimal contentSize].height;
+        ctlandanimal.percentage=100;
         [self addChild:ctlandanimal z:0 tag:101]; 
         
         
@@ -123,12 +125,19 @@
 -(void)update:(ccTime)delta
 {  
     CCProgressTimer*ct=(CCProgressTimer*)[self getChildByTag:101];   
-    if(ct.percentage>=100){
-        ct.percentage=100;
+//    if(ct.percentage>=100){
+//        ct.percentage=100;
+//        return;  
+//    }else{
+//        ct.percentage=ct.percentage+100.0/(_waitTime*60);
+//    }
+    if(ct.percentage<=0){
+        ct.percentage=0;
         return;  
     }else{
-        ct.percentage=ct.percentage+100.0/(_waitTime*60);
+        ct.percentage=ct.percentage-100.0/(_waitTime*60);
     }
+
 }
  
 
