@@ -141,7 +141,7 @@
 //		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
 //        [labelscore setColor:ccBLACK];
 //		[self addChild:labelscore];
-        curtotalscore=0;
+        curtotalscore=score;
         curtimescore=0;
         curbasescore=0;
         totalscore=addscore+score;
@@ -150,7 +150,6 @@
         starNum=starnum;
         isNewrecord=isnewrecord;
         
-
         CCLabelTTF* labelscore = [CCLabelTTF labelWithString:@"base score: " fontName:@"Dekers_Bold" fontSize:30];
 		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
         [labelscore setColor:ccBLACK];
