@@ -230,7 +230,7 @@
 
 -(void)retryGame:(CCMenuItemSprite *)btn
 {
-    //[[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     [[GameMainScene sharedMainScene] resumeGame];
     int level=btn.tag;
     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)level]];
