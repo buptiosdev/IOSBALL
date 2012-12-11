@@ -580,11 +580,6 @@ static GameScore  *instanceOfgameScore;
     int isnewrecord=0;
     if (my_nowlevelscore > temphighestscore)
     {
-        //新纪录音效
-
-        [CommonLayer playAudio:NewHighScore];
-
-        //新纪录特效
         //直接将int 装成string  当做关卡的值传进去        
         NSString *str_gamelevel = [NSString stringWithFormat:@"%d",level];
         [[[MyGameScore sharedScore] standardUserDefaults] setInteger:my_nowlevelscore forKey:str_gamelevel];        
