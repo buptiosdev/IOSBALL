@@ -625,7 +625,7 @@ static GameScore  *instanceOfgameScore;
     {
         starNum = 2;
     }
-    else if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 1)
+    else if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 1+level-1)
     {
         starNum = 1;
     }

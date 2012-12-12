@@ -129,7 +129,7 @@
     
     //添加本地通知 测试  
     //设置1h之后 
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:1];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:3600*24];
     //chuangjian一个本地推送
     UILocalNotification *noti = [[[UILocalNotification alloc] init] autorelease];
     if (noti) {
