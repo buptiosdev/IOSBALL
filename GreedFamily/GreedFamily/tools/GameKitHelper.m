@@ -343,6 +343,9 @@ static GameKitHelper *instanceOfGameKitHelper;
 	if (achievement != nil && achievement.percentComplete < percent)
 	{
 		achievement.percentComplete = percent;
+        if (percent == 100) {
+            achievement.showsCompletionBanner = YES; //Indicate that a banner should be shown
+        }
 		[achievement reportAchievementWithCompletionHandler:^(NSError* error)
 		{
 			[self setLastError:error];

@@ -13,6 +13,7 @@
 #import "GameShopScene.h"
 #import "CCAnimationHelper.h"
 #import "CommonLayer.h"
+#import "GameKitHelper.h"
 
 //BEGIN item scale  默认为相对于X的比例
 float levelstarscale=75.0/480;
@@ -29,6 +30,51 @@ float levelreturnscaleY=0.15;
 @implementation LevelScene
 CCSprite* sprite;
 int directionCurrent;
+
+-(int)getGameStarNumber:(int)level
+{
+    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
+    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];    
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    NSInteger starNum = [usrDef integerForKey:str_starlevel];    
+    
+    return starNum;
+}
+
+-(void)checkAchievement
+{
+    int star =[ self getGameStarNumber:20];
+    
+    if (star != 0) {
+        NSString* achievementTag = @"CompleteAllLevel";
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:achievementTag];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:achievementTag percentComplete:percent];
+        }
+    }
+    
+    int i = 0;
+    for(int i=0;i<20;i++)
+    {
+        int star=[self getGameStarNumber:i+1];
+        if (star != 3) {
+            break;
+        }
+    }
+    if (i == 20) {
+        NSString* achievementTag = @"ALLPerfect";
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:achievementTag];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:achievementTag percentComplete:percent];
+        }
+    }
+}
 
 -(void)selectMode:(CCMenuItemImage *)btn
 {
@@ -50,15 +96,7 @@ int directionCurrent;
     [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
 }
 
--(int)getGameStarNumber:(int)level
-{
-    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
-    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];    
-    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
-    NSInteger starNum = [usrDef integerForKey:str_starlevel];    
-    
-    return starNum;
-}
+
 
 -(id)initWithLevelScene
 {
@@ -79,6 +117,9 @@ int directionCurrent;
         CCArray * levelarray = [[CCArray alloc]initWithCapacity:number];
         bool isZero=NO;
         float viewsize=screenSize.width*levelstarscale;
+        
+        //检查成就
+        [self checkAchievement];
         
         for(int i=0;i<20;i++)
         {

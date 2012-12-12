@@ -547,6 +547,16 @@ static GameScore  *instanceOfgameScore;
     [[[MyGameScore sharedScore] standardUserDefaults] setInteger:temTotalTime forKey:strTotalTime]; 
     
     //完成 成就
+    NSString* tap1 = @"1_Tap";
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    GKAchievement* achievement = [gkHelper getAchievementByID:tap1];
+    if (achievement.completed == NO)
+    {
+        float percent = achievement.percentComplete + 100;
+        [gkHelper reportAchievementWithID:tap1 percentComplete:percent];
+    }
+    
+    
     if (temTotalTime > 100) 
     {
         NSString* playedTenSeconds = @"PlayedForTenSeconds";
@@ -560,21 +570,30 @@ static GameScore  *instanceOfgameScore;
 
     }
     
-    NSString* tap1 = @"1_Tap";
-    NSString* tap20 = @"20_Taps";
-    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-    GKAchievement* achievement = [gkHelper getAchievementByID:tap1];
-    if (achievement.completed == NO)
-    {
-        float percent = achievement.percentComplete + 100;
-        [gkHelper reportAchievementWithID:tap1 percentComplete:percent];
+
+    if (totalRoleScore > 500) {
+        NSString* achievementTag = @"Earn500Point";
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:achievementTag];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:achievementTag percentComplete:percent];
+        }
     }
-    GKAchievement* achievement20 = [gkHelper getAchievementByID:tap20];
-    if (achievement20.completed == NO)
-    {
-        float percent = achievement20.percentComplete + 5;
-        [gkHelper reportAchievementWithID:tap1 percentComplete:percent];
-    }
+    
+    if (totalRoleScore > 1000) {
+        NSString* achievementTag = @"Earn1000Point";
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:achievementTag];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:achievementTag percentComplete:percent];
+        }
+    } 
+    
+
     //完成成就 end
     
     int isnewrecord=0;

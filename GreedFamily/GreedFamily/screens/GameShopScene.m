@@ -42,6 +42,83 @@ float shopitemscale=0.15;
 }
 
 
+-(void)checkAchievement:(int)roleType BuyList:(int)buyList
+{
+    NSString *landSpeedFast=nil;
+    NSString *flySpeedFast=nil;
+    NSString *storageLagest=nil;
+    NSString *storageSenior=nil;
+    
+    if (1 == roalType)
+    {
+        landSpeedFast = [NSString stringWithFormat:@"PandaLandSpeedFast"];
+        flySpeedFast = [NSString stringWithFormat:@"PandaFlySpeedFast"];
+        storageLagest = [NSString stringWithFormat:@"PandaStorageLagest"];
+        storageSenior = [NSString stringWithFormat:@"PandaStorageSenior"];
+    }
+    else if (2 == roalType)
+    {
+        landSpeedFast = [NSString stringWithFormat:@"PigLandSpeedFast"];
+        flySpeedFast = [NSString stringWithFormat:@"PigFlySpeedFast"];
+        storageLagest = [NSString stringWithFormat:@"PigStorageLagest"];
+        storageSenior = [NSString stringWithFormat:@"PigStorageSenior"];
+    }
+    else if (3 == roalType)
+    {
+        landSpeedFast = [NSString stringWithFormat:@"BirdLandSpeedFast"];
+        flySpeedFast = [NSString stringWithFormat:@"BirdFlySpeedFast"];
+        storageLagest = [NSString stringWithFormat:@"BirdStorageLagest"];
+        storageSenior = [NSString stringWithFormat:@"BirdStorageSenior"];
+    }
+    
+    
+    //个位代表陆地动物速度
+    if (_buyedList%10 > 2) 
+    {
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:landSpeedFast];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:landSpeedFast percentComplete:percent];
+        }
+    }    
+    //十位代表仓库
+    if ((_buyedList/10)%10 > 2) 
+    {
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:storageLagest];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:storageLagest percentComplete:percent];
+        }
+    } 
+    //百位代表空中速度
+    if ((_buyedList/100)%10 > 2) 
+    {
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:flySpeedFast];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:flySpeedFast percentComplete:percent];
+        }
+    } 
+    //千位代表仓库种类
+    if ((_buyedList/1000)%10 > 1) 
+    {
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:storageSenior];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:storageSenior percentComplete:percent];
+        }
+    } 
+
+}
+
 -(void)initRoleAndScore
 {
     NSString *strName = [NSString stringWithFormat:@"RoleType"];
@@ -85,6 +162,9 @@ float shopitemscale=0.15;
     [batch addChild:roleSprite z:-1 tag:2]; 
     int  totalRoleScore = [[NSUserDefaults standardUserDefaults] integerForKey:strTotalScore]; 
     _buyedList = [[NSUserDefaults standardUserDefaults] integerForKey:strBuyedList];
+    
+    //成就
+    [self checkAchievement:roalType BuyList:_buyedList];
     //得分
     CCLabelBMFont*  getTotalScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapNum.fnt"];
     [getTotalScore setString:[NSString stringWithFormat:@"x  %i", totalRoleScore]];
