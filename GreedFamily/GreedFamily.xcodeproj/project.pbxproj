@@ -315,6 +315,10 @@
 		70DFE9E2166E505F00C58849 /* wildbird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E0166E505F00C58849 /* wildbird.mp3 */; };
 		70DFE9E4166E5ED600C58849 /* morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E3166E5ED600C58849 /* morning.mp3 */; };
 		70DFE9EA166F794D00C58849 /* progress4.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E9166F794D00C58849 /* progress4.png */; };
+		70F2720B167A082700D1960C /* bitmapNum.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70F27209167A082700D1960C /* bitmapNum.fnt */; };
+		70F2720C167A082700D1960C /* bitmapNum.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F2720A167A082700D1960C /* bitmapNum.png */; };
+		70F27210167A0C0200D1960C /* bitmapNum4.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70F2720E167A0C0100D1960C /* bitmapNum4.fnt */; };
+		70F27211167A0C0200D1960C /* bitmapNum4.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F2720F167A0C0100D1960C /* bitmapNum4.png */; };
 		C653B2C516738FDE003005AB /* candy.plist in Resources */ = {isa = PBXBuildFile; fileRef = C653B2C416738FDE003005AB /* candy.plist */; };
 		C653B2C716739184003005AB /* apple.plist in Resources */ = {isa = PBXBuildFile; fileRef = C653B2C616739184003005AB /* apple.plist */; };
 		C653B2C916739344003005AB /* cheese.plist in Resources */ = {isa = PBXBuildFile; fileRef = C653B2C816739344003005AB /* cheese.plist */; };
@@ -834,6 +838,10 @@
 		70DFE9E0166E505F00C58849 /* wildbird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wildbird.mp3; sourceTree = "<group>"; };
 		70DFE9E3166E5ED600C58849 /* morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morning.mp3; sourceTree = "<group>"; };
 		70DFE9E9166F794D00C58849 /* progress4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress4.png; path = Resources/pic/progress4.png; sourceTree = "<group>"; };
+		70F27209167A082700D1960C /* bitmapNum.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmapNum.fnt; sourceTree = "<group>"; };
+		70F2720A167A082700D1960C /* bitmapNum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapNum.png; sourceTree = "<group>"; };
+		70F2720E167A0C0100D1960C /* bitmapNum4.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmapNum4.fnt; sourceTree = "<group>"; };
+		70F2720F167A0C0100D1960C /* bitmapNum4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapNum4.png; sourceTree = "<group>"; };
 		C653B2C416738FDE003005AB /* candy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = candy.plist; sourceTree = "<group>"; };
 		C653B2C616739184003005AB /* apple.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = apple.plist; sourceTree = "<group>"; };
 		C653B2C816739344003005AB /* cheese.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cheese.plist; sourceTree = "<group>"; };
@@ -1646,6 +1654,10 @@
 		70C6717F1662117000E49FD5 /* fnt */ = {
 			isa = PBXGroup;
 			children = (
+				70F2720E167A0C0100D1960C /* bitmapNum4.fnt */,
+				70F2720F167A0C0100D1960C /* bitmapNum4.png */,
+				70F27209167A082700D1960C /* bitmapNum.fnt */,
+				70F2720A167A082700D1960C /* bitmapNum.png */,
 				706746D51674EF3A000D7DB7 /* yellowcute.fnt */,
 				706746D61674EF3B000D7DB7 /* yellowcute.png */,
 				706746C51674ECD1000D7DB7 /* blackcute.fnt */,
@@ -1833,6 +1845,10 @@
 				706746E516760FF2000D7DB7 /* barn-beat.mp3 in Resources */,
 				706746E8167618AF000D7DB7 /* teachdetail6.jpg in Resources */,
 				706746E9167618AF000D7DB7 /* teachdetail5.jpg in Resources */,
+				70F2720B167A082700D1960C /* bitmapNum.fnt in Resources */,
+				70F2720C167A082700D1960C /* bitmapNum.png in Resources */,
+				70F27210167A0C0200D1960C /* bitmapNum4.fnt in Resources */,
+				70F27211167A0C0200D1960C /* bitmapNum4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
