@@ -18,6 +18,10 @@
 #import "AppDelegate.h"
 #import "CCAnimationHelper.h"
 #import "CommonLayer.h"
+#import "ShareScene.h"
+
+
+
 @interface Navigation
 -(void)newGame:(id)sender;
 -(void)options:(id)sender;
@@ -311,20 +315,7 @@ Boolean showPair=YES;
 -(void)displayInfo:(id)sender
 {
     [CommonLayer playAudio:SelectOK];
-    
-     if (isCreateIndicatorView)
-     {
-         [activityIndicatorView stopAnimating ];  //停止  
-         isCreateIndicatorView = NO;
-     }
-         
-	//show the options of the game
-//    infoView = [[DeveloperInfo alloc] initWithNibName:@"Info View" bundle:nil];
-//    [[[CCDirector sharedDirector] openGLView] addSubview:infoView.view];
-    view = [[DeveloperInfo alloc] initWithNibName:@"DeveloperInfo" bundle:nil];
-    [[[CCDirector sharedDirector] openGLView] addSubview:view.view];
-    //[view release];
-    [self schedule:@selector(viewAddPointY) interval:0.03];
+    [[CCDirector sharedDirector] replaceScene:[ShareScene scene]];
 }
 
 

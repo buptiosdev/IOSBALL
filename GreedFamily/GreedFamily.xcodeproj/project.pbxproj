@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		4A76902715E27C41002F61DB /* drop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4A76902615E27C41002F61DB /* drop.caf */; };
 		4A7B48041674C0E80002C565 /* progressgrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B48031674C0E80002C565 /* progressgrey.png */; };
+		4A7B48A6167B740300128AEF /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B48A5167B740300128AEF /* JSONKit.m */; };
+		4A7B48B0167B740D00128AEF /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B48A8167B740D00128AEF /* SinaWeibo.bundle */; };
+		4A7B48B1167B740D00128AEF /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B48AA167B740D00128AEF /* SinaWeibo.m */; };
+		4A7B48B2167B740D00128AEF /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B48AC167B740D00128AEF /* SinaWeiboAuthorizeView.m */; };
+		4A7B48B3167B740D00128AEF /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B48AF167B740D00128AEF /* SinaWeiboRequest.m */; };
+		4A7B48C2167B82F500128AEF /* ShareScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B48C1167B82F500128AEF /* ShareScene.mm */; };
 		4A80383E166B490A00277D8A /* progressback.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A80383D166B490A00277D8A /* progressback.png */; };
 		70081DF3153F987C003F042A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70081DF2153F987C003F042A /* QuartzCore.framework */; };
 		70081DF5153F987C003F042A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70081DF4153F987C003F042A /* OpenGLES.framework */; };
@@ -328,6 +334,18 @@
 /* Begin PBXFileReference section */
 		4A76902615E27C41002F61DB /* drop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = drop.caf; sourceTree = "<group>"; };
 		4A7B48031674C0E80002C565 /* progressgrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progressgrey.png; path = Resources/pic/progressgrey.png; sourceTree = "<group>"; };
+		4A7B48A4167B740300128AEF /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		4A7B48A5167B740300128AEF /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		4A7B48A8167B740D00128AEF /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SinaWeibo.bundle; sourceTree = "<group>"; };
+		4A7B48A9167B740D00128AEF /* SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeibo.h; sourceTree = "<group>"; };
+		4A7B48AA167B740D00128AEF /* SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeibo.m; sourceTree = "<group>"; };
+		4A7B48AB167B740D00128AEF /* SinaWeiboAuthorizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboAuthorizeView.h; sourceTree = "<group>"; };
+		4A7B48AC167B740D00128AEF /* SinaWeiboAuthorizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboAuthorizeView.m; sourceTree = "<group>"; };
+		4A7B48AD167B740D00128AEF /* SinaWeiboConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboConstants.h; sourceTree = "<group>"; };
+		4A7B48AE167B740D00128AEF /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
+		4A7B48AF167B740D00128AEF /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
+		4A7B48C0167B82F500128AEF /* ShareScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareScene.h; sourceTree = "<group>"; };
+		4A7B48C1167B82F500128AEF /* ShareScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShareScene.mm; sourceTree = "<group>"; };
 		4A80383D166B490A00277D8A /* progressback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progressback.png; path = Resources/pic/progressback.png; sourceTree = "<group>"; };
 		70081DEE153F987C003F042A /* GreedFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreedFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70081DF2153F987C003F042A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -872,6 +890,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A7B48A3167B740300128AEF /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				4A7B48A4167B740300128AEF /* JSONKit.h */,
+				4A7B48A5167B740300128AEF /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		4A7B48A7167B740D00128AEF /* SinaWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				4A7B48A8167B740D00128AEF /* SinaWeibo.bundle */,
+				4A7B48A9167B740D00128AEF /* SinaWeibo.h */,
+				4A7B48AA167B740D00128AEF /* SinaWeibo.m */,
+				4A7B48AB167B740D00128AEF /* SinaWeiboAuthorizeView.h */,
+				4A7B48AC167B740D00128AEF /* SinaWeiboAuthorizeView.m */,
+				4A7B48AD167B740D00128AEF /* SinaWeiboConstants.h */,
+				4A7B48AE167B740D00128AEF /* SinaWeiboRequest.h */,
+				4A7B48AF167B740D00128AEF /* SinaWeiboRequest.m */,
+			);
+			path = SinaWeibo;
+			sourceTree = "<group>";
+		};
 		70081DE3153F987B003F042A = {
 			isa = PBXGroup;
 			children = (
@@ -912,6 +954,8 @@
 		70081E02153F987C003F042A /* GreedFamily */ = {
 			isa = PBXGroup;
 			children = (
+				4A7B48A7167B740D00128AEF /* SinaWeibo */,
+				4A7B48A3167B740300128AEF /* JSONKit */,
 				70C670E916620D5600E49FD5 /* layer */,
 				70C6710316620D5600E49FD5 /* objects */,
 				70C6712616620D5600E49FD5 /* screens */,
@@ -1623,6 +1667,8 @@
 				70C6713316620D5600E49FD5 /* OptionsScene.h */,
 				70C6713416620D5600E49FD5 /* OptionsScene.m */,
 				70C6713516620D5600E49FD5 /* RoleScene.h */,
+				4A7B48C0167B82F500128AEF /* ShareScene.h */,
+				4A7B48C1167B82F500128AEF /* ShareScene.mm */,
 				70C6713616620D5600E49FD5 /* RoleScene.m */,
 			);
 			path = screens;
@@ -1849,6 +1895,7 @@
 				70F2720C167A082700D1960C /* bitmapNum.png in Resources */,
 				70F27210167A0C0200D1960C /* bitmapNum4.fnt in Resources */,
 				70F27211167A0C0200D1960C /* bitmapNum4.png in Resources */,
+				4A7B48B0167B740D00128AEF /* SinaWeibo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2038,6 +2085,11 @@
 				70C6717516620D5600E49FD5 /* MyGameScore.mm in Sources */,
 				70C671A716621B8F00E49FD5 /* GameShopScene.m in Sources */,
 				7067469B1674701C000D7DB7 /* DisplayGameLayer.m in Sources */,
+				4A7B48A6167B740300128AEF /* JSONKit.m in Sources */,
+				4A7B48B1167B740D00128AEF /* SinaWeibo.m in Sources */,
+				4A7B48B2167B740D00128AEF /* SinaWeiboAuthorizeView.m in Sources */,
+				4A7B48B3167B740D00128AEF /* SinaWeiboRequest.m in Sources */,
+				4A7B48C2167B82F500128AEF /* ShareScene.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
