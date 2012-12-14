@@ -11,31 +11,31 @@
 	<key>blendFuncSource</key>
 	<integer>1</integer>
 	<key>duration</key>
-	<real>-1</real>
+	<integer>6</integer>
 	<key>emitterType</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>finishColorAlpha</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>finishColorBlue</key>
 	<real>1</real>
 	<key>finishColorGreen</key>
-	<real>0.34000000357627869</real>
+	<real>0.3400000035762787</real>
 	<key>finishColorRed</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>finishColorVarianceAlpha</key>
-	<real>0.41999998688697815</real>
+	<real>0.4199999868869781</real>
 	<key>finishColorVarianceBlue</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>finishColorVarianceGreen</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>finishColorVarianceRed</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>finishParticleSize</key>
 	<real>10</real>
 	<key>finishParticleSizeVariance</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>gravityx</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>gravityy</key>
 	<real>-5</real>
 	<key>maxParticles</key>
@@ -43,65 +43,65 @@
 	<key>maxRadius</key>
 	<real>100</real>
 	<key>maxRadiusVariance</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>minRadius</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>particleLifespan</key>
-	<real>0.10000000149011612</real>
+	<real>0.1000000014901161</real>
 	<key>particleLifespanVariance</key>
-	<real>0.44999998807907104</real>
+	<real>0.449999988079071</real>
 	<key>radialAccelVariance</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>radialAcceleration</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>rotatePerSecond</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>rotatePerSecondVariance</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>rotationEnd</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>rotationEndVariance</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>rotationStart</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>rotationStartVariance</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>sourcePositionVariancex</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>sourcePositionVariancey</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>sourcePositionx</key>
-	<real>276.75674438476562</real>
+	<real>276.7567443847656</real>
 	<key>sourcePositiony</key>
-	<real>195.63319396972656</real>
+	<real>195.6331939697266</real>
 	<key>speed</key>
 	<real>55</real>
 	<key>speedVariance</key>
 	<real>15</real>
 	<key>startColorAlpha</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>startColorBlue</key>
 	<real>1</real>
 	<key>startColorGreen</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>startColorRed</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>startColorVarianceAlpha</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>startColorVarianceBlue</key>
-	<real>0.87999999523162842</real>
+	<real>0.8799999952316284</real>
 	<key>startColorVarianceGreen</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>startColorVarianceRed</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>startParticleSize</key>
 	<real>15</real>
 	<key>startParticleSizeVariance</key>
 	<real>15</real>
 	<key>tangentialAccelVariance</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>tangentialAcceleration</key>
-	<real>0.0</real>
+	<real>0</real>
 	<key>textureFileName</key>
 	<string>pepper-.png</string>
 	<key>textureImageData</key>
