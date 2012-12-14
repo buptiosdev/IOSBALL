@@ -348,7 +348,7 @@ static GameMainScene *instanceOfMainScene;
             
         case TargetScene4thScene:
             _mainscenParam.maxVisibaleNum = 3;
-            _mainscenParam.candyCount = 15;
+            _mainscenParam.candyCount = 13;
             _mainscenParam.candyType = 3;
             _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
@@ -376,7 +376,7 @@ static GameMainScene *instanceOfMainScene;
             break;
         case TargetScene6thScene:
             _mainscenParam.maxVisibaleNum = 3;
-            _mainscenParam.candyCount = 5;
+            _mainscenParam.candyCount = 8;
             _mainscenParam.candyType = 1;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
