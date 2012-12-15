@@ -1760,8 +1760,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "299"
          endingLineNumber = "299"
-         landmarkName = "-options:"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1774,8 +1774,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "519"
          endingLineNumber = "519"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-getTeachInfo:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1954,7 +1954,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "515"
          endingLineNumber = "515"
-         landmarkName = "+sceneWithNavigationScene"
+         landmarkName = "-getTeachInfo:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1968,7 +1968,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "417"
          endingLineNumber = "417"
-         landmarkName = "-showGameLeaderboard:"
+         landmarkName = "-showGameAchievements:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1982,8 +1982,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "331"
          endingLineNumber = "331"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-updateScoreAndShowLeaderBoard"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2010,8 +2010,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "310"
          endingLineNumber = "310"
-         landmarkName = "@implementation NavigationScene"
-         landmarkType = "3">
+         landmarkName = "-options:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2080,8 +2080,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "512"
          endingLineNumber = "512"
-         landmarkName = "+scene"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2094,8 +2094,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "511"
          endingLineNumber = "511"
-         landmarkName = "+scene"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2108,8 +2108,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "510"
          endingLineNumber = "510"
-         landmarkName = "+scene"
-         landmarkType = "5">
+         landmarkName = "@implementation NavigationScene"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2136,7 +2136,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "311"
          endingLineNumber = "311"
-         landmarkName = "-displayInfo:"
+         landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2775,11 +2775,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/LoadingScene.mm"
-         timestampString = "376730456.596438"
+         timestampString = "377242743.768567"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110"
+         startingLineNumber = "141"
+         endingLineNumber = "141"
          landmarkName = "-waitAWhile:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3505,6 +3505,20 @@
          startingLineNumber = "351"
          endingLineNumber = "351"
          landmarkName = "-reportAchievementWithID:percentComplete:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "GreedFamily/screens/LoadingScene.mm"
+         timestampString = "377243434.510644"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "145"
+         endingLineNumber = "145"
+         landmarkName = "-waitAWhile:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

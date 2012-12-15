@@ -28,6 +28,16 @@
 	return [[[self alloc] initWithTargetScene:targetScene] autorelease];
 }
 
+-(void)pauseDelegate
+{   
+    [[CCDirector sharedDirector] pause];
+}
+
+-(void)goBack:(id)sender
+{
+    [[CCDirector sharedDirector] resume];
+}
+
 -(id) initWithTargetScene:(TargetScenes)targetScene
 {
 	if ((self = [super init]))
@@ -106,10 +116,33 @@
     return playTimes;
 }
 
+-(void)pauseGame
+{
+    CCLabelTTF *label1=[CCLabelTTF labelWithString:@"Tap To Start" fontName:@"Marker Felt" fontSize:30];
+    
+    CCMenuItemLabel * option1 = [CCMenuItemLabel itemWithLabel:label1 target:self selector:@selector(goBack:)];
+    CCMenu * menu = [CCMenu menuWithItems:option1, nil];
+    [menu alignItemsVerticallyWithPadding:10];
+    [self addChild:menu z:102];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [menu setPosition:ccp(size.width/2,size.height/2)];
+    
+    [option1 runAction:[CCSequence actions:
+    [CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
+    [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
+                        nil]];
+    [self pauseDelegate];
+    
+    
+}
+
+
 -(void) waitAWhile:(ccTime)delta
 {
 	// It's not strictly necessary, as we're changing the scene anyway. But just to be safe.
 	[self unscheduleAllSelectors];
+    
+//    [self pauseGame];
 //	[activityIndicatorView stopAnimating ];  //停止  
     if(targetScene_>=TargetNavigationScen)
     {
@@ -120,6 +153,7 @@
         [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
     }
 }
+
 
 //add by liuyunpeng 2012-12-09
 -(void)update:(ccTime)delta
