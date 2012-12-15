@@ -1666,9 +1666,9 @@
 				70C6713216620D5600E49FD5 /* NavigationScene.mm */,
 				70C6713316620D5600E49FD5 /* OptionsScene.h */,
 				70C6713416620D5600E49FD5 /* OptionsScene.m */,
-				70C6713516620D5600E49FD5 /* RoleScene.h */,
 				4A7B48C0167B82F500128AEF /* ShareScene.h */,
 				4A7B48C1167B82F500128AEF /* ShareScene.mm */,
+				70C6713516620D5600E49FD5 /* RoleScene.h */,
 				70C6713616620D5600E49FD5 /* RoleScene.m */,
 			);
 			path = screens;
