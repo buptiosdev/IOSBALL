@@ -201,19 +201,19 @@ float logoreturnscaleY=0.15;
         //set return in the left-down corner
         //add by lyp 2012-10-23
         int rolefontsize=screenSize.height*rolefontscaleY;
-        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"ARIALN" fontSize:rolefontsize];
+        landanimalspeed=[CCLabelTTF labelWithString:@" landspeed: " fontName:@"CAI978-135" fontSize:rolefontsize];
 //        ccColor3B color = {20,156,12};
-        ccColor3B color = {2,2,2};
-        [landanimalspeed setColor:color];
+        //ccColor3B color = {2,2,2};
+        [landanimalspeed setColor:ccBLACK];
         [self addChild:landanimalspeed];
         int labelpos=landanimalspeed.contentSize.width/2;
         [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
-        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"ARIALN" fontSize:rolefontsize];
-        [flyanimalspeed setColor:color];
+        flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"CAI978-135" fontSize:rolefontsize];
+        [flyanimalspeed setColor:ccBLACK];
         [self addChild:flyanimalspeed];
         [flyanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.4)];
-        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"ARIALN" fontSize:rolefontsize];
-        [storagecapacity setColor:color];
+        storagecapacity=[CCLabelTTF labelWithString:@" storage: " fontName:@"CAI978-135" fontSize:rolefontsize];
+        [storagecapacity setColor:ccBLACK];
         [self addChild:storagecapacity];
         [storagecapacity setPosition:ccp(labelpos, screenSize.height * 0.3)];
 

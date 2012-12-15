@@ -28,11 +28,12 @@ static int post_status_times = 0;
     {
         post_status_times ++;
         [postStatusText release], postStatusText = nil;
-        postStatusText = [[NSString alloc] initWithFormat:@"test post status : %i %@", post_status_times, [NSDate date]];
+        //postStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！ %i %@", post_status_times, [NSDate date]];
+        postStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！ %@", [NSDate date]];
     }
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                        message:[NSString stringWithFormat:@"Will post status with text \"%@\"", postStatusText]
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享"
+                                                        message:[NSString stringWithFormat:@"您即将分享如下信息 \n\"%@\"", postStatusText]
                                                        delegate:self cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"OK", nil];
     alertView.tag = 0;
@@ -47,13 +48,20 @@ static int post_image_status_times = 0;
     {
         post_image_status_times ++;
         [postImageStatusText release], postImageStatusText = nil;
-        postImageStatusText = [[NSString alloc] initWithFormat:@"test post image status : %i %@", post_image_status_times, [NSDate date]];
+        //postImageStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！ : %i %@", post_image_status_times, [NSDate date]];
+        postImageStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！  %@", [NSDate date]];
     }
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                        message:[NSString stringWithFormat:@"Will post image status with text \"%@\"", postImageStatusText]
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享"
+                                                        message:[NSString stringWithFormat:@"您即将分享如下信息 \n\"%@\"", postImageStatusText]
                                                        delegate:self cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"OK", nil];
+    
+//    UIImageView *viewe = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 100.0, 100.0, 100.0)];
+//    viewe.image = [UIImage imageNamed:@"teachdetail1.jpg"];
+//    [alertView addSubview:viewe];
+//    [viewe release];
+    
     alertView.tag = 1;
     [alertView show];
     [alertView release];
@@ -249,16 +257,17 @@ static int post_image_status_times = 0;
 		self.isTouchEnabled = YES;
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
-        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:@"share from ios" fontName:@"Dekers_Bold" fontSize:25];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        //[levelLabel setColor:ccBLACK];
-        [levelLabel setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
-        [self addChild:levelLabel];
+        CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+        background.scaleY=(screenSize.height)/[background contentSize].height;
+        NSAssert( background != nil, @"background must be non-nil");
+		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+		[self addChild:background];
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        returnBtn1.scaleX=1.1;
-        returnBtn1.scaleY=1.1;
+        returnBtn1.scale=1.1;
         CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
                                                                selectedSprite:returnBtn1 
                                                                        target:self 
@@ -271,24 +280,20 @@ static int post_image_status_times = 0;
         [self addChild:returnmenu];
         
         //set shop in the right-down corner
-        CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        [next setFlipX:YES];//Y轴镜像反转
-        [next1 setFlipX:YES];//Y轴镜像反转
-        next1.scaleX=1.1; //按照像素定制图片宽高
-        next1.scaleY=1.1;
-        CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
-                                                             selectedSprite:next1 
+        CCSprite *weibo = [CCSprite spriteWithFile:@"weibo_logo.jpg"];
+        CCSprite *weibo1 = [CCSprite spriteWithFile:@"weibo_logo.jpg"];
+        weibo1.scale=1.1; //按照像素定制图片宽高
+        CCMenuItemSprite *weiboItem = [CCMenuItemSprite itemFromNormalSprite:weibo 
+                                                             selectedSprite:weibo1 
                                                                      target:self 
                                                                    selector:@selector(shareWeibo)];
         
-        nextItem.scale=screenSize.height*sharelabelscaleY/[next contentSize].height;
+        weiboItem.scale=screenSize.height*sharelabelscaleY/[weibo contentSize].height;
         
-        CCMenu * nextMenu = [CCMenu menuWithItems:nextItem, nil];
+        CCMenu * weiboMenu = [CCMenu menuWithItems:weiboItem, nil];
         //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
-        [nextMenu setPosition:ccp(screenSize.width-[next contentSize].width*nextItem.scaleX*0.6,
-                                  [next contentSize].height * nextItem.scaleX * 0.5)];
-        [self addChild:nextMenu];
+        [weiboMenu setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+        [self addChild:weiboMenu];
         
     }
     return self;
