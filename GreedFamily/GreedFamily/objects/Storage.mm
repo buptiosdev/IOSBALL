@@ -279,6 +279,8 @@ float storagestarscale=25.0/480;
 
         }
         [bag addPepper];
+        
+        [[GameScore sharedgameScore] changeScore:1 DelayTime:1 type:0];
     }
     //冰块
     else if (5 == foodType)
@@ -294,6 +296,8 @@ float storagestarscale=25.0/480;
             landAnimal = [[NoBodyObjectsLayer sharedNoBodyObjectsLayer]  getLandAnimalPlay2];
         }
         [landAnimal decreaseSpeed];
+        
+        [[GameScore sharedgameScore] changeScore:2 DelayTime:1 type:1];
     }
     //黑炸弹
     else if (4 == foodType)
@@ -310,6 +314,8 @@ float storagestarscale=25.0/480;
         }
         [landAnimal bombed];
         [self bombStorage];
+        
+        [[GameScore sharedgameScore] changeScore:5 DelayTime:1 type:1];
     }
     //水晶球
     else if (3 == foodType)
@@ -329,6 +335,8 @@ float storagestarscale=25.0/480;
         }
         [landAnimal getCrystal];
         [bag addCrystal];       
+        
+        [[GameScore sharedgameScore] changeScore:5 DelayTime:1 type:0];
     }
     //反向球
     else if (7 == foodType)
@@ -347,6 +355,8 @@ float storagestarscale=25.0/480;
             bag = [[TouchCatchLayer sharedTouchCatchLayer] getBagPlay2];
         }
         [bag addSmoke];
+        
+        [[GameScore sharedgameScore] changeScore:2 DelayTime:1 type:0];
     }
 }
 

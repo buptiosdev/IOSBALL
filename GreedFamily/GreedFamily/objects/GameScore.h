@@ -31,12 +31,14 @@ typedef enum
 {
 	BaseScoreTag = 0,
     AwardScoreTag,
+    PropertyScoreTag,
 	ContinuousAwardScoreTag,
     AccumulateAwardScoreTag,
     BaseScoreSpeciallyTag,
     AwardScoreSpeciallyTag,
     ContinuousAwardScoreSpeciallyTag,
     AccumulateAwardScoreSpeciallyTag,
+    PropertyScoreSpeciallyTag,
 	ScoreTags_MAX,
 } ScoreTags;
 
@@ -116,5 +118,7 @@ struct  struct_gameScore{
 
 -(void)calculateTimeAward:(int)gameLevel;
 
+//type: 0 加分 ； 1 减分
+-(void)changeScore:(int)score DelayTime:(int)scoreDelayTime type:(int)scoreType;
 
 @end
