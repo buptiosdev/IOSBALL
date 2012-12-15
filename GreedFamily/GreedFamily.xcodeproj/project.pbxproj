@@ -16,6 +16,7 @@
 		4A7B48B3167B740D00128AEF /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B48AF167B740D00128AEF /* SinaWeiboRequest.m */; };
 		4A7B48C2167B82F500128AEF /* ShareScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B48C1167B82F500128AEF /* ShareScene.mm */; };
 		4A80383E166B490A00277D8A /* progressback.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A80383D166B490A00277D8A /* progressback.png */; };
+		4A80A019167CCD5800DCBECE /* weibo_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A80A018167CCD5800DCBECE /* weibo_logo.jpg */; };
 		4A8E0ACA167C5FC500BFFCC9 /* CAI978-135.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0AC9167C5FC500BFFCC9 /* CAI978-135.ttf */; };
 		70081DF3153F987C003F042A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70081DF2153F987C003F042A /* QuartzCore.framework */; };
 		70081DF5153F987C003F042A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70081DF4153F987C003F042A /* OpenGLES.framework */; };
@@ -348,6 +349,7 @@
 		4A7B48C0167B82F500128AEF /* ShareScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareScene.h; sourceTree = "<group>"; };
 		4A7B48C1167B82F500128AEF /* ShareScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShareScene.mm; sourceTree = "<group>"; };
 		4A80383D166B490A00277D8A /* progressback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progressback.png; path = Resources/pic/progressback.png; sourceTree = "<group>"; };
+		4A80A018167CCD5800DCBECE /* weibo_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = weibo_logo.jpg; path = Resources/pic/weibo_logo.jpg; sourceTree = "<group>"; };
 		4A8E0AC9167C5FC500BFFCC9 /* CAI978-135.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CAI978-135.ttf"; sourceTree = "<group>"; };
 		70081DEE153F987C003F042A /* GreedFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreedFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70081DF2153F987C003F042A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1530,6 +1532,7 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				4A80A018167CCD5800DCBECE /* weibo_logo.jpg */,
 				706746C21674D675000D7DB7 /* display_panda.png */,
 				706746A61674A2D1000D7DB7 /* display_pig.png */,
 				706746A71674A2D1000D7DB7 /* display_snake.png */,
@@ -1900,6 +1903,7 @@
 				70F27211167A0C0200D1960C /* bitmapNum4.png in Resources */,
 				4A7B48B0167B740D00128AEF /* SinaWeibo.bundle in Resources */,
 				4A8E0ACA167C5FC500BFFCC9 /* CAI978-135.ttf in Resources */,
+				4A80A019167CCD5800DCBECE /* weibo_logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
