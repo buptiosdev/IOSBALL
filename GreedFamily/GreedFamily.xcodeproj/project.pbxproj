@@ -1534,11 +1534,8 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
 				4A80A018167CCD5800DCBECE /* weibo_logo.jpg */,
 				706746C21674D675000D7DB7 /* display_panda.png */,
->>>>>>> 6aa61383a9a58f6580b8f1cb098af2c72f0dc23d
 				706746A61674A2D1000D7DB7 /* display_pig.png */,
 				70F27226167C7BF400D1960C /* display_pig2.png */,
 				706746C21674D675000D7DB7 /* display_panda.png */,
@@ -1909,12 +1906,9 @@
 				70F27210167A0C0200D1960C /* bitmapNum4.fnt in Resources */,
 				70F27211167A0C0200D1960C /* bitmapNum4.png in Resources */,
 				4A7B48B0167B740D00128AEF /* SinaWeibo.bundle in Resources */,
-<<<<<<< HEAD
 				70F27227167C7BF400D1960C /* display_pig2.png in Resources */,
-=======
 				4A8E0ACA167C5FC500BFFCC9 /* CAI978-135.ttf in Resources */,
 				4A80A019167CCD5800DCBECE /* weibo_logo.jpg in Resources */,
->>>>>>> 6aa61383a9a58f6580b8f1cb098af2c72f0dc23d
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
