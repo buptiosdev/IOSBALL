@@ -500,17 +500,21 @@ static GameScore  *instanceOfgameScore;
     //rewardTimeScore 返回的时间奖励得分    
     int rewardTimeScore;
     
-    int timelimit = [GameMainScene sharedMainScene].mainscenParam.candyCount 
-                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency + RewardTimeScore  * ((level - 1)/10 + 1);
+    //每一关出球的时间＋结束后调用result的等待时间
+    float timelimit = [GameMainScene sharedMainScene].mainscenParam.candyCount 
+                    * [GameMainScene sharedMainScene].mainscenParam.candyFrequency + ADDTIME;
+    float timerate=timelimit/mytimestamp;
     
-    if (mytimestamp <= timelimit) 
-    {
-        rewardTimeScore = (timelimit - mytimestamp)/1;
-    }
-    else
-    {    
-        rewardTimeScore = 0;
-    }
+    rewardTimeScore = my_nowlevelscore*timerate*timerate*BASESCORERATE;
+    
+//    if (mytimestamp <= timelimit) 
+//    {
+//        rewardTimeScore = (timelimit - mytimestamp)/1;
+//    }
+//    else
+//    {    
+//        rewardTimeScore = 0;
+//    }
     
     [LevelScore insertObject:[NSNumber numberWithInteger:rewardTimeScore] atIndex:1];  
     
