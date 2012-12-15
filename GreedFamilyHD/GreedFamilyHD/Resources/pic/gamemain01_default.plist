@@ -1479,50 +1479,6 @@
 			<false/>
 		</dict>
 		
-		<key>pause01.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{11, 4}, {60, 74}}</string>
-			<key>spriteOffset</key>
-			<string>{1, -1}</string>
-			<key>spriteSize</key>
-			<string>{60, 74}</string>
-			<key>spriteSourceSize</key>
-			<string>{80, 80}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{194, 1219}, {60, 74}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
-		<key>pause02.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{11, 4}, {60, 74}}</string>
-			<key>spriteOffset</key>
-			<string>{1, -1}</string>
-			<key>spriteSize</key>
-			<string>{60, 74}</string>
-			<key>spriteSourceSize</key>
-			<string>{80, 80}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{194, 1295}, {60, 74}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
 		<key>pepper+.png</key>
 		<dict>
 			<key>aliases</key>

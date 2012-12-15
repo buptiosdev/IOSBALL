@@ -129,7 +129,7 @@
     
     //添加本地通知 测试  
     //设置1h之后 
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:3600*24];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:3600*48];
     //chuangjian一个本地推送
     UILocalNotification *noti = [[[UILocalNotification alloc] init] autorelease];
     if (noti) {
@@ -168,7 +168,7 @@
     {
 
         //这里，你就可以通过notification的useinfo，干一些你想做的事情了
-        application.applicationIconBadgeNumber -= 1;
+        application.applicationIconBadgeNumber = 0;
         
         NSString *reminderText = [notification.userInfo
                                   objectForKey:@"key"];
@@ -257,6 +257,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    application.applicationIconBadgeNumber = 0;
 	[[CCDirector sharedDirector] resume];
 }
 

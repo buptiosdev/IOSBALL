@@ -45,7 +45,7 @@
         }
         default:
         {
-            int randomNum = random()%3;
+            int randomNum = random()%4;
             
             if (0 == randomNum) 
             {
@@ -54,6 +54,10 @@
             else if (1 == randomNum) 
             {
                 displayPic = [NSString stringWithFormat:@"display_panda.png"];
+            }
+            else if (2 == randomNum) 
+            {
+                displayPic = [NSString stringWithFormat:@"display_pig2.png"];
             }
             else
             {

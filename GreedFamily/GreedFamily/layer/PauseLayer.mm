@@ -335,8 +335,8 @@
         [self addChild:retryMenu];
         
         //teach
-        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"info.png"];
-        CCSprite *info2 = [CCSprite spriteWithSpriteFrameName:@"info.png"];
+        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
+        CCSprite *info2 = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
         info2.scaleX = 1.1;
         info2.scaleY = 1.1;
         infoMenu = [CCMenuItemSprite itemFromNormalSprite:info 

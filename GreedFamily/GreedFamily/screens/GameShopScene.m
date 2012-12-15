@@ -196,8 +196,8 @@ float shopitemscale=0.15;
             
         case 0:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed1.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed1.png"];
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                   selectedSprite:addSpeedOnce2 
                                                           target:self 
@@ -212,8 +212,8 @@ float shopitemscale=0.15;
         }
         case 1:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"magic+.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"magic+.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed2.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed2.png"];
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                   selectedSprite:addSpeedOnce2 
                                                           target:self 
@@ -228,8 +228,8 @@ float shopitemscale=0.15;
         }
         case 2:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"magic-.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed3.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed3.png"];
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                   selectedSprite:addSpeedOnce2 
                                                           target:self 
@@ -244,8 +244,8 @@ float shopitemscale=0.15;
         }
         default:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed4.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed4.png"];
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                       selectedSprite:addSpeedOnce2 
                                                               target:self 
@@ -265,8 +265,8 @@ float shopitemscale=0.15;
     switch ((_buyedList/10)%10) {
         case 0:
         {
-            CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
-            CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
+            CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"storagenum1.png"];
+            CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"storagenum1.png"];
             addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addStorage1 
                                                             selectedSprite:addStorage2 
                                                                 target:self 
@@ -280,8 +280,8 @@ float shopitemscale=0.15;
         } 
         case 1:
         {
-            CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"pepper+.png"];
-            CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"pepper+.png"];
+            CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"storagenum2.png"];
+            CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"storagenum2.png"];
             addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addStorage1 
                                                      selectedSprite:addStorage2 
                                                              target:self 
@@ -295,8 +295,8 @@ float shopitemscale=0.15;
         } 
         case 2:
         {
-            CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
-            CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"pepper-.png"];
+            CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"storagenum3.png"];
+            CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"storagenum3.png"];
             addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addStorage1 
                                                      selectedSprite:addStorage2 
                                                              target:self 
@@ -310,8 +310,8 @@ float shopitemscale=0.15;
         } 
         default:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"storagenum4.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"storagenum4.png"];
             addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                       selectedSprite:addSpeedOnce2 
                                                               target:self 
@@ -331,8 +331,8 @@ float shopitemscale=0.15;
     switch ((_buyedList/100)%10) {
         case 0:
         {
-            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"ice-.png"];
-            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"ice-.png"];
+            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"airspeed1.png"];
+            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"airspeed1.png"];
             addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                      selectedSprite:addAirSpeed2
                                                              target:self 
@@ -346,8 +346,8 @@ float shopitemscale=0.15;
         } 
         case 1:
         {
-            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"ice+.png"];
-            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"ice+.png"];
+            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"airspeed2.png"];
+            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"airspeed2.png"];
             addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
@@ -361,8 +361,8 @@ float shopitemscale=0.15;
         } 
         case 2:
         {
-            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"ice-.png"];
-            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"ice-.png"];
+            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"airspeed3.png"];
+            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"airspeed3.png"];
             addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
@@ -376,8 +376,8 @@ float shopitemscale=0.15;
         } 
         default:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"airspeed4.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"airspeed4.png"];
             addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                       selectedSprite:addSpeedOnce2 
                                                               target:self 
@@ -395,8 +395,8 @@ float shopitemscale=0.15;
     switch ((_buyedList/1000)%10) {
         case 0:
         {
-            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
-            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"garlic-.png"];
+            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"storagetype1.png"];
+            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"storagetype1.png"];
             addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
@@ -410,8 +410,8 @@ float shopitemscale=0.15;
         } 
         case 1:
         {
-            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"garlic+.png"];
-            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"garlic+.png"];
+            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"storagetype2.png"];
+            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"storagetype2.png"];
             addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
@@ -425,8 +425,8 @@ float shopitemscale=0.15;
         } 
         default:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"bomb-.png"];
+            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"storagetype3.png"];
+            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"storagetype3.png"];
             addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                       selectedSprite:addSpeedOnce2 
                                                               target:self 

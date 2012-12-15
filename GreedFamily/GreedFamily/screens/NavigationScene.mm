@@ -518,14 +518,12 @@ Boolean showPair=YES;
     [teachInfoMenu setIsEnabled:NO];
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     
-    CCSprite *nextPic = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-    CCSprite *nextPic2 = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-    [nextPic setFlipY:YES];//X轴镜像反转
-    [nextPic2 setFlipY:YES];//X轴镜像反转
+    CCSprite *nextPic = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"];
+    CCSprite *nextPic2 = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"];
     nextPic2.scaleX = 1.1;
     nextPic2.scaleY = 1.1;
-    CCSprite *lastPic = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-    CCSprite *lastPic2 = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"]; 
+    CCSprite *lastPic = [CCSprite spriteWithSpriteFrameName:@"playgame2.png"];
+    CCSprite *lastPic2 = [CCSprite spriteWithSpriteFrameName:@"playgame2.png"]; 
     lastPic2.scaleX = 1.1;
     lastPic2.scaleY = 1.1;
 
