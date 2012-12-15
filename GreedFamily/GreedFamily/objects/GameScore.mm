@@ -453,6 +453,75 @@ static GameScore  *instanceOfgameScore;
     //[totalScoreLabel setString:[NSString stringWithFormat:@"x%i", my_nowlevelscore]];
 }
 
+-(void)changeScore:(int)score DelayTime:(int)scoreDelayTime type:(int)scoreType
+{
+    //接特效
+    //加分特效
+    CCLabelBMFont*  getBaseScore = [CCLabelBMFont labelWithString:@"0" fntFile:@"yellowcute.fnt"];
+    if (scoreType == 1) {
+        [getBaseScore setString:[NSString stringWithFormat:@"-%i", score]];
+        my_nowlevelscore -= score;
+        if (my_nowlevelscore < 0) {
+            my_nowlevelscore = 0;
+        }
+    }
+    else 
+    {
+        [getBaseScore setString:[NSString stringWithFormat:@"+%i", score]];
+        my_nowlevelscore += score;
+    }
+    
+    getBaseScore.position = CGPointMake(random()%30 + 10, 80);
+    getBaseScore.anchorPoint = CGPointMake(0.5f, 1.0f);
+    getBaseScore.scale = 1;
+    getBaseScore.color = ccYELLOW;
+    [self addChild:getBaseScore z:-2 tag:PropertyScoreTag];
+    //加入得分特效
+    [self schedule:@selector(removePropertyScore:) interval:0.05];
+    id ac0 = [CCToggleVisibility action]; 
+    id ac1 = [CCMoveTo actionWithDuration:2 position:ccp(50,300)];     
+    id ac3 = [CCDelayTime actionWithDuration:scoreDelayTime];
+    
+    //将5个数作组合为一个序列，注意不要忘了用nil结尾 
+    [getBaseScore runAction:[CCSequence actions:ac3, ac1, ac0,nil]]; 
+    //加入特效
+    CCParticleSystem* system;
+    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"star.plist"];
+    system.positionType = kCCPositionTypeFree;
+    system.autoRemoveOnFinish = YES;
+    system.position = getBaseScore.position;
+    [self addChild:system z:-2 tag:PropertyScoreSpeciallyTag];
+    //得分音效
+    [CommonLayer playAudio:GetScore];
+    
+    //得分特效
+    //延迟得分效果 
+    [self schedule:@selector(setScoreLabel:) interval:4];
+}
+
+
+-(void)removePropertyScore: (ccTime) dt
+{
+    static int removePropertyScoreCount = 0;
+    removePropertyScoreCount++;
+    CCNode* awardScore = [self getChildByTag:PropertyScoreTag];
+    CCNode* speciallySystem = [self getChildByTag:PropertyScoreSpeciallyTag];
+    
+    speciallySystem.position = awardScore.position;
+    
+    //5s
+    if (removePropertyScoreCount >= 80)
+    {
+        removePropertyScoreCount = 0;
+        [self unschedule:@selector(removePropertyScore:)];   
+        //消除特效
+        [self removeChildByTag:PropertyScoreTag cleanup:YES];
+        [self removeChildByTag:PropertyScoreSpeciallyTag cleanup:YES];
+        
+        
+    }
+}
+
 //update 与  [self scheduleUpdate] 对应
 -(void) update:(ccTime)delta
 {
