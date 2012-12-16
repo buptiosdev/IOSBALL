@@ -291,8 +291,8 @@ static int post_image_status_times = 0;
         
         weiboItem.scale=screenSize.height*sharelabelscaleY/[weibo contentSize].height;
         
-        CCSprite *renren = [CCSprite spriteWithFile:@"renren.jpg"];
-        CCSprite *renren1 = [CCSprite spriteWithFile:@"renren.jpg"];
+        CCSprite *renren = [CCSprite spriteWithFile:@"renren.png"];
+        CCSprite *renren1 = [CCSprite spriteWithFile:@"renren.png"];
         renren1.scale=1.1; //按照像素定制图片宽高
         CCMenuItemSprite *renrenItem = [CCMenuItemSprite itemFromNormalSprite:renren 
                                                               selectedSprite:renren1 
@@ -301,8 +301,8 @@ static int post_image_status_times = 0;
         
         renrenItem.scale=screenSize.height*sharelabelscaleY/[renren contentSize].height;
         
-        CCSprite *facebook = [CCSprite spriteWithFile:@"facebook.jpg"];
-        CCSprite *facebook1 = [CCSprite spriteWithFile:@"sina.jpg"];
+        CCSprite *facebook = [CCSprite spriteWithFile:@"facebook.png"];
+        CCSprite *facebook1 = [CCSprite spriteWithFile:@"sina.png"];
         facebook1.scale=1.1; //按照像素定制图片宽高
         CCMenuItemSprite *facebookItem = [CCMenuItemSprite itemFromNormalSprite:facebook 
                                                               selectedSprite:facebook1 
@@ -311,8 +311,8 @@ static int post_image_status_times = 0;
         
         facebookItem.scale=screenSize.height*sharelabelscaleY/[facebook contentSize].height;
         
-        CCSprite *twitter = [CCSprite spriteWithFile:@"twitter.jpg"];
-        CCSprite *twitter1 = [CCSprite spriteWithFile:@"twitter.jpg"];
+        CCSprite *twitter = [CCSprite spriteWithFile:@"twitter.png"];
+        CCSprite *twitter1 = [CCSprite spriteWithFile:@"twitter.png"];
         twitter1.scale=1.1; //按照像素定制图片宽高
         CCMenuItemSprite *twitterItem = [CCMenuItemSprite itemFromNormalSprite:twitter 
                                                               selectedSprite:twitter1 
