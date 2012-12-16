@@ -248,7 +248,7 @@ static int post_image_status_times = 0;
 {
     [CommonLayer playAudio:SelectOK];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    [[CCDirector sharedDirector] popScene];
 }
 
 -(id)initWithShareScene
@@ -321,7 +321,7 @@ static int post_image_status_times = 0;
         
         twitterItem.scale=screenSize.height*sharelabelscaleY/[twitter contentSize].height;
         
-        CCMenu * weiboMenu = [CCMenu menuWithItems:weiboItem,renrenItem,facebookItem,twitterItem, nil];
+        CCMenu * weiboMenu = [CCMenu menuWithItems:weiboItem,facebookItem,twitterItem, nil];
         //CCMenu * weiboMenu = [CCMenu menuWithItems:weiboItem, nil];
         [weiboMenu alignItemsHorizontallyWithPadding:screenSize.height*sharelabelscaleY];
         [weiboMenu setPosition:ccp(screenSize.width*0.5, screenSize.height*0.6)];

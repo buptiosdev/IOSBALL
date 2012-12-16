@@ -158,7 +158,7 @@ Boolean showPair=YES;
         CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
                                                                selectedSprite:info1 
                                                                        target:self 
-                                                                     selector:@selector(displayInfo:)];
+                                                                     selector:@selector(share:)];
         infoItem.scale=optscale;
         CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
         [infomenu setPosition:ccp(size.width-[info contentSize].width*optscale/2,[info contentSize].height*optscale/2)];
@@ -288,10 +288,10 @@ Boolean showPair=YES;
     [[CCDirector sharedDirector]pushScene:gs];
 }
 
--(void)displayInfo:(id)sender
+-(void)share:(id)sender
 {
     [CommonLayer playAudio:SelectOK];
-    [[CCDirector sharedDirector] replaceScene:[ShareScene scene]];
+    [[CCDirector sharedDirector] pushScene:[ShareScene scene]];
 }
 
 
