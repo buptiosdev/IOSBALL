@@ -146,11 +146,16 @@
 //	[activityIndicatorView stopAnimating ];  //停止  
     if(targetScene_>=TargetNavigationScen)
     {
+        
         [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
     }
     else
     {
+        
+//        CCTransitionFade *tran = [CCTransitionFade transitionWithDuration:1 scene:[GameMainScene scene:targetScene_] withColor:ccWHITE];
+//        CCTransitionSceneOriented *tran2 = [CCTransitionSceneOriented transitionWithDuration:1 scene:[GameMainScene scene:targetScene_]];
         [[CCDirector sharedDirector] replaceScene:[GameMainScene scene:targetScene_]];
+//        [[CCDirector sharedDirector] replaceScene:tran];
     }
 }
 

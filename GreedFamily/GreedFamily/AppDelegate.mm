@@ -28,15 +28,15 @@
 	//
 #if GAME_AUTOROTATION == kGameAutorotationUIViewController
 	
-	//	CC_ENABLE_DEFAULT_GL_STATES();
-	//	CCDirector *director = [CCDirector sharedDirector];
-	//	CGSize size = [director winSize];
-	//	CCSprite *sprite = [CCSprite spriteWithFile:@"Default.png"];
-	//	sprite.position = ccp(size.width/2, size.height/2);
-	//	sprite.rotation = -90;
-	//	[sprite visit];
-	//	[[director openGLView] swapBuffers];
-	//	CC_ENABLE_DEFAULT_GL_STATES();
+//    CC_ENABLE_DEFAULT_GL_STATES();
+//	CCDirector *director = [CCDirector sharedDirector];
+//	CGSize size = [director winSize];
+//	CCSprite *sprite = [CCSprite spriteWithFile:@"Default.png"];
+//	sprite.position = ccp(size.width/2, size.height/2);
+//	sprite.rotation = -90;
+//	[sprite visit];
+//	[[director openGLView] swapBuffers];
+//	CC_ENABLE_DEFAULT_GL_STATES();
 	
 #endif // GAME_AUTOROTATION == kGameAutorotationUIViewController	
 }
@@ -118,8 +118,9 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
-    
+    CCTransitionSplitCols *tran = [CCTransitionSplitCols transitionWithDuration:1 scene:[NavigationScene sceneWithNavigationScene]];
+	[[CCDirector sharedDirector] runWithScene: tran];
+//    [[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
     //add push notice function推送服务器推送
     [Parse setApplicationId:@"w1rAzcRAdPuoX60nNy3fKewfZPYCvgJQdXZYEJ3r" clientKey:@"Rg9avoCht3xPnM8ZrM42rBBeMIijaxpQMcSmAImu"];
     [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
@@ -128,7 +129,7 @@
       UIRemoteNotificationTypeBadge)];
     
     //添加本地通知 测试  
-    //设置1h之后 
+    //设2天之后 
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:3600*48];
     //chuangjian一个本地推送
     UILocalNotification *noti = [[[UILocalNotification alloc] init] autorelease];
@@ -257,6 +258,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    //图标信息数字清0
     application.applicationIconBadgeNumber = 0;
 	[[CCDirector sharedDirector] resume];
 }
