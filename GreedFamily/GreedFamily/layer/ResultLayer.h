@@ -22,9 +22,11 @@
     int curtotalscore;
     int starNum;
     int isNewrecord;
-    
+    int gameLevel;
     bool isShow1;
     bool isShow2;
+    
+    CCSprite* background;
 }
 +(id)createResultLayer:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
 @end
