@@ -207,7 +207,7 @@ float logoreturnscaleY=0.15;
         //ccColor3B color = {2,2,2};
         [landanimalspeed setColor:ccBLACK];
         [self addChild:landanimalspeed];
-        int labelpos=landanimalspeed.contentSize.width/2;
+        int labelpos=landanimalspeed.contentSize.width;
         [landanimalspeed setPosition:ccp(labelpos, screenSize.height * 0.5)];
         flyanimalspeed=[CCLabelTTF labelWithString:@" flyspeed : " fontName:@"CAI978-135" fontSize:rolefontsize];
         [flyanimalspeed setColor:ccBLACK];
@@ -222,7 +222,7 @@ float logoreturnscaleY=0.15;
         //set progess
         CCProgressTimer *ctlandanimal=[CCProgressTimer progressWithFile:@"progress3.png"];
         float progscale=screenSize.width*progressscale/[ctlandanimal contentSize].width;
-        int progresspos=ctlandanimal.contentSize.width*progscale/2+landanimalspeed.contentSize.width;
+        int progresspos=ctlandanimal.contentSize.width*progscale/2+landanimalspeed.contentSize.width/2+labelpos;
         CCSprite *progress1=[CCSprite spriteWithFile:@"progressback.png"];
         progress1.scale=progscale;
         progress1.position=ccp( progresspos , screenSize.height * 0.5);
