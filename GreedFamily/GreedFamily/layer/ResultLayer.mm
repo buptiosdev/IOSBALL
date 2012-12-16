@@ -89,7 +89,7 @@ float resultstarscale=50.0/480;
         
     }
     CGSize size = [[CCDirector sharedDirector] winSize];
-    CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"ARIALN" fontSize:40];
+    CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Dekers_Bold" fontSize:40];
     [labelnewrecord setColor:ccRED];
     labelnewrecord.position=CGPointMake(size.width *4/5, size.height *3/4  );;
     [labelnewrecord runAction:[CCSequence actions:
