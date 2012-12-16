@@ -53,7 +53,7 @@ static CommonLayer *instanceOfCommonLayer;
 {
     self.roleParamArray = (struct RoleParam *)malloc(sizeof(struct RoleParam)*ROLE_TYPE_COUNT);
     //panda
-    self.roleParamArray[0].density = 0.65f;
+    self.roleParamArray[0].density = 0.8f;
     self.roleParamArray[0].restitution = 0.5f;
     self.roleParamArray[0].friction = 0.5f;
     self.roleParamArray[0].linearDamping = 0.45f;
@@ -73,7 +73,7 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[1].landSpeed = 0.5f;
     self.roleParamArray[1].storageCapacity = 8;
     //bird
-    self.roleParamArray[2].density = 0.55f;
+    self.roleParamArray[2].density = 0.7f;
     self.roleParamArray[2].restitution = 0.7f;
     self.roleParamArray[2].friction = 0.4f;
     self.roleParamArray[2].linearDamping = 0.3f;
