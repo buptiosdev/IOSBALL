@@ -433,7 +433,14 @@ Boolean showPair=YES;
 //    NSString *str = [NSString stringWithFormat: 
 //                   @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
 //                   543100124 ]; 
-    NSString * str =@"http://www.sina.com.cn";
+    
+    //NSString * str =@"http://www.sina.com.cn";
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
+    
+    NSString *str = [NSString stringWithFormat: 
+                     @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
+                     543100124 ];  
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
 }
