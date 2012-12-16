@@ -12,7 +12,7 @@
 #import "SinaWeibo.h"
 //#import "SNViewController.h"
 
-float sharelabelscaleY=0.13;
+float sharelabelscaleY=0.15;
 
 
 @implementation ShareScene
@@ -291,9 +291,40 @@ static int post_image_status_times = 0;
         
         weiboItem.scale=screenSize.height*sharelabelscaleY/[weibo contentSize].height;
         
-        CCMenu * weiboMenu = [CCMenu menuWithItems:weiboItem, nil];
-        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
-        [weiboMenu setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+        CCSprite *renren = [CCSprite spriteWithFile:@"renren.jpg"];
+        CCSprite *renren1 = [CCSprite spriteWithFile:@"renren.jpg"];
+        renren1.scale=1.1; //按照像素定制图片宽高
+        CCMenuItemSprite *renrenItem = [CCMenuItemSprite itemFromNormalSprite:renren 
+                                                              selectedSprite:renren1 
+                                                                      target:self 
+                                                                    selector:@selector(shareWeibo)];
+        
+        renrenItem.scale=screenSize.height*sharelabelscaleY/[renren contentSize].height;
+        
+        CCSprite *facebook = [CCSprite spriteWithFile:@"facebook.jpg"];
+        CCSprite *facebook1 = [CCSprite spriteWithFile:@"sina.jpg"];
+        facebook1.scale=1.1; //按照像素定制图片宽高
+        CCMenuItemSprite *facebookItem = [CCMenuItemSprite itemFromNormalSprite:facebook 
+                                                              selectedSprite:facebook1 
+                                                                      target:self 
+                                                                    selector:@selector(shareWeibo)];
+        
+        facebookItem.scale=screenSize.height*sharelabelscaleY/[facebook contentSize].height;
+        
+        CCSprite *twitter = [CCSprite spriteWithFile:@"twitter.jpg"];
+        CCSprite *twitter1 = [CCSprite spriteWithFile:@"twitter.jpg"];
+        twitter1.scale=1.1; //按照像素定制图片宽高
+        CCMenuItemSprite *twitterItem = [CCMenuItemSprite itemFromNormalSprite:twitter 
+                                                              selectedSprite:twitter1 
+                                                                      target:self 
+                                                                    selector:@selector(shareWeibo)];
+        
+        twitterItem.scale=screenSize.height*sharelabelscaleY/[twitter contentSize].height;
+        
+        CCMenu * weiboMenu = [CCMenu menuWithItems:weiboItem,renrenItem,facebookItem,twitterItem, nil];
+        //CCMenu * weiboMenu = [CCMenu menuWithItems:weiboItem, nil];
+        [weiboMenu alignItemsHorizontallyWithPadding:screenSize.height*sharelabelscaleY];
+        [weiboMenu setPosition:ccp(screenSize.width*0.5, screenSize.height*0.6)];
         [self addChild:weiboMenu];
         
     }
