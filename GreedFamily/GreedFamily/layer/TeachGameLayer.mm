@@ -31,7 +31,10 @@
     [alertView release];  
     [self goBack];
     if (0 == buttonIndex) {
-        NSString * str =@"http://www.sina.com.cn";
+//        NSString * str =@"http://www.sina.com.cn";
+        NSString *str = [NSString stringWithFormat: 
+                         @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
+                         543100124 ];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     }
     

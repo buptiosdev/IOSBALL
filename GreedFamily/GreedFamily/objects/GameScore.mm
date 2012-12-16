@@ -54,7 +54,7 @@ static GameScore  *instanceOfgameScore;
         
         //不需要在update 调用 在调用的时候就做判断 进行存储
         //初始化时需要进行一次更新
-        [self schedule:@selector(updateLabelOfTotalScore:) interval:0.3];     
+        [self schedule:@selector(updateLabelOfTotalScore:) interval:0.5];     
     
         //addTotalScore
         //CGSize screenSize = [[CCDirector sharedDirector] winSize];
@@ -128,7 +128,7 @@ static GameScore  *instanceOfgameScore;
 -(int)getGameHighestScore:(int)level;
 {
     
-    NSString *str_game_level = [NSString stringWithFormat:@"%d",level];    
+    NSString *str_game_level = [NSString stringWithFormat:@"highestlevel%d",level];    
     
     NSInteger highestscore = [standardUserDefaults integerForKey:str_game_level];    
     
@@ -227,12 +227,6 @@ static GameScore  *instanceOfgameScore;
         
     
 }
-
-
-
-
-
-
 
 -(void)setScoreLabel:(ccTime) dt 
 {
@@ -540,7 +534,7 @@ static GameScore  *instanceOfgameScore;
     temp_highestscore = [self getGameHighestScore:gamelevel];
     
     //[totalScoreLabel setString:[NSString stringWithFormat:@"x%i", temp_myscore]];
-    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_highestscore]];
+//    [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",temp_highestscore]];
     
 }
 
@@ -588,8 +582,6 @@ static GameScore  *instanceOfgameScore;
     [LevelScore insertObject:[NSNumber numberWithInteger:rewardTimeScore] atIndex:1];  
     
     my_nowlevelscore += rewardTimeScore;
-    
-    int temphighestscore = [self getGameHighestScore:level];   
     
     //更新累计总得分
     //初始化2个元素
@@ -669,18 +661,20 @@ static GameScore  *instanceOfgameScore;
 
     //完成成就 end
     
-    int isnewrecord=0;
+    int isNewRecord = 0;
+    int temphighestscore = [self getGameHighestScore:level];  
     if (my_nowlevelscore > temphighestscore)
     {
+        isNewRecord = 1;
         //直接将int 装成string  当做关卡的值传进去        
-        NSString *str_gamelevel = [NSString stringWithFormat:@"%d",level];
+        NSString *str_gamelevel = [NSString stringWithFormat:@"highestlevel%d",level];
         [[[MyGameScore sharedScore] standardUserDefaults] setInteger:my_nowlevelscore forKey:str_gamelevel];        
         
         //更新左上角关卡的值 
         
-        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",my_nowlevelscore]];        
-        [totalScoreLabel setString:[NSString stringWithFormat:@"%i", my_nowlevelscore]]; 
-        isnewrecord=1;
+//        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",my_nowlevelscore]];        
+//        [totalScoreLabel setString:[NSString stringWithFormat:@"%i", my_nowlevelscore]]; 
+        
     }
     else
     {
@@ -690,11 +684,11 @@ static GameScore  *instanceOfgameScore;
     //返回的星级评定
 
     int starNum ;
-    if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 3)
+    if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 3+(level-1)*2)
     {
         starNum = 3;
     }
-    else if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 2)
+    else if (my_nowlevelscore >= [GameMainScene sharedMainScene].mainscenParam.candyCount * 2+level-1)
     {
         starNum = 2;
     }
@@ -719,7 +713,7 @@ static GameScore  *instanceOfgameScore;
     //提交缓存文件
     [[[MyGameScore sharedScore] standardUserDefaults] synchronize];
     [LevelScore insertObject:[NSNumber numberWithInteger:starNum] atIndex:2];  
-    [LevelScore insertObject:[NSNumber numberWithInteger:isnewrecord] atIndex:3]; 
+    [LevelScore insertObject:[NSNumber numberWithInteger:isNewRecord] atIndex:3]; 
     return LevelScore;
     
 }

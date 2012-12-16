@@ -77,7 +77,7 @@
             TeachGameLayer *p = [TeachGameLayer createTeachGameLayer:targetScene_];
             [self addChild:p];
             //这几关信息量比较大
-            if (1 == targetScene || 4 == targetScene || 9 == targetScene) {
+            if (1 == targetScene || 3 == targetScene || 4 == targetScene || 9 == targetScene) {
                 _waitTime = 10;
             }
             else 
