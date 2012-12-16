@@ -108,7 +108,8 @@ float logoreturnscaleY=0.15;
         
         //add disable menu by liuyunpeng 2012-11-25
         CCSprite *panda2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
-        float lockscale=screenSize.width*logorolescale/[panda2 contentSize].width;
+        //float lockscale=screenSize.width*logorolescale/[panda2 contentSize].width;
+        float lockscale=[panda contentSize].width/[panda2 contentSize].width;
         panda2.scale=lockscale;
         CCMenuItemSprite *menuItem1 = [CCMenuItemSprite itemFromNormalSprite:panda 
                                                                selectedSprite:panda1 
@@ -143,7 +144,7 @@ float logoreturnscaleY=0.15;
         CCSprite *bird1 = [CCSprite spriteWithSpriteFrameName:@"logobird.png"];
         bird1.scale=1.1;
         CCSprite *bird2 = [CCSprite spriteWithSpriteFrameName:@"lock.png"];
-        bird1.scale=lockscale;
+        bird2.scale=[bird contentSize].width/[bird2 contentSize].width;
         CCMenuItemSprite *menuItem3 = [CCMenuItemSprite itemFromNormalSprite:bird 
                                                               selectedSprite:bird1
                                                               disabledSprite:bird2

@@ -89,7 +89,7 @@ static int post_image_status_times = 0;
             [sina requestWithURL:@"statuses/upload.json"
                                params:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        postImageStatusText, @"status",
-                                       [UIImage imageNamed:@"teachdetail1.jpg"], @"pic", nil]
+                                       [UIImage imageNamed:@"logoword.png"], @"pic", nil]
                            httpMethod:@"POST"
                              delegate:self];
             

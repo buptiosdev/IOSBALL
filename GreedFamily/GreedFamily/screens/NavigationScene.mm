@@ -122,7 +122,7 @@ Boolean showPair=YES;
         CCMenuItemSprite *pairplayitem = [CCMenuItemSprite itemFromNormalSprite:pairplay 
                                                              selectedSprite:pairplay1 
                                                                      target:self 
-                                                                   selector:@selector(pairGame:)];
+                                                                   selector:@selector(showGameUserReview:)];
         pairplayitem.scale=(size.width*logopairplayscale)/[pairplay contentSize].width;
         CCMenu * plairplaymenu = [CCMenu menuWithItems:pairplayitem, nil];
         
@@ -188,16 +188,16 @@ Boolean showPair=YES;
                                                                      selector:@selector(showGameAchievements:)];
         achivementItem.scale=leaderscale;        
         
-        //add by liuyunpeng 2012-11-18  user review
-        CCSprite * userreview= [CCSprite spriteWithSpriteFrameName:@"appscore.png"];
-        CCSprite *userreview1 = [CCSprite spriteWithSpriteFrameName:@"appscore.png"];
-        userreview1.scaleX=1.1;
-        userreview1.scaleY=1.1;
-        CCMenuItemSprite *userreviewItem = [CCMenuItemSprite itemFromNormalSprite:userreview 
-                                                                   selectedSprite:userreview1 
-                                                                           target:self 
-                                                                         selector:@selector(showGameUserReview:)];
-        userreviewItem.scale=leaderscale;        
+//        //add by liuyunpeng 2012-11-18  user review
+//        CCSprite * userreview= [CCSprite spriteWithSpriteFrameName:@"appscore.png"];
+//        CCSprite *userreview1 = [CCSprite spriteWithSpriteFrameName:@"appscore.png"];
+//        userreview1.scaleX=1.1;
+//        userreview1.scaleY=1.1;
+//        CCMenuItemSprite *userreviewItem = [CCMenuItemSprite itemFromNormalSprite:userreview 
+//                                                                   selectedSprite:userreview1 
+//                                                                           target:self 
+//                                                                         selector:@selector(showGameUserReview:)];
+//        userreviewItem.scale=leaderscale;        
         
         
         //teach
@@ -212,7 +212,7 @@ Boolean showPair=YES;
         
         teachInfoMenu.scale=leaderscale;   
         
-        CCMenu * leadermenu = [CCMenu menuWithItems:leaderItem, achivementItem, userreviewItem, teachInfoMenu, nil];
+        CCMenu * leadermenu = [CCMenu menuWithItems:leaderItem, achivementItem, teachInfoMenu, nil];
         // center= size.width/2+[achivement contentSize].width*(0.5-leaderscale/2)
         [leadermenu setPosition:ccp(size.width/2,[leader contentSize].height*optscale/2)];
         //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
