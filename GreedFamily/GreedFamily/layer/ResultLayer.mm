@@ -16,7 +16,10 @@
 // 该类在GameMainScene中关卡结束时被调用，用于显示分数／关卡等信息
 // 使用方法参见 GameMainScene:pauseGame中注释的部分
 // 可供测试使用，点击暂停按钮，即可进行测试
-
+//BEGIN item scale  默认为相对于X的比例
+float resultlabelscale=40.0/480;
+float resultstarscale=50.0/480;
+//END
 
 @interface ResultLayer (PrivateMethods)
 -(id) initWithResult:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
@@ -99,10 +102,9 @@
     {
         CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
         //change size by diff version query
-        star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
+        star.position=CGPointMake(size.width*2/3+size.width*resultstarscale*i, size.height  / 2 );
         //change size by diff version manual
-        star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
-        star.scaleY=(50)/[star contentSize].height;
+        star.scale=size.width*resultstarscale/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
         [self addChild:star z:1];
     }
     
@@ -110,10 +112,9 @@
     {
         CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star_magic.png"];
         //change size by diff version query
-        star.position=CGPointMake(size.width*2/3+50*i, size.height  / 2 );
+        star.position=CGPointMake(size.width*2/3+size.width*resultstarscale*i, size.height  / 2 );
         //change size by diff version manual
-        star.scaleX=(50)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
-        star.scaleY=(50)/[star contentSize].height;
+        star.scale=size.width*resultstarscale/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
         [self addChild:star z:2];
         
     }
@@ -191,7 +192,7 @@
                                                           selectedSprite:retry1 
                                                                   target:self 
                                                                 selector:@selector(chooseLevel:)];
-    float labelscale=(40)/[retry1 contentSize].width;
+    float labelscale=size.width*resultlabelscale/[retry1 contentSize].width;
     retryItem.scale=labelscale;
     [retryItem setTag:gameLevel];
     
@@ -224,7 +225,7 @@
     [dMenu setPosition:ccp((size.width)*0.5f,(size.height)*1/6)];
     [self addChild:dMenu];
     
-    [self schedule:@selector(countScore:) interval:0.08];
+    [self schedule:@selector(countScore:) interval:0.05];
 }
 
 
