@@ -39,7 +39,8 @@
 
 -(id)initwithType:(int)goodsType RoleType:(int)roalType
 {
-    if (self = [super init]) 
+    ccColor4B color = {166,166,166,166};
+    if (self = [super initWithColor:color]) 
     {
         curRoleType = roalType;
         
@@ -117,14 +118,14 @@
         else if (10 == goodsType)
         {
             yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddAirSensit:)];
-            str = [NSString stringWithFormat:@"您将花去%d分",STORAGETYPE1];
+            str = [NSString stringWithFormat:@"升级为手动触发方式，您将花去%d分",STORAGETYPE1];
             
             [yesMenu setTag:STORAGETYPE1];
         }
         else if (11 == goodsType)
         {
             yesMenu = [CCMenuItemLabel itemWithLabel:yesLable target:self selector:@selector(yesAddAirSensit:)];
-            str = [NSString stringWithFormat:@"您将花去%d分",STORAGETYPE2];
+            str = [NSString stringWithFormat:@"升级为手动触发方式（高级），您将花去%d分",STORAGETYPE2];
             
             [yesMenu setTag:STORAGETYPE2];
         }
@@ -144,9 +145,9 @@
         
         
         
-        CCLabelTTF *displayLable1 =[CCLabelTTF labelWithString:str fontName:@"Marker Felt" fontSize:45];
+        CCLabelTTF *displayLable1 =[CCLabelTTF labelWithString:str fontName:@"Marker Felt" fontSize:25];
         [displayLable1 setPosition:ccp(screenSize.width/2,screenSize.height* 3/4)];
-        CCLabelTTF *displayLable2 =[CCLabelTTF labelWithString:@"是否购买" fontName:@"Marker Felt" fontSize:45];
+        CCLabelTTF *displayLable2 =[CCLabelTTF labelWithString:@"是否购买" fontName:@"Marker Felt" fontSize:25];
         [displayLable2 setPosition:ccp(screenSize.width/2,screenSize.height* 5/8)];
         [self addChild:displayLable2];
         [self addChild:displayLable1];
@@ -179,17 +180,14 @@
     if (1 == curRoleType) 
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-        //        strAcceleration = [NSString stringWithFormat:@"Acceleration_Panda"];
     }
     else if (2 == curRoleType)
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-        //        strAcceleration = [NSString stringWithFormat:@"Acceleration_Pig"];
     }
     else
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-        //        strAcceleration = [NSString stringWithFormat:@"Acceleration_Bird"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
     
@@ -232,17 +230,14 @@
     if (1 == curRoleType) 
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-        //        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
     }
     else if (2 == curRoleType)
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-        //        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
     }
     else
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-        //        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
     
@@ -257,14 +252,6 @@
     //修改得分
     rolaTotalScore -= spend;
     [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-    
-    //不需要。由购买物品清单来判断
-    //    //修改游戏参数
-    //    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-    //    if (capacity > temCapacity)
-    //    {
-    //        [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
-    //    }
     
     //购买成功音效
     [CommonLayer playAudio:EatGood];
@@ -288,17 +275,14 @@
     if (1 == curRoleType) 
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-        //        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
     }
     else if (2 == curRoleType)
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-        //        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
     }
     else
     {
         strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-        //        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
     }
     int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
     
@@ -313,14 +297,6 @@
     //修改得分
     rolaTotalScore -= spend;
     [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-    
-    //不需要。由购买物品清单来判断
-    //    //修改游戏参数
-    //    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-    //    if (capacity > temCapacity)
-    //    {
-    //        [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
-    //    }
     
     //购买成功音效
     [CommonLayer playAudio:EatGood];
@@ -385,331 +361,7 @@
     [self updateScore];
     [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
     
-    //[self.parent removeChild:self cleanup:YES];
 }
-
-
-
-//-(void)yesAddSpeedOnce:(id)sender
-//{
-//    //使用时处以10
-//    int acceleration = 11;
-//    //读取得分
-//    //更新累计得分,算两个role的总分
-//    NSString *strRolaTotalScore = nil;
-//    NSString *strAcceleration = nil;
-//    if (1 == curRoleType) 
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Panda"];
-//    }
-//    else if (2 == curRoleType)
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Pig"];
-//    }
-//    else
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Bird"];
-//    }
-//    int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
-//
-//    if (LANDSPEED1 > rolaTotalScore) 
-//    {
-//        //购买失败音效
-//        [(GameShopScene *)self.parent playAudio:SelectNo];
-//        [self.parent removeChild:self cleanup:YES];
-//        return;
-//    }
-//
-//    //修改得分
-//    rolaTotalScore -= LANDSPEED1;
-//    [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-//    
-//    //修改游戏参数
-//    
-//    int temAcceleration = [[NSUserDefaults standardUserDefaults] integerForKey:strAcceleration]; 
-//    if (acceleration > temAcceleration)
-//    {
-//        [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
-//    }
-//    //购买成功音效
-//    [(GameShopScene *)self.parent playAudio:EatGood];
-//    //跳过这一个物品，显示下一个 个位表示陆地动物速度
-//    ((GameShopScene *)self.parent).buyedList += 1;
-//    //提交数据
-//    [self updateScore];
-//    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
-//    //[self.parent removeChild:self cleanup:YES];
-//}
-//-(void)yesAddSpeedTwice:(id)sender
-//{
-//    //使用时处以10
-//    int acceleration = 12;
-//    //读取得分
-//    //更新累计得分,算两个role的总分
-//    NSString *strRolaTotalScore = nil;
-//    NSString *strAcceleration = nil;
-//    if (1 == curRoleType) 
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Panda"];
-//    }
-//    else if (2 == curRoleType)
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Pig"];
-//    }
-//    else
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Bird"];
-//    }
-//    int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
-//    
-//    if (LANDSPEED2 > rolaTotalScore) 
-//    {
-//        //购买失败音效
-//        [(GameShopScene *)self.parent playAudio:SelectNo];
-//        [self.parent removeChild:self cleanup:YES];
-//        return;
-//    }
-//    
-//    //修改得分
-//    rolaTotalScore -= LANDSPEED2;
-//    [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-//    
-//    //修改游戏参数
-//    int temAcceleration = [[NSUserDefaults standardUserDefaults] integerForKey:strAcceleration]; 
-//    if (acceleration > temAcceleration)
-//    {
-//        [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
-//    }
-//    //购买成功音效
-//    [(GameShopScene *)self.parent playAudio:EatGood];
-//    //跳过这一个物品，显示下一个 个位表示陆地动物速度
-//    ((GameShopScene *)self.parent).buyedList += 1;
-//    //提交数据
-//    [self updateScore];
-//    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
-//    //[self.parent removeChild:self cleanup:YES];
-//}
-//
-//-(void)yesAddSpeedThird:(id)sender
-//{
-//    //使用时处以10
-//    int acceleration = 13;
-//    //读取得分
-//    //更新累计得分,算两个role的总分
-//    NSString *strRolaTotalScore = nil;
-//    NSString *strAcceleration = nil;
-//    if (1 == curRoleType) 
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Panda"];
-//    }
-//    else if (2 == curRoleType)
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Pig"];
-//    }
-//    else
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-//        strAcceleration = [NSString stringWithFormat:@"Acceleration_Bird"];
-//    }
-//    int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
-//    
-//    if (LANDSPEED3 > rolaTotalScore) 
-//    {
-//        //购买失败音效
-//        [(GameShopScene *)self.parent playAudio:SelectNo];
-//        [self.parent removeChild:self cleanup:YES];
-//        return;
-//    }
-//    
-//    //修改得分
-//    rolaTotalScore -= LANDSPEED3;
-//    [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-//    
-//    //修改游戏参数
-//    int temAcceleration = [[NSUserDefaults standardUserDefaults] integerForKey:strAcceleration]; 
-//    if (acceleration > temAcceleration)
-//    {
-//        [[NSUserDefaults standardUserDefaults] setInteger:acceleration forKey:strAcceleration]; 
-//    }
-//    //购买成功音效
-//    [(GameShopScene *)self.parent playAudio:EatGood];
-//    //跳过这一个物品，显示下一个 个位表示陆地动物速度
-//    ((GameShopScene *)self.parent).buyedList += 1;
-//    //提交数据
-//    [self updateScore];
-//    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
-//    //[self.parent removeChild:self cleanup:YES];
-//}
-//
-//
-//
-//
-//
-//-(void)yesAddStorageOnce:(id)sender
-//{
-//    int capacity = 1;
-//    //读取得分
-//    //更新累计得分,算两个role的总分
-//    NSString *strRolaTotalScore = nil;
-//    NSString *strCapacity = nil;
-//    if (1 == curRoleType) 
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
-//    }
-//    else if (2 == curRoleType)
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
-//    }
-//    else
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
-//    }
-//    int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
-//    
-//    if (STORAGE1 > rolaTotalScore) 
-//    {
-//        //购买失败音效
-//        [(GameShopScene *)self.parent playAudio:SelectNo];
-//        [self.parent removeChild:self cleanup:YES];
-//        return;
-//    }
-//    
-//    //修改得分
-//    rolaTotalScore -= STORAGE1;
-//    [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-//    
-//    //修改游戏参数
-//    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-//    if (capacity > temCapacity)
-//    {
-//        [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
-//    }
-//
-//    //购买成功音效
-//    [(GameShopScene *)self.parent playAudio:EatGood];
-//    //跳过这一个物品，显示下一个 十位表示仓库
-//    ((GameShopScene *)self.parent).buyedList += 10;
-//    //提交数据
-//    [self updateScore];
-//    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
-//
-//    //[self.parent removeChild:self cleanup:YES];
-//}
-//
-//-(void)yesAddStorageTwice:(id)sender
-//{
-//    int capacity = 2;
-//    //读取得分
-//    //更新累计得分,算两个role的总分
-//    NSString *strRolaTotalScore = nil;
-//    NSString *strCapacity = nil;
-//    if (1 == curRoleType) 
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
-//    }
-//    else if (2 == curRoleType)
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
-//    }
-//    else
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
-//    }
-//    int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
-//    
-//    if (STORAGE2 > rolaTotalScore) 
-//    {
-//        //购买失败音效
-//        [(GameShopScene *)self.parent playAudio:SelectNo];
-//        [self.parent removeChild:self cleanup:YES];
-//        return;
-//    }
-//    
-//    //修改得分
-//    rolaTotalScore -= STORAGE2;
-//    [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-//    
-//    //修改游戏参数
-//    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-//    if (capacity > temCapacity)
-//    {
-//        [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
-//    }
-//    //购买成功音效
-//    [(GameShopScene *)self.parent playAudio:EatGood];
-//    //跳过这一个物品，显示下一个 十位表示仓库
-//    ((GameShopScene *)self.parent).buyedList += 10;
-//    //提交数据
-//    [self updateScore];
-//    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
-//    //[self.parent removeChild:self cleanup:YES];
-//}
-//
-//-(void)yesAddStorageThird:(id)sender
-//{
-//    int capacity = 3;
-//    //读取得分
-//    //更新累计得分,算两个role的总分
-//    NSString *strRolaTotalScore = nil;
-//    NSString *strCapacity = nil;
-//    if (1 == curRoleType) 
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Panda"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Panda"];
-//    }
-//    else if (2 == curRoleType)
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Pig"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Pig"];
-//    }
-//    else
-//    {
-//        strRolaTotalScore = [NSString stringWithFormat:@"Totalscore_Bird"];
-//        strCapacity = [NSString stringWithFormat:@"Capacity_Bird"];
-//    }
-//    int rolaTotalScore = [[NSUserDefaults standardUserDefaults] integerForKey:strRolaTotalScore];
-//    
-//    if (STORAGE3 > rolaTotalScore) 
-//    {
-//        //购买失败音效
-//        [(GameShopScene *)self.parent playAudio:SelectNo];
-//        [self.parent removeChild:self cleanup:YES];
-//        return;
-//    }
-//    
-//    //修改得分
-//    rolaTotalScore -= STORAGE3;
-//    [[NSUserDefaults standardUserDefaults] setInteger:rolaTotalScore forKey:strRolaTotalScore]; 
-//    
-//    //修改游戏参数
-//    int temCapacity = [[NSUserDefaults standardUserDefaults] integerForKey:strCapacity]; 
-//    if (capacity > temCapacity)
-//    {
-//        [[NSUserDefaults standardUserDefaults] setInteger:capacity forKey:strCapacity]; 
-//    }
-//    //购买成功音效
-//    [(GameShopScene *)self.parent playAudio:EatGood];
-//    //跳过这一个物品，显示下一个 十位表示仓库
-//    ((GameShopScene *)self.parent).buyedList += 10;
-//    //提交数据
-//    [self updateScore];
-//    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
-//    //[self.parent removeChild:self cleanup:YES];
-//}
 
 #pragma mark Layer - Callbacks
 -(void) onEnter

@@ -14,7 +14,7 @@
 
 //BEGIN item scale  默认为相对于X的比例
 float logoshoplabelscaleY=0.15;
-float shoprolescale=0.15;
+float shoprolescale=0.20;
 float shopitemscale=0.15;
 //END
 
@@ -198,15 +198,16 @@ float shopitemscale=0.15;
         {
             CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed1.png"];
             CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed1.png"];
+            addSpeedOnce2.scale=1.1;
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                   selectedSprite:addSpeedOnce2 
                                                           target:self 
                                                         selector:@selector(verifyAdd:)];
             [addLandSpeeMenu setTag:1];
-            Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"行走加速10％"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"陆地速度升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",LANDSPEED1] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             
             break;
         }
@@ -214,15 +215,16 @@ float shopitemscale=0.15;
         {
             CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed2.png"];
             CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed2.png"];
+            addSpeedOnce2.scale=1.1;
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                   selectedSprite:addSpeedOnce2 
                                                           target:self 
                                                         selector:@selector(verifyAdd:)];
             [addLandSpeeMenu setTag:2];
-            Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"行走加速20％"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"陆地速度升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",LANDSPEED2] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             
             break;
         }
@@ -230,15 +232,16 @@ float shopitemscale=0.15;
         {
             CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed3.png"];
             CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed3.png"];
+            addSpeedOnce2.scale=1.1;
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                   selectedSprite:addSpeedOnce2 
                                                           target:self 
                                                         selector:@selector(verifyAdd:)];
             [addLandSpeeMenu setTag:3];
-            Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"行走加速30％"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"陆地速度升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",LANDSPEED3] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             
             break;
         }
@@ -246,15 +249,16 @@ float shopitemscale=0.15;
         {
             CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"landspeed4.png"];
             CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"landspeed4.png"];
+            addSpeedOnce2.scale=1.1;
             addLandSpeeMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
                                                       selectedSprite:addSpeedOnce2 
                                                               target:self 
                                                             selector:@selector(saleout:)];
   
             Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"已售完"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"最高级",LANDSPEED1] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             
        
             break;    
@@ -267,60 +271,64 @@ float shopitemscale=0.15;
         {
             CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"storagenum1.png"];
             CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"storagenum1.png"];
+            addStorage2.scale=1.1;
             addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addStorage1 
                                                             selectedSprite:addStorage2 
                                                                 target:self 
                                                             selector:@selector(verifyAdd:)];
             [addStorageMenu setTag:4];
-            Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库容量加1"] 
-                                                     fontName:@"Marker Felt" fontSize:15];
+            Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库容量升级"] 
+                                                     fontName:@"Marker Felt" fontSize:30];
             LabelSpend2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",STORAGE1] 
-                                                       fontName:@"Marker Felt" fontSize:15];
+                                                       fontName:@"Marker Felt" fontSize:30];
                         break;
         } 
         case 1:
         {
             CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"storagenum2.png"];
             CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"storagenum2.png"];
+            addStorage2.scale=1.1;
             addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addStorage1 
                                                      selectedSprite:addStorage2 
                                                              target:self 
                                                            selector:@selector(verifyAdd:)];
             [addStorageMenu setTag:5];
-            Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库容量加2"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库容量升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",STORAGE2] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;
         } 
         case 2:
         {
             CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"storagenum3.png"];
             CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"storagenum3.png"];
+            addStorage2.scale=1.1;
             addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addStorage1 
                                                      selectedSprite:addStorage2 
                                                              target:self 
                                                            selector:@selector(verifyAdd:)];
             [addStorageMenu setTag:6];
-            Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库容量加3"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库容量升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",STORAGE3] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;
         } 
         default:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"storagenum4.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"storagenum4.png"];
-            addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
-                                                      selectedSprite:addSpeedOnce2 
+            CCSprite *addStorage1 = [CCSprite spriteWithSpriteFrameName:@"storagenum4.png"];
+            CCSprite *addStorage2 = [CCSprite spriteWithSpriteFrameName:@"storagenum4.png"];
+            addStorage2.scale=1.1;
+            addStorageMenu = [CCMenuItemSprite itemFromNormalSprite:addStorage1 
+                                                      selectedSprite:addStorage2 
                                                               target:self 
                                                             selector:@selector(saleout:)];
 
             Labelnum2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"已售完"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend2=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"最高级",LANDSPEED1] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             
             
             break;    
@@ -333,60 +341,64 @@ float shopitemscale=0.15;
         {
             CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"airspeed1.png"];
             CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"airspeed1.png"];
+            addAirSpeed2.scale=1.1;
             addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                      selectedSprite:addAirSpeed2
                                                              target:self 
                                                            selector:@selector(verifyAdd:)];
             [addAirSpeedMenu setTag:7];
-            Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行加速10％"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行速度升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",AIRSPEED1] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;
         } 
         case 1:
         {
             CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"airspeed2.png"];
             CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"airspeed2.png"];
+            addAirSpeed2.scale=1.1;
             addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
                                                             selector:@selector(verifyAdd:)];
             [addAirSpeedMenu setTag:8];
-            Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行加速20％"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行速度升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",AIRSPEED2] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;
         } 
         case 2:
         {
             CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"airspeed3.png"];
             CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"airspeed3.png"];
+            addAirSpeed2.scale=1.1;
             addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
                                                             selector:@selector(verifyAdd:)];
             [addAirSpeedMenu setTag:9];
-            Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行加速30％"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"飞行速度升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",AIRSPEED3] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;
         } 
         default:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"airspeed4.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"airspeed4.png"];
-            addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
-                                                      selectedSprite:addSpeedOnce2 
+            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"airspeed4.png"];
+            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"airspeed4.png"];
+            addAirSpeed2.scale=1.1;
+            addAirSpeedMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
+                                                      selectedSprite:addAirSpeed2 
                                                               target:self 
                                                             selector:@selector(saleout:)];
 
             Labelnum3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"已售完"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend3=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"最高级",LANDSPEED1] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;    
         }
     }
@@ -397,45 +409,48 @@ float shopitemscale=0.15;
         {
             CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"storagetype1.png"];
             CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"storagetype1.png"];
+            addAirSpeed2.scale=1.1;
             addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
                                                             selector:@selector(verifyAdd:)];
             [addAirSencitMenu setTag:10];
-            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"标准仓库"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库功能升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",STORAGETYPE1] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;
         } 
         case 1:
         {
             CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"storagetype2.png"];
             CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"storagetype2.png"];
+            addAirSpeed2.scale=1.1;
             addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
                                                       selectedSprite:addAirSpeed2
                                                               target:self 
                                                             selector:@selector(verifyAdd:)];
             [addAirSencitMenu setTag:11];
-            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"困难仓库"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"仓库功能升级"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d分",STORAGETYPE2] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             break;
         } 
         default:
         {
-            CCSprite *addSpeedOnce1 = [CCSprite spriteWithSpriteFrameName:@"storagetype3.png"];
-            CCSprite *addSpeedOnce2 = [CCSprite spriteWithSpriteFrameName:@"storagetype3.png"];
-            addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addSpeedOnce1 
-                                                      selectedSprite:addSpeedOnce2 
+            CCSprite *addAirSpeed1 = [CCSprite spriteWithSpriteFrameName:@"storagetype3.png"];
+            CCSprite *addAirSpeed2 = [CCSprite spriteWithSpriteFrameName:@"storagetype3.png"];
+            addAirSpeed2.scale=1.1;
+            addAirSencitMenu = [CCMenuItemSprite itemFromNormalSprite:addAirSpeed1 
+                                                      selectedSprite:addAirSpeed2 
                                                               target:self 
                                                             selector:@selector(saleout:)];
 
-            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"升级完成"] 
-                                         fontName:@"Marker Felt" fontSize:15];
+            Labelnum4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"已售完"] 
+                                         fontName:@"Marker Felt" fontSize:30];
             LabelSpend4=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"最高级",LANDSPEED1] 
-                                           fontName:@"Marker Felt" fontSize:15];
+                                           fontName:@"Marker Felt" fontSize:30];
             
             
             break;    
@@ -477,7 +492,7 @@ float shopitemscale=0.15;
     addAirSencitMenu.scale=size.width*shopitemscale/[addAirSencitMenu contentSize].width;
 
     CCMenu *menu = [CCMenu menuWithItems: addLandSpeeMenu, addStorageMenu, addAirSpeedMenu, addAirSencitMenu, nil];
-    [menu setPosition:ccp(size.width * 0.5 , size.height * 0.4)];
+    [menu setPosition:ccp(size.width * 0.5 , size.height * 0.45)];
     [menu alignItemsHorizontallyWithPadding:size.width*shopitemscale/2];
     [self addChild:menu z: -2 tag:4];
 
