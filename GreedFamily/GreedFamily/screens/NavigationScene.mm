@@ -456,7 +456,7 @@ Boolean showPair=YES;
 { 
 //    NSString *str = [NSString stringWithFormat: 
 //                   @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
-//                   1234 ]; 
+//                   543100124 ]; 
     NSString * str =@"http://www.sina.com.cn";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
