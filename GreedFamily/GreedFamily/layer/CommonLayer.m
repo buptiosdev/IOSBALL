@@ -73,7 +73,7 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[1].landSpeed = 0.5f;
     self.roleParamArray[1].storageCapacity = 8;
     //bird
-    self.roleParamArray[2].density = 0.7f;
+    self.roleParamArray[2].density = 0.75f;
     self.roleParamArray[2].restitution = 0.7f;
     self.roleParamArray[2].friction = 0.4f;
     self.roleParamArray[2].linearDamping = 0.3f;
