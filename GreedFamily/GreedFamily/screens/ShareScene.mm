@@ -257,6 +257,7 @@ static int post_image_status_times = 0;
 		self.isTouchEnabled = YES;
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
+        [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
         background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
@@ -280,8 +281,8 @@ static int post_image_status_times = 0;
         [self addChild:returnmenu];
         
         //set shop in the right-down corner
-        CCSprite *weibo = [CCSprite spriteWithFile:@"weibo_logo.jpg"];
-        CCSprite *weibo1 = [CCSprite spriteWithFile:@"weibo_logo.jpg"];
+        CCSprite *weibo = [CCSprite spriteWithSpriteFrameName:@"sina.png"];
+        CCSprite *weibo1 = [CCSprite spriteWithSpriteFrameName:@"sina.png"];
         weibo1.scale=1.1; //按照像素定制图片宽高
         CCMenuItemSprite *weiboItem = [CCMenuItemSprite itemFromNormalSprite:weibo 
                                                              selectedSprite:weibo1 
