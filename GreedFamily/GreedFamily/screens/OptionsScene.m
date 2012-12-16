@@ -95,7 +95,7 @@ DeveloperInfo *view;
 //		if([usrDef boolForKey:@"music"] == YES)
 //			music.selectedIndex = 1;
 
-        
+        CGSize size = [[CCDirector sharedDirector] winSize];
         //sound
         CCSprite *soundoff = [CCSprite spriteWithSpriteFrameName:@"music.png"];
         CCSprite *soundon = [CCSprite spriteWithSpriteFrameName:@"music2.png"];
@@ -109,7 +109,7 @@ DeveloperInfo *view;
         sound.scale=soundscale; //按照像素定制图片宽高是控制像素的。
         
         CCMenu * soundMenu = [CCMenu menuWithItems:sound,nil];
-        [soundMenu setPosition:ccp((screenSize.width)*0.4,(screenSize.height)* 0.6)];
+        [soundMenu setPosition:ccp((screenSize.width)*0.2,(screenSize.height)* 0.6)];
         [self addChild:soundMenu];
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"sound"] == YES)
@@ -129,11 +129,50 @@ DeveloperInfo *view;
 
         
         CCMenu * musicMenu = [CCMenu menuWithItems:music,nil];
-        [musicMenu setPosition:ccp((screenSize.width)*0.6,(screenSize.height)*0.6)];
+        [musicMenu setPosition:ccp((screenSize.width)*0.4,(screenSize.height)*0.6)];
         [self addChild:musicMenu];
         //NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"music"] == YES)
 			music.selectedIndex = 1;
+        
+
+        
+        //set info in the right-down corner
+        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"info.png"];
+        CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"info.png"];
+        info1.scaleX=1.1;
+        info1.scaleY=1.1;
+        CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
+                                                             selectedSprite:info1 
+                                                                     target:self 
+                                                                   selector:@selector(displayInfo:)];
+
+        infoItem.scale=soundscale;
+        CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
+//        [infomenu setPosition:ccp(screenSize.width-[info contentSize].width*optscale/2,[info contentSize].height*optscale/2)];
+        [infomenu setPosition:ccp((screenSize.width)*0.6,(screenSize.height)*0.6)];
+        [self addChild:infomenu z:1];
+        
+        
+        //teach
+        CCSprite *teachInfo = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
+        CCSprite *teachInfo2 = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
+        teachInfo2.scaleX = 1.1;
+        teachInfo2.scaleY = 1.1;
+        teachInfoMenu = [CCMenuItemSprite itemFromNormalSprite:teachInfo 
+                                                selectedSprite:teachInfo2 
+                                                        target:self 
+                                                      selector:@selector(getTeachInfo:)];
+        
+
+        teachInfoMenu.scale=soundscale;
+        CCMenu * menu = [CCMenu menuWithItems:teachInfoMenu, nil];
+        [menu setPosition:ccp(size.width*0.8,(screenSize.height)*0.6)];
+        //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
+//        //set the distance to be the 1.5times of the label
+//        [menu alignItemsHorizontallyWithPadding:size.width*logoleaderdistance-[leader contentSize].width*leaderscale];
+        [self addChild:menu z:1];
+        
         
         CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
         CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
@@ -150,19 +189,6 @@ DeveloperInfo *view;
         
         [self addChild:returnmenu];
         
-        //set info in the right-down corner
-        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"info.png"];
-        CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"info.png"];
-        info1.scaleX=1.1;
-        info1.scaleY=1.1;
-        CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
-                                                             selectedSprite:info1 
-                                                                     target:self 
-                                                                   selector:@selector(displayInfo:)];
-        infoItem.scale=optscale;
-        CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
-        [infomenu setPosition:ccp(screenSize.width-[info contentSize].width*optscale/2,[info contentSize].height*optscale/2)];
-        [self addChild:infomenu z:1];
     }
     return self;
 }
@@ -215,6 +241,120 @@ DeveloperInfo *view;
     }
 }
 
+
+
+
+//add teach 
+//  leaderboardpic optionpic
+-(void)getTeachInfo:(CCMenuItemToggle *)sender
+{
+    //CCLayer *teachLayer = [[CCLayer node] autorelease];
+    [teachInfoMenu setIsEnabled:NO];
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    
+    CCSprite *nextPic = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"];
+    CCSprite *nextPic2 = [CCSprite spriteWithSpriteFrameName:@"playgame1.png"];
+    nextPic2.scaleX = 1.1;
+    nextPic2.scaleY = 1.1;
+    CCSprite *lastPic = [CCSprite spriteWithSpriteFrameName:@"playgame2.png"];
+    CCSprite *lastPic2 = [CCSprite spriteWithSpriteFrameName:@"playgame2.png"]; 
+    lastPic2.scaleX = 1.1;
+    lastPic2.scaleY = 1.1;
+    
+    CCSprite *returnBackPic = [CCSprite spriteWithSpriteFrameName:@"close.png"];
+    CCSprite *returnBackPic2 = [CCSprite spriteWithSpriteFrameName:@"close.png"];
+    returnBackPic2.scaleX = 1.1;
+    returnBackPic2.scaleY = 1.1;
+    
+    CCMenuItemSprite *nextMenu = [CCMenuItemSprite itemFromNormalSprite:nextPic 
+                                                         selectedSprite:nextPic2 
+                                                                 target:self 
+                                                               selector:@selector(onNextPic:)];
+    CCMenuItemSprite *lastMenu = [CCMenuItemSprite itemFromNormalSprite:lastPic 
+                                                         selectedSprite:lastPic2 
+                                                                 target:self 
+                                                               selector:@selector(onLastPic:)];
+    CCMenuItemSprite *returnBackMenu = [CCMenuItemSprite itemFromNormalSprite:returnBackPic 
+                                                               selectedSprite:returnBackPic2 
+                                                                       target:self 
+                                                                     selector:@selector(onReturnBackPic:)];
+    
+    nextMenu.scaleX=(40)/[nextPic contentSize].width; //按照像素定制图片宽高
+    nextMenu.scaleY=(40)/[nextPic contentSize].height;
+    lastMenu.scaleX=(40)/[lastPic contentSize].width; //按照像素定制图片宽高
+    lastMenu.scaleY=(40)/[lastPic contentSize].height;
+    returnBackMenu.scaleX=(40)/[returnBackPic contentSize].width; //按照像素定制图片宽高
+    returnBackMenu.scaleY=(40)/[returnBackPic contentSize].height;
+    
+    
+    CCMenu *controlMenu = [CCMenu menuWithItems:lastMenu, nextMenu, returnBackMenu,nil];
+    
+    [controlMenu alignItemsVerticallyWithPadding:20];
+    //change size by diff version
+    controlMenu.position = CGPointMake(screenSize.width * 0.9, screenSize.height * 0.5);
+    [controlMenu alignItemsVerticallyWithPadding:50];
+    [self addChild:controlMenu z:21 tag:100];
+    
+    teachPicCount = 0;
+    NSString* teachStr = [NSString stringWithFormat:@"teachdetail"];
+    NSString* teachPic = [NSString stringWithFormat:@"%@%i.jpg", teachStr, teachPicCount+1];
+    
+    teachSprite = [CCSprite spriteWithFile:teachPic];
+    teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
+    [self addChild:teachSprite z:2 tag:101];
+    
+    //[self addChild:teachLayer z:1 tag:100];
+}
+
+-(void)onNextPic:(CCMenuItemToggle *)sender
+{
+    [self removeChildByTag:(NSInteger)101 cleanup:YES];
+    teachPicCount++;
+    teachPicCount = teachPicCount % 7;
+    
+    NSString* teachStr = [NSString stringWithFormat:@"teachdetail"];
+    NSString* teachPic = [NSString stringWithFormat:@"%@%i.jpg", teachStr, teachPicCount+1];
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    teachSprite = [CCSprite spriteWithFile:teachPic];
+    teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
+    
+    [self addChild:teachSprite z:20 tag:101];
+}
+
+-(void)onLastPic:(CCMenuItemToggle *)sender
+{
+    [self removeChildByTag:(NSInteger)101 cleanup:YES];
+    
+    teachPicCount--;
+    if (teachPicCount == -1)
+    {
+        teachPicCount = 6;
+    }
+    
+    teachPicCount = teachPicCount % 7;
+    
+    NSString* teachStr = [NSString stringWithFormat:@"teachdetail"];
+    NSString* teachPic = [NSString stringWithFormat:@"%@%i.jpg", teachStr, teachPicCount+1];
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    teachSprite = [CCSprite spriteWithFile:teachPic];
+    teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
+    
+    [self addChild:teachSprite z:20 tag:101];
+    
+}
+
+-(void)onReturnBackPic:(CCMenuItemToggle *)sender
+{
+    [teachInfoMenu setIsEnabled:YES];
+    [self removeChildByTag:(NSInteger)100 cleanup:YES];
+    [self removeChildByTag:(NSInteger)101 cleanup:YES];
+}
 
 -(void)returnMain
 {

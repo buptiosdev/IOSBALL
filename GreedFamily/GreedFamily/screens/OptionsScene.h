@@ -17,6 +17,9 @@
 
 
 @interface OptionsLayer : CCLayer {
+    CCMenuItemSprite *teachInfoMenu;
+    int teachPicCount;
+    CCSprite *teachSprite;
 	
 }
 

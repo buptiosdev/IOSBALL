@@ -118,8 +118,10 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-    CCTransitionSplitCols *tran = [CCTransitionSplitCols transitionWithDuration:1 scene:[NavigationScene sceneWithNavigationScene]];
-	[[CCDirector sharedDirector] runWithScene: tran];
+    
+    CCTransitionSplitRows *tran = [CCTransitionSplitRows transitionWithDuration:1 scene:[NavigationScene sceneWithNavigationScene]];
+	
+    [[CCDirector sharedDirector] runWithScene: tran];
 //    [[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
     //add push notice function推送服务器推送
     [Parse setApplicationId:@"w1rAzcRAdPuoX60nNy3fKewfZPYCvgJQdXZYEJ3r" clientKey:@"Rg9avoCht3xPnM8ZrM42rBBeMIijaxpQMcSmAImu"];

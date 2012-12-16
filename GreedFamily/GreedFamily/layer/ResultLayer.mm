@@ -123,27 +123,20 @@
 {
     if ((self = [super init]))
     {   
-        CCSprite* background = [CCSprite spriteWithFile:@"resultback.jpg"];
+        background = [CCSprite spriteWithFile:@"resultback.jpg"];
         //change size by diff version manual
         CGSize size = [[CCDirector sharedDirector] winSize];
         background.scaleX=((size.width))/[background contentSize].width; //按照像素定制图片宽高
         background.scaleY=((size.height))/[background contentSize].height;
         //change size by diff version
-        background.position = [GameMainScene sharedMainScene].backgroundPos;
+        background.position = CGPointMake(size.width / 2, size.height*1.5);
         [self addChild:background z:-3];
     
-        NSString *levelNum = [NSString stringWithFormat:@"LeveL %d",[[GameMainScene sharedMainScene] mainscenParam].order];
-        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Dekers_Bold" fontSize:25];
-        [levelLabel setColor:ccBLACK];
-        [levelLabel setPosition:ccp((size.width)*0.5f,(size.height)* 0.9)];
-        [self addChild:levelLabel];
+        CGPoint moveToPosition = [GameMainScene sharedMainScene].backgroundPos;       
+        CCMoveTo* move = [CCMoveTo actionWithDuration:1 position:moveToPosition]; 
+        CCEaseInOut* ease = [CCEaseInOut actionWithAction:move rate:1];
+        [background runAction:ease];   
         
-//        NSString* temp=[@"base score: " stringByAppendingFormat:@" %d",score];
-//        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Dekers_Bold" fontSize:30];
-//		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
-//        [labelscore setColor:ccBLACK];
-//		[self addChild:labelscore];
-
         totalscore=addscore+score;
         timescore=addscore;
         basescore=score;
@@ -154,70 +147,85 @@
         curbasescore=0;
         isShow1 = NO;
         isShow2 = NO;
-        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:@"base score: " fontName:@"Dekers_Bold" fontSize:30];
-		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
-        [labelscore setColor:ccBLACK];
-		[self addChild:labelscore];
-
+        gameLevel = level;
         
-        //add by liuyunpeng
-        basescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:30];
-        //change size by diff version query
-		basescorelabel.position = CGPointMake(size.width *0.6, size.height * 7 / 9 );
-        [basescorelabel setColor:ccBLACK];
-		[self addChild:basescorelabel];
-        
-        
-
-        
-
-        
-
-        
-        CCSprite *retry = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
-        CCSprite *retry1 = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
-        CCMenuItemSprite *retryItem = [CCMenuItemSprite itemFromNormalSprite:retry 
-                                                              selectedSprite:retry1 
-                                                                      target:self 
-                                                                    selector:@selector(chooseLevel:)];
-        float labelscale=(40)/[retry1 contentSize].width;
-        retryItem.scale=labelscale;
-        [retryItem setTag:level];
-        
-        
-        CCSprite *level0 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
-        CCSprite *level1 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
-        CCMenuItemSprite *levelItem = [CCMenuItemSprite itemFromNormalSprite:level0 
-                                                              selectedSprite:level1 
-                                                                      target:self 
-                                                                    selector:@selector(returnLevel)];
-        levelItem.scale=labelscale;
-        
-        CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"next.png"];
-        CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"next.png"];
-        CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
-                                                              selectedSprite:next1 
-                                                                      target:self 
-                                                                   selector:@selector(chooseLevel:)];
-        nextItem.scale=labelscale;
-        [nextItem setTag:level+1];
-        if(starnum==0)
-        {
-            [nextItem setIsEnabled:NO];
-            [nextItem setColor:ccGRAY];
-        }
-        
-        
-        CCMenu * dMenu = [CCMenu menuWithItems:retryItem,levelItem,nextItem,nil];
-        [dMenu alignItemsHorizontallyWithPadding:40];
-        [dMenu setPosition:ccp((size.width)*0.5f,(size.height)*1/6)];
-        [self addChild:dMenu];
-        
-        [self schedule:@selector(countScore:) interval:0.08];
+        [self schedule:@selector(showResult:) interval:1];
     }
     return self;
 }
+-(void)showResult:(ccTime)delta
+{
+    [self unschedule:@selector(showResult:)];   
+    CGSize size = [[CCDirector sharedDirector] winSize];
 
+    NSString *levelNum = [NSString stringWithFormat:@"LeveL %d",[[GameMainScene sharedMainScene] mainscenParam].order];
+    CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Dekers_Bold" fontSize:25];
+    [levelLabel setColor:ccBLACK];
+    [levelLabel setPosition:ccp((size.width)*0.5f,(size.height)* 0.9)];
+    [self addChild:levelLabel];
+    
+    //        NSString* temp=[@"base score: " stringByAppendingFormat:@" %d",score];
+    //        CCLabelTTF* labelscore = [CCLabelTTF labelWithString:temp fontName:@"Dekers_Bold" fontSize:30];
+    //		labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
+    //        [labelscore setColor:ccBLACK];
+    //		[self addChild:labelscore];
+    
+
+
+    CCLabelTTF* labelscore = [CCLabelTTF labelWithString:@"base score: " fontName:@"Dekers_Bold" fontSize:30];
+    labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
+    [labelscore setColor:ccBLACK];
+    [self addChild:labelscore];
+    
+    
+    //add by liuyunpeng
+    basescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:30];
+    //change size by diff version query
+    basescorelabel.position = CGPointMake(size.width *0.6, size.height * 7 / 9 );
+    [basescorelabel setColor:ccBLACK];
+    [self addChild:basescorelabel];
+    
+    CCSprite *retry = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
+    CCSprite *retry1 = [CCSprite spriteWithSpriteFrameName:@"retry.png"];
+    CCMenuItemSprite *retryItem = [CCMenuItemSprite itemFromNormalSprite:retry 
+                                                          selectedSprite:retry1 
+                                                                  target:self 
+                                                                selector:@selector(chooseLevel:)];
+    float labelscale=(40)/[retry1 contentSize].width;
+    retryItem.scale=labelscale;
+    [retryItem setTag:gameLevel];
+    
+    
+    CCSprite *level0 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
+    CCSprite *level1 = [CCSprite spriteWithSpriteFrameName:@"backtonavigation.png"];
+    CCMenuItemSprite *levelItem = [CCMenuItemSprite itemFromNormalSprite:level0 
+                                                          selectedSprite:level1 
+                                                                  target:self 
+                                                                selector:@selector(returnLevel)];
+    levelItem.scale=labelscale;
+    
+    CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"next.png"];
+    CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"next.png"];
+    CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
+                                                         selectedSprite:next1 
+                                                                 target:self 
+                                                               selector:@selector(chooseLevel:)];
+    nextItem.scale=labelscale;
+    [nextItem setTag:gameLevel+1];
+    if(starNum==0)
+    {
+        [nextItem setIsEnabled:NO];
+        [nextItem setColor:ccGRAY];
+    }
+    
+    
+    CCMenu * dMenu = [CCMenu menuWithItems:retryItem,levelItem,nextItem,nil];
+    [dMenu alignItemsHorizontallyWithPadding:40];
+    [dMenu setPosition:ccp((size.width)*0.5f,(size.height)*1/6)];
+    [self addChild:dMenu];
+    
+    [self schedule:@selector(countScore:) interval:0.08];
+}
 
 
 -(void) countScore:(ccTime)delta
