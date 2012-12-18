@@ -665,11 +665,11 @@ static GameScore  *instanceOfgameScore;
     int temphighestscore = [self getGameHighestScore:level];  
     if (my_nowlevelscore > temphighestscore)
     {
-        isNewRecord = 1;
+//        isNewRecord = 1;
         //直接将int 装成string  当做关卡的值传进去        
         NSString *str_gamelevel = [NSString stringWithFormat:@"highestlevel%d",level];
         [[[MyGameScore sharedScore] standardUserDefaults] setInteger:my_nowlevelscore forKey:str_gamelevel];        
-        
+        isNewRecord = 1;
         //更新左上角关卡的值 
         
 //        [hightestTotalScoreLabel setString:[NSString stringWithFormat:@"%i",my_nowlevelscore]];        
