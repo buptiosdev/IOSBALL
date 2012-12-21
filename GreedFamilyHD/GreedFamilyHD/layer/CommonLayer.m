@@ -13,8 +13,13 @@
 +(id)createCommonLayer;
 -(void)initRoleParam;
 @end
+
+//init the curMusic    modify by liuyunpeng 2012-12-9
+MusicType curMusic=0;
+
 @implementation CommonLayer
 @synthesize roleParamArray = _roleParamArray;
+//@synthesize curMusic = _curMusic;
 
 /*创造一个半单例，让其他类可以很方便访问scene*/
 static CommonLayer *instanceOfCommonLayer;
@@ -46,13 +51,9 @@ static CommonLayer *instanceOfCommonLayer;
 //角色的属性设置
 -(void)initRoleParam
 {
-    //    self.roleParamArray = [[CCArray alloc] initWithCapacity:ROLE_TYPE_COUNT];
     self.roleParamArray = (struct RoleParam *)malloc(sizeof(struct RoleParam)*ROLE_TYPE_COUNT);
-    //    RoleParam *pandaRole = self.roleParamArray[0];
-    //    RoleParam pigRole = self.roleParamArray[1];
-    //    RoleParam birdRole = self.roleParamArray[2];
     //panda
-    self.roleParamArray[0].density = 0.65f;
+    self.roleParamArray[0].density = 0.8f;
     self.roleParamArray[0].restitution = 0.5f;
     self.roleParamArray[0].friction = 0.5f;
     self.roleParamArray[0].linearDamping = 0.45f;
@@ -72,7 +73,7 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[1].landSpeed = 0.5f;
     self.roleParamArray[1].storageCapacity = 8;
     //bird
-    self.roleParamArray[2].density = 0.55f;
+    self.roleParamArray[2].density = 0.75f;
     self.roleParamArray[2].restitution = 0.7f;
     self.roleParamArray[2].friction = 0.4f;
     self.roleParamArray[2].linearDamping = 0.3f;
@@ -81,6 +82,7 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[2].hitEffect = 0.2f;
     self.roleParamArray[2].landSpeed = 0.4f;
     self.roleParamArray[2].storageCapacity = 6;
+    
 }
 
 
@@ -108,9 +110,6 @@ static CommonLayer *instanceOfCommonLayer;
     }
     int buyedList = [[NSUserDefaults standardUserDefaults] integerForKey:strBuyedList];
     
-    
-    
-    
     if (paramType == ROLELANDSPEED) 
     {
         baseValue = self.roleParamArray[count].landSpeed;
@@ -131,17 +130,20 @@ static CommonLayer *instanceOfCommonLayer;
     {
         baseValue = self.roleParamArray[count].airspeed;
         
-        int level = ((buyedList/100)%10);
-        
-        return baseValue + level * baseValue * 0.1;
+//        int level = ((buyedList/100)%10);
+//        
+//        return baseValue + level * baseValue * 0.1;
+        return baseValue;
     }
     else if (paramType == ROLEAIRSENSIT) 
     {
         baseValue = self.roleParamArray[count].sensitivity;
         
-        int level = (buyedList%10);
-        
-        return baseValue - level * baseValue * 0.1;
+//        int level = (buyedList/1000%10);
+//        
+//        return baseValue - level * baseValue * 0.1;
+
+        return baseValue;
     }
     else if (paramType == ROLELINEARDAMP) 
     {
@@ -168,6 +170,11 @@ static CommonLayer *instanceOfCommonLayer;
     {
         baseValue = self.roleParamArray[count].hitEffect;
         return baseValue;
+    }
+    else if (paramType == ROLESTORAGETYPE) 
+    {
+        int level = ((buyedList/1000)%10);
+        return level+1;
     }
     else
     {
@@ -255,39 +262,48 @@ static CommonLayer *instanceOfCommonLayer;
         switch (musicType) {
             case StopGameMusic:
                 [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+                //add by liuyunpeng 2012-12-09
+                curMusic=0;
                 break; 
 
         }
         
         return;
     }
+    //add by liuyunpeng 2012-12-09
+    if(curMusic==musicType){
+        return;
+    }else{
+        curMusic=musicType;
+    }
+    
     switch (musicType) {
         case UnGameMusic1:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destination.mp3" loop:YES];
             break; 
             
         case UnGameMusic2:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barn-beat.mp3" loop:YES];
             break; 
         
         case GameMusic1:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"huanqinshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"wildbird.mp3" loop:YES];
             break; 
         case GameMusic2:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morningmusicshort.mp3" loop:YES];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"morning.mp3" loop:YES];
             break; 
-        case GameMusic3:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
-            break;     
-        case GameMusic4:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
-            break;  
-        case GameMusic5:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
-            break;  
-        case GameMusic6:
-            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
-            break;
+//        case GameMusic3:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"caribbeanblueshort.mp3" loop:YES];
+//            break;     
+//        case GameMusic4:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"cautiouspathshort.mp3" loop:YES];
+//            break;  
+//        case GameMusic5:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"I'm In Trouble.mp3" loop:YES];
+//            break;  
+//        case GameMusic6:
+//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Animal Farm.mp3" loop:YES];
+//            break;
         default:
             break;
     }

@@ -37,7 +37,7 @@ float logopairplayscale=0.2;
 float logooptionscaleY=0.15;
 float logoleaderscaleY=0.13;
 float logoleaderdistance=0.2;
-Boolean showPair=YES;
+Boolean showPair=NO;
 //END
 
 @implementation NavigationScene
@@ -120,16 +120,43 @@ Boolean showPair=YES;
         //        play1.scaleX=0.75; //按照像素定制图片宽高是控制像素的。
         //        play1.scaleY=0.9;
         CCMenuItemSprite *pairplayitem = [CCMenuItemSprite itemFromNormalSprite:pairplay 
-                                                             selectedSprite:pairplay1 
-                                                                     target:self 
-                                                                   selector:@selector(showGameUserReview:)];
+                                                                 selectedSprite:pairplay1 
+                                                                         target:self 
+                                                                       selector:@selector(pairGame:)];
         pairplayitem.scale=(size.width*logopairplayscale)/[pairplay contentSize].width;
         CCMenu * plairplaymenu = [CCMenu menuWithItems:pairplayitem, nil];
         
+        
+        
+        //set app store 
+        CCSprite *appStore = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
+        //play.scaleX=1.1;
+        appStore.scaleY=1.05;
+        CCSprite *appStore1 = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
+        //        play1.scaleX=0.75; //按照像素定制图片宽高是控制像素的。
+        //        play1.scaleY=0.9;
+        CCMenuItemSprite *appStoreItem = [CCMenuItemSprite itemFromNormalSprite:appStore 
+                                                                 selectedSprite:appStore1 
+                                                                         target:self 
+                                                                       selector:@selector(showGameUserReview:)];
+        appStoreItem.scale=(size.width*logopairplayscale)/[appStore contentSize].width;
+        CCMenu * appStoreMenu = [CCMenu menuWithItems:appStoreItem, nil];
+        
         if(showPair){
-            [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
-            [plairplaymenu setPosition:ccp(size.width/2,size.height*2/7)];
+            [playmenu setPosition:ccp(size.width/2,size.height*4/8)];
+            [plairplaymenu setPosition:ccp(size.width/2,size.height*3/8)];
+            [appStoreMenu setPosition:ccp(size.width/2,size.height*2/8)];
             [self addChild:plairplaymenu z:1];
+            [self addChild:playmenu z:1];
+            [self addChild:appStoreMenu z:1];
+        }
+        else
+        {
+            [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
+            [appStoreMenu setPosition:ccp(size.width/2,size.height*2/7)];
+            
+            [self addChild:playmenu z:1];
+            [self addChild:appStoreMenu z:1];
         }
         
         

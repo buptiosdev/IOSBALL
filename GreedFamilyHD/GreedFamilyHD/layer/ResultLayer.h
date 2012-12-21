@@ -9,8 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface ResultLayer : CCLayerColor {
+@interface ResultLayer : CCLayer {
+    CCLabelTTF *basescorelabel;
+    CCLabelTTF *timescorelabel;
+    CCLabelTTF *totalscorelabel;
     
+    int basescore;
+    int timescore;
+    int totalscore;
+    int curbasescore;
+    int curtimescore;
+    int curtotalscore;
+    int starNum;
+    int isNewrecord;
+    int gameLevel;
+    bool isShow1;
+    bool isShow2;
+    
+    CCSprite* background;
 }
-+(id)createResultLayer:(ccColor4B)color Level:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
++(id)createResultLayer:(int)level Score:(int)score AddScore:(int)addscore StarNum:(int)starnum Newrecord:(int)isnewrecord;
 @end

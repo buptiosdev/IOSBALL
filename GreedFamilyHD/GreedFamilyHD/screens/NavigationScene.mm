@@ -15,10 +15,13 @@
 #import "GameMainScene.h"
 #import "LevelScenePair.h"
 #import "RoleScene.h"
-//#import "SimpleAudioEngine.h"
 #import "AppDelegate.h"
 #import "CCAnimationHelper.h"
 #import "CommonLayer.h"
+#import "ShareScene.h"
+
+
+
 @interface Navigation
 -(void)newGame:(id)sender;
 -(void)options:(id)sender;
@@ -26,6 +29,16 @@
 -(void)playAudio:(int)audioType;
 @end
 
+//BEGIN item scale  默认为相对于X的比例
+float logowordscale=0.45;
+float logoanimalscale=0.2;
+float logoplayscale=0.3;
+float logopairplayscale=0.2;
+float logooptionscaleY=0.15;
+float logoleaderscaleY=0.13;
+float logoleaderdistance=0.2;
+Boolean showPair=NO;
+//END
 
 @implementation NavigationScene
 
@@ -36,7 +49,7 @@
     if ((self = [super init])) {
 		self.isTouchEnabled = YES;
         CGSize size = [[CCDirector sharedDirector] winSize];
-
+        
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
         //set the background pic
@@ -45,65 +58,58 @@
         background.scaleY=(size.height)/[background contentSize].height;
         NSAssert( background != nil, @"background must be non-nil");
 		[background setPosition:ccp(size.width / 2, size.height/2)];
-		[self addChild:background];
+		[self addChild:background z:-3];
 		
         //set logo
         CCSprite *logo = [CCSprite spriteWithSpriteFrameName:@"logoword.png"];
-        // BEGIN liuyunpeng modify logoscale  2012-11-25
-        logo.scale=1;
-        // END
-        [self addChild:logo];
+        logo.scale=(size.width*logowordscale)/[logo contentSize].width;
+        [self addChild:logo z:1];
         logo.position=CGPointMake(size.width / 2, size.height * 3 / 4 );
-    
+        
+        
+        
         //add panda action by lyp 20121029
         CCSprite *logopanda= [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
         //按照像素设定图片大小
-        // BEGIN liuyunpeng modify logoscale  2012-11-25
-        logopanda.scale=1.2; //按照像素定制图片宽高
-        
+        logopanda.scale=(size.width*logoanimalscale)/[logopanda contentSize].width; //按照像素定制图片宽高
         logopanda.position = CGPointMake(size.width / 7, size.height * 2 / 3 );;
-        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.15f];
+        CCAnimation* animation = [CCAnimation animationWithFrame:@"logopanda_" frameCount:5 delay:0.13f];
         
         CCAnimate *animate = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
         CCSequence *seq = [CCSequence actions: animate,nil];
         
         CCAction *moveAction = [CCRepeatForever actionWithAction: seq ];
         [logopanda runAction:moveAction];
-        [self addChild:logopanda];
+        [self addChild:logopanda z:1];
         
         
         CCSprite *logopig= [CCSprite spriteWithSpriteFrameName:@"logopig_1.png"];
         //按照像素设定图片大小
-        // BEGIN liuyunpeng modify logoscale  2012-11-25
-        logopig.scale=1.2; //按照像素定制图片宽高
-        
+        logopig.scale=(size.width*logoanimalscale)/[logopig contentSize].width; //按照像素定制图片宽高
         logopig.position = CGPointMake(size.width *6 / 7, size.height * 2 / 3 );
-        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.20f];
+        CCAnimation* animationlogopig = [CCAnimation animationWithFrame:@"logopig_" frameCount:5 delay:0.15f];
         
         CCAnimate *animatelogopig = [CCAnimate actionWithAnimation:animationlogopig restoreOriginalFrame:NO];
         CCSequence *seqlogopig = [CCSequence actions: animatelogopig,nil];
         
         CCAction *moveActionlogopig = [CCRepeatForever actionWithAction: seqlogopig ];
         [logopig runAction:moveActionlogopig];
-        [self addChild:logopig];
+        [self addChild:logopig z:1];
         
         
         //set play 
         CCSprite *play = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
-        play.scaleY=1.05;
+        //play.scaleX=1.1;
+        play.scaleY=1.01;
         CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
         CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
-                                                              selectedSprite:play1 
-                                                                      target:self 
-                                                                    selector:@selector(newGame:)];
-        
-        // BEGIN liuyunpeng modify logoscale  2012-11-25
-        playitem.scale=130/[play contentSize].height;
+                                                             selectedSprite:play1 
+                                                                     target:self 
+                                                                   selector:@selector(newGame:)];
+        playitem.scale=(size.width*logoplayscale)/[play contentSize].width;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height/2)];
-        [self addChild:playmenu];
-        
-        
+        [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
+        [self addChild:playmenu z:1];
         
         
         //set pair play 
@@ -114,176 +120,148 @@
         //        play1.scaleX=0.75; //按照像素定制图片宽高是控制像素的。
         //        play1.scaleY=0.9;
         CCMenuItemSprite *pairplayitem = [CCMenuItemSprite itemFromNormalSprite:pairplay 
-                                                             selectedSprite:pairplay1 
-                                                                     target:self 
-                                                                   selector:@selector(pairGame:)];
-        // BEGIN liuyunpeng modify logoscale  2012-11-25
-        pairplayitem.scale=110/[pairplay contentSize].height;
+                                                                 selectedSprite:pairplay1 
+                                                                         target:self 
+                                                                       selector:@selector(pairGame:)];
+        pairplayitem.scale=(size.width*logopairplayscale)/[pairplay contentSize].width;
         CCMenu * plairplaymenu = [CCMenu menuWithItems:pairplayitem, nil];
-        [plairplaymenu setPosition:ccp(size.width/2,size.height/3)];
-        [self addChild:plairplaymenu];
+        
+        
+        
+        //set app store 
+        CCSprite *appStore = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
+        //play.scaleX=1.1;
+        appStore.scaleY=1.05;
+        CCSprite *appStore1 = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
+        //        play1.scaleX=0.75; //按照像素定制图片宽高是控制像素的。
+        //        play1.scaleY=0.9;
+        CCMenuItemSprite *appStoreItem = [CCMenuItemSprite itemFromNormalSprite:appStore 
+                                                                 selectedSprite:appStore1 
+                                                                         target:self 
+                                                                       selector:@selector(showGameUserReview:)];
+        appStoreItem.scale=(size.width*logopairplayscale)/[appStore contentSize].width;
+        CCMenu * appStoreMenu = [CCMenu menuWithItems:appStoreItem, nil];
+        
+        if(showPair){
+            [playmenu setPosition:ccp(size.width/2,size.height*4/8)];
+            [plairplaymenu setPosition:ccp(size.width/2,size.height*3/8)];
+            [appStoreMenu setPosition:ccp(size.width/2,size.height*2/8)];
+            [self addChild:plairplaymenu z:1];
+            [self addChild:playmenu z:1];
+            [self addChild:appStoreMenu z:1];
+        }
+        else
+        {
+            [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
+            [appStoreMenu setPosition:ccp(size.width/2,size.height*2/7)];
+            
+            [self addChild:playmenu z:1];
+            [self addChild:appStoreMenu z:1];
+        }
         
         
         //set option in the left-down corner
-
+        
         CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
-//        option.scaleX=optscale;
-//        option.scaleY=optscale;
         CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
         option1.scaleX=1.1;
         option1.scaleY=1.1;
         CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
-                                                              selectedSprite:option1 
-                                                                      target:self 
-                                                                    selector:@selector(options:)];
-        float optscale=100/[option contentSize].width;
-        //float clickoptscale=optscale*1.1f;
+                                                               selectedSprite:option1 
+                                                                       target:self 
+                                                                     selector:@selector(options:)];
+        float optscale=(size.height*logooptionscaleY)/[option contentSize].height;
         optionItem.scale=optscale;
         
         CCMenu * optionmenu = [CCMenu menuWithItems:optionItem, nil];
         [optionmenu setPosition:ccp([option contentSize].width*optscale/2,[option contentSize].height*optscale/2)];
-        [self addChild:optionmenu];
+        [self addChild:optionmenu z:1];
         
         //set info in the right-down corner
         CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
-//        info.scaleX=optscale;
-//        info.scaleY=optscale;
         CCSprite *info1 = [CCSprite spriteWithSpriteFrameName:@"unfoldpic.png"];
         info1.scaleX=1.1;
         info1.scaleY=1.1;
         CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
-                                                               selectedSprite:info1 
-                                                                       target:self 
-                                                                     selector:@selector(displayInfo:)];
+                                                             selectedSprite:info1 
+                                                                     target:self 
+                                                                   selector:@selector(share:)];
         infoItem.scale=optscale;
         CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
         [infomenu setPosition:ccp(size.width-[info contentSize].width*optscale/2,[info contentSize].height*optscale/2)];
-        [self addChild:infomenu];
+        [self addChild:infomenu z:1];
         
-
         //set leadership
         CCSprite *leader = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-//        leader.scaleX=leaderscale;
-//        leader.scaleY=leaderscale;
         CCSprite *leader1 = [CCSprite spriteWithSpriteFrameName:@"leaderboardpic.png"];
-        // BEGIN liuyunpeng modify logoscale  2012-11-25
-        float leaderscale=80/[leader contentSize].width;
-        //float clickleaderscale=leaderscale*1.1f;
+        float leaderscale=size.height*logoleaderscaleY/[leader contentSize].height;
         leader1.scaleX=1.1;
         leader1.scaleY=1.1;
         CCMenuItemSprite *leaderItem = [CCMenuItemSprite itemFromNormalSprite:leader 
-                                                             selectedSprite:leader1 
-                                                                     target:self 
-                                                                   selector:@selector(showGameLeaderboard:)];
-
+                                                               selectedSprite:leader1 
+                                                                       target:self 
+                                                                     selector:@selector(showGameLeaderboard:)];
+        
         leaderItem.scale=leaderscale;
         
         //set achivement
         CCSprite * achivement= [CCSprite spriteWithSpriteFrameName:@"achievementspic.png"];
-//        achivement.scaleX=leaderscale;
-//        achivement.scaleY=leaderscale;
         CCSprite *achivement1 = [CCSprite spriteWithSpriteFrameName:@"achievementspic.png"];
         achivement1.scaleX=1.1;
         achivement1.scaleY=1.1;
         CCMenuItemSprite *achivementItem = [CCMenuItemSprite itemFromNormalSprite:achivement 
-                                                               selectedSprite:achivement1 
-                                                                       target:self 
-                                                                     selector:@selector(showGameAchievements:)];
+                                                                   selectedSprite:achivement1 
+                                                                           target:self 
+                                                                         selector:@selector(showGameAchievements:)];
         achivementItem.scale=leaderscale;        
         
-        //add by liuyunpeng 2012-11-18  user review
-        CCSprite * userreview= [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
-        CCSprite *userreview1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
-        userreview1.scaleX=1.1;
-        userreview1.scaleY=1.1;
-        CCMenuItemSprite *userreviewItem = [CCMenuItemSprite itemFromNormalSprite:userreview 
-                                                                   selectedSprite:userreview1 
-                                                                           target:self 
-                                                                         selector:@selector(showGameUserReview:)];
-        userreviewItem.scale=leaderscale;        
+        
+        CCMenu * menu = [CCMenu menuWithItems:leaderItem, achivementItem, nil];
+        
+        [menu setPosition:ccp(size.width/2,[leader contentSize].height*optscale/2)];
+        
+        [menu alignItemsHorizontallyWithPadding:size.width*logoleaderdistance-[leader contentSize].width*leaderscale];
+        [self addChild:menu z:1];
         
         
+        //add by liujin at 2012.12.8 
+        //加入特效
+        CCParticleSystem* system;
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"candy.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        //system.position = CGPointMake(random()%20 + 10, 80);
+        [self addChild:system z:0 tag:10];        
         
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"apple.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        //system.position = CGPointMake(random()%20 + 10, 80);
+        [self addChild:system z:-1 tag:11];         
         
-        CCMenu * leadermenu = [CCMenu menuWithItems:leaderItem, achivementItem, userreviewItem, nil];
-        // center= size.width/2+[achivement contentSize].width*(0.5-leaderscale/2)
-        [leadermenu setPosition:ccp(size.width/2,[leader contentSize].height*optscale/2)];
-        //[leadermenu setPosition:ccp(size.width/2, size.height/4)];
-        //set the distance to be the 1.5times of the label
-        [leadermenu alignItemsHorizontallyWithPadding:[leader contentSize].width*optscale*1.5];
-        [self addChild:leadermenu];
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"cheese.plist"];
+        system.positionType = kCCPositionTypeFree;
+        system.autoRemoveOnFinish = YES;
+        //system.position = CGPointMake(random()%20 + 10, 80);
+        [self addChild:system z:-2 tag:12];             
         
-        
-        
-    
-        
-// delete by lyp 2012-9-2        
-//        CCLabelTTF *newgameLabel=[CCLabelTTF labelWithString:@"NEW GAME" fontName:@"Marker Felt" fontSize:30];
-//        CCLabelTTF *optionsLabel=[CCLabelTTF labelWithString:@"OPTIONS" fontName:@"Marker Felt" fontSize:30];
-//        CCLabelTTF *gamecenterLabel=[CCLabelTTF labelWithString:@"Multi Play" fontName:@"Marker Felt" fontSize:30];
-//        CCLabelTTF *leaderboardLabel=[CCLabelTTF labelWithString:@"LeaderBoard" fontName:@"Marker Felt" fontSize:30];
-//        CCLabelTTF *archievementsLabel=[CCLabelTTF labelWithString:@"Achievements" fontName:@"Marker Felt" fontSize:30];
-//
-//        CCLabelTTF *pairPlayLabel=[CCLabelTTF labelWithString:@"Pair Play" fontName:@"Marker Felt" fontSize:30];
-//        CCLabelTTF *developerInfoLabel=[CCLabelTTF labelWithString:@"Information" fontName:@"Marker Felt" fontSize:30];
-//		
-//		[newgameLabel setColor:ccRED];
-//		[optionsLabel setColor:ccRED];
-//		[gamecenterLabel setColor:ccRED];
-//		
-//		CCMenuItemLabel * newgame = [CCMenuItemLabel itemWithLabel:newgameLabel target:self selector:@selector(newGame:)];
-//		CCMenuItemLabel * options = [CCMenuItemLabel itemWithLabel:optionsLabel target:self selector:@selector(options:)];
-//		CCMenuItemLabel * gamecenter = [CCMenuItemLabel itemWithLabel:gamecenterLabel target:self selector:@selector(connectGameCenter:)];
-//        CCMenuItemLabel * leaderboard = [CCMenuItemLabel itemWithLabel:leaderboardLabel target:self selector:@selector(showGameLeaderboard:)];
-//		CCMenuItemLabel * archievements = [CCMenuItemLabel itemWithLabel:archievementsLabel target:self selector:@selector(showGameAchievements:)];
-// 
-//		CCMenuItemLabel * pairPlay = [CCMenuItemLabel itemWithLabel:pairPlayLabel target:self selector:@selector(pairGame:)];
-//        CCMenuItemLabel * developerInfo = [CCMenuItemLabel itemWithLabel:developerInfoLabel target:self selector:@selector(displayInfo:)];
-//		CCMenu * menu = [CCMenu menuWithItems:newgame,options,leaderboard,archievements,pairPlay,gamecenter, developerInfo, nil];
-//		[menu alignItemsVerticallyWithPadding:10];
-//		[self addChild:menu];
-//		[menu setPosition:ccp(size.width/2,size.height/2)];
-
-//  set play action
-//		[newgame runAction:[CCSequence actions:
-//							[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-//							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-//							nil]];
-//		[options runAction:[CCSequence actions:
-//							[CCDelayTime actionWithDuration:0.5],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-//							[CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-//							nil]];
-//		[leaderboard runAction:[CCSequence actions:
-//                          [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-//                          [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-//                          nil]];
-//        
-//        [archievements runAction:[CCSequence actions:
-//                               [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-//                               [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],
-//                               nil]];
-//        [gamecenter runAction:[CCSequence actions:
-//                                [CCDelayTime actionWithDuration:0.9],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-//                                [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
-//        [pairPlay runAction:[CCSequence actions:
-//                             [CCDelayTime actionWithDuration:1],[CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:1 position:ccp(-size.width/2,0)]  rate:2],
-//                             [CCRepeat actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:1 scale:1.3],[CCScaleTo actionWithDuration:1 scale:1],nil] times:9000],nil]];
         
         //播放背景音乐
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
         BOOL sound = [usrDef boolForKey:@"music"];
         if (YES == sound) 
         {
-            int randomNum = random()%2;
-            
-            if (0 == randomNum) 
-            {
-                [CommonLayer playBackMusic:UnGameMusic1];
-            }
-            else
-            {
-                [CommonLayer playBackMusic:UnGameMusic2];
-            }
+            //            int randomNum = random()%2;
+            //            
+            //            if (0 == randomNum) 
+            //            {
+            //                [CommonLayer playBackMusic:UnGameMusic1];
+            //            }
+            //            else
+            //            {
+            //                [CommonLayer playBackMusic:UnGameMusic2];
+            //            }
+            [CommonLayer playBackMusic:UnGameMusic1];
         }
 		
     }    
@@ -308,10 +286,10 @@
 	//start a new game
     //[self showDifficultySelection];
     //数据提交
-//    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
-//
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+    //    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+    //
+    //    [[NSUserDefaults standardUserDefaults] synchronize];
+    //	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
     [CommonLayer playAudio:SelectOK];
     if (isCreateIndicatorView)
     {
@@ -337,23 +315,10 @@
     [[CCDirector sharedDirector]pushScene:gs];
 }
 
--(void)displayInfo:(id)sender
+-(void)share:(id)sender
 {
     [CommonLayer playAudio:SelectOK];
-    
-     if (isCreateIndicatorView)
-     {
-         [activityIndicatorView stopAnimating ];  //停止  
-         isCreateIndicatorView = NO;
-     }
-         
-	//show the options of the game
-//    infoView = [[DeveloperInfo alloc] initWithNibName:@"Info View" bundle:nil];
-//    [[[CCDirector sharedDirector] openGLView] addSubview:infoView.view];
-    view = [[DeveloperInfo alloc] initWithNibName:@"DeveloperInfo" bundle:nil];
-    [[[CCDirector sharedDirector] openGLView] addSubview:view.view];
-    //[view release];
-    [self schedule:@selector(viewAddPointY) interval:0.03];
+    [[CCDirector sharedDirector] pushScene:[ShareScene scene]];
 }
 
 
@@ -439,13 +404,13 @@
     gkHelper.delegate = self;
     _viewType = 0;
     [gkHelper authenticateLocalPlayer];
-
+    
     //第一次调用需要初始化后在里边调用
     if (gkHelper.callCount != 0) 
     {
         [self updateScoreAndShowLeaderBoard];
     }
-
+    
 }
 
 -(void)showGameAchievements:(id)sender
@@ -492,10 +457,17 @@
 
 -(void)showGameUserReview:(id)sender
 { 
-//    NSString *str = [NSString stringWithFormat: 
-//                   @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
-//                   1234 ]; 
-    NSString * str =@"http://www.sina.com.cn";
+    //    NSString *str = [NSString stringWithFormat: 
+    //                   @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
+    //                   543100124 ]; 
+    
+    //NSString * str =@"http://www.sina.com.cn";
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
+    
+    NSString *str = [NSString stringWithFormat: 
+                     @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
+                     543100124 ];  
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
 }
@@ -509,7 +481,7 @@
         isCreateIndicatorView = NO;
     }
 }
-                               
+
 -(void)connectGameCenter:(id)sender
 {
     [CommonLayer playAudio:SelectOK];
@@ -536,15 +508,17 @@
 	
 	// add layer as a child to scene
 	[scene addChild: navigationScene];
-
+    
 	return scene;
-
+    
 }
 
 +(id)sceneWithNavigationScene
 {
     return [[[self alloc] initWithNavigationScene] autorelease];
 }
+
+
 
 
 
@@ -659,72 +633,4 @@
 	CCLOG(@"onAchievementsViewDismissed");
 }
 
-/*
--(CGPoint) locationFromTouch:(UITouch*)touch
-{
-	CGPoint touchLocation = [touch locationInView: [touch view]];
-	return [[CCDirector sharedDirector] convertToGL:touchLocation];
-}
-
--(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	fingerLocation = [self locationFromTouch:touch];
-    isTouch = YES;
-	return YES;
-    
-}
-
--(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    //isTouch = NO;
-}
-
--(void)update:(ccTime)delta
-{
-    if (isTouch)
-    {
-        //CGSize size = [[CCDirector sharedDirector] winSize]; 
-    
-        //CGRect rect1 =  CGRectMake(size.width / 2, size.height - 30.0f, 100.0f, 100.0f);
-        //CGRect rect2 =  CGRectMake(size.width / 2, size.height / 2, 100.0f, 100.0f); 
-        //CGRect rect3 =  CGRectMake(size.width / 2, 30.0f, 100.0f, 100.0f); 
-        if (CGRectContainsPoint([label1 boundingBox], fingerLocation))
-        {
-        
-            CCLOG(@"11111111%@\n", label1.textureRect);
-            label1.color = ccWHITE;
-            //CCTransitionShrinkGrow* transition = [CCTransitionShrinkGrow transitionWithDuration:3 scene:[MainScene scene:1]];
-        
-            //[[CCDirector sharedDirector] replaceScene:transition];
-        
-            [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneFstScene]];
-
-            //[[CCDirector sharedDirector] replaceScene:[MainScene scene:1]];
-        }
-        else if (CGRectContainsPoint([label2 boundingBox], fingerLocation))
-        {
-            CCLOG(@"22222222\n");
-            label2.color = ccWHITE;
-            [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneScdScene]];
-        }
-        else if (CGRectContainsPoint([label3 boundingBox], fingerLocation))
-        {
-            CCLOG(@"333333\n");
-            label3.color = ccWHITE;
-        
-            //[[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneThrdScene]];
-                
-            //CCTransitionSlideInB* transition = [CCTransitionSlideInB transitionWithDuration:3 
-                                            //scene:[LoadingScene sceneWithTargetScene://TargetSceneThrdScene]];
-            //[[CCDirector sharedDirector] replaceScene:transition];
-            
-            [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:TargetSceneThrdScene]];            
-            
-        }
-        isTouch = NO;
-        self.isTouchEnabled = NO;
-    }
-    
-}
-*/
 @end

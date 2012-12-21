@@ -43,9 +43,9 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         // batch node for all dynamic elements
         //CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"magicball_default.png" capacity:100];
         CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"gamemain01_default.png" capacity:100];
-        [self addChild:batch z:2 tag:BatchTag];
+        [self addChild:batch z:3 tag:BatchTag];
         CCSpriteBatchNode* batch2 = [CCSpriteBatchNode batchNodeWithFile:@"button_default_default.png" capacity:100];
-        [self addChild:batch2 z:1 tag:ButtonTag];
+        [self addChild:batch2 z:2 tag:ButtonTag];
 
         
         // batch node for all animation elements
@@ -53,7 +53,18 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
 //        [self addChild:batch2 z:-1 tag:AnimationTag];
         
         // IMPORTANT: filenames are case sensitive on iOS devices!
-        CCSprite* background = [CCSprite spriteWithFile:@"background_level.jpg"];
+        CCSprite* background = nil;
+        int order = [GameMainScene sharedMainScene].sceneNum;
+        
+        if (order > 0 && order <= 10) 
+        {
+            background = [CCSprite spriteWithFile:@"background_level.jpg"];    
+        }
+        else 
+        {
+            background = [CCSprite spriteWithFile:@"background_sunset.jpg"];      
+        }
+
         //change size by diff version manual
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         background.scaleX=((screenSize.width))/[background contentSize].width; //按照像素定制图片宽高
@@ -82,28 +93,15 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         
     int order = [GameMainScene sharedMainScene].sceneNum;
     
-    if (order > 0 && order <= 5) 
-    {
-        [CommonLayer playBackMusic:GameMusic5];
-    }
-    else if (order > 0 && order <= 10)
-    {
-        [CommonLayer playBackMusic:GameMusic6];
-    }
-    else if (order > 0 && order <= 15) 
+    if (order > 0 && order <= 10) 
     {
         [CommonLayer playBackMusic:GameMusic2];
     }
-    else if (order > 0 && order <= 18)
+    else 
     {
-       [CommonLayer playBackMusic:GameMusic3];
+        [CommonLayer playBackMusic:GameMusic1];
     }
-    else
-    {
-       [CommonLayer playBackMusic:GameMusic4];
 
-    }
-    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"blues.mp3" loop:YES];
 }
 
 -(void)preloadAudio

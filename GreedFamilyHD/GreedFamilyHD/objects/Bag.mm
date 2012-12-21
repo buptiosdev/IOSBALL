@@ -12,18 +12,20 @@
 #import "BodyObjectsLayer.h"
 #import "PropertyCache.h"
 #import "LandAnimal.h"
-//#import "Storage.h"
 #import "TouchCatchLayer.h"
 #import "GameMainScene.h"
 #import "NoBodyObjectsLayer.h"
 #import "CommonLayer.h"
 
+//BEGIN item scale  默认为相对于X的比例
+float bagitemscale=40.0/480;
+float bagstorescale=25.0/480;
+//END
+
+
 @implementation Bag
 @synthesize sprite = _sprite;
-//-(void) registerWithTouchDispatcher
-//{
-//    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-2 swallowsTouches:YES];
-//}
+
 
 -(void)callTimePepper: (ccTime) dt
 {
@@ -34,8 +36,6 @@
         [pepperPropMenu setIsEnabled:YES];
         timeTmp.percentage=0;  
         [self unschedule:_cmd];
-        
-        //[self unschedule:@selector(callTimeCrystal:)]; 
     }   
     
 }
@@ -49,8 +49,6 @@
         [crystalPropMenu setIsEnabled:YES];
         timeTmp.percentage=0;  
         [self unschedule:_cmd];
-        
-        //[self unschedule:@selector(callTimeCrystal:)]; 
     }   
     
 }
@@ -64,8 +62,6 @@
         [smokePropMenu setIsEnabled:YES];
         timeTmp.percentage=0;  
         [self unschedule:_cmd];
-        
-        //[self unschedule:@selector(callTimeCrystal:)]; 
     }   
     
 }
@@ -76,10 +72,7 @@
     {
         return;
     }
-    
-
     [CommonLayer playAudio:Speedup];
-    CCLOG(@"hot!!!!!!!!\n");
     if (1 == bagID) 
     {
         [[[NoBodyObjectsLayer sharedNoBodyObjectsLayer] getLandAnimal] increaseSpeed];
@@ -123,7 +116,6 @@
     {
         storage = [[TouchCatchLayer sharedTouchCatchLayer] getStoragePlay2];
     }
-    //[storage combinTheSameType];
     [storage combinTheSameTypeNew]; 
     crystalNum--;
     if (0 == crystalNum) 
@@ -189,7 +181,7 @@
 {
     if ((self = [super init]))
     {
-
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
         pepperNum = 0;
         crystalNum = 0;
         bagID = playID;
@@ -200,13 +192,11 @@
                                                                    selectedSprite:pepperProp2 
                                                                            target:self 
                                                                          selector:@selector(onPepper:)];
-        //change size by diff version manual
-        pepperPropMenu.scaleX=(30)/[pepperProp1 contentSize].width; //按照像素定制图片宽高
-        pepperPropMenu.scaleY=(30)/[pepperProp1 contentSize].height;
-        pepperLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt"];        pepperLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapfont.fnt"];
+        pepperPropMenu.scale=screenSize.width*bagitemscale/[pepperProp1 contentSize].width; //按照像素定制图片宽高
+        pepperLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt"];
         
-        pepperLabel.anchorPoint = CGPointMake(-3, 0.2);
-        pepperLabel.scale = 0.4;
+        pepperLabel.anchorPoint = CGPointMake(-2.35, -0.2);
+        pepperLabel.scale=0.8;
         [pepperPropMenu addChild:pepperLabel z:1];
         pepperMenu = [CCMenu menuWithItems:pepperPropMenu,nil];
         //change size by diff version
@@ -224,8 +214,7 @@
         //change size by diff version query
         star.position=pepperMenu.position;
         //change size by diff version manual
-        star.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
-        star.scaleY=(25)/[star contentSize].height;
+        star.scale=screenSize.width*bagstorescale/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
         [buttonBatch addChild:star z:-2];
             
             
@@ -243,12 +232,11 @@
                                                                    selectedSprite:crystalProp2 
                                                                            target:self 
                                                                          selector:@selector(onCrystal:)];
-        crystalPropMenu.scaleX=(30)/[crystalProp1 contentSize].width; //按照像素定制图片宽高
-        crystalPropMenu.scaleY=(30)/[crystalProp1 contentSize].height;
+        crystalPropMenu.scale=screenSize.width*bagitemscale/[crystalProp1 contentSize].width; //按照像素定制图片宽高
 
-        crystalLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt"];
-        crystalLabel.anchorPoint = CGPointMake(-3, 0.2);
-        crystalLabel.scale = 0.4;
+        crystalLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt" ];
+        crystalLabel.anchorPoint = CGPointMake(-2.35, -0.2);
+        crystalLabel.scale=0.8;
         [crystalPropMenu addChild:crystalLabel z:1];
         crystalMenu = [CCMenu menuWithItems:crystalPropMenu,nil];
         //change size by diff version
@@ -259,8 +247,7 @@
         //change size by diff version query
         star2.position=crystalMenu.position;
         //change size by diff version manual
-        star2.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
-        star2.scaleY=(25)/[star contentSize].height;
+        star2.scale=screenSize.width*bagstorescale/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
         [buttonBatch addChild:star2 z:-2];
         crystalMenu.visible = NO;
         [self addChild:crystalMenu z:-2];
@@ -277,12 +264,11 @@
                                                   selectedSprite:smokeProp2 
                                                           target:self 
                                                         selector:@selector(onSmoke:)];
-        smokePropMenu.scaleX=(30)/[smokeProp1 contentSize].width; //按照像素定制图片宽高
-        smokePropMenu.scaleY=(30)/[smokeProp1 contentSize].height;
+        smokePropMenu.scale=screenSize.width*bagitemscale/[smokeProp1 contentSize].width; //按照像素定制图片宽高
         
         smokeLabel = [CCLabelBMFont labelWithString:@"x0" fntFile:@"bitmapNum4.fnt"];
-        smokeLabel.anchorPoint = CGPointMake(-3, 0.2);
-        smokeLabel.scale = 0.25;
+        smokeLabel.anchorPoint = CGPointMake(-2.35, -0.2);
+        smokeLabel.scale=0.8;
         [smokePropMenu addChild:smokeLabel z:1];
         smokeMenu = [CCMenu menuWithItems:smokePropMenu,nil];
         //change size by diff version
@@ -293,8 +279,7 @@
         //change size by diff version query
         star3.position=smokeMenu.position;
         //change size by diff version manual
-        star3.scaleX=(25)/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
-        star3.scaleY=(25)/[star contentSize].height;
+        star3.scale=screenSize.width*bagstorescale/[star contentSize].width; //按照像素定制图片宽高是控制像素的。
         [buttonBatch addChild:star3 z:-2];
         
         smokeMenu.visible = NO;
@@ -394,67 +379,7 @@
     [smokeLabel setString:[NSString stringWithFormat:@"x%i", smokeNum]];
 }
 
-//
-//-(bool) isTouchForMe:(CGPoint)touchLocation
-//{
-//    
-//    return CGRectContainsPoint([self.sprite boundingBox], touchLocation);
-//}
-//
-//
-//-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//    CGPoint location = [Helper locationFromTouch:touch];
-//    bool isTouchHandled = [self isTouchForMe:location]; 
-//    if (isTouchHandled)
-//    {
-////        _sprite.color = ccRED;
-////        static int i = 0;
-////        i += CCRANDOM_0_1()*10;
-////        int tag = i % 3;
-////        PropertyCache *thePropCache = [[BodyObjectsLayer sharedBodyObjectsLayer] getPropertyCache];
-////        b2World *theworld = [BodyObjectsLayer sharedBodyObjectsLayer].world;
-////        [thePropCache addOneProperty:tag World:theworld Tag:tag];
-//        CCLOG(@"adsf");
-//    }
-//    return isTouchHandled;
-//}
-//
-//-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//	//_sprite.color = ccYELLOW;
-//    
-//    
-//}
-//
-//-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//	//_sprite.color = ccWHITE;
-//}
-//
-//
-//#pragma mark Layer - Callbacks
-//-(void) onEnter
-//{
-//    [self registerWithTouchDispatcher];
-//	// then iterate over all the children
-//	[super onEnter];
-//}
-//
-//// issue #624.
-//// Can't register mouse, touches here because of #issue #1018, and #1021
-//-(void) onEnterTransitionDidFinish
-//{	
-//	[super onEnterTransitionDidFinish];
-//}
-//
-//-(void) onExit
-//{
-//    
-//    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
-//	
-//	[super onExit];
-//}
+
 
 -(void) dealloc
 {

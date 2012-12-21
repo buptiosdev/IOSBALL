@@ -10,7 +10,6 @@
 #import "cocos2d.h"
 
 @interface TeachGameLayer : CCLayer {
-    
 }
 +(id)createTeachGameLayer:(int)type;
 @end

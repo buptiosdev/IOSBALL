@@ -59,7 +59,8 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
 //    }
 //    temCapacity = [[GameMainScene sharedMainScene] roleParamArray][[[GameMainScene sharedMainScene] roleType] - 1].storageCapacity + temCapacity;
     int temCapacity = [[CommonLayer sharedCommonLayer] getRoleParam:[[GameMainScene sharedMainScene]roleType] ParamType:ROLESTORAGECAPACITY];
-    Storage *storage = [Storage createStorage:temCapacity Play:1];
+    int storageType = [[CommonLayer sharedCommonLayer] getRoleParam:[[GameMainScene sharedMainScene]roleType] ParamType:ROLESTORAGETYPE];
+    Storage *storage = [Storage createStorage:temCapacity Play:1 StorageType:storageType];
     [self addChild:storage z:-3 tag:StorageTag];
     
 
@@ -97,11 +98,14 @@ static TouchCatchLayer *instanceOfTouchCatchLayer;
 //    temCapacityPlay2 = [[GameMainScene sharedMainScene] roleParamArray][0].storageCapacity + temCapacityPlay2;
     int temCapacityPlay1 = [[CommonLayer sharedCommonLayer] getRoleParam:1 ParamType:ROLESTORAGECAPACITY];
     int temCapacityPlay2 = [[CommonLayer sharedCommonLayer] getRoleParam:2 ParamType:ROLESTORAGECAPACITY];
+    int storageType1 = [[CommonLayer sharedCommonLayer] getRoleParam:1 ParamType:ROLESTORAGETYPE];
+    int storageType2 = [[CommonLayer sharedCommonLayer] getRoleParam:2 ParamType:ROLESTORAGETYPE];
 
-    Storage *storagePlay1 = [Storage createStorage:temCapacityPlay1 Play:1];
+
+    Storage *storagePlay1 = [Storage createStorage:temCapacityPlay1 Play:1 StorageType:storageType1];
     [self addChild:storagePlay1 z:-3 tag:StorageTag];
     
-    Storage *storagePlay2 = [Storage createStorage:temCapacityPlay2 Play:2];
+    Storage *storagePlay2 = [Storage createStorage:temCapacityPlay2 Play:2 StorageType:storageType2];
     [self addChild:storagePlay2 z:-3 tag:StoragePlay2Tag];
     
     

@@ -56,7 +56,7 @@
     //滚动view
     scrollView.delegate = self;
     scrollView.scrollEnabled = YES;
-    scrollView.contentSize = CGSizeMake(100, 630);//设置滚动的可视区域
+    scrollView.contentSize = CGSizeMake(100, 750);//设置滚动的可视区域
     // Do any additional setup after loading the view from its nib.
 }
 

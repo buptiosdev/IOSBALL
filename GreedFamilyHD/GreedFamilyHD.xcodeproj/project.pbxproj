@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		704122DF1684C18F0067475B /* DisplayGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122DD1684C18F0067475B /* DisplayGameLayer.m */; };
+		704122E01684C18F0067475B /* ResultLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 704122DE1684C18F0067475B /* ResultLayer.mm */; };
+		704122E91684C4030067475B /* CAI978-135.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E31684C4030067475B /* CAI978-135.ttf */; };
+		704122EA1684C4030067475B /* Dekers_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E41684C4030067475B /* Dekers_Bold.ttf */; };
+		704122EB1684C4030067475B /* escuela.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E51684C4030067475B /* escuela.ttf */; };
+		704122EC1684C4030067475B /* lmgwtl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E61684C4030067475B /* lmgwtl.ttf */; };
+		704122ED1684C4030067475B /* Sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E71684C4030067475B /* Sniglet.ttf */; };
+		704122FA1684C44D0067475B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F01684C44D0067475B /* JSONKit.m */; };
+		704122FB1684C44D0067475B /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 704122F21684C44D0067475B /* SinaWeibo.bundle */; };
+		704122FC1684C44D0067475B /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F41684C44D0067475B /* SinaWeibo.m */; };
+		704122FD1684C44D0067475B /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F61684C44D0067475B /* SinaWeiboAuthorizeView.m */; };
+		704122FE1684C44D0067475B /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F91684C44D0067475B /* SinaWeiboRequest.m */; };
 		70C662921660B1A200E49FD5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C662911660B1A200E49FD5 /* QuartzCore.framework */; };
 		70C662941660B1A200E49FD5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C662931660B1A200E49FD5 /* OpenGLES.framework */; };
 		70C662961660B1A200E49FD5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C662951660B1A200E49FD5 /* OpenAL.framework */; };
@@ -268,7 +280,6 @@
 		70C66BFA1660B81500E49FD5 /* NoBodyObjectsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C66BE81660B81500E49FD5 /* NoBodyObjectsLayer.mm */; };
 		70C66BFB1660B81500E49FD5 /* ObjectsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C66BEA1660B81500E49FD5 /* ObjectsLayer.mm */; };
 		70C66BFC1660B81500E49FD5 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C66BEC1660B81500E49FD5 /* PauseLayer.mm */; };
-		70C66BFD1660B81500E49FD5 /* ResultLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C66BEE1660B81500E49FD5 /* ResultLayer.m */; };
 		70C66BFE1660B81500E49FD5 /* TeachGameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C66BF01660B81500E49FD5 /* TeachGameLayer.mm */; };
 		70C66BFF1660B81500E49FD5 /* TouchCatchLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C66BF21660B81500E49FD5 /* TouchCatchLayer.mm */; };
 		70C66C001660B81500E49FD5 /* TouchSwallowLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70C66BF41660B81500E49FD5 /* TouchSwallowLayer.mm */; };
@@ -296,6 +307,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		704122DC1684C18F0067475B /* DisplayGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayGameLayer.h; sourceTree = "<group>"; };
+		704122DD1684C18F0067475B /* DisplayGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayGameLayer.m; sourceTree = "<group>"; };
+		704122DE1684C18F0067475B /* ResultLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResultLayer.mm; sourceTree = "<group>"; };
+		704122E31684C4030067475B /* CAI978-135.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CAI978-135.ttf"; sourceTree = "<group>"; };
+		704122E41684C4030067475B /* Dekers_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dekers_Bold.ttf; sourceTree = "<group>"; };
+		704122E51684C4030067475B /* escuela.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = escuela.ttf; sourceTree = "<group>"; };
+		704122E61684C4030067475B /* lmgwtl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = lmgwtl.ttf; sourceTree = "<group>"; };
+		704122E71684C4030067475B /* Sniglet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sniglet.ttf; sourceTree = "<group>"; };
+		704122EF1684C44D0067475B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		704122F01684C44D0067475B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		704122F21684C44D0067475B /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SinaWeibo.bundle; sourceTree = "<group>"; };
+		704122F31684C44D0067475B /* SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeibo.h; sourceTree = "<group>"; };
+		704122F41684C44D0067475B /* SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeibo.m; sourceTree = "<group>"; };
+		704122F51684C44D0067475B /* SinaWeiboAuthorizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboAuthorizeView.h; sourceTree = "<group>"; };
+		704122F61684C44D0067475B /* SinaWeiboAuthorizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboAuthorizeView.m; sourceTree = "<group>"; };
+		704122F71684C44D0067475B /* SinaWeiboConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboConstants.h; sourceTree = "<group>"; };
+		704122F81684C44D0067475B /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
+		704122F91684C44D0067475B /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		70C6628D1660B1A200E49FD5 /* GreedFamilyHD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreedFamilyHD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C662911660B1A200E49FD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		70C662931660B1A200E49FD5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -756,7 +785,6 @@
 		70C66BEB1660B81500E49FD5 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
 		70C66BEC1660B81500E49FD5 /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
 		70C66BED1660B81500E49FD5 /* ResultLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLayer.h; sourceTree = "<group>"; };
-		70C66BEE1660B81500E49FD5 /* ResultLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLayer.m; sourceTree = "<group>"; };
 		70C66BEF1660B81500E49FD5 /* TeachGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachGameLayer.h; sourceTree = "<group>"; };
 		70C66BF01660B81500E49FD5 /* TeachGameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TeachGameLayer.mm; sourceTree = "<group>"; };
 		70C66BF11660B81500E49FD5 /* TouchCatchLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchCatchLayer.h; sourceTree = "<group>"; };
@@ -811,6 +839,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		704122E11684C3BB0067475B /* ttf */ = {
+			isa = PBXGroup;
+			children = (
+				704122E31684C4030067475B /* CAI978-135.ttf */,
+				704122E41684C4030067475B /* Dekers_Bold.ttf */,
+				704122E51684C4030067475B /* escuela.ttf */,
+				704122E61684C4030067475B /* lmgwtl.ttf */,
+				704122E71684C4030067475B /* Sniglet.ttf */,
+			);
+			name = ttf;
+			path = Resources/ttf;
+			sourceTree = "<group>";
+		};
+		704122EE1684C44D0067475B /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				704122EF1684C44D0067475B /* JSONKit.h */,
+				704122F01684C44D0067475B /* JSONKit.m */,
+			);
+			name = JSONKit;
+			path = libs/JSONKit;
+			sourceTree = "<group>";
+		};
+		704122F11684C44D0067475B /* SinaWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				704122F21684C44D0067475B /* SinaWeibo.bundle */,
+				704122F31684C44D0067475B /* SinaWeibo.h */,
+				704122F41684C44D0067475B /* SinaWeibo.m */,
+				704122F51684C44D0067475B /* SinaWeiboAuthorizeView.h */,
+				704122F61684C44D0067475B /* SinaWeiboAuthorizeView.m */,
+				704122F71684C44D0067475B /* SinaWeiboConstants.h */,
+				704122F81684C44D0067475B /* SinaWeiboRequest.h */,
+				704122F91684C44D0067475B /* SinaWeiboRequest.m */,
+			);
+			name = SinaWeibo;
+			path = libs/SinaWeibo;
+			sourceTree = "<group>";
+		};
 		70C662821660B1A100E49FD5 = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +939,7 @@
 		70C662A21660B1A200E49FD5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				704122E11684C3BB0067475B /* ttf */,
 				70C665281660B54900E49FD5 /* audio */,
 				70C6653B1660B54900E49FD5 /* fnt */,
 				70C6654A1660B54900E49FD5 /* music */,
@@ -900,6 +968,8 @@
 				70C663C61660B1A500E49FD5 /* LICENSE_TouchJSON.txt */,
 				70C663EE1660B1A500E49FD5 /* LICENSE_FontLabel.txt */,
 				70C664611660B1A600E49FD5 /* LICENSE_Box2D.txt */,
+				704122EE1684C44D0067475B /* JSONKit */,
+				704122F11684C44D0067475B /* SinaWeibo */,
 				70C662B71660B1A200E49FD5 /* cocos2d */,
 				70C663AD1660B1A400E49FD5 /* CocosDenshion */,
 				70C663BC1660B1A500E49FD5 /* cocoslive */,
@@ -1546,6 +1616,8 @@
 		70C66BDD1660B81500E49FD5 /* layer */ = {
 			isa = PBXGroup;
 			children = (
+				704122DC1684C18F0067475B /* DisplayGameLayer.h */,
+				704122DD1684C18F0067475B /* DisplayGameLayer.m */,
 				70C66C011660BB1300E49FD5 /* CommonLayer.h */,
 				70C66C021660BB1300E49FD5 /* CommonLayer.m */,
 				70C66BDE1660B81500E49FD5 /* BodyObjectsLayer.h */,
@@ -1564,7 +1636,7 @@
 				70C66BEB1660B81500E49FD5 /* PauseLayer.h */,
 				70C66BEC1660B81500E49FD5 /* PauseLayer.mm */,
 				70C66BED1660B81500E49FD5 /* ResultLayer.h */,
-				70C66BEE1660B81500E49FD5 /* ResultLayer.m */,
+				704122DE1684C18F0067475B /* ResultLayer.mm */,
 				70C66BEF1660B81500E49FD5 /* TeachGameLayer.h */,
 				70C66BF01660B81500E49FD5 /* TeachGameLayer.mm */,
 				70C66BF11660B81500E49FD5 /* TouchCatchLayer.h */,
@@ -1720,6 +1792,12 @@
 				70C671C41662224500E49FD5 /* teachice.jpg in Resources */,
 				70C671C51662224500E49FD5 /* teachmagic.jpg in Resources */,
 				70C671C61662224500E49FD5 /* teachpepper.jpg in Resources */,
+				704122E91684C4030067475B /* CAI978-135.ttf in Resources */,
+				704122EA1684C4030067475B /* Dekers_Bold.ttf in Resources */,
+				704122EB1684C4030067475B /* escuela.ttf in Resources */,
+				704122EC1684C4030067475B /* lmgwtl.ttf in Resources */,
+				704122ED1684C4030067475B /* Sniglet.ttf in Resources */,
+				704122FB1684C44D0067475B /* SinaWeibo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1902,12 +1980,17 @@
 				70C66BFA1660B81500E49FD5 /* NoBodyObjectsLayer.mm in Sources */,
 				70C66BFB1660B81500E49FD5 /* ObjectsLayer.mm in Sources */,
 				70C66BFC1660B81500E49FD5 /* PauseLayer.mm in Sources */,
-				70C66BFD1660B81500E49FD5 /* ResultLayer.m in Sources */,
 				70C66BFE1660B81500E49FD5 /* TeachGameLayer.mm in Sources */,
 				70C66BFF1660B81500E49FD5 /* TouchCatchLayer.mm in Sources */,
 				70C66C001660B81500E49FD5 /* TouchSwallowLayer.mm in Sources */,
 				70C66C031660BB1300E49FD5 /* CommonLayer.m in Sources */,
 				70C66C171660C80500E49FD5 /* LevelScenePair.m in Sources */,
+				704122DF1684C18F0067475B /* DisplayGameLayer.m in Sources */,
+				704122E01684C18F0067475B /* ResultLayer.mm in Sources */,
+				704122FA1684C44D0067475B /* JSONKit.m in Sources */,
+				704122FC1684C44D0067475B /* SinaWeibo.m in Sources */,
+				704122FD1684C44D0067475B /* SinaWeiboAuthorizeView.m in Sources */,
+				704122FE1684C44D0067475B /* SinaWeiboRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

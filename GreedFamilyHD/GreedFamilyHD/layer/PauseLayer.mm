@@ -15,6 +15,13 @@
 #import "CDAudioManager.h"
 #import "CommonLayer.h"
 
+
+//BEGIN item scale  默认为相对于X的比例
+float pauselabelscale=40.0/480;
+float pauseplayscale=60.0/480;
+//END
+
+
 @implementation PauseLayer
 
 +(id)createPauseLayer:(ccColor4B)color Level:(int)sceneNum
@@ -55,29 +62,14 @@
         [usrDef setBool:YES forKey:@"music"];
         int order = [GameMainScene sharedMainScene].sceneNum;
         
-        if (order > 0 && order <= 5) 
-        {
-            [CommonLayer playBackMusic:GameMusic5];
-        }
-        else if (order > 0 && order <= 10)
-        {
-            [CommonLayer playBackMusic:GameMusic6];
-        }
-        else if (order > 0 && order <= 15) 
+        if (order > 0 && order <= 10) 
         {
             [CommonLayer playBackMusic:GameMusic2];
         }
-        else if (order > 0 && order <= 18)
+        else 
         {
-            [CommonLayer playBackMusic:GameMusic3];
+            [CommonLayer playBackMusic:GameMusic1];
         }
-        else
-        {
-            [CommonLayer playBackMusic:GameMusic4];
-            
-        }
-        
-		[usrDef setBool:YES forKey:@"music"];
     }
 	if(sender.selectedIndex ==0)
     {
@@ -123,12 +115,9 @@
                                                                  target:self 
                                                                selector:@selector(onReturnBackPic:)];
     
-    nextMenu.scaleX=(40)/[nextPic contentSize].width; //按照像素定制图片宽高
-    nextMenu.scaleY=(40)/[nextPic contentSize].height;
-    lastMenu.scaleX=(40)/[lastPic contentSize].width; //按照像素定制图片宽高
-    lastMenu.scaleY=(40)/[lastPic contentSize].height;
-    returnBackMenu.scaleX=(40)/[returnBackPic contentSize].width; //按照像素定制图片宽高
-    returnBackMenu.scaleY=(40)/[returnBackPic contentSize].height;
+    nextMenu.scale=screenSize.width*pauselabelscale/[nextPic contentSize].width; //按照像素定制图片宽高
+    lastMenu.scale=screenSize.width*pauselabelscale/[lastPic contentSize].width; //按照像素定制图片宽高
+    returnBackMenu.scale=screenSize.width*pauselabelscale/[returnBackPic contentSize].width; //按照像素定制图片宽高
     
 
     CCMenu *controlMenu = [CCMenu menuWithItems:lastMenu, nextMenu, returnBackMenu,nil];
@@ -145,8 +134,8 @@
     
     teachSprite = [CCSprite spriteWithFile:teachPic];
     teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
-    teachSprite.scaleX=(480)/[teachSprite contentSize].width; //按照像素定制图片宽高
-    teachSprite.scaleY=(320)/[teachSprite contentSize].height;
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
     [self addChild:teachSprite z:2 tag:101];
     
     //[self addChild:teachLayer z:1 tag:100];
@@ -157,14 +146,14 @@
     [self removeChildByTag:(NSInteger)101 cleanup:YES];
     teachPicCount++;
     teachPicCount = teachPicCount % 3;
-    
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     NSString* teachStr = [NSString stringWithFormat:@"teach"];
     NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, teachPicCount+1];
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+//    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     teachSprite = [CCSprite spriteWithFile:teachPic];
     teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
-    teachSprite.scaleX=(480)/[teachSprite contentSize].width; //按照像素定制图片宽高
-    teachSprite.scaleY=(320)/[teachSprite contentSize].height;
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
     
     [self addChild:teachSprite z:20 tag:101];
 }
@@ -172,7 +161,7 @@
 -(void)onLastPic:(CCMenuItemToggle *)sender
 {
     [self removeChildByTag:(NSInteger)101 cleanup:YES];
-    
+//    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     teachPicCount--;
     if (teachPicCount == -1)
     {
@@ -186,8 +175,8 @@
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     teachSprite = [CCSprite spriteWithFile:teachPic];
     teachSprite.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5);
-    teachSprite.scaleX=(480)/[teachSprite contentSize].width; //按照像素定制图片宽高
-    teachSprite.scaleY=(320)/[teachSprite contentSize].height;
+    teachSprite.scaleX=(screenSize.width)/[teachSprite contentSize].width; //按照像素定制图片宽高
+    teachSprite.scaleY=(screenSize.height)/[teachSprite contentSize].height;
 
     [self addChild:teachSprite z:20 tag:101];
     
@@ -225,26 +214,27 @@
     BOOL sound = [usrDef boolForKey:@"music"];
     if (YES == sound) 
     {
-        int randomNum = random()%2;
-        
-        if (0 == randomNum) 
-        {
-//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
-            [CommonLayer playBackMusic:UnGameMusic1];
-        }
-        else
-        {
-//            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
-            [CommonLayer playBackMusic:UnGameMusic2];
-            
-        }
+        [CommonLayer playBackMusic:UnGameMusic1];
+//        int randomNum = random()%2;
+//        
+//        if (0 == randomNum) 
+//        {
+////            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"destinationshort.mp3" loop:YES];
+//            [CommonLayer playBackMusic:UnGameMusic1];
+//        }
+//        else
+//        {
+////            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"barnbeatshort.mp3" loop:YES];
+//            [CommonLayer playBackMusic:UnGameMusic2];
+//            
+//        }
     }
     
 }
 
 -(void)retryGame:(CCMenuItemSprite *)btn
 {
-    //[[GameMainScene sharedMainScene] playAudio:SelectOK];
+    [CommonLayer playAudio:SelectOK];
     [[GameMainScene sharedMainScene] resumeGame];
     int level=btn.tag;
     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)level]];
@@ -254,10 +244,11 @@
     if ((self = [super initWithColor:color])) {
         
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        NSString *levelNum = [NSString stringWithFormat:@"Level %d",sceneNum];
-        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Marker Felt" fontSize:20];
-        
-        [levelLabel setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)* 0.9)];
+        NSString *levelNum = [NSString stringWithFormat:@"LeveL-%d",sceneNum];
+        //CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Zapfino" fontSize:25];
+        CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Dekers_Bold" fontSize:30];
+        [levelLabel setColor:ccYELLOW];
+        [levelLabel setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)* 0.8)];
         [self addChild:levelLabel];
         
         
@@ -269,8 +260,7 @@
                                                           selectedSprite:play 
                                                                   target:self 
                                                                 selector:@selector(returnGame)];
-        playItem.scaleX=(60)/[play contentSize].width; //按照像素定制图片宽高是控制像素的。
-        playItem.scaleY=(60)/[play contentSize].height;
+        playItem.scale=screenSize.width*pauseplayscale/[play contentSize].width; //按照像素定制图片宽高是控制像素的。
         CCMenu * playMenu = [CCMenu menuWithItems:playItem,nil];
         [playMenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height) * 0.6)];
         [self addChild:playMenu];
@@ -284,11 +274,10 @@
                                                              selectedSprite:level1 
                                                                      target:self 
                                                                    selector:@selector(returnLevel)];
-        levelItem.scaleX=(40)/[level contentSize].width; //按照像素定制图片宽高是控制像素的。
-        levelItem.scaleY=(40)/[level contentSize].height;
-        CCMenu * levelMenu = [CCMenu menuWithItems:levelItem,nil];
-        [levelMenu setPosition:ccp((screenSize.width)*0.5f, (screenSize.height) * 0.3)];
-        [self addChild:levelMenu];
+        levelItem.scale=screenSize.width*pauselabelscale/[level contentSize].width; //按照像素定制图片宽高是控制像素的。
+//        CCMenu * levelMenu = [CCMenu menuWithItems:levelItem,nil];
+//        [levelMenu setPosition:ccp((screenSize.width)*0.5f, (screenSize.height) * 0.3)];
+//        [self addChild:levelMenu];
         
         
         //sound
@@ -300,12 +289,11 @@
         CCMenuItemSprite *unchecked=[CCMenuItemSprite itemFromNormalSprite:soundoff selectedSprite:soundon];
         CCMenuItemSprite *checked=[CCMenuItemSprite itemFromNormalSprite:soundon1 selectedSprite:soundoff1];
         CCMenuItemToggle * sound = [CCMenuItemToggle itemWithTarget:self selector:@selector(changeSound:) items:checked,unchecked,nil];
-        sound.scaleX=(40)/[soundoff contentSize].width; //按照像素定制图片宽高是控制像素的。
-        sound.scaleY=(40)/[soundoff contentSize].height;
+        sound.scale=screenSize.width*pauselabelscale/[soundoff contentSize].width; //按照像素定制图片宽高是控制像素的。
         
-        CCMenu * soundMenu = [CCMenu menuWithItems:sound,nil];
-        [soundMenu setPosition:ccp((screenSize.width)/6,(screenSize.height)* 0.3)];
-        [self addChild:soundMenu];
+//        CCMenu * soundMenu = [CCMenu menuWithItems:sound,nil];
+//        [soundMenu setPosition:ccp((screenSize.width)/6,(screenSize.height)* 0.3)];
+//        [self addChild:soundMenu];
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"sound"] == YES)
 			sound.selectedIndex = 1;
@@ -320,12 +308,11 @@
         CCMenuItemSprite *uncheckedmusic=[CCMenuItemSprite itemFromNormalSprite:musicoff selectedSprite:musicon];
         CCMenuItemSprite *checkedmusic=[CCMenuItemSprite itemFromNormalSprite:musicon1 selectedSprite:musicoff1];
 		CCMenuItemToggle * music = [CCMenuItemToggle itemWithTarget:self selector:@selector(changeMusic:) items:checkedmusic,uncheckedmusic,nil];
-        music.scaleX=(40)/[soundoff contentSize].width; //按照像素定制图片宽高是控制像素的。
-        music.scaleY=(40)/[soundoff contentSize].height;
+        music.scale=screenSize.width*pauselabelscale/[soundoff contentSize].width; //按照像素定制图片宽高是控制像素的。
         
-        CCMenu * musicMenu = [CCMenu menuWithItems:music,nil];
-        [musicMenu setPosition:ccp((screenSize.width)/3,(screenSize.height)*0.3)];
-        [self addChild:musicMenu];
+//        CCMenu * musicMenu = [CCMenu menuWithItems:music,nil];
+//        [musicMenu setPosition:ccp((screenSize.width)/3,(screenSize.height)*0.3)];
+//        [self addChild:musicMenu];
         //NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
 		if([usrDef boolForKey:@"music"] == YES)
 			music.selectedIndex = 1;
@@ -341,24 +328,28 @@
                                                               selectedSprite:retry1 
                                                                       target:self 
                                                                     selector:@selector(retryGame:)];
-        retryItem.scaleX = (40)/[retry contentSize].width;
-        retryItem.scaleY = (40)/[retry contentSize].height;
+        retryItem.scale = screenSize.width*pauselabelscale/[retry contentSize].width;
         [retryItem setTag:sceneNum];
-        CCMenu * retryMenu = [CCMenu menuWithItems:retryItem,nil];
-        [retryMenu setPosition:ccp((screenSize.width)*0.7f,(screenSize.height)* 0.3)];
-        [self addChild:retryMenu];
+//        CCMenu * retryMenu = [CCMenu menuWithItems:retryItem,nil];
+//        [retryMenu setPosition:ccp((screenSize.width)*0.7f,(screenSize.height)* 0.3)];
+//        [self addChild:retryMenu];
+        
+        CCMenu * allmenu = [CCMenu menuWithItems:levelItem,sound,music,retryItem, nil];
+        [allmenu setPosition:ccp((screenSize.width)*0.5f,(screenSize.height)* 0.3)];
+        [allmenu alignItemsHorizontallyWithPadding:screenSize.width*pauselabelscale];
+        [self addChild:allmenu];
+        
         
         //teach
-        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"info.png"];
-        CCSprite *info2 = [CCSprite spriteWithSpriteFrameName:@"info.png"];
+        CCSprite *info = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
+        CCSprite *info2 = [CCSprite spriteWithSpriteFrameName:@"teach.png"];
         info2.scaleX = 1.1;
         info2.scaleY = 1.1;
         infoMenu = [CCMenuItemSprite itemFromNormalSprite:info 
                                                              selectedSprite:info2 
                                                                      target:self 
                                                                    selector:@selector(getTeachInfo:)];
-        infoMenu.scaleX=(40)/[info contentSize].width; //按照像素定制图片宽高是控制像素的。
-        infoMenu.scaleY=(40)/[info contentSize].height;
+        infoMenu.scale=screenSize.width*pauselabelscale/[info contentSize].width; //按照像素定制图片宽高是控制像素的。
 
         CCMenu *menu = [CCMenu menuWithItems: infoMenu, nil];
         [menu setPosition:ccp(screenSize.width * 0.9 , screenSize.height * 0.8)];

@@ -28,15 +28,15 @@
 	//
 #if GAME_AUTOROTATION == kGameAutorotationUIViewController
 	
-	//	CC_ENABLE_DEFAULT_GL_STATES();
-	//	CCDirector *director = [CCDirector sharedDirector];
-	//	CGSize size = [director winSize];
-	//	CCSprite *sprite = [CCSprite spriteWithFile:@"Default.png"];
-	//	sprite.position = ccp(size.width/2, size.height/2);
-	//	sprite.rotation = -90;
-	//	[sprite visit];
-	//	[[director openGLView] swapBuffers];
-	//	CC_ENABLE_DEFAULT_GL_STATES();
+//    CC_ENABLE_DEFAULT_GL_STATES();
+//	CCDirector *director = [CCDirector sharedDirector];
+//	CGSize size = [director winSize];
+//	CCSprite *sprite = [CCSprite spriteWithFile:@"Default.png"];
+//	sprite.position = ccp(size.width/2, size.height/2);
+//	sprite.rotation = -90;
+//	[sprite visit];
+//	[[director openGLView] swapBuffers];
+//	CC_ENABLE_DEFAULT_GL_STATES();
 	
 #endif // GAME_AUTOROTATION == kGameAutorotationUIViewController	
 }
@@ -94,7 +94,7 @@
 #endif
 	
 	[director setAnimationInterval:1.0/60];
-	[director setDisplayFPS:YES];
+	[director setDisplayFPS:NO];
 	
 	
 	// make the OpenGLView a child of the view controller
@@ -118,9 +118,12 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
     
-    //add push notice function
+    CCTransitionSplitRows *tran = [CCTransitionSplitRows transitionWithDuration:1 scene:[NavigationScene sceneWithNavigationScene]];
+	
+    [[CCDirector sharedDirector] runWithScene: tran];
+//    [[CCDirector sharedDirector] runWithScene: [NavigationScene sceneWithNavigationScene]];
+    //add push notice function推送服务器推送
     [Parse setApplicationId:@"w1rAzcRAdPuoX60nNy3fKewfZPYCvgJQdXZYEJ3r" clientKey:@"Rg9avoCht3xPnM8ZrM42rBBeMIijaxpQMcSmAImu"];
     [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
      (UIRemoteNotificationTypeSound|
@@ -128,9 +131,9 @@
       UIRemoteNotificationTypeBadge)];
     
     //添加本地通知 测试  
-    //设置20秒之后 
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:20];
-    //chuagjian一个本地推送
+    //设2天之后 
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:3600*48];
+    //chuangjian一个本地推送
     UILocalNotification *noti = [[[UILocalNotification alloc] init] autorelease];
     if (noti) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
@@ -139,7 +142,9 @@
         //设置时区
         noti.timeZone = [NSTimeZone defaultTimeZone];
         //设置重复间隔
+        
         noti.repeatInterval = kCFCalendarUnitWeek;
+//        noti.repeatInterval = kCFCalendarUnitMinute;
         //推送声音
         noti.soundName = UILocalNotificationDefaultSoundName;
         //内容
@@ -148,14 +153,15 @@
         //显示在icon上的红色圈中的数子
         noti.applicationIconBadgeNumber = 1;
         //设置userinfo 方便在之后需要撤销的时候使用
-        NSDictionary *infoDic = [NSDictionary dictionaryWithObject:@"name" forKey:@"key"];
+        NSDictionary *infoDic = [NSDictionary dictionaryWithObject:@"comeback" forKey:@"key"];
         noti.userInfo = infoDic;
         //添加推送到uiapplication        
         UIApplication *app = [UIApplication sharedApplication];
         [app scheduleLocalNotification:noti];  
-        //[app presentLocalNotificationNow:noti];
+//        [app presentLocalNotificationNow:noti];
         //[noti release];
     }
+
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
@@ -163,18 +169,28 @@
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateInactive)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"欢迎回来"
-                                                        message:@"快开始战斗吧!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
-        [alert show];
+
         //这里，你就可以通过notification的useinfo，干一些你想做的事情了
-        application.applicationIconBadgeNumber -= 1;
+        application.applicationIconBadgeNumber = 0;
         
         NSString *reminderText = [notification.userInfo
                                   objectForKey:@"key"];
-        NSLog(@"%@",reminderText);
+        NSString *point = @"comeback";
+        if (NSOrderedSame == [reminderText compare:(point)]) 
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"欢迎回来"
+                                                            message:@"快开始战斗吧!"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+
+        }
+        else
+        {
+            NSLog(@"%@",reminderText);
+        }
+
     }
 }
 
@@ -230,6 +246,9 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     } 
     
 
+    NSLog(@"the badge number is  %d",  [[UIApplication sharedApplication] applicationIconBadgeNumber]);  
+    NSLog(@"the application  badge number is  %d",  application.applicationIconBadgeNumber);  
+    application.applicationIconBadgeNumber = 0;  
 
 }
 
@@ -244,6 +263,8 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    //图标信息数字清0
+    application.applicationIconBadgeNumber = 0;
 	[[CCDirector sharedDirector] resume];
 }
 

@@ -19,6 +19,8 @@
 @synthesize sprite = _sprite;
 @synthesize propertyType = _propertyType;
 
+float propertyEntityScale=35.0/480;
+
 static CCArray* spawnFrequency;
 //-(void) initSpawnFrequency
 //{
@@ -300,6 +302,7 @@ static CCArray* spawnFrequency;
 {
     if ((self = [super init]))
     {
+    	CGSize size = [[CCDirector sharedDirector] winSize];
         [self initPropertyMove:propertyType];
         
         if ([GameMainScene sharedMainScene].mainscenParam.invisibaleNum == 5)
@@ -312,16 +315,18 @@ static CCArray* spawnFrequency;
         self.sprite = [CCSprite spriteWithSpriteFrameName:propertyParamDef.spriteFrameName];
         //按照像素设定图片大小
         //change size by diff version manual
-        self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(35)/[self.sprite contentSize].height;
+        //self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
+        //self.sprite.scaleY=(35)/[self.sprite contentSize].height;
+	self.sprite.scale=size.width*propertyEntityScale/[self.sprite contentSize].width; //按照像素定制图片宽高是控制像素的。
         [batch addChild:self.sprite];       
         
 
         self.cover = [CCSprite spriteWithSpriteFrameName:@"pack.png"];
         //按照像素设定图片大小
-        self.cover.scaleX=(35)/[self.cover contentSize].width; //按照像素定制图片宽高
-        self.cover.scaleY=(35)/[self.cover contentSize].height;
-        self.cover.visible = NO;
+        //self.cover.scaleX=(35)/[self.cover contentSize].width; //按照像素定制图片宽高
+        //self.cover.scaleY=(35)/[self.cover contentSize].height;
+        self.cover.scale=size.width*propertyEntityScale/[self.cover contentSize].width; //按照像素定制图片宽高是控制像素的。
+	self.cover.visible = NO;
         [batch addChild:self.cover z:2];
         
         //初始化为－1

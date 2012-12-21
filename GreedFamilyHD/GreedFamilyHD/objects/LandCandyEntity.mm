@@ -119,7 +119,8 @@
         
         CCSpriteBatchNode* batch = [[GameBackgroundLayer sharedGameBackgroundLayer] getSpriteBatch];
         self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
-
+        xflutter = bodyVelocity.x*0.002;
+        iterationTime = 19;
         //按照像素设定图片大小
         if (balltype > 2)
         {
@@ -161,6 +162,8 @@
 
 -(void)update:(ccTime)delta
 {
+
+    
     if (!_isDowning)
     {
         return;
@@ -171,10 +174,24 @@
         return;
     }
     //重力加速度
-    float g=0.008;
-    //update self.candyVelocity.y
-    self.candyVelocity=CGPointMake(self.candyVelocity.x, self.candyVelocity.y-g);
     
+    //update self.candyVelocity.y
+    if (BallTypeKillerBall == _ballType) {
+
+        iterationTime++;
+        float g=0.005;
+        if (40 ==  iterationTime)
+        {
+            xflutter = -xflutter;
+            iterationTime = 1;
+        }
+        self.candyVelocity = CGPointMake(self.candyVelocity.x+xflutter/iterationTime, self.candyVelocity.y-g);
+    }
+    else
+    {
+        float g=0.008;
+        self.candyVelocity = CGPointMake(self.candyVelocity.x, self.candyVelocity.y-g);
+    }
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     float imageWidthHalved = [self.sprite contentSize].width * self.sprite.scaleX * 0.5f; 
     float leftBorderLimit = imageWidthHalved;
@@ -193,8 +210,7 @@
     
     self.sprite.position = pos;
     
-    //change size by diff version manual
-    if (self.sprite.position.y <= 65) 
+    if (self.sprite.position.y <=  35) 
     {
         LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
         [landCandyCache addToLandCandies:self];

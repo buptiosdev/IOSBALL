@@ -1,4 +1,4 @@
-    //
+//
 //  RootViewController.m
 //  GreedFamily
 //

@@ -208,6 +208,9 @@ static GameMainScene *instanceOfMainScene;
     [self preloadParticleEffects:@"shootingstars.plist"];
     [self preloadParticleEffects:@"smoke2.plist"];
     [self preloadParticleEffects:@"besmoked.plist"];
+    [self preloadParticleEffects:@"star.plist"];
+    [self preloadParticleEffects:@"scoreblue.plist"];
+    [self preloadParticleEffects:@"get_score_02.plist"];
 }
 
 
@@ -345,14 +348,14 @@ static GameMainScene *instanceOfMainScene;
             
         case TargetScene4thScene:
             _mainscenParam.maxVisibaleNum = 3;
-            _mainscenParam.candyCount = 15;
+            _mainscenParam.candyCount = 13;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = NoTime;
-            _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.crystalFrequency = NoTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
             _mainscenParam.smokeFrequency = NoTime;
@@ -361,25 +364,25 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.maxVisibaleNum = 3;
             _mainscenParam.candyCount = 15;
             _mainscenParam.candyType = 3;
-            _mainscenParam.candyFrequency = 5;
+            _mainscenParam.candyFrequency = 4;
             _mainscenParam.landCompetitorExist = NO;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = OneTime;
-            _mainscenParam.crystalFrequency = OneTime;
+            _mainscenParam.crystalFrequency = NoTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
             _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene6thScene:
             _mainscenParam.maxVisibaleNum = 3;
-            _mainscenParam.candyCount = 5;
+            _mainscenParam.candyCount = 8;
             _mainscenParam.candyType = 1;
             _mainscenParam.candyFrequency = 3;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.bombFrequency = OneTime;
             _mainscenParam.crystalFrequency = NoTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
@@ -393,7 +396,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.bombFrequency = OneTime;
             _mainscenParam.crystalFrequency = NoTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
@@ -407,8 +410,8 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = NoTime;
-            _mainscenParam.crystalFrequency = NoTime;
+            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.crystalFrequency = OneTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
             _mainscenParam.smokeFrequency = NoTime;
@@ -421,7 +424,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = NoTime;
+            _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
@@ -435,7 +438,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.3f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.bombFrequency = ThreeTime;
             _mainscenParam.crystalFrequency = OneTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = NoTime;
@@ -449,7 +452,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landCompetitorExist = YES;
             _mainscenParam.landCompetSpeed = 0.5f;
             _mainscenParam.landAnimalSpeed = 0.5f;
-            _mainscenParam.bombFrequency = OneTime;
+            _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
             _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = TwoTime;
@@ -466,7 +469,7 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
-            _mainscenParam.pepperFrequency = TwoTime;
+            _mainscenParam.pepperFrequency = NoTime;
             _mainscenParam.iceFrequency = TwoTime;
             //_mainscenParam.invisibaleNum = 1;
             _mainscenParam.smokeFrequency = NoTime;
@@ -481,10 +484,10 @@ static GameMainScene *instanceOfMainScene;
             _mainscenParam.landAnimalSpeed = 0.5f;
             _mainscenParam.bombFrequency = TwoTime;
             _mainscenParam.crystalFrequency = OneTime;
-            _mainscenParam.pepperFrequency = OneTime;
+            _mainscenParam.pepperFrequency = TwoTime;
             _mainscenParam.iceFrequency = TwoTime;
             //_mainscenParam.invisibaleNum = 1;
-            _mainscenParam.smokeFrequency = TwoTime;
+            _mainscenParam.smokeFrequency = NoTime;
             break;
         case TargetScene14thScene:
             _mainscenParam.maxVisibaleNum = 4;
@@ -605,7 +608,7 @@ static GameMainScene *instanceOfMainScene;
     //1.调用一次消球接口 
     Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
     //[storage doMyCombineFood];
-    [storage combineBallNew];
+    //[storage combineBallNew];
     
     //2.调用算分接口
     CCArray * levelscore=[storage getScoreByLevel:(int)_sceneNum];
@@ -626,16 +629,10 @@ static GameMainScene *instanceOfMainScene;
     id temp4 = [levelscore objectAtIndex:3];
     int isnewrecord=[temp4 intValue];
     
-    CCLOG(@"score is %d",score);
-    
-    CCLOG(@"addscore is %d",addscore);
-
-    CCLOG(@"starNum is %d",starNum);
 
     //3.生成关卡结束显示层
-    ccColor4B c = {255,255,0,100};
-    ResultLayer *p=[ResultLayer createResultLayer:c Level:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum Newrecord:(int)isnewrecord];
-    [self.parent addChild:p z:10]; 
+    ResultLayer *p=[ResultLayer createResultLayer:(int)_sceneNum Score:(int)score AddScore:(int)addscore StarNum:(int)starNum Newrecord:(int)isnewrecord];
+    [self addChild:p z:1]; 
 }
 
 
@@ -653,7 +650,8 @@ static GameMainScene *instanceOfMainScene;
 
 -(void)pauseGame
 {
-	ccColor4B c = {200,200,0,150};
+	ccColor4B c = {166,166,166,166};
+    
     PauseLayer * p = [PauseLayer createPauseLayer:c Level:_sceneNum];
     [self.parent addChild:p z:10]; 
 	[self onPauseExit];
@@ -674,36 +672,21 @@ static GameMainScene *instanceOfMainScene;
 }
 
 
-//-(void)addTeachGameLayer
-//{
-//    [self onPauseExit];
-//    PauseLayer * p = [TeachGameLayer createTeachGameLayer:1];
-//    [self.parent addChild:p z:11]; 
-//    
-//}
-
-
-//-(void)endTeachGameLayer
-//{
-//	if(![AppDelegate getAppDelegate].paused)
-//	{
-//		return;
-//	}
-//	[AppDelegate getAppDelegate].paused = NO;
-//	[super onEnter];
-//}
-
 -(void)sleepForEndGame: (ccTime) dt
 {
     [self unschedule:@selector(sleepForEndGame:)]; 
     [self endGame];
 }
 
-//-(void)sleepForTeach: (ccTime) dt
-//{
-//    [self unschedule:@selector(sleepForTeach:)]; 
-//    [[GameMainScene sharedMainScene] addTeachGameLayer];
-//}
+-(void)sleepForCombine: (ccTime) dt
+{
+    [self unschedule:@selector(sleepForCombine:)];
+    //1.调用一次消球接口 
+    Storage *storage = [[TouchCatchLayer sharedTouchCatchLayer] getStorage];
+    //[storage doMyCombineFood];
+    [storage combineBallNew];
+    [self schedule:@selector(sleepForEndGame:) interval:5];
+}
 
 
 -(void) update:(ccTime)delta
@@ -725,7 +708,7 @@ static GameMainScene *instanceOfMainScene;
     {
         //防止多次调用
         [self unscheduleAllSelectors];
-        [self schedule:@selector(sleepForEndGame:) interval:5];
+        [self schedule:@selector(sleepForCombine:) interval:2];
     }
 }
 

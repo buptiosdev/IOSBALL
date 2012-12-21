@@ -13,10 +13,68 @@
 #import "GameShopScene.h"
 #import "CCAnimationHelper.h"
 #import "CommonLayer.h"
+#import "GameKitHelper.h"
+
+//BEGIN item scale  默认为相对于X的比例
+float levelstarscale=75.0/480;
+float levelfontscaleY=50.0/320;
+int levelfontsize=50;
+float levelsnakescaleY=65.0/320;
+float levelspeedscale=0.4/480;
+
+float levelreturnscaleY=0.15;
+//END
+
+
 
 @implementation LevelScene
 CCSprite* sprite;
 int directionCurrent;
+
+-(int)getGameStarNumber:(int)level
+{
+    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
+    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];    
+    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+    NSInteger starNum = [usrDef integerForKey:str_starlevel];    
+    
+    return starNum;
+}
+
+-(void)checkAchievement
+{
+    int star =[ self getGameStarNumber:20];
+    
+    if (star != 0) {
+        NSString* achievementTag = @"CompleteAllLevel";
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:achievementTag];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:achievementTag percentComplete:percent];
+        }
+    }
+    
+    int i = 0;
+    for(int i=0;i<20;i++)
+    {
+        int star=[self getGameStarNumber:i+1];
+        if (star != 3) {
+            break;
+        }
+    }
+    if (i == 20) {
+        NSString* achievementTag = @"ALLPerfect";
+        GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+        GKAchievement* achievement = [gkHelper getAchievementByID:achievementTag];
+        if (achievement.completed == NO)
+        {
+            float percent = achievement.percentComplete + 100;
+            [gkHelper reportAchievementWithID:achievementTag percentComplete:percent];
+        }
+    }
+}
 
 -(void)selectMode:(CCMenuItemImage *)btn
 {
@@ -38,15 +96,7 @@ int directionCurrent;
     [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
 }
 
--(int)getGameStarNumber:(int)level
-{
-    NSString *str_starlevel = [NSString stringWithFormat:@"%d",level];
-    str_starlevel = [str_starlevel stringByAppendingFormat:@"starNum"];    
-    NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
-    NSInteger starNum = [usrDef integerForKey:str_starlevel];    
-    
-    return starNum;
-}
+
 
 -(id)initWithLevelScene
 {
@@ -66,7 +116,11 @@ int directionCurrent;
         int number=20;
         CCArray * levelarray = [[CCArray alloc]initWithCapacity:number];
         bool isZero=NO;
-        float viewsize=75;
+        float viewsize=screenSize.width*levelstarscale;
+        
+        //检查成就
+        [self checkAchievement];
+        
         for(int i=0;i<20;i++)
         {
             int star=[self getGameStarNumber:i+1];
@@ -80,9 +134,7 @@ int directionCurrent;
             }
             
             CCSprite *levelpic = [CCSprite spriteWithSpriteFrameName:starname];
-//            levelpic.scaleX=(scale)/[levelpic contentSize].width; //按照像素定制图片宽高是控制像素的。
-//            levelpic.scaleY=(scale)/[levelpic contentSize].height;
-            CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
+            CCLabelTTF *Labelnum=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:levelfontsize];
             if(i<9)
             {
                 Labelnum.anchorPoint=CGPointMake(-2.1, -1.5);
@@ -94,9 +146,7 @@ int directionCurrent;
             
             [levelpic addChild:Labelnum];
             CCSprite *defaultstar = [CCSprite spriteWithSpriteFrameName:starname];
-//            defaultstar.scaleX=(scale)/[defaultstar contentSize].width; //按照像素定制图片宽高是控制像素的。
-//            defaultstar.scaleY=(scale)/[defaultstar contentSize].height;
-            CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:50];
+            CCLabelTTF *Labelnum1=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", i+1] fontName:@"Marker Felt" fontSize:levelfontsize];
             if(i<9)
             {
                 Labelnum1.anchorPoint=CGPointMake(-2.1, -1.5);
@@ -121,8 +171,8 @@ int directionCurrent;
             else
             {
                 [level setIsEnabled:YES];
-                [Labelnum setColor:ccRED];
-                [Labelnum1 setColor:ccYELLOW];
+                [Labelnum setColor:ccWHITE];
+                [Labelnum1 setColor:ccRED];
             }
             
             if(star==0)
@@ -136,8 +186,6 @@ int directionCurrent;
         }
         
         float levelpadding=(screenSize.width-viewsize*5)/6;
-        //CCSprite *temp = [CCSprite spriteWithSpriteFrameName:@"level4.png"];
-        //float horizon=[temp contentSize].width/2 - viewsize/2;
         float horizon=0;
         
         CCMenu * easyMenu = [CCMenu menuWithItems:[levelarray objectAtIndex:0],[levelarray objectAtIndex:1],[levelarray objectAtIndex:2],[levelarray objectAtIndex:3],[levelarray objectAtIndex:4],nil];
@@ -172,51 +220,11 @@ int directionCurrent;
         // finally add the scroller to your scene
         [self addChild:scroller];
         
-        //set return and shop
-        //set return in the left-down corner
-
-        CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-
-        CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        returnBtn1.scaleX=1.1;
-        returnBtn1.scaleY=1.1;
-        CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
-                                                               selectedSprite:returnBtn1 
-                                                                       target:self 
-                                                                     selector:@selector(returnMain)];
-        returnItem.scaleX=(45)/[returnBtn contentSize].width; //按照像素定制图片宽高
-        returnItem.scaleY=(45)/[returnBtn contentSize].height;
-        CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
-        [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scaleX * 0.5,
-                                    [returnBtn contentSize].height * returnItem.scaleY * 0.5)];
-        [self addChild:returnmenu];
-        
-        //set shop in the right-down corner
-        CCSprite *shop = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
-        CCSprite *shop1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
-        shop1.scaleX=1.1; //按照像素定制图片宽高
-        shop1.scaleY=1.1;
-        CCMenuItemSprite *shopItem = [CCMenuItemSprite itemFromNormalSprite:shop 
-                                                             selectedSprite:shop1 
-                                                                     target:self 
-                                                                   selector:@selector(connectGameShop:)];
-
-        shopItem.scaleX=(45)/[shop contentSize].width; //按照像素定制图片宽高
-        shopItem.scaleY=(45)/[shop contentSize].height;
-        
-        
-        CCMenu * shopmenu = [CCMenu menuWithItems:shopItem, nil];
-        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
-        [shopmenu setPosition:ccp(screenSize.width-[shop contentSize].width*shopItem.scaleX*0.6,
-                                  [shop contentSize].height * shopItem.scaleX * 0.5)];
-        [self addChild:shopmenu];
-
         //add the snake
         sprite= [CCSprite spriteWithSpriteFrameName:@"snake_9_1.png"];
         //按照像素设定图片大小
-        sprite.scaleX=(70)/[sprite contentSize].width; //按照像素定制图片宽高
-        sprite.scaleY=(70)/[sprite contentSize].height;
-        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, 40+[sprite contentSize].height * sprite.scaleY/2);
+        sprite.scale=(screenSize.height*levelsnakescaleY)/[sprite contentSize].height;
+        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, screenSize.height*levelreturnscaleY+screenSize.height*levelsnakescaleY*0.3);
         sprite.position = startPos;
         CCAnimation* animation = [CCAnimation animationWithFrame:@"snake_9_" frameCount:4 delay:0.2f];
         
@@ -227,6 +235,42 @@ int directionCurrent;
         [sprite runAction:moveAction];
         directionCurrent=-1;
         [self addChild:sprite]; 
+        
+        //set return and shop
+        //set return in the left-down corner
+
+        CCSprite *returnBtn = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+
+        CCSprite *returnBtn1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+        returnBtn1.scale=1.1;
+        CCMenuItemSprite *returnItem = [CCMenuItemSprite itemFromNormalSprite:returnBtn 
+                                                               selectedSprite:returnBtn1 
+                                                                       target:self 
+                                                                     selector:@selector(returnMain)];
+        returnItem.scale=(screenSize.height*levelreturnscaleY)/[returnBtn contentSize].height;
+        CCMenu * returnmenu = [CCMenu menuWithItems:returnItem, nil];
+        [returnmenu setPosition:ccp([returnBtn contentSize].width * returnItem.scaleX * 0.5,
+                                    [returnBtn contentSize].height * returnItem.scaleY * 0.5)];
+        [self addChild:returnmenu];
+        
+        //set shop in the right-down corner
+        CCSprite *shop = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
+        CCSprite *shop1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
+        shop1.scale=1.1; //按照像素定制图片宽高
+        CCMenuItemSprite *shopItem = [CCMenuItemSprite itemFromNormalSprite:shop 
+                                                             selectedSprite:shop1 
+                                                                     target:self 
+                                                                   selector:@selector(connectGameShop:)];
+
+        shopItem.scale=(screenSize.height*levelreturnscaleY)/[shop contentSize].height;
+        
+        
+        CCMenu * shopmenu = [CCMenu menuWithItems:shopItem, nil];
+        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
+        [shopmenu setPosition:ccp(screenSize.width-[shop contentSize].width*shopItem.scaleX*0.6,
+                                  [shop contentSize].height * shopItem.scaleX * 0.5)];
+        [self addChild:shopmenu];
+
         [self scheduleUpdate];
         
     }
@@ -250,7 +294,7 @@ int directionCurrent;
         [sprite setFlipX:YES];
     }
     
-    pos.x+=directionCurrent*0.4;
+    pos.x+=directionCurrent*levelspeedscale*screenSize.width;
     sprite.position=pos;
     return;
 }

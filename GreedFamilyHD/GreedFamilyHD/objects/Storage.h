@@ -51,9 +51,10 @@
     int lastScoreTime;
     int storageID;
     GameScore *myGameScore;
+    int storageType; //3种: 1.自动消除，没有三个限制；2.手动消求，没有三个限制；3.手动消求，有三个限制
 }
 @property (readonly, nonatomic) CCSprite* sprite;
-+(id)createStorage:(int)storageCapacity Play:(int)playID;
++(id)createStorage:(int)storageCapacity Play:(int)playID StorageType:(int)type;
 -(void)addFoodToStorage:(int)foodType;
 -(CCArray * )getScoreByLevel:(int)level;
 //-(void)doMyCombineFood;

@@ -9,12 +9,41 @@
 #import "TeachGameLayer.h"
 #import "GameMainScene.h"
 
+@interface TeachGameLayer (PrivateMethods)
+-(void)pauseLayerDidPause;
+-(void)pauseLayerDidUnpause;
+@end
 @implementation TeachGameLayer
 
--(void)initpic:(int)type
+
+-(void)pauseDelegate
+{   
+    [[CCDirector sharedDirector] pause];
+}
+
+-(void)goBack
+{
+    [[CCDirector sharedDirector] resume];
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{  
+    NSLog(@"Button %d pressed",buttonIndex);  
+    [alertView release];  
+    [self goBack];
+    if (0 == buttonIndex) {
+//        NSString * str =@"http://www.sina.com.cn";
+        NSString *str = [NSString stringWithFormat: 
+                         @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
+                         543100124 ];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
+    
+}
+
+-(void)initPic:(int)type
 {
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    
+    NSString* teachPic = nil;
     switch (type) {
         case 1:
         {
@@ -42,151 +71,137 @@
             [self addChild:background1 z:98 tag:98];
             [self addChild:background2 z:99 tag:99];
             [self addChild:background3 z:100 tag:100];
-            [self schedule:@selector(visibleScdPic:) interval:5];
-
-            break;
+            [self schedule:@selector(visibleScdPic:) interval:3];
+            
+            //直接返回
+            return;
         }
 
         case 2:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachdetail4.jpg"];
-//            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
+            teachPic = [NSString stringWithFormat:@"teachdetail4.jpg"];
             break;
         }
-
         case 3:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachdetail5.jpg"];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
+            teachPic = [NSString stringWithFormat:@"teachdetail7.jpg"];
             break;
+
         }
         case 4:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachmagic.jpg"];
-//            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
+            teachPic = [NSString stringWithFormat:@"teachscore.png"];
             break;
+            
         }
         case 5:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachbomb.jpg"];
-//            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
+            teachPic = [NSString stringWithFormat:@"teachbomb.jpg"];
             break;
         }
-        case 12:
+        case 6:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachpepper.jpg"];
-            //            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
+            teachPic = [NSString stringWithFormat:@"teachsnake.png"];
+            break;
+        }
+        case 8:
+        {
+            teachPic = [NSString stringWithFormat:@"teachmagic.jpg"];
+            break;
+        }
+        case 9:
+        {
+            teachPic = [NSString stringWithFormat:@"teachstoragetype.png"];
             break;
         }
         case 11:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachice.jpg"];
-            //            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
+            teachPic = [NSString stringWithFormat:@"teachice.jpg"];
             break;
         }
         case 13:
         {
-            NSString* teachPic = [NSString stringWithFormat:@"teachgalic.jpg"];
-            //            NSString* teachPic = [NSString stringWithFormat:@"%@%i.png", teachStr, type];
-            CCSprite* background = [CCSprite spriteWithFile:teachPic];
-            
-            //change size by diff version manual
-            background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
-            background.scaleY=(screenSize.height)/[background contentSize].height;
-            //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-            //change size by diff version
-            screenSize = [[CCDirector sharedDirector] winSize];
-            background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
-            [self addChild:background z:100];
+            teachPic = [NSString stringWithFormat:@"teachpepper.jpg"];
+
+            break;
+        }
+        case 14:
+        {
+            teachPic = [NSString stringWithFormat:@"teachgalic.jpg"];
+            break;
+        }
+        case 17:
+        {
+            teachPic = [NSString stringWithFormat:@"teachshop.png"];
             break;
         }
         default:
-            break;
+        {
+            int randomNum = random()%2;
+            
+            if (0 == randomNum) 
+            {
+                teachPic = [NSString stringWithFormat:@"display_pig.png"];
+            }
+            else if (1 == randomNum) 
+            {
+                teachPic = [NSString stringWithFormat:@"display_panda.png"];
+            }
+            else
+            {
+                teachPic = [NSString stringWithFormat:@"display_snake.png"];
+            }
+            
+            break;;
+        }
     }
+    CCSprite* background = [CCSprite spriteWithFile:teachPic];
     
+    //change size by diff version manual
+    background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高
+    background.scaleY=(screenSize.height)/[background contentSize].height;
+    //CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    //change size by diff version
+    screenSize = [[CCDirector sharedDirector] winSize];
+    background.position = CGPointMake(screenSize.width * 0.5 , screenSize.height * 0.5);
+    [self addChild:background z:100];
+    
+    //弹出评分提示
+    switch (type) {
+        case 10:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"进入评分"
+                                                            message:@"如果觉得好去给个好评吧，亲!"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"现在去评分"
+                                                  otherButtonTitles:@"稍候评分",nil];
+            alert.delegate =   self;  
+            [alert show];
+            [self pauseDelegate];
+            return;
+            
+        }
+        case 15:
+        case 18:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"进入评分"
+                                                            message:@"如果觉得好去给个好评吧，亲!"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"现在去评分"
+                                                  otherButtonTitles:@"已评分",nil];
+            alert.delegate =   self;  
+            [alert show];
+            [self pauseDelegate];
+            return;
+        }
+    }
 }
 
 -(id)initTeachGameLayer:(int)type
 {
     if (self = [super init]) 
     {
-//        self.isTouchEnabled = YES;
-//        CGSize screenSize = [[CCDirector sharedDirector] winSize];
-//        CCLabelTTF *label = [CCLabelTTF labelWithString:@"Tap to start!" fontName:@"Marker Felt" fontSize:64];
-//        label.scale = 0.4;  
-//        //CGSize screenSize = [[CCDirector sharedDirector] winSize];
-//        label.position = CGPointMake(screenSize.width * 0.4, screenSize.height * 0.4);
-//        
-//        //CCAction* action = [CCBlink actionWithDuration:1 blinks:1];
-//        CCBlink* action = [CCBlink actionWithDuration:2 blinks:1]; 
-//        CCRepeatForever* repeat = [CCRepeatForever actionWithAction:action]; 
-//        [label runAction: repeat]; 
-        [self initpic:type];
-//        [self addChild:label z:100];
-        
-        // IMPORTANT: filenames are case sensitive on iOS devices!
-//        int teachPicCount = random() % 3;
-
-        
+        [self initPic:type];
     }
     return self;
 }
@@ -204,7 +219,7 @@
 
     CCNode* node = [self getChildByTag:99];
     node.visible = YES;
-    [self schedule:@selector(visibleTrdPic:) interval:5];
+    [self schedule:@selector(visibleTrdPic:) interval:4];
     [self unschedule:_cmd];
 }
 
@@ -220,8 +235,4 @@
     [self.parent removeChild:self cleanup:YES];
 }
 
-//-(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event  
-//{  
-//    [self returnGame];
-//} 
 @end
