@@ -158,9 +158,11 @@ float storagestarscale=25.0/480;
     }
 }
 
+
+
 //消除同一种颜色的球
 //add by liujin at 7.19 
--(void)combinTheSameTypeNew
+-(void)combinTheSameTypeNewMain
 {
     int nowcount = [foodArray count];
     int left_index = 0;
@@ -251,6 +253,44 @@ float storagestarscale=25.0/480;
     
     [self combineBallNew];
     
+}
+
+
+-(void)combinTheSameTypeNew
+{
+    //只有第三种仓库有累积加分
+    if (storageType == 2 || storageType == 1)
+    {
+        [self combinTheSameTypeNewMain]; 
+    }
+    else 
+    {
+        //first time score
+        if (lastScoreTime == 0) 
+        {
+            lastScoreTime = counter;
+            nowScoreTime = counter;
+        }
+        else
+        {
+            nowScoreTime = counter;
+            CCLOG(@"nowScoreTime is %d",nowScoreTime);
+            CCLOG(@"lastScoreTime is %d",lastScoreTime);
+            if ((nowScoreTime-lastScoreTime)<timeReward)
+            {
+                //调用时间奖励 得分函数         
+                //GameScore *instanceOfgameScore = [GameScore sharedgameScore];     
+                [myGameScore calculateTimeAward:gamelevel];
+                
+                //
+            }    
+            lastScoreTime = counter;
+        }    
+        //调用消球函数
+        //[self combineMain:0];
+        [self combinTheSameTypeNewMain];               
+    } //end if   
+
 }
 
 

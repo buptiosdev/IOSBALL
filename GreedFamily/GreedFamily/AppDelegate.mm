@@ -246,6 +246,9 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     } 
     
 
+    NSLog(@"the badge number is  %d",  [[UIApplication sharedApplication] applicationIconBadgeNumber]);  
+    NSLog(@"the application  badge number is  %d",  application.applicationIconBadgeNumber);  
+    application.applicationIconBadgeNumber = 0;  
 
 }
 
