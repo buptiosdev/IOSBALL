@@ -108,9 +108,6 @@ Boolean showPair=NO;
                                                                    selector:@selector(newGame:)];
         playitem.scale=(size.width*logoplayscale)/[play contentSize].width;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
-        [self addChild:playmenu z:1];
-        
         
         //set pair play 
         CCSprite *pairplay = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
