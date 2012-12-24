@@ -109,7 +109,7 @@ Boolean showPair=NO;
         playitem.scale=(size.width*logoplayscale)/[play contentSize].width;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
         [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
-        [self addChild:playmenu z:1];
+//        [self addChild:playmenu z:1];
         
         
         //set pair play 
