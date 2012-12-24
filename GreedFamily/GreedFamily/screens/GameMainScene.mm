@@ -201,8 +201,6 @@ static GameMainScene *instanceOfMainScene;
     [self preloadParticleEffects:@"land_bomb.plist"];
     [self preloadParticleEffects:@"landspeedfast.plist"];
     [self preloadParticleEffects:@"redscore.plist"];
-    [self preloadParticleEffects:@"bluescore.plist"];
-    [self preloadParticleEffects:@"colorscore.plist"];
     [self preloadParticleEffects:@"speedfast2.plist"];
     [self preloadParticleEffects:@"bublle_break2.plist"];
     [self preloadParticleEffects:@"shootingstars.plist"];
