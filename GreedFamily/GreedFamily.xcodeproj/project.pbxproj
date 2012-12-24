@@ -199,7 +199,7 @@
 		7032FD2815DB941C00E5E108 /* bublle_break.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1515DB941C00E5E108 /* bublle_break.plist */; };
 		7032FD2915DB941C00E5E108 /* bublle_break2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1615DB941C00E5E108 /* bublle_break2.plist */; };
 		7032FD2A15DB941C00E5E108 /* colorscore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1715DB941C00E5E108 /* colorscore.plist */; };
-		7032FD2B15DB941C00E5E108 /* drop_start.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1815DB941C00E5E108 /* drop_start.plist */; };
+		7032FD2B15DB941C00E5E108 /* drop_star.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1815DB941C00E5E108 /* drop_star.plist */; };
 		7032FD2C15DB941C00E5E108 /* land_ poison.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1915DB941C00E5E108 /* land_ poison.plist */; };
 		7032FD2D15DB941C00E5E108 /* land_bomb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1A15DB941C00E5E108 /* land_bomb.plist */; };
 		7032FD2E15DB941C00E5E108 /* land_crystal.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD1B15DB941C00E5E108 /* land_crystal.plist */; };
@@ -325,6 +325,10 @@
 		70DFE9E2166E505F00C58849 /* wildbird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E0166E505F00C58849 /* wildbird.mp3 */; };
 		70DFE9E4166E5ED600C58849 /* morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E3166E5ED600C58849 /* morning.mp3 */; };
 		70DFE9EA166F794D00C58849 /* progress4.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E9166F794D00C58849 /* progress4.png */; };
+		70F118831687234E00AC7BA4 /* particlestar.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F118821687234E00AC7BA4 /* particlestar.png */; };
+		70F118881687276C00AC7BA4 /* pack.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F118851687276C00AC7BA4 /* pack.png */; };
+		70F118891687276C00AC7BA4 /* particleMoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F118861687276C00AC7BA4 /* particleMoon.png */; };
+		70F1188A1687276C00AC7BA4 /* particleSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F118871687276C00AC7BA4 /* particleSnow.png */; };
 		70F2720B167A082700D1960C /* bitmapNum.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70F27209167A082700D1960C /* bitmapNum.fnt */; };
 		70F2720C167A082700D1960C /* bitmapNum.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F2720A167A082700D1960C /* bitmapNum.png */; };
 		70F27210167A0C0200D1960C /* bitmapNum4.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70F2720E167A0C0100D1960C /* bitmapNum4.fnt */; };
@@ -694,7 +698,7 @@
 		7032FD1515DB941C00E5E108 /* bublle_break.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bublle_break.plist; sourceTree = "<group>"; };
 		7032FD1615DB941C00E5E108 /* bublle_break2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bublle_break2.plist; sourceTree = "<group>"; };
 		7032FD1715DB941C00E5E108 /* colorscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorscore.plist; sourceTree = "<group>"; };
-		7032FD1815DB941C00E5E108 /* drop_start.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = drop_start.plist; sourceTree = "<group>"; };
+		7032FD1815DB941C00E5E108 /* drop_star.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = drop_star.plist; sourceTree = "<group>"; };
 		7032FD1915DB941C00E5E108 /* land_ poison.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "land_ poison.plist"; sourceTree = "<group>"; };
 		7032FD1A15DB941C00E5E108 /* land_bomb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = land_bomb.plist; sourceTree = "<group>"; };
 		7032FD1B15DB941C00E5E108 /* land_crystal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = land_crystal.plist; sourceTree = "<group>"; };
@@ -866,6 +870,10 @@
 		70DFE9E0166E505F00C58849 /* wildbird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wildbird.mp3; sourceTree = "<group>"; };
 		70DFE9E3166E5ED600C58849 /* morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morning.mp3; sourceTree = "<group>"; };
 		70DFE9E9166F794D00C58849 /* progress4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress4.png; path = Resources/pic/progress4.png; sourceTree = "<group>"; };
+		70F118821687234E00AC7BA4 /* particlestar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particlestar.png; path = Resources/pic/particlestar.png; sourceTree = "<group>"; };
+		70F118851687276C00AC7BA4 /* pack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pack.png; path = GreedFamily/Resources/pic/pack.png; sourceTree = SOURCE_ROOT; };
+		70F118861687276C00AC7BA4 /* particleMoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particleMoon.png; path = GreedFamily/Resources/pic/particleMoon.png; sourceTree = SOURCE_ROOT; };
+		70F118871687276C00AC7BA4 /* particleSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particleSnow.png; path = GreedFamily/Resources/pic/particleSnow.png; sourceTree = SOURCE_ROOT; };
 		70F27209167A082700D1960C /* bitmapNum.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmapNum.fnt; sourceTree = "<group>"; };
 		70F2720A167A082700D1960C /* bitmapNum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapNum.png; sourceTree = "<group>"; };
 		70F2720E167A0C0100D1960C /* bitmapNum4.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmapNum4.fnt; sourceTree = "<group>"; };
@@ -1494,7 +1502,7 @@
 				7032FD1515DB941C00E5E108 /* bublle_break.plist */,
 				7032FD1615DB941C00E5E108 /* bublle_break2.plist */,
 				7032FD1715DB941C00E5E108 /* colorscore.plist */,
-				7032FD1815DB941C00E5E108 /* drop_start.plist */,
+				7032FD1815DB941C00E5E108 /* drop_star.plist */,
 				7032FD1915DB941C00E5E108 /* land_ poison.plist */,
 				7032FD1A15DB941C00E5E108 /* land_bomb.plist */,
 				7032FD1B15DB941C00E5E108 /* land_crystal.plist */,
@@ -1541,6 +1549,9 @@
 		7094910D15EF5255005ADBD8 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				70F118861687276C00AC7BA4 /* particleMoon.png */,
+				70F118871687276C00AC7BA4 /* particleSnow.png */,
+				70F118821687234E00AC7BA4 /* particlestar.png */,
 				4A2DD195167DAEF9000A162A /* twitter.png */,
 				4A2DD193167DAEE9000A162A /* facebook.png */,
 				4A2DD191167DAEDD000A162A /* renren.png */,
@@ -1670,6 +1681,7 @@
 		70C6712616620D5600E49FD5 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				70F118851687276C00AC7BA4 /* pack.png */,
 				70C671A516621B8F00E49FD5 /* GameShopScene.h */,
 				70C671A616621B8F00E49FD5 /* GameShopScene.m */,
 				70C6712716620D5600E49FD5 /* GameCenterScene.h */,
@@ -1820,7 +1832,7 @@
 				7032FD2815DB941C00E5E108 /* bublle_break.plist in Resources */,
 				7032FD2915DB941C00E5E108 /* bublle_break2.plist in Resources */,
 				7032FD2A15DB941C00E5E108 /* colorscore.plist in Resources */,
-				7032FD2B15DB941C00E5E108 /* drop_start.plist in Resources */,
+				7032FD2B15DB941C00E5E108 /* drop_star.plist in Resources */,
 				7032FD2C15DB941C00E5E108 /* land_ poison.plist in Resources */,
 				7032FD2D15DB941C00E5E108 /* land_bomb.plist in Resources */,
 				7032FD2E15DB941C00E5E108 /* land_crystal.plist in Resources */,
@@ -1921,6 +1933,10 @@
 				4A2DD194167DAEE9000A162A /* facebook.png in Resources */,
 				4A2DD196167DAEF9000A162A /* twitter.png in Resources */,
 				4A78F690167DD93F008C28A3 /* CAI978-135.ttf in Resources */,
+				70F118831687234E00AC7BA4 /* particlestar.png in Resources */,
+				70F118881687276C00AC7BA4 /* pack.png in Resources */,
+				70F118891687276C00AC7BA4 /* particleMoon.png in Resources */,
+				70F1188A1687276C00AC7BA4 /* particleSnow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

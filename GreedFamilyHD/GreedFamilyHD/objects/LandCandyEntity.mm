@@ -217,7 +217,7 @@
         self.isDowning = NO;
         //落地特效
         CCParticleSystem* system;
-        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"drop_start.plist"];
+        system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"drop_star.plist"];
         system.positionType = kCCPositionTypeGrouped;
         system.autoRemoveOnFinish = YES;
         system.position = self.sprite.position;

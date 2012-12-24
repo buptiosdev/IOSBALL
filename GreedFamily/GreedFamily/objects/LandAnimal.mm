@@ -166,8 +166,7 @@ static LandAnimal *instanceOfLandAnimal;
         isCrystal = NO;
         isSpeedfast = NO;
         speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
-        //if (speed > 0.6) 
-        if (0)
+        if (speed > 0.6) 
         {
             //加入加速特效
             CCParticleSystem* system;

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70125E26168734E7005CE7D1 /* particleMoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E23168734E7005CE7D1 /* particleMoon.png */; };
+		70125E27168734E7005CE7D1 /* particleSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E24168734E7005CE7D1 /* particleSnow.png */; };
+		70125E28168734E7005CE7D1 /* particlestar.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E25168734E7005CE7D1 /* particlestar.png */; };
+		70125E2B168735BF005CE7D1 /* drop_star.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70125E2A168735BF005CE7D1 /* drop_star.plist */; };
 		704122DF1684C18F0067475B /* DisplayGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122DD1684C18F0067475B /* DisplayGameLayer.m */; };
 		704122E01684C18F0067475B /* ResultLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 704122DE1684C18F0067475B /* ResultLayer.mm */; };
 		704122E91684C4030067475B /* CAI978-135.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E31684C4030067475B /* CAI978-135.ttf */; };
@@ -291,7 +295,6 @@
 		70C666F01660B54900E49FD5 /* bublle_break.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C666061660B54900E49FD5 /* bublle_break.plist */; };
 		70C666F11660B54900E49FD5 /* bublle_break2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C666071660B54900E49FD5 /* bublle_break2.plist */; };
 		70C666F21660B54900E49FD5 /* colorscore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C666081660B54900E49FD5 /* colorscore.plist */; };
-		70C666F31660B54900E49FD5 /* drop_start.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C666091660B54900E49FD5 /* drop_start.plist */; };
 		70C666F41660B54900E49FD5 /* land_ poison.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C6660A1660B54900E49FD5 /* land_ poison.plist */; };
 		70C666F51660B54900E49FD5 /* land_bomb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C6660B1660B54900E49FD5 /* land_bomb.plist */; };
 		70C666F61660B54900E49FD5 /* land_crystal.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C6660C1660B54900E49FD5 /* land_crystal.plist */; };
@@ -339,6 +342,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		70125E23168734E7005CE7D1 /* particleMoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleMoon.png; sourceTree = "<group>"; };
+		70125E24168734E7005CE7D1 /* particleSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleSnow.png; sourceTree = "<group>"; };
+		70125E25168734E7005CE7D1 /* particlestar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particlestar.png; sourceTree = "<group>"; };
+		70125E2A168735BF005CE7D1 /* drop_star.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = drop_star.plist; sourceTree = "<group>"; };
 		704122DC1684C18F0067475B /* DisplayGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayGameLayer.h; sourceTree = "<group>"; };
 		704122DD1684C18F0067475B /* DisplayGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayGameLayer.m; sourceTree = "<group>"; };
 		704122DE1684C18F0067475B /* ResultLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResultLayer.mm; sourceTree = "<group>"; };
@@ -821,7 +828,6 @@
 		70C666061660B54900E49FD5 /* bublle_break.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bublle_break.plist; sourceTree = "<group>"; };
 		70C666071660B54900E49FD5 /* bublle_break2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bublle_break2.plist; sourceTree = "<group>"; };
 		70C666081660B54900E49FD5 /* colorscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorscore.plist; sourceTree = "<group>"; };
-		70C666091660B54900E49FD5 /* drop_start.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = drop_start.plist; sourceTree = "<group>"; };
 		70C6660A1660B54900E49FD5 /* land_ poison.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "land_ poison.plist"; sourceTree = "<group>"; };
 		70C6660B1660B54900E49FD5 /* land_bomb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = land_bomb.plist; sourceTree = "<group>"; };
 		70C6660C1660B54900E49FD5 /* land_crystal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = land_crystal.plist; sourceTree = "<group>"; };
@@ -1631,6 +1637,9 @@
 		70C665531660B54900E49FD5 /* pic */ = {
 			isa = PBXGroup;
 			children = (
+				70125E23168734E7005CE7D1 /* particleMoon.png */,
+				70125E24168734E7005CE7D1 /* particleSnow.png */,
+				70125E25168734E7005CE7D1 /* particlestar.png */,
 				7041233F168555A60067475B /* teachdetail6.jpg */,
 				70412340168555A60067475B /* teachdetail7.jpg */,
 				70412341168555A60067475B /* teachscore.png */,
@@ -1681,6 +1690,7 @@
 		70C666031660B54900E49FD5 /* specialist */ = {
 			isa = PBXGroup;
 			children = (
+				70125E2A168735BF005CE7D1 /* drop_star.plist */,
 				7041232116854F1A0067475B /* scoreblue.plist */,
 				7041230B16854E190067475B /* apple.plist */,
 				7041230C16854E190067475B /* candy.plist */,
@@ -1692,7 +1702,6 @@
 				70C666061660B54900E49FD5 /* bublle_break.plist */,
 				70C666071660B54900E49FD5 /* bublle_break2.plist */,
 				70C666081660B54900E49FD5 /* colorscore.plist */,
-				70C666091660B54900E49FD5 /* drop_start.plist */,
 				70C6660A1660B54900E49FD5 /* land_ poison.plist */,
 				70C6660B1660B54900E49FD5 /* land_bomb.plist */,
 				70C6660C1660B54900E49FD5 /* land_crystal.plist */,
@@ -1861,7 +1870,6 @@
 				70C666F01660B54900E49FD5 /* bublle_break.plist in Resources */,
 				70C666F11660B54900E49FD5 /* bublle_break2.plist in Resources */,
 				70C666F21660B54900E49FD5 /* colorscore.plist in Resources */,
-				70C666F31660B54900E49FD5 /* drop_start.plist in Resources */,
 				70C666F41660B54900E49FD5 /* land_ poison.plist in Resources */,
 				70C666F51660B54900E49FD5 /* land_bomb.plist in Resources */,
 				70C666F61660B54900E49FD5 /* land_crystal.plist in Resources */,
@@ -1927,6 +1935,10 @@
 				70412348168555A70067475B /* teachshop.png in Resources */,
 				70412349168555A70067475B /* teachsnake.png in Resources */,
 				7041234A168555A70067475B /* teachstoragetype.png in Resources */,
+				70125E26168734E7005CE7D1 /* particleMoon.png in Resources */,
+				70125E27168734E7005CE7D1 /* particleSnow.png in Resources */,
+				70125E28168734E7005CE7D1 /* particlestar.png in Resources */,
+				70125E2B168735BF005CE7D1 /* drop_star.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

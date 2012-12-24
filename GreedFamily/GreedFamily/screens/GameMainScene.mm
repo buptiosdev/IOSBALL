@@ -194,7 +194,7 @@ static GameMainScene *instanceOfMainScene;
 {
     // To preload the textures, play each effect once off-screen
     [self preloadParticleEffects:@"bublle_break.plist"];
-    [self preloadParticleEffects:@"drop_start.plist"];
+    [self preloadParticleEffects:@"drop_star.plist"];
     [self preloadParticleEffects:@"land_crystal.plist"];
     [self preloadParticleEffects:@"land_ice.plist"];
     [self preloadParticleEffects:@"land_poison.plist"];

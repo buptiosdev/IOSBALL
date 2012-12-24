@@ -259,7 +259,7 @@
     else if (flySpeed > 50000)
     {
         [self.flyAction setSpeed:3];
-        //加入炸弹特效
+        //加入喷气特效
         CCParticleSystem* system;
         system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"speedfast2.plist"];
         system.positionType = kCCPositionTypeFree;
