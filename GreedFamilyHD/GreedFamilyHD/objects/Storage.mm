@@ -19,7 +19,7 @@
 #import "CommonLayer.h"
 
 //BEGIN item scale  默认为相对于X的比例
-float storagestarscale=25.0/480;
+float storagestarscale=50.0/1024;
 
 //END
 
@@ -553,10 +553,10 @@ float storagestarscale=25.0/480;
             continue;
         }
         
-        float widthPer = [curFood.mySprite contentSize].width * curFood.mySprite.scaleX;
-        float highPer = [curFood.mySprite contentSize].height * curFood.mySprite.scaleY;
+        float widthPer = [curFood.mySprite contentSize].width * curFood.mySprite.scale;
+        //float highPer = [curFood.mySprite contentSize].height * curFood.mySprite.scaleY;
         
-        CGPoint moveToPosition = CGPointMake(i * widthPer + widthPer * 0.5, highPer * 0.5);
+        CGPoint moveToPosition = CGPointMake(i * widthPer + widthPer * 0.5, [GameMainScene sharedMainScene].storagePos.y);
         if (2 == storageID) 
         {   
             //change size by diff version query

@@ -19,12 +19,13 @@
 @synthesize theStorage = _theStorage;
 @synthesize foodType = _foodType;
 
-
+float foodScale=50.0/1024;
 
 -(id) initWithStorage:(Storage*)storage Type:(int)foodType Count:(int)count StorageID:(int)storageID
 {
 	if ((self = [super init]))
 	{
+        CGSize size = [[CCDirector sharedDirector] winSize];
 		self.theStorage = storage;
 		
 		[_theStorage addChild:self];
@@ -36,10 +37,11 @@
         //float  contentSize  = [_mySprite contentSize].width; //得到图片的宽高
         //按照像素设定图片大小
         //change size by diff version manual
-        _mySprite.scaleX=(30)/[_mySprite contentSize].width; //按照像素定制图片宽高
-        _mySprite.scaleY=(30)/[_mySprite contentSize].height;
-        float widthPer = [_mySprite contentSize].width * _mySprite.scaleX;
-        float highPer = [_mySprite contentSize].height * _mySprite.scaleY;
+//        _mySprite.scaleX=(30)/[_mySprite contentSize].width; //按照像素定制图片宽高
+//        _mySprite.scaleY=(30)/[_mySprite contentSize].height;
+        _mySprite.scale=size.width*foodScale/[_mySprite contentSize].width;
+        float widthPer = [_mySprite contentSize].width * _mySprite.scale;
+//        float highPer = [_mySprite contentSize].height * _mySprite.scale;
         NSString *strCapacity = nil;
         if (1 == [[GameMainScene sharedMainScene] roleType]) 
         {
@@ -56,8 +58,8 @@
 //        }
         int temCapacity = 11;
         //change size by diff version query
-        CGPoint initPosition = CGPointMake((widthPer * temCapacity + widthPer * 0.5), highPer * 0.5);
-        CGPoint moveToPosition = CGPointMake(count * widthPer + widthPer * 0.5, highPer * 0.5);
+        CGPoint initPosition = CGPointMake((widthPer * temCapacity + widthPer * 0.5), [GameMainScene sharedMainScene].storagePos.y);
+        CGPoint moveToPosition = CGPointMake(count * widthPer + widthPer * 0.5, [GameMainScene sharedMainScene].storagePos.y);
         if (2 == storageID) 
         {
             CGPoint distance = CGPointMake(512, 0);

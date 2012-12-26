@@ -106,6 +106,7 @@ static LandAnimal *instanceOfLandAnimal;
         instanceOfLandAnimal = self;
         animalID = playID;
         familyType = roleType;
+        float picScale = 0.0;
         //初始化动画
         [self initMoveAction];
         
@@ -116,13 +117,13 @@ static LandAnimal *instanceOfLandAnimal;
         {
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
             //按照像素设定图片大小
-            //change size by diff version manual
-            self.sprite.scaleX=(40)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(40)/[self.sprite contentSize].height;
+            //change size by diff version manual            
+            picScale = 60.0/1024;
+            self.sprite.scale=screenSize.width*picScale/[self.sprite contentSize].width;
             //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
             //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
             //change size by diff version manual
-            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 5);
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scale + 44);
             directionCurrent = 1;
             directionBefore = -1;
         }
@@ -133,27 +134,27 @@ static LandAnimal *instanceOfLandAnimal;
             self.sprite = [CCSprite spriteWithSpriteFrameName:@"piggirl_3_1.png"];
             //按照像素设定图片大小
             //change size by diff version manual
-            self.sprite.scaleX=(45)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(45)/[self.sprite contentSize].height;
+            picScale = 65.0/1024;
+            self.sprite.scale=screenSize.width*picScale/[self.sprite contentSize].width;
             //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
             //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
             //change size by diff version manual
-            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 5);
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scale + 40);
             directionCurrent = 1;
             directionBefore = -1;
         }
         //熊猫
         else if (1 == familyType)
         {
-            self.sprite = [CCSprite spriteWithSpriteFrameName:@"girlbird_3_1.png"];
+            self.sprite = [CCSprite spriteWithSpriteFrameName:@"pandagirl_3_1.png"];
             //按照像素设定图片大小
             //change size by diff version manual
-            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+            picScale = 70.0/1024;
+            self.sprite.scale=screenSize.width*picScale/[self.sprite contentSize].width;
             //        CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
             //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
             //change size by diff version manual
-            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scaleY + 25);
+            startPos = CGPointMake((screenSize.width) * 0.5f, [self.sprite contentSize].height*self.sprite.scale + 42);
             directionCurrent = -1;
             directionBefore = 1;
         }
@@ -166,8 +167,7 @@ static LandAnimal *instanceOfLandAnimal;
         isCrystal = NO;
         isSpeedfast = NO;
         speed = [GameMainScene sharedMainScene].mainscenParam.landAnimalSpeed;
-        //if (speed > 0.6) 
-        if (0)
+        if (speed > 0.6) 
         {
             //加入加速特效
             CCParticleSystem* system;

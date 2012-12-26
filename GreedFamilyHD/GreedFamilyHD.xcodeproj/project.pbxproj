@@ -11,6 +11,8 @@
 		70125E27168734E7005CE7D1 /* particleSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E24168734E7005CE7D1 /* particleSnow.png */; };
 		70125E28168734E7005CE7D1 /* particlestar.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E25168734E7005CE7D1 /* particlestar.png */; };
 		70125E2B168735BF005CE7D1 /* drop_star.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70125E2A168735BF005CE7D1 /* drop_star.plist */; };
+		7039F821168B245700210091 /* background_air.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7039F81F168B245700210091 /* background_air.jpg */; };
+		7039F822168B245700210091 /* background_beach.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7039F820168B245700210091 /* background_beach.jpg */; };
 		704122DF1684C18F0067475B /* DisplayGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122DD1684C18F0067475B /* DisplayGameLayer.m */; };
 		704122E01684C18F0067475B /* ResultLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 704122DE1684C18F0067475B /* ResultLayer.mm */; };
 		704122E91684C4030067475B /* CAI978-135.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E31684C4030067475B /* CAI978-135.ttf */; };
@@ -280,7 +282,6 @@
 		70C6663D1660B54900E49FD5 /* I'm In Trouble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C665511660B54900E49FD5 /* I'm In Trouble.mp3 */; };
 		70C6663E1660B54900E49FD5 /* morningmusicshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C665521660B54900E49FD5 /* morningmusicshort.mp3 */; };
 		70C666471660B54900E49FD5 /* background_begin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C6655C1660B54900E49FD5 /* background_begin.jpg */; };
-		70C666481660B54900E49FD5 /* background_level.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C6655D1660B54900E49FD5 /* background_level.jpg */; };
 		70C6664B1660B54900E49FD5 /* beginscene_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C665601660B54900E49FD5 /* beginscene_default.plist */; };
 		70C6664C1660B54900E49FD5 /* beginscene_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C665611660B54900E49FD5 /* beginscene_default.png */; };
 		70C666641660B54900E49FD5 /* button_default_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C665791660B54900E49FD5 /* button_default_default.plist */; };
@@ -346,6 +347,8 @@
 		70125E24168734E7005CE7D1 /* particleSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleSnow.png; sourceTree = "<group>"; };
 		70125E25168734E7005CE7D1 /* particlestar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particlestar.png; sourceTree = "<group>"; };
 		70125E2A168735BF005CE7D1 /* drop_star.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = drop_star.plist; sourceTree = "<group>"; };
+		7039F81F168B245700210091 /* background_air.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_air.jpg; sourceTree = "<group>"; };
+		7039F820168B245700210091 /* background_beach.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_beach.jpg; sourceTree = "<group>"; };
 		704122DC1684C18F0067475B /* DisplayGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayGameLayer.h; sourceTree = "<group>"; };
 		704122DD1684C18F0067475B /* DisplayGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayGameLayer.m; sourceTree = "<group>"; };
 		704122DE1684C18F0067475B /* ResultLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResultLayer.mm; sourceTree = "<group>"; };
@@ -813,7 +816,6 @@
 		70C665511660B54900E49FD5 /* I'm In Trouble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I'm In Trouble.mp3"; sourceTree = "<group>"; };
 		70C665521660B54900E49FD5 /* morningmusicshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morningmusicshort.mp3; sourceTree = "<group>"; };
 		70C6655C1660B54900E49FD5 /* background_begin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_begin.jpg; sourceTree = "<group>"; };
-		70C6655D1660B54900E49FD5 /* background_level.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_level.jpg; sourceTree = "<group>"; };
 		70C665601660B54900E49FD5 /* beginscene_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = beginscene_default.plist; sourceTree = "<group>"; };
 		70C665611660B54900E49FD5 /* beginscene_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beginscene_default.png; sourceTree = "<group>"; };
 		70C665791660B54900E49FD5 /* button_default_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default_default.plist; sourceTree = "<group>"; };
@@ -1637,6 +1639,8 @@
 		70C665531660B54900E49FD5 /* pic */ = {
 			isa = PBXGroup;
 			children = (
+				7039F81F168B245700210091 /* background_air.jpg */,
+				7039F820168B245700210091 /* background_beach.jpg */,
 				70125E23168734E7005CE7D1 /* particleMoon.png */,
 				70125E24168734E7005CE7D1 /* particleSnow.png */,
 				70125E25168734E7005CE7D1 /* particlestar.png */,
@@ -1672,7 +1676,6 @@
 				70C671B81662224400E49FD5 /* teachmagic.jpg */,
 				70C671B91662224400E49FD5 /* teachpepper.jpg */,
 				70C6655C1660B54900E49FD5 /* background_begin.jpg */,
-				70C6655D1660B54900E49FD5 /* background_level.jpg */,
 				70C665601660B54900E49FD5 /* beginscene_default.plist */,
 				70C665611660B54900E49FD5 /* beginscene_default.png */,
 				70C665791660B54900E49FD5 /* button_default_default.plist */,
@@ -1855,7 +1858,6 @@
 				70C6663D1660B54900E49FD5 /* I'm In Trouble.mp3 in Resources */,
 				70C6663E1660B54900E49FD5 /* morningmusicshort.mp3 in Resources */,
 				70C666471660B54900E49FD5 /* background_begin.jpg in Resources */,
-				70C666481660B54900E49FD5 /* background_level.jpg in Resources */,
 				70C6664B1660B54900E49FD5 /* beginscene_default.plist in Resources */,
 				70C6664C1660B54900E49FD5 /* beginscene_default.png in Resources */,
 				70C666641660B54900E49FD5 /* button_default_default.plist in Resources */,
@@ -1939,6 +1941,8 @@
 				70125E27168734E7005CE7D1 /* particleSnow.png in Resources */,
 				70125E28168734E7005CE7D1 /* particlestar.png in Resources */,
 				70125E2B168735BF005CE7D1 /* drop_star.plist in Resources */,
+				7039F821168B245700210091 /* background_air.jpg in Resources */,
+				7039F822168B245700210091 /* background_beach.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

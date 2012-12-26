@@ -19,7 +19,7 @@
 @synthesize sprite = _sprite;
 @synthesize propertyType = _propertyType;
 
-float propertyEntityScale=35.0/480;
+float propertyEntityScale=65.0/1024;
 
 static CCArray* spawnFrequency;
 //-(void) initSpawnFrequency
@@ -317,7 +317,7 @@ static CCArray* spawnFrequency;
         //change size by diff version manual
         //self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
         //self.sprite.scaleY=(35)/[self.sprite contentSize].height;
-	self.sprite.scale=size.width*propertyEntityScale/[self.sprite contentSize].width; //按照像素定制图片宽高是控制像素的。
+        self.sprite.scale=size.width*propertyEntityScale/[self.sprite contentSize].width; //按照像素定制图片宽高是控制像素的。
         [batch addChild:self.sprite];       
         
 
@@ -326,7 +326,7 @@ static CCArray* spawnFrequency;
         //self.cover.scaleX=(35)/[self.cover contentSize].width; //按照像素定制图片宽高
         //self.cover.scaleY=(35)/[self.cover contentSize].height;
         self.cover.scale=size.width*propertyEntityScale/[self.cover contentSize].width; //按照像素定制图片宽高是控制像素的。
-	self.cover.visible = NO;
+        self.cover.visible = NO;
         [batch addChild:self.cover z:2];
         
         //初始化为－1

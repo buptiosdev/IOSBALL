@@ -240,7 +240,7 @@ float bagstorescale=25.0/480;
         [crystalPropMenu addChild:crystalLabel z:1];
         crystalMenu = [CCMenu menuWithItems:crystalPropMenu,nil];
         //change size by diff version
-        CGPoint distance = CGPointMake(45, 0);
+        CGPoint distance = CGPointMake(80, 0);
         crystalMenu.position = ccpAdd(distance, [GameMainScene sharedMainScene].pepperMenuPos);
  //显示背包背景
         CCSprite *star2 = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
@@ -272,7 +272,7 @@ float bagstorescale=25.0/480;
         [smokePropMenu addChild:smokeLabel z:1];
         smokeMenu = [CCMenu menuWithItems:smokePropMenu,nil];
         //change size by diff version
-        CGPoint distance2 = CGPointMake(90, 0);
+        CGPoint distance2 = CGPointMake(160, 0);
         smokeMenu.position = ccpAdd(distance2, [GameMainScene sharedMainScene].pepperMenuPos);
 //显示背包背景
         CCSprite *star3 = [CCSprite spriteWithSpriteFrameName:@"star2_magic.png"];
@@ -328,7 +328,7 @@ float bagstorescale=25.0/480;
     {
         //出现动画
         //change size by diff version
-        CGPoint distance1 = CGPointMake(40, 0);
+        CGPoint distance1 = CGPointMake(80, 0);
         CGPoint distance2 = CGPointMake(0, -30);
         CGPoint moveToPosition;
         if (1 == bagID) 
@@ -357,7 +357,7 @@ float bagstorescale=25.0/480;
     {
         //出现动画
         //change size by diff version
-        CGPoint distance1 = CGPointMake(90, 0);
+        CGPoint distance1 = CGPointMake(160, 0);
         CGPoint distance2 = CGPointMake(0, -30);
         CGPoint moveToPosition;
         if (1 == bagID) 

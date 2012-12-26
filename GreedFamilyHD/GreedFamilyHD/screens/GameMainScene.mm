@@ -271,7 +271,7 @@ static GameMainScene *instanceOfMainScene;
     _appear3rdPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
     _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
-    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
+    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 );
     _storagePos = CGPointMake(175, 25);
     _scorePos = CGPointMake(25, screenSize.height - 16);
     _scorePlay2Pos = CGPointMake(600 + 25, screenSize.height - 16);
@@ -284,7 +284,7 @@ static GameMainScene *instanceOfMainScene;
     _initPos = CGPointMake(-100, -100);
     _remainBallPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
     _remainBallLabelPos = CGPointMake(screenSize.width * 0.5 + 25, screenSize.height - 5);
-    _pepperMenuPos = CGPointMake(screenSize.width - 120, 25);
+    _pepperMenuPos = CGPointMake(screenSize.width - 210, 40);
     //_crystalMenuPos = CGPointMake(screenSize.width - 60, 25);
     _initMenuPos = CGPointMake(screenSize.width + 40, 15);
     _appear1stPos = CGPointMake(20, screenSize.height * 0.5);
@@ -292,8 +292,8 @@ static GameMainScene *instanceOfMainScene;
     _appear3rdPos = CGPointMake(screenSize.width * 0.5, screenSize.height - 20);
     _appear4thPos = CGPointMake(screenSize.width * 0.75, screenSize.height - 20);
     _appear5thPos = CGPointMake(screenSize.width - 20, screenSize.height * 0.5);
-    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2 + 10);
-    _storagePos = CGPointMake(175, 25);
+    _backgroundPos = CGPointMake(screenSize.width / 2, screenSize.height / 2);
+    _storagePos = CGPointMake(25, 40);
     _scorePos = CGPointMake(25, screenSize.height - 16);
 }
 

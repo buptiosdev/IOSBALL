@@ -112,6 +112,8 @@
         self.ballType = balltype;
         //self.candyVelocity = pos;
         self.waitinterval = 15;
+        float picScale = 0.0;
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
         NSString * spriteName = [self chooseBall:(balltype)];
 //        self.sprite = [CCSprite spriteWithSpriteFrameName:spriteName];
 //        self.sprite.position = pos;
@@ -124,13 +126,17 @@
         //按照像素设定图片大小
         if (balltype > 2)
         {
-            self.sprite.scaleX=(35)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(35)/[self.sprite contentSize].height;
+//            self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
+//            self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+            picScale = 60.0/1024;
+            self.sprite.scale=screenSize.width*picScale/[self.sprite contentSize].width;
         }
         else
         {
-            self.sprite.scaleX=(30)/[self.sprite contentSize].width; //按照像素定制图片宽高
-            self.sprite.scaleY=(30)/[self.sprite contentSize].height;
+//            self.sprite.scaleX=(45)/[self.sprite contentSize].width; //按照像素定制图片宽高
+//            self.sprite.scaleY=(45)/[self.sprite contentSize].height;
+            picScale = 55.0/1024;
+            self.sprite.scale=screenSize.width*picScale/[self.sprite contentSize].width;
 
         }
         [batch addChild:self.sprite];
@@ -210,7 +216,7 @@
     
     self.sprite.position = pos;
     
-    if (self.sprite.position.y <=  35) 
+    if (self.sprite.position.y <=  94) 
     {
         LandCandyCache *landCandyCache = [LandCandyCache sharedLandCandyCache];
         [landCandyCache addToLandCandies:self];
