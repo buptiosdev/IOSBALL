@@ -19,6 +19,8 @@
 //BEGIN item scale  默认为相对于X的比例
 float resultlabelscale=40.0/480;
 float resultstarscale=50.0/480;
+int resultfontsize=30;
+int resultrecordsize=35;
 //END
 
 @interface ResultLayer (PrivateMethods)
@@ -89,7 +91,7 @@ float resultstarscale=50.0/480;
         
     }
     CGSize size = [[CCDirector sharedDirector] winSize];
-    CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Dekers_Bold" fontSize:40];
+    CCLabelTTF* labelnewrecord = [CCLabelTTF labelWithString:words fontName:@"Dekers_Bold" fontSize:resultrecordsize];
     [labelnewrecord setColor:ccRED];
     labelnewrecord.position=CGPointMake(size.width *4/5, size.height *3/4  );;
     [labelnewrecord runAction:[CCSequence actions:
@@ -160,7 +162,7 @@ float resultstarscale=50.0/480;
     CGSize size = [[CCDirector sharedDirector] winSize];
 
     NSString *levelNum = [NSString stringWithFormat:@"LeveL %d",[[GameMainScene sharedMainScene] mainscenParam].order];
-    CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Dekers_Bold" fontSize:25];
+    CCLabelTTF *levelLabel=[CCLabelTTF labelWithString:levelNum fontName:@"Dekers_Bold" fontSize:resultfontsize];
     [levelLabel setColor:ccBLACK];
     [levelLabel setPosition:ccp((size.width)*0.5f,(size.height)* 0.9)];
     [self addChild:levelLabel];
@@ -173,14 +175,14 @@ float resultstarscale=50.0/480;
     
 
 
-    CCLabelTTF* labelscore = [CCLabelTTF labelWithString:@"base score: " fontName:@"Dekers_Bold" fontSize:30];
+    CCLabelTTF* labelscore = [CCLabelTTF labelWithString:@"base score: " fontName:@"Dekers_Bold" fontSize:resultfontsize];
     labelscore.position = CGPointMake(size.width / 3, size.height * 7 / 9 );
     [labelscore setColor:ccBLACK];
     [self addChild:labelscore];
     
     
     //add by liuyunpeng
-    basescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:30];
+    basescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:resultfontsize];
     //change size by diff version query
     basescorelabel.position = CGPointMake(size.width *0.6, size.height * 7 / 9 );
     [basescorelabel setColor:ccBLACK];
@@ -221,7 +223,7 @@ float resultstarscale=50.0/480;
     
     
     CCMenu * dMenu = [CCMenu menuWithItems:retryItem,levelItem,nextItem,nil];
-    [dMenu alignItemsHorizontallyWithPadding:40];
+    [dMenu alignItemsHorizontallyWithPadding:size.width*resultlabelscale*2];
     [dMenu setPosition:ccp((size.width)*0.5f,(size.height)*1/6)];
     [self addChild:dMenu];
     
@@ -241,14 +243,14 @@ float resultstarscale=50.0/480;
         if (NO == isShow1)
         {
             isShow1 = YES;
-            CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:@"time award: " fontName:@"Dekers_Bold" fontSize:30];
+            CCLabelTTF* labeladdscore = [CCLabelTTF labelWithString:@"time award: " fontName:@"Dekers_Bold" fontSize:resultfontsize];
             //change size by diff version query
             labeladdscore.position = CGPointMake(size.width / 3, size.height * 5 / 9 );
             [labeladdscore setColor:ccBLACK];
             [self addChild:labeladdscore];
             
             //add by liuyunpeng
-            timescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:30];
+            timescorelabel = [CCLabelTTF labelWithString:@"0" fontName:@"Dekers_Bold" fontSize:resultfontsize];
             //change size by diff version query
             timescorelabel.position = CGPointMake(size.width *0.6, size.height * 5 / 9 );
             [timescorelabel setColor:ccBLACK];
@@ -264,7 +266,7 @@ float resultstarscale=50.0/480;
         if (NO == isShow2)
         {
             isShow2 = YES;
-            CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:@"total score: " fontName:@"Dekers_Bold" fontSize:30];
+            CCLabelTTF* labeltotalscore = [CCLabelTTF labelWithString:@"total score: " fontName:@"Dekers_Bold" fontSize:resultfontsize];
             //change size by diff version query
             labeltotalscore.position = CGPointMake(size.width / 3, size.height * 3 / 9 );
             [labeltotalscore setColor:ccBLACK];
@@ -272,7 +274,7 @@ float resultstarscale=50.0/480;
             
             //add by liuyunpeng
             NSString* tempScore=[NSString stringWithFormat:@"%d",curtotalscore];
-            totalscorelabel = [CCLabelTTF labelWithString:tempScore fontName:@"Dekers_Bold" fontSize:30];
+            totalscorelabel = [CCLabelTTF labelWithString:tempScore fontName:@"Dekers_Bold" fontSize:resultfontsize];
             //change size by diff version query
             totalscorelabel.position = CGPointMake(size.width *0.6, size.height * 3 / 9 );
             [totalscorelabel setColor:ccBLACK];
