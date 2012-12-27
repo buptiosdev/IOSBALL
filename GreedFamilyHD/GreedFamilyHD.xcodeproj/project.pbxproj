@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1098E0168C850700606456 /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A1098DF168C850700606456 /* SinaWeibo.bundle */; };
 		70125E26168734E7005CE7D1 /* particleMoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E23168734E7005CE7D1 /* particleMoon.png */; };
 		70125E27168734E7005CE7D1 /* particleSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E24168734E7005CE7D1 /* particleSnow.png */; };
 		70125E28168734E7005CE7D1 /* particlestar.png in Resources */ = {isa = PBXBuildFile; fileRef = 70125E25168734E7005CE7D1 /* particlestar.png */; };
@@ -21,7 +22,6 @@
 		704122EC1684C4030067475B /* lmgwtl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E61684C4030067475B /* lmgwtl.ttf */; };
 		704122ED1684C4030067475B /* Sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E71684C4030067475B /* Sniglet.ttf */; };
 		704122FA1684C44D0067475B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F01684C44D0067475B /* JSONKit.m */; };
-		704122FB1684C44D0067475B /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 704122F21684C44D0067475B /* SinaWeibo.bundle */; };
 		704122FC1684C44D0067475B /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F41684C44D0067475B /* SinaWeibo.m */; };
 		704122FD1684C44D0067475B /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F61684C44D0067475B /* SinaWeiboAuthorizeView.m */; };
 		704122FE1684C44D0067475B /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122F91684C44D0067475B /* SinaWeiboRequest.m */; };
@@ -343,6 +343,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A1098DF168C850700606456 /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SinaWeibo.bundle; path = ../../../../GreedFamily/GreedFamily/libs/SinaWeibo/SinaWeibo.bundle; sourceTree = "<group>"; };
 		70125E23168734E7005CE7D1 /* particleMoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleMoon.png; sourceTree = "<group>"; };
 		70125E24168734E7005CE7D1 /* particleSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleSnow.png; sourceTree = "<group>"; };
 		70125E25168734E7005CE7D1 /* particlestar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particlestar.png; sourceTree = "<group>"; };
@@ -359,7 +360,6 @@
 		704122E71684C4030067475B /* Sniglet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sniglet.ttf; sourceTree = "<group>"; };
 		704122EF1684C44D0067475B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		704122F01684C44D0067475B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		704122F21684C44D0067475B /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SinaWeibo.bundle; sourceTree = "<group>"; };
 		704122F31684C44D0067475B /* SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeibo.h; sourceTree = "<group>"; };
 		704122F41684C44D0067475B /* SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeibo.m; sourceTree = "<group>"; };
 		704122F51684C44D0067475B /* SinaWeiboAuthorizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboAuthorizeView.h; sourceTree = "<group>"; };
@@ -938,7 +938,7 @@
 		704122F11684C44D0067475B /* SinaWeibo */ = {
 			isa = PBXGroup;
 			children = (
-				704122F21684C44D0067475B /* SinaWeibo.bundle */,
+				4A1098DF168C850700606456 /* SinaWeibo.bundle */,
 				704122F31684C44D0067475B /* SinaWeibo.h */,
 				704122F41684C44D0067475B /* SinaWeibo.m */,
 				704122F51684C44D0067475B /* SinaWeiboAuthorizeView.h */,
@@ -1904,7 +1904,6 @@
 				704122EB1684C4030067475B /* escuela.ttf in Resources */,
 				704122EC1684C4030067475B /* lmgwtl.ttf in Resources */,
 				704122ED1684C4030067475B /* Sniglet.ttf in Resources */,
-				704122FB1684C44D0067475B /* SinaWeibo.bundle in Resources */,
 				7041231016854E190067475B /* apple.plist in Resources */,
 				7041231116854E190067475B /* candy.plist in Resources */,
 				7041231216854E190067475B /* cheese.plist in Resources */,
@@ -1943,6 +1942,7 @@
 				70125E2B168735BF005CE7D1 /* drop_star.plist in Resources */,
 				7039F821168B245700210091 /* background_air.jpg in Resources */,
 				7039F822168B245700210091 /* background_beach.jpg in Resources */,
+				4A1098E0168C850700606456 /* SinaWeibo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
