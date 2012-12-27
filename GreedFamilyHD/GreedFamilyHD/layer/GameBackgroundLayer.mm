@@ -68,7 +68,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         {
             background = [CCSprite spriteWithFile:@"background_sunset.jpg"];      
         }
-        background.visible = YES;
+        background.visible = NO;
         //change size by diff version manual
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         background.scaleX=((screenSize.width))/[background contentSize].width; //按照像素定制图片宽高

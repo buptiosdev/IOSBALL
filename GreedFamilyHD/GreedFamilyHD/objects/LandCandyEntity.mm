@@ -185,7 +185,7 @@
     if (BallTypeKillerBall == _ballType) {
 
         iterationTime++;
-        float g=0.005;
+        float g=0.008;
         if (40 ==  iterationTime)
         {
             xflutter = -xflutter;
@@ -195,7 +195,7 @@
     }
     else
     {
-        float g=0.008;
+        float g=0.01;
         self.candyVelocity = CGPointMake(self.candyVelocity.x, self.candyVelocity.y-g);
     }
     CGSize screenSize = [[CCDirector sharedDirector] winSize];

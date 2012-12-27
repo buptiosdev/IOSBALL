@@ -59,8 +59,8 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[0].linearDamping = 0.45f;
     self.roleParamArray[0].sensitivity = 0.5f;
     self.roleParamArray[0].airspeed = 1.0f;
-    self.roleParamArray[0].hitEffect = 0.4f;
-    self.roleParamArray[0].landSpeed = 0.55f;
+    self.roleParamArray[0].hitEffect = 0.7f;
+    self.roleParamArray[0].landSpeed = 0.8f;
     self.roleParamArray[0].storageCapacity = 7;
     //pig
     self.roleParamArray[1].density = 0.7f;
@@ -69,8 +69,8 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[1].linearDamping = 0.5f;
     self.roleParamArray[1].sensitivity = 0.5f;
     self.roleParamArray[1].airspeed = 1.0f;
-    self.roleParamArray[1].hitEffect = 0.5f;
-    self.roleParamArray[1].landSpeed = 0.5f;
+    self.roleParamArray[1].hitEffect = 0.8f;
+    self.roleParamArray[1].landSpeed = 0.7f;
     self.roleParamArray[1].storageCapacity = 8;
     //bird
     self.roleParamArray[2].density = 0.75f;
@@ -79,8 +79,8 @@ static CommonLayer *instanceOfCommonLayer;
     self.roleParamArray[2].linearDamping = 0.3f;
     self.roleParamArray[2].sensitivity = 0.5f;
     self.roleParamArray[2].airspeed = 1.0f;
-    self.roleParamArray[2].hitEffect = 0.2f;
-    self.roleParamArray[2].landSpeed = 0.4f;
+    self.roleParamArray[2].hitEffect = 0.5f;
+    self.roleParamArray[2].landSpeed = 0.6f;
     self.roleParamArray[2].storageCapacity = 6;
     
 }
