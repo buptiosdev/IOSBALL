@@ -15,6 +15,12 @@
 		7039F821168B245700210091 /* background_air.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7039F81F168B245700210091 /* background_air.jpg */; };
 		7039F822168B245700210091 /* background_beach.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7039F820168B245700210091 /* background_beach.jpg */; };
 		7039F86F1695294C00210091 /* SelectScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7039F86E1695294C00210091 /* SelectScene.m */; };
+		7039F8781695453F00210091 /* Animal Farm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7039F8721695453F00210091 /* Animal Farm.mp3 */; };
+		7039F8791695453F00210091 /* barn-beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7039F8731695453F00210091 /* barn-beat.mp3 */; };
+		7039F87A1695453F00210091 /* destination.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7039F8741695453F00210091 /* destination.mp3 */; };
+		7039F87B1695453F00210091 /* I'm In Trouble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7039F8751695453F00210091 /* I'm In Trouble.mp3 */; };
+		7039F87C1695453F00210091 /* morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7039F8761695453F00210091 /* morning.mp3 */; };
+		7039F87D1695453F00210091 /* wildbird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7039F8771695453F00210091 /* wildbird.mp3 */; };
 		704122DF1684C18F0067475B /* DisplayGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 704122DD1684C18F0067475B /* DisplayGameLayer.m */; };
 		704122E01684C18F0067475B /* ResultLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 704122DE1684C18F0067475B /* ResultLayer.mm */; };
 		704122E91684C4030067475B /* CAI978-135.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 704122E31684C4030067475B /* CAI978-135.ttf */; };
@@ -274,14 +280,6 @@
 		70C666341660B54900E49FD5 /* bitmapNum4.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C665471660B54900E49FD5 /* bitmapNum4.png */; };
 		70C666351660B54900E49FD5 /* bitmapRed.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 70C665481660B54900E49FD5 /* bitmapRed.fnt */; };
 		70C666361660B54900E49FD5 /* bitmapRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C665491660B54900E49FD5 /* bitmapRed.png */; };
-		70C666371660B54900E49FD5 /* Animal Farm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C6654B1660B54900E49FD5 /* Animal Farm.mp3 */; };
-		70C666381660B54900E49FD5 /* barnbeatshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C6654C1660B54900E49FD5 /* barnbeatshort.mp3 */; };
-		70C666391660B54900E49FD5 /* caribbeanblueshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C6654D1660B54900E49FD5 /* caribbeanblueshort.mp3 */; };
-		70C6663A1660B54900E49FD5 /* cautiouspathshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C6654E1660B54900E49FD5 /* cautiouspathshort.mp3 */; };
-		70C6663B1660B54900E49FD5 /* destinationshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C6654F1660B54900E49FD5 /* destinationshort.mp3 */; };
-		70C6663C1660B54900E49FD5 /* huanqinshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C665501660B54900E49FD5 /* huanqinshort.mp3 */; };
-		70C6663D1660B54900E49FD5 /* I'm In Trouble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C665511660B54900E49FD5 /* I'm In Trouble.mp3 */; };
-		70C6663E1660B54900E49FD5 /* morningmusicshort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70C665521660B54900E49FD5 /* morningmusicshort.mp3 */; };
 		70C666471660B54900E49FD5 /* background_begin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70C6655C1660B54900E49FD5 /* background_begin.jpg */; };
 		70C6664B1660B54900E49FD5 /* beginscene_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C665601660B54900E49FD5 /* beginscene_default.plist */; };
 		70C6664C1660B54900E49FD5 /* beginscene_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C665611660B54900E49FD5 /* beginscene_default.png */; };
@@ -353,6 +351,12 @@
 		7039F820168B245700210091 /* background_beach.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_beach.jpg; sourceTree = "<group>"; };
 		7039F86D1695294C00210091 /* SelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectScene.h; sourceTree = "<group>"; };
 		7039F86E1695294C00210091 /* SelectScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectScene.m; sourceTree = "<group>"; };
+		7039F8721695453F00210091 /* Animal Farm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animal Farm.mp3"; sourceTree = "<group>"; };
+		7039F8731695453F00210091 /* barn-beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "barn-beat.mp3"; sourceTree = "<group>"; };
+		7039F8741695453F00210091 /* destination.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = destination.mp3; sourceTree = "<group>"; };
+		7039F8751695453F00210091 /* I'm In Trouble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I'm In Trouble.mp3"; sourceTree = "<group>"; };
+		7039F8761695453F00210091 /* morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morning.mp3; sourceTree = "<group>"; };
+		7039F8771695453F00210091 /* wildbird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wildbird.mp3; sourceTree = "<group>"; };
 		704122DC1684C18F0067475B /* DisplayGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayGameLayer.h; sourceTree = "<group>"; };
 		704122DD1684C18F0067475B /* DisplayGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayGameLayer.m; sourceTree = "<group>"; };
 		704122DE1684C18F0067475B /* ResultLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResultLayer.mm; sourceTree = "<group>"; };
@@ -810,14 +814,6 @@
 		70C665471660B54900E49FD5 /* bitmapNum4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapNum4.png; sourceTree = "<group>"; };
 		70C665481660B54900E49FD5 /* bitmapRed.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmapRed.fnt; sourceTree = "<group>"; };
 		70C665491660B54900E49FD5 /* bitmapRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapRed.png; sourceTree = "<group>"; };
-		70C6654B1660B54900E49FD5 /* Animal Farm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animal Farm.mp3"; sourceTree = "<group>"; };
-		70C6654C1660B54900E49FD5 /* barnbeatshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = barnbeatshort.mp3; sourceTree = "<group>"; };
-		70C6654D1660B54900E49FD5 /* caribbeanblueshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = caribbeanblueshort.mp3; sourceTree = "<group>"; };
-		70C6654E1660B54900E49FD5 /* cautiouspathshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cautiouspathshort.mp3; sourceTree = "<group>"; };
-		70C6654F1660B54900E49FD5 /* destinationshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = destinationshort.mp3; sourceTree = "<group>"; };
-		70C665501660B54900E49FD5 /* huanqinshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = huanqinshort.mp3; sourceTree = "<group>"; };
-		70C665511660B54900E49FD5 /* I'm In Trouble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I'm In Trouble.mp3"; sourceTree = "<group>"; };
-		70C665521660B54900E49FD5 /* morningmusicshort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morningmusicshort.mp3; sourceTree = "<group>"; };
 		70C6655C1660B54900E49FD5 /* background_begin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_begin.jpg; sourceTree = "<group>"; };
 		70C665601660B54900E49FD5 /* beginscene_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = beginscene_default.plist; sourceTree = "<group>"; };
 		70C665611660B54900E49FD5 /* beginscene_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beginscene_default.png; sourceTree = "<group>"; };
@@ -915,6 +911,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7039F8711695453F00210091 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				7039F8721695453F00210091 /* Animal Farm.mp3 */,
+				7039F8731695453F00210091 /* barn-beat.mp3 */,
+				7039F8741695453F00210091 /* destination.mp3 */,
+				7039F8751695453F00210091 /* I'm In Trouble.mp3 */,
+				7039F8761695453F00210091 /* morning.mp3 */,
+				7039F8771695453F00210091 /* wildbird.mp3 */,
+			);
+			name = music;
+			path = Resources/music;
+			sourceTree = "<group>";
+		};
 		704122E11684C3BB0067475B /* ttf */ = {
 			isa = PBXGroup;
 			children = (
@@ -1015,10 +1025,10 @@
 		70C662A21660B1A200E49FD5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7039F8711695453F00210091 /* music */,
 				704122E11684C3BB0067475B /* ttf */,
 				70C665281660B54900E49FD5 /* audio */,
 				70C6653B1660B54900E49FD5 /* fnt */,
-				70C6654A1660B54900E49FD5 /* music */,
 				70C665531660B54900E49FD5 /* pic */,
 				70C666031660B54900E49FD5 /* specialist */,
 				70C662A31660B1A200E49FD5 /* Default.png */,
@@ -1625,22 +1635,6 @@
 			path = Resources/fnt;
 			sourceTree = "<group>";
 		};
-		70C6654A1660B54900E49FD5 /* music */ = {
-			isa = PBXGroup;
-			children = (
-				70C6654B1660B54900E49FD5 /* Animal Farm.mp3 */,
-				70C6654C1660B54900E49FD5 /* barnbeatshort.mp3 */,
-				70C6654D1660B54900E49FD5 /* caribbeanblueshort.mp3 */,
-				70C6654E1660B54900E49FD5 /* cautiouspathshort.mp3 */,
-				70C6654F1660B54900E49FD5 /* destinationshort.mp3 */,
-				70C665501660B54900E49FD5 /* huanqinshort.mp3 */,
-				70C665511660B54900E49FD5 /* I'm In Trouble.mp3 */,
-				70C665521660B54900E49FD5 /* morningmusicshort.mp3 */,
-			);
-			name = music;
-			path = Resources/music;
-			sourceTree = "<group>";
-		};
 		70C665531660B54900E49FD5 /* pic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1854,14 +1848,6 @@
 				70C666341660B54900E49FD5 /* bitmapNum4.png in Resources */,
 				70C666351660B54900E49FD5 /* bitmapRed.fnt in Resources */,
 				70C666361660B54900E49FD5 /* bitmapRed.png in Resources */,
-				70C666371660B54900E49FD5 /* Animal Farm.mp3 in Resources */,
-				70C666381660B54900E49FD5 /* barnbeatshort.mp3 in Resources */,
-				70C666391660B54900E49FD5 /* caribbeanblueshort.mp3 in Resources */,
-				70C6663A1660B54900E49FD5 /* cautiouspathshort.mp3 in Resources */,
-				70C6663B1660B54900E49FD5 /* destinationshort.mp3 in Resources */,
-				70C6663C1660B54900E49FD5 /* huanqinshort.mp3 in Resources */,
-				70C6663D1660B54900E49FD5 /* I'm In Trouble.mp3 in Resources */,
-				70C6663E1660B54900E49FD5 /* morningmusicshort.mp3 in Resources */,
 				70C666471660B54900E49FD5 /* background_begin.jpg in Resources */,
 				70C6664B1660B54900E49FD5 /* beginscene_default.plist in Resources */,
 				70C6664C1660B54900E49FD5 /* beginscene_default.png in Resources */,
@@ -1948,6 +1934,12 @@
 				7039F821168B245700210091 /* background_air.jpg in Resources */,
 				7039F822168B245700210091 /* background_beach.jpg in Resources */,
 				4A1098E0168C850700606456 /* SinaWeibo.bundle in Resources */,
+				7039F8781695453F00210091 /* Animal Farm.mp3 in Resources */,
+				7039F8791695453F00210091 /* barn-beat.mp3 in Resources */,
+				7039F87A1695453F00210091 /* destination.mp3 in Resources */,
+				7039F87B1695453F00210091 /* I'm In Trouble.mp3 in Resources */,
+				7039F87C1695453F00210091 /* morning.mp3 in Resources */,
+				7039F87D1695453F00210091 /* wildbird.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,15 @@ float selectReturnScale=0.15;
         [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
+        //set the background pic
+		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
+        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+        background.scaleY=(screenSize.height)/[background contentSize].height;
+        NSAssert( background != nil, @"background must be non-nil");
+		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+		[self addChild:background z:-3];
+
+        
         //map
         CCSprite * mapAir= [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
         [mapAir setColor:ccGRAY];
@@ -88,7 +97,7 @@ float selectReturnScale=0.15;
         if(mapBeachBuy){
             menuItem3.isEnabled=YES;
         }else{
-            menuItem3.isEnabled=NO;
+            menuItem3.isEnabled=YES;
         }
         [self addChild:radioMenu];
         

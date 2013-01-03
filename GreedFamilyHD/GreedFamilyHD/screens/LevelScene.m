@@ -96,7 +96,36 @@ int directionCurrent;
 //    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
 //}
 
+-(void)initLevelBackgroup
+{
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    //set the background pic
+    CCSprite * background = nil;
+    switch (mapType) {
+        case 1:
+            background = [CCSprite spriteWithFile:@"background_air.jpg"];
+            break;
+        case 2:
+            background = [CCSprite spriteWithFile:@"background_sunset.jpg"];
+            break;
+        case 3:
+            background = [CCSprite spriteWithFile:@"background_beach.jpg"];
+            break;
 
+            
+        default:
+            NSAssert(0, @"no define map type");
+            break;
+    }
+    
+    
+    background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
+    background.scaleY=(screenSize.height)/[background contentSize].height;
+    NSAssert( background != nil, @"background must be non-nil");
+    [background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
+    [self addChild:background];
+
+}
 
 -(id)initWithLevelScene:(int)type
 {
@@ -107,15 +136,12 @@ int directionCurrent;
         
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
+        
+        //初始化背景
+        [self initLevelBackgroup];
+        
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        //set the background pic
-		CCSprite * background = [CCSprite spriteWithFile:@"background_begin.jpg"];
-        background.scaleX=(screenSize.width)/[background contentSize].width; //按照像素定制图片宽高是控制像素的。
-        background.scaleY=(screenSize.height)/[background contentSize].height;
-        NSAssert( background != nil, @"background must be non-nil");
-		[background setPosition:ccp(screenSize.width / 2, screenSize.height/2)];
-		[self addChild:background];
-        int number=20;
+                int number=20;
         CCArray * levelarray = [[CCArray alloc]initWithCapacity:number];
         bool isZero=NO;
         float viewsize=screenSize.width*levelstarscale;
