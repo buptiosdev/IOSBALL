@@ -17,6 +17,8 @@
 -(void)initPropsFrequency;
 @end
 
+//int typeChange = 3;
+
 @implementation PropertyCache
 @synthesize aliveProp = _aliveProp;
 +(id) propCache:(b2World *)world
@@ -68,17 +70,17 @@
     [self schedule:@selector(propFrequency:) interval:intervalTime];
 }
 
--(void)createBombTimes
-{
-    int gapTime = random() % 15;
-    [self schedule:@selector(bombFrequency:) interval:60 - gapTime];
-}
-
--(void)createCrystalTimes
-{
-    int gapTime = random() % 10;
-    [self schedule:@selector(crystalFrequency:) interval:60 - gapTime];
-}
+//-(void)createBombTimes
+//{
+//    int gapTime = random() % 15;
+//    [self schedule:@selector(bombFrequency:) interval:60 - gapTime];
+//}
+//
+//-(void)createCrystalTimes
+//{
+//    int gapTime = random() % 10;
+//    [self schedule:@selector(crystalFrequency:) interval:60 - gapTime];
+//}
 -(void)initPropsFrequency
 {
     propNum[0] = [GameMainScene sharedMainScene].mainscenParam.crystalFrequency;
@@ -86,7 +88,10 @@
     propNum[2] = [GameMainScene sharedMainScene].mainscenParam.iceFrequency;
     propNum[3] = [GameMainScene sharedMainScene].mainscenParam.pepperFrequency;
     propNum[4] = [GameMainScene sharedMainScene].mainscenParam.smokeFrequency;
-    //propNum[4] = 2;
+    propNum[5] = [GameMainScene sharedMainScene].mainscenParam.whiteBombFrequency;
+    propNum[6] = [GameMainScene sharedMainScene].mainscenParam.stimulantFrequency;
+    propNum[7] = [GameMainScene sharedMainScene].mainscenParam.addleFrequency;
+
     [self createPropTimes];
 }
 
@@ -138,10 +143,10 @@
     }
     
 
-    //随机出球种类，虽多随3次
+    //随机出球种类，最多随3次
     do 
     {
-        propType = random() % 5;
+        propType = random() % PROPS_TYPE_COUNT;
         i++;
     }while (propCount[propType] >= propNum[propType] && i < 10);
     
@@ -150,6 +155,8 @@
         return;
     }
 
+//    propType += typeChange;
+    
     [self addOneProperty:propType World:gameWorld Tag:propType];
 
     propCount[propType]++;

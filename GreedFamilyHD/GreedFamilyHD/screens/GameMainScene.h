@@ -56,6 +56,9 @@ struct SceneParam
     int smokeFrequency;
     int invisibaleNum;
     int maxVisibaleNum;
+    int whiteBombFrequency;
+    int addleFrequency;
+    int stimulantFrequency;
     int order;
     float landCompetSpeed;
     float landAnimalSpeed;

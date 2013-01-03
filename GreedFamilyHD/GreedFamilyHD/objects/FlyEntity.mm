@@ -296,6 +296,14 @@
 {    
     CGPoint acceleration = ccpSub(fingerLocationEnd, fingerLocationBegin);
     acceleration = ccpMult(acceleration, 5/(time2 -time1));
+    
+    if (isStimulant) {
+        acceleration = ccpMult(acceleration, 5);
+    }
+    if (isAddle) {
+        acceleration = ccpNeg(acceleration);
+    }
+    
     CCLOG(@"time1 = %f, time2 = %f, time = %f", time1, time2, time2 -time1);
     
     float sensitivity = [[CommonLayer sharedCommonLayer] getRoleParam:_familyType ParamType:ROLEDENSITY];
@@ -380,6 +388,7 @@
 {
 
     bool isTouchHandled = [self isTouchForMe:fingerLocation];
+    
     if (!isTouchHandled)
     {
         return isTouchHandled;
@@ -401,9 +410,14 @@
 
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    if (isWhiteBomb) {
+        return;
+    }
+    
     fingerLocationEnd = [Helper locationFromTouch:touch];
     time2 = CFAbsoluteTimeGetCurrent();
     float distance = ccpDistance(fingerLocationBegin, fingerLocationEnd);
+
     double interval=time2-time1;
     if (distance > 1 && interval > 0.01) 
     {
@@ -412,6 +426,55 @@
     {
         CCLOG(@"distance is %f , interval is %f",distance,interval);
     }
+}
+
+-(void)reduceAddle: (ccTime) dt
+{
+    [self unschedule:@selector(reduceAddle:)];   
+    //消除特效
+//    [self removeChildByTag:CrystalType cleanup:YES];
+    isAddle = NO;
+}
+
+-(void)reduceStimulant: (ccTime) dt
+{
+    [self unschedule:@selector(reduceStimulant:)];   
+    //消除特效
+    //    [self removeChildByTag:CrystalType cleanup:YES];
+    isStimulant = NO;
+}
+-(void)reduceWhitBomb: (ccTime) dt
+{
+    [self unschedule:@selector(reduceWhitBomb:)];   
+    //消除特效
+    //    [self removeChildByTag:CrystalType cleanup:YES];
+    isWhiteBomb = NO;
+}
+-(void)getAddle
+{
+    [self schedule:@selector(reduceAddle:) interval:10];
+    //加入特效
+//    CCParticleSystem* system;
+//    system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"land_crystal.plist"];
+//    system.positionType = kCCPositionTypeGrouped;
+//    system.autoRemoveOnFinish = YES;
+//    system.position = self.sprite.position;
+//    [self addChild:system z:1 tag:CrystalType];
+    isAddle = YES;
+
+}
+
+-(void)getStimulant
+{
+    [self schedule:@selector(reduceStimulant:) interval:10];
+    
+    isStimulant= YES;
+}
+
+-(void)getWhitBomb
+{
+    [self schedule:@selector(reduceWhitBomb:) interval:5];
+    isWhiteBomb = YES;
 }
 
 -(void) dealloc

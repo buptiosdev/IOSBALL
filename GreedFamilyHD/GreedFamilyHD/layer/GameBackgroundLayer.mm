@@ -60,7 +60,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         {
             background = [CCSprite spriteWithFile:@"background_air.jpg"];    
         }
-        else if (order > 0 && order <= 11) 
+        else if (order > 0 && order <= 20) 
         {
             background = [CCSprite spriteWithFile:@"background_sunset.jpg"];    
         }

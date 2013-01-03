@@ -274,6 +274,58 @@ static CCArray* spawnFrequency;
     
 }
 
+-(void)initWhiteBomb
+{
+    ballMove = @selector(moveBlackBomb:forceOut:);
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
+    propertyParamDef.isDynamicBody = YES;
+    propertyParamDef.ballType = PropWhiteBomb;
+    propertyParamDef.spriteFrameName = @"whitebomb.png";
+    propertyParamDef.density = 0.3;
+    propertyParamDef.restitution = 0.7;
+    propertyParamDef.linearDamping = 0.2;
+    propertyParamDef.angularDamping = 0.1;
+    propertyParamDef.friction = 0.3;
+    propertyParamDef.radius = 0.5;
+    propertyParamDef.initialHitPoints = 1;
+    
+}
+-(void)initStimulant
+{
+    ballMove = @selector(moveBlackBomb:forceOut:);
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
+    propertyParamDef.isDynamicBody = YES;
+    propertyParamDef.ballType = PropStimulant;
+    propertyParamDef.spriteFrameName = @"stimulant.png";
+    propertyParamDef.density = 0.1;
+    propertyParamDef.restitution = 1.2;
+    propertyParamDef.linearDamping = 0.6;
+    propertyParamDef.angularDamping = 0.1;
+    propertyParamDef.friction = 0.5;
+    propertyParamDef.radius = 0.5;
+    propertyParamDef.initialHitPoints = 1;
+    
+}
+-(void)initAddle
+{
+    ballMove = @selector(moveBlackBomb:forceOut:);
+    //change size by diff version
+    propertyParamDef.startPos = [GameMainScene sharedMainScene].initPos;/*random?*/
+    propertyParamDef.isDynamicBody = YES;
+    propertyParamDef.ballType = PropAddle;
+    propertyParamDef.spriteFrameName = @"addle.png";
+    propertyParamDef.density = 0.2;
+    propertyParamDef.restitution = 1.0;
+    propertyParamDef.linearDamping = 0.2;
+    propertyParamDef.angularDamping = 0.1;
+    propertyParamDef.friction = 1.1;
+    propertyParamDef.radius = 0.5;
+    propertyParamDef.initialHitPoints = 1;
+    
+}
+
 -(void)initPropertyMove:(NSInteger)propertyType
 {
     switch (propertyType) {
@@ -292,7 +344,15 @@ static CCArray* spawnFrequency;
         case PropSmoke:
             [self initSmoke];
             break;
-
+        case PropWhiteBomb:
+            [self initWhiteBomb];
+            break;
+        case PropStimulant:
+            [self initStimulant];
+            break;
+        case PropAddle:
+            [self initAddle];
+            break;
         default:
             break;
     }

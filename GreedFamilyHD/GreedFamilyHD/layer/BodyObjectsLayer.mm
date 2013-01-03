@@ -307,7 +307,29 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     system.position = bodyNode.sprite.position;
                     [self addChild:system];
                     
-                    PropertyEntity* PropertyNode = (PropertyEntity *)bodyNode;
+                    //消失
+                    //change size by diff version
+                    CGPoint positionNew = [GameMainScene sharedMainScene].initPos;
+                    bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
+                    bodyNode.sprite.visible = NO;
+                    bodyNode.hitPoints = -1;
+                    
+                    CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
+                    PropertyCache* propCache = (PropertyCache *)[self getChildByTag:PropCacheTag];
+                    if (candyCache != NULL)
+                    {
+                        candyCache.aliveCandy--;
+                        propCache.aliveProp--;
+                    }
+
+                    PropertyEntity* propertyNode = (PropertyEntity *)bodyNode;
+                    
+                    //空中属性球直接消失
+                    if (propertyNode.propertyType > PropSmoke) {
+                        continue;
+                    }
+                    
+                    
                     //CGPoint flyVelocity = [self getFlySpeed];
                     float hitEffect = [[CommonLayer sharedCommonLayer] getRoleParam:bodyNode.flyFamilyType ParamType:ROLEHITEFFECT];                    
                     CGPoint flyVelocity = ccpMult(bodyNode.otherLineSpeed, hitEffect);
@@ -318,23 +340,9 @@ static BodyObjectsLayer *instanceOfBodyObjectsLayer;
                     LandCandyCache *instanceOfLandCandyCache=[LandCandyCache sharedLandCandyCache];
                     //[instanceOfLandCandyCache CreateLandCandy:(int)balltype Pos:(CGPoint)position]
     
-                    [instanceOfLandCandyCache CreateLandCandy:(PropertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
+                    [instanceOfLandCandyCache CreateLandCandy:(propertyNode.propertyType + typeChange) Pos:bodyNode.sprite.position BodyVelocity:bodyVelocity];
                     
-                    //消失
-                    //change size by diff version
-                    CGPoint positionNew = [GameMainScene sharedMainScene].initPos;
-                    bodyNode.body->SetTransform([Helper toMeters:positionNew], 0);
-                    bodyNode.sprite.visible = NO;
-                    bodyNode.hitPoints = -1;
-                
-                    CandyCache* candyCache = (CandyCache *)[self getChildByTag:CandyCacheTag];
-                    PropertyCache* propCache = (PropertyCache *)[self getChildByTag:PropCacheTag];
-                    if (candyCache != NULL)
-                    {
-                        candyCache.aliveCandy--;
-                        propCache.aliveProp--;
-                    }
-                    
+                                        
                 }
 
             } 

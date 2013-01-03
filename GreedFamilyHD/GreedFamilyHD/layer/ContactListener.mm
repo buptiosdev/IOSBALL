@@ -85,19 +85,52 @@ void ContactListener::BeginContact(b2Contact* contact)
         if (0 >= bodyEntityA.hitPoints 
             && ([bodyEntityA isKindOfClass:[CandyEntity class]]|| [bodyEntityA isKindOfClass:[PropertyEntity class]])) 
         {
+            //B为飞行动物 A为飞行物品
             if ([bodyEntityB isKindOfClass:[FlyEntity class]])
             {
                 bodyEntityA.otherLineSpeed = [Helper toPixels:bodyEntityB.body->GetLinearVelocity()];
                 bodyEntityA.flyFamilyType = ((FlyEntity *)bodyEntityB).familyType;
                 
+                //碰撞空中属性球效果
+                if ([bodyEntityA isKindOfClass:[PropertyEntity class]]) {
+                    PropertyEntity *propBody = (PropertyEntity *)bodyEntityA;
+                    int bodyType = propBody.propertyType;
+                    if (PropWhiteBomb == bodyType) {
+                        [(FlyEntity *)bodyEntityB getWhitBomb];
+                    }
+                    else if (PropStimulant == bodyType) {
+                        [(FlyEntity *)bodyEntityB getStimulant];
+                    }
+                    else if (PropAddle == bodyType) {
+                        [(FlyEntity *)bodyEntityB getAddle];
+                    }
+                }
             }
         }
         if (0 >= bodyEntityB.hitPoints 
-            && ([bodyEntityB isKindOfClass:[CandyEntity class]] || [bodyEntityB isKindOfClass:[PropertyEntity class]])) {
+            && ([bodyEntityB isKindOfClass:[CandyEntity class]] || [bodyEntityB isKindOfClass:[PropertyEntity class]])) 
+        {
+            
+            //A为飞行动物 B为飞行物品
             if ([bodyEntityA isKindOfClass:[FlyEntity class]])
             {
                 bodyEntityB.otherLineSpeed = [Helper toPixels:bodyEntityA.body->GetLinearVelocity()];
                 bodyEntityB.flyFamilyType = ((FlyEntity *)bodyEntityA).familyType;
+                
+                //碰撞空中属性球效果
+                if ([bodyEntityB isKindOfClass:[PropertyEntity class]]) {
+                    PropertyEntity *propBody = (PropertyEntity *)bodyEntityB;
+                    int bodyType = propBody.propertyType;
+                    if (PropWhiteBomb == bodyType) {
+                        [(FlyEntity *)bodyEntityA getWhitBomb];
+                    }
+                    else if (PropStimulant == bodyType) {
+                        [(FlyEntity *)bodyEntityA getStimulant];
+                    }
+                    else if (PropAddle == bodyType) {
+                        [(FlyEntity *)bodyEntityA getAddle];
+                    }
+                }
             }
         }
     }

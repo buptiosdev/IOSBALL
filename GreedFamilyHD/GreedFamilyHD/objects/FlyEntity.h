@@ -23,6 +23,9 @@ typedef enum
 @interface FlyEntity : Entity  
 {
     bool moveToFinger;
+    bool isWhiteBomb;
+    bool isStimulant;
+    bool isAddle;
 	CGPoint fingerLocation;
     CGPoint fingerLocationBegin;
     CGPoint fingerLocationEnd;
@@ -42,6 +45,10 @@ typedef enum
 -(void) ccTouchEndedForSky:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void) ccTouchBeganForSky2:(UITouch *)touch withEvent:(UIEvent *)event;
 -(CGPoint)getFlySpeed;
+-(void)getAddle;
+-(void)getStimulant;
+-(void)getWhitBomb;
+
 @property (nonatomic) b2Body* body;
 @property (assign, nonatomic) CCSprite* sprite;
 @property (nonatomic, retain) NSMutableArray *flyActionArray;

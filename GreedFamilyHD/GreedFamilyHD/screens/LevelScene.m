@@ -77,7 +77,7 @@ int directionCurrent;
 
 -(void)selectMode:(CCMenuItemImage *)btn
 {
-	int mode = btn.tag;
+	int mode = btn.tag + (mapType-1)*10;
     [CommonLayer playAudio:SelectOK];
     [[CCDirector sharedDirector] replaceScene:[LoadingScene sceneWithTargetScene:(TargetScenes)mode]];
 }
