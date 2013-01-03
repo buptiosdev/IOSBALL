@@ -9,12 +9,12 @@
 #import "PauseLayer.h"
 #import "GameMainScene.h"
 #import "NavigationScene.h"
-#import "LevelScene.h"
+//#import "LevelScene.h"
 #import "OptionsScene.h"
 #import "LoadingScene.h"
 #import "CDAudioManager.h"
 #import "CommonLayer.h"
-
+#import "SelectScene.h"
 
 //BEGIN item scale  默认为相对于X的比例
 float pauselabelscale=40.0/480;
@@ -208,7 +208,8 @@ float pauseplayscale=60.0/480;
     [CommonLayer playAudio:SelectOK];
 	//start a new game
     [[GameMainScene sharedMainScene] resumeGame];
-    [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[SelectScene scene]];
+    
     //播放背景音乐
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
     BOOL sound = [usrDef boolForKey:@"music"];

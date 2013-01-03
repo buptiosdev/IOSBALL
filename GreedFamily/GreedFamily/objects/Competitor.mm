@@ -74,12 +74,16 @@ static Competitor *instanceOfCompetitor;
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         self.sprite = [CCSprite spriteWithSpriteFrameName:@"snake_9_1.png"];
         //按照像素设定图片大小
-        self.sprite.scaleX=(50)/[self.sprite contentSize].width; //按照像素定制图片宽高
-        self.sprite.scaleY=(50)/[self.sprite contentSize].height;
+        //change size by diff version manual
+        float picScale = 50.0/480;
+        self.sprite.scale=screenSize.width*picScale/[self.sprite contentSize].width;
+
+//        self.sprite.scaleX=(60)/[self.sprite contentSize].width; //按照像素定制图片宽高
+//        self.sprite.scaleY=(60)/[self.sprite contentSize].height;
         //CCSprite * ground=[CCSprite spriteWithSpriteFrameName:@"ground.png"];
         //self.sprite = [CCSprite spriteWithFile:@"blocks.png"];
         //change size by diff version query
-        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, [self.sprite contentSize].height * self.sprite.scaleY);
+        CGPoint startPos = CGPointMake((screenSize.width) * 0.8f, [self.sprite contentSize].height * self.sprite.scale);
         self.sprite.position = startPos;
         [self addChild:self.sprite]; 
         [self scheduleUpdate];

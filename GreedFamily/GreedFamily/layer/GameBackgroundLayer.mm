@@ -58,7 +58,7 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         
         if (order > 0 && order <= 10) 
         {
-            background = [CCSprite spriteWithFile:@"background_level.jpg"];    
+            background = [CCSprite spriteWithFile:@"background_air.jpg"];    
         }
         else 
         {

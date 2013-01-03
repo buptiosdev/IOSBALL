@@ -7,12 +7,13 @@
 //
 
 #import "ResultLayer.h"
-#import "LevelScene.h"
+//#import "LevelScene.h"
 #import "LoadingScene.h"
 #import "GameBackgroundLayer.h"
 #import "SimpleAudioEngine.h"
 #import "GameMainScene.h"
 #import "CommonLayer.h"
+#import "SelectScene.h"
 // 该类在GameMainScene中关卡结束时被调用，用于显示分数／关卡等信息
 // 使用方法参见 GameMainScene:pauseGame中注释的部分
 // 可供测试使用，点击暂停按钮，即可进行测试
@@ -60,7 +61,7 @@ int resultrecordsize=55;
 //        }
         [CommonLayer playBackMusic:UnGameMusic1];
     }
-    [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[SelectScene scene]];
 }
 
 -(void)showStar

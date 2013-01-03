@@ -14,12 +14,12 @@
 #import "CCRadioMenu.h"
 #import "GameMainScene.h"
 #import "LevelScenePair.h"
-#import "RoleScene.h"
+//#import "RoleScene.h"
 #import "AppDelegate.h"
 #import "CCAnimationHelper.h"
 #import "CommonLayer.h"
 #import "ShareScene.h"
-
+#import "SelectScene.h"
 
 
 @interface Navigation
@@ -37,7 +37,7 @@ float logopairplayscale=0.2;
 float logooptionscaleY=0.15;
 float logoleaderscaleY=0.13;
 float logoleaderdistance=0.2;
-Boolean showPair=NO;
+Boolean showPair=YES;
 //END
 
 @implementation NavigationScene
@@ -49,7 +49,7 @@ Boolean showPair=NO;
     if ((self = [super init])) {
 		self.isTouchEnabled = YES;
         CGSize size = [[CCDirector sharedDirector] winSize];
-        
+
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"beginscene_default.plist"];
         //set the background pic
@@ -66,7 +66,7 @@ Boolean showPair=NO;
         [self addChild:logo z:1];
         logo.position=CGPointMake(size.width / 2, size.height * 3 / 4 );
         
-        
+
         
         //add panda action by lyp 20121029
         CCSprite *logopanda= [CCSprite spriteWithSpriteFrameName:@"logopanda_1.png"];
@@ -103,9 +103,9 @@ Boolean showPair=NO;
         play.scaleY=1.01;
         CCSprite *play1 = [CCSprite spriteWithSpriteFrameName:@"playpic.png"];
         CCMenuItemSprite *playitem = [CCMenuItemSprite itemFromNormalSprite:play 
-                                                             selectedSprite:play1 
-                                                                     target:self 
-                                                                   selector:@selector(newGame:)];
+                                                              selectedSprite:play1 
+                                                                      target:self 
+                                                                    selector:@selector(newGame:)];
         playitem.scale=(size.width*logoplayscale)/[play contentSize].width;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
         
@@ -139,6 +139,7 @@ Boolean showPair=NO;
         appStoreItem.scale=(size.width*logopairplayscale)/[appStore contentSize].width;
         CCMenu * appStoreMenu = [CCMenu menuWithItems:appStoreItem, nil];
         
+        //showPair为是否购买双人游戏
         if(showPair){
             [playmenu setPosition:ccp(size.width/2,size.height*4/8)];
             [plairplaymenu setPosition:ccp(size.width/2,size.height*3/8)];
@@ -158,15 +159,15 @@ Boolean showPair=NO;
         
         
         //set option in the left-down corner
-        
+
         CCSprite *option = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
         CCSprite *option1 = [CCSprite spriteWithSpriteFrameName:@"optionpic.png"];
         option1.scaleX=1.1;
         option1.scaleY=1.1;
         CCMenuItemSprite *optionItem = [CCMenuItemSprite itemFromNormalSprite:option 
-                                                               selectedSprite:option1 
-                                                                       target:self 
-                                                                     selector:@selector(options:)];
+                                                              selectedSprite:option1 
+                                                                      target:self 
+                                                                    selector:@selector(options:)];
         float optscale=(size.height*logooptionscaleY)/[option contentSize].height;
         optionItem.scale=optscale;
         
@@ -180,9 +181,9 @@ Boolean showPair=NO;
         info1.scaleX=1.1;
         info1.scaleY=1.1;
         CCMenuItemSprite *infoItem = [CCMenuItemSprite itemFromNormalSprite:info 
-                                                             selectedSprite:info1 
-                                                                     target:self 
-                                                                   selector:@selector(share:)];
+                                                               selectedSprite:info1 
+                                                                       target:self 
+                                                                     selector:@selector(share:)];
         infoItem.scale=optscale;
         CCMenu * infomenu = [CCMenu menuWithItems:infoItem, nil];
         [infomenu setPosition:ccp(size.width-[info contentSize].width*optscale/2,[info contentSize].height*optscale/2)];
@@ -195,10 +196,10 @@ Boolean showPair=NO;
         leader1.scaleX=1.1;
         leader1.scaleY=1.1;
         CCMenuItemSprite *leaderItem = [CCMenuItemSprite itemFromNormalSprite:leader 
-                                                               selectedSprite:leader1 
-                                                                       target:self 
-                                                                     selector:@selector(showGameLeaderboard:)];
-        
+                                                             selectedSprite:leader1 
+                                                                     target:self 
+                                                                   selector:@selector(showGameLeaderboard:)];
+
         leaderItem.scale=leaderscale;
         
         //set achivement
@@ -207,19 +208,19 @@ Boolean showPair=NO;
         achivement1.scaleX=1.1;
         achivement1.scaleY=1.1;
         CCMenuItemSprite *achivementItem = [CCMenuItemSprite itemFromNormalSprite:achivement 
-                                                                   selectedSprite:achivement1 
-                                                                           target:self 
-                                                                         selector:@selector(showGameAchievements:)];
+                                                               selectedSprite:achivement1 
+                                                                       target:self 
+                                                                     selector:@selector(showGameAchievements:)];
         achivementItem.scale=leaderscale;        
-        
+          
         
         CCMenu * menu = [CCMenu menuWithItems:leaderItem, achivementItem, nil];
-        
+
         [menu setPosition:ccp(size.width/2,[leader contentSize].height*optscale/2)];
-        
+
         [menu alignItemsHorizontallyWithPadding:size.width*logoleaderdistance-[leader contentSize].width*leaderscale];
         [self addChild:menu z:1];
-        
+
         
         //add by liujin at 2012.12.8 
         //加入特效
@@ -235,7 +236,7 @@ Boolean showPair=NO;
         system.autoRemoveOnFinish = YES;
         //system.position = CGPointMake(random()%20 + 10, 80);
         [self addChild:system z:-1 tag:11];         
-        
+ 
         system = [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"cheese.plist"];
         system.positionType = kCCPositionTypeFree;
         system.autoRemoveOnFinish = YES;
@@ -243,21 +244,32 @@ Boolean showPair=NO;
         [self addChild:system z:-2 tag:12];             
         
         
-        //播放背景音乐
+        //检查是否初次启动
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+        int isFirstPlay = [usrDef integerForKey:@"firstplay"];
+        if (1 != isFirstPlay) {
+            //第一次玩，设置相关参数
+            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"firstplay"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"music"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"sound"];
+            //角色为小猪
+            [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"RoleType"];
+        }
+        
+        //播放背景音乐
         BOOL sound = [usrDef boolForKey:@"music"];
         if (YES == sound) 
         {
-            //            int randomNum = random()%2;
-            //            
-            //            if (0 == randomNum) 
-            //            {
-            //                [CommonLayer playBackMusic:UnGameMusic1];
-            //            }
-            //            else
-            //            {
-            //                [CommonLayer playBackMusic:UnGameMusic2];
-            //            }
+//            int randomNum = random()%2;
+//            
+//            if (0 == randomNum) 
+//            {
+//                [CommonLayer playBackMusic:UnGameMusic1];
+//            }
+//            else
+//            {
+//                [CommonLayer playBackMusic:UnGameMusic2];
+//            }
             [CommonLayer playBackMusic:UnGameMusic1];
         }
 		
@@ -283,17 +295,17 @@ Boolean showPair=NO;
 	//start a new game
     //[self showDifficultySelection];
     //数据提交
-    //    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
-    //
-    //    [[NSUserDefaults standardUserDefaults] synchronize];
-    //	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
+//    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+//
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//	[[CCDirector sharedDirector] replaceScene:[LevelScene scene]];
     [CommonLayer playAudio:SelectOK];
     if (isCreateIndicatorView)
     {
         [activityIndicatorView stopAnimating ];  //停止  
         isCreateIndicatorView = NO;
     }
-    [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[SelectScene scene]];
     
 }
 
@@ -401,13 +413,13 @@ Boolean showPair=NO;
     gkHelper.delegate = self;
     _viewType = 0;
     [gkHelper authenticateLocalPlayer];
-    
+
     //第一次调用需要初始化后在里边调用
     if (gkHelper.callCount != 0) 
     {
         [self updateScoreAndShowLeaderBoard];
     }
-    
+
 }
 
 -(void)showGameAchievements:(id)sender
@@ -454,9 +466,9 @@ Boolean showPair=NO;
 
 -(void)showGameUserReview:(id)sender
 { 
-    //    NSString *str = [NSString stringWithFormat: 
-    //                   @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
-    //                   543100124 ]; 
+//    NSString *str = [NSString stringWithFormat: 
+//                   @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", 
+//                   543100124 ]; 
     
     //NSString * str =@"http://www.sina.com.cn";
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
@@ -478,7 +490,7 @@ Boolean showPair=NO;
         isCreateIndicatorView = NO;
     }
 }
-
+                               
 -(void)connectGameCenter:(id)sender
 {
     [CommonLayer playAudio:SelectOK];
@@ -505,9 +517,9 @@ Boolean showPair=NO;
 	
 	// add layer as a child to scene
 	[scene addChild: navigationScene];
-    
+
 	return scene;
-    
+
 }
 
 +(id)sceneWithNavigationScene

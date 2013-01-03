@@ -9,9 +9,10 @@
 #import "RoleScene.h"
 #import "CCRadioMenu.h"
 #import "NavigationScene.h"
-#import "LevelScene.h"
+//#import "LevelScene.h"
 #import "CommonLayer.h"
 #import "CCAnimationHelper.h"
+#import "SelectScene.h"
 
 #define LAND_SPEED_TAG 10
 #define FLY_SPEED_TAG 11
@@ -63,17 +64,18 @@ float logoreturnscaleY=0.15;
 {
     [CommonLayer playAudio:SelectOK];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+//    [[CCDirector sharedDirector] replaceScene:[NavigationScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[SelectScene scene]];
 }
 
--(void)levelScene
-{
-    //数据提交
-    [CommonLayer playAudio:SelectOK];
-    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];    
-}
+//-(void)levelScene
+//{
+//    //数据提交
+//    [CommonLayer playAudio:SelectOK];
+//    CCLOG(@"role type: %d", [[NSUserDefaults standardUserDefaults]  integerForKey:@"RoleType"]);
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];    
+//}
 
 -(id)initWithRoleScene
 {
@@ -174,12 +176,12 @@ float logoreturnscaleY=0.15;
             menuItem3.isEnabled=NO;
         }
         
-        //默认要写一次文件，设置为小鸟
+        //默认要写一次文件，设置为小猪
         NSString *strName = [NSString stringWithFormat:@"RoleType"];
         roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
         if (roleType > 3 || roleType < 1) 
         {
-            roleType = 1;
+            roleType = 2;
             [[NSUserDefaults standardUserDefaults] setInteger:roleType forKey:strName];
         }
         
@@ -269,24 +271,24 @@ float logoreturnscaleY=0.15;
         [self addChild:returnmenu];
         
         //set shop in the right-down corner
-        CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
-        [next setFlipX:YES];//Y轴镜像反转
-        [next1 setFlipX:YES];//Y轴镜像反转
-        next1.scaleX=1.1; //按照像素定制图片宽高
-        next1.scaleY=1.1;
-        CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
-                                                             selectedSprite:next1 
-                                                                     target:self 
-                                                                   selector:@selector(levelScene)];
-        
-        nextItem.scale=screenSize.height*logoreturnscaleY/[next contentSize].height;
-        
-        CCMenu * nextMenu = [CCMenu menuWithItems:nextItem, nil];
-        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
-        [nextMenu setPosition:ccp(screenSize.width-[next contentSize].width*nextItem.scaleX*0.6,
-                                  [next contentSize].height * nextItem.scaleX * 0.5)];
-        [self addChild:nextMenu];
+//        CCSprite *next = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+//        CCSprite *next1 = [CCSprite spriteWithSpriteFrameName:@"return.png"];
+//        [next setFlipX:YES];//Y轴镜像反转
+//        [next1 setFlipX:YES];//Y轴镜像反转
+//        next1.scaleX=1.1; //按照像素定制图片宽高
+//        next1.scaleY=1.1;
+//        CCMenuItemSprite *nextItem = [CCMenuItemSprite itemFromNormalSprite:next 
+//                                                             selectedSprite:next1 
+//                                                                     target:self 
+//                                                                   selector:@selector(levelScene)];
+//        
+//        nextItem.scale=screenSize.height*logoreturnscaleY/[next contentSize].height;
+//        
+//        CCMenu * nextMenu = [CCMenu menuWithItems:nextItem, nil];
+//        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
+//        [nextMenu setPosition:ccp(screenSize.width-[next contentSize].width*nextItem.scaleX*0.6,
+//                                  [next contentSize].height * nextItem.scaleX * 0.5)];
+//        [self addChild:nextMenu];
         
 
         [self scheduleUpdate];

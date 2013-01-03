@@ -8,12 +8,13 @@
 
 #import "LevelScene.h"
 #import "LoadingScene.h"
-#import "RoleScene.h"
+//#import "RoleScene.h"
 #import "CCScrollLayer.h"
 #import "GameShopScene.h"
 #import "CCAnimationHelper.h"
 #import "CommonLayer.h"
 #import "GameKitHelper.h"
+#import "SelectScene.h"
 
 //BEGIN item scale  默认为相对于X的比例
 float levelstarscale=75.0/480;
@@ -24,8 +25,6 @@ float levelspeedscale=0.4/480;
 
 float levelreturnscaleY=0.15;
 //END
-
-
 
 @implementation LevelScene
 CCSprite* sprite;
@@ -86,22 +85,25 @@ int directionCurrent;
 -(void)returnMain
 {
     [CommonLayer playAudio:SelectOK];
-    [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
+//    [[CCDirector sharedDirector] replaceScene:[RoleScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[SelectScene scene]];
 }
 
--(void)connectGameShop:(id)sender
-{
-    //connect to game center
-    [CommonLayer playAudio:SelectOK];
-    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
-}
+//-(void)connectGameShop:(id)sender
+//{
+//    //connect to game center
+//    [CommonLayer playAudio:SelectOK];
+//    [[CCDirector sharedDirector] replaceScene:[GameShopScene gameShopScene]];
+//}
 
 
 
--(id)initWithLevelScene
+-(id)initWithLevelScene:(int)type
 {
     if ((self = [super init])) {
 		self.isTouchEnabled = YES;
+        //获取地图类型
+        mapType = type;
         
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"levlescene_default_default.plist"];
@@ -254,22 +256,22 @@ int directionCurrent;
         [self addChild:returnmenu];
         
         //set shop in the right-down corner
-        CCSprite *shop = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
-        CCSprite *shop1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
-        shop1.scale=1.1; //按照像素定制图片宽高
-        CCMenuItemSprite *shopItem = [CCMenuItemSprite itemFromNormalSprite:shop 
-                                                             selectedSprite:shop1 
-                                                                     target:self 
-                                                                   selector:@selector(connectGameShop:)];
-
-        shopItem.scale=(screenSize.height*levelreturnscaleY)/[shop contentSize].height;
-        
-        
-        CCMenu * shopmenu = [CCMenu menuWithItems:shopItem, nil];
-        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
-        [shopmenu setPosition:ccp(screenSize.width-[shop contentSize].width*shopItem.scaleX*0.6,
-                                  [shop contentSize].height * shopItem.scaleX * 0.5)];
-        [self addChild:shopmenu];
+//        CCSprite *shop = [CCSprite spriteWithSpriteFrameName:@"shop2.png"];
+//        CCSprite *shop1 = [CCSprite spriteWithSpriteFrameName:@"shop1.png"];
+//        shop1.scale=1.1; //按照像素定制图片宽高
+//        CCMenuItemSprite *shopItem = [CCMenuItemSprite itemFromNormalSprite:shop 
+//                                                             selectedSprite:shop1 
+//                                                                     target:self 
+//                                                                   selector:@selector(connectGameShop:)];
+//
+//        shopItem.scale=(screenSize.height*levelreturnscaleY)/[shop contentSize].height;
+//        
+//        
+//        CCMenu * shopmenu = [CCMenu menuWithItems:shopItem, nil];
+//        //right corner=screenSize.width-[shop contentSize].width*(shopscale-0.5)
+//        [shopmenu setPosition:ccp(screenSize.width-[shop contentSize].width*shopItem.scaleX*0.6,
+//                                  [shop contentSize].height * shopItem.scaleX * 0.5)];
+//        [self addChild:shopmenu];
 
         [self scheduleUpdate];
         
@@ -300,14 +302,14 @@ int directionCurrent;
 }
 
 
-+(id)scene
++(id)scene:(int)type
 {
     //order = order;
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	LevelScene *levelScene = [LevelScene sceneWithLevelScene];
+	LevelScene *levelScene = [LevelScene sceneWithLevelScene:type];
 	
 	// add layer as a child to scene
 	[scene addChild: levelScene];
@@ -316,8 +318,8 @@ int directionCurrent;
     
 }
 
-+(id)sceneWithLevelScene
++(id)sceneWithLevelScene:(int)type
 {
-    return [[[self alloc] initWithLevelScene] autorelease];
+    return [[[self alloc] initWithLevelScene:type] autorelease];
 }
 @end

@@ -9,8 +9,9 @@
 #import "GameShopScene.h"
 #import "NavigationScene.h"
 #import "TouchSwallowLayer.h"
-#import "LevelScene.h"
+//#import "LevelScene.h"
 #import "CommonLayer.h"
+#import "SelectScene.h"
 
 //BEGIN item scale  默认为相对于X的比例
 float logoshoplabelscaleY=0.15;
@@ -551,7 +552,8 @@ float shopitemscale=0.15;
 
 -(void)returnMain
 {
-    [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];  
+//    [[CCDirector sharedDirector] replaceScene:[LevelScene scene]];  
+    [[CCDirector sharedDirector] replaceScene:[SelectScene scene]];
 }
 
 -(void)updateScore

@@ -62,13 +62,13 @@ static GameBackgroundLayer *instanceOfGameBackgroundLayer;
         }
         else if (order > 0 && order <= 11) 
         {
-            background = [CCSprite spriteWithFile:@"background_beach.jpg"];    
+            background = [CCSprite spriteWithFile:@"background_sunset.jpg"];    
         }
         else 
         {
-            background = [CCSprite spriteWithFile:@"background_sunset.jpg"];      
+            background = [CCSprite spriteWithFile:@"background_beach.jpg"];      
         }
-        background.visible = NO;
+        background.visible = YES;
         //change size by diff version manual
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         background.scaleX=((screenSize.width))/[background contentSize].width; //按照像素定制图片宽高

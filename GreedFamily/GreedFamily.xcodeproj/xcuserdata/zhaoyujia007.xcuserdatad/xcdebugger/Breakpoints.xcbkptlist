@@ -372,8 +372,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "209"
          endingLineNumber = "209"
-         landmarkName = "-spawn:"
-         landmarkType = "5">
+         landmarkName = "@implementation CandyEntity"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1741,11 +1741,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "305"
-         endingLineNumber = "305"
+         startingLineNumber = "316"
+         endingLineNumber = "316"
          landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1755,11 +1755,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "302"
-         endingLineNumber = "302"
+         startingLineNumber = "313"
+         endingLineNumber = "313"
          landmarkName = "@implementation NavigationScene"
          landmarkType = "3">
       </FileBreakpoint>
@@ -1783,11 +1783,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "504"
-         endingLineNumber = "504"
+         startingLineNumber = "515"
+         endingLineNumber = "515"
          landmarkName = "+scene"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1935,11 +1935,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "420"
-         endingLineNumber = "420"
+         startingLineNumber = "431"
+         endingLineNumber = "431"
          landmarkName = "-showGameAchievements:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1949,11 +1949,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "334"
-         endingLineNumber = "334"
+         startingLineNumber = "345"
+         endingLineNumber = "345"
          landmarkName = "-updateScoreAndShowLeaderBoard"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1977,11 +1977,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "313"
-         endingLineNumber = "313"
+         startingLineNumber = "324"
+         endingLineNumber = "324"
          landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2047,11 +2047,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "513"
-         endingLineNumber = "513"
+         startingLineNumber = "524"
+         endingLineNumber = "524"
          landmarkName = "+scene"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2075,11 +2075,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "314"
-         endingLineNumber = "314"
+         startingLineNumber = "325"
+         endingLineNumber = "325"
          landmarkName = "-options:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2089,26 +2089,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "340"
-         endingLineNumber = "340"
+         startingLineNumber = "351"
+         endingLineNumber = "351"
          landmarkName = "-updateScoreAndShowLeaderBoard"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "250"
-         endingLineNumber = "250"
-         landmarkName = "-initWithNavigationScene"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2803,11 +2789,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "390"
-         endingLineNumber = "390"
+         startingLineNumber = "401"
+         endingLineNumber = "401"
          landmarkName = "-showGameLeaderboard:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2817,11 +2803,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GreedFamily/screens/NavigationScene.mm"
-         timestampString = "377800048.479121"
+         timestampString = "378544396.125198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "434"
-         endingLineNumber = "434"
+         startingLineNumber = "445"
+         endingLineNumber = "445"
          landmarkName = "-showGameAchievements:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2836,7 +2822,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "209"
          endingLineNumber = "209"
-         landmarkName = "-applyForceWichAccelar"
+         landmarkName = "-initWithWorld:RoleType:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

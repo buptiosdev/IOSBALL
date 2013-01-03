@@ -209,11 +209,12 @@
 		7032FD3615DB941C00E5E108 /* sparkle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD2315DB941C00E5E108 /* sparkle.plist */; };
 		7032FD3715DB941C00E5E108 /* speedfast.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD2415DB941C00E5E108 /* speedfast.plist */; };
 		7032FD3815DB941C00E5E108 /* speedfast2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7032FD2515DB941C00E5E108 /* speedfast2.plist */; };
+		7039F84316902B8000210091 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7039F84216902B8000210091 /* Default.png */; };
 		7043002C16198392008926AB /* gamemain01_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7043002A16198392008926AB /* gamemain01_default.plist */; };
 		7043002D16198392008926AB /* gamemain01_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7043002B16198392008926AB /* gamemain01_default.png */; };
 		7044453315FC490800FDA2EB /* levlescene_default_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7044453115FC490800FDA2EB /* levlescene_default_default.plist */; };
 		7044453415FC490800FDA2EB /* levlescene_default_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7044453215FC490800FDA2EB /* levlescene_default_default.png */; };
-		7044453715FC49D900FDA2EB /* background_level.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7044453615FC49D900FDA2EB /* background_level.jpg */; };
+		7044453715FC49D900FDA2EB /* background_air.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7044453615FC49D900FDA2EB /* background_air.jpg */; };
 		7067469B1674701C000D7DB7 /* DisplayGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7067469A1674701C000D7DB7 /* DisplayGameLayer.m */; };
 		7067469F167485B4000D7DB7 /* teachsnake.png in Resources */ = {isa = PBXBuildFile; fileRef = 7067469E167485B4000D7DB7 /* teachsnake.png */; };
 		706746A216748E80000D7DB7 /* teachscore.png in Resources */ = {isa = PBXBuildFile; fileRef = 706746A016748E80000D7DB7 /* teachscore.png */; };
@@ -312,7 +313,6 @@
 		70C7C40615AA86A2007D35B5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C40515AA86A2007D35B5 /* GameKit.framework */; };
 		70D06CCB163D603600466162 /* speedup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CC9163D603600466162 /* speedup.caf */; };
 		70D06CCC163D603600466162 /* speedupqipao.caf in Resources */ = {isa = PBXBuildFile; fileRef = 70D06CCA163D603600466162 /* speedupqipao.caf */; };
-		70DFAB91167D927D008F85AA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFAB90167D927D008F85AA /* Default.png */; };
 		70DFE9DC166E42FC00C58849 /* progress2.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9DA166E42FC00C58849 /* progress2.png */; };
 		70DFE9DD166E42FC00C58849 /* progress3.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9DB166E42FC00C58849 /* progress3.png */; };
 		70DFE9E2166E505F00C58849 /* wildbird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70DFE9E0166E505F00C58849 /* wildbird.mp3 */; };
@@ -701,11 +701,12 @@
 		7032FD2315DB941C00E5E108 /* sparkle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sparkle.plist; sourceTree = "<group>"; };
 		7032FD2415DB941C00E5E108 /* speedfast.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = speedfast.plist; sourceTree = "<group>"; };
 		7032FD2515DB941C00E5E108 /* speedfast2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = speedfast2.plist; sourceTree = "<group>"; };
+		7039F84216902B8000210091 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		7043002A16198392008926AB /* gamemain01_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gamemain01_default.plist; path = Resources/pic/gamemain01_default.plist; sourceTree = "<group>"; };
 		7043002B16198392008926AB /* gamemain01_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gamemain01_default.png; path = Resources/pic/gamemain01_default.png; sourceTree = "<group>"; };
 		7044453115FC490800FDA2EB /* levlescene_default_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = levlescene_default_default.plist; path = Resources/pic/levlescene_default_default.plist; sourceTree = "<group>"; };
 		7044453215FC490800FDA2EB /* levlescene_default_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = levlescene_default_default.png; path = Resources/pic/levlescene_default_default.png; sourceTree = "<group>"; };
-		7044453615FC49D900FDA2EB /* background_level.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_level.jpg; path = Resources/pic/background_level.jpg; sourceTree = "<group>"; };
+		7044453615FC49D900FDA2EB /* background_air.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_air.jpg; path = Resources/pic/background_air.jpg; sourceTree = "<group>"; };
 		706746991674701C000D7DB7 /* DisplayGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayGameLayer.h; sourceTree = "<group>"; };
 		7067469A1674701C000D7DB7 /* DisplayGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayGameLayer.m; sourceTree = "<group>"; };
 		7067469E167485B4000D7DB7 /* teachsnake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teachsnake.png; path = Resources/pic/teachsnake.png; sourceTree = "<group>"; };
@@ -850,7 +851,6 @@
 		70C7C40515AA86A2007D35B5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		70D06CC9163D603600466162 /* speedup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedup.caf; sourceTree = "<group>"; };
 		70D06CCA163D603600466162 /* speedupqipao.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = speedupqipao.caf; sourceTree = "<group>"; };
-		70DFAB90167D927D008F85AA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		70DFE9DA166E42FC00C58849 /* progress2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress2.png; path = Resources/pic/progress2.png; sourceTree = "<group>"; };
 		70DFE9DB166E42FC00C58849 /* progress3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress3.png; path = Resources/pic/progress3.png; sourceTree = "<group>"; };
 		70DFE9E0166E505F00C58849 /* wildbird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wildbird.mp3; sourceTree = "<group>"; };
@@ -924,7 +924,7 @@
 		70081DE3153F987B003F042A = {
 			isa = PBXGroup;
 			children = (
-				70DFAB90167D927D008F85AA /* Default.png */,
+				7039F84216902B8000210091 /* Default.png */,
 				70081E02153F987C003F042A /* GreedFamily */,
 				70081DF1153F987C003F042A /* Frameworks */,
 				70081DEF153F987C003F042A /* Products */,
@@ -1573,7 +1573,7 @@
 				7029287C1605AE2D00877FF2 /* teach3.png */,
 				7029287E1605AE2D00877FF2 /* unfoldpic.png */,
 				7094910E15EF5282005ADBD8 /* background_begin.jpg */,
-				7044453615FC49D900FDA2EB /* background_level.jpg */,
+				7044453615FC49D900FDA2EB /* background_air.jpg */,
 				7094910F15EF5282005ADBD8 /* beginscene_default.plist */,
 				7094911015EF5282005ADBD8 /* beginscene_default.png */,
 				7044453115FC490800FDA2EB /* levlescene_default_default.plist */,
@@ -1828,7 +1828,7 @@
 				7094911315EF5282005ADBD8 /* beginscene_default.png in Resources */,
 				7044453315FC490800FDA2EB /* levlescene_default_default.plist in Resources */,
 				7044453415FC490800FDA2EB /* levlescene_default_default.png in Resources */,
-				7044453715FC49D900FDA2EB /* background_level.jpg in Resources */,
+				7044453715FC49D900FDA2EB /* background_air.jpg in Resources */,
 				7029287F1605AE2D00877FF2 /* teach1.png in Resources */,
 				702928801605AE2D00877FF2 /* teach2.png in Resources */,
 				702928811605AE2D00877FF2 /* teach3.png in Resources */,
@@ -1900,7 +1900,6 @@
 				70F27227167C7BF400D1960C /* display_pig2.png in Resources */,
 				4A842987167D78D400A8DA23 /* SinaWeibo.bundle in Resources */,
 				4A842990167D82E500A8DA23 /* logoword.png in Resources */,
-				70DFAB91167D927D008F85AA /* Default.png in Resources */,
 				4A2DD192167DAEDD000A162A /* renren.png in Resources */,
 				4A2DD194167DAEE9000A162A /* facebook.png in Resources */,
 				4A2DD196167DAEF9000A162A /* twitter.png in Resources */,
@@ -1909,6 +1908,7 @@
 				70F118881687276C00AC7BA4 /* pack.png in Resources */,
 				70F118891687276C00AC7BA4 /* particleMoon.png in Resources */,
 				70F1188A1687276C00AC7BA4 /* particleSnow.png in Resources */,
+				7039F84316902B8000210091 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2112,9 +2112,12 @@
 		70081FD6153F9881003F042A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: CHEN CHEN (564C7G45GF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHEN CHEN (564C7G45GF)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN CHEN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN CHEN";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2125,10 +2128,11 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
-				SDKROOT = iphoneos;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				SDKROOT = iphoneos5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2136,19 +2140,23 @@
 		70081FD7153F9881003F042A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: CHEN CHEN (564C7G45GF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHEN CHEN (564C7G45GF)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN CHEN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN CHEN";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				SDKROOT = iphoneos5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -2157,8 +2165,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: CHEN CHEN (564C7G45GF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHEN CHEN (564C7G45GF)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN CHEN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN CHEN";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2169,13 +2181,16 @@
 				GCC_PREFIX_HEADER = GreedFamily/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = GreedFamily/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
+				PROVISIONING_PROFILE = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				SDKROOT = iphoneos5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"GreedFamily/libs\"";
+				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2184,8 +2199,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: CHEN CHEN (564C7G45GF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHEN CHEN (564C7G45GF)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN CHEN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN CHEN";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2195,15 +2214,18 @@
 				GCC_PREFIX_HEADER = GreedFamily/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = GreedFamily/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CD335FC2-8C2B-4D9C-B454-FFA9FAFC56D3";
+				PROVISIONING_PROFILE = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E0088AD4-45E8-443C-8037-DC3C47005599";
+				SDKROOT = iphoneos5.0;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"GreedFamily/libs\"";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

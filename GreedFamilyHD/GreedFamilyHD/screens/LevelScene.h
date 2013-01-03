@@ -10,8 +10,9 @@
 #import "cocos2d.h"
 
 @interface LevelScene : CCLayer {
+    int mapType;
     
 }
-+(id)sceneWithLevelScene;
-+(id)scene;
++(id)sceneWithLevelScene:(int)type;
++(id)scene:(int)type;
 @end

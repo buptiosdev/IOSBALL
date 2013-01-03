@@ -108,9 +108,6 @@ Boolean showPair=NO;
                                                                     selector:@selector(newGame:)];
         playitem.scale=(size.width*logoplayscale)/[play contentSize].width;
         CCMenu * playmenu = [CCMenu menuWithItems:playitem, nil];
-        [playmenu setPosition:ccp(size.width/2,size.height*3/7)];
-//        [self addChild:playmenu z:1];
-        
         
         //set pair play 
         CCSprite *pairplay = [CCSprite spriteWithSpriteFrameName:@"shoppic.png"];
@@ -246,8 +243,19 @@ Boolean showPair=NO;
         [self addChild:system z:-2 tag:12];             
         
         
-        //播放背景音乐
+        //检查是否初次启动
         NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
+        int isFirstPlay = [usrDef integerForKey:@"firstplay"];
+        if (1 != isFirstPlay) {
+            //第一次玩，设置相关参数
+            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"firstplay"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"music"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"sound"];
+            //角色为小猪
+            [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"RoleType"];
+        }
+        
+        //播放背景音乐
         BOOL sound = [usrDef boolForKey:@"music"];
         if (YES == sound) 
         {

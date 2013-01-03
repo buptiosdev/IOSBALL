@@ -174,12 +174,12 @@ float logoreturnscaleY=0.15;
             menuItem3.isEnabled=NO;
         }
         
-        //默认要写一次文件，设置为小鸟
+        //默认要写一次文件，设置为小猪
         NSString *strName = [NSString stringWithFormat:@"RoleType"];
         roleType = [[NSUserDefaults standardUserDefaults]  integerForKey:strName];
         if (roleType > 3 || roleType < 1) 
         {
-            roleType = 1;
+            roleType = 2;
             [[NSUserDefaults standardUserDefaults] setInteger:roleType forKey:strName];
         }
         

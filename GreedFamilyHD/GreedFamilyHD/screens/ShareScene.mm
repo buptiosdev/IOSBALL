@@ -28,8 +28,8 @@ static int post_status_times = 0;
     {
         post_status_times ++;
         [postStatusText release], postStatusText = nil;
-        //postStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！ %i %@", post_status_times, [NSDate date]];
-        postStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！ %@", [NSDate date]];
+        //postStatusText = [[NSString alloc] initWithFormat:@"GreedFamily(贪食家族)！审核已通过！！没赶上圣诞，还来得及元旦！！正在限免下载！！传送门－> https://itunes.apple.com/cn/app/greedfamily/id543100124?mt=8 %i %@", post_status_times, [NSDate date]];
+        postStatusText = [[NSString alloc] initWithFormat:@"GreedFamily(贪食家族)！审核已通过！！没赶上圣诞，还来得及元旦！！正在限免下载！！传送门－> https://itunes.apple.com/cn/app/greedfamily/id543100124?mt=8 %@", [NSDate date]];
     }
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享"
@@ -49,7 +49,7 @@ static int post_image_status_times = 0;
         post_image_status_times ++;
         [postImageStatusText release], postImageStatusText = nil;
         //postImageStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！ : %i %@", post_image_status_times, [NSDate date]];
-        postImageStatusText = [[NSString alloc] initWithFormat:@"给大家分享一个超级好玩的游戏－－贪食家族！  %@", [NSDate date]];
+        postImageStatusText = [[NSString alloc] initWithFormat:@"GreedFamily(贪食家族)！审核已通过！！没赶上圣诞，还来得及元旦！！正在限免下载！！传送门－> https://itunes.apple.com/cn/app/greedfamily/id543100124?mt=8  %@", [NSDate date]];
     }
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享"
@@ -219,6 +219,10 @@ static int post_image_status_times = 0;
     }
 }
 
+-(void)shareNothing
+{
+    return;
+}
 
 -(void)shareWeibo
 {
@@ -297,17 +301,17 @@ static int post_image_status_times = 0;
         CCMenuItemSprite *renrenItem = [CCMenuItemSprite itemFromNormalSprite:renren 
                                                               selectedSprite:renren1 
                                                                       target:self 
-                                                                    selector:@selector(shareWeibo)];
+                                                                    selector:@selector(shareNothing)];
         
         renrenItem.scale=screenSize.height*sharelabelscaleY/[renren contentSize].height;
         
         CCSprite *facebook = [CCSprite spriteWithFile:@"facebook.png"];
-        CCSprite *facebook1 = [CCSprite spriteWithFile:@"sina.png"];
+        CCSprite *facebook1 = [CCSprite spriteWithFile:@"facebook.png"];
         facebook1.scale=1.1; //按照像素定制图片宽高
         CCMenuItemSprite *facebookItem = [CCMenuItemSprite itemFromNormalSprite:facebook 
                                                               selectedSprite:facebook1 
                                                                       target:self 
-                                                                    selector:@selector(shareWeibo)];
+                                                                    selector:@selector(shareNothing)];
         
         facebookItem.scale=screenSize.height*sharelabelscaleY/[facebook contentSize].height;
         
@@ -317,7 +321,7 @@ static int post_image_status_times = 0;
         CCMenuItemSprite *twitterItem = [CCMenuItemSprite itemFromNormalSprite:twitter 
                                                               selectedSprite:twitter1 
                                                                       target:self 
-                                                                    selector:@selector(shareWeibo)];
+                                                                    selector:@selector(shareNothing)];
         
         twitterItem.scale=screenSize.height*sharelabelscaleY/[twitter contentSize].height;
         
